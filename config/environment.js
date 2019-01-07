@@ -4,7 +4,7 @@ module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'buy-nsw-ember',
     environment,
-    rootURL: '/',
+    rootURL: '/_/',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
