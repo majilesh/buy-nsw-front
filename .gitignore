@@ -24,3 +24,7 @@
 
 # env files
 .env.deploy.*
+
+# vim backup files
+**/.*.swp
+**/.*.swo
