@@ -21,8 +21,16 @@ You will need the following things properly installed on your computer.
 ## Running / Development
 
 * `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+* Visit your app at [http://localhost:4200/_](http://localhost:4200).
 * Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
+
+### Running alongside Rails api
+
+* `ember serve`
+* `rails server` # Run this command inside buy-nsw directory
+* `cp nginx.conf /etc/nginx/`
+* `sudo service nginx restart`
+* Visit your app at [http://localhost/_/](http://localhost/_/)
 
 ### Code Generators
 
@@ -44,9 +52,24 @@ Make use of the many generators for code, try `ember help generate` for more det
 * `ember build` (development)
 * `ember build --environment production` (production)
 
-### Deploying
+### Serve the build on nginx
 
-Specify what it takes to deploy your app.
+* After building copy the content of dist directory to nginx root (/var/www/html/)
+* Create a soft link in nginx root as follow: `ln -s /var/www/html /var/www/html/_` (you might need sudo for this step)
+* Configure nginx to serve index.html for all routes and serve other mimetypes:
+```
+  server {
+    root /var/www/html;
+    index index.html;
+    server_name buy-nsw-ember;
+    location / {
+      include /etc/nginx/mime.types;
+      try_files $uri $uri/ /index.html;
+    }
+  }
+```
+
+### Deployment
 
 ## Further Reading / Useful Links
 
