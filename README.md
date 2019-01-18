@@ -71,7 +71,7 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 ### Deployment
 * Create three files for each env as in .env.sample, named like .env.deploy.env-name
-* `ember deploy env-name`
+* `ember deploy env-name --verbose --activate=true`
 
 ## Further Reading / Useful Links
 
