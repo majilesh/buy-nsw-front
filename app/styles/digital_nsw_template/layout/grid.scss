@@ -1,0 +1,53 @@
+@mixin one-third($inside-row: false) {
+  @if $inside-row == true {
+    @include make-col-ready;
+  }
+
+  @include media-breakpoint-up(lg) {
+    @include make-col(4);
+  }
+}
+
+@mixin two-thirds($inside-row: false) {
+  @if $inside-row == true {
+    @include make-col-ready;
+  }
+
+  @include media-breakpoint-up(lg) {
+    @include make-col(8);
+  }
+}
+
+@mixin three-quarters($inside-row: false) {
+  @if $inside-row == true {
+    @include make-col-ready;
+  }
+
+  @include media-breakpoint-up(lg) {
+    @include make-col(9);
+  }
+}
+
+@mixin five-sixths($inside-row: false) {
+  @if $inside-row == true {
+    @include make-col-ready;
+  }
+
+  @include media-breakpoint-up(lg) {
+    @include make-col(10);
+  }
+}
+
+.one-third {
+  @include one-third;
+}
+.one-third-inside-row {
+  @include one-third($inside-row: true);
+}
+
+.two-thirds {
+  @include two-thirds;
+}
+.two-thirds-inside-row {
+  @include two-thirds($inside-row: true);
+}

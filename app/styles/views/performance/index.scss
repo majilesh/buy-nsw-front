@@ -1,0 +1,64 @@
+.view-performance-index {
+
+  > h1 {
+    margin-bottom: 1.5rem;
+    font-size: 2.3rem;
+  }
+
+  .application-count {
+    padding: 2rem 0;
+    border-bottom: 1px solid $grey-3;
+
+    @include make-row();
+
+    margin-right: 0;
+    margin-left: 0;
+
+    &:last-of-type {
+      border-bottom: 0;
+    }
+
+    header {
+      @include make-col-ready();
+      @include media-breakpoint-up(md) {
+        @include make-col(4);
+      }
+
+      padding: 0 10% 0 0;
+
+      h1 {
+        margin: 0 0 .3rem;
+        font-size: 1.4rem;
+      }
+    }
+
+    ul {
+      @include make-col-ready();
+      @include media-breakpoint-up(md) {
+        @include make-col(8);
+      }
+
+      padding: 0;
+      margin: 0;
+
+      display: flex;
+    }
+
+    li {
+      display: inline-block;
+      flex: 1;
+      font-size: 1.3rem;
+    }
+
+    em {
+      font-size: 4rem;
+      line-height: 1.1em;
+
+      font-weight: bold;
+      font-style: normal;
+      display: block;
+    }
+
+  }
+
+}

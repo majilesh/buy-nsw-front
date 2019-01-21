@@ -1,0 +1,38 @@
+.view-sellers-profiles {
+  @include profile;
+  @include tags;
+
+  ul.addresses, ul#products {
+    padding-left: 0;
+
+    li {
+      list-style: none;
+      padding-bottom: 1em;
+
+      &:last-of-type {
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  ul#products {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.7em;
+
+    li {
+      border-top: 1px solid #eee;
+      padding-top: 0.7em;
+      padding-bottom: 0.7em;
+      margin-bottom: 0;
+
+      p {
+        margin-top: 0.5em;
+        margin-bottom: 0;
+      }
+      
+      p:first-of-type {
+        display: inline;
+      }
+    }
+  }
+}

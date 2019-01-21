@@ -1,0 +1,11 @@
+.view-static-govdc {
+  @include two-thirds;
+
+  h1 {
+    margin: 1rem 0 2.5rem;
+  }
+
+  ul {
+    margin-top: 2rem;
+  }
+}
