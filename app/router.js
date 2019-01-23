@@ -7,6 +7,8 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
+  this.route('seller-dashboard');
+  this.route('not-found', { path: '/*path' });
 });
 
 export default Router;
