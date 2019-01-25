@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html class="js" lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>BuyNswEmber</title>
+    <title>buy.nsw: Simplifying procurement</title>
+    <script type="text/javascript">
+      var $html = document.documentElement; if ($html.classList) $html.classList.remove("no-js"), $html.classList.add("js"); else { var className = "no-js"; $html.className = $html.className.replace(new RegExp("(^|\\b)" + className.split(" ").join("|") + "(\\b|$)", "gi"), " "), $html.className += " js" }
+    </script>
+
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="">
@@ -15,7 +19,7 @@
 
     {{content-for "head-footer"}}
   </head>
-  <body>
+  <body class="au-grid">
     {{content-for "body"}}
 
     <script src="{{rootURL}}assets/vendor.js"></script>

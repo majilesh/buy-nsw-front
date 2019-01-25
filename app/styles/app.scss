@@ -1,7 +1,15 @@
-@import 'digital_nsw_template';
-@import '_image_paths';
-@import '_font_path_override';
+@import 'nsw-color-sheet';
+@import 'components/globals';
+@import 'components/body';
+@import 'components/header';
+@import 'components/headings';
+@import 'components/main-nav';
+@import 'components/link-list';
+@import 'components/grid-12';
+@import 'components/skip-link';
+@import 'components/cta-link';
+@import 'components/control-input';
+@import 'components/footer';
+@import 'main';
 
-@import 'patterns/**/*';
-@import 'layout/**/*';
-@import 'views/**/*';
+//@import "ember-bootstrap/bootstrap";

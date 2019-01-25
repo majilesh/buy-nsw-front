@@ -1,0 +1,32 @@
+// Light palette
+// ==============
+
+// Default values - can be overridden with your own colours
+$AU-color-foreground-action:     #002664 !default;
+$AU-color-foreground-focus:      #D7153A !default;
+$AU-color-foreground-text:       #000000 !default;
+$AU-color-background:            #FFFFFF !default;
+
+// Generated values - automatically created from default values
+// $AU-color-foreground-muted     (#626262)
+// $AU-color-foreground-border    (#808080)
+// $AU-color-background-shade     (#f5f5f5)
+// $AU-color-background-alt       (#ebebeb)
+// $AU-color-background-alt-shade (#e0e0e0)
+
+
+// Dark palette
+// ==============
+
+// Default values - can be overridden with your own colours
+$AU-colordark-foreground-action: #84BDDC !default;
+$AU-colordark-foreground-focus:  #D7153A !default;
+$AU-colordark-foreground-text:   #FFFFFF !default;
+$AU-colordark-background:        #002664 !default;
+
+// Generated values - automatically created from default values
+// $AU-colordark-foreground-muted     (#bdd2d7)
+// $AU-colordark-foreground-border    (#95b7bf)
+// $AU-colordark-background-shade     (#104f5f)
+// $AU-colordark-background-alt       (#0d414d)
+// $AU-colordark-background-alt-shade (#0a323c)

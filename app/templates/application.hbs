@@ -1,3 +1,115 @@
-<h1> application.hbs </h1>
+<!-- SKIP-LINKS -->
+<nav class="au-skip-link">
+  <a class="au-skip-link__link" href="#content">Skip to main content</a>
+  <a class="au-skip-link__link" href="#mainmenu">Skip to main navigation</a>
+</nav>
 
-{{outlet}}
+<!-- HEADER -->
+<header class="au-header au-header--dark" role="banner">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <a class="au-header__brand" href="/">
+          <img
+            class="au-header__brand-image"
+            alt="Insert alternate text here"
+            src="/_/images/logo-white.svg"
+          >
+          <div class="au-header__text">
+            <h2 class="au-header__heading">buy.nsw</h2>
+            <div class="au-header__subline">Simpifying procurement for New South Wales government</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN NAVIGATION -->
+<nav class="au-main-nav au-main-nav--dark" id="#mainmenu" aria-label="main navigation">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="au-main-nav__content" id="main-nav-default-dark">
+          <button
+            aria-controls="main-nav-default-dark"
+            class="au-main-nav__toggle au-main-nav__toggle--open"
+            onClick="return AU.mainNav.Toggle( this )">
+            Menu
+          </button>
+          <div class="au-main-nav__menu">
+            <div class="au-main-nav__menu-inner">
+              <div class="au-main-nav__focus-trap-top"></div>
+              <button
+                aria-controls="main-nav-default-dark"
+                class="au-main-nav__toggle au-main-nav__toggle--close"
+                onClick="return AU.mainNav.Toggle( this )">
+                Close
+              </button>
+              <ul class="au-link-list">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="basic">Dashboard</a></li>
+                <li><a href="form">Products</a></li>
+                <li class="meta-link"><a href="#">Logout</a></li>
+                <li class="meta-link"><a href="#">Settings</a></li>
+              </ul>
+              <div class="au-main-nav__focus-trap-bottom"></div>
+            </div>
+          </div>
+          <div class="au-main-nav__overlay" aria-controls="main-nav-default-dark" onClick="return AU.mainNav.Toggle( this )"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<div class="au-body">
+  {{outlet}}
+  <br/><br/><br/><br/><br/><br/><br/>
+  <br/><br/><br/><br/><br/><br/><br/>
+  <br/><br/><br/><br/><br/><br/><br/>
+</div>
+
+<!--FOOTER -->
+<footer class="au-footer au-footer--dark au-body au-body--dark" role="contentinfo">
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-md-12">
+        <ul class="au-link-list au-link-list--inline">
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Need Help?</a></li>
+          <li><a href="#">Accessibility</a></li>
+        </ul>
+      </nav>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-4">
+              <img class="au-responsive-media-img banner__image" src="assets/img/100x100.jpg" alt="Placeholder image 100x100">
+            <h3>Small highlight</h3>
+            <p>A small explanation of the featured item this may include a link or a call to action.</p>
+          </div>
+          <div class="col-sm-4">
+            <img class="au-responsive-media-img banner__image" src="assets/img/100x100.jpg" alt="Placeholder image 100x100">
+            <h3>Small highlight</h3>
+            <p>A small explanation of the featured item this may include a link or a call to action.</p>
+          </div>
+          <div class="col-sm-4">
+            <img class="au-responsive-media-img banner__image" src="assets/img/100x100.jpg" alt="Placeholder image 100x100">
+            <h3>Small highlight</h3>
+            <p>A small explanation of the featured item this may include a link or a call to action.</p>
+          </div>
+        </div>
+      </div>
+
+      <section class="col-sm-12">
+        <div class="au-footer__end">
+          <p>
+            © Commonwealth of Australia. With the exception of the Commonwealth Coat of Arms and where otherwise noted, this work is licensed under the <a href="https://github.com/govau/design-system-starter/blob/master/LICENSE" rel="external">MIT license</a>
+          </p>
+        </div>
+      </section>
+    </div>
+  </div>
+</footer>
+
