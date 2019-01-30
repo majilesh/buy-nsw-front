@@ -4,33 +4,27 @@ import { inject } from '@ember/service';
 export default Service.extend({
   ajax: inject(),
 
-  user: null,
-  config: null,
-  csrfToken: null,
-  isAdmin: null,
+  seller: null,
 
   goHome() {
     window.location = '/';
   },
 
   handleSuccess(response) {
-    if (response.user == null) {
-      this.goHome();
+    if (response.seller == null) {
+      // this.goHome();
     } else {
-      this.set('user', response.user);
-      this.set('isAdmin', response.user.roles.includes('admin'));
-      this.set('config', response.config);
-      this.set('csrfToken', response.csrf_token);
+      this.set('seller', response.seller);
     }
   },
 
   handleError() {
-    this.goHome();
+    // this.goHome();
   },
 
   init() {
     this._super(...arguments);
-    this.get('ajax').request('/authenticate')
+    this.get('ajax').request('/api/sellers/basic_details')
       .then((response) =>
         this.handleSuccess(response))
       .catch(({ response, jqXHR, payload }) =>

@@ -1,1 +1,82 @@
-seller-dashboard.hbs
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-1">
+    </div>
+    <div class="col-xs-12 col-sm-3">
+      <h2>Dashboard</h2>
+    </div>
+  </div>
+</div>
+
+<br>
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-2">
+    </div>
+    <div class="col-xs-12 col-sm-3">
+      <h5 class="top-spacer">{{seller.seller.name}}</h5>
+      
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <div class="btn-cta-group">
+        {{ link-to "Manage company profile" "products" class="au-btn au-btn--wide" }}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-2">
+    </div>
+    <div class="col-xs-12 col-sm-3">
+      <h5 class="top-spacer">{{product.count}} products</h5>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <div class="btn-cta-group">
+        {{ link-to "Manage products" "products" class="au-btn au-btn--wide" }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-2">
+    </div>
+    <div class="col-xs-12 col-sm-3">
+      <h5 class="top-spacer">{{seller.seller.owners_count}} team members</h5>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <div class="btn-cta-group">
+        <a
+          class="au-btn au-btn--secondary au-btn--wide"
+          href="/team"
+        >
+          Manage team members
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-2">
+    </div>
+    <div class="col-xs-12 col-sm-3">
+      <h5 class="top-spacer">{{auth.user.email}}</h5>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <div class="btn-cta-group">
+        <a
+          class="au-btn au-btn--secondary au-btn--wide"
+          href="/account"
+        >
+          Change email or password
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -26,6 +26,8 @@ body {
 main > .au-body {
 	@include AU-space( padding, 2unit 0 );
 
+  min-height: 400px;
+
 	@include AU-media( sm ) {
 		@include AU-space( padding, 4unit 0 );
 	}
@@ -40,6 +42,9 @@ main > .au-body {
 		@include AU-space( padding-left, 2unit );
 		@include AU-space( padding-right, 2unit );
 	}
+  &.less-space {
+    margin-top: -3rem;
+  }
 }
 
 // Increase spacing between inline list items in footer

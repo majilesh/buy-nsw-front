@@ -23,11 +23,17 @@
                 Close
               </button>--}}
               <ul class="au-link-list">
-                {{!--<li class="active"><a href="#">Home</a></li>
+                {{!--<li class="active"><a href="/">Home</a></li>
                 <li><a href="basic">Dashboard</a></li>
                 <li><a href="form">Products</a></li>--}}
-                <li class="meta-link"><a href="#">Logout</a></li>
-                <li class="meta-link"><a href="#">Settings</a></li>
+
+                <li class="meta-link"><a href="/sign-out">Logout</a></li>
+                <li class={{if onDashboard "meta-link active" "meta-link"}}>
+                  {{ link-to "Dashboard" "seller-dashboard" }}
+                </li>
+                {{# if auth.isAdmin }}
+                  <li class="meta-link"><a href="/ops">Admin Ops</a></li>
+                {{/ if }}
               </ul>
               <div class="au-main-nav__focus-trap-bottom"></div>
             </div>

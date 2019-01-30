@@ -615,15 +615,16 @@ $dependencies: (
  * @return {string}          - The code
  */
 @mixin AU-outline( $theme: 'light' ) {
-	@if $theme == 'dark' {
-		outline: 3px solid $AU-colordark-foreground-focus;
-	}
-	@else {
-		outline: 3px solid $AU-color-foreground-focus;
-
-		// Only add the offset if it's the default style
-		outline-offset: 2px;
-	}
+  outline: 0;
+// 	@if $theme == 'dark' {
+// 		outline: 3px solid $AU-colordark-foreground-focus;
+// 	}
+// 	@else {
+// 		outline: 3px solid $AU-color-foreground-focus;
+// 
+// 		// Only add the offset if it's the default style
+// 		outline-offset: 2px;
+// 	}
 }
 
 
