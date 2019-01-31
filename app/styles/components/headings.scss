@@ -32,7 +32,7 @@
 .au-body h6 {
 	font-family: $AU-font;
 	display: block;
-	font-weight: bold;
+	font-weight: normal;
 	margin: 0;
 }
 
@@ -99,7 +99,7 @@
 * + .au-display-md,
 * + .au-display-sm,
 * + .au-display-xs {
-	@include AU-space( margin-top, 1unit );
+	@include AU-space( margin-top, 0unit );
 }
 
 

@@ -35,6 +35,13 @@
 	&.au-footer--dark.au-footer--alt {
 		background-color:  $AU-colordark-background-alt;
 	}
+
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 
