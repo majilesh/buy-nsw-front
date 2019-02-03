@@ -41,6 +41,11 @@
           </div>
         </div>
       </p>
+      <h1>{{this.model.firstProduct.id}}</h1>
+      <h2>{{this.model.products.length}}</h2>
+      {{#each this.model.products as |product|}}
+        <h3>{{product.state}}</h3>
+      {{/each}}
     </div>
   </div>
 </div>
