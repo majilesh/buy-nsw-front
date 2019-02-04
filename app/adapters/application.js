@@ -1,15 +1,19 @@
-// import DS from 'ember-data';
-
-// export default DS.JSONAPIAdapter.extend({
-// });
+import DS from 'ember-data';
 import Ember from 'ember';
-import JSONAPIAdapter from 'ember-data/adapters/json-api';
+import { computed } from '@ember/object';
+import { underscore } from '@ember/string';
 
-const { String: { pluralize, underscore } } = Ember;
+const { String: { pluralize } } = Ember;
 
-export default JSONAPIAdapter.extend({
-  namespace: '/api/products',
+export default DS.RESTAdapter.extend({
+  headers: computed(function() {
+    return {
+      "X-CSRF-Token": document.querySelector("meta[name='csrf-token']").getAttribute("content")
+    };
+  }),
+  namespace: '/api',
   pathForType(type) {
-    return pluralize(underscore(type));
+    var type_name = pluralize(underscore(type));
+    return type_name + '/' + type_name;
   }
 });

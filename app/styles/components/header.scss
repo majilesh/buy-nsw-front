@@ -95,6 +95,7 @@ $AU-logo-width-sm: 4.3unit !default;
 
 	.au-header__brand-image + .au-header__text {
 		@include AU-space( margin-top, 1unit );
+    min-width: 30rem;
 	}
 
 	@include AU-media( sm ) {
