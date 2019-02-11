@@ -20,7 +20,7 @@
         <p>Each product must:</p>
 
         <ul>
-          <li>have a unique name that's not your business name, eg. Nimbus by CloudTech Inc.</li>
+          <li>have a unique name that's not your business name, eg. Nimbus by CloudTech.</li>
           <li>be priced by the unit, instead of by an hourly or day rate of your employees</li>
           <li>be described in detail as to how it is hosted and delivered to the end user</li>
         </ul>
@@ -41,12 +41,15 @@
           </div>
         </div>
       </p>
-      <h1>{{this.model.firstProduct.id}}</h1>
-      <h2>{{this.model.products.length}}</h2>
+      <p>
+        <button class="au-btn au-btn--wide" onclick={{action "createProduct"}}>Add a product</button>
+      </p>
+      <hr>
       {{#each this.model.products as |product|}}
-        <h3>{{product.state}}</h3>
+        {{#if product.validActions}}
+          {{product-row product=product}}
+        {{/if}}
       {{/each}}
-      <button onclick={{action "clickedOn"}}>Click Me</button>
     </div>
   </div>
 </div>

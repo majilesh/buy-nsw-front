@@ -18,6 +18,8 @@
 	vertical-align: middle;
 	display: inline-block;
 	appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 	border: 3px solid $AU-color-foreground-border;
 	text-indent: 0.01px;
 	text-overflow: '';
@@ -33,6 +35,10 @@
 	background-position: right center;
 	background-size: 1.5em auto;
 	vertical-align: middle;
+
+  &.fixed-width {
+    width: 15em;
+  }
 
 	@include AU-focus();
 

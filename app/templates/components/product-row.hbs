@@ -1,0 +1,26 @@
+{{#link-to "product" product.id}}
+  <h3>
+    {{#if product.name}}
+      {{product.name}}
+    {{else}}
+      blank product name
+    {{/if}}
+  </h3>
+{{/link-to}}
+<p>
+  {{#if product.description}}
+    {{product.description}}
+  {{else}}
+    blank product description
+  {{/if}}
+</p>
+<p>
+  <button class="au-btn" onclick={{action "confirmProductAction"}}>Confirm</button>
+  <select name={{product.id}} class="au-select fixed-width" onchange={{action "actionSelected" value="target.value"}}>
+    <option disabled selected="{{if (eq action '') 'selected'}}">Please select</option>
+    {{#each product.validActions as |item|}}
+      <option value={{item}}>{{item}}</option>
+    {{/each}}
+  </select>
+</p>
+<hr>
