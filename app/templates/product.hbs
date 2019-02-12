@@ -1,1 +1,40 @@
-{{outlet}}
+<div class="container-fluid less-space">
+  <div class="row">
+    <div class="col-xs-12 col-sm-1">
+    </div>
+    <div class="col-xs-12 col-sm-10">
+      <nav
+        class="au-breadcrumbs"
+        aria-label="breadcrumb"
+      >
+        <ul class="au-link-list au-link-list--inline">
+          <li>
+            {{ link-to "Dashboard" "seller-dashboard" }}
+          </li>
+          <li>
+            {{ link-to "Products" "products" }}
+          </li>
+          <li><b>{{ this.model.name }}</b></li>
+        </ul>
+      </nav>
+      <h3 class="au-display-lg">Add cloud products</h3>
+
+      <p class="au-callout">
+        <p>Each product must:</p>
+
+        <ul>
+          <li>have a unique name that's not your business name, eg. Nimbus by CloudTech.</li>
+          <li>be priced by the unit, instead of by an hourly or day rate of your employees</li>
+          <li>be described in detail as to how it is hosted and delivered to the end user</li>
+        </ul>
+      </p>
+
+      {{#each this.model.steps as |step|}}
+        <p>
+          {{step.name}}
+        </p>
+        <hr>
+      {{/each}}
+    </div>
+  </div>
+</div>
