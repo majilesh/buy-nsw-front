@@ -12,9 +12,9 @@
             {{ link-to "Dashboard" "seller-dashboard" }}
           </li>
           <li>
-            {{ link-to "Products" "products" }}
+            {{ link-to "Cloud products" "products" }}
           </li>
-          <li><b>{{ this.model.name }}</b></li>
+          <li><b>{{if this.model.name this.model.name this.model.id }}</b></li>
         </ul>
       </nav>
       <h3 class="au-display-lg">Add cloud products</h3>
@@ -28,13 +28,111 @@
           <li>be described in detail as to how it is hosted and delivered to the end user</li>
         </ul>
       </p>
-
-      {{#each this.model.steps as |step|}}
+      <br>
+      <ul class="steps-list">
+        <li>
+          <p>
+            <h1 class="au-display-lg">Your Product</h1>
+            <hr>
+          </p>
+          {{ product-step
+             product=this.model
+             step=this.model.steps.type
+          }} 
+          {{ product-step
+             product=this.model
+             step=this.model.steps.basics
+          }} 
+          {{ product-step
+             product=this.model
+             step=this.model.steps.commercials
+          }} 
+          {{ product-step
+             product=this.model
+             step=this.model.steps.terms
+          }} 
+          <br>
+        </li>
+        <li>
+          <p>
+            <h1 class="au-display-lg">User Support</h1>
+            <hr>
+          </p>
+          {{ product-step
+             product=this.model
+             step=this.model.steps.onboarding_offboarding
+          }} 
+          {{ product-step
+             product=this.model
+             step=this.model.steps.availability_support
+          }} 
+          {{ product-step
+             product=this.model
+             step=this.model.steps.reporting_analytics
+          }} 
+          <br>
+        </li>
+        <li>
+          <p>
+            <h1 class="au-display-lg">How data is managed</h1>
+            <hr>
+          </p>
+          {{ product-step
+             product=this.model
+             step=this.model.steps.identity_authentication
+          }} 
+          {{ product-step
+             product=this.model
+             step=this.model.steps.environment
+          }} 
+          {{ product-step
+             product=this.model
+             step=this.model.steps.locations
+          }} 
+          {{ product-step
+             product=this.model
+             step=this.model.steps.user_data
+          }} 
+          {{ product-step
+             product=this.model
+             step=this.model.steps.backup_recovery
+          }} 
+          <br>
+        </li>
+        <li>
+          <p>
+            <h1 class="au-display-lg">Your security approach</h1>
+            <hr>
+          </p>
+          {{ product-step
+             product=this.model
+             step=this.model.steps.data_protection
+          }} 
+          {{ product-step
+             product=this.model
+             step=this.model.steps.security_standards
+          }} 
+          {{ product-step
+             product=this.model
+             step=this.model.steps.security_practices
+          }} 
+          {{ product-step
+             product=this.model
+             step=this.model.steps.user_separation
+          }} 
+          {{ product-step
+             product=this.model
+             step=this.model.steps.operational_security
+          }} 
+          <br>
+        </li>
+      </ul>
+      {{#if this.model.submitable}}
         <p>
-          {{step.name}}
+          <button class="au-btn" onclick={{action "submitProduct"}}>Submit product</button>
+          <button class="au-btn au-btn--secondary" onclick={{action "cancelProduct"}}>Cancel draft</button>
         </p>
-        <hr>
-      {{/each}}
+      {{/if}}
     </div>
   </div>
 </div>
