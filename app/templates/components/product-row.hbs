@@ -14,13 +14,45 @@
     blank product description
   {{/if}}
 </p>
-<p>
-  <button class="au-btn" onclick={{action "confirmProductAction"}}>Confirm</button>
-  <select name={{product.id}} class="au-select fixed-width" onchange={{action "actionSelected" value="target.value"}}>
-    <option disabled selected="{{if (eq action '') 'selected'}}">Please select</option>
-    {{#each product.validActions as |item|}}
-      <option value={{item}}>{{item}}</option>
-    {{/each}}
-  </select>
-</p>
+<br>
+<div class="row">
+  <div class="col-xs-8">
+    <button class="au-btn" onclick={{action "confirmProductAction"}}>Confirm</button>
+    <select
+      name={{product.id}}
+      class="au-select fixed-width"
+      onchange={{action "actionSelected" value="target.value"}}
+    >
+      <option
+        disabled
+        selected={{if (eq action "") "selected"}}
+      >
+        Please select
+      </option>
+      {{#each product.validActions as |item|}}
+        <option value={{item}}>{{item}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <div class="col-xs-4">
+    <span class="product-status {{if product.live 'live'}} {{if (eq product.status 'deactivated') 'deactivated'}}">
+    {{#if (eq product.status "live")}}
+      {{fa-icon "check"}}
+    {{/if}}
+    {{#if (eq product.status "deactivated")}}
+      {{fa-icon "ban"}}
+    {{/if}}
+    {{#if product.pending}}
+      {{fa-icon "eye"}}
+    {{/if}}
+    {{#if product.underEdit}}
+      {{fa-icon "edit"}}
+    {{/if}}
+    {{#if product.changesRequested}}
+      {{fa-icon "exclamination"}}
+    {{/if}}
+    {{product.friendlyStatus}}
+    </span>
+  </div>
+</div>
 <hr>

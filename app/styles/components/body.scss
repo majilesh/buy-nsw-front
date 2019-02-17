@@ -127,6 +127,9 @@
 	p {
 		max-width: $AU-maxwidth;
 		margin: 0;
+    &.left-space {
+      margin-left: 40px;
+    }
 	}
 
 	* + p {

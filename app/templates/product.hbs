@@ -21,12 +21,12 @@
 
       <p class="au-callout">
         <p>Each product must:</p>
-
         <ul>
           <li>have a unique name that's not your business name, eg. Nimbus by CloudTech.</li>
           <li>be priced by the unit, instead of by an hourly or day rate of your employees</li>
           <li>be described in detail as to how it is hosted and delivered to the end user</li>
         </ul>
+        <br>
       </p>
       <br>
       <ul class="steps-list">
@@ -35,22 +35,22 @@
             <h1 class="au-display-lg">Your Product</h1>
             <hr>
           </p>
-          {{ product-step
-             product=this.model
-             step=this.model.steps.type
-          }} 
-          {{ product-step
-             product=this.model
-             step=this.model.steps.basics
-          }} 
-          {{ product-step
-             product=this.model
-             step=this.model.steps.commercials
-          }} 
-          {{ product-step
-             product=this.model
-             step=this.model.steps.terms
-          }} 
+          {{product-step
+            product=this.model
+            step=this.model.steps.type
+          }}
+          {{product-step
+            product=this.model
+            step=this.model.steps.basics
+          }}
+          {{product-step
+            product=this.model
+            step=this.model.steps.commercials
+          }}
+          {{product-step
+            product=this.model
+            step=this.model.steps.terms
+          }}
           <br>
         </li>
         <li>
@@ -58,18 +58,18 @@
             <h1 class="au-display-lg">User Support</h1>
             <hr>
           </p>
-          {{ product-step
-             product=this.model
-             step=this.model.steps.onboarding_offboarding
-          }} 
-          {{ product-step
-             product=this.model
-             step=this.model.steps.availability_support
-          }} 
-          {{ product-step
-             product=this.model
-             step=this.model.steps.reporting_analytics
-          }} 
+          {{product-step
+            product=this.model
+            step=this.model.steps.onboarding_offboarding
+          }}
+          {{product-step
+            product=this.model
+            step=this.model.steps.availability_support
+          }}
+          {{product-step
+            product=this.model
+            step=this.model.steps.reporting_analytics
+          }}
           <br>
         </li>
         <li>
@@ -77,26 +77,26 @@
             <h1 class="au-display-lg">How data is managed</h1>
             <hr>
           </p>
-          {{ product-step
-             product=this.model
-             step=this.model.steps.identity_authentication
-          }} 
-          {{ product-step
-             product=this.model
-             step=this.model.steps.environment
-          }} 
-          {{ product-step
-             product=this.model
-             step=this.model.steps.locations
-          }} 
-          {{ product-step
-             product=this.model
-             step=this.model.steps.user_data
-          }} 
-          {{ product-step
-             product=this.model
-             step=this.model.steps.backup_recovery
-          }} 
+          {{product-step
+            product=this.model
+            step=this.model.steps.identity_authentication
+          }}
+          {{product-step
+            product=this.model
+            step=this.model.steps.environment
+          }}
+          {{product-step
+            product=this.model
+            step=this.model.steps.locations
+          }}
+          {{product-step
+            product=this.model
+            step=this.model.steps.user_data
+          }}
+          {{product-step
+            product=this.model
+            step=this.model.steps.backup_recovery
+          }}
           <br>
         </li>
         <li>
@@ -104,33 +104,44 @@
             <h1 class="au-display-lg">Your security approach</h1>
             <hr>
           </p>
-          {{ product-step
-             product=this.model
-             step=this.model.steps.data_protection
-          }} 
-          {{ product-step
-             product=this.model
-             step=this.model.steps.security_standards
-          }} 
-          {{ product-step
-             product=this.model
-             step=this.model.steps.security_practices
-          }} 
-          {{ product-step
-             product=this.model
-             step=this.model.steps.user_separation
-          }} 
-          {{ product-step
-             product=this.model
-             step=this.model.steps.operational_security
-          }} 
-          <br>
+          {{product-step
+            product=this.model
+            step=this.model.steps.data_protection
+          }}
+          {{product-step
+            product=this.model
+            step=this.model.steps.security_standards
+          }}
+          {{product-step
+            product=this.model
+            step=this.model.steps.security_practices
+          }}
+          {{product-step
+            product=this.model
+            step=this.model.steps.user_separation
+          }}
+          {{product-step
+            product=this.model
+            step=this.model.steps.operational_security
+          }}
         </li>
       </ul>
       {{#if this.model.submitable}}
-        <p>
-          <button class="au-btn" onclick={{action "submitProduct"}}>Submit product</button>
-          <button class="au-btn au-btn--secondary" onclick={{action "cancelProduct"}}>Cancel draft</button>
+        <br>
+        <br>
+        <p class="left-space">
+          <button
+            class="au-btn"
+            onclick={{action "submitProduct"}}
+          >
+            Submit product
+          </button>
+          <button
+            class="au-btn au-btn--secondary"
+            onclick={{action "cancelProduct"}}
+          >
+            Cancel draft
+          </button>
         </p>
       {{/if}}
     </div>

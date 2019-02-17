@@ -11,6 +11,7 @@ Router.map(function() {
   this.route('not-found', { path: '/*path' });
   this.route('products');
   this.route('product', { path: '/products/:product_id'});
+  this.route('register-seller');
 });
 
 export default Router;

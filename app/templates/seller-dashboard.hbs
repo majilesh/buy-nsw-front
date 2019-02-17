@@ -11,62 +11,80 @@
 <br>
 <br>
 
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-1">
-    </div>
-    <div class="col-xs-12 col-sm-4 dash-title">
-      <h5>{{this.model.seller.name}}</h5>
-    </div>
-    <div class="col-xs-12 col-sm-6">
-      <div class="btn-cta-group">
-        {{ link-to
-          "Manage company profile"
-          "products"
-          class="au-cta-link small"
-        }}
+{{# if this.model.seller }}
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-1">
+      </div>
+      <div class="col-xs-12 col-sm-4 dash-title">
+        <h5>{{this.model.seller.name}}</h5>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="btn-cta-group">
+          {{ link-to
+            "Manage company profile"
+            "products"
+            class="au-cta-link small"
+          }}
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-1">
-    </div>
-    <div class="col-xs-12 col-sm-4 dash-title">
-      <h5>{{this.model.products.length}} products</h5>
-    </div>
-    <div class="col-xs-12 col-sm-6">
-      <div class="btn-cta-group">
-        {{ link-to
-          "Manage products"
-          "products"
-          class="au-cta-link small"
-        }}
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-1">
+      </div>
+      <div class="col-xs-12 col-sm-4 dash-title">
+        <h5>{{this.model.products.length}} products</h5>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="btn-cta-group">
+          {{ link-to
+            "Manage products"
+            "products"
+            class="au-cta-link small"
+          }}
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-1">
-    </div>
-    <div class="col-xs-12 col-sm-4 dash-title">
-      <h5>{{this.model.members.length}} members</h5>
-    </div>
-    <div class="col-xs-12 col-sm-6">
-      <div class="btn-cta-group">
-        <a
-          class="au-cta-link small"
-          href="/team"
-        >
-          Manage team members
-        </a>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-1">
+      </div>
+      <div class="col-xs-12 col-sm-4 dash-title">
+        <h5>{{this.model.members.length}} members</h5>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="btn-cta-group">
+          <a
+            class="au-cta-link small"
+            href="/team"
+          >
+            Manage team members
+          </a>
+        </div>
       </div>
     </div>
   </div>
-</div>
+{{else}}
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-3">
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="btn-cta-group">
+          {{ link-to
+            "Apply to sell ICT products and services"
+            "register-seller"
+            class="au-cta-link small"
+          }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+{{/if}}
 
 <div class="container">
   <div class="row">
