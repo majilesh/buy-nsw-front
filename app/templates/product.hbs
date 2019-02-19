@@ -17,6 +17,20 @@
           <li><b>{{if this.model.name this.model.name this.model.id }}</b></li>
         </ul>
       </nav>
+      {{#unless this.model.underEdit}}
+        <br>
+        <br>
+        {{#page-alert alertType="info"}}
+          {{# if this.model.pending }}
+            <h3>Product is locked for review</h3>
+            <p>You have submitted entries or changes. While these are under review, you won't be able to view or edit the details of this product.</p>
+          {{ else }}
+            <h3>Product is locked</h3>
+            <p>You are not able to view or edit the details of this product.</p>
+          {{/ if }}
+
+        {{/page-alert}}
+      {{/unless}}
       <h3 class="au-display-lg">Add cloud products</h3>
 
       <p class="au-callout">
