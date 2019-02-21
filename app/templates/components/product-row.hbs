@@ -35,23 +35,25 @@
     </select>
   </div>
   <div class="col-xs-4">
-    <span class="product-status {{if product.live 'live'}} {{if (eq product.status 'deactivated') 'deactivated'}}">
-    {{#if (eq product.status "live")}}
-      {{fa-icon "check"}}
-    {{/if}}
-    {{#if (eq product.status "deactivated")}}
-      {{fa-icon "ban"}}
-    {{/if}}
-    {{#if product.pending}}
-      {{fa-icon "eye"}}
-    {{/if}}
-    {{#if product.underEdit}}
-      {{fa-icon "edit"}}
-    {{/if}}
-    {{#if product.changesRequested}}
-      {{fa-icon "exclamination"}}
-    {{/if}}
-    {{product.friendlyStatus}}
+    <span
+      class="product-status {{if product.live "live"}} {{if (eq product.status "deactivated") "deactivated"}}"
+    >
+      {{#if (eq product.status "live")}}
+        {{fa-icon "check"}}
+      {{/if}}
+      {{#if (eq product.status "deactivated")}}
+        {{fa-icon "ban"}}
+      {{/if}}
+      {{#if product.pending}}
+        {{fa-icon "eye"}}
+      {{/if}}
+      {{#if product.underEdit}}
+        {{fa-icon "edit"}}
+      {{/if}}
+      {{#if product.changesRequested}}
+        {{fa-icon "exclamination"}}
+      {{/if}}
+      {{product.friendlyStatus}}
     </span>
   </div>
 </div>
