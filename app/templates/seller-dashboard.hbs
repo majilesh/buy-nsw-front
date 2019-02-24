@@ -11,8 +11,32 @@
 <br>
 <br>
 
-{{# if this.model.seller }}
-  <div class="container">
+<div class="container">
+  {{# if this.model.seller }}
+    <div class="row">
+      <div class="col-sm-2">
+      </div>
+      <div class="col-sm-8">
+        {{#page-alert alertType="info"}}
+          <h5>Your compnay profile {{this.model.seller.statusMessage}}.</h5>
+        {{/page-alert}}
+        <br>
+        <br>
+      </div>
+    </div>
+    {{# if this.model.seller.expired }}
+      <div class="row">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-8">
+          {{#page-alert alertType="warning"}}
+            <h5>Some of your documents are expired now, please refresh them as soon as possible.</h5>
+          {{/page-alert}}
+          <br>
+          <br>
+        </div>
+      </div>
+    {{/ if }}
     <div class="row">
       <div class="col-xs-12 col-sm-1">
       </div>
@@ -21,16 +45,15 @@
       </div>
       <div class="col-xs-12 col-sm-6">
         <div class="btn-cta-group">
-          {{ link-to
-            "Manage company profile"
-            "products"
+          <a
             class="au-cta-link small"
-          }}
+            onclick={{action "manageProfile"}}
+          >
+            Manage company profile
+          </a>
         </div>
       </div>
     </div>
-  </div>
-  <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-1">
       </div>
@@ -47,8 +70,6 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-1">
       </div>
@@ -66,9 +87,7 @@
         </div>
       </div>
     </div>
-  </div>
-{{else}}
-  <div class="container">
+  {{else}}
     <div class="row">
       <div class="col-xs-12 col-sm-3">
       </div>
@@ -82,11 +101,9 @@
         </div>
       </div>
     </div>
-  </div>
-  <br>
-{{/if}}
+    <br>
+  {{/if}}
 
-<div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-1">
     </div>

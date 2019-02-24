@@ -31,7 +31,7 @@ export default Component.extend({
           this.get('router').transitionTo('product', this.product);
         });
       }else if(this.get('action') == 'start_amendment') {
-        this.product.start_amendment().then(() => {
+        this.product.startAmendment().then(() => {
           this.product.reload();
           this.set('action', '');
           this.get('router').transitionTo('product', this.product);

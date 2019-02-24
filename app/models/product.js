@@ -67,21 +67,49 @@ export default DS.Model.extend({
   cancel: modelAction('cancel'),
   withdraw: modelAction('withdraw'),
   revise: modelAction('revise'),
-  start_amendment: modelAction('start_amendment'),
+  startAmendment: modelAction('start_amendment'),
   deactivate: modelAction('deactivate'),
   activate: modelAction('activate'),
   validActions: computed('status', function(){
     return {
       started: [],
       archived: [],
-      draft: ['copy', 'cancel'],
-      pending_approval: ['withdraw', 'copy'],
-      changes_requested: ['revise', 'copy'],
-      live: ['start_amendment', 'copy', 'deactivate'],
-      deactivated: ['activate', 'copy'],
-      amendment_draft: ['cancel', 'deactivate', 'copy'],
-      amendment_pending: ['withdraw', 'copy', 'deactivate'],
-      amendment_changes_requested: ['revise', 'deactivate', 'copy']
+      draft: [
+        { code: 'copy', name: 'Clone' },
+        { code: 'cancel', name: 'Discard' }
+      ],
+      pending_approval: [
+        { code: 'withdraw', name: 'Withdraw Submission' },
+        { code: 'copy', name: 'Clone' }
+      ],
+      changes_requested: [
+        { code: 'revise', name: 'Revise' },
+        { code: 'copy', name: 'Clone' }
+      ],
+      live: [
+        { code: 'start_amendment', name: 'Amend Prodcut' },
+        { code: 'copy', name: 'Clone' },
+        { code: 'deactivate', name: 'Deactivate'}
+      ],
+      deactivated: [
+        { code: 'activate', name: 'Activate' },
+        { code: 'copy', name: 'Clone' }
+      ],
+      amendment_draft: [
+        { code: 'cancel', name: 'Cancel Amendment' },
+        { code: 'deactivate', name: 'Deactivate' },
+        { code: 'copy', name: 'Clone'}
+      ],
+      amendment_pending: [
+        { code: 'withdraw', name: 'Withdraw Submission' },
+        { code: 'copy', name: 'Clone' },
+        { code: 'deactivate', name: 'Deactivate' }
+      ],
+      amendment_changes_requested: [
+        { code: 'revise', name: 'Revise' },
+        { code: 'deactivate', name: 'Deactivate' },
+        { code: 'copy', name: 'Clone' }
+      ]
     }[this.get('status')];
   })
 })
