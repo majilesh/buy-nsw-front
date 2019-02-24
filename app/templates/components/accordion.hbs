@@ -1,0 +1,16 @@
+<section class="au-accordion" id={{id}}>
+  <a
+    class="au-accordion__title {{expandedClass}}"
+    aria-controls="accordion-default"
+    aria-expanded={{ expanded }}
+    onclick={{action "toggle"}}
+  >
+    {{ title }}
+  </a>
+
+  <div class="au-accordion__body {{expandedClass}}">
+    <div class="au-accordion__body-wrapper">
+      {{ yield }}
+    </div>
+  </div>
+</section>
