@@ -15,13 +15,15 @@
       <h3 class="au-display-lg">Your Telco products and services</h3>
       <br><br>
       <div class="col-sm-3">
-        {{ in-page-nav sections=(array
-          (hash link="fixed-data-services" name="Fixed Data")
-          (hash link="internet-services" name="Internert Services")
-          (hash link="voice-services" name="Voice Services")
-          (hash link="mobile-services" name="Mobile Services")
-          (hash link="common-services" name="Common Services")
-        ) }}
+        {{ in-page-nav
+          sections=(array
+            (hash link="fixed-data-services" name="Fixed Data")
+            (hash link="internet-services" name="Internert Services")
+            (hash link="voice-services" name="Voice Services")
+            (hash link="mobile-services" name="Mobile Services")
+            (hash link="common-services" name="Common Services")
+          )
+        }}
       </div>
       <div class="col-sm-8">
         <p class="au-callout">

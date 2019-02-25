@@ -6,6 +6,12 @@ export default DS.Model.extend({
   name: DS.attr('string'),
   status: DS.attr('string'),
   expired: DS.attr('boolean'),
+  declined: computed('status', function() {
+    return [
+      'changes_requested',
+      'amendment_changes_requested'
+    ].includes(this.status);
+  }),
   statusMessage: computed('status', function() {
     return {
       live: "is live",
@@ -19,5 +25,6 @@ export default DS.Model.extend({
     }[this.status];
   }),
   users: DS.hasMany('user'),
-  startAmendment: modelAction('start_amendment')
+  startAmendment: modelAction('start_amendment'),
+  revise: modelAction('revise')
 });
