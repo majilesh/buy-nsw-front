@@ -13,6 +13,7 @@ Router.map(function() {
   this.route('product', { path: '/products/:product_id'});
   this.route('register-seller');
   this.route('telco-products');
+  this.route('telco-form', { path: '/telco-products/:form_key'});
 });
 
 export default Router;

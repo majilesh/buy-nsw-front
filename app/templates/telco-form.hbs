@@ -1,0 +1,20 @@
+<TemplateBody>
+  {{#if (eq this.model.form_key "dark-fibre")}}
+    <DarkFibreForm
+      @form_key={{this.model.form_key}}
+      @product={{this.model.product}}
+    />
+  {{/if}}
+  <br>
+  <hr>
+  <br>
+
+  <p>
+    <button class="au-btn" onclick={{action "saveProduct"}}>Save and continue</button>
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    {{link-to "Cancel and return later" "telco-products"}}
+  </p>
+</TemplateBody>
+

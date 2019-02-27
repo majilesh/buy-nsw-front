@@ -1,59 +1,54 @@
-<div class="container-fluid less-space">
-  <div class="row">
-    <div class="col-sm-12">
-      <nav
-        class="au-breadcrumbs"
-        aria-label="breadcrumb"
+<TemplateBody>
+  {{ bread-crumbs
+    links=(array
+      (hash name="Dashboard" route="seller-dashboard")
+      (hash name="Telco products" route="telco-products")
+    )
+  }}
+  <h3 class="au-display-lg">Your Telco products and services</h3>
+  <br><br>
+  <div class="col-sm-3">
+    {{ inpage-nav
+      sections=(array
+        (hash link="fixed-data-services" name="Fixed Data")
+        (hash link="internet-services" name="Internert Services")
+        (hash link="voice-services" name="Voice Services")
+        (hash link="mobile-services" name="Mobile Services")
+        (hash link="common-services" name="Common Services")
+      )
+    }}
+  </div>
+  <div class="col-sm-8">
+    <p class="au-callout">
+      <h4>For now, buy.nsw is only open to Telco sellers who either:</h4>
+      <ul>
+        <li>provide Telco products, services and support that meet the government's TPA requirements</li>
+        <li>are currently signed up to the NSW Government's Telecommunications Purchasing Arrangements (TPA)</li>
+      </ul>
+      <p>We will be opening up to more seller categories in future.</p>
+    </p>
+    <p>
+      <b>
+        <a href="/guides/seller">
+          If you are looking to sell cloud products, click here.
+        </a>
+      </b>
+    </p>
+    <br>
+    <br>
+    <TelcoProductStack @title="Fixed data services" @id="fixed-data-services">
+      <TelcoProductRow
+        @name="Passive Point-to-Point - Dark Fibre"
+        @form="dark-fibre"
       >
-        <ul class="au-link-list au-link-list--inline">
-          <li>
-            {{ link-to "Dashboard" "seller-dashboard" }}
-          </li>
-          <li><b>Telco products</b></li>
-        </ul>
-      </nav>
-      <h3 class="au-display-lg">Your Telco products and services</h3>
-      <br><br>
-      <div class="col-sm-3">
-        {{ in-page-nav
-          sections=(array
-            (hash link="fixed-data-services" name="Fixed Data")
-            (hash link="internet-services" name="Internert Services")
-            (hash link="voice-services" name="Voice Services")
-            (hash link="mobile-services" name="Mobile Services")
-            (hash link="common-services" name="Common Services")
-          )
-        }}
-      </div>
-      <div class="col-sm-8">
-        <p class="au-callout">
-          <h4>For now, buy.nsw is only open to Telco sellers who either:</h4>
-          <ul>
-            <li>provide Telco products, services and support that meet the government's TPA requirements</li>
-            <li>are currently signed up to the NSW Government's Telecommunications Purchasing Arrangements (TPA)</li>
-          </ul>
-          <p>We will be opening up to more seller categories in future.</p>
-        </p>
-        <p>
-          <b>
-            <a href="/guides/seller">
-              If you are looking to sell cloud products, click here.
-            </a>
-          </b>
-        </p>
-        <br>
-        <br>
-        <TelcoProductStack @title="Fixed data services" @id="fixed-data-services">
-          <TelcoProductRow @name="Passive Point-to-Point - Dark Fibre"></TelcoProductRow>
-        </TelcoProductStack>
-        <br>
-        <br>
-        <div class="inner">
-          <Accordion @title="Here goes the title">
-            ASDF
-          </Accordion>
-        </div>
-      </div>
+      </TelcoProductRow>
+    </TelcoProductStack>
+    <br>
+    <br>
+    <div class="inner">
+      <Accordion @title="Here goes the title">
+        ASDF
+      </Accordion>
     </div>
   </div>
-</div>
+</TemplateBody>

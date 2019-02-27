@@ -1,0 +1,100 @@
+{{ bread-crumbs
+  links=(array
+    (hash name="Dashboard" route="seller-dashboard")
+    (hash name="Telco products" route="telco-products")
+    (hash name="Passive Point-to-Point")
+  )
+}}
+<div class="col-sm-10">
+  <br>
+  <h2 class="au-display-lg">Passive Point to Point - Dark Fibre</h2>
+  <p>Please select the features and attributes of your TPA compliant product:</p>
+  <hr>
+  <h3 class="au-display-md">Availability</h3>
+  <p>
+    To be compliant with the TPA, this product must offer an <b>availability SLA of ≥99.9%.</b>
+  </p>
+  {{radio-button
+    name="availability"
+    value="yes"
+    label="This product meets the requirement"
+    field=(mut product.availability)
+  }}
+  {{radio-button
+    name="availability"
+    value="no"
+    label="This product does NOT meet the requirement"
+    field=(mut product.availability)
+  }}
+  <hr>
+  <h3 class="au-display-md">Secondary services</h3>
+  {{radio-button
+    name="secondary-services"
+    value="yes"
+    label="Yes"
+    field=(mut product.secondary)
+  }}
+  {{radio-button
+    name="secondary-services"
+    value="no"
+    label="No"
+    field=(mut product.secondary)
+  }}
+  <hr>
+  <h3 class="au-display-md">Reach</h3>
+  <div class="col-sm-5">
+    {{check-box
+      name="intra-regional"
+      label="Intra-regional"
+      field=(mut product.intraRegional)
+    }}
+    <br>
+    <h3 class="au-display-md"> Location </h3>
+    {{check-box
+      name="location-metro"
+      label="Metro"
+      field=(mut product.locationMetro)
+      disabled=(not product.intraRegional)
+    }}
+    {{check-box
+      name="location-regional"
+      label="Regional"
+      field=(mut product.locationRegional)
+      disabled=(not product.intraRegional)
+    }}
+    {{check-box
+      name="location-remote"
+      label="Remote"
+      field=(mut product.locationRemote)
+      disabled=(not product.intraRegional)
+    }}
+  </div>
+  <div class="col-sm-5">
+    {{check-box
+      name="inter-regional"
+      label="Inter-regional"
+      field=(mut product.interRegional)
+    }}
+    <br>
+    <h3 class="au-display-md"> Destination </h3>
+    {{check-box
+      name="destination-metro"
+      label="Metro"
+      field=(mut product.destinationMetro)
+      disabled=(not product.interRegional)
+    }}
+    {{check-box
+      name="destination-regional"
+      label="Regional"
+      field=(mut product.destinationRegional)
+      disabled=(not product.interRegional)
+    }}
+    {{check-box
+      name="destination-remote"
+      label="Remote"
+      field=(mut product.destinationRemote)
+      disabled=(not product.interRegional)
+    }}
+  </div>
+</div>
+<div class="clear-both"></div>
