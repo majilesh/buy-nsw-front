@@ -3,8 +3,9 @@ import Controller from '@ember/controller';
 export default Controller.extend({
   actions: {
     saveProduct() {
+      var self = this;
       this.model.product.save().then(function(){
-        this.get('router').transitionTo('telco-products');
+        self.transitionToRoute('telco-products');
       })
     },
     cancelChanges() {

@@ -1,0 +1,16 @@
+<p>
+  <br>
+  <label class="au-control-input">
+    <input
+      class="au-control-input__input"
+      type="checkbox"
+      name={{name}}
+      onchange={{action "toggle"}}
+      checked={{if checked "checked" ""}}
+      disabled={{if disabled "disabled" ""}}
+    >
+    <span class="au-control-input__text">
+      {{label}}
+    </span>
+  </label>
+</p>

@@ -43,56 +43,56 @@
   <hr>
   <h3 class="au-display-md">Reach</h3>
   <div class="col-sm-5">
-    {{check-box
+    {{checkbox-array
       name="intra-regional"
       label="Intra-regional"
-      field=(mut product.intraRegional)
+      field=(mut product.reach)
     }}
     <br>
     <h3 class="au-display-md"> Location </h3>
-    {{check-box
+    {{checkbox-array
       name="location-metro"
       label="Metro"
-      field=(mut product.locationMetro)
+      field=(mut product.location)
       disabled=(not product.intraRegional)
     }}
-    {{check-box
+    {{checkbox-array
       name="location-regional"
       label="Regional"
-      field=(mut product.locationRegional)
+      field=(mut product.location)
       disabled=(not product.intraRegional)
     }}
-    {{check-box
+    {{checkbox-array
       name="location-remote"
       label="Remote"
-      field=(mut product.locationRemote)
+      field=(mut product.location)
       disabled=(not product.intraRegional)
     }}
   </div>
   <div class="col-sm-5">
-    {{check-box
+    {{checkbox-array
       name="inter-regional"
       label="Inter-regional"
-      field=(mut product.interRegional)
+      field=(mut product.reach)
     }}
     <br>
     <h3 class="au-display-md"> Destination </h3>
-    {{check-box
+    {{checkbox-array
       name="destination-metro"
       label="Metro"
-      field=(mut product.destinationMetro)
+      field=(mut product.destination)
       disabled=(not product.interRegional)
     }}
-    {{check-box
+    {{checkbox-array
       name="destination-regional"
       label="Regional"
-      field=(mut product.destinationRegional)
+      field=(mut product.destination)
       disabled=(not product.interRegional)
     }}
-    {{check-box
+    {{checkbox-array
       name="destination-remote"
       label="Remote"
-      field=(mut product.destinationRemote)
+      field=(mut product.destination)
       disabled=(not product.interRegional)
     }}
   </div>
