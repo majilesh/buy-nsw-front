@@ -15,30 +15,30 @@
     To be compliant with the TPA, this product must offer an <b>availability SLA of ≥99.9%.</b>
   </p>
   {{radio-button
-    name="availability"
+    name="sla_availability_requirement"
     value="yes"
     label="This product meets the requirement"
-    field=(mut product.availability)
+    field=(mut product.sla_availability_requirement)
   }}
   {{radio-button
-    name="availability"
+    name="sla_availability_requirement"
     value="no"
     label="This product does NOT meet the requirement"
-    field=(mut product.availability)
+    field=(mut product.sla_availability_requirement)
   }}
   <hr>
   <h3 class="au-display-md">Secondary services</h3>
   {{radio-button
-    name="secondary-services"
+    name="secondary_services_available"
     value="yes"
     label="Yes"
-    field=(mut product.secondary)
+    field=(mut product.secondary_services_available)
   }}
   {{radio-button
-    name="secondary-services"
+    name="secondary_services_available"
     value="no"
     label="No"
-    field=(mut product.secondary)
+    field=(mut product.secondary_services_available)
   }}
   <hr>
   <h3 class="au-display-md">Reach</h3>
@@ -46,54 +46,54 @@
     {{checkbox-array
       name="intra-regional"
       label="Intra-regional"
-      field=(mut product.reach)
+      field=(mut product.location_destination_reach)
     }}
     <br>
     <h3 class="au-display-md"> Location </h3>
     {{checkbox-array
-      name="location-metro"
+      name="metro"
       label="Metro"
-      field=(mut product.location)
-      disabled=(not product.intraRegional)
+      field=(mut product.intra_regional_locations)
+      disabled=(not product.intraRegionalChecked)
     }}
     {{checkbox-array
-      name="location-regional"
+      name="regional"
       label="Regional"
-      field=(mut product.location)
-      disabled=(not product.intraRegional)
+      field=(mut product.intra_regional_locations)
+      disabled=(not product.intraRegionalChecked)
     }}
     {{checkbox-array
-      name="location-remote"
+      name="remote"
       label="Remote"
-      field=(mut product.location)
-      disabled=(not product.intraRegional)
+      field=(mut product.intra_regional_locations)
+      disabled=(not product.intraRegionalChecked)
     }}
   </div>
   <div class="col-sm-5">
     {{checkbox-array
       name="inter-regional"
       label="Inter-regional"
-      field=(mut product.reach)
+      field=(mut product.location_destination_reach)
     }}
     <br>
     <h3 class="au-display-md"> Destination </h3>
     {{checkbox-array
-      name="destination-metro"
+      name="metro"
       label="Metro"
-      field=(mut product.destination)
-      disabled=(not product.interRegional)
+      field=(mut product.inter_regional_destinations)
+      disabled=(not product.interRegionalChecked)
     }}
     {{checkbox-array
-      name="destination-regional"
+      name="regional"
       label="Regional"
-      field=(mut product.destination)
-      disabled=(not product.interRegional)
+      field=(mut product.inter_regional_destinations)
+      disabled=(not product.interRegionalChecked)
     }}
     {{checkbox-array
-      name="destination-remote"
+      name="remote"
       label="Remote"
-      field=(mut product.destination)
-      disabled=(not product.interRegional)
+      field=(mut product.inter_regional_destinations)
+      disabled=(not product.interRegionalChecked)
     }}
   </div>
 </div>

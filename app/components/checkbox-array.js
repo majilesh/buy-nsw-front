@@ -4,7 +4,7 @@ export default Component.extend({
   checked: false,
   init() {
     this._super(...arguments);
-    var arrayField = this.get('field').trim();
+    var arrayField = (this.get('field') || '').trim();
     if(arrayField=="" || arrayField==null) {
       arrayField = [];
     } else {
@@ -14,7 +14,7 @@ export default Component.extend({
   },
   actions: {
     toggle() {
-      var arrayField = this.get('field').trim();
+      var arrayField = (this.get('field') || '').trim();
       if(arrayField=="") {
         arrayField = [];
       } else {
