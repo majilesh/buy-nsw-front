@@ -19,7 +19,7 @@ export default DS.Model.extend({
       amendment_draft: "is live but your latest changes are not submitted",
       amendment_pending: "is live and your changes are under review",
       draft: "is not submitted",
-      pending_approval: "is under review",
+      pending: "is under review",
       changes_requested: "requires attention",
       deactivated: "is deactivated"
     }[this.status];
