@@ -33,7 +33,7 @@ export default Service.extend({
 
   init() {
     this._super(...arguments);
-    this.get('ajax').request('/authenticate')
+    this.get('ajax').request('/api/users/authenticate')
       .then((response) =>
         this.handleSuccess(response))
       .catch(({ response, jqXHR, payload }) =>

@@ -27,7 +27,7 @@
                 <li><a href="basic">Dashboard</a></li>
                 <li><a href="form">Products</a></li>--}}
 
-                <li class="meta-link"><a href="/sign-out">Logout</a></li>
+                <li class="meta-link"><a href="/api/users/sign-out">Logout</a></li>
                 {{# if auth.isSeller }}
                   <li class={{if onDashboard "meta-link active" "meta-link"}}>
                     {{ link-to "Dashboard" "seller-dashboard" }}
