@@ -48,7 +48,16 @@
       label="Intra-regional"
       field=(mut product.location_destination_reach)
     }}
-    <br>
+  </div>
+  <div class="col-sm-5">
+    {{checkbox-array
+      name="inter-regional"
+      label="Inter-regional"
+      field=(mut product.location_destination_reach)
+    }}
+  </div>
+  <div class="clear-both"><br><br></div>
+  <div class="col-sm-5">
     <h3 class="au-display-md"> Location </h3>
     {{checkbox-array
       name="metro"
@@ -68,14 +77,9 @@
       field=(mut product.intra_regional_locations)
       disabled=(not product.intraRegionalChecked)
     }}
+    <br>
   </div>
   <div class="col-sm-5">
-    {{checkbox-array
-      name="inter-regional"
-      label="Inter-regional"
-      field=(mut product.location_destination_reach)
-    }}
-    <br>
     <h3 class="au-display-md"> Destination </h3>
     {{checkbox-array
       name="metro"
