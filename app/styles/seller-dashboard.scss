@@ -1,4 +1,7 @@
 .dash-title {
-  text-align: right;
-  padding: 1.1rem;
+  @include AU-media( sm ) {
+    text-align: right;
+    padding: 1.1rem;
+  }
+  padding: 2rem 0 0 0;
 }

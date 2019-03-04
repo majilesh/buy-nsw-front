@@ -14,9 +14,9 @@
 <div class="container">
   {{# if this.model.seller }}
     <div class="row">
-      <div class="col-sm-2">
+      <div class="col-sm-1">
       </div>
-      <div class="col-sm-8">
+      <div class="col-sm-9">
         {{#page-alert alertType="info"}}
           <h5>Your compnay profile {{this.model.seller.statusMessage}}.</h5>
         {{/page-alert}}
@@ -26,9 +26,9 @@
     </div>
     {{# if this.model.seller.expired }}
       <div class="row">
-        <div class="col-sm-2">
+        <div class="col-sm-1">
         </div>
-        <div class="col-sm-8">
+        <div class="col-sm-9">
           {{#page-alert alertType="warning"}}
             <h5>Some of your documents are expired now, please refresh them as soon as possible.</h5>
           {{/page-alert}}
@@ -38,12 +38,10 @@
       </div>
     {{/ if }}
     <div class="row">
-      <div class="col-sm-1">
-      </div>
-      <div class="col-sm-4 dash-title">
+      <div class="col-sm-5 dash-title">
         <h5>{{this.model.seller.name}}</h5>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-5">
         <div class="btn-cta-group">
           <a
             class="au-cta-link small"
@@ -55,12 +53,10 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-1">
-      </div>
-      <div class="col-sm-4 dash-title">
+      <div class="col-sm-5 dash-title">
         <h5>{{this.model.products.length}} products</h5>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-5">
         <div class="btn-cta-group">
           {{ link-to
             "Manage products"
@@ -71,12 +67,10 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-1">
-      </div>
-      <div class="col-sm-4 dash-title">
+      <div class="col-sm-5 dash-title">
         <h5>{{this.model.members.length}} members</h5>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-5">
         <div class="btn-cta-group">
           <a
             class="au-cta-link small"
@@ -89,9 +83,9 @@
     </div>
   {{else}}
     <div class="row">
-      <div class="col-sm-3">
+      <div class="col-sm-5">
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-5">
         <div class="btn-cta-group">
           {{ link-to
             "Apply to sell ICT products and services"
@@ -105,12 +99,10 @@
   {{/if}}
 
   <div class="row">
-    <div class="col-sm-1">
-    </div>
-    <div class="col-sm-4 dash-title">
+    <div class="col-sm-5 dash-title">
       <h5>{{this.model.user.email}}</h5>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-5">
       <div class="btn-cta-group">
         <a
           class="au-cta-link small"

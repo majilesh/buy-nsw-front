@@ -14,6 +14,13 @@ Router.map(function() {
   this.route('register-seller');
   this.route('telco-products');
   this.route('telco-form', { path: '/telco-products/:form_key'});
+  this.route('buyer-guide');
+  this.route('seller-guide');
+  this.route('contact');
+  this.route('privacy');
+  this.route('terms-of-use');
+  this.route('accessibility');
+  this.route('license');
 });
 
 export default Router;
