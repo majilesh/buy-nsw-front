@@ -7,8 +7,8 @@ export default Service.extend({
   user: null,
   config: null,
   csrfToken: null,
-  isAdmin: null,
   isSeller: null,
+  trueUser: null,
 
   goHome() {
     window.location = '/';
@@ -23,6 +23,7 @@ export default Service.extend({
       this.set('isSeller', response.user.roles.includes('seller'));
       this.set('config', response.config);
       this.set('csrfToken', response.csrf_token);
+      this.set('trueUser', response.true_user);
     }
   },
 
