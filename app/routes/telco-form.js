@@ -8,7 +8,7 @@ export default Route.extend({
     return RSVP.hash({
       form_key: params.form_key,
       form_name: params.form_key.replace(/-/g, ' ').replace(/\b[a-z]/g, (s) => s.toUpperCase()),
-      component_name: params.form_key + '-form',
+      component_name: 'telco-forms/' + params.form_key + '-form',
       product: store.query('telco-product', {
         category: params.form_key.replace(/-/g, '_')
       }).then(function(products) {
