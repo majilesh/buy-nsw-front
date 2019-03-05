@@ -16,7 +16,7 @@ export default Route.extend({
         if(product) {
           return product;
         } else {
-          return store.createRecord('telco-product', {category: params.form_key});
+          return store.createRecord('telco-product', {category: params.form_key.replace(/-/g, '_')});
         }
       })
     });
