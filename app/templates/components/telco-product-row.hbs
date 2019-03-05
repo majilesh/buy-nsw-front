@@ -1,5 +1,9 @@
 <div class="telco-product-row">
-  {{name}}
+  {{#if product}}
+    <b>{{name}}</b>
+  {{else}}
+    {{name}}
+  {{/if}}
   <div class="right-link">
     {{#link-to "telco-form" form class="au-cta-link small"}}
       {{if product "Edit" "Add this product"}}

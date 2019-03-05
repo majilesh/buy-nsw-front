@@ -39,8 +39,203 @@
     <TelcoProductStack @title="Fixed data services" @id="fixed-data-services">
       <TelcoProductRow
         @name="Passive Point-to-Point - Dark Fibre"
-        @form="dark_fibre"
+        @form="dark-fibre"
         @product={{this.model.products.dark_fibre}}
+      >
+      </TelcoProductRow>
+      <TelcoProductRow
+        @name="Active Point-to-Point CSDM/ DWDM"
+        @form="cwdm-dwdm"
+        @product={{this.model.products.cwdm_dwdm}}
+      >
+      </TelcoProductRow>
+      <TelcoProductRow
+        @name="Active Point-to-Point Fibre Channel"
+        @form="fibre-channel"
+        @product={{this.model.products.fibre_channel}}
+      >
+      </TelcoProductRow>
+      <TelcoProductRow
+        @name="Unmanaged Layer 2 VPN - Ethernet"
+        @form="l2vpn-ethernet"
+        @product={{this.model.products.l2vpn_ethernet}}
+      >
+      </TelcoProductRow>
+      <TelcoProductRow
+        @name="Unmanaged Layer 3 VPN - IP over Ethernet"
+        @form="unmanaged-l3vpn"
+        @product={{this.model.products.unmanaged_l3vpn}}
+      >
+      </TelcoProductRow>
+      <TelcoProductRow
+        @name="Managed Layer 3 VPN - IP over Ethernet"
+        @form="managed-l3vpn"
+        @product={{this.model.products.managed_l3vpn}}
+      >
+      </TelcoProductRow>
+      <TelcoProductRow
+        @name="Low-cost Managed Layer 3 VPN - IP over Ethernet"
+        @form="lowcost-l3vpn"
+        @product={{this.model.products.lowcost_l3vpn}}
+      >
+      </TelcoProductRow>
+    </TelcoProductStack>
+    <br>
+    <TelcoProductStack @title="Internet Services" @id="internet-services">
+      <TelcoProductRow
+        @name="Core Internet Uplink"
+        @form="core-internet"
+        @product={{this.model.products.core_internet}}
+      >
+      </TelcoProductRow>
+      <TelcoProductRow
+        @name="Peering Access"
+        @form="peering-access"
+        @product={{this.model.products.peering_access}}
+      >
+      </TelcoProductRow>
+      <TelcoProductRow
+        @name="Internet Access"
+        @form="internet-access"
+        @product={{this.model.products.internet_access}}
+      >
+      </TelcoProductRow>
+      <TelcoProductRow
+        @name="Core Internet Option - Firewall"
+        @form="internet-firewall"
+        @product={{this.model.products.internet_firewall}}
+      >
+      </TelcoProductRow>
+      <TelcoProductRow
+        @name="Core Internet Option - DNS"
+        @form="internet-dns"
+        @product={{this.model.products.internet_dns}}
+      >
+      </TelcoProductRow>
+      <TelcoProductRow
+        @name="Core Internet Option - Web Content Filtering"
+        @form="web-filtering"
+        @product={{this.model.products.web_filtering}}
+      >
+      </TelcoProductRow>
+      <TelcoProductRow
+        @name="Core Internet Option - Email Protection"
+        @form="email-protection"
+        @product={{this.model.products.email_protection}}
+      >
+      </TelcoProductRow>
+      <TelcoProductRow
+        @name="Reverse Proxy"
+        @form="reverse-proxy"
+        @product={{this.model.products.reverse_proxy}}
+      >
+      </TelcoProductRow>
+    </TelcoProductStack>
+    <br>
+    <TelcoProductStack @title="Voice Services" @id="voice-services">
+      <TelcoProductRow
+        @name="SIP Trunk"
+        @form="sip-trunk"
+        @product={{this.model.products.sip_trunk}}
+      >
+      </TelcoProductRow>
+      <TelcoProductRow
+        @name="ISDN - Basic Rate Access"
+        @form="isdn-basic"
+        @product={{this.model.products.isdn_basic}}
+      >
+      </TelcoProductRow>
+      <TelcoProductRow
+        @name="ISDN - Primary Rate Access"
+        @form="isdn-primary"
+        @product={{this.model.products.isdn_primary}}
+      >
+      </TelcoProductRow>
+      <TelcoProductRow
+        @name="PSTN Lines"
+        @form="pstn-lines"
+        @product={{this.model.products.pstn_lines}}
+      >
+      </TelcoProductRow>
+      <TelcoProductRow
+        @name="Direct In-Dial Number Blocks"
+        @form="number-block"
+        @product={{this.model.products.number_block}}
+      >
+      </TelcoProductRow>
+      <TelcoProductRow
+        @name="Inbound Calling Service"
+        @form="inbound-call"
+        @product={{this.model.products.inbound_call}}
+      >
+      </TelcoProductRow>
+      <TelcoProductRow
+        @name="Outbound Calling Service"
+        @form="outbound-call"
+        @product={{this.model.products.outbound_call}}
+      >
+      </TelcoProductRow>
+      <TelcoProductRow
+        @name="Enterprise Voice Only (PABX Replacement)"
+        @form="pabx-replacement"
+        @product={{this.model.products.pabx_replacement}}
+      >
+      </TelcoProductRow>
+      <TelcoProductRow
+        @name="Unified Communications"
+        @form="unified-communications"
+        @product={{this.model.products.unified_communications}}
+      >
+      </TelcoProductRow>
+      <TelcoProductRow
+        @name="Call Centre"
+        @form="call-centre"
+        @product={{this.model.products.call_centre}}
+      >
+      </TelcoProductRow>
+    </TelcoProductStack>
+    <br>
+    <TelcoProductStack @title="Mobile Services" @id="mobile-services">
+      <TelcoProductRow
+        @name="Sim + Device Plan"
+        @form="sim-device"
+        @product={{this.model.products.sim_device}}
+      >
+      </TelcoProductRow>
+      <TelcoProductRow
+        @name="Data Pool"
+        @form="data-pool"
+        @product={{this.model.products.data_pool}}
+      >
+      </TelcoProductRow>
+      <TelcoProductRow
+        @name="Sim Only"
+        @form="sim-only"
+        @product={{this.model.products.sim_only}}
+      >
+      </TelcoProductRow>
+      <TelcoProductRow
+        @name="Voice Pool"
+        @form="voice-pool"
+        @product={{this.model.products.voice_pool}}
+      >
+      </TelcoProductRow>
+      <TelcoProductRow
+        @name="Device `as-a-Service`"
+        @form="device-service"
+        @product={{this.model.products.device_service}}
+      >
+      </TelcoProductRow>
+      <TelcoProductRow
+        @name="Device (outright)"
+        @form="device-outright"
+        @product={{this.model.products.device_outright}}
+      >
+      </TelcoProductRow>
+      <TelcoProductRow
+        @name="Mobile Device Management"
+        @form="mobile-device"
+        @product={{this.model.products.mobile_device}}
       >
       </TelcoProductRow>
     </TelcoProductStack>
@@ -48,37 +243,50 @@
     <br>
     <div class="inner">
       <Accordion @title="Common Services Description">
-<p>
-Common Services provides a definition for the required interface between a Supplier, the Eligible Customer and the Contract Authority across service towers and services. This definition is based on the ITIL v3 framework which provides an industry standard structure for the capture of this critical operational interface. However, the Supplier is not mandated to follow ITIL v3 internally in relation to its approach to Service Management.
-</p>
-<p>
-Unless stated otherwise, all service towers and the services they contain must comply with the operational interface defined in this Common Services Service Catalogue. This is to ensure clarity on the responsibilities of the Suppliers, the Eligible Customers, and the Contract Authority and ensure that an appropriate level of operational maturity is in place across the system.
-</p>
-<p>
-The figure below illustrates the intended relationship between the Supplier, the Eligible Customer and the Contract Authority (DFSI).
-Price Books
-</p>
-<p>
-These processes are expected to continually evolve with the Eligible Customers' business requirements and industry technology changes. It is expected that the Supplier will work proactively with the Eligible Customer and Contract Authority to ensure that all processes are fit for purpose.
-</p>
-<p>
-It is expected that individual services may be consumed from different Suppliers, and that all services will be delivered in a modular fashion to facilitate that.
-</p>
-<p>
-The operational interface defined within this catalogue must meet the requirements for Common Services defined in the Requirements Schedule.
-</p>
-<p>
-This catalogue defines the minimum requirement for the operational interface between the Eligible Customer and Service provider. Suppliers are at liberty to offer and provide additional service capability above and beyond this minimum requirement.
-</p>
+        <p>
+          Common Services provides a definition for the required interface between a Supplier, the Eligible Customer and the Contract Authority across service towers and services. This definition is based on the ITIL v3 framework which provides an industry standard structure for the capture of this critical operational interface. However, the Supplier is not mandated to follow ITIL v3 internally in relation to its approach to Service Management.
+        </p>
+        <p>
+          Unless stated otherwise, all service towers and the services they contain must comply with the operational interface defined in this Common Services Service Catalogue. This is to ensure clarity on the responsibilities of the Suppliers, the Eligible Customers, and the Contract Authority and ensure that an appropriate level of operational maturity is in place across the system.
+        </p>
+        <p>
+          The figure below illustrates the intended relationship between the Supplier, the Eligible Customer and the Contract Authority (DFSI).
+        </p>
+        <p>
+          These processes are expected to continually evolve with the Eligible Customers' business requirements and industry technology changes. It is expected that the Supplier will work proactively with the Eligible Customer and Contract Authority to ensure that all processes are fit for purpose.
+        </p>
+        <p>
+          It is expected that individual services may be consumed from different Suppliers, and that all services will be delivered in a modular fashion to facilitate that.
+        </p>
+        <p>
+          The operational interface defined within this catalogue must meet the requirements for Common Services defined in the Requirements Schedule.
+        </p>
+        <p>
+          This catalogue defines the minimum requirement for the operational interface between the Eligible Customer and Service provider. Suppliers are at liberty to offer and provide additional service capability above and beyond this minimum requirement.
+        </p>
       </Accordion>
-    <p class="au-callout">
-      <p>To view the complete service description for the Common Services according to the TPA, please download it here:</p>
-      <br>
-      <p>
-        <b><a target="_blank" href="/_/Part-B1-Service-Description-Common-Services.pdf">Service Description - Common Services</a></b> (PDF, 520kb)
-      </p>
-    </p>
 
+      <p class="au-callout">
+        <p>To view the complete service description for the Common Services according to the TPA, please download it here:</p>
+        <br>
+        <p>
+          <b>
+            <a
+              target="_blank"
+              rel="noopener"
+              href="/_/Part-B1-Service-Description-Common-Services.pdf"
+            >
+              Service Description - Common Services
+            </a>
+          </b>
+          (PDF, 520kb)
+        </p>
+      </p>
     </div>
+    <br>
+    <br>
+    <TelcoProductStack @title="Common Services" @id="common-services">
+    </TelcoProductStack>
+    <br>
   </div>
 </TemplateBody>

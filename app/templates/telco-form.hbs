@@ -1,10 +1,14 @@
 <TemplateBody>
-  {{#if (eq this.model.form_key "dark_fibre")}}
-    <DarkFibreForm
-      @form_key={{this.model.form_key}}
-      @product={{this.model.product}}
-    />
-  {{/if}}
+  {{ bread-crumbs
+    links=(array
+      (hash name="Dashboard" route="seller-dashboard")
+      (hash name="Telco products" route="telco-products")
+      (hash name=this.model.form_name)
+    )
+  }}
+
+  {{component this.model.component_name form_key=this.model.form_key product=this.model.product}}
+
   <br>
   <hr>
   <br>
