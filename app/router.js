@@ -21,6 +21,12 @@ Router.map(function() {
   this.route('terms-of-use');
   this.route('accessibility');
   this.route('license');
+  this.route('sign-in');
+  this.route('sign-up-seller');
+  this.route('sign-up-buyer');
+  this.route('performance');
+  this.route('register-buyer');
+  this.route('buyer-dashboard');
 });
 
 export default Router;

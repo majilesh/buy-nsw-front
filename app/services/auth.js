@@ -11,7 +11,6 @@ export default Service.extend({
   trueUser: null,
 
   goHome() {
-    window.location = '/';
   },
 
   handleSuccess(response) {
