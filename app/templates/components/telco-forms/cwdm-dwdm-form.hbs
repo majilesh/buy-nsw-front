@@ -1,1 +1,29 @@
-{{yield}}
+<div class="row">
+  <div class="col-sm-12">
+    <br>
+    <h3 class="au-display-md">Your Fixed Data product:</h3>
+    <h2 class="au-display-lg form-title"><b>Active Point-to-Point - CWDM/ DWDM</b></h2>
+    <p>Please select the features and attributes of your TPA compliant product:</p>
+    <hr>
+    {{telco-forms/shared/sla-availability field=(mut product.sla_availability_requirement)}}
+    {{telco-forms/shared/secondary-services product=(mut product)}}
+    {{telco-forms/shared/endpoint-reachability product=(mut product)}}
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-sm-12">
+    <br>
+    {{telco-forms/shared/symmetrical-bandwidth
+      product=(mut product)
+      items=(array
+        (hash key="1-gbps" label="1 Gbps")
+        (hash key="5-gbps" label="5 Gbps")
+        (hash key="10-gbps" label="10 Gbps")
+        (hash key="40-gbps" label="40 Gbps")
+        (hash key="100-gbps" label="100 Gbps")
+      )
+    }}
+  </div>
+</div>
+<div class="clear-both"></div>

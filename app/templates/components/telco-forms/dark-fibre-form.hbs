@@ -1,97 +1,12 @@
 <div class="col-sm-10">
   <br>
-  <h2 class="au-display-lg">Passive Point to Point - Dark Fibre</h2>
+  <h3 class="au-display-md">Your Fixed Data product:</h3>
+  <h2 class="au-display-lg form-title">Passive Point to Point - Dark Fibre</h2>
   <p>Please select the features and attributes of your TPA compliant product:</p>
   <hr>
-  <h3 class="au-display-md">Availability</h3>
-  <p>
-    To be compliant with the TPA, this product must offer an <b>availability SLA of ≥99.9%.</b>
-  </p>
-  {{radio-button
-    name="sla_availability_requirement"
-    value="yes"
-    label="This product meets the requirement"
-    field=(mut product.sla_availability_requirement)
-  }}
-  {{radio-button
-    name="sla_availability_requirement"
-    value="no"
-    label="This product does NOT meet the requirement"
-    field=(mut product.sla_availability_requirement)
-  }}
-  <hr>
-  <h3 class="au-display-md">Secondary services</h3>
-  {{radio-button
-    name="secondary_services_available"
-    value="yes"
-    label="Yes"
-    field=(mut product.secondary_services_available)
-  }}
-  {{radio-button
-    name="secondary_services_available"
-    value="no"
-    label="No"
-    field=(mut product.secondary_services_available)
-  }}
-  <hr>
-  <h3 class="au-display-md">Reach</h3>
-  <div class="col-sm-5">
-    {{checkbox-array
-      name="intra-regional"
-      label="Intra-regional"
-      field=(mut product.location_destination_reach)
-    }}
-  </div>
-  <div class="col-sm-5">
-    {{checkbox-array
-      name="inter-regional"
-      label="Inter-regional"
-      field=(mut product.location_destination_reach)
-    }}
-  </div>
-  <div class="clear-both"><br><br></div>
-  <div class="col-sm-5">
-    <h3 class="au-display-md"> Location </h3>
-    {{checkbox-array
-      name="metro"
-      label="Metro"
-      field=(mut product.intra_regional_locations)
-      disabled=(not product.intraRegionalChecked)
-    }}
-    {{checkbox-array
-      name="regional"
-      label="Regional"
-      field=(mut product.intra_regional_locations)
-      disabled=(not product.intraRegionalChecked)
-    }}
-    {{checkbox-array
-      name="remote"
-      label="Remote"
-      field=(mut product.intra_regional_locations)
-      disabled=(not product.intraRegionalChecked)
-    }}
-    <br>
-  </div>
-  <div class="col-sm-5">
-    <h3 class="au-display-md"> Destination </h3>
-    {{checkbox-array
-      name="metro"
-      label="Metro"
-      field=(mut product.inter_regional_destinations)
-      disabled=(not product.interRegionalChecked)
-    }}
-    {{checkbox-array
-      name="regional"
-      label="Regional"
-      field=(mut product.inter_regional_destinations)
-      disabled=(not product.interRegionalChecked)
-    }}
-    {{checkbox-array
-      name="remote"
-      label="Remote"
-      field=(mut product.inter_regional_destinations)
-      disabled=(not product.interRegionalChecked)
-    }}
-  </div>
+  {{telco-forms/shared/sla-availability field=(mut product.sla_availability_requirement)}}
+  {{telco-forms/shared/secondary-services product=(mut product)}}
+  {{telco-forms/shared/endpoint-reachability product=(mut product)}}
+  {{telco-forms/shared/symmetrical-bandwidth product=(mut product)}}
 </div>
 <div class="clear-both"></div>

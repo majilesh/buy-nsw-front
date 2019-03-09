@@ -1,0 +1,11 @@
+<h3 class="au-display-md">Availability</h3>
+<br>
+{{#each items as |item|}}
+  <div class="col-sm-3">
+    {{checkbox-array
+      name=item.key
+      label=item.label
+      field=(mut product.availability)
+    }}
+  </div>
+{{/each}}

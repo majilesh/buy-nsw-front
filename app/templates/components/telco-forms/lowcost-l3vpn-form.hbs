@@ -1,1 +1,63 @@
-{{yield}}
+<div class="row">
+  <div class="col-sm-12">
+    <br>
+    <h3 class="au-display-md">Your Fixed Data product:</h3>
+    <h2 class="au-display-lg form-title"><b>Managed Layer 3 VPN - IP over Ethernet</b></h2>
+    <p>Please select the features and attributes of your TPA compliant product:</p>
+    <hr>
+    {{telco-forms/shared/availability-level
+      product=(mut product)
+      items=(array
+        (hash key="99.9%" label="≥ 99.9%")
+        (hash key="99.2%" label="≥ 99.2%")
+        (hash key="best-effort" label="≥ Best Effort")
+      )
+    }}
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-sm-12">
+    {{telco-forms/shared/location-reachability product=(mut product)}}
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-sm-12">
+    <br>
+    {{telco-forms/shared/symmetrical-bandwidth
+      product=(mut product)
+      items=(array
+        (hash key="1mbps" label="1 Mbps")
+        (hash key="2mbps" label="2 Mbps")
+        (hash key="3mbps" label="3 Mbps")
+        (hash key="5mbps" label="5 Mbps")
+        (hash key="7.5mbps" label="7.5 Mbps")
+        (hash key="10mbps" label="10 Mbps")
+        (hash key="20mbps" label="20 Mbps")
+        (hash key="30mbps" label="30 Mbps")
+        (hash key="50mbps" label="50 Mbps")
+        (hash key="100mbps" label="100 Mbps")
+      )
+    }}
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-sm-12">
+    <br>
+    {{telco-forms/shared/asymmetrical-bandwidth
+      product=(mut product)
+      items=(array
+        (hash key="12/1mbps" label="12 / 1 Mbps")
+        (hash key="25/5mbps" label="25 / 5 Mbps")
+        (hash key="50/20mbps" label="50 / 20 Mbps")
+        (hash key="100/40mbps" label="100 / 40 Mbps")
+        (hash key="250/100mbps" label="250 / 100 Mbps")
+        (hash key="500/200mbps" label="500 / 200 Mbps")
+        (hash key="1000/400mbps" label="1000 / 400 Mbps")
+      )
+    }}
+  </div>
+</div>
+<div class="clear-both"></div>

@@ -6,6 +6,13 @@
       (hash name=this.model.form_name)
     )
   }}
+  
+  {{#if validationErrors }}
+    <br>
+    {{#page-alert alertType="error"}}
+      {{validationErrors}}
+    {{/page-alert}}
+  {{/if}}
 
   {{component
     this.model.component_name

@@ -1,0 +1,26 @@
+  <h3 class="au-display-md">Availability</h3>
+  <p>
+    To be compliant with the TPA, this product must offer an <b>availability SLA of ≥99.9%.</b>
+  </p>
+  {{radio-button
+    name="sla_availability_requirement"
+    value="yes"
+    label="This product meets the requirement"
+    field=(mut field)
+    onchange=(action (mut showAvailabilityError) true)
+  }}
+  {{radio-button
+    name="sla_availability_requirement"
+    value="no"
+    label="This product does NOT meet the requirement"
+    field=(mut field)
+    onchange=(action (mut showAvailabilityError) true)
+  }}
+  {{#if showAvailabilityError}}
+    {{#if (v-get this "field" "isInvalid")}}
+      <div class="form-error">
+        You cannot add this product if you do not meet the minimum requirement.
+      </div>
+    {{/if}}
+  {{/if}}
+  <hr>

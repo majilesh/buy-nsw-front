@@ -1,6 +1,5 @@
 import Route from '@ember/routing/route';
 import RSVP from 'rsvp';
-import { on } from '@ember/object/evented';
 
 export default Route.extend({
   model(params) {
@@ -21,13 +20,15 @@ export default Route.extend({
       })
     });
   },
-  removeProductChanges: on('deactivate', function(){
-    var product = this.controller.get('model').product;
-    if (product.isNew) {
-      product.deleteRecord();
-    }
-    else if (product.hasDirtyAttributes) {
-      product.rollbackAttributes();
-    }
-  }),
+  actions: {
+    willTransition() {
+      var product = this.controller.get('model').product;
+      if (product.isNew) {
+        product.deleteRecord();
+      }
+      else if (product.hasDirtyAttributes) {
+        product.rollbackAttributes();
+      }
+    },
+  }
 });

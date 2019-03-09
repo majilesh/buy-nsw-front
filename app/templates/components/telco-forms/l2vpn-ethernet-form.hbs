@@ -1,1 +1,48 @@
-{{yield}}
+<div class="row">
+  <div class="col-sm-12">
+    <br>
+    <h3 class="au-display-md">Your Fixed Data product:</h3>
+    <h2 class="au-display-lg form-title"><b>Unmanaged Layer 2 VPN - IP over Ethernet</b></h2>
+    <p>Please select the features and attributes of your TPA compliant product:</p>
+    <hr>
+    {{telco-forms/shared/sla-availability field=(mut product.sla_availability_requirement)}}
+    {{telco-forms/shared/secondary-services product=(mut product)}}
+    {{telco-forms/shared/location-reachability product=(mut product)}}
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-sm-12">
+    <br>
+    {{telco-forms/shared/symmetrical-bandwidth
+      product=(mut product)
+      items=(array
+        (hash key="1mbps" label="1 Mbps")
+        (hash key="2mbps" label="2 Mbps")
+        (hash key="3mbps" label="3 Mbps")
+        (hash key="5mbps" label="5 Mbps")
+        (hash key="7.5mbps" label="7.5 Mbps")
+        (hash key="10mbps" label="10 Mbps")
+        (hash key="20mbps" label="20 Mbps")
+        (hash key="30mbps" label="30 Mbps")
+        (hash key="50mbps" label="50 Mbps")
+        (hash key="100mbps" label="100 Mbps")
+        (hash key="200mbps" label="200 Mbps")
+        (hash key="300mbps" label="300 Mbps")
+        (hash key="500mbps" label="500 Mbps")
+        (hash key="750mbps" label="750 Mbps")
+        (hash key="1gbps" label="1 Gbps")
+        (hash key="2gbps" label="2 Gbps")
+        (hash key="3gbps" label="3 Gbps")
+        (hash key="5gbps" label="5 Gbps")
+        (hash key="7.5gbps" label="7.5 Gbps")
+        (hash key="10gbps" label="10 Gbps")
+        (hash key="20gbps" label="20 Gbps")
+        (hash key="30gbps" label="30 Gbps")
+        (hash key="50gbps" label="50 Gbps")
+        (hash key="100gbps" label="100 Gbps")
+      )
+    }}
+  </div>
+</div>
+<div class="clear-both"></div>

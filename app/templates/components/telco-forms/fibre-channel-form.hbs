@@ -1,1 +1,31 @@
-{{yield}}
+<div class="row">
+  <div class="col-sm-12">
+    <br>
+    <h3 class="au-display-md">Your Fixed Data product:</h3>
+    <h2 class="au-display-lg form-title"><b>Active Point-to-Point - Fibre Channel</b></h2>
+    <p>Please select the features and attributes of your TPA compliant product:</p>
+    <hr>
+    {{telco-forms/shared/sla-availability field=(mut product.sla_availability_requirement)}}
+    {{telco-forms/shared/secondary-services product=(mut product)}}
+    {{telco-forms/shared/endpoint-reachability product=(mut product)}}
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-sm-12">
+    <br>
+    {{telco-forms/shared/symmetrical-bandwidth
+      product=(mut product)
+      items=(array
+        (hash key="1-gbps" label="1 Gbps")
+        (hash key="2-gbps" label="2 Gbps")
+        (hash key="4-gbps" label="4 Gbps")
+        (hash key="8-gbps" label="8 Gbps")
+        (hash key="16-gbps" label="16 Gbps")
+        (hash key="32-gbps" label="32 Gbps")
+        (hash key="128-gbps" label="128 Gbps")
+      )
+    }}
+  </div>
+</div>
+<div class="clear-both"></div>

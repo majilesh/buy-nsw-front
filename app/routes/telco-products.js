@@ -1,17 +1,15 @@
 import Route from '@ember/routing/route';
-import RSVP from 'rsvp';
 
 export default Route.extend({
   model() {
-    return RSVP.hash({
-      products: this.store.findAll('telco-product').then(function(products) {
-        var result = {};
-        products.forEach(function(product) {
-          result[product.category] = product;
-        });
-        return result;
-        // make a hash from category to obejct
-      })
-    })
-  }
+    return this.store.findAll('telco-product')
+  },
+  setupController: function(controller, model) {
+    this._super(controller, model);
+    var result = {};
+    model.forEach(function(product) {
+      result[product.category] = product;
+    });
+    controller.set('productsByCategory', result)
+  },
 });
