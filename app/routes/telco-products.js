@@ -2,14 +2,13 @@ import Route from '@ember/routing/route';
 
 export default Route.extend({
   model() {
-    return this.store.findAll('telco-product')
+    return this.store.findAll('telco-product');
   },
-  setupController: function(controller, model) {
-    this._super(controller, model);
+  afterModel(products){
     var result = {};
-    model.forEach(function(product) {
-      result[product.category] = product;
+    products.forEach(function(product) {
+      result[product.get('category')] = product;
     });
-    controller.set('productsByCategory', result)
-  },
+    this.controllerFor('telco-products').set('categorisedProducts', result);
+  }
 });

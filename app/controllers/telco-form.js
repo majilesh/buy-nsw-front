@@ -6,7 +6,6 @@ export default Controller.extend({
     saveProduct() {
       var self = this;
       this.model.product.save().then(function() {
-        self.set('validationErrors', null);
         self.transitionToRoute('telco-products');
       }).catch(function() {
         self.set('validationErrors', 'Please address all issues indicated below, before adding this product!');

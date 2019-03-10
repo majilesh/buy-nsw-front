@@ -18,7 +18,7 @@ export default Route.extend({
           return store.createRecord('telco-product', {category: params.form_key.replace(/-/g, '_')});
         }
       })
-    });
+    })
   },
   actions: {
     willTransition() {
@@ -29,6 +29,7 @@ export default Route.extend({
       else if (product.hasDirtyAttributes) {
         product.rollbackAttributes();
       }
+      this.store.unloadAll('telco-product');
     },
   }
 });
