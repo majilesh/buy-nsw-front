@@ -6,18 +6,18 @@
     name="sla_availability_requirement"
     value="yes"
     label="This product meets the requirement"
-    field=(mut field)
+    field=(mut product.sla_availability_requirement)
     onchange=(action (mut showAvailabilityError) true)
   }}
   {{ds/radio-button
     name="sla_availability_requirement"
     value="no"
     label="This product does NOT meet the requirement"
-    field=(mut field)
+    field=(mut product.sla_availability_requirement)
     onchange=(action (mut showAvailabilityError) true)
   }}
   {{#if showAvailabilityError}}
-    {{#if (v-get this "field" "isInvalid")}}
+    {{#if (v-get this "product.sla_availability_requirement" "isInvalid")}}
       <div class="form-error">
         You cannot add this product if you do not meet the minimum requirement.
       </div>
