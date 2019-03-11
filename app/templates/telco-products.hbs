@@ -1,5 +1,5 @@
-<TemplateBody>
-  {{ bread-crumbs
+{{#ds/template-body}}
+  {{ ds/bread-crumbs
     links=(array
       (hash name="Dashboard" route="seller-dashboard")
       (hash name="Telco products" route="telco-products")
@@ -8,7 +8,7 @@
   <h3 class="au-display-lg">Your Telco products and services</h3>
   <br><br>
   <div class="col-sm-3">
-    {{ inpage-nav
+    {{ ds/inpage-nav
       sections=(array
         (hash link="fixed-data-services" name="Fixed Data")
         (hash link="internet-services" name="Internert Services")
@@ -243,7 +243,7 @@
     <br>
     <TelcoProductStack @title="Common Services" @id="common-services">
       <div class="inner">
-        <Accordion @title="Common Services Description">
+        {{#ds/accordion-container title="Common Services Description"}}
           <p>
             Common Services provides a definition for the required interface between a Supplier, the Eligible Customer and the Contract Authority across service towers and services. This definition is based on the ITIL v3 framework which provides an industry standard structure for the capture of this critical operational interface. However, the Supplier is not mandated to follow ITIL v3 internally in relation to its approach to Service Management.
           </p>
@@ -265,7 +265,7 @@
           <p>
             This catalogue defines the minimum requirement for the operational interface between the Eligible Customer and Service provider. Suppliers are at liberty to offer and provide additional service capability above and beyond this minimum requirement.
           </p>
-        </Accordion>
+        {{/ds/accordion-container}}
 
         <p class="au-callout">
           <p>To view the complete service description for the Common Services according to the TPA, please download it here:</p>
@@ -289,4 +289,4 @@
     </TelcoProductStack>
     <br>
   </div>
-</TemplateBody>
+{{/ds/template-body}}

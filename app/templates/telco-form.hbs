@@ -1,17 +1,17 @@
-<TemplateBody>
-  {{ bread-crumbs
+{{#ds/template-body}}
+  {{ ds/bread-crumbs
     links=(array
       (hash name="Dashboard" route="seller-dashboard")
       (hash name="Telco products" route="telco-products")
       (hash name=this.model.form_name)
     )
   }}
-  
+
   {{#if validationErrors }}
     <br>
-    {{#page-alert alertType="error"}}
+    {{#ds/page-alert alertType="error"}}
       {{validationErrors}}
-    {{/page-alert}}
+    {{/ds/page-alert}}
   {{/if}}
 
   {{component
@@ -31,5 +31,4 @@
     &nbsp;
     {{link-to "Cancel and return later" "telco-products"}}
   </p>
-</TemplateBody>
-
+{{/ds/template-body}}

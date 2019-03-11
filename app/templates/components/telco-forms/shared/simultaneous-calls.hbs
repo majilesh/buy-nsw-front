@@ -1,11 +1,6 @@
 <h3 class="au-display-md">Capacity (simultaneous calls)</h3>
 <br>
-{{#each items as |item|}}
-  <div class="col-sm-3">
-    {{checkbox-array
-      name=item.key
-      label=item.label
-      field=(mut product.capacity_simultaneous_calls)
-    }}
-  </div>
-{{/each}}
+{{ds/checkbox-array
+  items=items
+  field=(mut product.capacity_simultaneous_calls)
+}}

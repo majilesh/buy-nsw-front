@@ -1,0 +1,9 @@
+{{#each items as |item|}}
+  <div class="col-sm-3">
+    {{ds/checkbox-item
+      name=item.key
+      label=item.label
+      field=(mut field)
+    }}
+  </div>
+{{/each}}

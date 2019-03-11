@@ -3,22 +3,22 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-module('Integration | Component | inpage-nav', function(hooks) {
+module('Integration | Component | ds/page-alert', function(hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function(assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`{{inpage-nav}}`);
+    await render(hbs`{{ds/page-alert}}`);
 
     assert.equal(this.element.textContent.trim(), '');
 
     // Template block usage:
     await render(hbs`
-      {{#inpage-nav}}
+      {{#ds/page-alert}}
         template block text
-      {{/inpage-nav}}
+      {{/ds/page-alert}}
     `);
 
     assert.equal(this.element.textContent.trim(), 'template block text');

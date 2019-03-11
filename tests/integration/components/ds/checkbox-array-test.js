@@ -3,22 +3,22 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-module('Integration | Component | radio-button', function(hooks) {
+module('Integration | Component | ds/ds/checkbox-array', function(hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function(assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`{{radio-button}}`);
+    await render(hbs`{{ds/ds/checkbox-array}}`);
 
     assert.equal(this.element.textContent.trim(), '');
 
     // Template block usage:
     await render(hbs`
-      {{#radio-button}}
+      {{#ds/ds/checkbox-array}}
         template block text
-      {{/radio-button}}
+      {{/ds/ds/checkbox-array}}
     `);
 
     assert.equal(this.element.textContent.trim(), 'template block text');

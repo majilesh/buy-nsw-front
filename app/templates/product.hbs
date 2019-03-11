@@ -1,8 +1,8 @@
-<TemplateBody>
+{{#ds/template-body}}
   <div class="col-sm-1">
   </div>
   <div class="col-sm-10">
-    {{ bread-crumbs
+    {{ ds/bread-crumbs
       links=(array
         (hash name="Dashboard" route="seller-dashboard")
         (hash name="Cloud products" route="products")
@@ -13,7 +13,7 @@
     {{#unless this.model.underEdit}}
       <br>
       <br>
-      {{#page-alert alertType="info"}}
+      {{#ds/page-alert alertType="info"}}
         {{# if this.model.pending }}
           <h3>Product is locked for review</h3>
           <p>You have submitted entries or changes. While these are under review, you won't be able to view or edit the details of this product.</p>
@@ -22,7 +22,7 @@
           <p>You are not able to view or edit the details of this product.</p>
         {{/ if }}
 
-      {{/page-alert}}
+      {{/ds/page-alert}}
     {{/unless}}
     <h3 class="au-display-lg">Add cloud products</h3>
 
@@ -152,4 +152,4 @@
       </p>
     {{/if}}
   </div>
-</TemplateBody>
+{{/ds/template-body}}
