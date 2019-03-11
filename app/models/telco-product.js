@@ -1,5 +1,4 @@
 import DS from 'ember-data';
-import { computed } from '@ember/object';
 
 export default DS.Model.extend({
   state: DS.attr('string'),
@@ -27,22 +26,4 @@ export default DS.Model.extend({
   provision_delivery: DS.attr({ defaultValue: function() { return ""; } }),
   client_management: DS.attr({ defaultValue: function() { return ""; } }),
   number_of_consoles: DS.attr({ defaultValue: function() { return ""; } }),
-  intraRegionalChecked: computed('location_destination_reach', function() {
-    var arrayField = (this.get('location_destination_reach') || '').trim();
-    if(arrayField=="" || arrayField==null) {
-      arrayField = [];
-    } else {
-      arrayField = arrayField.split(',');
-    }
-    return arrayField.includes('intra-regional');
-  }),
-  interRegionalChecked: computed('location_destination_reach', function() {
-    var arrayField = (this.get('location_destination_reach') || '').trim();
-    if(arrayField=="" || arrayField==null) {
-      arrayField = [];
-    } else {
-      arrayField = arrayField.split(',');
-    }
-    return arrayField.includes('inter-regional');
-  }),
 });
