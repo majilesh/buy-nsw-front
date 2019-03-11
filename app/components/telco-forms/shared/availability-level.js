@@ -1,4 +1,9 @@
 import Component from '@ember/component';
+import { buildValidations, validator } from 'ember-cp-validations';
 
-export default Component.extend({
+const Validations = buildValidations({
+  field: validator('presence', true)
+});
+
+export default Component.extend(Validations, {
 });

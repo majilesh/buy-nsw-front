@@ -11,7 +11,7 @@ export default DS.Model.extend({
   intra_regional_locations: DS.attr({ defaultValue: function() { return ""; } }),
   inter_regional_destinations: DS.attr({ defaultValue: function() { return ""; } }),
   committed_symmetrical_bandwidth: DS.attr({ defaultValue: function() { return ""; } }),
-  committed_asymmetrical_bandwidth: DS.attr({ defaultValue: function() { return ""; } }),
+  contended_asymmetrical_bandwidth: DS.attr({ defaultValue: function() { return ""; } }),
   availability: DS.attr({ defaultValue: function() { return ""; } }),
   intraRegionalChecked: computed('location_destination_reach', function() {
     var arrayField = (this.get('location_destination_reach') || '').trim();

@@ -1,1 +1,26 @@
-{{yield}}
+<div class="row">
+  <div class="col-sm-12">
+    <br>
+    <h3 class="au-display-md">Your Internet product:</h3>
+    <h2 class="au-display-lg form-title"><b>Core Internet Option - Email Protection</b></h2>
+    <p>Please select the features and attributes of your TPA compliant product:</p>
+    <hr>
+    {{telco-forms/shared/availability-level
+      field=(mut product.availability)
+      items=(array
+        (hash key="99.99%" label="≥ 99.99%")
+        (hash key="99.9%" label="≥ 99.9%")
+      )
+    }}
+    <hr>
+    {{telco-forms/shared/secondary-services product=(mut product)}}
+    {{telco-forms/shared/location-reachability
+      product=(mut product)
+      items=(array
+        (hash key="metro" label="Metro")
+        (hash key="regional" label="Regional")
+      )
+    }}
+  </div>
+</div>
+<div class="clear-both"></div>

@@ -5,7 +5,12 @@
     {{checkbox-array
       name=item.key
       label=item.label
-      field=(mut product.availability)
+      field=(mut field)
     }}
   </div>
 {{/each}}
+{{#if (v-get this "field" "isInvalid")}}
+  <div class="form-error">
+    To add this product one of the above options have to be selected.
+  </div>
+{{/if}}

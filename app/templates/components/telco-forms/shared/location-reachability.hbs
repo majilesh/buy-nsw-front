@@ -1,23 +1,11 @@
 <h3 class="au-display-md">Location</h3>
 <br>
+{{#each items as |item|}}
 <div class="col-sm-3">
   {{checkbox-array
-    name="metro"
-    label="Metro"
+    name=item.key
+    label=item.label
     field=(mut product.locations)
   }}
 </div>
-<div class="col-sm-3">
-  {{checkbox-array
-    name="regional"
-    label="Regional"
-    field=(mut product.locations)
-  }}
-</div>
-<div class="col-sm-3">
-  {{checkbox-array
-    name="remote"
-    label="Remote"
-    field=(mut product.locations)
-  }}
-</div>
+{{/each}}

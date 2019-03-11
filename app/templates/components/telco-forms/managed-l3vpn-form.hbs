@@ -6,7 +6,7 @@
     <p>Please select the features and attributes of your TPA compliant product:</p>
     <hr>
     {{telco-forms/shared/availability-level
-      product=(mut product)
+      field=(mut product.availability)
       items=(array
         (hash key="99.999%" label="≥ 99.999%")
         (hash key="99.95%" label="≥ 99.95%")
@@ -20,7 +20,14 @@
 <hr>
 <div class="row">
   <div class="col-sm-12">
-    {{telco-forms/shared/location-reachability product=(mut product)}}
+    {{telco-forms/shared/location-reachability
+      product=(mut product)
+      items=(array
+        (hash key="metro" label="Metro")
+        (hash key="regional" label="Regional")
+        (hash key="remote" label="Remote")
+      )
+    }}
   </div>
 </div>
 <hr>
