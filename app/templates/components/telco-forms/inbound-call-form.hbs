@@ -1,1 +1,51 @@
-{{yield}}
+<div class="row">
+  <div class="col-sm-12">
+    <br>
+    <h3 class="au-display-md">Your Voice product:</h3>
+    <h2 class="au-display-lg form-title"><b>Inbound Calling Service</b></h2>
+    <p>Please select the features and attributes of your TPA compliant product:</p>
+    <hr>
+    {{telco-forms/shared/flag-fall field=(mut product.flagfall_requirement)}}
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <br>
+    {{telco-forms/shared/call_type
+      product=(mut product)
+      items=(array
+        (hash key="13-or-1300" label="13 or 1300")
+        (hash key="18-or-1800" label="18 or 1800")
+        (hash key="19-or-1900" label="19 or 1900")
+      )
+    }}
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-sm-12">
+    <br>
+    {{telco-forms/shared/call_origin
+      product=(mut product)
+      items=(array
+        (hash key="local" label="Local")
+        (hash key="national" label="National")
+        (hash key="mobile" label="Mobile")
+      )
+    }}
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-sm-12">
+    <br>
+    {{telco-forms/shared/call_destination
+      product=(mut product)
+      items=(array
+        (hash key="fixed-or-mobile" label="Fixed or Mobile")
+        (hash key="divert" label="Divert")
+      )
+    }}
+  </div>
+</div>
+<div class="clear-both"></div>

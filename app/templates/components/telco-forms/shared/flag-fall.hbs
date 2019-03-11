@@ -1,0 +1,26 @@
+  <h3 class="au-display-md">Flagfall</h3>
+  <p>
+    To be compliant with the TPA, this product must have <b>no Flagfall.</b>
+  </p>
+  {{radio-button
+    name="flag-fall"
+    value="yes"
+    label="This product meets the requirement"
+    field=(mut field)
+    onchange=(action (mut showFlagfallError) true)
+  }}
+  {{radio-button
+    name="flag-fall"
+    value="no"
+    label="This product does NOT meet the requirement"
+    field=(mut field)
+    onchange=(action (mut showFlagfallError) true)
+  }}
+  {{#if showFlagfallError}}
+    {{#if (v-get this "field" "isInvalid")}}
+      <div class="form-error">
+        You cannot add this product if you do not meet the requirement.
+      </div>
+    {{/if}}
+  {{/if}}
+  <hr>

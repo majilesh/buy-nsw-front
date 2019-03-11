@@ -1,1 +1,35 @@
-{{yield}}
+<div class="row">
+  <div class="col-sm-12">
+    <br>
+    <h3 class="au-display-md">Your Voice product:</h3>
+    <h2 class="au-display-lg form-title"><b>ISDN - Primary Rate Access</b></h2>
+    <p>Please select the features and attributes of your TPA compliant product:</p>
+    <hr>
+    {{telco-forms/shared/sla-availability field=(mut product.sla_availability_requirement)}}
+    {{telco-forms/shared/location-reachability
+      product=(mut product)
+      items=(array
+        (hash key="metro" label="Metro")
+        (hash key="regional" label="Regional")
+        (hash key="remote" label="Remote")
+      )
+    }}
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-sm-12">
+    <br>
+    {{telco-forms/shared/simultaneous_calls
+      product=(mut product)
+      items=(array
+        (hash key="10" label="10")
+        (hash key="20" label="20")
+        (hash key="30" label="30")
+        (hash key="60" label="60")
+        (hash key="90" label="90")
+      )
+    }}
+  </div>
+</div>
+<div class="clear-both"></div>

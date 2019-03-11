@@ -1,1 +1,38 @@
-{{yield}}
+<div class="row">
+  <div class="col-sm-12">
+    <br>
+    <h3 class="au-display-md">Your Voice product:</h3>
+    <h2 class="au-display-lg form-title"><b>Outbound Calling Service</b></h2>
+    <p>Please select the features and attributes of your TPA compliant product:</p>
+    <hr>
+    {{telco-forms/shared/flag-fall field=(mut product.flagfall_requirement)}}
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <br>
+    {{telco-forms/shared/call_destination
+      product=(mut product)
+      items=(array
+        (hash key="local" label="Local")
+        (hash key="international" label="International")
+        (hash key="national" label="National")
+        (hash key="mobile" label="Mobile")
+        (hash key="satellite" label="Satellite")
+        (hash key="on-net" label="On-Net")
+        (hash key="data-call" label="Data Call")
+        (hash key="divert" label="Divert")
+      )
+    }}
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-sm-12">
+    <br>
+    {{telco-forms/shared/countries-list
+      product=(mut product)
+    }}
+  </div>
+</div>
+<div class="clear-both"></div>

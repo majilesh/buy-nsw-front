@@ -1,1 +1,23 @@
-{{yield}}
+<div class="row">
+  <div class="col-sm-12">
+    <br>
+    <h3 class="au-display-md">Your Voice product:</h3>
+    <h2 class="au-display-lg form-title"><b>ISDN - Basic Rate Access</b></h2>
+    <p>Please select the features and attributes of your TPA compliant product:</p>
+    <hr>
+    {{telco-forms/shared/sla-availability field=(mut product.sla_availability_requirement)}}
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <br>
+    {{telco-forms/shared/simultaneous_calls
+      product=(mut product)
+      items=(array
+        (hash key="100" label="100")
+        (hash key="1000" label="1000")
+      )
+    }}
+  </div>
+</div>
+<div class="clear-both"></div>
