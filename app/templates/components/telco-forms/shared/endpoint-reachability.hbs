@@ -1,59 +1,37 @@
 <h3 class="au-display-md">Reach</h3>
-<div class="col-sm-5">
-  {{ds/checkbox-item
-    name="intra-regional"
-    label="Intra-regional"
-    field=(mut product.location_destination_reach)
-  }}
-</div>
-<div class="col-sm-5">
-  {{ds/checkbox-item
-    name="inter-regional"
-    label="Inter-regional"
-    field=(mut product.location_destination_reach)
-  }}
-</div>
+{{ds/checkbox-array
+  items=(array
+    (hash key="intra-regional" label="Intra-regional")
+    (hash key="inter-regional" label="Inter-regional")
+  )
+  field=(mut product.location_destination_reach)
+  wide=true
+}}
 <div class="clear-both"><br><br></div>
-<div class="col-sm-5">
+<div class="col-sm-6">
   <h3 class="au-display-md"> Location </h3>
-  {{ds/checkbox-item
-    name="metro"
-    label="Metro"
+  {{ds/checkbox-array
+    items=(array
+      (hash key="metro" label="Metro")
+      (hash key="regional" label="Regional")
+      (hash key="remote" label="Remote")
+    )
     field=(mut product.intra_regional_locations)
     disabled=(not product.intraRegionalChecked)
-  }}
-  {{ds/checkbox-item
-    name="regional"
-    label="Regional"
-    field=(mut product.intra_regional_locations)
-    disabled=(not product.intraRegionalChecked)
-  }}
-  {{ds/checkbox-item
-    name="remote"
-    label="Remote"
-    field=(mut product.intra_regional_locations)
-    disabled=(not product.intraRegionalChecked)
+    break=true
   }}
   <br>
 </div>
-<div class="col-sm-5">
+<div class="col-sm-6">
   <h3 class="au-display-md"> Destination </h3>
-  {{ds/checkbox-item
-    name="metro"
-    label="Metro"
+  {{ds/checkbox-array
+    items=(array
+      (hash key="metro" label="Metro")
+      (hash key="regional" label="Regional")
+      (hash key="remote" label="Remote")
+    )
     field=(mut product.inter_regional_destinations)
     disabled=(not product.interRegionalChecked)
-  }}
-  {{ds/checkbox-item
-    name="regional"
-    label="Regional"
-    field=(mut product.inter_regional_destinations)
-    disabled=(not product.interRegionalChecked)
-  }}
-  {{ds/checkbox-item
-    name="remote"
-    label="Remote"
-    field=(mut product.inter_regional_destinations)
-    disabled=(not product.interRegionalChecked)
+    break=true
   }}
 </div>

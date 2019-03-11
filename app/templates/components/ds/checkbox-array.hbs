@@ -1,9 +1,13 @@
 {{#each items as |item|}}
-  <div class="col-sm-3">
+  <div class={{if wide "col-sm-6" "col-sm-3"}}>
     {{ds/checkbox-item
       name=item.key
       label=item.label
       field=(mut field)
+      disabled=disabled
     }}
   </div>
+  {{#if break}}
+    <div class="clear-both"></div>
+  {{/if}}
 {{/each}}
