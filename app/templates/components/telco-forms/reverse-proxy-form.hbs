@@ -6,6 +6,7 @@
     <p>Please select the features and attributes of your TPA compliant product:</p>
     <hr>
     {{telco-forms/shared/availability-level
+      showError=showError
       product=(mut product)
       items=(array
         (hash key="99.99%" label="≥ 99.99%")

@@ -5,7 +5,8 @@
       class="au-control-input__input"
       type="checkbox"
       name={{name}}
-      onchange={{action "toggle"}}
+      onclick={{action "toggle"}}
+      onchange={{onchange}}
       checked={{if checked "checked" ""}}
       disabled={{if disabled "disabled" ""}}
     >

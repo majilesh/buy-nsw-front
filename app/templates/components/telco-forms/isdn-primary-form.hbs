@@ -5,7 +5,10 @@
     <h2 class="au-display-lg form-title"><b>ISDN - Primary Rate Access</b></h2>
     <p>Please select the features and attributes of your TPA compliant product:</p>
     <hr>
-    {{telco-forms/shared/sla-availability product=(mut product)}}
+    {{telco-forms/shared/sla-availability
+      product=(mut product)
+      showError=showError
+    }}
     {{telco-forms/shared/location-reachability
       product=(mut product)
       items=(array

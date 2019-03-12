@@ -5,7 +5,10 @@
     <h2 class="au-display-lg form-title"><b>Inbound Calling Service</b></h2>
     <p>Please select the features and attributes of your TPA compliant product:</p>
     <hr>
-    {{telco-forms/shared/flag-fall field=(mut product.flagfall_requirement)}}
+    {{telco-forms/shared/flag-fall
+      product=(mut product)
+      showError=showError
+    }}
   </div>
 </div>
 <div class="row">

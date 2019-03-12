@@ -3,10 +3,13 @@
 {{ds/checkbox-array
   items=items
   field=(mut product.availability)
+  onchange=(action (mut showError) true)
 }}
 <div class="clear-both"></div>
-{{#if (v-get this "product.availability" "isInvalid")}}
-  <div class="form-error">
-    To add this product one of the above options have to be selected.
-  </div>
+{{#if showError}}
+  {{#if (v-get this "product.availability" "isInvalid")}}
+    <div class="form-error">
+      {{v-get this "product.availability" "message"}}
+    </div>
+  {{/if}}
 {{/if}}
