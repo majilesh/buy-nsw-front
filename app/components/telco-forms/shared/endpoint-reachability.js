@@ -4,7 +4,7 @@ import { computed } from '@ember/object';
 export default Component.extend({
   intraRegionalChecked: computed('product.location_destination_reach', function() {
     var arrayField = (this.get('product.location_destination_reach') || '').trim();
-    if(arrayField=="" || arrayField==null) {
+    if(arrayField=="") {
       arrayField = [];
     } else {
       arrayField = arrayField.split(',');
@@ -13,7 +13,7 @@ export default Component.extend({
   }),
   interRegionalChecked: computed('product.location_destination_reach', function() {
     var arrayField = (this.get('product.location_destination_reach') || '').trim();
-    if(arrayField=="" || arrayField==null) {
+    if(arrayField=="") {
       arrayField = [];
     } else {
       arrayField = arrayField.split(',');

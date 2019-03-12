@@ -3,7 +3,7 @@ import { buildValidations, validator } from 'ember-cp-validations';
 
 const Validations = buildValidations({
   'product.countries': validator('format', {
-    regex: /^[a-zA-Z\n\s]+$/,
+    regex: /^[a-zA-Z\n\s]*$/,
     message: 'Please only use alphabetical and whitespace characters.'
   })
 });
