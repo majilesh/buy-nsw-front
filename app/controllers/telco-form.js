@@ -9,7 +9,7 @@ export default Controller.extend({
         self.transitionToRoute('telco-products');
       }).catch(function() {
         self.set('validationErrors', 'Please address all issues indicated below, before adding this product!');
-        window.scrollTo(0,0);
+        window.scrollTo(0,230);
       });
     },
     cancelChanges() {

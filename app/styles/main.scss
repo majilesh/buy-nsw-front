@@ -5,13 +5,17 @@
 		   url("/_/fonts/Gotham-Book.ttf") format("truetype");
 }
 
-// @font-face {
-// 	font-family: "Gotham-Bold";
-// 	src: url("/_/fonts/Gotham-Bold.eot") format("eot"),
-// 		   url("/_/fonts/Gotham-Bold.woff") format("woff"),
-// 		   url("/_/fonts/Gotham-Bold.ttf") format("truetype"),
-// 		   url("/_/fonts/Gotham-Bold.svg#Gotham-Bold") format("svg");
-// }
+@font-face {
+	font-family: "GothamBold";
+	src: url("/_/fonts/Gotham-Bold.eot") format("eot"),
+		   url("/_/fonts/Gotham-Bold.woff") format("woff"),
+		   url("/_/fonts/Gotham-Bold.ttf") format("truetype"),
+}
+
+b, strong {
+  color: #333;
+  font-family: "GothamBold";
+}
 
 //Main nav, set project specific breakpoint
 $AU-main-nav-breakpoint: sm;

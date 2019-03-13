@@ -1,9 +1,16 @@
 .telco-product-stack {
+  margin-top: 2.0rem;
   hr {
     margin: 1.0rem 0;
   }
   .right-link {
     float: right;
+    &.back-to-top {
+      cursor: pointer;
+    }
+    a {
+      text-decoration: none;
+    }
   }
 }
 .form-title {
