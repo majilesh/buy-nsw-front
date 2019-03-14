@@ -1,0 +1,24 @@
+  <h3 class="au-display-md">Devices</h3>
+  <p>
+    To be compliant with the TPA, <b>devices must be provided by the Service Provider.</b>
+  </p>
+  {{ds/radio-button
+    value="yes"
+    label="This product meets the requirement"
+    field=(mut product.devices_provided_requirement)
+    onchange=(action (mut showError) true)
+  }}
+  {{ds/radio-button
+    value="no"
+    label="This product does NOT meet the requirement"
+    field=(mut product.devices_provided_requirement)
+    onchange=(action (mut showError) true)
+  }}
+  {{#if showError}}
+    {{#if (v-get this "product.devices_provided_requirement" "isInvalid")}}
+      <div class="form-error">
+        {{v-get this "product.devices_provided_requirement" "message"}}
+      </div>
+    {{/if}}
+  {{/if}}
+  <hr>

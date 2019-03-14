@@ -1,0 +1,21 @@
+  <h3 class="au-display-md">Type</h3>
+  {{ds/radio-button
+    value="management-only"
+    label="Mobile Device Management only"
+    field=(mut product.mobile_device_management_type)
+    onchange=(action (mut showError) true)
+  }}
+  {{ds/radio-button
+    value="management-as-a-managed-service"
+    label="Mobile Device Management as Managed Servicve"
+    field=(mut product.mobile_device_management_type)
+    onchange=(action (mut showError) true)
+  }}
+  {{#if showError}}
+    {{#if (v-get this "product.mobile_device_management_type" "isInvalid")}}
+      <div class="form-error">
+        {{v-get this "product.mobile_device_management_type" "message"}}
+      </div>
+    {{/if}}
+  {{/if}}
+  <hr>

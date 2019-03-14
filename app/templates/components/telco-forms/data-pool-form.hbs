@@ -1,1 +1,55 @@
-{{yield}}
+<div class="row">
+  <div class="col-sm-12">
+    <br>
+    <h3 class="au-display-md">Your Mobile product:</h3>
+    <h2 class="au-display-lg form-title"><b>Data Pool</b></h2>
+    <p>Please select the features and attributes of your TPA compliant product:</p>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-sm-12">
+    {{telco-forms/shared/data-per-month
+      product=product
+      items=(array
+        (hash key="100gb" label="100 GB")
+        (hash key="200gb" label="200 GB")
+        (hash key="300gb" label="300 GB")
+        (hash key="500gb" label="500 GB")
+        (hash key="750gb" label="750 GB")
+        (hash key="1tb" label="1 TB")
+        (hash key="2tb" label="2 TB")
+        (hash key="3tb" label="3 TB")
+        (hash key="5tb" label="5 TB")
+        (hash key="7.5tb" label="7.5 TB")
+        (hash key="10tb" label="10 TB")
+        (hash key="20tb" label="20 TB")
+        (hash key="30tb" label="30 TB")
+        (hash key="50tb" label="50 TB")
+        (hash key="75tb" label="75 TB")
+        (hash key="100tb" label="100 TB")
+        (hash key="200tb" label="200 TB")
+        (hash key="300tb" label="300 TB")
+        (hash key="500tb" label="500 TB")
+        (hash key="750tb" label="750 TB")
+        (hash key="1pb" label="1 PB")
+      )
+    }}
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-sm-12">
+    {{telco-forms/shared/unlimited-users
+      product=product
+      items=(array
+        (hash key="10" label="10")
+        (hash key="100" label="100")
+        (hash key="1000" label="1,000")
+        (hash key="10000" label="10,000")
+        (hash key="100000" label="100,000")
+      )
+    }}
+  </div>
+</div>
+<div class="clear-both"></div>

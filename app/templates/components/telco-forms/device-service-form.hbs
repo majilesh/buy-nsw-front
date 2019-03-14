@@ -1,1 +1,30 @@
-{{yield}}
+<div class="row">
+  <div class="col-sm-12">
+    <br>
+    <h3 class="au-display-md">Your Mobile product:</h3>
+    <h2 class="au-display-lg form-title"><b>Device As a Service</b></h2>
+    <p>Please select the features and attributes of your TPA compliant product:</p>
+    <hr>
+    {{telco-forms/shared/devices-provided
+      product=(mut product)
+      showError=showError
+    }}
+  </div>
+</div>
+{{telco-forms/shared/device-packages
+  product=product
+}}
+<hr>
+<div class="row">
+  <div class="col-sm-12">
+    {{telco-forms/shared/term-length
+      product=product
+      items=(array
+        (hash key="0-months" label="0 months")
+        (hash key="12-months" label="12 months")
+        (hash key="24-months" label="24 months")
+      )
+    }}
+  </div>
+</div>
+<div class="clear-both"></div>

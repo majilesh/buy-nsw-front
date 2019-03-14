@@ -15,7 +15,7 @@ export default Component.extend({
   actions: {
     toggle() {
       var arrayField = (this.get('field') || '').trim();
-      if(arrayField=="") {
+      if(arrayField=="" || arrayField==null) {
         arrayField = [];
       } else {
         arrayField = arrayField.split(',');

@@ -1,1 +1,144 @@
-{{yield}}
+<div class="row">
+  <div class="col-sm-12">
+    <br>
+    <h3 class="au-display-md">Your Mobile product:</h3>
+    <h2 class="au-display-lg form-title"><b>Sim + Device Plan</b></h2>
+    <p>Please select the features and attributes of your TPA compliant product:</p>
+    <hr>
+    {{telco-forms/shared/devices-provided
+      product=(mut product)
+      showError=showError
+    }}
+  </div>
+</div>
+{{telco-forms/shared/device-packages
+  product=product
+}}
+<hr>
+<div class="row">
+  <div class="col-sm-12">
+    {{telco-forms/shared/service-type
+      product=product
+      items=(array
+        (hash key="voice" label="Voice")
+        (hash key="data" label="Data")
+        (hash key="voice-plus-data" label="Voice + Data")
+      )
+    }}
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-sm-12">
+    {{telco-forms/shared/term-length
+      product=product
+      items=(array
+        (hash key="0-months" label="0 months")
+        (hash key="12-months" label="12 months")
+        (hash key="24-months" label="24 months")
+      )
+    }}
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-sm-12">
+    {{telco-forms/shared/data-per-month
+      product=product
+      items=(array
+        (hash key="0mb" label="0 MB")
+        (hash key="200mb" label="200 MB")
+        (hash key="1gb" label="1 GB")
+        (hash key="5gb" label="5 GB")
+        (hash key="10gb" label="10 GB")
+        (hash key="20gb" label="20 GB")
+        (hash key="50gb" label="50 GB")
+        (hash key="unlimited" label="Unlimited")
+      )
+    }}
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-sm-12">
+    {{telco-forms/shared/data-over-use
+      product=product
+      items=(array
+        (hash key="<=1gb-to-200mb" label="≤1GB to 200MB")
+        (hash key="<=10gb-to-1gb" label="≤10GB to 1GB")
+        (hash key=">10gb-to-3gb" label=">10GB to 3GB")
+      )
+    }}
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-sm-12">
+    {{telco-forms/shared/domestic-voice-minutes
+      product=product
+      items=(array
+        (hash key="0" label="0")
+        (hash key="300" label="300")
+        (hash key="unlimited" label="Unlimited")
+      )
+    }}
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-sm-12">
+    {{telco-forms/shared/domestic-voice-overuse
+      product=product
+      items=(array
+        (hash key="300" label="300")
+      )
+    }}
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-sm-12">
+    {{telco-forms/shared/international-voice-minutes
+      product=product
+      items=(array
+        (hash key="0" label="0")
+        (hash key="300" label="300")
+      )
+    }}
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-sm-12">
+    {{telco-forms/shared/international-voice-overuse
+      product=product
+      items=(array
+        (hash key="300" label="300")
+      )
+    }}
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-sm-12">
+    {{telco-forms/shared/sms-mms-domestic
+      product=product
+      items=(array
+        (hash key="unlimited" label="Unlimited")
+      )
+    }}
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-sm-12">
+    {{telco-forms/shared/sms-mms-international
+      product=product
+      items=(array
+        (hash key="0" label="0")
+        (hash key="unlimited" label="Unlimited")
+      )
+    }}
+  </div>
+</div>
+<div class="clear-both"></div>

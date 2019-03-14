@@ -1,1 +1,17 @@
-{{yield}}
+<div class="row">
+  <div class="col-sm-12">
+    <br>
+    <h3 class="au-display-md">Your Mobile product:</h3>
+    <h2 class="au-display-lg form-title"><b>Device outright</b></h2>
+    <p>Please select the features and attributes of your TPA compliant product:</p>
+    <hr>
+    {{telco-forms/shared/devices-provided
+      product=(mut product)
+      showError=showError
+    }}
+  </div>
+</div>
+{{telco-forms/shared/device-packages
+  product=product
+}}
+<div class="clear-both"></div>

@@ -1,0 +1,66 @@
+<h3 class="au-display-md">Number of devices</h3>
+<br>
+<br>
+<div class="col-sm-6">
+  {{ds/text-input
+    label-text="Package 1"
+    field=(mut product.device_package_one)
+    pattern="[\sA-Za-z0-9]*"
+  }}
+  <br>
+  {{ds/text-input
+    label-text="Package 2"
+    field=(mut product.device_package_two)
+    pattern="[\sA-Za-z0-9]*"
+    disabled=(is-empty product.device_package_one)
+  }}
+  <br>
+  {{ds/text-input
+    label-text="Package 3"
+    field=(mut product.device_package_three)
+    pattern="[\sA-Za-z0-9]*"
+    disabled=(or
+               (is-empty product.device_package_one)
+               (is-empty product.device_package_two)
+             )
+  }}
+</div>
+<div class="col-sm-6">
+  {{ds/text-input
+    label-text="Package 4"
+    field=(mut product.device_package_four)
+    pattern="[\sA-Za-z0-9]*"
+    disabled=(or
+               (is-empty product.device_package_one)
+               (is-empty product.device_package_two)
+               (is-empty product.device_package_three)
+              )
+  }}
+  <br>
+  {{ds/text-input
+    label-text="Package 5"
+    field=(mut product.device_package_five)
+    pattern="[\sA-Za-z0-9]*"
+    disabled=(or
+               (is-empty product.device_package_one)
+               (is-empty product.device_package_two)
+               (is-empty product.device_package_three)
+               (is-empty product.device_package_four)
+             )
+  }}
+  <br>
+  {{ds/text-input
+    label-text="Package 6"
+    field=(mut product.device_package_six)
+    pattern="[\sA-Za-z0-9]*"
+    disabled=(or
+               (is-empty product.device_package_one)
+               (is-empty product.device_package_two)
+               (is-empty product.device_package_three)
+               (is-empty product.device_package_four)
+               (is-empty product.device_package_five)
+             )
+  }}
+</div>
+<div class="clear-both"></div>
+<br>
