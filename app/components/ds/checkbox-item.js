@@ -5,7 +5,7 @@ export default Component.extend({
   init() {
     this._super(...arguments);
     var arrayField = (this.get('field') || '').trim();
-    if(arrayField=="" || arrayField==null) {
+    if(arrayField=="") {
       arrayField = [];
     } else {
       arrayField = arrayField.split(',');
@@ -15,7 +15,7 @@ export default Component.extend({
   actions: {
     toggle() {
       var arrayField = (this.get('field') || '').trim();
-      if(arrayField=="" || arrayField==null) {
+      if(arrayField=="") {
         arrayField = [];
       } else {
         arrayField = arrayField.split(',');
@@ -29,7 +29,9 @@ export default Component.extend({
         arrayField.pushObject(fieldValue);
         this.set('checked', true);
       }
+
       this.set('field', arrayField.join(','));
+      this.afterChange();
     }
   }
 });
