@@ -3,13 +3,13 @@
     value="management-only"
     label="Mobile Device Management only"
     field=(mut product.mobile_device_management_type)
-    onchange=(action (mut showError) true)
+    onChange=(action (mut showError) true)
   }}
   {{ds/radio-button
     value="management-as-a-managed-service"
     label="Mobile Device Management as Managed Servicve"
     field=(mut product.mobile_device_management_type)
-    onchange=(action (mut showError) true)
+    onChange=(action (mut showError) true)
   }}
   {{#if showError}}
     {{#if (v-get this "product.mobile_device_management_type" "isInvalid")}}

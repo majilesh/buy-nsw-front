@@ -6,7 +6,7 @@
       type="radio"
       checked={{if (eq field value) "checked" "" }}
       onclick={{action (mut field) value}}
-      onchange={{onchange}}
+      onChange={{onChange}}
     >
     <span class="au-control-input__text">
       {{label}}

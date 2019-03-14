@@ -31,7 +31,7 @@ export default Component.extend({
       }
 
       this.set('field', arrayField.join(','));
-      this.afterChange();
+      this.onChange();
     }
   }
 });

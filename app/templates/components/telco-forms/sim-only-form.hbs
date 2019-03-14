@@ -11,6 +11,7 @@
   <div class="col-sm-12">
     {{telco-forms/shared/service-type
       product=product
+      showError=showError
       items=(array
         (hash key="voice" label="Voice")
         (hash key="data" label="Data")
@@ -37,6 +38,7 @@
   <div class="col-sm-12">
     {{telco-forms/shared/data-per-month
       product=product
+      showError=showError
       items=(array
         (hash key="0mb" label="0 MB")
         (hash key="200mb" label="200 MB")

@@ -3,4 +3,13 @@
 {{ds/checkbox-array
   items=items
   field=(mut product.data_per_month)
+  onChange=(action (mut showError) true)
 }}
+<div class="clear-both"></div>
+{{#if showError}}
+  {{#if (v-get this "product.data_per_month" "isInvalid")}}
+    <div class="form-error">
+      {{v-get this "product.data_per_month" "message"}}
+    </div>
+  {{/if}}
+{{/if}}

@@ -6,13 +6,13 @@
     value="yes"
     label="This product meets the requirement"
     field=(mut product.sla_availability_requirement)
-    onchange=(action (mut showError) true)
+    onChange=(action (mut showError) true)
   }}
   {{ds/radio-button
     value="no"
     label="This product does NOT meet the requirement"
     field=(mut product.sla_availability_requirement)
-    onchange=(action (mut showError) true)
+    onChange=(action (mut showError) true)
   }}
   {{#if showError}}
     {{#if (v-get this "product.sla_availability_requirement" "isInvalid")}}

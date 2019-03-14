@@ -3,7 +3,7 @@
 {{ds/checkbox-array
   items=items
   field=(mut product.availability)
-  afterChange=(action (mut showError) true)
+  onChange=(action (mut showError) true)
 }}
 <div class="clear-both"></div>
 {{#if showError}}
