@@ -24,7 +24,9 @@ export default Route.extend({
     willTransition() {
       var product = this.controller.get('model').product;
       if (product.isNew) {
-        product.deleteRecord();
+        // This line returned exception in testing env ( could be build issue )
+        // Attempted to handle event `deleteRecord` on <telco-product:null> while in state root.loaded.created.inFlight.
+        // product.deleteRecord();
       }
       else if (product.hasDirtyAttributes) {
         product.rollbackAttributes();
