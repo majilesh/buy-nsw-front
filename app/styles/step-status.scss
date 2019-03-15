@@ -1,6 +1,6 @@
 .steps-list {
   .accepted {
-    background: #237C11;
+    background: #0cac78;
 
     &.not-active {
       opacity: 0.4;
@@ -8,20 +8,19 @@
   }
 
   .please-review {
-    background: #C24F19;
+    background: #f69900;
   }
 
   .completed {
-    background: #0179BE;
+    background: #00bfe9;
   }
 
   .updated {
-    background: #0179BE;
+    background: #00bfe9;
   }
 
   .not-started {
-    background: #D3D3D3;
-    color: #5D5C5C !important;
+    background: #A3A3A3;
   }
 
   .optional {
