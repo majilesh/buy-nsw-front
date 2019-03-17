@@ -87,7 +87,7 @@ export default DS.Model.extend({
         { code: 'copy', name: 'Clone' }
       ],
       live: [
-        { code: 'start_amendment', name: 'Amend Prodcut' },
+        { code: 'start_amendment', name: 'Amend Product' },
         { code: 'copy', name: 'Clone' },
         { code: 'deactivate', name: 'Deactivate'}
       ],
