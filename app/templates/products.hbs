@@ -9,7 +9,6 @@
       )
     }}
     <h3 class="au-display-lg">Add cloud products</h3>
-
     <p class="au-callout">
       <p>Adding products is optional and will take around 45 minutes per product.</p>
       <div class="warning">
@@ -25,13 +24,19 @@
         </div>
       </div>
     </p>
+    {{#if pageAlertMessage}}
+      <br>
+      {{#ds/page-alert alertType=pageAlertType}}
+        <b>{{pageAlertMessage}}</b>
+      {{/ds/page-alert}}
+    {{/if}}
     <p>
       <button class="au-btn au-btn--wide" onclick={{action "createProduct"}}>Add a product</button>
     </p>
     <hr>
     {{#each this.model.products as |product|}}
       {{#if product.validActions}}
-        {{product-row product=product}}
+        {{product-row product=product setAlert=(action 'setAlert')}}
       {{/if}}
     {{/each}}
   </div>

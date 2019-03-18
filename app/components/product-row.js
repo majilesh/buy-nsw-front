@@ -12,16 +12,28 @@ export default Component.extend({
       if(this.get('action') == 'copy') {
         this.product.copy().then(() => {
           this.product.get('store').findAll('product', { reload: true })
+          this.setAlert({
+            pageAlertMessage: 'Product clone was successfull',
+            pageAlertType: 'success'
+          });
           this.set('action', '');
         });
       }else if(this.get('action') == 'cancel') {
         this.product.cancel().then(() => {
           this.product.reload();
+          this.setAlert({
+            pageAlertMessage: 'The product draft is canceled.',
+            pageAlertType: 'info'
+          });
           this.set('action', '');
         });
       }else if(this.get('action') == 'withdraw') {
         this.product.withdraw().then(() => {
           this.product.reload();
+          this.setAlert({
+            pageAlertMessage: 'The product submission is withdrawn.',
+            pageAlertType: 'info'
+          });
           this.set('action', '');
         });
       }else if(this.get('action') == 'revise') {
@@ -39,11 +51,19 @@ export default Component.extend({
       }else if(this.get('action') == 'activate') {
         this.product.activate().then(() => {
           this.product.reload();
+          this.setAlert({
+            pageAlertMessage: 'The product is activated successfuly.',
+            pageAlertType: 'success'
+          });
           this.set('action', '');
         });
       }else if(this.get('action') == 'deactivate') {
         this.product.deactivate().then(() => {
           this.product.reload();
+          this.setAlert({
+            pageAlertMessage: 'The product is deactivated now.',
+            pageAlertType: 'warning'
+          });
           this.set('action', '');
         });
       }
