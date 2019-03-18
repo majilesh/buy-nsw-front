@@ -17,8 +17,8 @@
       <div class="col-sm-1">
       </div>
       <div class="col-sm-9">
-        {{#ds/page-alert alertType="info"}}
-          <h5>Your company profile {{this.model.seller.statusMessage}}.</h5>
+        {{#ds/page-alert alertType=this.model.seller.statusType}}
+          <h5 class="au-display-sm"><b>Your company profile {{this.model.seller.statusMessage}}.</b></h5>
         {{/ds/page-alert}}
         <br>
         <br>
@@ -52,20 +52,38 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-sm-5 dash-title">
-        <h5>{{this.model.products.length}} products</h5>
-      </div>
-      <div class="col-sm-5">
-        <div class="btn-cta-group">
-          {{ link-to
-            "Manage products"
-            "products"
-            class="au-cta-link small"
-          }}
+    {{#if this.model.seller.offersCloud}}
+      <div class="row">
+        <div class="col-sm-5 dash-title">
+          <h5>{{this.model.products.length}} products</h5>
+        </div>
+        <div class="col-sm-5">
+          <div class="btn-cta-group">
+            {{ link-to
+              "Manage cloud products"
+              "products"
+              class="au-cta-link small"
+            }}
+          </div>
         </div>
       </div>
-    </div>
+    {{/if}}
+    {{#if this.model.seller.offersTelco}}
+      <div class="row">
+        <div class="col-sm-5 dash-title">
+          <h5>{{this.model.telco_products.length}} telco products</h5>
+        </div>
+        <div class="col-sm-5">
+          <div class="btn-cta-group">
+            {{ link-to
+              "Manage telco products"
+              "telco-products"
+              class="au-cta-link small"
+            }}
+          </div>
+        </div>
+      </div>
+    {{/if}}
     <div class="row">
       <div class="col-sm-5 dash-title">
         <h5>{{this.model.members.length}} members</h5>

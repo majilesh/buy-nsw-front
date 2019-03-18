@@ -6,6 +6,8 @@ export default DS.Model.extend({
   name: DS.attr('string'),
   status: DS.attr('string'),
   expired: DS.attr('boolean'),
+  offersCloud: DS.attr('boolean'),
+  offersTelco: DS.attr('boolean'),
   declined: computed('status', function() {
     return [
       'changes_requested',
@@ -22,6 +24,18 @@ export default DS.Model.extend({
       pending: "is under review",
       changes_requested: "requires attention",
       deactivated: "is deactivated"
+    }[this.status];
+  }),
+  statusType: computed('status', function() {
+    return {
+      live: "success",
+      amendment_changes_requested: "error",
+      amendment_draft: "info",
+      amendment_pending: "info",
+      draft: "info",
+      pending: "info",
+      changes_requested: "error",
+      deactivated: "warning",
     }[this.status];
   }),
   users: DS.hasMany('user'),
