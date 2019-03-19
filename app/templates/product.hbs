@@ -11,15 +11,47 @@
     }}
 
     {{#unless this.model.underEdit}}
-      <br>
+          <br>
       <br>
       {{#ds/page-alert alertType="warning"}}
         {{# if this.model.pending }}
           <h3>Product is locked for review</h3>
-          <p>You have submitted entries or changes. While these are under review, you won't be able to view or edit the details of this product.</p>
+          <p>You have submitted entries or changes. While these are under review, you won't be able to view or edit the details of your product.</p>
+          {{# if this.model.canBeWithdrawn }}
+            <p>
+              You can withdraw your submission to edit your product and submit again.
+              <a
+                class="au-btn au-btn--tertiary"
+                onclick={{action "withdrawSubmission"}}
+              >
+                Withdraw submission
+              </a>
+            </p>
+          {{/ if }}
         {{ else }}
-          <h3>Product is locked</h3>
-          <p>You are not able to view or edit the details of this product.</p>
+          {{#if this.model.declined}}
+            <p>
+              Your submission was not approved by our operation officers. You can revise your submission and submit again.
+              <a
+                class="au-btn au-btn--tertiary"
+                onclick={{action "reviseProduct"}}
+              >
+                Revise product
+              </a>
+            </p>
+          {{/if}}
+          {{#if (eq this.model.status 'live')}}
+            <h3>Your product is currently live</h3>
+            <p>
+              To amend your product you can start an amendment process.
+              <a
+                class="au-btn au-btn--tertiary"
+                onclick={{action "amendProduct"}}
+              >
+                Start amendment
+              </a>
+            </p>
+          {{/ if }}
         {{/ if }}
 
       {{/ds/page-alert}}
@@ -133,23 +165,25 @@
         }}
       </li>
     </ul>
-    {{#if this.model.submitable}}
-      <br>
-      <br>
-      <p class="left-space">
+    <br>
+    <br>
+    <p class="left-space">
+      {{#if this.model.submitable}}
         <button
           class="au-btn"
           onclick={{action "submitProduct"}}
         >
           Submit product
         </button>
+      {{/if}}
+      {{#if this.model.discardable}}
         <button
-          class="au-btn au-btn--secondary"
+          class="au-btn au-btn--tertiary"
           onclick={{action "cancelProduct"}}
         >
           Cancel draft
         </button>
-      </p>
-    {{/if}}
+      {{/if}}
+    </p>
   </div>
 {{/ds/template-body}}

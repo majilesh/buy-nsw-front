@@ -34,6 +34,7 @@ Router.map(function() {
   this.route('performance');
   this.route('register-buyer');
   this.route('buyer-dashboard');
+  this.route('profile');
 });
 
 export default Router;

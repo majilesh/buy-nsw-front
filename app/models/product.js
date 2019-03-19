@@ -8,7 +8,7 @@ export default DS.Model.extend({
   state: DS.attr('string'),
   status: DS.attr('string'),
   submitable: computed('status', 'steps', 'underEdit', function() {
-    if(this.underEdit===false) {
+    if(this.underEdit==false) {
       return false;
     }
     for (var key in this.steps) {

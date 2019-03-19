@@ -8,6 +8,8 @@ export default DS.Model.extend({
   expired: DS.attr('boolean'),
   offersCloud: DS.attr('boolean'),
   offersTelco: DS.attr('boolean'),
+  canBeWithdrawn: DS.attr('boolean'),
+  steps: DS.attr(),
   declined: computed('status', function() {
     return [
       'changes_requested',
@@ -38,7 +40,43 @@ export default DS.Model.extend({
       deactivated: "warning",
     }[this.status];
   }),
+  underEdit: computed('status', function() {
+    return [
+      'draft',
+      'amendment_draft'
+    ].includes(this.status);
+  }),
+  pending: computed('status', function() {
+    return [
+      'pending_approval',
+      'amendment_pending'
+    ].includes(this.status);
+  }),
+  submitable: computed('status', 'steps', 'underEdit', function() {
+    if(this.underEdit==false) {
+      return false;
+    }
+    for (var key in this.steps) {
+      if(![
+        'completed',
+        'updated',
+        'optional',
+        'accepted'
+      ].includes(this.steps[key].status)) {
+        return false;
+      }
+    }
+    return true;
+  }),
+  discardable: computed('status', function() {
+    return 'amendment_draft' == this.status;
+  }),
   users: DS.hasMany('user'),
   startAmendment: modelAction('start_amendment'),
-  revise: modelAction('revise')
+  revise: modelAction('revise'),
+  submit: modelAction('submit'),
+  cancel: modelAction('cancel'),
+  withdraw: modelAction('withdraw'),
+  deactivate: modelAction('deactivate'),
+  activate: modelAction('activate'),
 });

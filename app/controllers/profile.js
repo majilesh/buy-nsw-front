@@ -2,22 +2,18 @@ import Controller from '@ember/controller';
 
 export default Controller.extend({
   actions: {
-    submitProduct() {
+    submitProfile() {
       var controller = this;
       this.model.submit().then(function() {
         controller.model.reload();
-        controller.transitionToRoute('products');
+        controller.transitionToRoute('seller-dashboard');
       });
     },
-    cancelProduct() {
+    cancelProfile() {
       var controller = this;
       this.model.cancel().then(function(response) {
-        if(response.deleted) {
-          controller.model.deleteRecord();
-        } else {
-          controller.model.reload();
-        }
-        controller.transitionToRoute('products');
+        controller.model.reload();
+        controller.transitionToRoute('seller-dashboard');
       });
     },
     withdrawSubmission() {
@@ -26,13 +22,13 @@ export default Controller.extend({
         controller.model.reload();
       });
     },
-    reviseProduct() {
+    reviseProfile() {
       var controller = this;
       this.model.revise().then(function(response) {
         controller.model.reload();
       });
     },
-    amendProduct() {
+    amendProfile() {
       var controller = this;
       this.model.startAmendment().then(function(response) {
         controller.model.reload();

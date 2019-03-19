@@ -1,0 +1,167 @@
+{{#ds/template-body}}
+  <div class="col-sm-1">
+  </div>
+  <div class="col-sm-10">
+    {{ ds/bread-crumbs
+      links=(array
+        (hash name="Dashboard" route="seller-dashboard")
+        (hash name=(or this.model.name this.model.id))
+      )
+    }}
+
+    {{#unless this.model.underEdit}}
+      <br>
+      <br>
+      {{#ds/page-alert alertType="warning"}}
+        {{# if this.model.pending }}
+          <h3>Profile is locked for review</h3>
+          <p>You have submitted entries or changes. While these are under review, you won't be able to view or edit the details of your profile.</p>
+          {{# if this.model.canBeWithdrawn }}
+            <p>
+              You can withdraw your submission to edit your profile and submit again.
+              <a
+                class="au-btn au-btn--tertiary"
+                onclick={{action "withdrawSubmission"}}
+              >
+                Withdraw submission
+              </a>
+            </p>
+          {{/ if }}
+        {{ else }}
+          {{#if this.model.declined}}
+            <h3>Profile is locked</h3>
+            <p>
+              Your submission was not approved by our operation officers. You can revise your submission and submit again.
+              <a
+                class="au-btn au-btn--tertiary"
+                onclick={{action "reviseProfile"}}
+              >
+                Revise profile
+              </a>
+            </p>
+          {{/if}}
+          {{#if (eq this.model.status 'live')}}
+            <h3>Your profile is currently live</h3>
+            <p>
+              To amend your profile you can start an amendment process.
+              <a
+                class="au-btn au-btn--tertiary"
+                onclick={{action "amendProfile"}}
+              >
+                Start amendment
+              </a>
+            </p>
+          {{/ if }}
+        {{/ if }}
+
+      {{/ds/page-alert}}
+    {{/unless}}
+    <h3 class="au-display-lg">Company Profile</h3>
+
+    <p class="au-callout">
+    Follow the steps below to complete your application. Your progress is saved as you go, so you can complete it in more than one session. You can also invite additional team members to work on this application with you.
+    </p>
+    <br>
+    <ul class="steps-list">
+      <li>
+        <p>
+          <h1 class="au-display-lg">Check before you start</h1>
+          <hr>
+        </p>
+        {{seller-step
+          seller=this.model
+          step=this.model.steps.services
+        }}
+        <br>
+      </li>
+      <li>
+        <p>
+          <h1 class="au-display-lg">About your business</h1>
+          <hr>
+        </p>
+        {{seller-step
+          seller=this.model
+          step=this.model.steps.business_details
+        }}
+        {{seller-step
+          seller=this.model
+          step=this.model.steps.contacts
+        }}
+        {{seller-step
+          seller=this.model
+          step=this.model.steps.addresses
+        }}
+        {{seller-step
+          seller=this.model
+          step=this.model.steps.characteristics
+        }}
+        {{seller-step
+          seller=this.model
+          step=this.model.steps.disclosures
+        }}
+        {{seller-step
+          seller=this.model
+          step=this.model.steps.profile_basics
+        }}
+        {{seller-step
+          seller=this.model
+          step=this.model.steps.recognition
+        }}
+        <br>
+      </li>
+      <li>
+        <p>
+          <h1 class="au-display-lg">Provide documents</h1>
+          <hr>
+        </p>
+        {{seller-step
+          seller=this.model
+          step=this.model.steps.financial_statement
+        }}
+        {{seller-step
+          seller=this.model
+          step=this.model.steps.product_liability
+        }}
+        {{seller-step
+          seller=this.model
+          step=this.model.steps.professional_indemnity
+        }}
+        {{seller-step
+          seller=this.model
+          step=this.model.steps.workers_compensation
+        }}
+        <br>
+      </li>
+      <li>
+        <p>
+          <h1 class="au-display-lg">Apply</h1>
+          <hr>
+        </p>
+        {{seller-step
+          seller=this.model
+          step=this.model.steps.declaration
+        }}
+      </li>
+    </ul>
+    <br>
+    <br>
+    <p class="left-space">
+      {{#if this.model.submitable}}
+        <button
+          class="au-btn"
+          onclick={{action "submitProfile"}}
+        >
+          Submit product
+        </button>
+      {{/if}}
+      {{#if this.model.discardable}}
+        <button
+          class="au-btn au-btn--tertiary"
+          onclick={{action "cancelProfile"}}
+        >
+          Cancel amendment draft
+        </button>
+      {{/if}}
+    </p>
+  </div>
+{{/ds/template-body}}

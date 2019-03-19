@@ -1,0 +1,11 @@
+<p>
+  {{#if seller.underEdit}}
+    <a href="/profile/{{step.code}}">
+      {{step.name}}
+    </a>
+  {{else}}
+    <u> {{step.name}} </u>
+  {{/if}}
+  <span class={{step.status}}>{{step.status}}</span>
+  <hr>
+</p>
