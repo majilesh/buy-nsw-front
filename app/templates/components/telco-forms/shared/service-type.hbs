@@ -3,10 +3,10 @@
 {{ds/checkbox-array
   items=items
   field=(mut product.service_types)
-  onChange=(action (mut showError) true)
+  onChange=(action (mut showServiceTypeError) true)
 }}
 <div class="clear-both"></div>
-{{#if showError}}
+{{#if (or showError showServiceTypeError)}}
   {{#if (v-get this "product.service_types" "isInvalid")}}
     <div class="form-error">
       {{v-get this "product.service_types" "message"}}

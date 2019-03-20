@@ -2,19 +2,23 @@
   <p>
     To be compliant with the TPA, this product must have <b>no Flagfall.</b>
   </p>
-  {{ds/radio-button
-    value="yes"
-    label="This product meets the requirement"
-    field=(mut product.flagfall_requirement)
-    onChange=(action (mut showError) true)
-  }}
-  {{ds/radio-button
-    value="no"
-    label="This product does NOT meet the requirement"
-    field=(mut product.flagfall_requirement)
-    onChange=(action (mut showError) true)
-  }}
-  {{#if showError}}
+  <p>
+    {{ds/radio-button
+      value="yes"
+      label="This product meets the requirement"
+      field=(mut product.flagfall_requirement)
+      onChange=(action (mut showFlagfallError) true)
+    }}
+  </p>
+  <p>
+    {{ds/radio-button
+      value="no"
+      label="This product does NOT meet the requirement"
+      field=(mut product.flagfall_requirement)
+      onChange=(action (mut showFlagfallError) true)
+    }}
+  </p>
+  {{#if (or showError showFlagfallError)}}
     {{#if (v-get this "product.flagfall_requirement" "isInvalid")}}
       <div class="form-error">
         {{v-get this "product.flagfall_requirement" "message"}}

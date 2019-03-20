@@ -1,12 +1,16 @@
 <h3 class="au-display-md">Secondary services</h3>
-{{ds/radio-button
-  value="yes"
-  label="Yes"
-  field=(mut product.secondary_services_available)
-}}
-{{ds/radio-button
-  value="no"
-  label="No"
-  field=(mut product.secondary_services_available)
-}}
+<p>
+  {{ds/radio-button
+    value="yes"
+    label="Yes"
+    field=(mut product.secondary_services_available)
+  }}
+</p>
+<p>
+  {{ds/radio-button
+    value="no"
+    label="No"
+    field=(mut product.secondary_services_available)
+  }}
+</p>
 <hr>
