@@ -19,37 +19,40 @@
           <p>You have submitted entries or changes. While these are under review, you won't be able to view or edit the details of your product.</p>
           {{# if this.model.canBeWithdrawn }}
             <p>
-              You can withdraw your submission to edit your product and submit again.
+              You can 
               <a
-                class="au-btn au-btn--tertiary"
+                class="au-btn au-btn--tertiary no-padding"
                 onclick={{action "withdrawSubmission"}}
               >
-                Withdraw submission
+                withdraw your submission
               </a>
+              to edit your product and submit again.
             </p>
           {{/ if }}
         {{ else }}
           {{#if this.model.declined}}
             <p>
-              Your submission was not approved by our operation officers. You can revise your submission and submit again.
+              Your submission was not approved by our operation officers. You can
               <a
-                class="au-btn au-btn--tertiary"
+                class="au-btn au-btn--tertiary no-padding"
                 onclick={{action "reviseProduct"}}
               >
-                Revise product
+                revise your product
               </a>
+              and submit again.
             </p>
           {{/if}}
           {{#if (eq this.model.status 'live')}}
             <h3>Your product is currently live</h3>
             <p>
-              To amend your product you can start an amendment process.
+              To amend your product you can
               <a
-                class="au-btn au-btn--tertiary"
+                class="au-btn au-btn--tertiary no-padding"
                 onclick={{action "amendProduct"}}
               >
-                Start amendment
+                start an amendment
               </a>
+              process.
             </p>
           {{/ if }}
         {{/ if }}
@@ -176,7 +179,7 @@
           Submit product
         </button>
       {{/if}}
-      {{#if this.model.discardable}}
+      {{#if this.model.underEdit}}
         <button
           class="au-btn au-btn--tertiary"
           onclick={{action "cancelProduct"}}

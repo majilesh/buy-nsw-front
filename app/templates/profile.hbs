@@ -18,38 +18,41 @@
           <p>You have submitted entries or changes. While these are under review, you won't be able to view or edit the details of your profile.</p>
           {{# if this.model.canBeWithdrawn }}
             <p>
-              You can withdraw your submission to edit your profile and submit again.
+              You can 
               <a
-                class="au-btn au-btn--tertiary"
+                class="au-btn au-btn--tertiary no-padding"
                 onclick={{action "withdrawSubmission"}}
               >
-                Withdraw submission
+                withdraw your submission
               </a>
+              to edit your profile and submit again.
             </p>
           {{/ if }}
         {{ else }}
           {{#if this.model.declined}}
             <h3>Profile is locked</h3>
             <p>
-              Your submission was not approved by our operation officers. You can revise your submission and submit again.
+              Your submission was not approved by our operation officers. You can
               <a
-                class="au-btn au-btn--tertiary"
+                class="au-btn au-btn--tertiary no-padding"
                 onclick={{action "reviseProfile"}}
               >
-                Revise profile
+                revise your profile
               </a>
+              and submit again.
             </p>
           {{/if}}
           {{#if (eq this.model.status 'live')}}
             <h3>Your profile is currently live</h3>
             <p>
-              To amend your profile you can start an amendment process.
+              To amend your profile you can
               <a
-                class="au-btn au-btn--tertiary"
+                class="au-btn au-btn--tertiary no-padding"
                 onclick={{action "amendProfile"}}
               >
-                Start amendment
+                start an amendment
               </a>
+              process.
             </p>
           {{/ if }}
         {{/ if }}
