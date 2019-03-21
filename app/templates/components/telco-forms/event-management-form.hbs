@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-sm-12">
+    <br>
+    <h3 class="au-display-md">Common Services Compliance:</h3>
+    <h2 class="au-display-lg form-title"><b></b></h2>
+    <p>Please select the features and attributes of your TPA compliant product:</p>
+  </div>
+</div>
+<hr>
+{{#telco-forms/shared/service-compliance field=product.event_configuration}}
+  <b>Handle all configuration items </b>
+{{/telco-forms/shared/service-compliance}}
+<hr>
+{{#telco-forms/shared/service-compliance field=product.event_environment}}
+  <b>Handle environmental conditions, e.g. fire and smoke detection </b>
+{{/telco-forms/shared/service-compliance}}
+<hr>
+{{#telco-forms/shared/service-compliance field=product.event_license}}
+  <b>Handle software licence monitoring for usage to ensure optimum/legal licence utilisation and allocation </b>
+{{/telco-forms/shared/service-compliance}}
+<hr>
+{{#telco-forms/shared/service-compliance field=product.event_activity}}
+  <b>Handle normal activity, e.g. tracking the use of a Service or the performance of an underlying server</b>
+{{/telco-forms/shared/service-compliance}}
+<hr>
+{{#telco-forms/shared/service-compliance field=product.event_toolset}}
+  <b>Appropriate toolsets are correctly implemented and configured</b>
+{{/telco-forms/shared/service-compliance}}
+<hr>
+{{#telco-forms/shared/service-compliance field=product.event_impact}}
+  <b>Critical and impacting events are integrated into the Incident Management process</b>
+{{/telco-forms/shared/service-compliance}}

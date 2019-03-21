@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-sm-6">
+    {{yield}}
+  </div>
+  <div class="col-sm-2">
+    {{ds/radio-button
+      field=(mut field)
+      value="complete"
+      label="Complete"
+    }}
+  </div>
+  <div class="col-sm-2">
+    {{ds/radio-button
+      field=(mut field)
+      value="partial"
+      label="Partial"
+    }}
+  </div>
+  <div class="col-sm-2">
+    {{ds/radio-button
+      field=(mut field)
+      value="non-compliant"
+      label="Non compliant"
+    }}
+  </div>
+</div>
