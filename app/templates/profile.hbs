@@ -30,9 +30,9 @@
           {{/ if }}
         {{ else }}
           {{#if this.model.declined}}
-            <h3>Profile is locked</h3>
+            <h3>Your submission was not accepted.</h3>
             <p>
-              Your submission was not approved by our operation officers. You can
+               You can
               <a
                 class="au-btn au-btn--tertiary no-padding"
                 onclick={{action "reviseProfile"}}
@@ -43,7 +43,7 @@
             </p>
           {{/if}}
           {{#if (eq this.model.status 'live')}}
-            <h3>Your profile is currently live</h3>
+            <h3>Your profile has been accepted</h3>
             <p>
               To amend your profile you can
               <a

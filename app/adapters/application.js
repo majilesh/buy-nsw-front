@@ -15,7 +15,15 @@ export default DS.RESTAdapter.extend({
   }),
   namespace: '/api',
   pathForType(type) {
+    const type_to_api = {
+      feedbacks: 'events',
+      sellers: 'sellers',
+      products: 'products',
+      events: 'events',
+      users: 'users',
+      telco_products: 'telco_products'
+    }
     var type_name = pluralize(underscore(type));
-    return type_name + '/' + type_name;
+    return type_to_api[type_name] + '/' + type_name;
   }
 });

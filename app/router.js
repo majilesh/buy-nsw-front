@@ -5,11 +5,13 @@ const Router = EmberRouter.extend({
   location: config.locationType,
   rootURL: config.rootURL,
 
-  didTransition() {
+  init() {
     this._super(...arguments);
-    if (!this.get('fastboot.isFastBoot')) {
-      window.scrollTo(0, 230);
-    }
+    this.on('routeDidChange', transition => {
+      if (!this.get('fastboot.isFastBoot')) {
+        window.scrollTo(0, 0);
+      }
+    });
   }
 });
 

@@ -1,1 +1,68 @@
-{{outlet}}
+{{#ds/template-body}}
+<div class="col-sm-5">
+  <h1 class="au-display-lg">Create an account</h1>
+</div>
+<div class="col-sm-7">
+  <p>
+    You can create buyer account if you're a NSW Government employee or an employee of
+    <a
+      href="https://www.procurepoint.nsw.gov.au/before-you-buy/buyer-eligibility-and-registration"
+      target="_blank"
+    >
+      another eligible organisation
+    </a>.
+  </p>
+  <br>
+  {{link-to "Create a buyer account" "index" class="au-btn"}}
+  <hr>
+  <p>
+    Register for a seller account if you're an organisation looking to sell your products and services to government.
+  </p>
+  <br>
+  {{link-to "Create a seller account" "index" class="au-btn"}}
+  <hr>
+</div>
+<div class="col-sm-5">
+  <h1 class="au-display-lg">Already have an account?</h1>
+  <p>
+    Get help if you have <a href="#">forgotten your password</a> or if you <a href="#">haven't received a confirmation email</a>.
+  </p>
+</div>
+<div class="col-sm-7">
+  <p>
+    {{#ds/text-input
+      wide=true
+      field=(mut email)
+    }}
+      <b>Email address</b>
+    {{/ds/text-input}}
+  </p>
+  <p>
+    {{#ds/text-input
+      wide=true
+      password=true
+      field=(mut password)
+    }}
+      <b>Password</b>
+    {{/ds/text-input}}
+  </p>
+  <p>
+    <label class="au-control-input">
+      {{input
+        type="checkbox"
+        class="au-control-input__input"
+        checked=(mut remember)
+      }}
+      <span class="au-control-input__text"><b>Remember me</b></span>
+    </label>
+  </p>
+  <p>
+    <a
+      class="au-btn float-right"
+      onclick={{action "login"}}
+    >
+      Sign in
+    </a>
+  </p>
+</div>
+{{/ds/template-body}}

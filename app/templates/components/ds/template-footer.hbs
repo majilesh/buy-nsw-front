@@ -34,7 +34,7 @@
           </div>
         </div>
       </div>
-
+      
       <section class="col-sm-12">
         <div class="au-footer__end">
           <nav class="col-md-11">
@@ -50,6 +50,24 @@
           </nav>
         </div>
       </section>
+
+      {{#if auth.config.build_version}}
+        <section class="col-sm-12">
+          <div class="au-footer__end">
+            <ul class="au-tags au-tags--dark">
+              <li>
+                <a
+                  target="_blank"
+                  href="https://github.com/digitalnsw/buy-nsw/commits/{{auth.config.build_version}}"
+                >
+                  {{auth.config.environment}} env ({{auth.config.build_version}}, built at {{auth.config.build_time}})
+                </a>
+              </li>
+            </ul>
+          </div>
+        </section>
+      {{/if}}
+
     </div>
   </div>
 </footer>

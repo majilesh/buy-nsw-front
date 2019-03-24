@@ -3,6 +3,7 @@ import { inject } from '@ember/service';
 
 export default Service.extend({
   ajax: inject(),
+  router: inject(),
 
   user: null,
   config: null,
@@ -10,24 +11,71 @@ export default Service.extend({
   isSeller: null,
   trueUser: null,
 
-  goHome() {
+  callbacks: [],
+
+  ifLoggedin(callback) {
+    if(this.get('config')) {
+      if(this.get('user')) {
+        callback();
+      }
+    } else {
+      this.get('callbacks').push(callback);
+    }
   },
 
   handleSuccess(response) {
-    if (response.user == null) {
-      this.goHome();
-    } else {
+    this.set('config', response.config);
+    this.set('csrfToken', response.csrf_token);
+    if (response.user != null) {
       this.set('user', response.user);
       this.set('isAdmin', response.user.roles.includes('admin'));
       this.set('isSeller', response.user.roles.includes('seller'));
-      this.set('config', response.config);
-      this.set('csrfToken', response.csrf_token);
       this.set('trueUser', response.true_user);
+
+      this.get('callbacks').forEach(function(callback) {
+        callback();
+      });
+      this.set('callbacks', []);
+      this.get('router').transitionTo("index");
+    } else {
+      this.set('user', null);
+      this.set('trueUser', null);
     }
   },
 
   handleError() {
-    this.goHome();
+  },
+
+  loginFailed() {
+  },
+
+  logout() {
+    this.get('ajax').request('/api/users/logout', {
+      method: 'POST',
+      headers: {
+        "X-CSRF-Token": this.get('csrfToken'),
+      },
+    }).then((response) =>
+        this.handleSuccess(response))
+      .catch(({ response, jqXHR, payload }) =>
+        this.loginFailed(response, jqXHR, payload));
+  },
+
+  login(email, password, remember) {
+    this.get('ajax').request('/api/users/login', {
+      method: 'POST',
+      headers: {
+        "X-CSRF-Token": this.get('csrfToken'),
+      },
+      data: {
+        email: email,
+        password: password,
+        remember: remember,
+      }
+    }).then((response) =>
+        this.handleSuccess(response))
+      .catch(({ response, jqXHR, payload }) =>
+        this.loginFailed(response, jqXHR, payload));
   },
 
   init() {
