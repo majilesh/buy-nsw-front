@@ -9,6 +9,7 @@ export default Service.extend({
   config: null,
   csrfToken: null,
   isSeller: null,
+  isBuyer: null,
   trueUser: null,
 
   callbacks: [],
@@ -30,6 +31,7 @@ export default Service.extend({
       this.set('user', response.user);
       this.set('isAdmin', response.user.roles.includes('admin'));
       this.set('isSeller', response.user.roles.includes('seller'));
+      this.set('isBuyer', response.user.roles.includes('buyer'));
       this.set('trueUser', response.true_user);
 
       this.get('callbacks').forEach(function(callback) {
@@ -39,6 +41,9 @@ export default Service.extend({
       this.get('router').transitionTo("index");
     } else {
       this.set('user', null);
+      this.set('isAdmin', null);
+      this.set('isSeller', null); 
+      this.set('isBuyer', null);
       this.set('trueUser', null);
     }
   },
