@@ -16,6 +16,7 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
+  this.route('index', { path: '/' });
   this.route('seller-dashboard');
   this.route('not-found', { path: '/*path' });
   this.route('products');

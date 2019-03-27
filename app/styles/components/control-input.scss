@@ -380,6 +380,13 @@
 			}
 		}
 
+		// black
+		.au-control-input--black & {
+			& + .au-control-input__text:before {
+				@include AU-getControlShape( 'radio', 'background', $AU-colordark-foreground-text, $AU-colorblack-background );
+			}
+		}
+
 		// dark alt
 		.au-control-input--alt.au-control-input--dark & {
 			& + .au-control-input__text:before {

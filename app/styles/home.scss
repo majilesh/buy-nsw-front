@@ -1,0 +1,50 @@
+p.home-title {
+  margin-top: 80px;
+  margin-bottom: 60px;
+  padding-left: 2rem;
+  b.dark-blue {
+    color: $AU-colordark-background;
+  }
+  a.au-cta-link {
+    text-decoration: none;
+  }
+}
+
+div.right-arrow {
+  color: $AU-colordark-background;
+  float: right;
+  min-width: 60px;
+  padding-left: 60px;
+  vertical-align: center;
+  font-size: 40px;
+}
+
+p.au-callout--home-top {
+  border-left: 0.5rem solid $AU-colordark-background;
+  &.light {
+    div.right-arrow {
+      color: #95b7bf;
+    }
+    border-left: 0.5rem solid #95b7bf;
+  }
+}
+
+div.home-middle-box {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  margin-top: 2rem;
+  padding: 20px;
+  div.right-arrow {
+    color: #95b7bf;
+  }
+  h6 {
+    margin-top: 0;
+  }
+  div.highlight {
+    border-left: 0.5rem solid #95b7bf;
+    padding: 1rem 0 0.5rem 1rem;
+  }
+  background-color: white;
+  i.date {
+    color: $AU-colorblack-background;
+  }
+}

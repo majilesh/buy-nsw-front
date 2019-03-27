@@ -32,6 +32,13 @@
 		background-color:  $AU-colordark-background;
 	}
 
+	&.au-footer--black {
+		color: $AU-colordark-foreground-text;
+		border-color: $AU-colordark-foreground-border;
+		background-color: #313131;
+    padding: 1rem 0 2rem;
+	}
+
 	&.au-footer--dark.au-footer--alt {
 		background-color:  $AU-colordark-background-alt;
 	}
