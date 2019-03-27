@@ -11,6 +11,7 @@ export default Service.extend({
   isSeller: null,
   isBuyer: null,
   trueUser: null,
+  message: null,
 
   handleSuccess(response, goHome) {
     this.set('config', response.config);
@@ -21,10 +22,6 @@ export default Service.extend({
       this.set('isSeller', response.user.roles.includes('seller'));
       this.set('isBuyer', response.user.roles.includes('buyer'));
       this.set('trueUser', response.true_user);
-
-      if(goHome) {
-        this.get('router').transitionTo("index");
-      }
     } else {
       this.set('user', null);
       this.set('isAdmin', null);
@@ -32,9 +29,15 @@ export default Service.extend({
       this.set('isBuyer', null);
       this.set('trueUser', null);
     }
+
+    this.set('message', null);
+    if(goHome) {
+      this.get('router').transitionTo("index");
+    }
   },
 
   handleError() {
+    this.set('message', 'Invalid Email or Password');
   },
 
   loginFailed() {
@@ -61,8 +64,8 @@ export default Service.extend({
         password: password,
         remember: remember,
       }
-    }).then((response) =>
-        this.handleSuccess(response, true))
+    }).then((response) => this.handleSuccess(response, true))
+      .catch(() => this.handleError());
   },
 
   init() {

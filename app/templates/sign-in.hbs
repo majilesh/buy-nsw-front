@@ -8,9 +8,7 @@
     <a
       href="https://www.procurepoint.nsw.gov.au/before-you-buy/buyer-eligibility-and-registration"
       target="_blank"
-    >
-      another eligible organisation
-    </a>.
+    >another eligible organisation</a>.
   </p>
   <br>
   {{link-to "Create a buyer account" "index" class="au-btn"}}
@@ -55,6 +53,9 @@
       }}
       <span class="au-control-input__text"><b>Remember me</b></span>
     </label>
+    <b class="form-error float-right">
+      {{auth.message}}
+    </b>
   </p>
   <p>
     <a

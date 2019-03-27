@@ -32,8 +32,16 @@ div.feedback {
   padding-bottom: 0.5rem;
 }
 
-a.float-right {
+a.float-right, b.float-right {
   float: right;
+}
+
+.form-error {
+  padding-left: 0.8rem;
+  padding-top: 1.2rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #ff635c;
 }
 
 .au-body.au-body--black ::selection {
