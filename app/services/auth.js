@@ -38,7 +38,6 @@ export default Service.extend({
         callback();
       });
       this.set('callbacks', []);
-      this.get('router').transitionTo("index");
     } else {
       this.set('user', null);
       this.set('isAdmin', null);

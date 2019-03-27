@@ -24,15 +24,15 @@ export default Component.extend({
       this.get('feedback').save();
     }
   },
-  didInsertElement() {
+  init() {
     this._super(...arguments);
-    let r = this.get("router");
-    r.addObserver("currentRouteName", this, "currentRouteNameChanged");
-
-  },
-  "currentRouteNameChanged": function(router, propertyName) {
-    this.get('store').unloadAll('feedback');
-    this.set('feedback', null);
-    this.set('activated', false);
-   }
+    let self = this;
+    this.router.on('routeWillChange', (transition) => {
+      if ( !(self.get('isDestroyed') || self.get('isDestroying')) ) {
+        self.get('store').unloadAll('feedback');
+        self.set('activated', false);
+        self.set('feedback', null);
+      }
+    })
+  }
 });

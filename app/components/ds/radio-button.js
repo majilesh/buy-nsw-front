@@ -4,7 +4,9 @@ export default Component.extend({
   actions: {
     selectRadio() {
       this.set('field', this.get('value'));
-      this.onChange();
+      if (this.get('onChange')) {
+        this.onChange();
+      }
     }
   }
 });

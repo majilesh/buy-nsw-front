@@ -48,7 +48,7 @@ export default DS.Model.extend({
   }),
   pending: computed('status', function() {
     return [
-      'pending_approval',
+      'pending',
       'amendment_pending'
     ].includes(this.status);
   }),

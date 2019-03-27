@@ -2,13 +2,13 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
-        <a href="/" class="au-header__brand">
+        {{#link-to "index" class="au-header__brand"}}
           <img
             class="au-header__brand-image"
             alt="Insert alternate text here"
             src="/_/images/logo-white.svg"
           >
-        </a>
+        {{/link-to}}
         {{# if auth.user }}
           <a class="au-btn au-btn--dark right-link" onClick={{action "logout"}}>Sign out</a>
         {{ else }}
@@ -18,12 +18,12 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        <a href="/" class="au-header__brand">
+        {{#link-to "index" class="au-header__brand"}}
           <div class="au-header__text">
             <h2 class="au-header__heading au-display-xxl">buy.nsw</h2>
             <div class="au-header__heading au-display-md">Simplifying procurement for NSW government</div>
           </div>
-        </a>
+        {{/link-to}}
         <a 
           class="au-btn au-btn--tertiary au-btn--dark right-link learn-how"
           href="https://vimeo.com/272480667"

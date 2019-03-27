@@ -5,7 +5,7 @@
     {{ ds/bread-crumbs
       links=(array
         (hash name="Dashboard" route="seller-dashboard")
-        (hash name=(or this.model.name this.model.id))
+        (hash name=(or this.model.name "Profile"))
       )
     }}
 

@@ -31,7 +31,9 @@ export default Component.extend({
       }
 
       this.set('field', arrayField.join(','));
-      this.onChange();
+      if (this.get('onChange')) {
+        this.onChange();
+      }
     }
   }
 });
