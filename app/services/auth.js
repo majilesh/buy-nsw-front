@@ -12,19 +12,7 @@ export default Service.extend({
   isBuyer: null,
   trueUser: null,
 
-  callbacks: [],
-
-  ifLoggedin(callback) {
-    if(this.get('config')) {
-      if(this.get('user')) {
-        callback();
-      }
-    } else {
-      this.get('callbacks').push(callback);
-    }
-  },
-
-  handleSuccess(response) {
+  handleSuccess(response, goHome) {
     this.set('config', response.config);
     this.set('csrfToken', response.csrf_token);
     if (response.user != null) {
@@ -34,10 +22,9 @@ export default Service.extend({
       this.set('isBuyer', response.user.roles.includes('buyer'));
       this.set('trueUser', response.true_user);
 
-      this.get('callbacks').forEach(function(callback) {
-        callback();
-      });
-      this.set('callbacks', []);
+      if(goHome) {
+        this.get('router').transitionTo("index");
+      }
     } else {
       this.set('user', null);
       this.set('isAdmin', null);
@@ -60,9 +47,7 @@ export default Service.extend({
         "X-CSRF-Token": this.get('csrfToken'),
       },
     }).then((response) =>
-        this.handleSuccess(response))
-      .catch(({ response, jqXHR, payload }) =>
-        this.loginFailed(response, jqXHR, payload));
+        this.handleSuccess(response, true))
   },
 
   login(email, password, remember) {
@@ -77,17 +62,13 @@ export default Service.extend({
         remember: remember,
       }
     }).then((response) =>
-        this.handleSuccess(response))
-      .catch(({ response, jqXHR, payload }) =>
-        this.loginFailed(response, jqXHR, payload));
+        this.handleSuccess(response, true))
   },
 
   init() {
     this._super(...arguments);
     this.get('ajax').request('/api/users/authenticate')
       .then((response) =>
-        this.handleSuccess(response))
-      .catch(({ response, jqXHR, payload }) =>
-        this.handleError(response, jqXHR, payload));
+        this.handleSuccess(response, false))
   },
 });
