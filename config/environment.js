@@ -5,7 +5,8 @@ module.exports = function(environment) {
     modulePrefix: 'buy-nsw-ember',
     environment,
     rootURL: '/_/',
-    locationType: 'auto',
+    locationType: 'router-scroll',
+    historySupportMiddleware: true,
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
