@@ -37,7 +37,7 @@ $AU-logo-width-sm: 4.3unit !default;
 	}
 
 	@include AU-media( sm ) {
-		@include AU-space( padding, 2.5unit 0 );
+		@include AU-space( padding, 2unit 0 1unit 0);
 	}
 
 	&.au-header--alt {
