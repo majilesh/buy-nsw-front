@@ -31,6 +31,7 @@
     {{#ds/text-input
       wide=true
       field=(mut email)
+      enter=(action "login")
     }}
       <b>Email address</b>
     {{/ds/text-input}}
@@ -40,6 +41,7 @@
       wide=true
       password=true
       field=(mut password)
+      enter=(action "login")
     }}
       <b>Password</b>
     {{/ds/text-input}}

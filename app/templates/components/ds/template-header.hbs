@@ -10,9 +10,9 @@
           >
         {{/link-to}}
         {{# if auth.user }}
-          <a class="au-btn au-btn--dark right-link" onClick={{action "logout"}}>Sign out</a>
+          <a class="au-btn au-btn--dark au-btn--secondary right-link" onClick={{action "logout"}}>Sign out</a>
         {{ else }}
-          {{ link-to "Log in or sign up" "sign-in" class="au-btn au-btn--dark au-btn--wide right-link" }}
+          {{ link-to "Log in or sign up" "sign-in" class="au-btn au-btn--dark au-btn--secondary au-btn--wide right-link" }}
         {{/ if }}
       </div>
     </div>
@@ -25,7 +25,7 @@
           </div>
         {{/link-to}}
         <a 
-          class="au-btn au-btn--tertiary au-btn--dark right-link learn-how"
+          class="au-btn au-btn--tertiary au-btn--dark learn-how"
           href="https://vimeo.com/272480667"
           target="_blank"
         >
@@ -35,4 +35,8 @@
     </div>
   </div>
 </header>
-{{ds/main-nav}}
+{{#if nonav}}
+  <hr class="simple-white">
+{{else}}
+  {{ds/main-nav}}
+{{/if}}

@@ -10,7 +10,6 @@ const Router = EmberRouter.extend(RouterScroll, {
 Router.map(function() {
   this.route('index', { path: '/' });
   this.route('seller-dashboard');
-  this.route('not-found', { path: '/*path' });
   this.route('products');
   this.route('product', { path: '/products/:product_id'});
   this.route('register-seller');
@@ -30,6 +29,7 @@ Router.map(function() {
   this.route('register-buyer');
   this.route('buyer-dashboard');
   this.route('profile');
+  this.route('not-found', { path: '/*path' });
 });
 
 export default Router;

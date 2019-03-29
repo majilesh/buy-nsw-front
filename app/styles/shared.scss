@@ -18,10 +18,12 @@ a.au-btn.right-link {
   font-size: 0.8rem;
   padding: 0.4rem 1.2rem;
   text-decoration: none;
-  &.learn-how {
-    margin-top: 2.8rem;
-    margin-bottom: 0;
-  }
+}
+
+a.au-btn.learn-how {
+  font-size: 0.8rem;
+  text-decoration: none;
+  margin: 0 0 0 2rem;
 }
 
 hr.less-margin {
@@ -81,4 +83,13 @@ label.au-control-input--black {
   input.au-control-input__input:invalid + span.au-control-input__text {
     background-color: $AU-colorblack-background;
   }
+}
+h1.au-heading--dark {
+  b {
+    color: white;
+  }
+}
+hr.simple-white {
+  color: white;
+  margin: 0;
 }
