@@ -15,9 +15,13 @@ export default Route.extend({
     },
     didTransition: function() {
       $('.overlay').hide();
+    },
+    error: function(error) {
+      if(error.errors.firstObject.detail == "Authentication Failed") {
+        this.transitionTo('sign-in');
+        return false;
+      }
+      return true;
     }
   },
-  error: function(error) {
-    return true;
-  }
 });
