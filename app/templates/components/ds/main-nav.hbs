@@ -23,12 +23,20 @@
                 Close
               </button>--}}
               <ul class="au-link-list">
-                {{!--<li class="active"><a href="/">Home</a></li>
-                <li><a href="basic">Dashboard</a></li>
-                <li><a href="form">Products</a></li>--}}
-
+                <li>
+                  {{ link-to "About" "index" }}
+                </li>
+                <li>
+                  {{ link-to "Seller list" "index" }}
+                </li>
+                <li>
+                  {{ link-to "Products & Services" "index" }}
+                </li>
+                <li>
+                  {{ link-to "Help" "index" }}
+                </li>
                 {{# if auth.isSeller }}
-                  <li class={{if onDashboard "active"}}>
+                <li class={{if (eq currentPath "seller-dashboard") "active"}}>
                     {{ link-to "Dashboard" "seller-dashboard" }}
                   </li>
                 {{/ if }}

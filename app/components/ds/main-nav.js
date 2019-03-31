@@ -4,8 +4,9 @@ import { inject } from '@ember/service';
 export default Component.extend({
   currentPath: null,
   auth: inject(),
+  router: inject(),
   willRender() {
     this._super(...arguments);
-    this.set('currentPath', window.location.pathname);
+    this.set('currentPath', this.get('router.currentRouteName') );
   }
 });
