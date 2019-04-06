@@ -1,0 +1,299 @@
+{{#ds/template-body}}
+  {{ ds/bread-crumbs
+    links=(array
+      (hash name="buy.nsw" route="index")
+      (hash name="Products and Services")
+      (hash name="Telco") 
+    )
+  }}
+  <br>
+  <div class="row">
+    <div class="col-sm-4">
+      <h2 class="au-display-xl underline-light">
+        <b>Telco products</b>
+      </h2>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-sm-4">
+      <h2 class="au-display-lg">
+        <b>Apply filters</b>
+      </h2>
+      <br>
+      {{#ds/accordion-container title="Service towers" expanded=true collapsable=false}}
+        {{ds/radio-group
+          items=(array
+            (hash
+              key="all"
+              label="All"
+            )
+            (hash
+              key="fixed-data-services"
+              label="Fixed data services"
+            )
+            (hash
+              key="internet-services"
+              label="Internet services"
+            )
+            (hash
+              key="mobile-services"
+              label="Mobile services"
+            )
+            (hash
+              key="voice-services"
+              label="Voice services"
+            )
+          )
+          onChange=(action "changeServiceTower")
+          field=(mut serviceTower)
+        }}
+      {{/ds/accordion-container}}
+      <br>
+      {{#ds/accordion-container title="Sellers" expanded=true}}
+        {{ds/checkbox-array
+          checkAll=true
+          field=(mut sellers)
+          break=true
+          wide=true
+          items=(array
+            (hash
+              key="telstra"
+              label="Telstra"
+            )
+            (hash
+              key="tpg"
+              label="TPG"
+            )
+            (hash
+              key="optus"
+              label="Optus"
+            )
+          )
+        }}
+      {{/ds/accordion-container}}
+      {{#if (eq serviceTower "fixed-data-services")}}
+        <br>
+        {{#ds/accordion-container title="Fixed Data Services" expanded=true}}
+          {{ds/checkbox-array
+            checkAll=true
+            field=(mut services)
+            break=true
+            wide=true
+            items=(array
+              (hash
+                key="dark_fibre"
+                label="P2P Dark Fibre"
+              )
+              (hash
+                key="cwdm_dwdm"
+                label="P2P CSDM / DWDM"
+              )
+              (hash
+                key="fibre_channel"
+                label="P2P Fibre Channel"
+              )
+              (hash
+                key="l2vpn_ethernet"
+                label="Unmanaged L2VPN"
+              )
+              (hash
+                key="unmanaged_l3vpn"
+                label="Unmanaged L3VPN"
+              )
+              (hash
+                key="managed_l3vpn"
+                label="Managed L3VPN"
+              )
+              (hash
+                key="lowcost_l3vpn"
+                label="Low-cost L3VPN"
+              )
+            )
+          }}
+        {{/ds/accordion-container}}
+      {{/if}}
+      {{#if (eq serviceTower "internet-services")}}
+        <br>
+        {{#ds/accordion-container title="Internet Services" expanded=true}}
+          {{ds/checkbox-array
+            checkAll=true
+            field=(mut services)
+            break=true
+            wide=true
+            items=(array
+              (hash
+                key="core_internet"
+                label="Core Internet Uplink"
+              )
+              (hash
+                key="peering_access"
+                label="Peering Access"
+              )
+              (hash
+                key="internet_access"
+                label="Internet Access"
+              )
+              (hash
+                key="internet_firewall"
+                label="Internet - Firewall"
+              )
+              (hash
+                key="internet_dns"
+                label="Internet - DNS"
+              )
+              (hash
+                key="web_filtering"
+                label="Content Filtering"
+              )
+              (hash
+                key="email_protection"
+                label="Email Protection"
+              )
+              (hash
+                key="reverse_proxy"
+                label="Reverse Proxy"
+              )
+            )
+          }}
+        {{/ds/accordion-container}}
+      {{/if}}
+      {{#if (eq serviceTower "voice-services")}}
+        <br>
+        {{#ds/accordion-container title="Voice Services" expanded=true}}
+          {{ds/checkbox-array
+            checkAll=true
+            field=(mut services)
+            break=true
+            wide=true
+            items=(array
+              (hash
+                key="sip_trunk"
+                label="SIP Trunk"
+              )
+              (hash
+                key="isdn_basic"
+                label="ISDN - Basic Rate"
+              )
+              (hash
+                key="isdn_primary"
+                label="ISDN - Primary Rate"
+              )
+              (hash
+                key="pstn_lines"
+                label="PSTN Lines"
+              )
+              (hash
+                key="number_block"
+                label="In-Dial Number Blocks"
+              )
+              (hash
+                key="inbound_call"
+                label="Inbound Calling"
+              )
+              (hash
+                key="outbound_call"
+                label="Outbound Calling"
+              )
+              (hash
+                key="pabx_replacement"
+                label="Enterprise Voice Only"
+              )
+              (hash
+                key="unified_communications"
+                label="Unified Communications"
+              )
+              (hash
+                key="call_centre"
+                label="Call Centre"
+              )
+            )
+          }}
+        {{/ds/accordion-container}}
+      {{/if}}
+      {{#if (eq serviceTower "mobile-services")}}
+        <br>
+        {{#ds/accordion-container title="Mobile services" expanded=true}}
+          {{ds/checkbox-array
+            checkAll=true
+            field=(mut services)
+            break=true
+            wide=true
+            items=(array
+              (hash
+                key="sim_device"
+                label="Sim + Device Plan"
+              )
+              (hash
+                key="data_pool"
+                label="Data Pool"
+              )
+              (hash
+                key="sim_only"
+                label="Sim Only"
+              )
+              (hash
+                key="voice_pool"
+                label="Voice Pool"
+              )
+              (hash
+                key="device_service"
+                label="Device `as-a-Service`"
+              )
+              (hash
+                key="device_outright"
+                label="Device (outright)"
+              )
+              (hash
+                key="mobile_device"
+                label="Mobile Device Management"
+              )
+            )
+          }}
+        {{/ds/accordion-container}}
+      {{/if}}
+      <br>
+      <a class="au-btn" onclick={{action "search"}}>Update results</a>
+    </div>
+    <div class="col-sm-8">
+      <h2 class="au-display-lg underline-dark">
+        <b>35 products</b>
+      </h2>
+      <br>
+      <select
+        class="au-select au-select--block"
+        value={{mut sortBy}}
+      >
+        <option
+          disabled
+          selected={{if (eq sortBy null) "selected"}}
+        >
+          Sort by
+        </option>
+        <option value="by-product">
+          Sort by product name
+        </option>
+        <option value="by-seller">
+          Sort by seller name
+        </option>
+        <option value="by-update">
+          Sort by most recent
+        </option>
+      </select>
+      <div>
+        {{#if (gt pageNum 0)}}
+          <a class="float-left" href="#" onclick={{action "lastPage"}}>
+            {{fa-icon "arrow-left"}}Previous
+          </a>
+        {{/if}}
+
+        {{#if (lt pageNumPlusOne totalPages)}}
+          <a class="float-right" href="#" onclick={{action "nextPage"}}>
+            Next{{fa-icon "arrow-right"}}
+          </a>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+{{/ds/template-body}}

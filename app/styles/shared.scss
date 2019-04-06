@@ -12,6 +12,9 @@
 a.au-btn.no-padding {
   padding: 0;
 }
+div.little-padding {
+  padding: 0.3rem;
+}
 a.au-btn.right-link {
   float: right;
   margin: 0.8rem;
@@ -36,6 +39,10 @@ div.feedback {
 
 a.float-right, b.float-right {
   float: right;
+}
+
+a.float-left, b.float-left {
+  float: left;
 }
 
 .form-error {
@@ -92,4 +99,12 @@ h1.au-heading--dark {
 hr.simple-white {
   color: white;
   margin: 0;
+}
+h2.underline-light {
+  padding-bottom: 2rem;
+  border-bottom: 9px solid $NSW-colordark-foreground-muted;
+}
+h2.underline-dark {
+  padding-bottom: 1.8rem;
+  border-bottom: 9px solid $AU-color-foreground-action;
 }

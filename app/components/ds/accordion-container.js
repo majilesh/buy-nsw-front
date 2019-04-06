@@ -3,6 +3,7 @@ import { computed } from '@ember/object';
 
 export default Component.extend({
   expanded: false,
+  collapsable: true,
   expandedClass: computed('expanded', function() {
     return {
       true: 'au-accordion--open',

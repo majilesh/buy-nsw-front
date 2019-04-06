@@ -33,7 +33,7 @@
             </div>
             <b>Buying on behalf of NSW Government</b>
             <br>
-            <a href="#">Register as an ICT seller who can register?</a>
+            <a href="#">Register as an ICT buy who can buy?</a>
           </p>
         </div>
       </div>
@@ -77,24 +77,40 @@
             <div class="right-arrow">
               {{fa-icon "chevron-right"}}
             </div>
-            <h6 class="au-display-lg"><b>Browse Telecom Products</b></h6>
+            <h6 class="au-display-lg"><b>Browse TPA Products</b></h6>
             <hr>
-            <div class="highlight"><a href="#"><b>Internet services</b></a></div>
+            <div class="highlight">
+              {{#link-to "service-tower" "internet-services"}}
+                <b>Internet services</b>
+              {{/link-to}}
+            </div>
             <p>
               e.g. Firewall, DNS, Content Filtering, Email Protection
             </p>
             <br>
-            <div class="highlight"><a href="#"><b>Fixed Data services</b></a></div>
+            <div class="highlight">
+              {{#link-to "service-tower" "fixed-data-services"}}
+                <b>Fixed Data services</b>
+              {{/link-to}}
+            </div>
             <p>
               e.g. Passive / Active Point-to-Point, VPN
             </p>
             <br>
-            <div class="highlight"><a href="#"><b>Mobile services</b></a></div>
+            <div class="highlight">
+              {{#link-to "service-tower" "mobile-services"}}
+                <b>Mobile services</b>
+              {{/link-to}}
+            </div>
             <p>
               e.g. SIM, Devices
             </p>
             <br>
-            <div class="highlight"><a href="#"><b>Fixed Voice services</b></a></div>
+            <div class="highlight">
+              {{#link-to "service-tower" "fixed-voice-services"}}
+                <b>Fixed Voice services</b>
+              {{/link-to}}
+            </div>
             <p>
               e.g. ISDN, Enterprise Voice Only, Call Centre
             </p>

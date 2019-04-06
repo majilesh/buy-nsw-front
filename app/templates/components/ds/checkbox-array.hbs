@@ -1,5 +1,29 @@
+{{#if checkAll}}
+  <div class={{if break "col-sm-12" "col-sm-3"}}>
+    <p>
+      <label class="au-control-input">
+        <input
+          class="au-control-input__input"
+          type="checkbox"
+          onChange={{action "checkAll"}}
+          checked={{allChecked}}
+        >
+        <span class="au-control-input__text">
+          {{#if allChecked}}
+            Unselect All
+          {{else}}
+            Select All
+          {{/if}}
+        </span>
+      </label>
+    </p>
+  </div>
+  {{#if break}}
+    <div class="clear-both"></div>
+  {{/if}}
+{{/if}}
 {{#each items as |item|}}
-  <div class={{if wide "col-sm-6" "col-sm-3"}}>
+  <div class={{if wide (if break "col-sm-12" "col-sm-6") "col-sm-3"}}>
     {{ds/checkbox-item
       name=item.key
       label=item.label

@@ -53,6 +53,10 @@
 	text-align: left;
 	font-family: inherit;
 
+  &.locked {
+    cursor: default;
+  }
+
 	&:hover {
 		text-decoration: none;
 		color: $AU-color-foreground-text;
@@ -76,7 +80,7 @@
 		display: none;
 	}
 
-	&:after {
+	&:not(.locked):after {
 		content: ' ';
 		position: absolute;
 		top: 50%;

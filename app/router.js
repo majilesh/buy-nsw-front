@@ -30,6 +30,10 @@ Router.map(function() {
   this.route('buyer-dashboard');
   this.route('profile');
   this.route('not-found', { path: '/*path' });
+  this.route('team-members');
+  this.route('invite-team-member');
+  this.route('tpa');
+  this.route('service-tower', { path: '/tpa/:service_tower' });
 });
 
 export default Router;

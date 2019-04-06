@@ -1,0 +1,25 @@
+{{#ds/template-body}}
+  {{ ds/bread-crumbs
+    links=(array
+      (hash name="Dashboard" route="seller-dashboard")
+      (hash name="Your team members" route="team-members")
+    )
+  }}
+  <div class="col-xs-1">
+  </div>
+  <div class="col-sm-10">
+    <br>
+    <h1 class="au-display-lg">Your team members</h1>
+    <p>You can collaborate on this application with other people from your organisation.</p>
+    <p>
+    {{link-to "Invite a team member" "invite-team-member" class="au-btn"}}
+    </p>
+    <br>
+    <h2 class="au-display-md">Current team members</h2>
+    <hr>
+    {{#each this.model as |member|}}
+      {{member.email}}
+      <hr>
+    {{/each}}
+  </div>
+{{/ds/template-body}}

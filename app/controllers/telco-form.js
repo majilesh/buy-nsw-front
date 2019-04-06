@@ -12,8 +12,5 @@ export default Controller.extend({
         window.scrollTo(0,230);
       });
     },
-    cancelChanges() {
-      this.get('router').transitionTo('telco-products');
-    }
   }
 });

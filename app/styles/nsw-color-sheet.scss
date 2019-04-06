@@ -14,6 +14,12 @@ $AU-color-background:            #FFFFFF !default;
 // $AU-color-background-alt       (#ebebeb)
 // $AU-color-background-alt-shade (#e0e0e0)
 
+$NSW-color-foreground-muted:     #626263;
+$NSW-color-foreground-border:    #808080;
+$NSW-color-background-shade:     #f5f5f5;
+$NSW-color-background-alt:       #ebebeb;
+$NSW-color-background-alt-shade: #e0e0e0;
+
 
 // Dark palette
 // ==============
@@ -32,3 +38,9 @@ $AU-colorblack-background:        #313131 !default;
 // $AU-colordark-background-shade     (#104f5f)
 // $AU-colordark-background-alt       (#0d414d)
 // $AU-colordark-background-alt-shade (#0a323c)
+
+$NSW-colordark-foreground-muted:     #bdd2d7;
+$NSW-colordark-foreground-border:    #95b7bf;
+$NSW-colordark-background-shade:     #104f5f;
+$NSW-colordark-background-alt:       #0d414d;
+$NSW-colordark-background-alt-shade: #0a323c;

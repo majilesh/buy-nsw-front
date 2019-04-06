@@ -1,5 +1,7 @@
 import Service from '@ember/service';
 import { inject } from '@ember/service';
+import Ember from 'ember';
+const {$} = Ember;
 
 export default Service.extend({
   ajax: inject(),
@@ -44,6 +46,7 @@ export default Service.extend({
   },
 
   logout() {
+    $('.overlay').show();
     this.get('ajax').request('/api/users/logout', {
       method: 'POST',
       headers: {
@@ -51,9 +54,11 @@ export default Service.extend({
       },
     }).then((response) =>
         this.handleSuccess(response, true))
+    .finally(() => $('.overlay').hide())
   },
 
   login(email, password, remember) {
+    $('.overlay').show();
     this.get('ajax').request('/api/users/login', {
       method: 'POST',
       headers: {
@@ -65,7 +70,8 @@ export default Service.extend({
         remember: remember,
       }
     }).then((response) => this.handleSuccess(response, true))
-      .catch(() => this.handleError());
+      .catch(() => this.handleError())
+    .finally(() => $('.overlay').hide());
   },
 
   init() {
