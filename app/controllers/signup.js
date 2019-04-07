@@ -59,7 +59,7 @@ export default Controller.extend(Validations, {
         data: {
           type: this.get('accountType'),
           email: this.get('email'),
-          newPassword: this.get('password'),
+          password: this.get('password'),
         }
       }).then((response) => {
         controller.transitionToRoute('sign-in')
