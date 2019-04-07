@@ -1,0 +1,32 @@
+{{#ds/template-body}}
+  <div class="col-sm-1">
+  </div>
+  <div class="col-sm-10">
+    <h1 class="au-display-xl">Resend instructions to confirm your account</h1>
+    <p>If you did not receive an email to confirm your account, or if the one-time link has expired, we can send a new link to your email address.</p>
+    <br>
+    <b>Email address</b>
+    {{ds/text-input
+      wide=true
+      allRow=true
+      field=(mut email)
+      enter=(action "submit")
+      focusOut=(action (mut showEmailError) true)
+    }}
+    {{#if (and showEmailError (v-get this "email" "isInvalid"))}}
+      <div>
+        <span class="password-strength short float-right">Email address is not valid</span>
+      </div>
+      <div class="clear-both"></div>
+    {{/if}}
+    <p>
+      <a
+        class="au-btn float-right"
+        onclick={{action "submit"}}
+        disabled={{v-get this "isInvalid"}}
+      >
+        Send instructions
+      </a>
+    </p>
+  </div>
+{{/ds/template-body}}

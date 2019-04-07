@@ -1,0 +1,86 @@
+{{#ds/template-body}}
+  <div class="col-sm-1">
+  </div>
+  <div class="col-sm-10">
+    <h1 class="au-display-xl">Create a {{accountType}} account</h1>
+    {{#if (eq accountType "seller")}}
+      <p>Once you've verified your details, you'll be able to start your seller application.</p>
+    {{/if}}
+    <p>Already have an account? {{link-to "Sign in" "sign-in"}}</p>
+    <br>
+    <b>Email address</b>
+    {{#if (eq accountType "seller")}}
+      <p>Please use your work email address. We'll send an email to this address to verify it's yours.</p>
+    {{else}}
+      <p>If you have one, use your government email address. We'll send an email to this address to verify it's yours.</p>
+    {{/if}}
+    {{ds/text-input
+      wide=true
+      allRow=true
+      field=(mut email)
+      enter=(action "submit")
+      focusOut=(action (mut showEmailError) true)
+    }}
+    {{#if (and showEmailError (v-get this "email" "isInvalid"))}}
+      <div>
+        <span class="password-strength short float-right">Email address is not valid</span>
+      </div>
+      <div class="clear-both"></div>
+    {{/if}}
+    <br>
+    <b>Password</b>
+    <p>
+      Passwords must be at least 8 characters long.
+      Tip: create a password with 3 or more words – it's secure and easy to remember.
+    </p>
+    {{ds/text-input
+      wide=true
+      allRow=true
+      password=true
+      noAutoComplete=true
+      field=(mut password)
+      enter=(action "submit")
+    }}
+    <div>
+      {{#if (eq password.length 0)}}
+        <span class="password-strength blank float-right">Password is blank</span>
+      {{else if (lt password.length 8)}}
+        <span class="password-strength short float-right">Password is too short</span>
+      {{else if (lt strength 3)}}
+        <span class="password-strength weak float-right">Password is not strong enough</span>
+      {{else}}
+        <span class="password-strength strong float-right">Password is strong</span>
+      {{/if}}
+      <div class="clear-both"></div>
+    </div>
+    <br>
+    <b>Confirm your password</b>
+    <br>
+    {{ds/text-input
+      wide=true
+      allRow=true
+      password=true
+      noAutoComplete=true
+      field=(mut confirmPassword)
+      enter=(action "submit")
+      focusOut=(action (mut showConfirmError) true)
+    }}
+    {{#if (and showConfirmError (v-get this "confirmPassword" "isInvalid"))}}
+      <div>
+        <span class="password-strength short float-right">Passwords don't match</span>
+      </div>
+      <div class="clear-both"></div>
+    {{/if}}
+    <hr>
+    <p>By creating an account you confirm your acceptance of the {{link-to "terms of use" "terms-of-use"}}.</p>
+    <p>
+      <a
+        class="au-btn float-right"
+        onclick={{action "submit"}}
+        disabled={{v-get this "isInvalid"}}
+      >
+        Continue
+      </a>
+    </p>
+  </div>
+{{/ds/template-body}}

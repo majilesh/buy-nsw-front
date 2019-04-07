@@ -1,6 +1,6 @@
 .steps-list {
   .accepted {
-    background: #0cac78;
+    background: $AU-color-success;
 
     &.not-active {
       opacity: 0.4;
@@ -8,15 +8,15 @@
   }
 
   .please-review {
-    background: #f69900;
+    background: $AU-color-warning;
   }
 
   .completed {
-    background: #00bfe9;
+    background: $AU-color-info;
   }
 
   .updated {
-    background: #00bfe9;
+    background: $AU-color-info;
   }
 
   .not-started {

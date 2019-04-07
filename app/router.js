@@ -34,6 +34,10 @@ Router.map(function() {
   this.route('invite-team-member');
   this.route('tpa');
   this.route('service-tower', { path: '/tpa/:service_tower' });
+  this.route('account-settings');
+  this.route('signup', { path: '/signup/:account_type' } );
+  this.route('forgot-password');
+  this.route('reconfirm-email');
 });
 
 export default Router;

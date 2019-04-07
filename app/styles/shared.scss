@@ -3,10 +3,10 @@
   font-family: GothamBold;
   color: gray;
   &.live {
-    color: #0cac78;
+    color: $AU-color-success;
   }
   &.deactivated {
-    color: #f69900;
+    color: $AU-color-warning;
   }
 }
 a.au-btn.no-padding {
@@ -37,7 +37,7 @@ div.feedback {
   padding-bottom: 0.5rem;
 }
 
-a.float-right, b.float-right {
+span.float-right, a.float-right, b.float-right {
   float: right;
 }
 
@@ -50,7 +50,7 @@ a.float-left, b.float-left {
   padding-top: 1.2rem;
   font-size: 0.9rem;
   font-weight: bold;
-  color: #ff635c;
+  color: $AU-color-error;
 }
 
 .au-body.au-body--black ::selection {
@@ -107,4 +107,24 @@ h2.underline-light {
 h2.underline-dark {
   padding-bottom: 1.8rem;
   border-bottom: 9px solid $AU-color-foreground-action;
+}
+span.password-strength {
+  padding-top: 1rem;
+  border-bottom: 4px solid white;
+  &.short {
+    color: $AU-color-error;
+    border-color: $AU-color-error;
+  }
+  &.weak {
+    color: $AU-color-warning;
+    border-color: $AU-color-warning;
+  }
+  &.strong {
+    color: $AU-color-success;
+    border-color: $AU-color-success;
+  }
+  &.blank {
+    color: gray;
+    border-color: gray;
+  }
 }
