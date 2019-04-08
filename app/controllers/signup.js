@@ -62,7 +62,7 @@ export default Controller.extend(Validations, {
           password: this.get('password'),
         }
       }).then((response) => {
-        controller.transitionToRoute('sign-in')
+        controller.transitionToRoute('envelope-open')
       }).catch((error) => {
         debugger;
       }).finally(() => $('.overlay').hide());

@@ -38,6 +38,7 @@ Router.map(function() {
   this.route('signup', { path: '/signup/:account_type' } );
   this.route('forgot-password');
   this.route('reconfirm-email');
+  this.route('success', { path: '/success/:message' } );
 });
 
 export default Router;

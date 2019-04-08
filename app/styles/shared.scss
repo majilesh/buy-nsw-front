@@ -128,3 +128,13 @@ span.password-strength {
     border-color: gray;
   }
 }
+div.success-message {
+  i.fa {
+    font-size: 400%;
+  }
+  padding: 2rem;
+  text-align: center;
+  background-color: #0a7cb9;
+  color: white;
+
+}

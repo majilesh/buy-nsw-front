@@ -33,7 +33,7 @@ export default Controller.extend(Validations, {
           email: this.get('email'),
         }
       }).then((response) => {
-        controller.transitionToRoute('sign-in')
+        controller.transitionToRoute('success', 'confirmation_sent')
       }).catch((error) => {
         debugger;
       }).finally(() => $('.overlay').hide());

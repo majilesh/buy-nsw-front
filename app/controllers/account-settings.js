@@ -66,11 +66,7 @@ export default Controller.extend(Validations, {
           currentPassword: this.get('currentPassword'),
         }
       }).then((response) => {
-        if(this.get('model.roles').includes('seller')) {
-          controller.transitionToRoute('seller-dashboard')
-        } else {
-          controller.transitionToRoute('buyer-dashboard')
-        }
+        controller.transitionToRoute('success', 'account_updated');
       }).catch((error) => {
         debugger;
       }).finally(() => $('.overlay').hide());
