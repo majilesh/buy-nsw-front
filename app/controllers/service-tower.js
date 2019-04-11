@@ -5,6 +5,13 @@ export default Controller.extend({
   serviceTower: 'all',
   sellers: "",
   services: "",
+  locations: "",
+  bandwidth: "",
+  terms: "",
+  dataPerMonth: "",
+  numberOfDevices: "",
+  minutes: "",
+  simultaneousCalls: "",
   sortBy:  null,
   pageNum: 0,
   pageNumPlusOne: computed('pageNum', function() {
@@ -23,6 +30,13 @@ export default Controller.extend({
     },
     changeServiceTower() {
       this.set('services', '');
+      this.set('locations', '');
+      this.set('bandwidth', '');
+      this.set('terms', '');
+      this.set('dataPerMonth', '');
+      this.set('numberOfDevices', '');
+      this.set('minutes', '');
+      this.set('simultaneousCalls', '');
     },
     nextPage() {
       this.incrementProperty('pageNum');

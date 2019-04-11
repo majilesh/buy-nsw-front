@@ -39,6 +39,7 @@ Router.map(function() {
   this.route('forgot-password');
   this.route('reconfirm-email');
   this.route('success', { path: '/success/:message' } );
+  this.route('tpa-product', { path: '/tpa-product/:id' } );
 });
 
 export default Router;

@@ -1,5 +1,6 @@
 import Service from '@ember/service';
 import { inject } from '@ember/service';
+import { computed } from '@ember/object';
 import Ember from 'ember';
 const {$} = Ember;
 
@@ -10,25 +11,26 @@ export default Service.extend({
   user: null,
   config: null,
   csrfToken: null,
-  isSeller: null,
-  isBuyer: null,
   trueUser: null,
   message: null,
+
+  isSeller: computed('user.roles', function() {
+    let roles = this.get('user.roles');
+    return roles && roles.includes('seller');
+  }),
+  isAdmin: computed('user.roles', function() {
+    let roles = this.get('user.roles');
+    return roles && roles.includes('admin');
+  }),
 
   handleSuccess(response, goHome) {
     this.set('config', response.config);
     this.set('csrfToken', response.csrf_token);
     if (response.user != null) {
       this.set('user', response.user);
-      this.set('isAdmin', response.user.roles.includes('admin'));
-      this.set('isSeller', response.user.roles.includes('seller'));
-      this.set('isBuyer', response.user.roles.includes('buyer'));
       this.set('trueUser', response.true_user);
     } else {
       this.set('user', null);
-      this.set('isAdmin', null);
-      this.set('isSeller', null); 
-      this.set('isBuyer', null);
       this.set('trueUser', null);
     }
 

@@ -8,6 +8,4 @@ export default Route.extend({
     this._super(controller, model);
     controller.set('serviceTower', this.get('serviceTower'));
   },
-  resetController(controller) {
-  }
 });

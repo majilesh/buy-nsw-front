@@ -14,9 +14,9 @@
 <div class="container">
   {{# if this.model.seller }}
     <div class="row">
-      <div class="col-sm-1">
+      <div class="col-sm-2">
       </div>
-      <div class="col-sm-9">
+      <div class="col-sm-8">
         {{#ds/page-alert alertType=this.model.seller.statusType}}
           <h5 class="au-display-sm"><b>Your company profile {{this.model.seller.statusMessage}}.</b></h5>
         {{/ds/page-alert}}
@@ -26,9 +26,9 @@
     </div>
     {{# if this.model.seller.expired }}
       <div class="row">
-        <div class="col-sm-1">
+        <div class="col-sm-2">
         </div>
-        <div class="col-sm-9">
+        <div class="col-sm-8">
           {{#ds/page-alert alertType="warning"}}
             <h5>Some of your documents are expired now, please refresh them as soon as possible.</h5>
           {{/ds/page-alert}}
@@ -38,10 +38,10 @@
       </div>
     {{/ if }}
     <div class="row">
-      <div class="col-sm-5 dash-title">
+      <div class="col-sm-4 dash-title">
         <h5>{{this.model.seller.name}}</h5>
       </div>
-      <div class="col-sm-5">
+      <div class="col-sm-6">
         <div class="btn-cta-group">
             {{ link-to
               "Manage company profile"
@@ -53,10 +53,10 @@
     </div>
     {{#if this.model.seller.offersCloud}}
       <div class="row">
-        <div class="col-sm-5 dash-title">
+        <div class="col-sm-4 dash-title">
           <h5>{{this.model.products.length}} products</h5>
         </div>
-        <div class="col-sm-5">
+        <div class="col-sm-6">
           <div class="btn-cta-group">
             {{ link-to
               "Manage cloud products"
@@ -69,10 +69,10 @@
     {{/if}}
     {{#if this.model.seller.offersTelco}}
       <div class="row">
-        <div class="col-sm-5 dash-title">
+        <div class="col-sm-4 dash-title">
           <h5>{{this.model.telco_products.length}} telco products</h5>
         </div>
-        <div class="col-sm-5">
+        <div class="col-sm-6">
           <div class="btn-cta-group">
             {{ link-to
               "Manage telco products"
@@ -84,10 +84,10 @@
       </div>
     {{/if}}
     <div class="row">
-      <div class="col-sm-5 dash-title">
+      <div class="col-sm-4 dash-title">
         <h5>{{this.model.members.length}} members</h5>
       </div>
-      <div class="col-sm-5">
+      <div class="col-sm-6">
         <div class="btn-cta-group">
           {{ link-to
             "Manage team members"
@@ -99,9 +99,9 @@
     </div>
   {{else}}
     <div class="row">
-      <div class="col-sm-5">
+      <div class="col-sm-4">
       </div>
-      <div class="col-sm-5">
+      <div class="col-sm-6">
         <div class="btn-cta-group">
           {{ link-to
             "Apply to sell ICT products and services"
@@ -115,10 +115,10 @@
   {{/if}}
 
   <div class="row">
-    <div class="col-sm-5 dash-title">
+    <div class="col-sm-4 dash-title">
       <h5>{{this.model.user.email}}</h5>
     </div>
-    <div class="col-sm-5">
+    <div class="col-sm-6">
       <div class="btn-cta-group">
         {{link-to
           "Change email or password"
