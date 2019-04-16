@@ -13,8 +13,6 @@ Router.map(function() {
   this.route('products');
   this.route('product', { path: '/products/:product_id'});
   this.route('register-seller');
-  this.route('telco-products');
-  this.route('telco-form', { path: '/telco-products/:form_key'});
   this.route('buyer-guide');
   this.route('seller-guide');
   this.route('contact');
@@ -23,8 +21,6 @@ Router.map(function() {
   this.route('accessibility');
   this.route('license');
   this.route('sign-in');
-  this.route('sign-up-seller');
-  this.route('sign-up-buyer');
   this.route('performance');
   this.route('register-buyer');
   this.route('buyer-dashboard');
@@ -32,14 +28,13 @@ Router.map(function() {
   this.route('not-found', { path: '/*path' });
   this.route('team-members');
   this.route('invite-team-member');
-  this.route('tpa');
-  this.route('service-tower', { path: '/tpa/:service_tower' });
   this.route('account-settings');
   this.route('signup', { path: '/signup/:account_type' } );
   this.route('forgot-password');
   this.route('reconfirm-email');
   this.route('success', { path: '/success/:message' } );
-  this.route('tpa-product', { path: '/tpa-product/:id' } );
+
+  this.mount('telco');
 });
 
 export default Router;
