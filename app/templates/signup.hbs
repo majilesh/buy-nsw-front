@@ -23,7 +23,7 @@
     }}
     {{#if (and showEmailError (v-get this "email" "isInvalid"))}}
       <div>
-        <span class="password-strength short float-right">Email address is not valid</span>
+        <span class="field-error error">Email address is not valid</span>
       </div>
       <div class="clear-both"></div>
     {{/if}}
@@ -43,13 +43,13 @@
     }}
     <div>
       {{#if (eq password.length 0)}}
-        <span class="password-strength blank float-right">Password is blank</span>
+        <span class="field-error blank">Password is blank</span>
       {{else if (lt password.length 8)}}
-        <span class="password-strength short float-right">Password is too short</span>
+        <span class="field-error short">Password is too short</span>
       {{else if (lt strength 3)}}
-        <span class="password-strength weak float-right">Password is not strong enough</span>
+        <span class="field-error weak">Password is not strong enough</span>
       {{else}}
-        <span class="password-strength strong float-right">Password is strong</span>
+        <span class="field-error strong">Password is strong</span>
       {{/if}}
       <div class="clear-both"></div>
     </div>
@@ -67,7 +67,7 @@
     }}
     {{#if (and showConfirmError (v-get this "confirmPassword" "isInvalid"))}}
       <div>
-        <span class="password-strength short float-right">Passwords don't match</span>
+        <span class="field-error short">Passwords don't match</span>
       </div>
       <div class="clear-both"></div>
     {{/if}}

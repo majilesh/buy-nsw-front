@@ -1,0 +1,41 @@
+{{#ds/template-body}}
+  <div class="row">
+    <div class="col-sm-1">
+    </div>
+    <div class="col-sm-5">
+      <h1 class="au-display-lg">{{this.model.category}}</h1>
+    </div>
+    <div class="col-sm-5">
+      Product ID: <h2 class="au-display-md">{{this.model.id}}</h2>
+    </div>
+  </div>
+  <div class="row">
+    {{link-to "serice-tower" this.model.tower this.model.tower}} 
+    <hr>
+  </div>
+  {{#if this.model.public}}
+    <div class="row">
+      <div class="col-sm-1">
+      </div>
+      <div class="col-sm-10">
+        <p class="au-callout">
+          To see the full details of a product, create a buyer account, or sign in.
+        </p>
+      </div>
+    </div>
+  {{else}}
+    {{#each-in this.model.fields as |field value|}}
+      <div class="row">
+        <div class="col-sm-1">
+        </div>
+        <div class="col-sm-4">
+          <b>{{field}}</b>
+        </div>
+        <div class="col-sm-4">
+          {{value}}
+        </div>
+      </div>
+      <hr>
+    {{/each-in}}
+  {{/if}}
+{{/ds/template-body}}

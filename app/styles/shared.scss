@@ -108,14 +108,15 @@ h2.underline-dark {
   padding-bottom: 1.8rem;
   border-bottom: 9px solid $AU-color-foreground-action;
 }
-span.password-strength {
+span.field-error {
   padding-top: 1rem;
   border-bottom: 4px solid white;
-  &.short {
+  float: right;
+  &.short,&.error {
     color: $AU-color-error;
     border-color: $AU-color-error;
   }
-  &.weak {
+  &.weak,&.warning {
     color: $AU-color-warning;
     border-color: $AU-color-warning;
   }
@@ -123,7 +124,7 @@ span.password-strength {
     color: $AU-color-success;
     border-color: $AU-color-success;
   }
-  &.blank {
+  &.blank,&.gray {
     color: gray;
     border-color: gray;
   }

@@ -21,6 +21,7 @@ export default DS.RESTAdapter.extend({
       events: 'events',
       users: 'users',
       telco_products: 'telco_products',
+      public_telco_products: 'telco_products',
       feedbacks: 'events',
       members: 'users',
     }

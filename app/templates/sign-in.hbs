@@ -48,6 +48,10 @@
     }}
       <b>Password</b>
     {{/ds/text-input}}
+    <div>
+      <span class="field-error error">{{auth.message}}</span>
+    </div>
+    <div class="clear-both"></div>
   </p>
   <p>
     <label class="au-control-input">
@@ -58,9 +62,6 @@
       }}
       <span class="au-control-input__text"><b>Remember me</b></span>
     </label>
-    <b class="form-error float-right">
-      {{auth.message}}
-    </b>
   </p>
   <p>
     <a
