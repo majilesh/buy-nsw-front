@@ -1,4 +1,4 @@
-{{#ds/template-body}}
+{{#dds/template-body}}
 <div class="col-sm-5">
   <h1 class="au-display-lg">Create an account</h1>
 </div>
@@ -31,23 +31,23 @@
 </div>
 <div class="col-sm-7">
   <p>
-    {{#ds/text-input
+    {{#dds/text-input
       wide=true
       field=(mut email)
       enter=(action "login")
     }}
       <b>Email address</b>
-    {{/ds/text-input}}
+    {{/dds/text-input}}
   </p>
   <p>
-    {{#ds/text-input
+    {{#dds/text-input
       wide=true
       password=true
       field=(mut password)
       enter=(action "login")
     }}
       <b>Password</b>
-    {{/ds/text-input}}
+    {{/dds/text-input}}
     <div>
       <span class="field-error error">{{auth.message}}</span>
     </div>
@@ -72,4 +72,4 @@
     </a>
   </p>
 </div>
-{{/ds/template-body}}
+{{/dds/template-body}}

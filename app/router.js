@@ -35,6 +35,7 @@ Router.map(function() {
   this.route('success', { path: '/success/:message' } );
 
   this.mount('telco');
+  this.mount('dds');
 });
 
 export default Router;

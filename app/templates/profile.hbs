@@ -1,8 +1,8 @@
-{{#ds/template-body}}
+{{#dds/template-body}}
   <div class="col-sm-1">
   </div>
   <div class="col-sm-10">
-    {{ ds/bread-crumbs
+    {{ dds/bread-crumbs
       links=(array
         (hash name="Dashboard" route="seller-dashboard")
         (hash name=(or this.model.name "Profile"))
@@ -12,7 +12,7 @@
     {{#unless this.model.underEdit}}
       <br>
       <br>
-      {{#ds/page-alert alertType="warning"}}
+      {{#dds/page-alert alertType="warning"}}
         {{# if this.model.pending }}
           <h3>Profile is locked for review</h3>
           <p>You have submitted entries or changes. While these are under review, you won't be able to view or edit the details of your profile.</p>
@@ -57,7 +57,7 @@
           {{/ if }}
         {{/ if }}
 
-      {{/ds/page-alert}}
+      {{/dds/page-alert}}
     {{/unless}}
     <h3 class="au-display-lg">Company Profile</h3>
 
@@ -167,4 +167,4 @@
       {{/if}}
     </p>
   </div>
-{{/ds/template-body}}
+{{/dds/template-body}}

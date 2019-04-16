@@ -1,8 +1,8 @@
-{{#ds/template-body}}
+{{#dds/template-body}}
   <div class="col-sm-1">
   </div>
   <div class="col-sm-10">
-    {{ ds/bread-crumbs
+    {{ dds/bread-crumbs
       links=(array
         (hash name="Dashboard" route="seller-dashboard")
         (hash name="Cloud products" route="products")
@@ -26,9 +26,9 @@
     </p>
     {{#if pageAlertMessage}}
       <br>
-      {{#ds/page-alert alertType=pageAlertType}}
+      {{#dds/page-alert alertType=pageAlertType}}
         <b>{{pageAlertMessage}}</b>
-      {{/ds/page-alert}}
+      {{/dds/page-alert}}
     {{/if}}
     <p>
       <button class="au-btn au-btn--wide" onclick={{action "createProduct"}}>Add a product</button>
@@ -40,4 +40,4 @@
       {{/if}}
     {{/each}}
   </div>
-{{/ds/template-body}}
+{{/dds/template-body}}

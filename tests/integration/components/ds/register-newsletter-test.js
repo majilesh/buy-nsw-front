@@ -3,22 +3,22 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-module('Integration | Component | ds/register-newsletter', function(hooks) {
+module('Integration | Component | dds/register-newsletter', function(hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function(assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`{{ds/register-newsletter}}`);
+    await render(hbs`{{dds/register-newsletter}}`);
 
     assert.equal(this.element.textContent.trim(), '');
 
     // Template block usage:
     await render(hbs`
-      {{#ds/register-newsletter}}
+      {{#dds/register-newsletter}}
         template block text
-      {{/ds/register-newsletter}}
+      {{/dds/register-newsletter}}
     `);
 
     assert.equal(this.element.textContent.trim(), 'template block text');

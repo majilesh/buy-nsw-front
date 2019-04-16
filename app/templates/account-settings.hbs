@@ -1,10 +1,10 @@
-{{#ds/template-body}}
+{{#dds/template-body}}
   <div class="col-sm-4">
     <h1 class="au-display-lg">Your account settings</h1>
   </div>
   <div class="col-sm-8">
     <b>Your email address</b>
-    {{ds/text-input
+    {{dds/text-input
       wide=true
       allRow=true
       field=(mut this.model.email)
@@ -24,7 +24,7 @@
       Passwords must be at least 8 characters long.
       Tip: create a password with 3 or more words – it's secure and easy to remember.
     </p>
-    {{ds/text-input
+    {{dds/text-input
       wide=true
       allRow=true
       password=true
@@ -47,7 +47,7 @@
     <br>
     <b>Confirm your new password</b>
     <br>
-    {{ds/text-input
+    {{dds/text-input
       wide=true
       allRow=true
       password=true
@@ -64,7 +64,7 @@
     <hr>
     <b>Enter your current password</b>
     <p>We need this to confirm your changes</p>
-    {{ds/text-input
+    {{dds/text-input
       wide=true
       allRow=true
       password=true
@@ -82,4 +82,4 @@
       </a>
     </p>
   </div>
-{{/ds/template-body}}
+{{/dds/template-body}}

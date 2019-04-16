@@ -3,22 +3,22 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-module('Integration | Component | ds/radio-group', function(hooks) {
+module('Integration | Component | dds/radio-group', function(hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function(assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`{{ds/radio-group}}`);
+    await render(hbs`{{dds/radio-group}}`);
 
     assert.equal(this.element.textContent.trim(), '');
 
     // Template block usage:
     await render(hbs`
-      {{#ds/radio-group}}
+      {{#dds/radio-group}}
         template block text
-      {{/ds/radio-group}}
+      {{/dds/radio-group}}
     `);
 
     assert.equal(this.element.textContent.trim(), 'template block text');

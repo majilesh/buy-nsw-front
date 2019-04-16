@@ -3,22 +3,22 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-module('Integration | Component | ds/checkbox-item', function(hooks) {
+module('Integration | Component | dds/checkbox-item', function(hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function(assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`{{ds/checkbox-item}}`);
+    await render(hbs`{{dds/checkbox-item}}`);
 
     assert.equal(this.element.textContent.trim(), '');
 
     // Template block usage:
     await render(hbs`
-      {{#ds/checkbox-item}}
+      {{#dds/checkbox-item}}
         template block text
-      {{/ds/checkbox-item}}
+      {{/dds/checkbox-item}}
     `);
 
     assert.equal(this.element.textContent.trim(), 'template block text');
