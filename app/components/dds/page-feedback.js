@@ -1,7 +1,13 @@
 import Component from '@ember/component';
+import { buildValidations, validator } from 'ember-cp-validations';
 import { inject } from '@ember/service';
 
-export default Component.extend({
+const Validations = buildValidations({
+  issue: validator('presence', true),
+  task: validator('presence', true),
+});
+
+export default Component.extend(Validations, {
   auth: inject(),
   store: inject(),
   router: inject(),

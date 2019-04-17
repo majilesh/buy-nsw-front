@@ -36,6 +36,7 @@
         <a
           class="au-btn au-btn--wide float-right"
           onClick={{action "sendFeedback"}}
+          disabled={{v-get this "isInvalid"}}
         >
           Send feedback
         </a>
