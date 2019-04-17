@@ -111,7 +111,10 @@ h2.underline-dark {
 span.field-error {
   padding-top: 1rem;
   border-bottom: 4px solid white;
-  float: right;
+  float: left;
+  @include AU-media( sm ) {
+    float: right;
+  }
   &.short,&.error {
     color: $AU-color-error;
     border-color: $AU-color-error;

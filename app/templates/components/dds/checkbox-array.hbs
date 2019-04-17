@@ -26,7 +26,7 @@
 {{/if}}
 {{#each items as |item|}}
   <div class={{if wide (if break "col-sm-12" "col-sm-6") "col-sm-3"}}>
-    {{ds/checkbox-item
+    {{dds/checkbox-item
       name=item.key
       label=item.label
       field=(mut field)

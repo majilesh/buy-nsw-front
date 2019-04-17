@@ -11,21 +11,21 @@
         </h2>
         <br>
         <p>
-          {{#ds/text-input
+          {{#dds/text-input
             wide=true
             field=(mut feedback.task)
           }}
             <b>What were you doing?</b>
-          {{/ds/text-input}}
+          {{/dds/text-input}}
         </p>
 
         <p>
-          {{#ds/text-input
+          {{#dds/text-input
             wide=true
             field=(mut feedback.issue)
           }}
             <b>What went wrong?</b>
-          {{/ds/text-input}}
+          {{/dds/text-input}}
         </p>
 
         {{#if auth.user}}
