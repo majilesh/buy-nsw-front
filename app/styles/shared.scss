@@ -38,7 +38,10 @@ div.feedback {
 }
 
 span.float-right, a.float-right, b.float-right {
-  float: right;
+  float: left;
+  @include AU-media( sm ) {
+    float: right;
+  }
 }
 
 a.float-left, b.float-left {

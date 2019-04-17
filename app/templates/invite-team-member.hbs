@@ -39,10 +39,11 @@
         {{/if}}
         {{#if (v-get this "model.email" "isInvalid")}}
           <div>
-            <span class="field-error">
+            <span class="field-error error">
               {{v-get this "model.email" "message"}}
             </span>
           </div>
+          <div class="clear-both"></div>
         {{/if}}
       {{/if}}
     </p>
