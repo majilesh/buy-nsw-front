@@ -1,5 +1,5 @@
-{{#ds/template-body}}
-  {{ ds/bread-crumbs
+{{#dds/template-body}}
+  {{ dds/bread-crumbs
     links=(array
       (hash name="buy.nsw" route="index")
       (hash name="Products and Services")
@@ -22,8 +22,8 @@
         <b>Apply filters</b>
       </h2>
       <br>
-      {{#ds/accordion-container title="Service towers" expanded=true collapsable=false}}
-        {{ds/radio-group
+      {{#dds/accordion-container title="Service towers" expanded=true collapsable=false}}
+        {{dds/radio-group
           items=(array
             (hash
               key="all"
@@ -49,10 +49,10 @@
           onChange=(action "changeServiceTower")
           field=(mut serviceTower)
         }}
-      {{/ds/accordion-container}}
+      {{/dds/accordion-container}}
       <br>
-      {{#ds/accordion-container title="Sellers" expanded=true}}
-        {{ds/checkbox-array
+      {{#dds/accordion-container title="Sellers" expanded=true}}
+        {{dds/checkbox-array
           checkAll=true
           field=(mut sellers)
           break=true
@@ -92,11 +92,11 @@
             )
           )
         }}
-      {{/ds/accordion-container}}
+      {{/dds/accordion-container}}
       {{#if (eq serviceTower "fixed-data-services")}}
         <br>
-        {{#ds/accordion-container title="Fixed Data Services" expanded=true}}
-          {{ds/checkbox-array
+        {{#dds/accordion-container title="Fixed Data Services" expanded=true}}
+          {{dds/checkbox-array
             checkAll=true
             field=(mut services)
             break=true
@@ -132,10 +132,10 @@
               )
             )
           }}
-        {{/ds/accordion-container}}
+        {{/dds/accordion-container}}
         <br>
-        {{#ds/accordion-container title="Location" expanded=true}}
-          {{ds/checkbox-array
+        {{#dds/accordion-container title="Location" expanded=true}}
+          {{dds/checkbox-array
             checkAll=true
             field=(mut locations)
             break=true
@@ -155,10 +155,10 @@
               )
             )
           }}
-        {{/ds/accordion-container}}
+        {{/dds/accordion-container}}
         <br>
-        {{#ds/accordion-container title="Bandwidth" expanded=true}}
-          {{ds/checkbox-array
+        {{#dds/accordion-container title="Bandwidth" expanded=true}}
+          {{dds/checkbox-array
             checkAll=true
             field=(mut bandwidth)
             break=true
@@ -186,12 +186,12 @@
               )
             )
           }}
-        {{/ds/accordion-container}}
+        {{/dds/accordion-container}}
       {{/if}}
       {{#if (eq serviceTower "internet-services")}}
         <br>
-        {{#ds/accordion-container title="Internet Services" expanded=true}}
-          {{ds/checkbox-array
+        {{#dds/accordion-container title="Internet Services" expanded=true}}
+          {{dds/checkbox-array
             checkAll=true
             field=(mut services)
             break=true
@@ -231,10 +231,10 @@
               )
             )
           }}
-        {{/ds/accordion-container}}
+        {{/dds/accordion-container}}
         <br>
-        {{#ds/accordion-container title="Location" expanded=true}}
-          {{ds/checkbox-array
+        {{#dds/accordion-container title="Location" expanded=true}}
+          {{dds/checkbox-array
             checkAll=true
             field=(mut locations)
             break=true
@@ -254,12 +254,12 @@
               )
             )
           }}
-        {{/ds/accordion-container}}
+        {{/dds/accordion-container}}
       {{/if}}
       {{#if (eq serviceTower "voice-services")}}
         <br>
-        {{#ds/accordion-container title="Voice Services" expanded=true}}
-          {{ds/checkbox-array
+        {{#dds/accordion-container title="Voice Services" expanded=true}}
+          {{dds/checkbox-array
             checkAll=true
             field=(mut services)
             break=true
@@ -307,10 +307,10 @@
               )
             )
           }}
-        {{/ds/accordion-container}}
+        {{/dds/accordion-container}}
         <br>
-        {{#ds/accordion-container title="Location" expanded=true}}
-          {{ds/checkbox-array
+        {{#dds/accordion-container title="Location" expanded=true}}
+          {{dds/checkbox-array
             checkAll=true
             field=(mut locations)
             break=true
@@ -330,10 +330,10 @@
               )
             )
           }}
-        {{/ds/accordion-container}}
+        {{/dds/accordion-container}}
         <br>
-        {{#ds/accordion-container title="Simultaneous Calls" expanded=true}}
-          {{ds/checkbox-array
+        {{#dds/accordion-container title="Simultaneous Calls" expanded=true}}
+          {{dds/checkbox-array
             checkAll=true
             field=(mut simultaneousCalls)
             break=true
@@ -357,12 +357,12 @@
               )
             )
           }}
-        {{/ds/accordion-container}}
+        {{/dds/accordion-container}}
       {{/if}}
       {{#if (eq serviceTower "mobile-services")}}
         <br>
-        {{#ds/accordion-container title="Mobile services" expanded=true}}
-          {{ds/checkbox-array
+        {{#dds/accordion-container title="Mobile services" expanded=true}}
+          {{dds/checkbox-array
             checkAll=true
             field=(mut services)
             break=true
@@ -398,10 +398,10 @@
               )
             )
           }}
-        {{/ds/accordion-container}}
+        {{/dds/accordion-container}}
         <br>
-        {{#ds/accordion-container title="Terms" expanded=true}}
-          {{ds/checkbox-array
+        {{#dds/accordion-container title="Terms" expanded=true}}
+          {{dds/checkbox-array
             checkAll=true
             field=(mut terms)
             break=true
@@ -421,10 +421,10 @@
               )
             )
           }}
-        {{/ds/accordion-container}}
+        {{/dds/accordion-container}}
         <br>
-        {{#ds/accordion-container title="Data per month" expanded=true}}
-          {{ds/checkbox-array
+        {{#dds/accordion-container title="Data per month" expanded=true}}
+          {{dds/checkbox-array
             checkAll=true
             field=(mut dataPerMonth)
             wide=true
@@ -547,10 +547,10 @@
               )
             )
           }}
-        {{/ds/accordion-container}}
+        {{/dds/accordion-container}}
         <br>
-        {{#ds/accordion-container title="Number of devices" expanded=true}}
-          {{ds/checkbox-array
+        {{#dds/accordion-container title="Number of devices" expanded=true}}
+          {{dds/checkbox-array
             checkAll=true
             field=(mut numberOfDevices)
             break=true
@@ -582,7 +582,7 @@
               )
             )
           }}
-        {{/ds/accordion-container}}
+        {{/dds/accordion-container}}
       {{/if}}
       <br>
       <a class="au-btn" onclick={{action "search"}}>Update results</a>
@@ -632,4 +632,4 @@
       </div>
     </div>
   </div>
-{{/ds/template-body}}
+{{/dds/template-body}}

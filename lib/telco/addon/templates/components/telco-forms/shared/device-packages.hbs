@@ -2,20 +2,20 @@
 <br>
 <br>
 <div class="col-sm-6">
-  {{ds/text-input
+  {{dds/text-input
     label-text="Package 1"
     field=(mut product.device_package_one)
     pattern="[\sA-Za-z0-9]*"
   }}
   <br>
-  {{ds/text-input
+  {{dds/text-input
     label-text="Package 2"
     field=(mut product.device_package_two)
     pattern="[\sA-Za-z0-9]*"
     disabled=(is-empty product.device_package_one)
   }}
   <br>
-  {{ds/text-input
+  {{dds/text-input
     label-text="Package 3"
     field=(mut product.device_package_three)
     pattern="[\sA-Za-z0-9]*"
@@ -26,7 +26,7 @@
   }}
 </div>
 <div class="col-sm-6">
-  {{ds/text-input
+  {{dds/text-input
     label-text="Package 4"
     field=(mut product.device_package_four)
     pattern="[\sA-Za-z0-9]*"
@@ -37,7 +37,7 @@
               )
   }}
   <br>
-  {{ds/text-input
+  {{dds/text-input
     label-text="Package 5"
     field=(mut product.device_package_five)
     pattern="[\sA-Za-z0-9]*"
@@ -49,7 +49,7 @@
              )
   }}
   <br>
-  {{ds/text-input
+  {{dds/text-input
     label-text="Package 6"
     field=(mut product.device_package_six)
     pattern="[\sA-Za-z0-9]*"

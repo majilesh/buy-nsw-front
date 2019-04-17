@@ -1,5 +1,5 @@
-{{#ds/template-body}}
-  {{ ds/bread-crumbs
+{{#dds/template-body}}
+  {{ dds/bread-crumbs
     links=(array
       (hash name="Dashboard" route="seller-dashboard")
       (hash name="TPA products" route="telco-products")
@@ -8,7 +8,7 @@
   <h3 class="au-display-lg">Your TPA products and services</h3>
   <br><br>
   <div class="col-sm-3">
-    {{ ds/inpage-nav
+    {{ dds/inpage-nav
       sections=(array
         (hash link="fixed-data-services" name="Fixed Data")
         (hash link="internet-services" name="Internert Services")
@@ -241,7 +241,7 @@
     <br>
     <TelcoProductStack @title="Common Services" @id="common-services">
       <div class="inner">
-        {{#ds/accordion-container title="Common Services"}}
+        {{#dds/accordion-container title="Common Services"}}
           <p>
             Common Services are telecommunications support services that span other services, including:
           </p>
@@ -271,7 +271,7 @@
             If you have any questions about Common Services, or engaging a supplier, you can contact the TOG team.
           </p>
 
-        {{/ds/accordion-container}}
+        {{/dds/accordion-container}}
 
         <p class="au-callout">
           <p>To view the complete service description for the Common Services according to the TPA, please download it here:</p>
@@ -379,4 +379,4 @@
     </TelcoProductStack>
     <br>
   </div>
-{{/ds/template-body}}
+{{/dds/template-body}}

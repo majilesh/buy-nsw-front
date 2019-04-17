@@ -1,5 +1,5 @@
-{{#ds/template-body}}
-  {{ ds/bread-crumbs
+{{#dds/template-body}}
+  {{ dds/bread-crumbs
     links=(array
       (hash name="Dashboard" route="seller-dashboard")
       (hash name="TPA products" route="telco-products")
@@ -9,9 +9,9 @@
 
   {{#if validationErrors }}
     <br>
-    {{#ds/page-alert alertType="error"}}
+    {{#dds/page-alert alertType="error"}}
       {{validationErrors}}
-    {{/ds/page-alert}}
+    {{/dds/page-alert}}
   {{/if}}
 
   {{component
@@ -32,4 +32,4 @@
     &nbsp;
     {{link-to "Cancel and return later" "telco-products"}}
   </p>
-{{/ds/template-body}}
+{{/dds/template-body}}
