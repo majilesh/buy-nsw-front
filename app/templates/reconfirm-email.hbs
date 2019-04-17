@@ -5,14 +5,16 @@
     <h1 class="au-display-xl">Resend instructions to confirm your account</h1>
     <p>If you did not receive an email to confirm your account, or if the one-time link has expired, we can send a new link to your email address.</p>
     <br>
-    <b>Email address</b>
-    {{dds/text-input
-      wide=true
-      allRow=true
-      field=(mut email)
-      enter=(action "submit")
-      focusOut=(action (mut showEmailError) true)
-    }}
+    <p>
+      <b>Email address</b>
+      {{dds/text-input
+        wide=true
+        allRow=true
+        field=(mut email)
+        enter=(action "submit")
+        focusOut=(action (mut showEmailError) true)
+      }}
+    </p>
     {{#if (and showEmailError (v-get this "email" "isInvalid"))}}
       <div>
         <span class="field-error error">Email address is not valid</span>
