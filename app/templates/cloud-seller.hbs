@@ -169,7 +169,40 @@
                 <b>Government experience</b>
               </div>
               <div class="col-sm-6">
-                
+                {{#if this.model.seller.no_experience}}
+                  No, we're looking forward to working with government for the first time
+                  <br>
+                {{/if}}
+                {{#if this.model.seller.local_government_experience}}
+                  Yes, with local government
+                  <br>
+                {{/if}}
+                {{#if this.model.seller.state_government_experience}}
+                  Yes, with state or territory government
+                  <br>
+                {{/if}}
+                {{#if this.model.seller.federal_government_experience}}
+                  Yes, with federal government
+                  <br>
+                {{/if}}
+                {{#if this.model.seller.international_government_experience}}
+                  Yes, with government outside Australia<br>
+                  <br>
+                {{/if}}
+              </div>
+            </div>
+            <hr class="light">
+            <div class="row">
+              <h2 class="au-display-lg">
+                Disclosures
+              </h2>
+              <hr class="light">
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <b>Receivership</b>
+              </div>
+              <div class="col-sm-6">
               </div>
             </div>
             <hr class="light">

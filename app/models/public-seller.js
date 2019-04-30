@@ -14,4 +14,9 @@ export default DS.Model.extend({
   representative_email: DS.attr('string'),
   abn: DS.attr('string'),
   addresses: DS.attr(),
+  no_experience: DS.attr('boolean'),
+  local_government_experience: DS.attr('boolean'),
+  state_government_experience: DS.attr('boolean'),
+  federal_government_experience: DS.attr('boolean'),
+  international_government_experience: DS.attr('boolean'),
 });
