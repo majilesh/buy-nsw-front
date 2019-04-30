@@ -1,0 +1,174 @@
+{{#dds/template-body}}
+  {{ dds/bread-crumbs
+    links=(array
+      (hash name="buy.nsw" route="index")
+      (hash name="Sellers")
+    )
+  }}
+  <br>
+  <div class="row">
+    <div class="col-sm-7">
+      <h2 class="au-display-xl underline-light">
+        <b>All sellers</b>
+      </h2>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-sm-5">
+      <h2 class="au-display-lg">
+        <b>Apply filters</b>
+      </h2>
+      <br>
+      {{#dds/accordion-container title="Services" expanded=true}}
+        {{dds/checkbox-array
+          checkAll=true
+          field=(mut services)
+          break=true
+          wide=true
+          items=(array
+            (hash
+              key="cloud-services"
+              label="Cloud products and support"
+            )
+            (hash
+              key="software-development"
+              label="Software design and development"
+            )
+            (hash
+              key="software-licensing"
+              label="Software licensing and maintenance"
+            )
+            (hash
+              key="end-user-computing"
+              label="End-user computing and peripherals"
+            )
+            (hash
+              key="infrastructure"
+              label="Infrastructure and networks"
+            )
+            (hash
+              key="telecommunications"
+              label="Telecommunications"
+            )
+            (hash
+              key="managed-services"
+              label="Managed services"
+            )
+            (hash
+              key="advisory-consulting"
+              label="Advisory and consulting"
+            )
+            (hash
+              key="training-learning"
+              label="Training and learning"
+            )
+          )
+        }}
+      {{/dds/accordion-container}}
+      <br>
+      {{#dds/accordion-container title="Business identifiers" expanded=true}}
+        {{dds/checkbox-array
+          checkAll=true
+          field=(mut identifiers)
+          break=true
+          wide=true
+          items=(array
+            (hash
+              key="disability"
+              label="Australian disability enterprise"
+            )
+            (hash
+              key="indigenous"
+              label="Aboriginal or Torres Strait Islander business"
+            )
+            (hash
+              key="not_for_profit"
+              label="Not for profit/social enterprise"
+            )
+            (hash
+              key="regional"
+              label="Regional"
+            )
+            (hash
+              key="start_up"
+              label="Start-up"
+            )
+            (hash
+              key="sme"
+              label="SME"
+            )
+          )
+        }}
+      {{/dds/accordion-container}}
+      <br>
+      {{#dds/accordion-container title="GovDC" expanded=true}}
+        {{dds/checkbox-array
+          field=(mut govdc)
+          break=true
+          wide=true
+          items=(array
+            (hash
+              key="govdc"
+              label="GovDC"
+            )
+          )
+        }}
+      {{/dds/accordion-container}}
+      <br>
+      <a class="au-btn" onclick={{action "search"}}>Update results</a>
+      <br>
+      <br>
+      <br>
+    </div>
+    <div class="col-sm-7">
+      <h2 class="au-display-lg underline-dark">
+        <b>{{sellersCount}} sellers</b>
+      </h2>
+      <br>
+      <br>
+      {{dds/text-input
+        wide=true
+        allRow=true
+        field=(mut term)
+        enter=(action "search")
+        pleceHolder="Keyword search"
+      }}
+      <br>
+      {{#if sellers}}
+        {{#each sellers as |seller|}}
+          {{#link-to "cloud-seller" seller.id}}
+            <h2 class="au-display-xl">
+              {{seller.name}}
+            </h2>
+          {{/link-to}}
+          <ul class="au-tags">
+            {{#each seller.tags as |tag|}}
+              <li>
+                {{tag}}
+              </li>
+            {{/each}}
+          </ul>
+          <p>{{seller.summary}}</p>
+          <hr>
+        {{/each}}
+      {{/if}}
+      <br>
+      <br>
+      <div>
+        {{#if (gt pageNum 1)}}
+          <a class="float-left" href="#" onclick={{action "lastPage"}}>
+            ← Previous
+          </a>
+        {{/if}}
+
+        {{#if (lt pageNum totalPages)}}
+          <a class="float-right" href="#" onclick={{action "nextPage"}}>
+            Next →
+          </a>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+{{/dds/template-body}}

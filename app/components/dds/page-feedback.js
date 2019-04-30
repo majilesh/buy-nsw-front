@@ -3,8 +3,8 @@ import { buildValidations, validator } from 'ember-cp-validations';
 import { inject } from '@ember/service';
 
 const Validations = buildValidations({
-  issue: validator('presence', true),
-  task: validator('presence', true),
+  'feedback.issue': validator('presence', true),
+  'feedback.task': validator('presence', true),
 });
 
 export default Component.extend(Validations, {

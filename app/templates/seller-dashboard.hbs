@@ -67,22 +67,6 @@
         </div>
       </div>
     {{/if}}
-    {{#if this.model.seller.offersTelco}}
-      <div class="row">
-        <div class="col-sm-4 dash-title">
-          <b>{{this.model.telco_products.length}} telco products</b>
-        </div>
-        <div class="col-sm-6">
-          <div class="btn-cta-group">
-            {{ link-to
-              "Manage telco products"
-              "telco.telco-products"
-              class="au-cta-link small"
-            }}
-          </div>
-        </div>
-      </div>
-    {{/if}}
     <div class="row">
       <div class="col-sm-4 dash-title">
         <b>{{this.model.members.length}} members</b>

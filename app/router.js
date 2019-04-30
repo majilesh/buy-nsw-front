@@ -34,8 +34,13 @@ Router.map(function() {
   this.route('reconfirm-email');
   this.route('success', { path: '/success/:message' } );
 
-  this.mount('telco');
-  this.mount('dds');
+  this.route('cloud-search', { path: '/cloud/:section' } );
+  this.route('public-product', { path: '/cloud/product/:product_id' } );
+
+  this.route('cloud-sellers', { path: '/cloud/sellers' } );
+  this.route('cloud-seller', { path: '/cloud/seller/:seller_id' } );
+
+  // this.mount('telco');
 });
 
 export default Router;

@@ -106,10 +106,12 @@ hr.simple-white {
 h2.underline-light {
   padding-bottom: 2rem;
   border-bottom: 9px solid $NSW-colordark-foreground-muted;
+  display: inline-block;
 }
 h2.underline-dark {
   padding-bottom: 1.8rem;
   border-bottom: 9px solid $AU-color-foreground-action;
+  display: inline-block;
 }
 span.field-error {
   padding-top: 1rem;
@@ -149,4 +151,7 @@ p.thin-lines {
 }
 .text-input-label {
   margin-top: 0.6rem;
+}
+hr.light {
+  border-top: 1px solid #e0e0e0;
 }

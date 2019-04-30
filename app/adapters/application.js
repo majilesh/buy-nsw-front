@@ -18,10 +18,12 @@ export default DS.RESTAdapter.extend({
     const type_to_api = {
       sellers: 'sellers',
       products: 'products',
+      public_products: 'products',
+      public_sellers: 'sellers',
       events: 'events',
       users: 'users',
-      telco_products: 'telco_products',
-      public_telco_products: 'telco_products',
+      // telco_products: 'telco_products',
+      // public_telco_products: 'telco_products',
       feedbacks: 'events',
       members: 'users',
     }

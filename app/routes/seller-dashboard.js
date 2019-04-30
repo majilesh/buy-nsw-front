@@ -8,7 +8,7 @@ export default Route.extend({
       telco_products: this.store.findAll('telco-product'),
       members: this.store.findAll('member'),
       user: this.store.queryRecord('user', {current: true}),
-      seller: this.store.queryRecord('seller', {current: true})
+      seller: this.store.queryRecord('seller', {current: true}),
     });
   }
 });

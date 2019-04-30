@@ -1,0 +1,181 @@
+{{#dds/template-body}}
+  {{dds/bread-crumbs
+    links=(array
+      (hash name="buy.nsw" route="index")
+      (hash name="Sellers" route="cloud-sellers")
+      (hash name=this.model.seller.name)
+    )
+  }}
+  <br>
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+      {{#if (not auth.user)}}
+        {{#dds/page-alert alertType="info"}}
+          To see the full seller profile, create a buyer account, or sign in.
+        {{/dds/page-alert}}
+      {{else if (not auth.user.can_buy)}}
+        {{#dds/page-alert alertType="info"}}
+          To see the full seller profile you need to be an approved buyer.
+        {{/dds/page-alert}}
+      {{/if}}
+      <h2 class="au-display-xl">
+        {{this.model.seller.name}}
+      </h2>
+      <br>
+      <ul class="au-tags">
+        {{#each this.model.seller.tags as |tag|}}
+          <li>
+            {{tag}}
+          </li>
+        {{/each}}
+      </ul>
+      <p>{{this.model.seller.summary}}</p>
+      <br>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-sm-4">
+          {{dds/side-nav
+            title="On this page"
+            links=(array
+              (hash name="Company details" anchor="#")
+              (hash name="Recognition" anchor="#")
+              (hash name="Products" anchor="#")
+            )
+          }}
+        </div>
+        <div class="col-sm-8">
+          {{#if this.model.seller.website_url}}
+            <div class="row">
+              <div class="col-sm-6">
+                <b>Website</b>
+              </div>
+              <div class="col-sm-6">
+                <a href={{this.model.seller.website_url}}>{{this.model.seller.website_url}}</a>
+              </div>
+            </div>
+            <hr class="light">
+          {{/if}}
+          {{#if this.model.seller.linkedin_url}}
+            <div class="row">
+              <div class="col-sm-6">
+                <b>LinkedIn</b>
+              </div>
+              <div class="col-sm-6">
+                <a href={{this.model.seller.linkedin_url}}>{{this.model.seller.linkedin_url}}</a>
+              </div>
+            </div>
+            <hr class="light">
+          {{/if}}
+          {{#if auth.user.can_buy}}
+            <div class="row">
+              <div class="col-sm-6">
+                <b>Business contact</b>
+              </div>
+              <div class="col-sm-6">
+                {{this.model.seller.contact_name}}
+                <br>
+                <a href="telto:{{this.model.seller.contact_phone}}">{{this.model.seller.contact_phone}}</a>
+                <br>
+                <a href="mailto:{{this.model.seller.contact_email}}">{{this.model.seller.contact_email}}</a>
+              </div>
+            </div>
+            <hr class="light">
+          {{/if}}
+          <div class="row">
+            <h2 class="au-display-lg">
+              Company details
+            </h2>
+            <hr class="light">
+          </div>
+          {{#if auth.user.can_buy}}
+            <div class="row">
+              <div class="col-sm-6">
+                <b>Authorised representative</b>
+              </div>
+              <div class="col-sm-6">
+                {{this.model.seller.representative_name}}
+                <br>
+                <a href="telto:{{this.model.seller.representative_phone}}">{{this.model.seller.representative_phone}}</a>
+                <br>
+                <a href="mailto:{{this.model.seller.representative_email}}">{{this.model.seller.representative_email}}</a>
+              </div>
+            </div>
+            <hr class="light">
+          {{/if}}
+          <div class="row">
+            <div class="col-sm-6">
+              <b>ABN</b>
+            </div>
+            <div class="col-sm-6">
+              <a target="_blank" href="https://abr.business.gov.au/ABN/View/{{this.model.seller.abn}}">{{this.model.seller.abn}}</a>
+            </div>
+          </div>
+          <hr class="light">
+          {{#if auth.user.can_buy}}
+            <div class="row">
+              <div class="col-sm-6">
+                <b>Location</b>
+              </div>
+              <div class="col-sm-6">
+                <ul>
+                  {{#each this.model.seller.addresses as |address|}}
+                    <li>
+                      {{address.address}}<br>
+                      {{address.suburb}}<br>
+                      {{address.state}}, {{address.postcode}}<br>
+                      {{address.country}}
+                    </li>
+                  {{/each}}
+                </ul>
+              </div>
+            </div>
+            <hr class="light">
+          {{/if}}
+          {{#if (not (is-empty this.model.seller.accreditations))}}
+            <div class="row">
+              <div class="col-sm-6">
+                <b>Accreditations</b>
+              </div>
+              <div class="col-sm-6">
+                <ul>
+                  {{#each this.model.seller.accreditations as |item|}}
+                    <li>{{item}}</li>
+                  {{/each}}
+                </ul>
+              </div>
+            </div>
+            <hr class="light">
+          {{/if}}
+          {{#if (not (is-empty this.model.seller.engagements))}}
+            <div class="row">
+              <div class="col-sm-6">
+                <b>Industry engagements</b>
+              </div>
+              <div class="col-sm-6">
+                <ul>
+                  {{#each this.model.seller.engagements as |item|}}
+                    <li>{{item}}</li>
+                  {{/each}}
+                </ul>
+              </div>
+            </div>
+            <hr class="light">
+          {{/if}}
+          {{#if auth.user.can_buy}}
+            <div class="row">
+              <div class="col-sm-6">
+                <b>Government experience</b>
+              </div>
+              <div class="col-sm-6">
+                
+              </div>
+            </div>
+            <hr class="light">
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+{{/dds/template-body}}

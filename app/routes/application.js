@@ -17,7 +17,8 @@ export default Route.extend({
       $('.overlay').hide();
     },
     error: function(error) {
-      if(error.errors.firstObject.detail == "Authentication Failed") {
+      console.log(error);
+      if(error.errors && error.errors.firstObject.detail == "Authentication Failed") {
         this.transitionTo('sign-in');
         return false;
       }
