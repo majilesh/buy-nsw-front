@@ -1,0 +1,85 @@
+{{#dds/template-body}}
+  {{dds/bread-crumbs
+    links=(array
+      (hash name="buy.nsw" route="index")
+      (hash name="Products" route="cloud-search" param=this.model.product.section)
+      (hash name=this.model.product.name)
+    )
+  }}
+  <br>
+  <div id="top" class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+      {{#if (not auth.user.can_buy)}}
+        {{#dds/page-alert type="info"}}
+          Become a registered buyer to purchase this product.
+        {{/dds/page-alert}}
+      {{/if}}
+      <h2 class="au-display-xl">
+        {{this.model.product.name}}
+      </h2>
+      <div class="row">
+        <div class="col-sm-5">
+          <br>
+          by {{link-to this.model.product.public_seller_name "cloud-seller" this.model.product.public_seller_id}}
+        </div>
+        <div class="col-sm-3">
+          <br>
+          <b>Product ID:</b> {{this.model.product.id}}
+        </div>
+        {{#if auth.user.can_buy}}
+          <div class="col-sm-4">
+            <a
+              class="au-btn float-right"
+            >
+              Enquire now
+            </a>
+          </div>
+        {{/if}}
+      </div>
+      <br>
+      <ul class="au-tags">
+        {{#each this.model.product.tags as |tag|}}
+          <li>
+            {{tag}}
+          </li>
+        {{/each}}
+        {{#if (eq this.model.product.product_type 'own-product')}}
+          <li>Reseller</li>
+        {{/if}}
+      </ul>
+      <p>{{this.model.product.summary}}</p>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-sm-4">
+          {{dds/inpage-nav
+            sections=(array
+              (hash name="Features and Benefits" anchor="features-and-benefits")
+              (hash name="Pricing" anchor="pricing")
+              (hash name="Onboarding and offboarding" anchor="oboarding-and-offboarding")
+
+              (hash name="Availability and support" anchor="availability-and-support")
+              (hash name="Reporting and analytics" anchor="reporting-and-analytics")
+              (hash name="Identity and authentication" anchor="identity-and-authentication")
+
+              (hash name="Environment" anchor="environment")
+              (hash name="Locations" anchor="locations")
+              (hash name="User data" anchor="user-data")
+
+              (hash name="Backup and recovery" anchor="backup-and-recovery")
+              (hash name="Data protection" anchor="data-protection")
+              (hash name="Security standards" anchor="security-standards")
+
+              (hash name="Security practices" anchor="security-practices")
+              (hash name="Separation between users" anchor="separation-between-users")
+              (hash name="Operational security" anchor="operationl-security")
+            )
+          }}
+        </div>
+        <div class="col-sm-8">
+        </div>
+      </div>
+    </div>
+  </div>
+{{/dds/template-body}}

@@ -1,9 +1,19 @@
-<div class="telco-nav">
+<div class="inpage-nav">
   <nav class="au-inpage-nav-links" aria-label="in page navigation">
-    <h4 class="au-inpage-nav-links__heading">Contents</h4>
+    <h4 class="au-inpage-nav-links__heading"><b>On this page</b></h4>
     <ul class="au-link-list">
       {{#each sections as |item|}}
-        <li><a href="#{{item.link}}">{{item.name}}</a></li>
+        {{#unless item.hide}}
+          <li>
+            {{#if item.anchor}}
+              <a href="#{{item.anchor}}">
+                {{item.name}}
+              </a>
+            {{else}}
+              {{item-to item.name item.route}}
+            {{/if}}
+          </li>
+        {{/unless}}
       {{/each}}
     </ul>
     <div class="clear-both"></div>

@@ -7,12 +7,13 @@
     )
   }}
   <br>
-  <div class="row">
+  <div id="top" class="row">
     <div class="col-sm-1"></div>
     <div class="col-sm-10">
       {{#if (not auth.user)}}
         {{#dds/page-alert alertType="info"}}
-          To see the full seller profile, create a buyer account, or sign in.
+          To see the full seller profile, {{link-to "create a buyer account" "signup" "buyer"}}, or
+          {{link-to "sign in" "sign-in"}}.
         {{/dds/page-alert}}
       {{else if (not auth.user.can_buy)}}
         {{#dds/page-alert alertType="info"}}
@@ -36,16 +37,22 @@
       <br>
       <div class="row">
         <div class="col-sm-4">
-          {{dds/side-nav
-            title="On this page"
-            links=(array
-              (hash name="Company details" anchor="#")
-              (hash name="Recognition" anchor="#")
-              (hash name="Products" anchor="#")
+          {{dds/inpage-nav
+            sections=(array
+              (hash name="Company details" anchor="company-details")
+              (hash name="Disclosures" anchor="disclosures" hide=(not auth.user.can_buy))
+              (hash name="Recognition" anchor="recognition")
+              (hash name="Products" anchor="products" hide=(is-empty this.model.products))
             )
           }}
         </div>
         <div class="col-sm-8">
+          <div class="row" id="company-details">
+            <h2 class="au-display-lg">
+              Company details
+            </h2>
+            <hr class="light">
+          </div>
           {{#if this.model.seller.website_url}}
             <div class="row">
               <div class="col-sm-6">
@@ -83,12 +90,6 @@
             </div>
             <hr class="light">
           {{/if}}
-          <div class="row">
-            <h2 class="au-display-lg">
-              Company details
-            </h2>
-            <hr class="light">
-          </div>
           {{#if auth.user.can_buy}}
             <div class="row">
               <div class="col-sm-6">
@@ -127,6 +128,121 @@
                       {{address.state}}, {{address.postcode}}<br>
                       {{address.country}}
                     </li>
+                  {{/each}}
+                </ul>
+              </div>
+            </div>
+            <hr class="light">
+          {{/if}}
+          <div class="back-to-top">
+            <a href="#top" class="float-right">Back to top ↑</a>
+          </div>
+          {{#if auth.user.can_buy}}
+            <div class="row" id="disclosures">
+              <br>
+              <h2 class="au-display-lg">
+                Disclosures
+              </h2>
+              <hr class="light">
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <b>Receivership</b>
+              </div>
+              <div class="col-sm-6">
+                {{#if this.model.seller.receivership}}
+                  {{this.model.seller.receivership_details}}
+                {{else}}
+                  No
+                {{/if}}
+              </div>
+            </div>
+            <hr class="light">
+            <div class="row">
+              <div class="col-sm-6">
+                <b>Investigation</b>
+              </div>
+              <div class="col-sm-6">
+                {{#if this.model.seller.investigations}}
+                  {{this.model.seller.investigations_details}}
+                {{else}}
+                  No
+                {{/if}}
+              </div>
+            </div>
+            <hr class="light">
+            <div class="row">
+              <div class="col-sm-6">
+                <b>Legal Proceedings</b>
+              </div>
+              <div class="col-sm-6">
+                {{#if this.model.seller.legal_proceedings}}
+                  {{this.model.seller.legal_proceedings_details}}
+                {{else}}
+                  No
+                {{/if}}
+              </div>
+            </div>
+            <hr class="light">
+            <div class="row">
+              <div class="col-sm-6">
+                <b>Insurance Claims</b>
+              </div>
+              <div class="col-sm-6">
+                {{#if this.model.seller.insurance_claims}}
+                  {{this.model.seller.insurance_claims_details}}
+                {{else}}
+                  No
+                {{/if}}
+              </div>
+            </div>
+            <hr class="light">
+            <div class="row">
+              <div class="col-sm-6">
+                <b>Conflicts Of Interest</b>
+              </div>
+              <div class="col-sm-6">
+                {{#if this.model.seller.conflicts_of_interest}}
+                  {{this.model.seller.conflicts_of_interest_details}}
+                {{else}}
+                  No
+                {{/if}}
+              </div>
+            </div>
+            <hr class="light">
+            <div class="row">
+              <div class="col-sm-6">
+                <b>Other Circumstances</b>
+              </div>
+              <div class="col-sm-6">
+                {{#if this.model.seller.other_circumstances}}
+                  {{this.model.seller.other_circumstances_details}}
+                {{else}}
+                  No
+                {{/if}}
+              </div>
+            </div>
+            <hr class="light">
+            <div class="back-to-top">
+              <a href="#top" class="float-right">Back to top ↑</a>
+            </div>
+          {{/if}}
+          <div class="row" id="recognition">
+            <br>
+            <h2 class="au-display-lg">
+              Recognition
+            </h2>
+            <hr class="light">
+          </div>
+          {{#if (not (is-empty this.model.seller.awards))}}
+            <div class="row">
+              <div class="col-sm-6">
+                <b>Awards</b>
+              </div>
+              <div class="col-sm-6">
+                <ul>
+                  {{#each this.model.seller.awards as |item|}}
+                    <li>{{item}}</li>
                   {{/each}}
                 </ul>
               </div>
@@ -192,20 +308,32 @@
               </div>
             </div>
             <hr class="light">
-            <div class="row">
+          {{/if}}
+          <div class="back-to-top">
+            <a href="#top" class="float-right">Back to top ↑</a>
+          </div>
+          {{#if (not (is-empty this.model.products))}}
+            <div class="row" id="products">
+              <br>
               <h2 class="au-display-lg">
-                Disclosures
+                Products
               </h2>
               <hr class="light">
             </div>
-            <div class="row">
-              <div class="col-sm-6">
-                <b>Receivership</b>
+            {{#each this.model.products as |product|}}
+              <div class="row">
+                <div class="col-sm-3">
+                  {{link-to product.name "public-product" product.id}}
+                </div>
+                <div class="col-sm-9">
+                  {{product.summary}}
+                </div>
               </div>
-              <div class="col-sm-6">
-              </div>
+              <hr class="light">
+            {{/each}}
+            <div class="back-to-top">
+              <a href="#top" class="float-right">Back to top ↑</a>
             </div>
-            <hr class="light">
           {{/if}}
         </div>
       </div>

@@ -33,7 +33,7 @@ export default Controller.extend({
   },
 
   filters() {
-    var params = { section: this.get('section') };
+    var params = { with_section: this.get('section') };
     for (var key of [
       'audience',
       'characteristic',

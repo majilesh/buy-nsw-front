@@ -15,7 +15,7 @@
             is a NSW Government procurement platform for <b class="dark-blue">digital products and services</b>.
             <br>
             <br>
-            <a class="au-cta-link" href="#">Learn more</a>
+            <a class="au-cta-link" href="https://vimeo.com/272480667" target="_blank">Learn more</a>
           </p>
         </div>
         <div class="col-sm-6">
@@ -25,7 +25,7 @@
             </div>
             <b>Selling your ICT products to NSW Government</b>
             <br>
-            <a href="#">Register as an ICT seller who can sell?</a>
+            {{link-to "Register as an ICT seller who can sell?" "signup" "seller"}}
           </p>
           <p class="au-callout au-callout--home-top">
             <div class="right-arrow">
@@ -33,7 +33,7 @@
             </div>
             <b>Buying on behalf of NSW Government</b>
             <br>
-            <a href="#">Register as an ICT buy who can buy?</a>
+            {{link-to "Register as an ICT buyer who can buy?" "signup" "buyer"}}
           </p>
         </div>
       </div>
@@ -49,9 +49,11 @@
             </div>
             <h6 class="au-display-lg"><b>Browse ICT Vendors</b></h6>
             <hr>
-            <div class="highlight"><a href="#"><b>Cloud sellers</b></a></div>
-            <br>
-            <div class="highlight"><a href="#"><b>TPA sellers</b></a></div>
+            <div class="highlight">
+              {{#link-to "cloud-sellers"}}
+                <b>Cloud sellers</b>
+              {{/link-to}}
+            </div>
           </div>
         </div>
         <div class="col-sm-4">
@@ -61,12 +63,20 @@
             </div>
             <h6 class="au-display-lg"><b>Browse Cloud Products</b></h6>
             <hr>
-            <div class="highlight"><a href="#"><b>Cloud applications and software</b></a></div>
+            <div class="highlight">
+              {{#link-to "cloud-search" "applications-software"}}
+                <b>Cloud applications and software</b>
+              {{/link-to}}
+            </div>
             <p>
               e.g. accounting tools or customer management softwaere
             </p>
             <br>
-            <div class="highlight"><a href="#"><b>Hosting and infrastructure solutions</b></a></div>
+            <div class="highlight">
+              {{#link-to "cloud-search" "hosting-infrastructure"}}
+                <b>Hosting and infrastructure solutions</b>
+              {{/link-to}}
+              </div>
             <p>
               e.g. website hosting and load balancing servies
             </p>
