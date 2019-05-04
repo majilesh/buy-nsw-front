@@ -7,6 +7,9 @@ export default Controller.extend({
   pageNum: 1,
   sellers: null,
   sellersCount: 0,
+  totalPages: computed('sellersCount', function() {
+    return Math.ceil(this.get('sellersCount') / 25);
+  }),
 
   init() {
     this._super();
@@ -20,7 +23,7 @@ export default Controller.extend({
   },
 
   filters() {
-    var params = { section: this.get('section') };
+    var params = { page: this.get('pageNum'), section: this.get('section') };
     for (var key of [
       'identifiers',
       'services',
@@ -56,9 +59,11 @@ export default Controller.extend({
     },
     nextPage() {
       this.incrementProperty('pageNum');
+      this.updateResults();
     },
     lastPage() {
       this.decrementProperty('pageNum')
+      this.updateResults();
     },
   }
 });

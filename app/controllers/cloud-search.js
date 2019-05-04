@@ -7,6 +7,9 @@ export default Controller.extend({
   pageNum: 1,
   products: null,
   productsCount: 0,
+  totalPages: computed('productsCount', function() {
+    return Math.ceil(this.get('productsCount') / 25);
+  }),
 
   title: computed('section', function() {
     let section = this.get('section');
@@ -33,7 +36,7 @@ export default Controller.extend({
   },
 
   filters() {
-    var params = { with_section: this.get('section') };
+    var params = { page: this.get('pageNum'), with_section: this.get('section') };
     for (var key of [
       'audience',
       'characteristic',
@@ -74,9 +77,11 @@ export default Controller.extend({
     },
     nextPage() {
       this.incrementProperty('pageNum');
+      this.updateResults();
     },
     lastPage() {
       this.decrementProperty('pageNum')
+      this.updateResults();
     },
   }
 });
