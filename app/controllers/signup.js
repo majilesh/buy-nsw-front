@@ -62,9 +62,11 @@ export default Controller.extend(Validations, {
           password: this.get('password'),
         }
       }).then((response) => {
-        controller.transitionToRoute('envelope-open')
+        controller.transitionToRoute('success', 'signup_confirmation_sent')
       }).catch((error) => {
-        debugger;
+        if(error.payload.error) {
+          controller.set('apiError', error.payload.error);
+        }
       }).finally(() => $('.overlay').hide());
     }
   }

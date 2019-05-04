@@ -19,6 +19,7 @@ export default Controller.extend(Validations, {
   ajax: inject(),
   auth: inject(),
   email: '',
+  apiError: '',
 
   actions: {
     submit() {
@@ -35,7 +36,9 @@ export default Controller.extend(Validations, {
       }).then((response) => {
         controller.transitionToRoute('success', 'confirmation_sent')
       }).catch((error) => {
-        debugger;
+        if(error.payload.error) {
+          controller.set('apiError', error.payload.error);
+        }
       }).finally(() => $('.overlay').hide());
     }
   }

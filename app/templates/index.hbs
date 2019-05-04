@@ -5,40 +5,42 @@
 {{dds/template-header}}
 
 <main id="content">
-  <div class="au-body">
-    {{#dds/template-body}}
-      <br>
-      <div class="row">
-        <div class="col-sm-5">
-          <p class="home-title">
-            <b>buy.nsw</b>
-            is a NSW Government procurement platform for <b class="dark-blue">digital products and services</b>.
-            <br>
-            <br>
-            <a class="au-cta-link" href="https://vimeo.com/272480667" target="_blank">Learn more</a>
-          </p>
+  {{#unless auth.user}}
+    <div class="au-body">
+      {{#dds/template-body}}
+        <br>
+        <div class="row">
+          <div class="col-sm-5">
+            <p class="home-title">
+              <b>buy.nsw</b>
+              is a NSW Government procurement platform for <b class="dark-blue">digital products and services</b>.
+              <br>
+              <br>
+              <a class="au-cta-link" href="https://vimeo.com/272480667" target="_blank">Learn more</a>
+            </p>
+          </div>
+          <div class="col-sm-6">
+            <p class="au-callout au-callout--home-top light">
+              <div class="right-arrow">
+                {{fa-icon "chevron-right"}}
+              </div>
+              <b>Selling your ICT products to NSW Government</b>
+              <br>
+              {{link-to "Register as an ICT seller who can sell?" "signup" "seller"}}
+            </p>
+            <p class="au-callout au-callout--home-top">
+              <div class="right-arrow">
+                {{fa-icon "chevron-right"}}
+              </div>
+              <b>Buying on behalf of NSW Government</b>
+              <br>
+              {{link-to "Register as an ICT buyer who can buy?" "signup" "buyer"}}
+            </p>
+          </div>
         </div>
-        <div class="col-sm-6">
-          <p class="au-callout au-callout--home-top light">
-            <div class="right-arrow">
-              {{fa-icon "chevron-right"}}
-            </div>
-            <b>Selling your ICT products to NSW Government</b>
-            <br>
-            {{link-to "Register as an ICT seller who can sell?" "signup" "seller"}}
-          </p>
-          <p class="au-callout au-callout--home-top">
-            <div class="right-arrow">
-              {{fa-icon "chevron-right"}}
-            </div>
-            <b>Buying on behalf of NSW Government</b>
-            <br>
-            {{link-to "Register as an ICT buyer who can buy?" "signup" "buyer"}}
-          </p>
-        </div>
-      </div>
-    {{/dds/template-body}}
-  </div>
+      {{/dds/template-body}}
+    </div>
+  {{/unless}}
   <div class="au-body au-body--alt">
     {{#dds/template-body}}
       <div class="row">

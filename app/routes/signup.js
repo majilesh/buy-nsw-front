@@ -12,5 +12,6 @@ export default Route.extend({
     controller.set('confirmPassword', '');
     controller.set('showEmailError', null);
     controller.set('showConfirmError', null);
+    controller.set('apiError', null);
   },
 });

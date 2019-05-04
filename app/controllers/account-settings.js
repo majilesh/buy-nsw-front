@@ -68,7 +68,9 @@ export default Controller.extend(Validations, {
       }).then((response) => {
         controller.transitionToRoute('success', 'account_updated');
       }).catch((error) => {
-        debugger;
+        if(error.payload.error) {
+          controller.set('apiError', error.payload.error);
+        }
       }).finally(() => $('.overlay').hide());
     }
   }

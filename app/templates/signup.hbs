@@ -70,13 +70,19 @@
       }}
       {{#if (and showConfirmError (v-get this "confirmPassword" "isInvalid"))}}
         <div>
-          <span class="field-error short">Passwords don't match</span>
+          <span class="field-error error">Passwords don't match</span>
         </div>
         <div class="clear-both"></div>
       {{/if}}
       <hr>
     </p>
     <p>By creating an account you confirm your acceptance of the {{link-to "terms of use" "terms-of-use"}}.</p>
+    {{#if apiError}}
+      <div>
+        <span class="field-error error">{{apiError}}</span>
+      </div>
+      <div class="clear-both"></div>
+    {{/if}}
     <p>
       <a
         class="au-btn float-right"
