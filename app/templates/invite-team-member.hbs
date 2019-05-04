@@ -43,18 +43,18 @@
               {{v-get this "model.email" "message"}}
             </span>
           </div>
-          <div class="clear-both"></div>
         {{/if}}
       {{/if}}
     </p>
+    <div class="clear-both"></div>
     <p>
-      <a
-        class="au-btn float-right"
-        onclick={{if (v-get this "model.email" "isValid") (action "invite")}}
-        disabled={{v-get this "model.email" "isInvalid"}}
-      >
-        Send invitation
-      </a>
+      <span class="float-right">
+        {{dds/link-button
+          onClick=(if (v-get this "model.email" "isValid") (action "invite"))
+          disabled=(v-get this "model.email" "isInvalid")
+          label="Send invitation"
+        }}
+      </span>
     </p>
   </div>
 {{/dds/template-body}}

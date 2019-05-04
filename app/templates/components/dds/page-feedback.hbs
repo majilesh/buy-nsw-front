@@ -33,13 +33,14 @@
         {{/if}}
 
         <br>
-        <a
-          class="au-btn au-btn--wide float-right"
-          onClick={{action "sendFeedback"}}
-          disabled={{v-get this "isInvalid"}}
-        >
-          Send feedback
-        </a>
+        <span class="float-right">
+          {{dds/link-button
+            wide=true
+            onClick=(action "sendFeedback")
+            disabled=(v-get this "isInvalid")
+            label="Send feedback"
+          }}
+        </span>
       {{else}}
         {{#if feedback}}
           <b>Thank you for your feedback.</b>

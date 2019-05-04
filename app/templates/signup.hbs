@@ -84,13 +84,13 @@
       <div class="clear-both"></div>
     {{/if}}
     <p>
-      <a
-        class="au-btn float-right"
-        onclick={{action "submit"}}
-        disabled={{v-get this "isInvalid"}}
-      >
-        Continue
-      </a>
+      <span class="float-right">
+        {{dds/link-button
+          onClick=(action "submit")
+          disabled=(v-get this "isInvalid")
+          label="Continue"
+        }}
+      </span>
     </p>
   </div>
 {{/dds/template-body}}

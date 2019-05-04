@@ -73,13 +73,13 @@
       enter=(action "submit")
     }}
     <p>
-      <a
-        class="au-btn float-right"
-        onclick={{action "submit"}}
-        disabled={{v-get this "isInvalid"}}
-      >
-        Update account details
-      </a>
+      <span class="float-right">
+        {{dds/link-button
+          onClick=(action "submit")
+          disabled=(v-get this "isInvalid")
+          label="Update account details"
+        }}
+      </span>
     </p>
   </div>
 {{/dds/template-body}}

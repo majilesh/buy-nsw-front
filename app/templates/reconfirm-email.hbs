@@ -22,13 +22,13 @@
       <div class="clear-both"></div>
     {{/if}}
     <p>
-      <a
-        class="au-btn float-right"
-        onclick={{action "submit"}}
-        disabled={{v-get this "isInvalid"}}
-      >
-        Send instructions
-      </a>
+      <span class="float-right">
+        {{dds/link-button
+          onClick=(action "submit")
+          disabled=(v-get this "isInvalid")
+          label="Send instructions"
+        }}
+      </span>
     </p>
   </div>
 {{/dds/template-body}}
