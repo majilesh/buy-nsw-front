@@ -37,10 +37,17 @@ div.feedback {
   padding-bottom: 1.5rem;
 }
 
-span.float-right, a.float-right, b.float-right {
-  float: left;
+div.float-right, span.float-right, a.float-right, b.float-right, p.float-right {
+  float: none;
   @include AU-media( sm ) {
     float: right;
+  }
+}
+
+div.align-right, span.align-right, a.align-right, b.align-right, p.align-right {
+  text-align: left;
+  @include AU-media( sm ) {
+    text-align: right;
   }
 }
 
@@ -154,4 +161,11 @@ p.thin-lines {
 }
 hr.light {
   border-top: 1px solid #e0e0e0;
+}
+div.sticky-nav {
+  @include AU-media( sm ) {
+    position: absolute;
+    height: calc(100% - 650px);
+    width: 33.333333%;
+  }
 }

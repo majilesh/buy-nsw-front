@@ -1,21 +1,20 @@
-<div class="inpage-nav">
-  <nav class="au-inpage-nav-links" aria-label="in page navigation">
-    <h4 class="au-inpage-nav-links__heading"><b>On this page</b></h4>
-    <ul class="au-link-list">
-      {{#each sections as |item|}}
-        {{#unless item.hide}}
-          <li>
-            {{#if item.anchor}}
-              <a href="#{{item.anchor}}">
-                {{item.name}}
-              </a>
-            {{else}}
-              {{item-to item.name item.route}}
-            {{/if}}
-          </li>
-        {{/unless}}
-      {{/each}}
-    </ul>
-    <div class="clear-both"></div>
-  </nav>
-</div>
+<nav class="au-inpage-nav-links" aria-label="in page navigation">
+  <h4 class="au-inpage-nav-links__heading"><b>On this page</b></h4>
+  <ul class="au-link-list">
+    {{#each sections as |item|}}
+      {{#unless item.hide}}
+        <li>
+          {{#if item.anchor}}
+            <a href="#{{item.anchor}}">
+              {{item.name}}
+            </a>
+          {{else}}
+            {{item-to item.name item.route}}
+          {{/if}}
+        </li>
+        <div class="clear-both"></div>
+      {{/unless}}
+    {{/each}}
+  </ul>
+  <div class="clear-both"></div>
+</nav>
