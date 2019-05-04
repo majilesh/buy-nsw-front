@@ -37,14 +37,18 @@
       <br>
       <div class="row">
         <div class="col-sm-4">
-          {{dds/inpage-nav
-            sections=(array
-              (hash name="Company details" anchor="company-details")
-              (hash name="Disclosures" anchor="disclosures" hide=(not auth.user.can_buy))
-              (hash name="Recognition" anchor="recognition")
-              (hash name="Products" anchor="products" hide=(is-empty this.model.products))
-            )
-          }}
+        </div>
+        <div class="sticky-nav">
+          <div class="inpage-nav">
+            {{dds/inpage-nav
+              sections=(array
+                (hash name="Company details" anchor="company-details")
+                (hash name="Disclosures" anchor="disclosures" hide=(not auth.user.can_buy))
+                (hash name="Recognition" anchor="recognition")
+                (hash name="Products" anchor="products" hide=(is-empty this.model.products))
+              )
+            }}
+          </div>
         </div>
         <div class="col-sm-8">
           <div class="row" id="company-details">
