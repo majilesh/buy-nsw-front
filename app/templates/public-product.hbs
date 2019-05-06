@@ -7,870 +7,864 @@
     )
   }}
   <br>
-  <div id="top" class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-10">
-      {{#if (not auth.user.can_buy)}}
-        {{#dds/page-alert type="info"}}
-          Become a registered buyer to purchase this product.
-        {{/dds/page-alert}}
+  {{#if (not auth.user.can_buy)}}
+    {{#dds/call-out}}
+      {{link-to "Become a registered buyer" "signup" "buyer"}} to purchase this product.
+    {{/dds/call-out}}
+  {{/if}}
+  <h2 class="au-display-xl">
+    {{this.model.product.name}}
+  </h2>
+  <br>
+  <div class="float-right">
+    <b>Product ID:</b> {{this.model.product.id}}
+  </div>
+  <ul class="au-tags">
+    {{#each this.model.product.tags as |tag|}}
+      <li>
+        {{tag}}
+      </li>
+    {{/each}}
+    {{#if (eq this.model.product.product_type 'own-product')}}
+      <li>Reseller</li>
+    {{/if}}
+  </ul>
+  <p>{{this.model.product.summary}}</p>
+  <br>
+  <div class="row">
+    <div class="col-sm-5">
+      <br>
+      <div class="row">
+        <div class="col-sm-4"><b>By</b></div>
+        <div class="col-sm-8">
+          {{link-to this.model.product.public_seller_name "cloud-seller" this.model.product.public_seller_id}}
+        </div>
+        <br>
+        <hr class="light">
+      </div>
+      {{product-table
+        rows=(array
+          (hash
+            title="Made by"
+            description=this.model.product.organisation_resold
+            hide=(eq this.model.product.product_type 'own-product')
+          )
+        )
+      }}
+      {{#if (not (is-empty this.model.product.audiences))}}
+        <div class="row">
+          <div class="col-sm-4"><b>For</b></div>
+          <div class="col-sm-8">
+            <ul>
+              {{#each this.model.product.audiences as |item|}}
+                <li>{{item}}</li>
+              {{/each}}
+            </ul>
+          </div>
+          <div class="clear-both"></div>
+          <hr class="light">
+        </div>
       {{/if}}
-      <h2 class="au-display-xl">
-        {{this.model.product.name}}
-      </h2>
-      <br>
-      <div class="float-right">
-        <b>Product ID:</b> {{this.model.product.id}}
+    </div>
+    <div class="col-sm-7">
+      {{#if auth.user.can_buy}}
+        <a
+          class="au-btn float-right"
+        >
+          Enquire now
+        </a>
+        <br>
+        <div class="clear-both"></div>
+        <p class="align-right">
+          <b>Contact</b><br>
+          <div>{{this.model.product.contact_name}}</div>
+          <div> <a href="mailto:{{this.model.product.contact_email}}">{{this.model.product.contact_email}}</a></div>
+          {{#if this.model.product.contact_phone}}
+            <div><a href="telto:{{this.model.product.contact_phone}}">{{this.model.product.contact_phone}}</a></div>
+          {{/if}}
+        </p>
+      {{/if}}
+      {{#if this.model.product.demo_video_url}}
+        <p class="align-right">
+          <a href={{this.model.product.demo_video_url}} target="_blank">Demonstration Video  ▶</a>
+        </p>
+      {{/if}}
+    </div>
+
+  </div>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-sm-4">
+    </div>
+    <div class="sticky-nav">
+      <div class="inpage-nav">
+        {{dds/inpage-nav
+          sections=(array
+            (hash name="Features and Benefits" anchor="features-and-benefits")
+            (hash name="Pricing" anchor="pricing")
+            (hash name="Onboarding and offboarding" anchor="onboarding-and-offboarding")
+
+            (hash name="Availability and support" anchor="availability-and-support")
+            (hash name="Reporting and analytics" anchor="reporting-and-analytics")
+            (hash name="Identity and authentication" anchor="identity-and-authentication")
+
+            (hash name="Environment" anchor="environment")
+            (hash name="Locations" anchor="locations")
+            (hash name="User data" anchor="user-data")
+
+            (hash name="Backup and recovery" anchor="backup-and-recovery")
+            (hash name="Data protection" anchor="data-protection")
+            (hash name="Security standards" anchor="security-standards")
+
+            (hash name="Security practices" anchor="security-practices")
+            (hash name="Separation between users" anchor="separation-between-users")
+            (hash name="Operational security" anchor="operationl-security")
+          )
+        }}
       </div>
-      <ul class="au-tags">
-        {{#each this.model.product.tags as |tag|}}
-          <li>
-            {{tag}}
-          </li>
-        {{/each}}
-        {{#if (eq this.model.product.product_type 'own-product')}}
-          <li>Reseller</li>
-        {{/if}}
-      </ul>
-      <p>{{this.model.product.summary}}</p>
-      <br>
-      <div class="row">
-        <div class="col-sm-5">
-          <br>
-          <div class="row">
-            <div class="col-sm-4"><b>By</b></div>
-            <div class="col-sm-8">
-              {{link-to this.model.product.public_seller_name "cloud-seller" this.model.product.public_seller_id}}
-            </div>
-            <br>
-            <hr class="light">
+    </div>
+    <div class="col-sm-1">
+    </div>
+    <div class="col-sm-7">
+      <div id="features-and-benefits"></div>
+      {{#if (not (is-empty this.model.product.features))}}
+        <div class="row">
+          <div class="col-sm-4"><b>Features</b></div>
+          <div class="col-sm-8">
+            <ul>
+              {{#each this.model.product.features as |item|}}
+                <li>{{item}}</li>
+              {{/each}}
+            </ul>
           </div>
-          {{product-table
-            rows=(array
-              (hash
-                title="Made by"
-                description=this.model.product.organisation_resold
-                hide=(eq this.model.product.product_type 'own-product')
-              )
-            )
-          }}
-          {{#if (not (is-empty this.model.product.audiences))}}
-            <div class="row">
-              <div class="col-sm-4"><b>For</b></div>
-              <div class="col-sm-8">
-                <ul>
-                  {{#each this.model.product.audiences as |item|}}
-                    <li>{{item}}</li>
-                  {{/each}}
-                </ul>
-              </div>
-              <br>
-              <hr class="light">
-            </div>
-          {{/if}}
+          <div class="clear-both"></div>
+          <hr class="light">
         </div>
-        <div class="col-sm-7">
-          {{#if auth.user.can_buy}}
-            <a
-              class="au-btn float-right"
-            >
-              Enquire now
-            </a>
-            <br>
-            <div class="clear-both"></div>
-            <p class="align-right">
-              <b>Contact</b><br>
-              <div>{{this.model.product.contact_name}}</div>
-              <div> <a href="mailto:{{this.model.product.contact_email}}">{{this.model.product.contact_email}}</a></div>
-              {{#if this.model.product.contact_phone}}
-                <div><a href="telto:{{this.model.product.contact_phone}}">{{this.model.product.contact_phone}}</a></div>
-              {{/if}}
-            </p>
-          {{/if}}
-          {{#if this.model.product.demo_video_url}}
-            <p class="align-right">
-              <a href={{this.model.product.demo_video_url}} target="_blank">Demonstration Video  ▶</a>
-            </p>
-          {{/if}}
-        </div>
-
-      </div>
-      <br>
-      <br>
-      <div class="row">
-        <div class="col-sm-4">
-        </div>
-        <div class="sticky-nav">
-          <div class="inpage-nav">
-            {{dds/inpage-nav
-              sections=(array
-                (hash name="Features and Benefits" anchor="features-and-benefits")
-                (hash name="Pricing" anchor="pricing")
-                (hash name="Onboarding and offboarding" anchor="onboarding-and-offboarding")
-
-                (hash name="Availability and support" anchor="availability-and-support")
-                (hash name="Reporting and analytics" anchor="reporting-and-analytics")
-                (hash name="Identity and authentication" anchor="identity-and-authentication")
-
-                (hash name="Environment" anchor="environment")
-                (hash name="Locations" anchor="locations")
-                (hash name="User data" anchor="user-data")
-
-                (hash name="Backup and recovery" anchor="backup-and-recovery")
-                (hash name="Data protection" anchor="data-protection")
-                (hash name="Security standards" anchor="security-standards")
-
-                (hash name="Security practices" anchor="security-practices")
-                (hash name="Separation between users" anchor="separation-between-users")
-                (hash name="Operational security" anchor="operationl-security")
-              )
-            }}
+      {{/if}}
+      {{#if (not (is-empty this.model.product.benefits))}}
+        <div class="row">
+          <div class="col-sm-4"><b>Benefits</b></div>
+          <div class="col-sm-8">
+            <ul>
+              {{#each this.model.product.benefits as |item|}}
+                <li>{{item}}</li>
+              {{/each}}
+            </ul>
           </div>
+          <div class="clear-both"></div>
+          <hr class="light">
         </div>
-        <div class="col-sm-1">
-        </div>
-        <div class="col-sm-7">
-          <div id="features-and-benefits"></div>
-          {{#if (not (is-empty this.model.product.features))}}
-            <div class="row">
-              <div class="col-sm-4"><b>Features</b></div>
-              <div class="col-sm-8">
-                <ul>
-                  {{#each this.model.product.features as |item|}}
-                    <li>{{item}}</li>
-                  {{/each}}
-                </ul>
-              </div>
-              <div class="clear-both"></div>
-              <hr class="light">
-            </div>
-          {{/if}}
-          {{#if (not (is-empty this.model.product.benefits))}}
-            <div class="row">
-              <div class="col-sm-4"><b>Benefits</b></div>
-              <div class="col-sm-8">
-                <ul>
-                  {{#each this.model.product.benefits as |item|}}
-                    <li>{{item}}</li>
-                  {{/each}}
-                </ul>
-              </div>
-              <div class="clear-both"></div>
-              <hr class="light">
-            </div>
-          {{/if}}
-          {{product-table
-            title="Pricing"
-            id="pricing"
+      {{/if}}
+      {{product-table
+        title="Pricing"
+        id="pricing"
+        rows=(array
+          (hash
+            title="Free version details"
+            description=this.model.product.free_version_details
+            hide=(not this.model.product.free_version)
+          )
+          (hash
+            title="Free trial available"
+            link=this.model.product.free_trial_url
+            hide=(not this.model.product.free_trial)
+          )
+          (hash
+            title="Minimum price"
+            description=(format-currency this.model.product.pricing_min
+              this.model.product.pricing_currency
+              this.model.product.pricing_currency_other
+              this.model.product.pricing_unit)
+          )
+          (hash
+            title="Maximum price"
+            description=(format-currency this.model.product.pricing_max
+              this.model.product.pricing_currency
+              this.model.product.pricing_currency_other
+              this.model.product.pricing_unit)
+          )
+          (hash
+            title="Pricing calculator"
+            link=this.model.product.pricing_calculator_url
+            hide=(not this.model.product.pricing_calculator_url)
+          )
+          (hash
+            title="Variables affecting pricing"
+            description=this.model.product.pricing_variables
+            hide=(not this.model.product.pricing_variables)
+          )
+          (hash
+            title="Education pricing"
             rows=(array
               (hash
-                title="Free version details"
-                description=this.model.product.free_version_details
-                hide=(not this.model.product.free_version)
+                title="Eligibility"
+                description=this.model.product.education_pricing_eligibility
               )
               (hash
-                title="Free trial available"
-                link=this.model.product.free_trial_url
-                hide=(not this.model.product.free_trial)
-              )
-              (hash
-                title="Minimum price"
-                description=(format-currency this.model.product.pricing_min
-                  this.model.product.pricing_currency
-                  this.model.product.pricing_currency_other
-                  this.model.product.pricing_unit)
-              )
-              (hash
-                title="Maximum price"
-                description=(format-currency this.model.product.pricing_max
-                  this.model.product.pricing_currency
-                  this.model.product.pricing_currency_other
-                  this.model.product.pricing_unit)
-              )
-              (hash
-                title="Pricing calculator"
-                link=this.model.product.pricing_calculator_url
-                hide=(not this.model.product.pricing_calculator_url)
-              )
-              (hash
-                title="Variables affecting pricing"
-                description=this.model.product.pricing_variables
-                hide=(not this.model.product.pricing_variables)
-              )
-              (hash
-                title="Education pricing"
-                rows=(array
-                  (hash
-                    title="Eligibility"
-                    description=this.model.product.education_pricing_eligibility
-                  )
-                  (hash
-                    title="Pricing differences"
-                    description=this.model.product.education_pricing_differences
-                  )
-                )
-                hide=(not this.model.product.education_pricing)
-                placeHolder="Not Available"
-              )
-              (hash
-                title="Not-for-profit pricing"
-                rows=(array
-                  (hash
-                    title="Eligibility"
-                    description=this.model.product.not_for_profit_pricing_eligibility
-                  )
-                  (hash
-                    title="Pricing differences"
-                    description=this.model.product.not_for_profit_pricing_differences
-                  )
-                )
-                hide=(not this.model.product.not_for_profit_pricing)
-                placeHolder="Not Available"
+                title="Pricing differences"
+                description=this.model.product.education_pricing_differences
               )
             )
-          }}
-          {{product-table
-            title="Onboarding and offboarding"
-            id="onboarding-and-offboarding"
+            hide=(not this.model.product.education_pricing)
+            placeHolder="Not Available"
+          )
+          (hash
+            title="Not-for-profit pricing"
             rows=(array
               (hash
-                title="Onboarding assistance"
-                description=this.model.product.onboarding_assistance
-                hide=(not this.model.product.onboarding_assistance)
+                title="Eligibility"
+                description=this.model.product.not_for_profit_pricing_eligibility
               )
               (hash
-                title="Offboarding assistance"
-                description=this.model.product.offboarding_assistance
-                hide=(not this.model.product.offboarding_assistance)
+                title="Pricing differences"
+                description=this.model.product.not_for_profit_pricing_differences
               )
             )
-          }}
-          {{product-table
-            title="Availability and support"
-            id="availability-and-support"
-            rows=(array
-              (hash
-                title="Guaranteed availability (excluding scheduled outages)"
-                description=this.model.product.guaranteed_availability
-                hide=(not this.model.product.guaranteed_availability)
-              )
-              (hash
-                title="Support options available"
-                list=this.model.product.support_options
-                hide=(is-empty this.model.product.support_options)
-              )
-              (hash
-                title="Which options come at additional cost"
-                description=this.model.product.support_options_additional_cost
-                hide=(not this.model.product.support_options_additional_cost)
-              )
-              (hash
-                title="Support levels, availability hours (AEST) and whether additional costs are involved"
-                description=this.model.product.support_levels
-                hide=(not this.model.product.support_levels)
-              )
+            hide=(not this.model.product.not_for_profit_pricing)
+            placeHolder="Not Available"
+          )
+        )
+      }}
+      {{product-table
+        title="Onboarding and offboarding"
+        id="onboarding-and-offboarding"
+        rows=(array
+          (hash
+            title="Onboarding assistance"
+            description=this.model.product.onboarding_assistance
+            hide=(not this.model.product.onboarding_assistance)
+          )
+          (hash
+            title="Offboarding assistance"
+            description=this.model.product.offboarding_assistance
+            hide=(not this.model.product.offboarding_assistance)
+          )
+        )
+      }}
+      {{product-table
+        title="Availability and support"
+        id="availability-and-support"
+        rows=(array
+          (hash
+            title="Guaranteed availability (excluding scheduled outages)"
+            description=this.model.product.guaranteed_availability
+            hide=(not this.model.product.guaranteed_availability)
+          )
+          (hash
+            title="Support options available"
+            list=this.model.product.support_options
+            hide=(is-empty this.model.product.support_options)
+          )
+          (hash
+            title="Which options come at additional cost"
+            description=this.model.product.support_options_additional_cost
+            hide=(not this.model.product.support_options_additional_cost)
+          )
+          (hash
+            title="Support levels, availability hours (AEST) and whether additional costs are involved"
+            description=this.model.product.support_levels
+            hide=(not this.model.product.support_levels)
+          )
+        )
+      }}
+      {{product-table
+        title="Reporting and analytics"
+        id="reporting-and-analytics"
+        rows=(array
+          (hash
+            title="Metrics reported"
+            description=this.model.product.metrics_contents
+            hide=(not this.model.product.metrics_contents)
+          )
+          (hash
+            title="Reporting types"
+            list=this.model.product.metrics_channel_types
+            hide=(is-empty this.model.product.metrics_channel_types)
+          )
+          (hash
+            title="Other reporting types"
+            description=this.model.product.metrics_channel_other
+            hide=(array-excludes this.model.product.metrics_channel_types "other")
+          )
+          (hash
+            title="Outage reporting"
+            list=this.model.product.outage_channel_types
+            hide=(is-empty this.model.product.outage_channel_types)
+          )
+          (hash
+            title="Other outage reporting"
+            description=this.model.product.outage_channel_other
+            hide=(array-excludes this.model.product.outage_channel_types "other")
+          )
+          (hash
+            title="Usage reporting"
+            list=this.model.product.usage_channel_types
+            hide=(is-empty this.model.product.usage_channel_types)
+          )
+          (hash
+            title="Other usage reporting"
+            description=this.model.product.usage_channel_other
+            hide=(array-excludes this.model.product.usage_channel_types "other")
+          )
+        )
+      }}
+      {{product-table
+        title="Identity and authentication"
+        id="identity-and-authentication"
+        rows=(array
+          (hash
+            title="User authentication needed"
+            booleanText=this.model.product.authentication_required
+          )
+          (hash
+            title="User authentication"
+            list=this.model.product.authentication_types
+            hide=(not this.model.product.authentication_required)
+          )
+          (hash
+            title="Other user authentication"
+            description=this.model.product.authentication_other
+            hide=(not this.model.product.authentication_required)
+          )
+        )
+      }}
+      {{product-table
+        title="Environment"
+        id="environment"
+        rows=(array
+          (hash
+            title="Cloud deployment model"
+            list=this.model.product.deployment_model
+            hide=(is-empty this.model.product.deployment_model)
+          )
+          (hash
+            title="Other deployment model"
+            description=this.model.product.deployment_model_other
+            hide=(array-excludes this.model.product.deployment_model 'other-cloud')
+          )
+          (hash
+            title="Software add-on or extension"
+            description=this.model.product.addon_extension_type
+            hide=(not this.model.product.addon_extension_type)
+          )
+          (hash
+            title="Add-on or extension to"
+            description=this.model.product.addon_extension_details
+            hide=(and 
+                   (not-eq this.model.product.addon_extension_type 'yes')
+                   (not-eq this.model.product.addon_extension_type 'yes-and-standalone')
+                 )
+          )
+          (hash
+            title="API"
+            description=this.model.product.api
+            hide=(not this.model.product.api)
+          )
+          (hash
+            title="What users can and can't do using the API"
+            description=this.model.product.api_capabilities
+            hide=(and 
+                   (not-eq this.model.product.api 'rest')
+                   (not-eq this.model.product.api 'non-rest')
+                 )
+          )
+          (hash
+            title="Compatible API automation tools"
+            description=this.model.product.api_automation
+            hide=(and 
+                   (not-eq this.model.product.api 'rest')
+                   (not-eq this.model.product.api 'non-rest')
+                 )
+          )
+          (hash
+            title="Connected government networks"
+            list=this.model.product.government_network_type
+            hide=(is-empty this.model.product.government_network_type)
+          )
+          (hash
+            title="Other connected government networks"
+            description=this.model.product.government_network_other
+            hide=(array-excludes this.model.product.government_network_type 'other')
+          )
+          (hash
+            title="Web interface"
+            booleanText=this.model.product.web_interface
+          )
+          (hash
+            title="What users can and can't do using the web interface"
+            description=this.model.product.web_interface_details
+            hide=(not this.model.product.web_interface)
+          )
+          (hash
+            title="Supported browsers"
+            list=this.model.product.supported_browsers
+            hide=(not this.model.product.web_interface)
+          )
+          (hash
+            title="Application for users to install"
+            booleanText=this.model.product.installed_application
+          )
+          (hash
+            title="Supported operating systems"
+            list=this.model.product.supported_os
+            hide=(not this.model.product.installed_application)
+          )
+          (hash
+            title="Other supported operating systems"
+            description=this.model.product.supported_os_other
+            hide=(or
+              (not this.model.product.installed_application)
+              (array-excludes this.model.product.supported_os_other 'other')
             )
-          }}
-          {{product-table
-            title="Reporting and analytics"
-            id="reporting-and-analytics"
-            rows=(array
-              (hash
-                title="Metrics reported"
-                description=this.model.product.metrics_contents
-                hide=(not this.model.product.metrics_contents)
-              )
-              (hash
-                title="Reporting types"
-                list=this.model.product.metrics_channel_types
-                hide=(is-empty this.model.product.metrics_channel_types)
-              )
-              (hash
-                title="Other reporting types"
-                description=this.model.product.metrics_channel_other
-                hide=(array-excludes this.model.product.metrics_channel_types "other")
-              )
-              (hash
-                title="Outage reporting"
-                list=this.model.product.outage_channel_types
-                hide=(is-empty this.model.product.outage_channel_types)
-              )
-              (hash
-                title="Other outage reporting"
-                description=this.model.product.outage_channel_other
-                hide=(array-excludes this.model.product.outage_channel_types "other")
-              )
-              (hash
-                title="Usage reporting"
-                list=this.model.product.usage_channel_types
-                hide=(is-empty this.model.product.usage_channel_types)
-              )
-              (hash
-                title="Other usage reporting"
-                description=this.model.product.usage_channel_other
-                hide=(array-excludes this.model.product.usage_channel_types "other")
-              )
+          )
+          (hash
+            title="Designed to work on mobile devices"
+            booleanText=this.model.product.mobile_devices
+          )
+          (hash
+            title="Differences in the mobile and desktop functionality"
+            description=this.model.product.mobile_desktop_differences
+            hide=(not this.model.product.mobile_devices)
+          )
+          (hash
+            title="Accessible to WCAG 2.0 AA or above"
+            description=this.model.product.accessibility_type
+            hide=(not this.model.product.accessibility_type)
+          )
+          (hash
+            title="Areas which are accessible (and exclusions)"
+            description=this.model.product.accessibility_exclusions
+            hide=(not-eq this.model.product.accessibility_type "exclusions")
+          )
+          (hash
+            title="How the product or service scales"
+            description=this.model.product.scaling_type
+            hide=(not this.model.product.scaling_type)
+          )
+        )
+      }}
+      {{product-table
+        title="Locations"
+        id="locations"
+        rows=(array
+          (hash
+            title="Whether users can control where their data is stored, processed and managed in Australia"
+            booleanText=this.model.product.data_location_control
+          )
+          (hash
+            title="Locations where user data is stored, processed and managed"
+            description=this.model.product.data_location
+            hide=(not this.model.product.data_location)
+          )
+          (hash
+            title="Other known locations"
+            description=this.model.product.data_location_other
+            hide=(not-eq this.model.product.data_location 'other-known')
+          )
+          (hash
+            title="Why the seller doesn't know"
+            description=this.model.product.data_location_unknown_reason
+            hide=(not-eq this.model.product.data_location 'dont-know')
+          )
+          (hash
+            title="Whether the seller operates their own data centres"
+            booleanText=this.model.product.own_data_centre
+          )
+          (hash
+            title="About the seller's data centre"
+            description=this.model.product.own_data_centre_details
+            hide=(not this.model.product.own_data_centre)
+          )
+          (hash
+            title="Whether third parties are involved in storing, processing or managing buyer data"
+            booleanText=this.model.product.third_party_involved
+          )
+          (hash
+            title="The third parties involved"
+            description=this.model.product.third_party_involved_details
+            hide=(not this.model.product.third_party_involved)
+          )
+        )
+      }}
+      {{product-table
+        title="User data"
+        id="user-data"
+        rows=(array
+          (hash
+            title="Data import formats"
+            list=this.model.product.data_import_formats
+            hide=(is-empty this.model.product.data_import_formats)
+          )
+          (hash
+            title="Other data import formats"
+            description=this.model.product.data_import_formats_other
+            hide=(array-excludes this.model.product.data_import_formats 'other')
+          )
+          (hash
+            title="Data export formats"
+            list=this.model.product.data_export_formats
+            hide=(is-empty this.model.product.data_export_formats)
+          )
+          (hash
+            title="Other data export formats"
+            description=this.model.product.data_export_formats_other
+            hide=(array-excludes this.model.product.data_export_formats 'other')
+          )
+          (hash
+            title="whether there are restrictions on users accessing or extracting data"
+            booleantext=this.model.product.data_access_restrictions
+          )
+          (hash
+            title="The restrictions on users accessing or extracting data"
+            description=this.model.product.data_access_restrictions_details
+            hide=(not this.model.product.data_access_restrictions)
+          )
+          (hash
+            title="Whether users can access audit information about activities and transactions"
+            booleanText=this.model.product.audit_information
+          )
+          (hash
+            title="The maximum time audit information data is stored"
+            description=this.model.product.audit_storage_period
+            hide=(not this.model.product.audit_storage_period)
+          )
+          (hash
+            title="The maximum time system logs are stored"
+            description=this.model.product.log_storage_period
+            hide=(not this.model.product.log_storage_period)
+          )
+          (hash
+            title="Approach to secure data disposal"
+            description=this.model.product.data_disposal_approach
+            hide=(not this.model.product.data_disposal_approach)
+          )
+        )
+      }}
+      {{product-table
+        title="Backup and recovery"
+        id="backup-and-recovery"
+        rows=(array
+          (hash
+            title="What is backed up"
+            description=this.model.product.backup_capability
+            hide=(not this.model.product.backup_capability)
+          )
+          (hash
+            title="How often backups are performed"
+            description=this.model.product.backup_scheduling_type
+            hide=(not this.model.product.backup_scheduling_type)
+          )
+          (hash
+            title="How users recover backups"
+            description=this.model.product.backup_recovery_type
+            hide=(not this.model.product.backup_recovery_type)
+          )
+        )
+      }}
+      {{product-table
+        title="Data protection"
+        id="data-protection"
+        rows=(array
+          (hash
+            title="Data protection between buyer and supplier networks"
+            list=this.model.product.encryption_transit_user_types
+            hide=(is-empty this.model.product.encryption_transit_user_types)
+          )
+          (hash
+            title="Other data protection between buyer and supplier networks"
+            description=this.model.product.encryption_transit_user_other
+            hide=(array-excludes this.model.product.encryption_transit_user_types 'other')
+          )
+          (hash
+            title="Data protection within the supplier's network"
+            list=this.model.product.encryption_transit_network_types
+            hide=(is-empty this.model.product.encryption_transit_network_types)
+          )
+          (hash
+            title="Other data protection within the supplier's network"
+            description=this.model.product.encryption_transit_network_other
+            hide=(array-excludes this.model.product.encryption_transit_network_types 'other')
+          )
+          (hash
+            title="Data protection at rest"
+            list=this.model.product.encryption_rest_types
+            hide=(is-empty this.model.product.encryption_rest_types)
+          )
+          (hash
+            title="Other data protection at rest"
+            description=this.model.product.encryption_rest_other
+            hide=(array-excludes this.model.product.encryption_rest_types 'other')
+          )
+          (hash
+            title="Who controls encryption keys"
+            description=this.model.product.encryption_keys_controller
+            hide=(not this.model.product.encryption_keys_controller)
+          )
+        )
+      }}
+      {{product-table
+        title="Security standards"
+        id="security-standards"
+        rows=(array
+          (hash
+            title="Data centre security standards"
+            description=this.model.product.data_centre_security_standards
+            hide=(not this.model.product.data_centre_security_standards)
+          )
+          (hash
+            title="ISO/IEC 27001:2013 certification"
+            booleanText=this.model.product.iso_27001
+          )
+          (hash
+            title="Who accredited the ISO/IEC 27001:2013 certification"
+            description=this.model.product.iso_27001_accreditor
+            hide=(not this.model.product.iso_27001)
+          )
+          (hash
+            title="When the ISO/IEC 27001:2013 certification expires"
+            description=this.model.product.iso_27001_date
+            hide=(not this.model.product.iso_27001)
+          )
+          (hash
+            title="What the ISO/IEC 27001:2013 certification doesn't cover"
+            description=this.model.product.iso_27001_exclusions
+            hide=(not this.model.product.iso_27001)
+          )
+          (hash
+            title="ISO/IEC 27017:2015 certification"
+            booleanText=this.model.product.iso_27017
+          )
+          (hash
+            title="Who accredited the ISO/IEC 27017:2015 certification"
+            description=this.model.product.iso_27017_accreditor
+            hide=(not this.model.product.iso_27017)
+          )
+          (hash
+            title="When the ISO/IEC 27017:2015 certification expires"
+            description=this.model.product.iso_27017_date
+            hide=(not this.model.product.iso_27017)
+          )
+          (hash
+            title="What the ISO/IEC 27017:2015 certification doesn't cover"
+            description=this.model.product.iso_27017_exclusions
+            hide=(not this.model.product.iso_27017)
+          )
+          (hash
+            title="ISO/IEC 27018:2014 certification"
+            booleanText=this.model.product.iso_27018
+          )
+          (hash
+            title="Who accredited the ISO/IEC 27018:2014 certification"
+            description=this.model.product.iso_27018_accreditor
+            hide=(not this.model.product.iso_27018)
+          )
+          (hash
+            title="When the ISO/IEC 27018:2014 certification expires"
+            description=this.model.product.iso_27018_date
+            hide=(not this.model.product.iso_27018)
+          )
+          (hash
+            title="What the ISO/IEC 27018:2014 certification doesn't cover"
+            description=this.model.product.iso_27018_exclusions
+            hide=(not this.model.product.iso_27018)
+          )
+          (hash
+            title="CSA STAR certification"
+            booleanText=this.model.product.csa_star
+          )
+          (hash
+            title="Who accredited the CSA STAR certification"
+            description=this.model.product.csa_star_accreditor
+            hide=(not this.model.product.csa_star)
+          )
+          (hash
+            title="When the CSA STAR certification expires"
+            description=this.model.product.csa_star_date
+            hide=(not this.model.product.csa_star)
+          )
+          (hash
+            title="CSA STAR level"
+            description=this.model.product.csa_star_level
+            hide=(not this.model.product.csa_star)
+          )
+          (hash
+            title="What the CSA STAR certification doesn't cover"
+            description=this.model.product.csa_star_exclusions
+            hide=(not this.model.product.csa_star)
+          )
+          (hash
+            title="PCI DSS certification"
+            booleanText=this.model.product.pci_dss
+          )
+          (hash
+            title="Who accredited the PCI DSS certification"
+            description=this.model.product.pci_dss_accreditor
+            hide=(not this.model.product.pci_dss)
+          )
+          (hash
+            title="When the PCI DSS certification expires"
+            description=this.model.product.pci_dss_date
+            hide=(not this.model.product.pci_dss)
+          )
+          (hash
+            title="What the PCI DSS certification doesn't cover"
+            description=this.model.product.pci_dss_exclusions
+            hide=(not this.model.product.pci_dss)
+          )
+          (hash
+            title="SOC II certification"
+            booleanText=this.model.product.soc_2
+          )
+          (hash
+            title="Who accredited the SOC II certification"
+            description=this.model.product.soc_2_accreditor
+            hide=(not this.model.product.soc_2)
+          )
+          (hash
+            title="When the SOC II certification expires"
+            description=this.model.product.soc_2_date
+            hide=(not this.model.product.soc_2)
+          )
+          (hash
+            title="What the SOC II certification doesn't cover"
+            description=this.model.product.soc_2_exclusions
+            hide=(not this.model.product.soc_2)
+          )
+          (hash
+            title="IRAP assessed"
+            description=this.model.product.irap_type
+            hide=(not this.model.product.irap_type)
+          )
+          (hash
+            title="Certified by the Australian Signals Directorate (ASD)"
+            booleanText=this.model.product.asd_certified
+          )
+          (hash
+            title="Australian data security classification certification"
+            list=this.model.product.security_classification_types
+            hide=(is-empty this.model.product.security_classification_types)
+          )
+          (hash
+            title="Further information about security assessments"
+            description=this.model.product.security_information_url
+            hide=(not this.model.product.security_information_url)
+          )
+        )
+      }}
+      {{product-table
+        title="Security practices"
+        id="security-practices"
+        rows=(array
+          (hash
+            title="Approach to secure software development best practice"
+            description=this.model.product.secure_development_approach
+            hide=(not this.model.product.secure_development_approach)
+          )
+          (hash
+            title="How often the supplier conducts penetration testing"
+            description=this.model.product.penetration_testing_frequency
+            hide=(not this.model.product.penetration_testing_frequency)
+          )
+          (hash
+            title="The supplier's approach to penetration testing"
+            list=this.model.product.penetration_testing_approach
+            hide=(is-empty this.model.product.penetration_testing_approach)
+          )
+        )
+      }}
+      {{product-table
+        title="Separation between users"
+        id="separation-between-users"
+        rows=(array
+          (hash
+            title="Virtualisation used to keep users sharing the same infrastructure apart"
+            booleanText=this.model.product.virtualisation
+          )
+          (hash
+            title="Who implements the virtualisation technology"
+            description=this.model.product.virtualisation_implementor
+            hide=(not this.model.product.virtualisation)
+          )
+          (hash
+            title="Third party providing virtualisation"
+            description=this.model.product.virtualisation_third_party
+            hide=(or
+              (not this.model.product.virtualisation)
+              (array-excludes this.model.product.virtualisation_implementor "third-party")
             )
-          }}
-          {{product-table
-            title="Identity and authentication"
-            id="identity-and-authentication"
-            rows=(array
-              (hash
-                title="User authentication needed"
-                booleanText=this.model.product.authentication_required
-              )
-              (hash
-                title="User authentication"
-                list=this.model.product.authentication_types
-                hide=(not this.model.product.authentication_required)
-              )
-              (hash
-                title="Other user authentication"
-                description=this.model.product.authentication_other
-                hide=(not this.model.product.authentication_required)
-              )
+          )
+          (hash
+            title="Technologies used to provide virtualisation"
+            list=this.model.product.virtualisation_technologies
+            hide=(not this.model.product.virtualisation)
+          )
+          (hash
+            title="Other technologies used to provide virtualisation"
+            description=this.model.product.virtualisation_technologies_other
+            hide=(or
+              (not this.model.product.virtualisation)
+              (array-excludes this.model.product.virtualisation_technologies "other")
             )
-          }}
-          {{product-table
-            title="Environment"
-            id="environment"
-            rows=(array
-              (hash
-                title="Cloud deployment model"
-                list=this.model.product.deployment_model
-                hide=(is-empty this.model.product.deployment_model)
-              )
-              (hash
-                title="Other deployment model"
-                description=this.model.product.deployment_model_other
-                hide=(array-excludes this.model.product.deployment_model 'other-cloud')
-              )
-              (hash
-                title="Software add-on or extension"
-                description=this.model.product.addon_extension_type
-                hide=(not this.model.product.addon_extension_type)
-              )
-              (hash
-                title="Add-on or extension to"
-                description=this.model.product.addon_extension_details
-                hide=(and 
-                       (not-eq this.model.product.addon_extension_type 'yes')
-                       (not-eq this.model.product.addon_extension_type 'yes-and-standalone')
-                     )
-              )
-              (hash
-                title="API"
-                description=this.model.product.api
-                hide=(not this.model.product.api)
-              )
-              (hash
-                title="What users can and can't do using the API"
-                description=this.model.product.api_capabilities
-                hide=(and 
-                       (not-eq this.model.product.api 'rest')
-                       (not-eq this.model.product.api 'non-rest')
-                     )
-              )
-              (hash
-                title="Compatible API automation tools"
-                description=this.model.product.api_automation
-                hide=(and 
-                       (not-eq this.model.product.api 'rest')
-                       (not-eq this.model.product.api 'non-rest')
-                     )
-              )
-              (hash
-                title="Connected government networks"
-                list=this.model.product.government_network_type
-                hide=(is-empty this.model.product.government_network_type)
-              )
-              (hash
-                title="Other connected government networks"
-                description=this.model.product.government_network_other
-                hide=(array-excludes this.model.product.government_network_type 'other')
-              )
-              (hash
-                title="Web interface"
-                booleanText=this.model.product.web_interface
-              )
-              (hash
-                title="What users can and can't do using the web interface"
-                description=this.model.product.web_interface_details
-                hide=(not this.model.product.web_interface)
-              )
-              (hash
-                title="Supported browsers"
-                list=this.model.product.supported_browsers
-                hide=(not this.model.product.web_interface)
-              )
-              (hash
-                title="Application for users to install"
-                booleanText=this.model.product.installed_application
-              )
-              (hash
-                title="Supported operating systems"
-                list=this.model.product.supported_os
-                hide=(not this.model.product.installed_application)
-              )
-              (hash
-                title="Other supported operating systems"
-                description=this.model.product.supported_os_other
-                hide=(or
-                  (not this.model.product.installed_application)
-                  (array-excludes this.model.product.supported_os_other 'other')
-                )
-              )
-              (hash
-                title="Designed to work on mobile devices"
-                booleanText=this.model.product.mobile_devices
-              )
-              (hash
-                title="Differences in the mobile and desktop functionality"
-                description=this.model.product.mobile_desktop_differences
-                hide=(not this.model.product.mobile_devices)
-              )
-              (hash
-                title="Accessible to WCAG 2.0 AA or above"
-                description=this.model.product.accessibility_type
-                hide=(not this.model.product.accessibility_type)
-              )
-              (hash
-                title="Areas which are accessible (and exclusions)"
-                description=this.model.product.accessibility_exclusions
-                hide=(not-eq this.model.product.accessibility_type "exclusions")
-              )
-              (hash
-                title="How the product or service scales"
-                description=this.model.product.scaling_type
-                hide=(not this.model.product.scaling_type)
-              )
-            )
-          }}
-          {{product-table
-            title="Locations"
-            id="locations"
-            rows=(array
-              (hash
-                title="Whether users can control where their data is stored, processed and managed in Australia"
-                booleanText=this.model.product.data_location_control
-              )
-              (hash
-                title="Locations where user data is stored, processed and managed"
-                description=this.model.product.data_location
-                hide=(not this.model.product.data_location)
-              )
-              (hash
-                title="Other known locations"
-                description=this.model.product.data_location_other
-                hide=(not-eq this.model.product.data_location 'other-known')
-              )
-              (hash
-                title="Why the seller doesn't know"
-                description=this.model.product.data_location_unknown_reason
-                hide=(not-eq this.model.product.data_location 'dont-know')
-              )
-              (hash
-                title="Whether the seller operates their own data centres"
-                booleanText=this.model.product.own_data_centre
-              )
-              (hash
-                title="About the seller's data centre"
-                description=this.model.product.own_data_centre_details
-                hide=(not this.model.product.own_data_centre)
-              )
-              (hash
-                title="Whether third parties are involved in storing, processing or managing buyer data"
-                booleanText=this.model.product.third_party_involved
-              )
-              (hash
-                title="The third parties involved"
-                description=this.model.product.third_party_involved_details
-                hide=(not this.model.product.third_party_involved)
-              )
-            )
-          }}
-          {{product-table
-            title="User data"
-            id="user-data"
-            rows=(array
-              (hash
-                title="Data import formats"
-                list=this.model.product.data_import_formats
-                hide=(is-empty this.model.product.data_import_formats)
-              )
-              (hash
-                title="Other data import formats"
-                description=this.model.product.data_import_formats_other
-                hide=(array-excludes this.model.product.data_import_formats 'other')
-              )
-              (hash
-                title="Data export formats"
-                list=this.model.product.data_export_formats
-                hide=(is-empty this.model.product.data_export_formats)
-              )
-              (hash
-                title="Other data export formats"
-                description=this.model.product.data_export_formats_other
-                hide=(array-excludes this.model.product.data_export_formats 'other')
-              )
-              (hash
-                title="whether there are restrictions on users accessing or extracting data"
-                booleantext=this.model.product.data_access_restrictions
-              )
-              (hash
-                title="The restrictions on users accessing or extracting data"
-                description=this.model.product.data_access_restrictions_details
-                hide=(not this.model.product.data_access_restrictions)
-              )
-              (hash
-                title="Whether users can access audit information about activities and transactions"
-                booleanText=this.model.product.audit_information
-              )
-              (hash
-                title="The maximum time audit information data is stored"
-                description=this.model.product.audit_storage_period
-                hide=(not this.model.product.audit_storage_period)
-              )
-              (hash
-                title="The maximum time system logs are stored"
-                description=this.model.product.log_storage_period
-                hide=(not this.model.product.log_storage_period)
-              )
-              (hash
-                title="Approach to secure data disposal"
-                description=this.model.product.data_disposal_approach
-                hide=(not this.model.product.data_disposal_approach)
-              )
-            )
-          }}
-          {{product-table
-            title="Backup and recovery"
-            id="backup-and-recovery"
-            rows=(array
-              (hash
-                title="What is backed up"
-                description=this.model.product.backup_capability
-                hide=(not this.model.product.backup_capability)
-              )
-              (hash
-                title="How often backups are performed"
-                description=this.model.product.backup_scheduling_type
-                hide=(not this.model.product.backup_scheduling_type)
-              )
-              (hash
-                title="How users recover backups"
-                description=this.model.product.backup_recovery_type
-                hide=(not this.model.product.backup_recovery_type)
-              )
-            )
-          }}
-          {{product-table
-            title="Data protection"
-            id="data-protection"
-            rows=(array
-              (hash
-                title="Data protection between buyer and supplier networks"
-                list=this.model.product.encryption_transit_user_types
-                hide=(is-empty this.model.product.encryption_transit_user_types)
-              )
-              (hash
-                title="Other data protection between buyer and supplier networks"
-                description=this.model.product.encryption_transit_user_other
-                hide=(array-excludes this.model.product.encryption_transit_user_types 'other')
-              )
-              (hash
-                title="Data protection within the supplier's network"
-                list=this.model.product.encryption_transit_network_types
-                hide=(is-empty this.model.product.encryption_transit_network_types)
-              )
-              (hash
-                title="Other data protection within the supplier's network"
-                description=this.model.product.encryption_transit_network_other
-                hide=(array-excludes this.model.product.encryption_transit_network_types 'other')
-              )
-              (hash
-                title="Data protection at rest"
-                list=this.model.product.encryption_rest_types
-                hide=(is-empty this.model.product.encryption_rest_types)
-              )
-              (hash
-                title="Other data protection at rest"
-                description=this.model.product.encryption_rest_other
-                hide=(array-excludes this.model.product.encryption_rest_types 'other')
-              )
-              (hash
-                title="Who controls encryption keys"
-                description=this.model.product.encryption_keys_controller
-                hide=(not this.model.product.encryption_keys_controller)
-              )
-            )
-          }}
-          {{product-table
-            title="Security standards"
-            id="security-standards"
-            rows=(array
-              (hash
-                title="Data centre security standards"
-                description=this.model.product.data_centre_security_standards
-                hide=(not this.model.product.data_centre_security_standards)
-              )
-              (hash
-                title="ISO/IEC 27001:2013 certification"
-                booleanText=this.model.product.iso_27001
-              )
-              (hash
-                title="Who accredited the ISO/IEC 27001:2013 certification"
-                description=this.model.product.iso_27001_accreditor
-                hide=(not this.model.product.iso_27001)
-              )
-              (hash
-                title="When the ISO/IEC 27001:2013 certification expires"
-                description=this.model.product.iso_27001_date
-                hide=(not this.model.product.iso_27001)
-              )
-              (hash
-                title="What the ISO/IEC 27001:2013 certification doesn't cover"
-                description=this.model.product.iso_27001_exclusions
-                hide=(not this.model.product.iso_27001)
-              )
-              (hash
-                title="ISO/IEC 27017:2015 certification"
-                booleanText=this.model.product.iso_27017
-              )
-              (hash
-                title="Who accredited the ISO/IEC 27017:2015 certification"
-                description=this.model.product.iso_27017_accreditor
-                hide=(not this.model.product.iso_27017)
-              )
-              (hash
-                title="When the ISO/IEC 27017:2015 certification expires"
-                description=this.model.product.iso_27017_date
-                hide=(not this.model.product.iso_27017)
-              )
-              (hash
-                title="What the ISO/IEC 27017:2015 certification doesn't cover"
-                description=this.model.product.iso_27017_exclusions
-                hide=(not this.model.product.iso_27017)
-              )
-              (hash
-                title="ISO/IEC 27018:2014 certification"
-                booleanText=this.model.product.iso_27018
-              )
-              (hash
-                title="Who accredited the ISO/IEC 27018:2014 certification"
-                description=this.model.product.iso_27018_accreditor
-                hide=(not this.model.product.iso_27018)
-              )
-              (hash
-                title="When the ISO/IEC 27018:2014 certification expires"
-                description=this.model.product.iso_27018_date
-                hide=(not this.model.product.iso_27018)
-              )
-              (hash
-                title="What the ISO/IEC 27018:2014 certification doesn't cover"
-                description=this.model.product.iso_27018_exclusions
-                hide=(not this.model.product.iso_27018)
-              )
-              (hash
-                title="CSA STAR certification"
-                booleanText=this.model.product.csa_star
-              )
-              (hash
-                title="Who accredited the CSA STAR certification"
-                description=this.model.product.csa_star_accreditor
-                hide=(not this.model.product.csa_star)
-              )
-              (hash
-                title="When the CSA STAR certification expires"
-                description=this.model.product.csa_star_date
-                hide=(not this.model.product.csa_star)
-              )
-              (hash
-                title="CSA STAR level"
-                description=this.model.product.csa_star_level
-                hide=(not this.model.product.csa_star)
-              )
-              (hash
-                title="What the CSA STAR certification doesn't cover"
-                description=this.model.product.csa_star_exclusions
-                hide=(not this.model.product.csa_star)
-              )
-              (hash
-                title="PCI DSS certification"
-                booleanText=this.model.product.pci_dss
-              )
-              (hash
-                title="Who accredited the PCI DSS certification"
-                description=this.model.product.pci_dss_accreditor
-                hide=(not this.model.product.pci_dss)
-              )
-              (hash
-                title="When the PCI DSS certification expires"
-                description=this.model.product.pci_dss_date
-                hide=(not this.model.product.pci_dss)
-              )
-              (hash
-                title="What the PCI DSS certification doesn't cover"
-                description=this.model.product.pci_dss_exclusions
-                hide=(not this.model.product.pci_dss)
-              )
-              (hash
-                title="SOC II certification"
-                booleanText=this.model.product.soc_2
-              )
-              (hash
-                title="Who accredited the SOC II certification"
-                description=this.model.product.soc_2_accreditor
-                hide=(not this.model.product.soc_2)
-              )
-              (hash
-                title="When the SOC II certification expires"
-                description=this.model.product.soc_2_date
-                hide=(not this.model.product.soc_2)
-              )
-              (hash
-                title="What the SOC II certification doesn't cover"
-                description=this.model.product.soc_2_exclusions
-                hide=(not this.model.product.soc_2)
-              )
-              (hash
-                title="IRAP assessed"
-                description=this.model.product.irap_type
-                hide=(not this.model.product.irap_type)
-              )
-              (hash
-                title="Certified by the Australian Signals Directorate (ASD)"
-                description=this.model.product.asd_certified
-                hide=(not this.model.product.asd_certified)
-              )
-              (hash
-                title="Australian data security classification certification"
-                list=this.model.product.security_classification_types
-                hide=(is-empty this.model.product.security_classification_types)
-              )
-              (hash
-                title="Further information about security assessments"
-                description=this.model.product.security_information_url
-                hide=(not this.model.product.security_information_url)
-              )
-            )
-          }}
-          {{product-table
-            title="Security practices"
-            id="security-practices"
-            rows=(array
-              (hash
-                title="Approach to secure software development best practice"
-                description=this.model.product.secure_development_approach
-                hide=(not this.model.product.secure_development_approach)
-              )
-              (hash
-                title="How often the supplier conducts penetration testing"
-                description=this.model.product.penetration_testing_frequency
-                hide=(not this.model.product.penetration_testing_frequency)
-              )
-              (hash
-                title="The supplier's approach to penetration testing"
-                list=this.model.product.penetration_testing_approach
-                hide=(is-empty this.model.product.penetration_testing_approach)
-              )
-            )
-          }}
-          {{product-table
-            title="Separation between users"
-            id="separation-between-users"
-            rows=(array
-              (hash
-                title="Virtualisation used to keep users sharing the same infrastructure apart"
-                booleanText=this.model.product.virtualisation
-              )
-              (hash
-                title="Who implements the virtualisation technology"
-                description=this.model.product.virtualisation_implementor
-                hide=(not this.model.product.virtualisation)
-              )
-              (hash
-                title="Third party providing virtualisation"
-                description=this.model.product.virtualisation_third_party
-                hide=(or
-                  (not this.model.product.virtualisation)
-                  (array-excludes this.model.product.virtualisation_implementor "third-party")
-                )
-              )
-              (hash
-                title="Technologies used to provide virtualisation"
-                list=this.model.product.virtualisation_technologies
-                hide=(not this.model.product.virtualisation)
-              )
-              (hash
-                title="Other technologies used to provide virtualisation"
-                description=this.model.product.virtualisation_technologies_other
-                hide=(or
-                  (not this.model.product.virtualisation)
-                  (array-excludes this.model.product.virtualisation_technologies "other")
-                )
-              )
-              (hash
-                title="Approach to separating different organisations on the same infrastructure"
-                description=this.model.product.user_separation_details
-                hide=(not this.model.product.virtualisation)
-              )
-            )
-          }}
-          {{product-table
-            title="Operational security"
-            id="operationl-security"
-            rows=(array
-              (hash
-                title="Configuration and change management processes"
-                description=this.model.product.change_management_processes
-                hide=(not this.model.product.change_management_processes)
-              )
-              (hash
-                title="Configuration and change management approach"
-                description=this.model.product.change_management_approach
-                hide=(not this.model.product.change_management_approach)
-              )
-              (hash
-                title="Vulnerability management processes"
-                description=this.model.product.vulnerability_processes
-                hide=(not this.model.product.vulnerability_processes)
-              )
-              (hash
-                title="Vulnerability management approach"
-                description=this.model.product.vulnerability_approach
-                hide=(not this.model.product.vulnerability_approach)
-              )
-              (hash
-                title="Protective monitoring processes"
-                description=this.model.product.protective_monitoring_processes
-                hide=(not this.model.product.protective_monitoring_processes)
-              )
-              (hash
-                title="Protective monitoring approach"
-                description=this.model.product.protective_monitoring_approach
-                hide=(not this.model.product.protective_monitoring_approach)
-              )
-              (hash
-                title="Crisis and incident management processes"
-                description=this.model.product.incident_management_processes
-                hide=(not this.model.product.incident_management_processes)
-              )
-              (hash
-                title="Crisis and incident management plan"
-                description=this.model.product.incident_management_approach
-                hide=(not this.model.product.incident_management_approach)
-              )
-              (hash
-                title="How often access controls are tested"
-                description=this.model.product.access_control_testing_frequency
-                hide=(not this.model.product.access_control_testing_frequency)
-              )
-            )
-          }}
-        </div>
-      </div>
+          )
+          (hash
+            title="Approach to separating different organisations on the same infrastructure"
+            description=this.model.product.user_separation_details
+            hide=(not this.model.product.virtualisation)
+          )
+        )
+      }}
+      {{product-table
+        title="Operational security"
+        id="operationl-security"
+        rows=(array
+          (hash
+            title="Configuration and change management processes"
+            description=this.model.product.change_management_processes
+            hide=(not this.model.product.change_management_processes)
+          )
+          (hash
+            title="Configuration and change management approach"
+            description=this.model.product.change_management_approach
+            hide=(not this.model.product.change_management_approach)
+          )
+          (hash
+            title="Vulnerability management processes"
+            description=this.model.product.vulnerability_processes
+            hide=(not this.model.product.vulnerability_processes)
+          )
+          (hash
+            title="Vulnerability management approach"
+            description=this.model.product.vulnerability_approach
+            hide=(not this.model.product.vulnerability_approach)
+          )
+          (hash
+            title="Protective monitoring processes"
+            description=this.model.product.protective_monitoring_processes
+            hide=(not this.model.product.protective_monitoring_processes)
+          )
+          (hash
+            title="Protective monitoring approach"
+            description=this.model.product.protective_monitoring_approach
+            hide=(not this.model.product.protective_monitoring_approach)
+          )
+          (hash
+            title="Crisis and incident management processes"
+            description=this.model.product.incident_management_processes
+            hide=(not this.model.product.incident_management_processes)
+          )
+          (hash
+            title="Crisis and incident management plan"
+            description=this.model.product.incident_management_approach
+            hide=(not this.model.product.incident_management_approach)
+          )
+          (hash
+            title="How often access controls are tested"
+            description=this.model.product.access_control_testing_frequency
+            hide=(not this.model.product.access_control_testing_frequency)
+          )
+        )
+      }}
     </div>
   </div>
 {{/dds/template-body}}

@@ -14,12 +14,12 @@
 <div class="container">
   {{# if this.model.seller }}
     <div class="row">
-      <div class="col-sm-2">
+      <div class="col-sm-1">
       </div>
-      <div class="col-sm-8">
-        {{#dds/page-alert alertType=this.model.seller.statusType}}
+      <div class="col-sm-9">
+        {{#dds/call-out}}
           <h5 class="au-display-sm"><b>Your company profile {{this.model.seller.statusMessage}}.</b></h5>
-        {{/dds/page-alert}}
+        {{/dds/call-out}}
         <br>
         <br>
       </div>

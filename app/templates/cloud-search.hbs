@@ -281,13 +281,13 @@
       {{#if products}}
         {{#each products as |product|}}
           {{#link-to "public-product" product.id}}
-            <h2 class="au-display-xl">
+            <h2 class="au-display-lg">
               {{product.name}}
             </h2>
           {{/link-to}}
           <br>
           {{#link-to "cloud-seller" product.public_seller_id}}
-            <h2 class="au-display-lg">
+            <h2 class="au-display-md">
               {{product.public_seller_name}}
             </h2>
           {{/link-to}}
