@@ -9,6 +9,8 @@ export default Controller.extend({
       password_reset_sent: 'paper-plane',
       account_updated: 'envelope',
       email_confirmed: 'check-square',
+      invitation_accepted: 'check-square',
+      password_updated: 'check-square',
     }[this.get('message')] || 'bomb';
   }),
   title: computed('message', function () {
@@ -18,6 +20,8 @@ export default Controller.extend({
       password_reset_sent: 'Password reset email has been sent',
       account_updated: 'Account has been updated',
       email_confirmed: 'Email confirmation is complete',
+      invitation_accepted: 'Invitation is accepted',
+      password_updated: 'Password is updated',
     }[this.get('message')] || 'Something went wrong';
   }),
   description: computed('message', function () {
@@ -27,6 +31,8 @@ export default Controller.extend({
       password_reset_sent: 'If your email address is in our database, you will receive a password recovery email in a few minutes.',
       account_updated: 'Your account has been updated successfully. If you requested change of email, the new address have to be confirmed first.',
       email_confirmed: 'Thanks for confirming your email address. Please go to dashboard to continue with your application.',
+      invitation_accepted: 'Thanks for accepting the invitation. Please go to dashboard to continue with your application.',
+      password_updated: 'Your password is recovered. Please go to dashboard to continue with your application.',
     }[this.get('message')] || 'You probably entered an incorrect success message';
   }),
 });

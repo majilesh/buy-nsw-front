@@ -41,6 +41,8 @@ Router.map(function() {
   this.route('cloud-seller', { path: '/cloud/seller/:seller_id' } );
 
   // this.mount('telco');
+  this.route('confirm-invitation', { path: '/confirm-invitation/:confirmation_token' } );
+  this.route('reset-password', { path: '/reset-password/:reset_password_token' } );
 });
 
 export default Router;

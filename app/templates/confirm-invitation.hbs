@@ -1,0 +1,67 @@
+{{#dds/template-body}}
+  <div class="col-sm-10">
+    <h1 class="au-display-xl">Your invitation to join this seller</h1>
+    <p>Before you join, set a password. You'll need this when you sign in again.</p>
+    <b>Password</b>
+    <p>
+      Passwords must be at least 8 characters long.
+      Tip: create a password with 3 or more words – it's secure and easy to remember.
+      {{dds/text-input
+        wide=true
+        allRow=true
+        password=true
+        noAutoComplete=true
+        field=(mut password)
+        enter=(action "submit")
+      }}
+      <div>
+        {{#if (eq password.length 0)}}
+          <span class="field-error blank">Password is blank</span>
+        {{else if (lt password.length 8)}}
+          <span class="field-error short">Password is too short</span>
+        {{else if (lt strength 3)}}
+          <span class="field-error weak">Password is not strong enough</span>
+        {{else}}
+          <span class="field-error strong">Password is strong</span>
+        {{/if}}
+        <div class="clear-both"></div>
+      </div>
+    </p>
+    <br>
+    <p>
+      <b>Confirm your password</b>
+      <br>
+      {{dds/text-input
+        wide=true
+        allRow=true
+        password=true
+        noAutoComplete=true
+        field=(mut confirmPassword)
+        enter=(action "submit")
+        focusOut=(action (mut showConfirmError) true)
+      }}
+      {{#if (and showConfirmError (v-get this "confirmPassword" "isInvalid"))}}
+        <div>
+          <span class="field-error error">Passwords don't match</span>
+        </div>
+        <div class="clear-both"></div>
+      {{/if}}
+      <hr>
+    </p>
+    {{#if apiError}}
+      <div>
+        <span class="field-error error">{{apiError}}</span>
+      </div>
+      <div class="clear-both"></div>
+    {{/if}}
+    <p>
+      <span class="float-right">
+        {{dds/link-button
+          onClick=(action "submit")
+          disabled=(v-get this "isInvalid")
+          label="Accept incitation"
+        }}
+      </span>
+    </p>
+  </div>
+{{/dds/template-body}}

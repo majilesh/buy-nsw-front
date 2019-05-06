@@ -76,10 +76,14 @@ export default Service.extend({
     .finally(() => $('.overlay').hide());
   },
 
-  init() {
-    this._super(...arguments);
+  authenticate() {
     this.get('ajax').request('/api/users/authenticate')
       .then((response) =>
         this.handleSuccess(response, false))
+  },
+
+  init() {
+    this._super(...arguments);
+    this.authenticate();
   },
 });

@@ -21,6 +21,7 @@ div.right-arrow {
 
 p.au-callout--home-top {
   border-left: 0.5rem solid $AU-colordark-background;
+  min-height: 5rem;
   &.light {
     div.right-arrow {
       color: $NSW-colordark-foreground-border;
