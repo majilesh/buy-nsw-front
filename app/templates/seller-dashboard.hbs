@@ -12,7 +12,7 @@
 <div class="container">
   {{# if this.model.seller }}
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-sm-10">
         {{#dds/call-out}}
           <h5 class="au-display-sm"><b>Your company profile {{this.model.seller.statusMessage}}.</b></h5>
         {{/dds/call-out}}
@@ -22,7 +22,7 @@
     </div>
     {{# if this.model.seller.expired }}
       <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-10">
           {{#dds/page-alert alertType="warning"}}
             <h5>Some of your documents are expired now, please refresh them as soon as possible.</h5>
           {{/dds/page-alert}}

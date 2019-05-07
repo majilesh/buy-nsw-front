@@ -1,75 +1,75 @@
-{{#dds/template-body}}
-<div class="col-sm-5">
-  <h1 class="au-display-lg">Create an account</h1>
-</div>
-<div class="col-sm-7">
-  <p>
-    You can create buyer account if you're a NSW Government employee or an employee of
-    <a
-      href="https://www.procurepoint.nsw.gov.au/before-you-buy/buyer-eligibility-and-registration"
-      target="_blank"
-    >another eligible organisation</a>.
-  </p>
-  <br>
-  {{link-to "Create a buyer account" "signup" "buyer" class="au-btn"}}
-  <hr>
-  <p>
-    Register for a seller account if you're an organisation looking to sell your products and services to government.
-  </p>
-  <br>
-  {{link-to "Create a seller account" "signup" "seller" class="au-btn"}}
-  <hr>
-</div>
-<div class="col-sm-5">
-  <h1 class="au-display-lg">Already have an account?</h1>
-  <p>
-    Get help if you have
-    {{link-to "forgotten you password" "forgot-password"}}
-    or if you
-    {{link-to "haven't received a confirmation email" "reconfirm-email"}}.
-  </p>
-</div>
-<div class="col-sm-7">
-  <p>
-    {{#dds/text-input
-      wide=true
-      field=(mut email)
-      enter=(action "login")
-    }}
-      <b>Email address</b>
-    {{/dds/text-input}}
-  </p>
-  <p>
-    {{#dds/text-input
-      wide=true
-      password=true
-      field=(mut password)
-      enter=(action "login")
-    }}
-      <b>Password</b>
-    {{/dds/text-input}}
-    <div>
-      <span class="field-error error">{{auth.message}}</span>
-    </div>
-    <div class="clear-both"></div>
-  </p>
-  <p>
-    <label class="au-control-input">
-      {{input
-        type="checkbox"
-        class="au-control-input__input"
-        checked=(mut remember)
+{{#dds/template-body signout=true}}
+  <div class="col-sm-5">
+    <h1 class="au-display-lg">Create an account</h1>
+  </div>
+  <div class="col-sm-7">
+    <p>
+      You can create buyer account if you're a NSW Government employee or an employee of
+      <a
+        href="https://www.procurepoint.nsw.gov.au/before-you-buy/buyer-eligibility-and-registration"
+        target="_blank"
+      >another eligible organisation</a>.
+    </p>
+    <br>
+    {{link-to "Create a buyer account" "signup" "buyer" class="au-btn"}}
+    <hr>
+    <p>
+      Register for a seller account if you're an organisation looking to sell your products and services to government.
+    </p>
+    <br>
+    {{link-to "Create a seller account" "signup" "seller" class="au-btn"}}
+    <hr>
+  </div>
+  <div class="col-sm-5">
+    <h1 class="au-display-lg">Already have an account?</h1>
+    <p>
+      Get help if you have
+      {{link-to "forgotten you password" "forgot-password"}}
+      or if you
+      {{link-to "haven't received a confirmation email" "reconfirm-email"}}.
+    </p>
+  </div>
+  <div class="col-sm-7">
+    <p>
+      {{#dds/text-input
+        wide=true
+        field=(mut email)
+        enter=(action "login")
       }}
-      <span class="au-control-input__text"><b>Remember me</b></span>
-    </label>
-  </p>
-  <p>
-    <a
-      class="au-btn float-right"
-      onclick={{action "login"}}
-    >
-      Sign in
-    </a>
-  </p>
-</div>
+        <b>Email address</b>
+      {{/dds/text-input}}
+    </p>
+    <p>
+      {{#dds/text-input
+        wide=true
+        password=true
+        field=(mut password)
+        enter=(action "login")
+      }}
+        <b>Password</b>
+      {{/dds/text-input}}
+      <div>
+        <span class="field-error error">{{auth.message}}</span>
+      </div>
+      <div class="clear-both"></div>
+    </p>
+    <p>
+      <label class="au-control-input">
+        {{input
+          type="checkbox"
+          class="au-control-input__input"
+          checked=(mut remember)
+        }}
+        <span class="au-control-input__text"><b>Remember me</b></span>
+      </label>
+    </p>
+    <p>
+      <a
+        class="au-btn float-right"
+        onclick={{action "login"}}
+      >
+        Sign in
+      </a>
+    </p>
+  </div>
 {{/dds/template-body}}

@@ -47,7 +47,7 @@ export default Service.extend({
   loginFailed() {
   },
 
-  logout() {
+  logout(goHome = true) {
     $('.overlay').show();
     this.get('ajax').request('/api/users/logout', {
       method: 'POST',
@@ -55,7 +55,7 @@ export default Service.extend({
         "X-CSRF-Token": this.get('csrfToken'),
       },
     }).then((response) =>
-        this.handleSuccess(response, true))
+        this.handleSuccess(response, goHome))
     .finally(() => $('.overlay').hide())
   },
 
