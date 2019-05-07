@@ -4,6 +4,6 @@ export default Component.extend({
   home: false,
   willRender() {
     this._super(...arguments);
-    this.set('home', window.location.pathname == '/_/');
+    this.set('home', window.location.pathname == '/ict/');
   }
 });

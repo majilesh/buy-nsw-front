@@ -21,7 +21,7 @@ You will need the following things properly installed on your computer.
 ## Running / Development
 
 * `ember serve`
-* Visit your app at [http://localhost:4200/_](http://localhost:4200).
+* Visit your app at [http://localhost:4200/ict](http://localhost:4200/ict/).
 * Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
 
 ### Running alongside Rails api
@@ -30,7 +30,7 @@ You will need the following things properly installed on your computer.
 * `rails server` # Run this command inside buy-nsw directory
 * `cp nginx.conf /etc/nginx/`
 * `sudo service nginx restart`
-* Visit your app at [http://localhost/_/](http://localhost/_/)
+* Visit your app at [http://localhost/ict/](http://localhost/ict/)
 
 ### Code Generators
 
@@ -55,7 +55,7 @@ Make use of the many generators for code, try `ember help generate` for more det
 ### Serve the build on nginx
 
 * After building copy the content of dist directory to nginx root (/var/www/html/)
-* Create a soft link in nginx root as follow: `ln -s /var/www/html /var/www/html/_` (you might need sudo for this step)
+* Create a soft link in nginx root as follow: `ln -s /var/www/html /var/www/html/ict` (you might need sudo for this step)
 * Configure nginx to serve index.html for all routes and serve other mimetypes:
 ```
   server {
