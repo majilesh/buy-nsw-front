@@ -14,7 +14,7 @@ div.right-arrow {
   color: $AU-colordark-background;
   float: right;
   min-width: 60px;
-  padding-left: 60px;
+  padding-left: 20px;
   vertical-align: center;
   font-size: 40px;
 }
@@ -38,7 +38,11 @@ div.home-middle-box {
     color: $NSW-colordark-foreground-border;
   }
   h6 {
-    margin-top: 0;
+    margin-top: 7px;
+    max-width: 15rem;
+  }
+  hr {
+    margin: 1.0rem;
   }
   div.highlight {
     border-left: 0.5rem solid $NSW-colordark-foreground-border;
