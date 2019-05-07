@@ -19,6 +19,8 @@
         {{item.placeHolder}}
       </div>
     </div>
+    <div class="clear-both"></div>
+    <hr class="light">
   {{/if}}
   {{#unless (or item.hide (eq item.description null))}}
     <div class="row">
@@ -58,3 +60,10 @@
     </div>
   {{/unless}}
 {{/each}}
+{{#unless noTopLink}}
+  <div class="back-to-top">
+    <a href="#top" class="float-right">Back to top ↑</a>
+  </div>
+  <div class="clear-both"></div>
+  <br>
+{{/unless}}

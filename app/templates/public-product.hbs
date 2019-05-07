@@ -6,6 +6,7 @@
       (hash name=this.model.product.name)
     )
   }}
+  <span id="top"></span>
   <br>
   {{#if (not auth.user.can_buy)}}
     {{#dds/call-out}}
@@ -35,36 +36,28 @@
     <div class="col-sm-5">
       <br>
       <div class="row">
-        <div class="col-sm-4"><b>By</b></div>
-        <div class="col-sm-8">
+        <div class="col-sm-5"><b>By</b></div>
+        <div class="col-sm-7">
           {{link-to this.model.product.public_seller_name "cloud-seller" this.model.product.public_seller_id}}
         </div>
         <br>
         <hr class="light">
       </div>
       {{product-table
+        noTopLink=true
         rows=(array
           (hash
             title="Made by"
             description=this.model.product.organisation_resold
             hide=(eq this.model.product.product_type 'own-product')
           )
+          (hash
+            title="For"
+            list=this.model.product.audiences
+            hide=(is-empty this.model.product.audiences)
+          )
         )
       }}
-      {{#if (not (is-empty this.model.product.audiences))}}
-        <div class="row">
-          <div class="col-sm-4"><b>For</b></div>
-          <div class="col-sm-8">
-            <ul>
-              {{#each this.model.product.audiences as |item|}}
-                <li>{{item}}</li>
-              {{/each}}
-            </ul>
-          </div>
-          <div class="clear-both"></div>
-          <hr class="light">
-        </div>
-      {{/if}}
     </div>
     <div class="col-sm-7">
       {{#if auth.user.can_buy}}
