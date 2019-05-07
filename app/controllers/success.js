@@ -9,8 +9,10 @@ export default Controller.extend({
       password_reset_sent: 'paper-plane',
       account_updated: 'envelope',
       email_confirmed: 'check-square',
-      invitation_accepted: 'check-square',
-      password_updated: 'check-square',
+      invitation_accepted: 'check-circle',
+      password_updated: 'key',
+      account_unlocked: 'unlock',
+      manager_approved: 'thumbs-up',
     }[this.get('message')] || 'bomb';
   }),
   title: computed('message', function () {
@@ -22,6 +24,8 @@ export default Controller.extend({
       email_confirmed: 'Email confirmation is complete',
       invitation_accepted: 'Invitation is accepted',
       password_updated: 'Password is updated',
+      account_unlocked: 'Your account is unlocked now',
+      manager_approved: 'You approved the buyer account',
     }[this.get('message')] || 'Something went wrong';
   }),
   description: computed('message', function () {
@@ -33,6 +37,8 @@ export default Controller.extend({
       email_confirmed: 'Thanks for confirming your email address. Please go to dashboard to continue with your application.',
       invitation_accepted: 'Thanks for accepting the invitation. Please go to dashboard to continue with your application.',
       password_updated: 'Your password is recovered. Please go to dashboard to continue with your application.',
+      account_unlocked: 'We logged you in as well, you can continue to dashboard.',
+      manager_approved: 'We will get in touch when it is approved by us as well',
     }[this.get('message')] || 'You probably entered an incorrect success message';
   }),
 });
