@@ -17,15 +17,17 @@ export default DS.RESTAdapter.extend({
   pathForType(type) {
     const type_to_api = {
       sellers: 'sellers',
+      public_sellers: 'sellers',
       products: 'products',
       public_products: 'products',
-      public_sellers: 'sellers',
+      buyers: 'buyers',
+      product_orders: 'buyers',
       events: 'events',
+      feedbacks: 'events',
       users: 'users',
+      members: 'users',
       // telco_products: 'telco_products',
       // public_telco_products: 'telco_products',
-      feedbacks: 'events',
-      members: 'users',
     }
     var type_name = pluralize(underscore(type));
     return type_to_api[type_name] + '/' + type_name;

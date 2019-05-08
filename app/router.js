@@ -43,7 +43,7 @@ Router.map(function() {
   // this.mount('telco');
   this.route('confirm-invitation', { path: '/confirm-invitation/:confirmation_token' } );
   this.route('reset-password', { path: '/reset-password/:reset_password_token' } );
-  this.route('product-order');
+  this.route('product-order', { path: '/product-order/:product_id' });
 });
 
 export default Router;
