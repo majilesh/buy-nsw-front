@@ -12,7 +12,7 @@
       focusOut=(action (mut showEmailError) true)
     }}
     {{#if (v-get this "model.email" "isInvalid")}}
-      <div>
+      <div class="max48">
         <span class="field-error error">Email address is not valid</span>
       </div>
       <div class="clear-both"></div>
@@ -32,7 +32,7 @@
       field=(mut newPassword)
       enter=(action "submit")
     }}
-    <div>
+    <div class="max48">
       {{#if (eq newPassword.length 0)}}
         <span class="field-error blank">Password is blank</span>
       {{else if (lt newPassword.length 8)}}
@@ -56,7 +56,7 @@
       enter=(action "submit")
     }}
     {{#if (v-get this "confirmPassword" "isInvalid")}}
-      <div>
+      <div class="max48">
         <span class="field-error short">Passwords don't match</span>
       </div>
       <div class="clear-both"></div>
@@ -72,6 +72,12 @@
       field=(mut currentPassword)
       enter=(action "submit")
     }}
+    {{#if apiError}}
+      <div class="max48">
+        <span class="field-error error">{{apiError}}</span>
+      </div>
+      <div class="clear-both"></div>
+    {{/if}}
     <p>
       <span class="float-right">
         {{dds/link-button

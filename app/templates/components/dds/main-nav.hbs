@@ -31,19 +31,19 @@
                 <li>
                   {{ link-to "Seller list" "cloud-sellers" }}
                 </li>
-                <!--
-                <li>
-                  {{ link-to "Products and Services" "index" }}
-                </li>
-                -->
                 <li>
                   {{ link-to "Seller guide" "seller-guide" }}
                 </li>
                 <li>
                   {{ link-to "Buyer guide" "buyer-guide" }}
                 </li>
+                {{# if auth.isBuyer }}
+                  <li class={{if (eq currentPath "buyer-dashboard") "active"}}>
+                    {{ link-to "Dashboard" "buyer-dashboard" }}
+                  </li>
+                {{/ if }}
                 {{# if auth.isSeller }}
-                <li class={{if (eq currentPath "seller-dashboard") "active"}}>
+                  <li class={{if (eq currentPath "seller-dashboard") "active"}}>
                     {{ link-to "Dashboard" "seller-dashboard" }}
                   </li>
                 {{/ if }}

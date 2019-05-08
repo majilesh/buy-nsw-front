@@ -18,6 +18,10 @@ export default Service.extend({
     let roles = this.get('user.roles');
     return roles && roles.includes('seller');
   }),
+  isBuyer: computed('user.roles', function() {
+    let roles = this.get('user.roles');
+    return roles && roles.includes('buyer');
+  }),
   isAdmin: computed('user.roles', function() {
     let roles = this.get('user.roles');
     return roles && roles.includes('admin');

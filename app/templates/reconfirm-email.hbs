@@ -1,4 +1,6 @@
 {{#dds/template-body signout=true}}
+  <div class="col-sm-1">
+  </div>
   <div class="col-sm-10">
     <h1 class="au-display-xl">Resend instructions to confirm your account</h1>
     <p>If you did not receive an email to confirm your account, or if the one-time link has expired, we can send a new link to your email address.</p>
@@ -14,10 +16,15 @@
       }}
     </p>
     {{#if (and showEmailError (v-get this "email" "isInvalid"))}}
-      <div>
+      <div class="max48">
         <span class="field-error error">Email address is not valid</span>
       </div>
       <div class="clear-both"></div>
+    {{/if}}
+    {{#if apiError}}
+      <div class="max48">
+        <span class="field-error error">{{apiError}}</span>
+      </div>
     {{/if}}
     <p>
       <span class="float-right">

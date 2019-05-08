@@ -1,4 +1,6 @@
 {{#dds/template-body signout=true}}
+  <div class="col-sm-1">
+  </div>
   <div class="col-sm-10">
     <h1 class="au-display-xl">Create a {{accountType}} account</h1>
     {{#if (eq accountType "seller")}}
@@ -21,7 +23,7 @@
         focusOut=(action (mut showEmailError) true)
       }}
       {{#if (and showEmailError (v-get this "email" "isInvalid"))}}
-        <div>
+        <div class="max48">
           <span class="field-error error">Email address is not valid</span>
         </div>
         <div class="clear-both"></div>
@@ -40,7 +42,7 @@
         field=(mut password)
         enter=(action "submit")
       }}
-      <div>
+      <div class="max48">
         {{#if (eq password.length 0)}}
           <span class="field-error blank">Password is blank</span>
         {{else if (lt password.length 8)}}
@@ -67,7 +69,7 @@
         focusOut=(action (mut showConfirmError) true)
       }}
       {{#if (and showConfirmError (v-get this "confirmPassword" "isInvalid"))}}
-        <div>
+        <div class="max48">
           <span class="field-error error">Passwords don't match</span>
         </div>
         <div class="clear-both"></div>
@@ -76,7 +78,7 @@
     </p>
     <p>By creating an account you confirm your acceptance of the {{link-to "terms of use" "terms-of-use"}}.</p>
     {{#if apiError}}
-      <div>
+      <div class="max48">
         <span class="field-error error">{{apiError}}</span>
       </div>
       <div class="clear-both"></div>

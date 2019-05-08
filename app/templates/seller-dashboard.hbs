@@ -1,17 +1,19 @@
-<div class="container-fluid">
+{{#dds/template-body}}
   <div class="row">
-    <div class="col-sm-3">
+    <div class="col-sm-1">
+    </div>
+    <div class="col-sm-4">
       <h2>Dashboard</h2>
     </div>
   </div>
-</div>
 
-<br>
-<br>
+  <br>
+  <br>
 
-<div class="container">
   {{# if this.model.seller }}
     <div class="row">
+      <div class="col-sm-1">
+      </div>
       <div class="col-sm-10">
         {{#dds/call-out}}
           <h5 class="au-display-sm"><b>Your company profile {{this.model.seller.statusMessage}}.</b></h5>
@@ -32,10 +34,10 @@
       </div>
     {{/ if }}
     <div class="row">
-      <div class="col-sm-4 dash-title">
+      <div class="col-sm-5 dash-title">
         <b>{{this.model.seller.name}}</b>
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-5">
         <div class="btn-cta-group">
             {{ link-to
               "Manage company profile"
@@ -47,10 +49,10 @@
     </div>
     {{#if this.model.seller.offersCloud}}
       <div class="row">
-        <div class="col-sm-4 dash-title">
+        <div class="col-sm-5 dash-title">
           <b>{{this.model.products.length}} products</b>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-5">
           <div class="btn-cta-group">
             {{ link-to
               "Manage cloud products"
@@ -62,10 +64,10 @@
       </div>
     {{/if}}
     <div class="row">
-      <div class="col-sm-4 dash-title">
+      <div class="col-sm-5 dash-title">
         <b>{{this.model.members.length}} members</b>
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-5">
         <div class="btn-cta-group">
           {{ link-to
             "Manage team members"
@@ -77,9 +79,9 @@
     </div>
   {{else}}
     <div class="row">
-      <div class="col-sm-4">
+      <div class="col-sm-5">
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-5">
         <div class="btn-cta-group">
           {{ link-to
             "Apply to sell ICT products and services"
@@ -93,10 +95,10 @@
   {{/if}}
 
   <div class="row">
-    <div class="col-sm-4 dash-title">
+    <div class="col-sm-5 dash-title">
       <b>{{this.model.user.email}}</b>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-5">
       <div class="btn-cta-group">
         {{link-to
           "Change email or password"
@@ -106,4 +108,4 @@
       </div>
     </div>
   </div>
-</div>
+{{/dds/template-body}}

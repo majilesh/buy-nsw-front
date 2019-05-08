@@ -61,11 +61,7 @@
     </div>
     <div class="col-sm-7">
       {{#if auth.user.can_buy}}
-        <a
-          class="au-btn float-right"
-        >
-          Enquire now
-        </a>
+        {{link-to "Enquire now" "product-order" class="au-btn float-right"}}
         <br>
         <div class="clear-both"></div>
         <p class="align-right">
