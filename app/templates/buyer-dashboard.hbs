@@ -1,1 +1,94 @@
-{{outlet}}
+{{#dds/template-body}}
+  <div class="row">
+    <div class="col-sm-1">
+    </div>
+    <div class="col-sm-8">
+      <h2>Dashboard</h2>
+      <br>
+      <p>
+        {{#if (and this.model.buyer this.model.buyer.approved)}}
+          <b>Your buyer account is active.</b>
+          <br>
+          <p>
+            To get started, browse:<br>
+            <ul>
+              <li>{{link-to "Applications and software" "cloud-search" "applications-software"}}</li>
+              <li>{{link-to "Hosting and infrastructure" "cloud-search" "hosting-infrastructure"}}</li>
+            </ul><br>
+            Or {{link-to "return to the buy.nsw homepage" "index"}} for more options.
+          </p>
+        {{else if (and this.model.buyer this.model.buyer.pendingApproval)}}
+          <b>Your buyer application is pending your manager approval.</b><br>
+          <p>
+            In the meantime, browse:<br>
+            <ul>
+              <li>{{link-to "Applications and software" "cloud-search" "applications-software"}}</li>
+              <li>{{link-to "Hosting and infrastructure" "cloud-search" "hosting-infrastructure"}}</li>
+            </ul><br>
+            Or {{link-to "return to the buy.nsw homepage" "index"}} for more options.
+          </p>
+        {{else if (and this.model.buyer this.model.buyer.underReview)}}
+          <b>Your buyer application is under review.</b><br>
+          <p>
+            In the meantime, browse:<br>
+            <ul>
+              <li>{{link-to "Applications and software" "cloud-search" "applications-software"}}</li>
+              <li>{{link-to "Hosting and infrastructure" "cloud-search" "hosting-infrastructure"}}</li>
+            </ul><br>
+            Or {{link-to "return to the buy.nsw homepage" "index"}} for more options.
+          </p>
+        {{else if (and this.model.buyer this.model.buyer.draft)}}
+          {{link-to "Continue with your buyer application" "register-buyer"}}
+        {{else if (not this.model.buyer)}}
+          {{link-to "Register as an ICT buyer who can buy" "register-buyer"}}
+        {{else}}
+          <b>Your buyer application is rejected or not active any more.</b><br>
+        {{/if}}
+      </p>
+      <br>
+      <br>
+      {{#dds/call-out}}
+        <h5 class="au-display-lg">
+          <b>Our sellers so far</b>
+        </h5><br>
+        <div class="row">
+          <div class="col-sm-1">
+          </div>
+          <div class="col-sm-3">
+            <h4 class="au-display-xxxl">
+              <b>{{this.model.sellerStats.pending}}</b>
+            </h4>
+            <b>in review</b>
+          </div>
+          <div class="col-sm-3">
+            <h4 class="au-display-xxxl">
+              <b>{{this.model.sellerStats.approved}}</b>
+            </h4>
+            <b>approved</b>
+          </div>
+        </div>
+      {{/dds/call-out}}
+      <p>
+        If you can't see what you need check back soon, or tell us what you'd like to see more of by emailing
+        <a href="mailto:buy.nsw@finance.nsw.gov.au">buy.nsw@finance.nsw.gov.au</a>.
+      </p>
+      <p>
+        We're always happy to hear from our buyers and sellers.
+      </p>
+      <p>
+        {{link-to
+          "Change your email address or password"
+          "account-settings"
+          class="au-cta-link small"
+        }}
+        <br>
+        {{link-to
+          "Contact support"
+          "contact"
+          class="au-cta-link small"
+        }}
+      </p>
+    </div>
+  </div>
+
+{{/dds/template-body}}

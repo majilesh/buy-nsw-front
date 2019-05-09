@@ -28,13 +28,13 @@
                   {{ link-to "About" "index" }}
                 </li>
                 -->
-                <li>
+                <li class={{if (eq currentPath "cloud-sellers") "active"}}>
                   {{ link-to "Seller list" "cloud-sellers" }}
                 </li>
-                <li>
+                <li class={{if (eq currentPath "seller-guide") "active"}}>
                   {{ link-to "Seller guide" "seller-guide" }}
                 </li>
-                <li>
+                <li class={{if (eq currentPath "buyer-guide") "active"}}>
                   {{ link-to "Buyer guide" "buyer-guide" }}
                 </li>
                 {{# if auth.isBuyer }}
