@@ -1,4 +1,4 @@
-{{#dds/template-body}}
+{{#dds/template-body signin=true}}
   <div class="col-sm-10">
     {{ dds/bread-crumbs
       links=(array
@@ -9,7 +9,7 @@
     }}
 
     {{#unless this.model.underEdit}}
-          <br>
+      <br>
       <br>
       {{#dds/page-alert alertType="warning"}}
         {{# if this.model.pending }}
@@ -28,7 +28,7 @@
             </p>
           {{/ if }}
         {{ else }}
-          {{#if this.model.declined}}
+          {{#if this.model.changesRequested}}
             <p>
               Your submission was not approved by our operation officers. You can
               <a

@@ -5,7 +5,7 @@ export default Component.extend({
   auth: inject(),
   actions: {
     logout() {
-      this.auth.logout(false);
+      this.get('auth').logout(false);
     }
   }
 });

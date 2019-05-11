@@ -19,7 +19,7 @@ export default Service.extend({
     this.readSession('user');
     this.readSession('trueUser');
     this.readSession('csrfToken');
-    let service = this;
+    var service = this;
     Ember.run.later(function() {
       service.tick();
     }, 1000);
@@ -39,15 +39,10 @@ export default Service.extend({
   }),
 
   handleSuccess(response, goHome) {
-    this.setSession('config', response.config);
+    this.set('config', response.config);
     this.setSession('csrfToken', response.csrf_token);
-    if (response.user != null) {
-      this.setSession('user', response.user);
-      this.setSession('trueUser', response.true_user);
-    } else {
-      this.setSession('user', null);
-      this.setSession('trueUser', null);
-    }
+    this.setSession('user', response.user);
+    this.setSession('trueUser', response.true_user);
 
     if(goHome) {
       this.set('message', null);
@@ -56,7 +51,6 @@ export default Service.extend({
   },
 
   handleError(response) {
-    console.log(response);
     if(response.payload.error) {
       this.set('message', response.payload.error);
     } else {
@@ -71,22 +65,26 @@ export default Service.extend({
     $('.overlay').show();
     this.get('ajax').request('/api/users/logout', {
       method: 'POST',
-      headers: {
-        "X-CSRF-Token": this.get('csrfToken'),
-      },
     }).then((response) =>
         this.handleSuccess(response, goHome))
     .finally(() => $('.overlay').hide())
   },
 
   setSession(key, value) {
+    if (value == undefined) {
+      value = null;
+    }
     this.set(key, value);
-    this.get('cookies').write(key, value);
+    this.get('cookies').write(key, JSON.stringify(value), { raw: true });
   },
 
   readSession(key) {
     let val = this.get(key);
-    let cookieVal = this.get('cookies').read(key);
+    let cookieVal = null;
+    try {
+      cookieVal = JSON.parse(this.get('cookies').read(key, { raw: true }));
+    } catch {
+    }
     if(val != cookieVal) {
       this.set(key, cookieVal);
     }
@@ -96,9 +94,6 @@ export default Service.extend({
     $('.overlay').show();
     this.get('ajax').request('/api/users/login', {
       method: 'POST',
-      headers: {
-        "X-CSRF-Token": this.get('csrfToken'),
-      },
       data: {
         email: email,
         password: password,

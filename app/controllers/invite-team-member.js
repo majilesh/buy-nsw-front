@@ -28,7 +28,7 @@ export default Controller.extend(Validations, {
         self.set('invitationErrors', null);
         self.transitionToRoute('team-members');
       }).catch(function() {
-        self.set('invitationErrors', 'The email address is already taken!');
+        self.set('invitationErrors', 'This email address is already taken!');
         window.scrollTo(0,230);
       }).finally(function() {
         $('.overlay').hide();

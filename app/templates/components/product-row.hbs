@@ -8,10 +8,12 @@
   </h3>
 {{/link-to}}
 <p>
-  {{#if product.description}}
-    {{product.description}}
+  {{#if product.summary}}
+    {{product.summary}}
   {{else}}
-    blank product description
+    <small>
+      &lt; Product summary is blank &gt;
+    </small>
   {{/if}}
 </p>
 <br>

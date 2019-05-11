@@ -50,7 +50,7 @@ export default Controller.extend(Validations, {
           password: this.get('password'),
         }
       }).then((response) => {
-        this.auth.authenticate();
+        controller.get('auth').authenticate();
         controller.transitionToRoute('success', 'invitation_accepted')
       }).catch((error) => {
         if(error.payload.error) {
