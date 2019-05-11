@@ -6,13 +6,24 @@ const {$} = Ember;
 
 export default Service.extend({
   ajax: inject(),
+  cookies: inject(),
   router: inject(),
 
-  user: null,
   config: null,
-  csrfToken: null,
+  user: null,
   trueUser: null,
+  csrfToken: null,
   message: null,
+
+  tick: function() {
+    this.readSession('user');
+    this.readSession('trueUser');
+    this.readSession('csrfToken');
+    let service = this;
+    Ember.run.later(function() {
+      service.tick();
+    }, 1000);
+  },
 
   isSeller: computed('user.roles', function() {
     let roles = this.get('user.roles');
@@ -28,24 +39,29 @@ export default Service.extend({
   }),
 
   handleSuccess(response, goHome) {
-    this.set('config', response.config);
-    this.set('csrfToken', response.csrf_token);
+    this.setSession('config', response.config);
+    this.setSession('csrfToken', response.csrf_token);
     if (response.user != null) {
-      this.set('user', response.user);
-      this.set('trueUser', response.true_user);
+      this.setSession('user', response.user);
+      this.setSession('trueUser', response.true_user);
     } else {
-      this.set('user', null);
-      this.set('trueUser', null);
+      this.setSession('user', null);
+      this.setSession('trueUser', null);
     }
 
-    this.set('message', null);
     if(goHome) {
+      this.set('message', null);
       this.get('router').transitionTo("index");
     }
   },
 
-  handleError() {
-    this.set('message', 'Invalid Email or Password');
+  handleError(response) {
+    console.log(response);
+    if(response.payload.error) {
+      this.set('message', response.payload.error);
+    } else {
+      this.set('message', 'Login failed, please refresh the page!');
+    }
   },
 
   loginFailed() {
@@ -63,6 +79,19 @@ export default Service.extend({
     .finally(() => $('.overlay').hide())
   },
 
+  setSession(key, value) {
+    this.set(key, value);
+    this.get('cookies').write(key, value);
+  },
+
+  readSession(key) {
+    let val = this.get(key);
+    let cookieVal = this.get('cookies').read(key);
+    if(val != cookieVal) {
+      this.set(key, cookieVal);
+    }
+  },
+
   login(email, password, remember) {
     $('.overlay').show();
     this.get('ajax').request('/api/users/login', {
@@ -76,7 +105,7 @@ export default Service.extend({
         remember: remember,
       }
     }).then((response) => this.handleSuccess(response, true))
-      .catch(() => this.handleError())
+      .catch((response) => this.handleError(response))
     .finally(() => $('.overlay').hide());
   },
 
@@ -89,5 +118,6 @@ export default Service.extend({
   init() {
     this._super(...arguments);
     this.authenticate();
+    this.tick();
   },
 });
