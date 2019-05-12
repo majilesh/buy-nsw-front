@@ -1,0 +1,95 @@
+<div class="col-sm-1">
+</div>
+<div class="col-sm-10">
+  <h1 class="au-display-lg">About you and buy.nsw</h1>
+  <br>
+  <p>
+    <p><b>We’d like to know more about you and where you’re at in your buying journey.</b></p><br>
+    <b>In a few sentences, please tell us how you plan to use buy.nsw.</b>
+    {{dds/text-area
+      wide=true
+      allRow=true
+      field=(mut buyer.application_body)
+      focusOut=(action (mut showBodyError) true)
+    }}
+    {{#if (and showBodyError (v-get this "buyer.application_body" "isInvalid"))}}
+      <div class="max48">
+        <span class="field-error error">{{v-get this "buyer.application_body" "message"}}</span>
+      </div>
+      <div class="clear-both"></div>
+    {{/if}}
+  </p>
+  <hr class="light">
+  <p>
+    <b>Are you considering a cloud purchase soon?</b>
+      {{dds/radio-group
+        items=(array
+          (hash
+            key="make-purchase"
+            label="Yes, we’re currently looking to make a cloud purchase."
+          )
+          (hash
+            key="plan-purchase"
+            label="Yes, we’re planning a cloud purchase in the next six months."
+          )
+          (hash
+            key="no-plan"
+            label="We’re not currently planning a cloud purchase."
+          )
+        )
+        field=(mut buyer.cloud_purchase)
+      }}
+  </p>
+  <hr class="light">
+  <p>
+    <b>Can we phone you to welcome you to buy.nsw and learn a little more about your needs?</b>
+      {{dds/radio-group
+        items=(array
+          (hash
+            key="phone-number"
+            label="Yes."
+          )
+          (hash
+            key="email"
+            label="I'd prefer email."
+          )
+          (hash
+            key="none"
+            label="No thanks."
+          )
+        )
+        field=(mut buyer.contactable)
+      }}
+  </p>
+  {{#if (eq buyer.contactable 'phone-number')}}
+    <p>
+      <b>Please enter your best contact number. We’ll only use it for this initial welcome call.</b>
+      {{dds/text-input
+        wide=true
+        allRow=true
+        field=(mut buyer.contact_number)
+        focusOut=(action (mut showNumberError) true)
+      }}
+      {{#if (and showNumberError (v-get this "buyer.contact_number" "isInvalid"))}}
+        <div class="max48">
+          <span class="field-error error">{{v-get this "buyer.contact_number" "message"}}</span>
+        </div>
+        <div class="clear-both"></div>
+      {{/if}}
+    </p>
+  {{/if}}
+  <hr class="light">
+  <p>
+    <a
+      class="au-btn au-btn--tertiary"
+      onClick={{action "back"}}
+    >← Back</a>
+    <span class="float-right">
+      {{dds/link-button
+        onClick=(action "next")
+        disabled=(v-get this "isInvalid")
+        label="Next"
+      }}
+    </span>
+  </p>
+</div>

@@ -1,0 +1,57 @@
+<div class="col-sm-1">
+</div>
+<div class="col-sm-10">
+  <h1 class="au-display-lg">Approval from your line manager</h1>
+  <br>
+  <p>
+    To create your account we will also need approval from a line manager who:
+    <ul>
+      <li>is a NSW Government employee, and</li>
+      <li>is satisfied you need to access <b>buy.nsw</b></li>
+    </ul>
+  </p>
+  <p>
+    <b>Your manager's full name</b>
+    {{dds/text-input
+      wide=true
+      allRow=true
+      field=(mut buyer.manager_name)
+      focusOut=(action (mut showManagerNameError) true)
+    }}
+    {{#if (and showManagerNameError (v-get this "buyer.manager_name" "isInvalid"))}}
+      <div class="max48">
+        <span class="field-error error">{{v-get this "buyer.manager_name" "message"}}</span>
+      </div>
+      <div class="clear-both"></div>
+    {{/if}}
+  </p>
+  <p>
+    <b>Your manager's email</b>
+    {{dds/text-input
+      wide=true
+      allRow=true
+      field=(mut buyer.manager_email)
+      focusOut=(action (mut showManagerEmailError) true)
+    }}
+    {{#if (and showManagerEmailError (v-get this "buyer.manager_email" "isInvalid"))}}
+      <div class="max48">
+        <span class="field-error error">{{v-get this "buyer.manager_email" "message"}}</span>
+      </div>
+      <div class="clear-both"></div>
+    {{/if}}
+  </p>
+  <hr class="light">
+  <p>
+    <a
+      class="au-btn au-btn--tertiary"
+      onClick={{action "back"}}
+    >← Back</a>
+    <span class="float-right">
+      {{dds/link-button
+        onClick=(action "next")
+        disabled=(v-get this "isInvalid")
+        label="Next"
+      }}
+    </span>
+  </p>
+</div>

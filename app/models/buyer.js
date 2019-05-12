@@ -17,4 +17,13 @@ export default DS.Model.extend({
   draft: computed('state', function() {
     return this.get('state') == 'created';
   }),
+  name: DS.attr('string'),
+  organisation: DS.attr('string'),
+  application_body: DS.attr('string'),
+  cloud_purchase: DS.attr('string'),
+  contactable: DS.attr('string'),
+  contact_number: DS.attr('string'),
+  employment_status: DS.attr('string'),
+  manager_name: DS.attr('string'),
+  manager_email: DS.attr('string'),
 });

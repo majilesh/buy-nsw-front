@@ -1,0 +1,50 @@
+<div class="col-sm-1">
+</div>
+<div class="col-sm-10">
+  <h1 class="au-display-lg">Your employment status</h1>
+  <p>
+    <b>To create a buyer account you need to be:</b>
+    <ul>
+      <li>a government employee</li>
+      <li>authorised by a government employee</li>
+      <li>
+        an employee an organisation
+        <a target="_blank" href="https://www.procurepoint.nsw.gov.au/before-you-buy/buyer-eligibility-and-registration">
+          registered as an eligible buyer
+        </a>
+      </li>
+    </ul>
+    <br>
+    {{dds/radio-group
+      items=(array
+        (hash
+          key="employee"
+          label="I'm a NSW Government employee and need access to buy.nsw to perform my role."
+        )
+        (hash
+          key="contractor"
+          label="I'm a contractor working in state or local government."
+        )
+        (hash
+          key="other-eligible"
+          label="I'm an employee of another organisation that has registered as an eligible buyer."
+        )
+      )
+      field=(mut buyer.employment_status)
+    }}
+  </p>
+  <hr class="light">
+  <p>
+    <a
+      class="au-btn au-btn--tertiary"
+      onClick={{action "back"}}
+    >← Back</a>
+    <span class="float-right">
+      {{dds/link-button
+        onClick=(action "next")
+        disabled=(v-get this "isInvalid")
+        label="Next"
+      }}
+    </span>
+  </p>
+</div>
