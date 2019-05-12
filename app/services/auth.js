@@ -6,8 +6,8 @@ const {$} = Ember;
 
 export default Service.extend({
   ajax: inject(),
-  cookies: inject(),
   router: inject(),
+  cookieCache: null,
 
   config: null,
   user: null,
@@ -15,10 +15,16 @@ export default Service.extend({
   csrfToken: null,
   message: null,
 
+  checkCookie() {
+    var cookie = document.cookie;
+    if (cookie != this.get('cookieCache')) {
+      this.set('cookieCache', cookie);
+      this.authenticate();
+    }
+  },
+
   tick: function() {
-    this.readSession('user');
-    this.readSession('trueUser');
-    this.readSession('csrfToken');
+    this.checkCookie();
     var service = this;
     Ember.run.later(function() {
       service.tick();
@@ -40,9 +46,9 @@ export default Service.extend({
 
   handleSuccess(response, goHome) {
     this.set('config', response.config);
-    this.setSession('csrfToken', response.csrf_token);
-    this.setSession('user', response.user);
-    this.setSession('trueUser', response.true_user);
+    this.set('csrfToken', response.csrf_token);
+    this.set('user', response.user);
+    this.set('trueUser', response.true_user);
 
     if(goHome) {
       this.set('message', null);
@@ -70,26 +76,6 @@ export default Service.extend({
     .finally(() => $('.overlay').hide())
   },
 
-  setSession(key, value) {
-    if (value == undefined) {
-      value = null;
-    }
-    this.set(key, value);
-    this.get('cookies').write(key, JSON.stringify(value), { raw: true });
-  },
-
-  readSession(key) {
-    let val = this.get(key);
-    let cookieVal = null;
-    try {
-      cookieVal = JSON.parse(this.get('cookies').read(key, { raw: true }));
-    } catch {
-    }
-    if(val != cookieVal) {
-      this.set(key, cookieVal);
-    }
-  },
-
   login(email, password, remember) {
     $('.overlay').show();
     this.get('ajax').request('/api/users/login', {
@@ -112,7 +98,6 @@ export default Service.extend({
 
   init() {
     this._super(...arguments);
-    this.authenticate();
     this.tick();
   },
 });
