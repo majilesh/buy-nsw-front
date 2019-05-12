@@ -18,21 +18,21 @@
         {{#dds/call-out}}
           <h5 class="au-display-sm"><b>Your company profile {{this.model.seller.statusMessage}}.</b></h5>
         {{/dds/call-out}}
+        {{# if this.model.seller.expired }}
+          <div class="row">
+            <div class="col-sm-10">
+              {{#dds/page-alert alertType="warning"}}
+                <h5>Some of your documents are expired now, please refresh them as soon as possible.</h5>
+              {{/dds/page-alert}}
+              <br>
+              <br>
+            </div>
+          </div>
+        {{/ if }}
         <br>
         <br>
       </div>
     </div>
-    {{# if this.model.seller.expired }}
-      <div class="row">
-        <div class="col-sm-10">
-          {{#dds/page-alert alertType="warning"}}
-            <h5>Some of your documents are expired now, please refresh them as soon as possible.</h5>
-          {{/dds/page-alert}}
-          <br>
-          <br>
-        </div>
-      </div>
-    {{/ if }}
     <div class="row">
       <div class="col-sm-5 dash-title">
         <b>{{this.model.seller.name}}</b>

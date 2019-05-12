@@ -33,6 +33,7 @@ Router.map(function() {
   this.route('forgot-password');
   this.route('reconfirm-email');
   this.route('success', { path: '/success/:message' } );
+  this.route('failure', { path: '/failure/:message' } );
 
   this.route('cloud-search', { path: '/cloud/:section' } );
   this.route('public-product', { path: '/cloud/product/:product_id' } );
@@ -40,10 +41,11 @@ Router.map(function() {
   this.route('cloud-sellers', { path: '/cloud/sellers' } );
   this.route('cloud-seller', { path: '/cloud/seller/:seller_id' } );
 
-  // this.mount('telco');
   this.route('confirm-invitation', { path: '/confirm-invitation/:confirmation_token' } );
   this.route('reset-password', { path: '/reset-password/:reset_password_token' } );
   this.route('product-order', { path: '/product-order/:product_id' });
+
+  // this.mount('telco');
 });
 
 export default Router;

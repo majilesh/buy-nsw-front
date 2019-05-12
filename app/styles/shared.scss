@@ -161,6 +161,19 @@ div.success-message {
     color: white;
   }
 }
+div.failure-message {
+  i.fa {
+    font-size: 400%;
+  }
+  padding: 2rem;
+  text-align: center;
+  background-color: #7f39bb;
+  color: white;
+  margin-top: 4rem;
+  a {
+    color: white;
+  }
+}
 p.thin-lines {
   line-height: 0.5;
 }
