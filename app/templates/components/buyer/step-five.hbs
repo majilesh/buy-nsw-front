@@ -16,7 +16,7 @@
         {{buyer.name}}
       </div>
     </div>
-    <hr class="light">
+    <hr class="light less-margin">
 
     <div class="row">
       <div class="col-sm-4">
@@ -26,34 +26,41 @@
         {{buyer.organisation}}
       </div>
     </div>
-    <hr class="light">
+    <hr class="light less-margin">
 
     <div class="row">
       <div class="col-sm-4">
         <b>Planned use</b>
       </div>
       <div class="col-sm-8">
+        {{buyer.application_body}}
       </div>
     </div>
-    <hr class="light">
+    <hr class="light less-margin">
 
     <div class="row">
       <div class="col-sm-4">
         <b>Purchase timeline</b>
       </div>
       <div class="col-sm-8">
+        {{if (eq buyer.cloud_purchase 'make-purchase') "Yes, we’re currently looking to make a cloud purchase."}}
+        {{if (eq buyer.cloud_purchase 'plan-purchase') "Yes, we’re planning a cloud purchase in the next six months."}}
+        {{if (eq buyer.cloud_purchase 'no-plan') "We’re not currently planning a cloud purchase."}}
       </div>
     </div>
-    <hr class="light">
+    <hr class="light less-margin">
 
     <div class="row">
       <div class="col-sm-4">
         <b>Welcome call</b>
       </div>
       <div class="col-sm-8">
+        {{if (eq buyer.contactable 'phone-number') "Yes."}}
+        {{if (eq buyer.contactable 'email') "I'd prefer email."}}
+        {{if (eq buyer.contactable 'none') "No thanks."}}
       </div>
     </div>
-    <hr class="light">
+    <hr class="light less-margin">
 
     {{#if (eq buyer.contactable 'phone-number')}}
       <div class="row">
@@ -64,7 +71,7 @@
           {{buyer.contact_number}}
         </div>
       </div>
-      <hr class="light">
+      <hr class="light less-margin">
     {{/if}}
 
     <div class="row">
@@ -72,9 +79,12 @@
         <b>Employment status</b>
       </div>
       <div class="col-sm-8">
+        {{if (eq buyer.employment_status 'employee') "I'm a NSW Government employee and need access to buy.nsw to perform my role."}}
+        {{if (eq buyer.employment_status 'contractor') "I'm a contractor working in state or local government."}}
+        {{if (eq buyer.employment_status 'other-eligible') "I'm an employee of another organisation that has registered as an eligible buyer."}}
       </div>
     </div>
-    <hr class="light">
+    <hr class="light less-margin">
 
     {{#if (eq buyer.employment_status 'contractor')}}
       <div class="row">
@@ -85,7 +95,7 @@
           {{buyer.manager_email}}
         </div>
       </div>
-      <hr class="light">
+      <hr class="light less-margin">
     {{/if}}
   </p>
   <p>

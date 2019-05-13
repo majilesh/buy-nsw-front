@@ -10,6 +10,10 @@ export default Component.extend({
       }
     },
     submit() {
+      var self = this;
+      this.buyer.save().then(function() {
+        self.transitionToRoute('buyer-dashboard');
+      });
     }
   }
 });
