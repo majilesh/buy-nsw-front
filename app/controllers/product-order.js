@@ -38,10 +38,10 @@ export default Controller.extend(Validations, {
       let controller = this;
       this.model.order.save().then(function() {
         controller.transitionToRoute('success', 'product_order')
-      }).catch((error) => {
-      //  if(error.payload.error) {
-      //    controller.set('apiError', error.payload.error);
-      //  }
+      }).catch((response) => {
+        if(response.payload.error) {
+          controller.set('apiError', response.payload.error);
+        }
       }).finally(() => $('.overlay').hide());
     }
   }
