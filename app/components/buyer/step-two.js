@@ -21,7 +21,8 @@ const Validations = buildValidations({
     validators: [
       validator('format', {
         allowBlank: true,
-        type: 'phone'
+        regex: /^(\+)?[0-9 ()\-]{3,20}$/,
+        message: "Please enter a valid phone number."
       })
     ]
   },
