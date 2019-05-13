@@ -1,6 +1,8 @@
 import Component from '@ember/component';
+import {inject as service} from '@ember/service';
 
 export default Component.extend({
+  router: service(),
   actions: {
     back() {
       if(this.get('buyer.employment_status') == 'contractor') {
@@ -12,7 +14,7 @@ export default Component.extend({
     submit() {
       var self = this;
       this.buyer.save().then(function() {
-        self.transitionToRoute('buyer-dashboard');
+        self.get('router').transitionTo('buyer-dashboard');
       });
     }
   }
