@@ -12,10 +12,11 @@ export default Component.extend({
       }
     },
     submit() {
+      $('.overlay').show();
       var self = this;
       this.buyer.save().then(function() {
         self.get('router').transitionTo('buyer-dashboard');
-      });
+      }).finally(() => $('.overlay').hide());
     }
   }
 });
