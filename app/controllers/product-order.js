@@ -36,6 +36,7 @@ export default Controller.extend(Validations, {
       $('.overlay').show();
       this.set('showValueError', true);
       let controller = this;
+      this.model.order.set('product_id', this.model.product.get('id'));
       this.model.order.save().then(function() {
         controller.transitionToRoute('success', 'product_order')
       }).catch((response) => {
