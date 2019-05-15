@@ -31,13 +31,13 @@
         {{#if (or (eq item.booleanText true) (eq item.booleanText false))}}
           {{if (eq item.booleanText true) "Yes" "No"}}
         {{else if item.description}}
-          {{item.description}}
+          {{if item.humanize (humanize item.description) item.description}}
         {{else if item.link}}
           <a href={{item.link}} target="_blank">{{item.link}}</a>
         {{else if item.list}}
-          <ul>
+          <ul class="less-left-padding">
           {{#each item.list as |listitem|}}
-            <li>{{listitem}}</li>
+            <li>{{humanize listitem}}</li>
           {{/each}}
           </ul>
         {{else if item.rows}}

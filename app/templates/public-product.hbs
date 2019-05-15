@@ -419,6 +419,7 @@
             title="Accessible to WCAG 2.0 AA or above"
             description=this.model.product.accessibility_type
             hide=(not this.model.product.accessibility_type)
+            humanize=true
           )
           (hash
             title="Areas which are accessible (and exclusions)"
@@ -444,6 +445,7 @@
             title="Locations where user data is stored, processed and managed"
             description=this.model.product.data_location
             hide=(not this.model.product.data_location)
+            humanize=true
           )
           (hash
             title="Other known locations"
@@ -537,16 +539,19 @@
             title="What is backed up"
             description=this.model.product.backup_capability
             hide=(not this.model.product.backup_capability)
+            humanize=true
           )
           (hash
             title="How often backups are performed"
             description=this.model.product.backup_scheduling_type
             hide=(not this.model.product.backup_scheduling_type)
+            humanize=true
           )
           (hash
             title="How users recover backups"
             description=this.model.product.backup_recovery_type
             hide=(not this.model.product.backup_recovery_type)
+            humanize=true
           )
         )
       }}
@@ -588,6 +593,7 @@
             title="Who controls encryption keys"
             description=this.model.product.encryption_keys_controller
             hide=(not this.model.product.encryption_keys_controller)
+            humanize=true
           )
         )
       }}
@@ -599,6 +605,7 @@
             title="Data centre security standards"
             description=this.model.product.data_centre_security_standards
             hide=(not this.model.product.data_centre_security_standards)
+            humanize=true
           )
           (hash
             title="ISO/IEC 27001:2013 certification"
@@ -723,6 +730,7 @@
             title="IRAP assessed"
             description=this.model.product.irap_type
             hide=(not this.model.product.irap_type)
+            humanize=true
           )
           (hash
             title="Certified by the Australian Signals Directorate (ASD)"
@@ -748,11 +756,13 @@
             title="Approach to secure software development best practice"
             description=this.model.product.secure_development_approach
             hide=(not this.model.product.secure_development_approach)
+            humanize=true
           )
           (hash
             title="How often the supplier conducts penetration testing"
             description=this.model.product.penetration_testing_frequency
             hide=(not this.model.product.penetration_testing_frequency)
+            humanize=true
           )
           (hash
             title="The supplier's approach to penetration testing"
@@ -773,6 +783,7 @@
             title="Who implements the virtualisation technology"
             description=this.model.product.virtualisation_implementor
             hide=(not this.model.product.virtualisation)
+            humanize=true
           )
           (hash
             title="Third party providing virtualisation"
@@ -810,46 +821,55 @@
             title="Configuration and change management processes"
             description=this.model.product.change_management_processes
             hide=(not this.model.product.change_management_processes)
+            humanize=true
           )
           (hash
             title="Configuration and change management approach"
             description=this.model.product.change_management_approach
             hide=(not this.model.product.change_management_approach)
+            humanize=true
           )
           (hash
             title="Vulnerability management processes"
             description=this.model.product.vulnerability_processes
             hide=(not this.model.product.vulnerability_processes)
+            humanize=true
           )
           (hash
             title="Vulnerability management approach"
             description=this.model.product.vulnerability_approach
             hide=(not this.model.product.vulnerability_approach)
+            humanize=true
           )
           (hash
             title="Protective monitoring processes"
             description=this.model.product.protective_monitoring_processes
             hide=(not this.model.product.protective_monitoring_processes)
+            humanize=true
           )
           (hash
             title="Protective monitoring approach"
             description=this.model.product.protective_monitoring_approach
             hide=(not this.model.product.protective_monitoring_approach)
+            humanize=true
           )
           (hash
             title="Crisis and incident management processes"
             description=this.model.product.incident_management_processes
             hide=(not this.model.product.incident_management_processes)
+            humanize=true
           )
           (hash
             title="Crisis and incident management plan"
             description=this.model.product.incident_management_approach
             hide=(not this.model.product.incident_management_approach)
+            humanize=true
           )
           (hash
             title="How often access controls are tested"
             description=this.model.product.access_control_testing_frequency
             hide=(not this.model.product.access_control_testing_frequency)
+            humanize=true
           )
         )
       }}
