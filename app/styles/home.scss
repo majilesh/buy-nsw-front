@@ -1,5 +1,5 @@
 p.home-title {
-  margin-top: 40px;
+  margin-top: 60px;
   margin-bottom: 60px;
   padding-left: 2rem;
   b.dark-blue {
@@ -14,24 +14,59 @@ div.right-arrow {
   color: $AU-colordark-background;
   float: right;
   min-width: 60px;
-  padding-left: 20px;
+  padding-top: 10px;
+  padding-left: 40px;
   vertical-align: center;
-  margin-top: -10px;
   font-size: 40px;
 }
 
-p.au-callout--home-top {
-  border-left: 0.7rem solid $AU-colordark-background;
-  min-height: 3rem;
-  &.light {
-    div.right-arrow {
-      color: $NSW-colordark-foreground-border;
+div.home-top-links {
+  a {
+    text-decoration: none;
+  }
+  p.au-callout--home-top {
+    border-left: 0.7rem solid $AU-colordark-background;
+    min-height: 3rem;
+    padding-left: 2rem;
+    a {
+      text-decoration: underline;
+      &:hover{
+        text-decoration: none;
+      }
     }
-    border-left: 0.7rem solid $NSW-colordark-foreground-border;
+    &.light {
+      div.right-arrow {
+        color: $NSW-colordark-foreground-border;
+      }
+      border-left: 0.7rem solid $NSW-colordark-foreground-border;
+    }
   }
 }
 
 div.home-middle-box {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  margin-top: 2rem;
+  padding: 1rem 3rem 2rem 3rem;
+  div.right-arrow {
+    color: $NSW-colordark-foreground-border;
+  }
+  h6 {
+    margin: 1.0rem 2rem;
+  }
+  hr {
+    margin: 1.5rem;
+  }
+  div.highlight {
+    border-left: 0.5rem solid $NSW-colordark-foreground-border;
+    padding: 1rem 0 0.5rem 1rem;
+  }
+  background-color: white;
+  i.date {
+    color: $AU-colorblack-background;
+  }
+}
+
+div.home-news-box {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
   margin-top: 2rem;
   padding: 20px;
@@ -40,17 +75,16 @@ div.home-middle-box {
   }
   h6 {
     margin-top: 7px;
-    max-width: 10rem;
   }
   hr {
-    margin: 1.0rem;
+    margin: 1.0rem -1.3rem;
   }
   div.highlight {
     border-left: 0.5rem solid $NSW-colordark-foreground-border;
     padding: 1rem 0 0.5rem 1rem;
   }
   background-color: white;
-  i.date {
+  span.date {
     color: $AU-colorblack-background;
   }
 }

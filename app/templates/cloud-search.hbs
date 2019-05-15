@@ -20,6 +20,9 @@
       <h2 class="au-display-lg">
         <b>Apply filters</b>
       </h2>
+      <p>
+        Select more than one filter in a box for a larger range of results.
+      </p>
       <br>
       {{#dds/accordion-container title="Products for" expanded=true}}
         {{dds/checkbox-array
@@ -275,7 +278,7 @@
         allRow=true
         field=(mut term)
         enter=(action "search")
-        placeHolder="Keyword search"
+        placeHolder="Search by keyword"
       }}
       <br>
       {{#if products}}
