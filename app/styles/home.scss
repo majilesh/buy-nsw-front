@@ -1,5 +1,5 @@
 p.home-title {
-  margin-top: 80px;
+  margin-top: 40px;
   margin-bottom: 60px;
   padding-left: 2rem;
   b.dark-blue {
@@ -16,17 +16,18 @@ div.right-arrow {
   min-width: 60px;
   padding-left: 20px;
   vertical-align: center;
+  margin-top: -10px;
   font-size: 40px;
 }
 
 p.au-callout--home-top {
-  border-left: 0.5rem solid $AU-colordark-background;
-  min-height: 5rem;
+  border-left: 0.7rem solid $AU-colordark-background;
+  min-height: 3rem;
   &.light {
     div.right-arrow {
       color: $NSW-colordark-foreground-border;
     }
-    border-left: 0.5rem solid $NSW-colordark-foreground-border;
+    border-left: 0.7rem solid $NSW-colordark-foreground-border;
   }
 }
 

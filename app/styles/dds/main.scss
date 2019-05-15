@@ -32,7 +32,7 @@ body {
 main > .au-body {
 	@include AU-space( padding, 2unit 0 );
 
-  min-height: 300px;
+  min-height: 200px;
 
 	@include AU-media( sm ) {
 		@include AU-space( padding, 4unit 0 );

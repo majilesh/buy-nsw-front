@@ -11,8 +11,10 @@
       <div class="row">
         <div class="col-sm-5">
           <p class="home-title">
-            <b>buy.nsw</b>
-            is a NSW Government procurement platform for <b class="dark-blue">digital products and services</b>.
+            <big>
+              <b>buy.nsw</b>
+              is a NSW Government procurement platform for <b class="dark-blue">digital products and services</b>.
+            </big>
             <br>
             <br>
             <a class="au-cta-link" href="https://vimeo.com/272480667" target="_blank">Learn more</a>
@@ -21,22 +23,27 @@
         <div class="col-sm-1">
         </div>
         <div class="col-sm-6">
-          <p class="au-callout au-callout--home-top light">
-            <div class="right-arrow">
-              {{fa-icon "chevron-right"}}
-            </div>
-            <b>Selling your ICT products to NSW Government</b>
-            <br>
-            {{link-to "Register as an ICT seller who can sell?" "signup" "seller"}}
-          </p>
-          <p class="au-callout au-callout--home-top">
-            <div class="right-arrow">
-              {{fa-icon "chevron-right"}}
-            </div>
-            <b>Buying on behalf of NSW Government</b>
-            <br>
-            {{link-to "Register as an ICT buyer who can buy?" "signup" "buyer"}}
-          </p>
+          {{#link-to "signup" "seller"}}
+            <p class="au-callout au-callout--home-top light">
+              <div class="right-arrow">
+                {{fa-icon "chevron-right"}}
+              </div>
+              <b>Register to supply cloud products and services to NSW Government</b>
+              <br>
+              {{!--link-to "Find out more about becoming a supplier" "signup" "seller"--}}
+            </p>
+          {{/link-to}}
+          <br>
+          {{#link-to "signup" "buyer"}}
+            <p class="au-callout au-callout--home-top">
+              <div class="right-arrow">
+                {{fa-icon "chevron-right"}}
+              </div>
+              <b>Register to buy cloud products and services on behalf of NSW Government</b>
+              <br>
+              {{!--link-to "Find out more about becoming a buyer" "signup" "buyer"--}}
+            </p>
+          {{/link-to}}
         </div>
       </div>
     {{/dds/template-body}}
@@ -46,25 +53,22 @@
       <div class="row">
         <div class="col-sm-4">
           <div class="home-middle-box">
-            <div class="right-arrow">
-              {{fa-icon "chevron-right"}}
-            </div>
-            <h6 class="au-display-lg"><b>Browse sellers</b></h6>
+            <h6 class="au-display-lg"><b>Browse suppliers</b></h6>
             <div class="clear-both"></div>
             <hr class="light">
             <div class="highlight">
               {{#link-to "cloud-sellers"}}
-                <b>Cloud sellers</b>
+                <b>Cloud suppliers</b>
               {{/link-to}}
             </div>
+            <p>
+              We’ll be adding more ICT categories as we grow.
+            </p>
           </div>
         </div>
         <div class="col-sm-4">
           <div class="home-middle-box">
-            <div class="right-arrow">
-              {{fa-icon "chevron-right"}}
-            </div>
-            <h6 class="au-display-lg"><b>Browse products</b></h6>
+            <h6 class="au-display-lg"><b>Browse cloud products</b></h6>
             <div class="clear-both"></div>
             <hr class="light">
             <div class="highlight">
@@ -78,7 +82,7 @@
             <br>
             <div class="highlight">
               {{#link-to "cloud-search" "hosting-infrastructure"}}
-                <b>Hosting and infrastructure solutions</b>
+                <b>Cloud hosting and infrastructure</b>
               {{/link-to}}
               </div>
             <p>
@@ -88,28 +92,25 @@
         </div>
         <div class="col-sm-4">
           <div class="home-middle-box">
-            <div class="right-arrow">
-              {{fa-icon "chevron-right"}}
-            </div>
-            <h6 class="au-display-lg"><b>Sell cloud products</b></h6>
+            <h6 class="au-display-lg"><b>Supply cloud products</b></h6>
             <div class="clear-both"></div>
             <hr class="light">
             <div class="highlight">
               {{#link-to "register-seller"}}
-                <b>Apply to sell cloud products and services</b>
+                <b>Register to supply cloud products and services to NSW Government</b>
               {{/link-to}}
             </div>
             <p>
-              e.g. cloud software and applications, hosting and infrastructure, support services for transitioning to cloud and for monitoring and managing cloud environments
+              e.g. cloud applications and software, hosting and infrastructure, and support services.
             </p>
             <br>
             <div class="highlight">
               {{#link-to "seller-guide"}}
-                <b>Read the seller guide</b>
+                <b>Read the supplier guide</b>
               {{/link-to}}
               </div>
             <p>
-              Learn how to apply and sell products and services
+              Learn how to become a supplier on buy.nsw
             </p>
           </div>
         </div>
@@ -119,7 +120,7 @@
   <div class="au-body">
     {{#dds/template-body}}
       <br>
-      <h6 class="au-display-xl"><b>New and Updates</b></h6>
+      <h6 class="au-display-xl"><b>Latest news</b></h6>
       <br>
       <div class="row">
         <div class="col-sm-4">
