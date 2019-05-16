@@ -7,7 +7,6 @@
     )
   }}
   <span id="top"></span>
-  <br>
   {{#if (not auth.user.can_buy)}}
     {{#dds/call-out}}
       {{link-to "Become a registered buyer" "signup" "buyer"}} to purchase this product.
@@ -17,49 +16,34 @@
     {{this.model.product.name}}
   </h2>
   <br>
-  <div class="float-right">
-    <b>Product ID:</b> {{this.model.product.id}}
-  </div>
-  <ul class="au-tags">
-    {{#each this.model.product.tags as |tag|}}
-      <li>
-        {{tag}}
-      </li>
-    {{/each}}
-    {{#if (eq this.model.product.product_type 'own-product')}}
-      <li>Reseller</li>
-    {{/if}}
-  </ul>
-  <p>{{this.model.product.summary}}</p>
-  <br>
   <div class="row">
     <div class="col-sm-5">
-      <br>
       <div class="row">
-        <div class="col-sm-5"><b>By</b></div>
-        <div class="col-sm-7">
+        <div class="col-sm-2">by</div>
+        <div class="col-sm-10">
           {{link-to this.model.product.public_seller_name "cloud-seller" this.model.product.public_seller_id}}
         </div>
         <br>
         <hr class="light">
       </div>
-      {{product-table
-        noTopLink=true
-        rows=(array
-          (hash
-            title="Made by"
-            description=this.model.product.organisation_resold
-            hide=(eq this.model.product.product_type 'own-product')
-          )
-          (hash
-            title="For"
-            list=this.model.product.audiences
-            hide=(is-empty this.model.product.audiences)
-          )
-        )
-      }}
+      <ul class="au-tags">
+        {{#each this.model.product.tags as |tag|}}
+          <li>
+            {{tag}}
+          </li>
+        {{/each}}
+        {{#if (eq this.model.product.product_type 'own-product')}}
+          <li>Reseller</li>
+        {{/if}}
+      </ul>
+      <br>
     </div>
-    <div class="col-sm-7">
+    <div class="col-sm-3">
+      <span class="float-right">
+        <b>Product ID:</b> {{this.model.product.id}}
+      </span>
+    </div>
+    <div class="col-sm-4">
       {{#if auth.user.can_buy}}
         {{link-to "Enquire now" "product-order" this.model.product.id class="au-btn float-right"}}
         <br>
@@ -81,7 +65,6 @@
 
   </div>
   <br>
-  <br>
   <div class="row">
     <div class="col-sm-4">
     </div>
@@ -89,6 +72,7 @@
       <div class="inpage-nav">
         {{dds/inpage-nav
           sections=(array
+            (hash name="Short description" anchor="short-description")
             (hash name="Features and Benefits" anchor="features-and-benefits")
             (hash name="Pricing" anchor="pricing")
             (hash name="Onboarding and offboarding" anchor="onboarding-and-offboarding")
@@ -115,35 +99,42 @@
     <div class="col-sm-1">
     </div>
     <div class="col-sm-7">
-      <div id="features-and-benefits"></div>
-      {{#if (not (is-empty this.model.product.features))}}
-        <div class="row">
-          <div class="col-sm-4"><b>Features</b></div>
-          <div class="col-sm-8">
-            <ul>
-              {{#each this.model.product.features as |item|}}
-                <li>{{item}}</li>
-              {{/each}}
-            </ul>
-          </div>
-          <div class="clear-both"></div>
-          <hr class="light">
-        </div>
-      {{/if}}
-      {{#if (not (is-empty this.model.product.benefits))}}
-        <div class="row">
-          <div class="col-sm-4"><b>Benefits</b></div>
-          <div class="col-sm-8">
-            <ul>
-              {{#each this.model.product.benefits as |item|}}
-                <li>{{item}}</li>
-              {{/each}}
-            </ul>
-          </div>
-          <div class="clear-both"></div>
-          <hr class="light">
-        </div>
-      {{/if}}
+      {{product-table
+        title="Short description"
+        id="short-description"
+        noTopLink=true
+        rows=(array
+          (hash
+            title="Made by"
+            description=this.model.product.organisation_resold
+            hide=(eq this.model.product.product_type 'own-product')
+          )
+          (hash
+            title="For"
+            list=this.model.product.audiences
+            hide=(is-empty this.model.product.audiences)
+          )
+        )
+      }}
+      <p>{{this.model.product.summary}}</p>
+      <br>
+      <br>
+      {{product-table
+        title="Features and benefits"
+        id="features-and-benefits"
+        rows=(array
+          (hash
+            title="Features"
+            list=this.model.product.features
+            hide=(is-empty this.model.product.features)
+          )
+          (hash
+            title="Benefits"
+            list=this.model.product.benefits
+            hide=(is-empty this.model.product.benefits)
+          )
+        )
+      }}
       {{product-table
         title="Pricing"
         id="pricing"
