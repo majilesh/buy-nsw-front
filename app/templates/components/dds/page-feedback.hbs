@@ -1,11 +1,12 @@
 <div class="container-fluid">
   <div class="row feedback">
-    <hr class="more-margin">
-    <div class="col-md-8">
+    <hr class="less-margin">
+    <div class="col-md-12">
       {{#if activated}}
         <br>
         <h2 class="au-header__heading au-display-lg">
           Help us improve buy.nsw
+          <a class="pull-right pointer" onclick={{action "cancelFeedback"}}>x</a>
         </h2>
         <br>
         <p>
@@ -47,7 +48,7 @@
             class="au-btn au-btn--tertiary"
             onClick={{action "initiateFeedback"}}
           >
-            Help us improve buy.nsw
+            Is there anything wrong with this page?
           </button>
         {{/if}}
       {{/if}}

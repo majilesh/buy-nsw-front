@@ -15,6 +15,10 @@ export default Component.extend(Validations, {
   feedback: null,
 
   actions: {
+    cancelFeedback() {
+      this.set('activated', false);
+      this.set('feedback', null);
+    },
     initiateFeedback() {
       this.set('feedback', this.get('store').createRecord('feedback', {
         issue: '',
