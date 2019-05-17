@@ -1,0 +1,82 @@
+{{#dds/template-body}}
+  {{dds/bread-crumbs
+    links=(array
+      (hash name="buy.nsw" route="index")
+      (hash name="Help")
+    )
+  }}
+  <br>
+  <h2 class="au-display-xl underline-light">
+    <b>Help</b>
+  </h2>
+  <br>
+  <br>
+  <br>
+  <div class="col-sm-4">
+  </div>
+  <div class="sticky-nav">
+    <div class="inpage-nav">
+      {{dds/inpage-nav
+        sections=(array
+          (hash name="Getting started" anchor="getting-started")
+          (hash name="Report a problem" anchor="report-a-problem")
+          (hash name="Media enquiries" anchor="media-enquiries")
+          (hash name="General enquiries" anchor="general-enquiries")
+          (hash name="Guidance" anchor="guidance")
+        )
+      }}
+    </div>
+  </div>
+  <div class="col-sm-8">
+    <h2 class="au-display-xl" id="getting-started">
+      <b>Getting started</b>
+    </h2>
+    <h2 class="au-display-lg">Suppliers</h2>
+    <p>
+      To get started, {{link-to "register" "signup" "seller"}} your email with us.  Once we confirm your email, we will send you a link to complete your supplier application.
+    </p>
+    <p>
+      We will then review your supplier profile so that it’s ready to publish online.  Or, we will be in touch. For more information see the {{link-to "supplier guide" "seller-guide"}}.
+    </p>
+    <h2 class="au-display-lg">Buyers</h2>
+    <p>
+      To get started, {{link-to "register" "signup" "buyer"}} your email with us. Once we confirm your email, you will be able to view supplier profiles and products.  For more information see the {{link-to "buyer guide" "buyer-guide"}}.
+    </p>
+    <p>
+      If you have any questions about getting started, email us at <a href="mailto:buy.nsw@finance.nsw.gov.au">buy.nsw@finance.nsw.gov.au</a>.
+    </p>
+    <h2 class="au-display-xl" id="report-a-problem">
+      <b>Report a problem</b>
+    </h2>
+    <p>
+      Email us at <a href="mailto:buy.nsw@finance.nsw.gov.au">buy.nsw@finance.nsw.gov.au</a>, if you are having a problem with your account or would like to report a site error.
+    </p>
+    <h2 class="au-display-xl" id="media-enquiries">
+      <b>Media enquiries</b>
+    </h2>
+    <p>
+      Please contact our Corporate Communications team at <a href="mailto:cc@finance.nsw.gov.au">cc@finance.nsw.gov.au</a>.
+    </p>
+    <h2 class="au-display-xl" id="general-enquiries">
+      <b>General enquiries</b>
+    </h2>
+    <p>
+      Email us at <a href="mailto:buy.nsw@finance.nsw.gov.au">buy.nsw@finance.nsw.gov.au</a> and we will be in touch.
+    </p>
+    <h2 class="au-display-xl" id="guidance">
+      <b>Guidance</b>
+    </h2>
+    <p>
+      You can learn more about buy.nsw in the {{link-to "About" "about-page"}} section of this site.<br>
+      For more information on buying ICT services in NSW Government, visit the <a href="https://www.procurepoint.nsw.gov.au/scm0020" target="_blank">ICT Services Scheme</a>.
+    </p>
+    <h2 class="au-display-lg">Suppliers</h2>
+    <p>
+      Read our {{link-to "supplier guide" "seller-guide"}} for guidance on how to register as a supplier. For more information on procurement in NSW Government see the <a href="https://procurepoint.nsw.gov.au/before-you-supply/what-you-need-know-first" target="_blank">ProcurePoint</a> website.
+    </p>
+    <h2 class="au-display-lg">Buyers</h2>
+    <p>
+      Read our {{link-to "buyer guide" "buyer-guide"}} for guidance on how to register as a buyer. For more information on procurement in NSW Government see the <a href="https://procurepoint.nsw.gov.au/before-you-buy" target="_blank">ProcurePoint</a> website.
+    </p>
+  </div>
+{{/dds/template-body}}

@@ -11,14 +11,17 @@
             <div class="au-main-nav__menu-inner">
               <div class="au-main-nav__focus-trap-top"></div>
               <ul class="au-link-list">
+                <li class={{if (eq currentPath "about-page") "active"}}>
+                  {{ link-to "About" "about-page" }}
+                </li>
                 <li class={{if (eq currentPath "cloud-sellers") "active"}}>
                   {{ link-to "Seller list" "cloud-sellers" }}
                 </li>
-                <li class={{if (eq currentPath "seller-guide") "active"}}>
-                  {{ link-to "Seller guide" "seller-guide" }}
-                </li>
                 <li class={{if (eq currentPath "buyer-guide") "active"}}>
                   {{ link-to "Buyer guide" "buyer-guide" }}
+                </li>
+                <li class={{if (eq currentPath "help-page") "active"}}>
+                  {{ link-to "Help" "help-page" }}
                 </li>
                 {{# if auth.isSeller }}
                   <li class={{if (eq currentPath "seller-dashboard") "active"}}>

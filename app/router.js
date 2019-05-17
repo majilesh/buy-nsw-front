@@ -46,6 +46,8 @@ Router.map(function() {
   this.route('product-order', { path: '/product-order/:product_id' });
 
   // this.mount('telco');
+  this.route('help-page', { path: '/help' });
+  this.route('about-page', { path: '/about' });
 });
 
 export default Router;
