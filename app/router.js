@@ -9,37 +9,37 @@ const Router = EmberRouter.extend(RouterScroll, {
 
 Router.map(function() {
   this.route('index', { path: '/' });
-  this.route('seller-dashboard');
-  this.route('products');
-  this.route('product', { path: '/products/:product_id'});
-  this.route('register-seller');
-  this.route('buyer-guide');
-  this.route('seller-guide');
+  this.route('seller-dashboard', { path: '/supplier/dashboard'});
+  this.route('products', { path: '/supplier/products'});
+  this.route('product', { path: '/supplier/products/:product_id'});
+  this.route('register-seller', { path: '/supplier/register'});
+  this.route('buyer-guide', { path: '/buyer/guide'});
+  this.route('seller-guide', { path: '/supplier/guide'});
   this.route('contact');
   this.route('privacy');
   this.route('terms-of-use');
   this.route('accessibility');
   this.route('license');
-  this.route('sign-in');
+  this.route('sign-in', { path: '/signin'});
   this.route('performance');
-  this.route('register-buyer');
-  this.route('buyer-dashboard');
-  this.route('profile');
+  this.route('register-buyer', { path: '/buyer/register'});
+  this.route('buyer-dashboard', { path: '/buyer/dashboard'});
+  this.route('profile', { path: '/supplier/profile'});
   this.route('not-found', { path: '/*path' });
-  this.route('team-members');
-  this.route('invite-team-member');
-  this.route('account-settings');
+  this.route('team-members', { path: '/supplier/team'});
+  this.route('invite-team-member', { path: '/supplier/team/invite'});
+  this.route('account-settings', { path: '/account/settings'});
   this.route('signup', { path: '/signup/:account_type' } );
   this.route('forgot-password');
   this.route('reconfirm-email');
   this.route('success', { path: '/success/:message' } );
   this.route('failure', { path: '/failure/:message' } );
 
-  this.route('cloud-search', { path: '/cloud/:section' } );
-  this.route('public-product', { path: '/cloud/product/:product_id' } );
+  this.route('cloud-search', { path: '/cloud/products/:section' } );
+  this.route('public-product', { path: '/cloud/products/:product_id' } );
 
-  this.route('cloud-sellers', { path: '/cloud/sellers' } );
-  this.route('cloud-seller', { path: '/cloud/seller/:seller_id' } );
+  this.route('cloud-sellers', { path: '/cloud/suppliers' } );
+  this.route('cloud-seller', { path: '/cloud/suppliers/:seller_id' } );
 
   this.route('confirm-invitation', { path: '/confirm-invitation/:confirmation_token' } );
   this.route('reset-password', { path: '/reset-password/:reset_password_token' } );
