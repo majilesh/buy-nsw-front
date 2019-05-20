@@ -1,6 +1,7 @@
 import Service from '@ember/service';
 import { inject } from '@ember/service';
 import { computed } from '@ember/object';
+import { isUnauthorizedError } from 'ember-ajax/errors';
 import Ember from 'ember';
 const {$} = Ember;
 
@@ -26,9 +27,9 @@ export default Service.extend({
   tick: function() {
     this.checkCookie();
     var service = this;
-    Ember.run.later(function() {
-      service.tick();
-    }, 1000);
+    // Ember.run.later(function() {
+    //   service.tick();
+    // }, 1000);
   },
 
   isSeller: computed('user.roles', function() {
@@ -94,6 +95,13 @@ export default Service.extend({
     this.get('ajax').request('/api/users/authenticate')
       .then((response) =>
         this.handleSuccess(response, false))
+  },
+
+  authenticateIfUnauthorized(error) {
+    if (isUnauthorizedError(error)) {
+      this.authenticate();
+      return;
+    }
   },
 
   init() {

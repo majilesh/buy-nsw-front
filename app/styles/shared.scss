@@ -171,7 +171,7 @@ div.failure-message {
   }
   padding: 2rem;
   text-align: center;
-  background-color: #7f39bb;
+  background-color: $AU-color-error;
   color: white;
   margin-top: 4rem;
   a {
@@ -206,4 +206,10 @@ img.newsletter {
 }
 ul.less-left-padding {
   padding-left: 1rem;
+}
+p.five-lines {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }

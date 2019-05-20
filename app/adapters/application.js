@@ -8,6 +8,13 @@ const { String: { pluralize } } = Ember;
 
 export default DS.RESTAdapter.extend({
   auth: service(),
+  // ajaxError: function(jqXHR) {
+  //   var error = this._super(jqXHR);
+  //   if (jqXHR && jqXHR.status === 401) {
+  //     this.get('auth').authenticate();
+  //   }
+  //   return error;
+  // },
   headers: computed('auth.csrfToken', function() {
     return {
       "X-CSRF-Token": this.get('auth.csrfToken'),

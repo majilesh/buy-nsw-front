@@ -46,13 +46,14 @@ export default Controller.extend(Validations, {
           "X-CSRF-Token": this.get('auth.csrfToken'),
         },
         data: {
-          reset_password_token: this.get('resetPasswordToken'),
+          token: this.get('resetPasswordToken'),
           password: this.get('password'),
         }
       }).then((response) => {
         controller.get('auth').authenticate();
         controller.transitionToRoute('success', 'password_updated')
       }).catch((error) => {
+        controller.get('auth').authenticateIfUnauthorized(error);
         if(error.payload.error) {
           controller.set('apiError', error.payload.error);
         }

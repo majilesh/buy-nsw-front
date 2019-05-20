@@ -6,6 +6,7 @@
       (hash name=this.model.product.name)
     )
   }}
+  <br>
   <span id="top"></span>
   {{#if (not auth.user.can_buy)}}
     {{#dds/call-out}}
@@ -13,12 +14,12 @@
     {{/dds/call-out}}
   {{/if}}
   <br>
+  <h2 class="au-display-xl">
+    {{this.model.product.name}}
+  </h2>
+  <br>
   <div class="row">
     <div class="col-sm-5">
-      <h2 class="au-display-xl">
-        {{this.model.product.name}}
-      </h2>
-      <br>
       by {{link-to this.model.product.public_seller_name "cloud-seller" this.model.product.public_seller_id}}
       <br>
       <ul class="au-tags">
@@ -34,11 +35,9 @@
       <br>
     </div>
     <div class="col-sm-3">
-      <br>
       <b>Product ID:</b> {{this.model.product.id}}
     </div>
     <div class="col-sm-4">
-      <br>
       {{#if auth.user.can_buy}}
         {{link-to "Enquire now" "product-order" this.model.product.id class="au-btn float-right"}}
         <br>
@@ -111,7 +110,7 @@
           )
         )
       }}
-      <p>{{this.model.product.summary}}</p>
+      <p>{{breaklines this.model.product.summary}}</p>
       <br>
       <br>
       {{product-table

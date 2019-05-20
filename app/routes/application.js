@@ -1,8 +1,11 @@
 import Route from '@ember/routing/route';
 import Ember from 'ember';
+import {inject as service} from '@ember/service';
+import { isUnauthorizedError } from 'ember-ajax/errors';
 const {$} = Ember;
 
 export default Route.extend({
+  auth: service(),
   actions: {
     loading: function(transition, originRoute) {
       $('.overlay').show();
@@ -18,11 +21,12 @@ export default Route.extend({
     },
     error: function(error) {
       console.log(error);
-      if(error.errors && error.errors.firstObject.detail == "Authentication Failed") {
+      //if (isUnauthorizedError(error)) {
+        this.get('auth').authenticate();
         this.transitionTo('sign-in');
         return false;
-      }
-      return true;
+      //}
+      //return true;
     }
   },
 });

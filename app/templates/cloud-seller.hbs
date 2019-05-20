@@ -29,7 +29,7 @@
       </li>
     {{/each}}
   </ul>
-  <p>{{this.model.seller.summary}}</p>
+  <p>{{breaklines this.model.seller.summary}}</p>
   <br>
   <br>
   <br>
@@ -122,7 +122,7 @@
             <b>Location</b>
           </div>
           <div class="col-sm-6">
-            <ul>
+            <ul class="less-left-padding">
               {{#each this.model.seller.addresses as |address|}}
                 <li>
                   {{address.address}}<br>
@@ -153,7 +153,7 @@
           </div>
           <div class="col-sm-6">
             {{#if this.model.seller.receivership}}
-              {{this.model.seller.receivership_details}}
+              {{breaklines this.model.seller.receivership_details}}
             {{else}}
               No
             {{/if}}
@@ -166,7 +166,7 @@
           </div>
           <div class="col-sm-6">
             {{#if this.model.seller.investigations}}
-              {{this.model.seller.investigations_details}}
+              {{breaklines this.model.seller.investigations_details}}
             {{else}}
               No
             {{/if}}
@@ -179,7 +179,7 @@
           </div>
           <div class="col-sm-6">
             {{#if this.model.seller.legal_proceedings}}
-              {{this.model.seller.legal_proceedings_details}}
+              {{breaklines this.model.seller.legal_proceedings_details}}
             {{else}}
               No
             {{/if}}
@@ -192,7 +192,7 @@
           </div>
           <div class="col-sm-6">
             {{#if this.model.seller.insurance_claims}}
-              {{this.model.seller.insurance_claims_details}}
+              {{breaklines this.model.seller.insurance_claims_details}}
             {{else}}
               No
             {{/if}}
@@ -205,7 +205,7 @@
           </div>
           <div class="col-sm-6">
             {{#if this.model.seller.conflicts_of_interest}}
-              {{this.model.seller.conflicts_of_interest_details}}
+              {{breaklines this.model.seller.conflicts_of_interest_details}}
             {{else}}
               No
             {{/if}}
@@ -242,7 +242,7 @@
             <b>Awards</b>
           </div>
           <div class="col-sm-6">
-            <ul>
+            <ul class="less-left-padding">
               {{#each this.model.seller.awards as |item|}}
                 <li>{{item}}</li>
               {{/each}}
@@ -257,7 +257,7 @@
             <b>Accreditations</b>
           </div>
           <div class="col-sm-6">
-            <ul>
+            <ul class="less-left-padding">
               {{#each this.model.seller.accreditations as |item|}}
                 <li>{{item}}</li>
               {{/each}}
@@ -272,7 +272,7 @@
             <b>Industry engagements</b>
           </div>
           <div class="col-sm-6">
-            <ul>
+            <ul class="less-left-padding">
               {{#each this.model.seller.engagements as |item|}}
                 <li>{{item}}</li>
               {{/each}}

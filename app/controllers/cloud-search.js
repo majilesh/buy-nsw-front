@@ -4,6 +4,7 @@ import { inject } from '@ember/service';
 
 export default Controller.extend({
   ajax: inject(),
+  auth: inject(),
   pageNum: 1,
   products: null,
   productsCount: 0,
@@ -62,6 +63,7 @@ export default Controller.extend({
       method: 'GET',
       data: this.filters()
     }).then( (response) => this.set('productsCount', response.totalCount) )
+    .catch((error) => auth.authenticateIfUnauthorized(error))
     .finally(() => $('.overlay').hide())
   },
 

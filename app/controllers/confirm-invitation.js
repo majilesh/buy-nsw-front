@@ -46,13 +46,14 @@ export default Controller.extend(Validations, {
           "X-CSRF-Token": this.get('auth.csrfToken'),
         },
         data: {
-          confirmation_token: this.get('confirmationToken'),
+          token: this.get('confirmationToken'),
           password: this.get('password'),
         }
       }).then((response) => {
         controller.get('auth').authenticate();
         controller.transitionToRoute('success', 'invitation_accepted')
       }).catch((error) => {
+        controller.get('auth').authenticateIfUnauthorized(error);
         if(error.payload.error) {
           controller.set('apiError', error.payload.error);
         }

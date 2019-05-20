@@ -31,7 +31,7 @@
         {{#if (or (eq item.booleanText true) (eq item.booleanText false))}}
           {{if (eq item.booleanText true) "Yes" "No"}}
         {{else if item.description}}
-          {{if item.humanize (humanize item.description) item.description}}
+          {{if item.humanize (humanize item.description) (breaklines item.description)}}
         {{else if item.link}}
           <a href={{item.link}} target="_blank">{{item.link}}</a>
         {{else if item.list}}

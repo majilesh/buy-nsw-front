@@ -10,12 +10,7 @@
             <h4 class="au-display-lg">About buy.nsw</h4>
             <hr>
             <div>
-              <a
-                href="https://www.digital.nsw.gov.au/policy/buying-ict"
-                target="_blank"
-              >
-                About the program
-              </a>
+              {{ link-to "About the program" "about-page" }}
             </div>
             <!--<div><a href="/performance">Performance Dashboard</a></div>-->
             <div><a href="https://www.digital.nsw.gov.au/blog" target="_blank">Digital NSW blog</a></div>
@@ -25,9 +20,9 @@
           <div class="col-sm-4">
             <h4 class="au-display-lg">Guidance</h4>
             <hr>
-            <div>{{ link-to "Buyer Guide" "buyer-guide" }}</div>
-            <div>{{ link-to "Seller Guide" "seller-guide" }}</div>
-            <div><a href="https://www.procurepoint.nsw.gov.au/" target="_blank">Procurepoint</a></div>
+            <div>{{ link-to "Buyer guide" "buyer-guide" }}</div>
+            <div>{{ link-to "Seller guide" "seller-guide" }}</div>
+            <div><a href="https://www.procurepoint.nsw.gov.au/" target="_blank">ProcurePoint</a></div>
             <br>
           </div>
           <div class="col-sm-4">
@@ -43,8 +38,8 @@
         <div class="au-footer__end">
           <nav class="col-md-11">
             <ul class="au-link-list au-link-list--inline">
-              <li>{{ link-to "Privacy Statement" "privacy" }}</li>
-              <li>{{ link-to "Terms and conditions of use" "terms-of-use" }}</li>
+              <li>{{ link-to "Privacy statement" "privacy" }}</li>
+              <li>{{ link-to "Terms of use" "terms-of-use" }}</li>
               <li>{{ link-to "Accessibility statement" "accessibility" }}</li>
               <li>{{ link-to "License and attribution" "license" }}</li>
             </ul>

@@ -69,6 +69,7 @@ export default Controller.extend(Validations, {
         controller.get('auth').authenticate();
         controller.transitionToRoute('success', 'account_updated');
       }).catch((error) => {
+        controller.get('auth').authenticateIfUnauthorized(error);
         if(error.payload.error) {
           controller.set('apiError', error.payload.error);
         }
