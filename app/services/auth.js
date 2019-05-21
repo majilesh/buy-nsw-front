@@ -16,21 +16,21 @@ export default Service.extend({
   csrfToken: null,
   message: null,
 
-  checkCookie() {
-    var cookie = document.cookie;
-    if (cookie != this.get('cookieCache')) {
-      this.set('cookieCache', cookie);
-      this.authenticate();
-    }
-  },
+  // checkCookie() {
+  //   var cookie = document.cookie;
+  //   if (cookie != this.get('cookieCache')) {
+  //     this.set('cookieCache', cookie);
+  //     this.authenticate();
+  //   }
+  // },
 
-  tick: function() {
-    this.checkCookie();
-    var service = this;
-    // Ember.run.later(function() {
-    //   service.tick();
-    // }, 1000);
-  },
+  // tick: function() {
+  //   this.checkCookie();
+  //   var service = this;
+  //   Ember.run.later(function() {
+  //     service.tick();
+  //   }, 1000);
+  // },
 
   isSeller: computed('user.roles', function() {
     let roles = this.get('user.roles');
@@ -97,6 +97,12 @@ export default Service.extend({
         this.handleSuccess(response, false))
   },
 
+  reauthenticate() {
+    if (this.get('config') == null) {
+      this.authenticate();
+    }
+  },
+
   authenticateIfUnauthorized(error) {
     if (isUnauthorizedError(error)) {
       this.authenticate();
@@ -106,6 +112,6 @@ export default Service.extend({
 
   init() {
     this._super(...arguments);
-    this.tick();
+    this.authenticate();
   },
 });

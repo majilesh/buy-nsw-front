@@ -9,7 +9,6 @@ export default Route.extend({
   actions: {
     loading: function(transition, originRoute) {
       $('.overlay').show();
-
       transition.promise.finally(() => {
         $('.overlay').hide();
       });
@@ -18,6 +17,7 @@ export default Route.extend({
     },
     didTransition: function() {
       $('.overlay').hide();
+      this.get('auth').reauthenticate();
     },
     error: function(error) {
       console.log(error);
