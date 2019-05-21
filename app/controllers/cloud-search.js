@@ -18,6 +18,8 @@ export default Controller.extend({
       return 'Applications and software';
     }else if(section == 'hosting-infrastructure') {
       return 'Hosting and infrastructure';
+    }else if(section == 'all') {
+      return 'All products';
     }
     return section;
   }),
@@ -38,6 +40,9 @@ export default Controller.extend({
 
   filters() {
     var params = { page: this.get('pageNum'), with_section: this.get('section') };
+    if (this.get('section') == 'all') {
+      params = { page: this.get('pageNum') };
+    }
     for (var key of [
       'audience',
       'characteristic',

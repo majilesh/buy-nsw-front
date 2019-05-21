@@ -36,10 +36,10 @@ Router.map(function() {
   this.route('failure', { path: '/failure/:message' } );
 
   this.route('cloud-search', { path: '/cloud/products/:section' } );
-  this.route('public-product', { path: '/cloud/products/:product_id' } );
+  this.route('public-product', { path: '/cloud/product/:product_id' } );
 
   this.route('cloud-sellers', { path: '/cloud/suppliers' } );
-  this.route('cloud-seller', { path: '/cloud/suppliers/:seller_id' } );
+  this.route('cloud-seller', { path: '/cloud/supplier/:seller_id' } );
 
   this.route('confirm-invitation', { path: '/confirm-invitation/:confirmation_token' } );
   this.route('reset-password', { path: '/reset-password/:reset_password_token' } );
