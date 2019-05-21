@@ -2,7 +2,7 @@
   {{dds/bread-crumbs
     links=(array
       (hash name="buy.nsw" route="index")
-      (hash name="Sellers" route="cloud-sellers")
+      (hash name="Suppliers" route="cloud-sellers")
       (hash name=this.model.seller.name)
     )
   }}
@@ -10,12 +10,12 @@
   <br>
   {{#if (not auth.user)}}
     {{#dds/call-out}}
-      To see the full seller profile, {{link-to "create a buyer account" "signup" "buyer"}}, or
+      To see the full supplier profile, {{link-to "create a buyer account" "signup" "buyer"}}, or
       {{link-to "sign in" "sign-in"}}.
     {{/dds/call-out}}
   {{else if (not auth.user.can_buy)}}
     {{#dds/call-out}}
-      To see the full seller profile you need to be an approved buyer.
+      To see the full supplier profile you need to be an approved buyer.
     {{/dds/call-out}}
   {{/if}}
   <h2 class="au-display-xl">

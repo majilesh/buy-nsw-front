@@ -438,16 +438,16 @@
             hide=(not-eq this.model.product.data_location 'other-known')
           )
           (hash
-            title="Why the seller doesn't know"
+            title="Why the supplier doesn't know"
             description=this.model.product.data_location_unknown_reason
             hide=(not-eq this.model.product.data_location 'dont-know')
           )
           (hash
-            title="Whether the seller operates their own data centres"
+            title="Whether the supplier operates their own data centres"
             booleanText=this.model.product.own_data_centre
           )
           (hash
-            title="About the seller's data centre"
+            title="About the supplier's data centre"
             description=this.model.product.own_data_centre_details
             hide=(not this.model.product.own_data_centre)
           )
