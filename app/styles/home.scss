@@ -5,9 +5,10 @@ p.home-title {
   b.dark-blue {
     color: $AU-colordark-background;
   }
-  a.au-cta-link {
-    text-decoration: none;
-  }
+}
+
+a.no-decoration {
+  text-decoration: none;
 }
 
 div.right-arrow {
@@ -49,9 +50,6 @@ div.home-middle-box {
   padding: 1rem 3rem 2rem 3rem;
   div.right-arrow {
     color: $NSW-colordark-foreground-border;
-  }
-  a.au-cta-link {
-    text-decoration: none;
   }
   h6 {
     margin: 1.0rem 2rem;

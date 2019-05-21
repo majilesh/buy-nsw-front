@@ -197,8 +197,13 @@
 		font-style: italic;
     &.fa {
       font-style: normal;
-      font-size: 150%;
       margin: 10px 10px 0px 10px;
+      &.fa-sm {
+        font-size: 75%;
+      }
+      &.fa-xs {
+        font-size: 50%;
+      }
     }
 	}
 
