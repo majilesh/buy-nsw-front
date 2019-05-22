@@ -64,7 +64,7 @@ export default Controller.extend(Validations, {
       }).then((response) => {
         controller.transitionToRoute('success', 'signup_confirmation_sent')
       }).catch((error) => {
-        auth.authenticateIfUnauthorized(error);
+        controller.get('auth').authenticateIfUnauthorized(error);
         if(error.payload.error) {
           controller.set('apiError', error.payload.error);
         }

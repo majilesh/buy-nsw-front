@@ -68,7 +68,7 @@ export default Controller.extend({
       method: 'GET',
       data: this.filters()
     }).then( (response) => this.set('productsCount', response.totalCount) )
-    .catch((error) => auth.authenticateIfUnauthorized(error))
+    .catch((error) => this.get('auth').authenticateIfUnauthorized(error))
     .finally(() => $('.overlay').hide())
   },
 
