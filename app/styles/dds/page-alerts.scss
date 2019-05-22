@@ -1,20 +1,8 @@
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 // page-alerts module
 // Use page alerts to notify users of important information and state changes to the page.
-//
-// Content:
-// - Generic page alert styling
-// - Generic page alert icon position styling
-// - Page alert error
-// - Page alert warning
-// - Page alert success
-// - Page alert info
-// - Page alert screen-reader only
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------------------------------------------------------------------------------------
-// Page alert defaults to info
-//--------------------------------------------------------------------------------------------------------------------------------------------------------------
 .au-page-alerts {
 	@include AU-space( padding, 1unit );
 	@include AU-fontgrid( sm );
