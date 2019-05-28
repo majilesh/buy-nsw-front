@@ -177,7 +177,7 @@
           Submit product
         </button>
       {{/if}}
-      {{#if this.model.underEdit}}
+      {{#if (eq this.model.status 'amendment_draft')}}
         <button
           class="au-btn au-btn--tertiary"
           onclick={{action "cancelProduct"}}
