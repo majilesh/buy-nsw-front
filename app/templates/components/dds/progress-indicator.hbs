@@ -1,0 +1,12 @@
+<ul class="au-progress-indicator">
+  {{#each items as |item|}}
+    <li>
+      {{#link-to item.route item.step class=(concat "au-progress-indicator__link au-progress-indicator__link--" item.status)}}
+        <span class="au-progress-indicator__status">
+          {{humanize item.status}}
+        </span>
+        {{item.title}}
+      {{/link-to}}
+    </li>
+  {{/each}}
+</ul>

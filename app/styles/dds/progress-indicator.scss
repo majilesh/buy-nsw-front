@@ -10,7 +10,7 @@
 	font-family: $AU-font;
 	list-style: none;
 	padding: 0;
-	border-top: 1px solid $AU-color-foreground-border;
+	border-top: 1px solid $AU-colorlight-foreground-border;
 
 	& > li {
 		margin: 0;
@@ -40,7 +40,7 @@
 	width: 100%;
 	text-align: left;
 	border: none;
-	border-bottom: 1px solid $AU-color-foreground-border;
+	border-bottom: 1px solid $AU-colorlight-foreground-border;
 	border-left: 3px solid transparent;
 	transition: background-color 0.1s ease-in-out;
 	cursor: pointer;
@@ -73,10 +73,15 @@
 		}
 	}
 
-	&.au-progress-indicator__link--doing {
+  &.active {
 		border-left-color: $AU-color-foreground-action;
-		font-weight: bold;
+    span {
+      font-family: "GothamBook";
+    }
+    font-family: "GothamBold";
+  }
 
+	&.au-progress-indicator__link--doing {
 		&:after {
 			background-image: AU-svguri('<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">' +
 				'<path fill="#{ $AU-color-foreground-action }" d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm0 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"/>' +
@@ -134,9 +139,11 @@
 			'</svg>');
 		}
 
-		&.au-progress-indicator__link--doing {
+    &.active {
 			border-left-color: $AU-colordark-foreground-action;
+    }
 
+		&.au-progress-indicator__link--doing {
 			&:after {
 				background-image: AU-svguri('<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">' +
 						'<path fill="#{ $AU-colordark-foreground-action }" d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm0 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"/>' +

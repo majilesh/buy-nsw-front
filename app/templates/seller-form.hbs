@@ -1,0 +1,40 @@
+{{#dds/template-body}}
+  <div class="col-sm-4">
+    <div class="progress-menu">
+      <b>Supplier application</b><br><br>
+      {{dds/progress-indicator
+        items=(array
+          (hash route="seller-form" step="eligibility" status="done" title="Eligibility")
+          (hash route="seller-form" step="company-details" status="doing" title="Company details")
+          (hash route="seller-form" step="disclosures" status="doing" title="Disclosures")
+          (hash route="seller-form" step="insurances" status="todo" title="Insurances")
+          (hash route="seller-form" step="company-profile" status="todo" title="Company profile")
+          (hash route="seller-form" step="complete-application" status="todo" title="Complete application")
+        )
+      }}
+      <br>
+      {{#link-to "team-members"}}
+        Invite a team member
+        {{fa-icon "angle-right"}}
+      {{/link-to}}
+    </div>
+  </div>
+  <div class="col-sm-8">
+    {{ dds/bread-crumbs
+      links=(array
+        (hash name="buy.nsw" route="index")
+        (hash name="Supplier application" route="seller-application")
+        (hash name=(humanize stepName))
+      )
+    }}
+    <h2 class="au-display-xl underline-light">
+      <b>{{humanize stepName}}</b>
+    </h2>
+    {{component (concat "seller-form/" stepName)}}
+    <hr class="light">
+  </div>
+  <div class="clear-both"></div>
+  <div>
+    <span class="float-right">Controls</span>
+  </div>
+{{/dds/template-body}}

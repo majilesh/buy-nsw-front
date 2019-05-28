@@ -48,6 +48,8 @@ Router.map(function() {
   // this.mount('telco');
   this.route('help-page', { path: '/help' });
   this.route('about-page', { path: '/about' });
+  this.route('seller-application', { path: '/supplier/application' });
+  this.route('seller-form', { path: '/supplier/forms/:step_name' });
 });
 
 export default Router;
