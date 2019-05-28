@@ -17,6 +17,7 @@ const Validations = buildValidations({
   strength: {
     validators: [
       validator('number', {
+        presence: false,
         integer: true,
         gt: 2,
       })
@@ -47,8 +48,12 @@ export default Controller.extend(Validations, {
   passwordStrength: inject(),
 
   strength: computed('newPassword', function () {
-    const passwordStrength = this.get('passwordStrength');
-    return passwordStrength.strengthSync(this.get('newPassword')).score;
+    if(this.get('newPassword')) {
+      const passwordStrength = this.get('passwordStrength');
+      return passwordStrength.strengthSync(this.get('newPassword')).score;
+    } else {
+      return null;
+    }
   }),
 
   actions: {
