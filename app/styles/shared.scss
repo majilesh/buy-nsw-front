@@ -217,3 +217,10 @@ div.progress-menu {
   padding: 2rem;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
 }
+div.cool-callout {
+  border-radius: 5px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  border: solid 0.5px $NSW-colordark-foreground-border;
+  background-color: $NSW-colordark-foreground-muted;
+}
