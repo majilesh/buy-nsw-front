@@ -10,7 +10,13 @@
       disabled={{if disabled "disabled" ""}}
     >
     <span class="au-control-input__text">
-      {{label}}
+      {{#if bold}}
+        <b>
+          {{label}}
+        </b>
+      {{else}}
+        {{label}}
+      {{/if}}
     </span>
   </label>
 </p>

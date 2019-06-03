@@ -42,6 +42,7 @@ div.feedback {
 }
 
 div.float-right, span.float-right, a.float-right, b.float-right, p.float-right {
+  padding-right: 1rem;
   float: none;
   @include AU-media( sm ) {
     float: right;
@@ -206,6 +207,12 @@ img.newsletter {
 }
 ul.less-left-padding {
   padding-left: 1rem;
+}
+p.checkbox-description {
+  padding: 0.0rem 1.2rem 2rem;
+  @include AU-media( sm ) {
+    padding: 1.5rem 4.2rem;
+  }
 }
 p.five-lines {
   display: -webkit-box;

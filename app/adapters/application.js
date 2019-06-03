@@ -22,9 +22,12 @@ export default DS.RESTAdapter.extend({
   }),
   namespace: '/api',
   pathForType(type) {
+    console.log('***');
+    console.log(type);
     const type_to_api = {
       sellers: 'sellers',
       public_sellers: 'sellers',
+      "seller_form/eligibilities": 'sellers',
       products: 'products',
       public_products: 'products',
       product_orders: 'products',
@@ -37,6 +40,7 @@ export default DS.RESTAdapter.extend({
       // public_telco_products: 'telco_products',
     }
     var type_name = pluralize(underscore(type));
+    console.log(type_name);
     return type_to_api[type_name] + '/' + type_name;
   }
 });

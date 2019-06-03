@@ -32,11 +32,27 @@
     </h2>
     <br>
     <br>
-    {{component (concat "seller-form/" stepName)}}
+    {{component (concat "seller-form/" stepName) form=this.model.form}}
     <hr class="light">
   </div>
   <div class="clear-both"></div>
   <div>
-    <span class="float-right">Controls</span>
+    <span class="float-right">
+      {{dds/primary-button
+        onClick=(action "saveContinue")
+        label="Continue"
+      }}
+    </span>
+    <span class="float-right">
+      {{dds/secondary-button
+        onClick=(action "saveExit")
+        label="Save and exit"
+      }}
+    </span>
+    <div class="clear-both"></div>
+    <span class="float-right">
+      <br>
+      <small>All your data will be saved.</small>
+    </span>
   </div>
 {{/dds/template-body}}

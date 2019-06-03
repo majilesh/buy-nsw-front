@@ -49,7 +49,7 @@
     <div class="clear-both"></div>
     <p>
       <span class="float-right">
-        {{dds/link-button
+        {{dds/primary-button
           onClick=(if (v-get this "model.email" "isValid") (action "invite"))
           disabled=(v-get this "model.email" "isInvalid")
           label="Send invitation"

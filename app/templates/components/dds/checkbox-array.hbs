@@ -30,10 +30,16 @@
       name=item.key
       label=item.label
       field=(mut field)
+      bold=bold
       disabled=disabled
       onChange=onChange
     }}
   </div>
+  {{#if item.description}}
+    <p class="checkbox-description">
+      {{item.description}}
+    </p>
+  {{/if}}
   {{#if break}}
     <div class="clear-both"></div>
   {{/if}}
