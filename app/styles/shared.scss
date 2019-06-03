@@ -191,8 +191,8 @@ hr.light {
 div.sticky-nav {
   @include AU-media( sm ) {
     position: absolute;
-    height: calc(100% - 650px);
-    width: 33.333333%;
+    height: calc(100% - 350px);
+    width: 33.33%;
   }
 }
 div.max48 {

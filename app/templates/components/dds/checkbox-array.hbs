@@ -1,5 +1,5 @@
 {{#if checkAll}}
-  <div class={{if (or break wide) "col-sm-12" "col-sm-3"}}>
+  <div class={{if (or break wide) "col-sm-36" "col-sm-9"}}>
     <p>
       <label class="au-control-input">
         <input
@@ -25,7 +25,7 @@
   {{/if}}
 {{/if}}
 {{#each items as |item|}}
-  <div class={{if wide (if break "col-sm-12" "col-sm-6") "col-sm-3"}}>
+  <div class={{if wide (if break "col-sm-36" "col-sm-18") "col-sm-9"}}>
     {{dds/checkbox-item
       name=item.key
       label=item.label

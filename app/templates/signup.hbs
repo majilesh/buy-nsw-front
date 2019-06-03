@@ -1,96 +1,92 @@
 {{#dds/template-body signout=true}}
-  <div class="col-sm-1">
-  </div>
-  <div class="col-sm-10">
-    <h1 class="au-display-xl">Create a {{accountType}} account</h1>
+  <h1 class="au-display-xl">Create a {{accountType}} account</h1>
+  {{#if (eq accountType "seller")}}
+    <p>Once you've verified your details, you'll be able to start your supplier application.</p>
+  {{/if}}
+  <p>Already have an account? {{link-to "Sign in" "sign-in"}}</p>
+  <br>
+  <b>Email address</b>
+  <p>
     {{#if (eq accountType "seller")}}
-      <p>Once you've verified your details, you'll be able to start your supplier application.</p>
+      Please use your work email address. We'll send an email to this address to verify it's yours.
+    {{else}}
+      If you have one, use your government email address. We'll send an email to this address to verify it's yours.
     {{/if}}
-    <p>Already have an account? {{link-to "Sign in" "sign-in"}}</p>
-    <br>
-    <b>Email address</b>
-    <p>
-      {{#if (eq accountType "seller")}}
-        Please use your work email address. We'll send an email to this address to verify it's yours.
-      {{else}}
-        If you have one, use your government email address. We'll send an email to this address to verify it's yours.
-      {{/if}}
-      {{dds/text-input
-        wide=true
-        allRow=true
-        field=(mut email)
-        enter=(action "submit")
-        focusOut=(action (mut showEmailError) true)
-      }}
-      {{#if (and showEmailError (v-get this "email" "isInvalid"))}}
-        <div class="max48">
-          <span class="field-error error">Email address is not valid</span>
-        </div>
-        <div class="clear-both"></div>
-      {{/if}}
-    </p>
-    <br>
-    <b>Password</b>
-    <p>
-      Passwords must be at least 8 characters long.
-      Tip: create a password with 3 or more words – it's secure and easy to remember.
-      {{dds/text-input
-        wide=true
-        allRow=true
-        password=true
-        noAutoComplete=true
-        field=(mut password)
-        enter=(action "submit")
-      }}
+    {{dds/text-input
+      wide=true
+      allRow=true
+      field=(mut email)
+      enter=(action "submit")
+      focusOut=(action (mut showEmailError) true)
+    }}
+    {{#if (and showEmailError (v-get this "email" "isInvalid"))}}
       <div class="max48">
-        {{#if (eq password.length 0)}}
-          <span class="field-error blank">Password is blank</span>
-        {{else if (lt password.length 8)}}
-          <span class="field-error short">Password is too short</span>
-        {{else if (lt strength 3)}}
-          <span class="field-error weak">Password is not strong enough</span>
-        {{else}}
-          <span class="field-error strong">Password is strong</span>
-        {{/if}}
-        <div class="clear-both"></div>
-      </div>
-    </p>
-    <br>
-    <p>
-      <b>Confirm your password</b>
-      <br>
-      {{dds/text-input
-        wide=true
-        allRow=true
-        password=true
-        noAutoComplete=true
-        field=(mut confirmPassword)
-        enter=(action "submit")
-        focusOut=(action (mut showConfirmError) true)
-      }}
-      {{#if (and showConfirmError (v-get this "confirmPassword" "isInvalid"))}}
-        <div class="max48">
-          <span class="field-error error">Passwords don't match</span>
-        </div>
-        <div class="clear-both"></div>
-      {{/if}}
-      <hr>
-    </p>
-    <p>By creating an account you confirm your acceptance of the {{link-to "terms of use" "terms-of-use"}}.</p>
-    {{#if apiError}}
-      <div class="max48">
-        <span class="field-error error">{{apiError}}</span>
+        <span class="field-error error">Email address is not valid</span>
       </div>
       <div class="clear-both"></div>
     {{/if}}
-    <p>
-      <span class="float-right">
-        {{dds/primary-button
-          onClick=(action "submit")
-          disabled=(v-get this "isInvalid")
-          label="Continue"
-        }}
-      </span>
-    </p>
-  </div>
+  </p>
+  <br>
+  <b>Password</b>
+  <p>
+    Passwords must be at least 8 characters long.
+    Tip: create a password with 3 or more words – it's secure and easy to remember.
+    {{dds/text-input
+      wide=true
+      allRow=true
+      password=true
+      noAutoComplete=true
+      field=(mut password)
+      enter=(action "submit")
+    }}
+    <div class="max48">
+      {{#if (eq password.length 0)}}
+        <span class="field-error blank">Password is blank</span>
+      {{else if (lt password.length 8)}}
+        <span class="field-error short">Password is too short</span>
+      {{else if (lt strength 3)}}
+        <span class="field-error weak">Password is not strong enough</span>
+      {{else}}
+        <span class="field-error strong">Password is strong</span>
+      {{/if}}
+      <div class="clear-both"></div>
+    </div>
+  </p>
+  <br>
+  <p>
+    <b>Confirm your password</b>
+    <br>
+    {{dds/text-input
+      wide=true
+      allRow=true
+      password=true
+      noAutoComplete=true
+      field=(mut confirmPassword)
+      enter=(action "submit")
+      focusOut=(action (mut showConfirmError) true)
+    }}
+    {{#if (and showConfirmError (v-get this "confirmPassword" "isInvalid"))}}
+      <div class="max48">
+        <span class="field-error error">Passwords don't match</span>
+      </div>
+      <div class="clear-both"></div>
+    {{/if}}
+    <hr>
+  </p>
+  <p>By creating an account you confirm your acceptance of the {{link-to "terms of use" "terms-of-use"}}.</p>
+  {{#if apiError}}
+    <div class="max48">
+      <span class="field-error error">{{apiError}}</span>
+    </div>
+    <div class="clear-both"></div>
+  {{/if}}
+  <p>
+    <span class="float-right">
+      {{dds/primary-button
+        onClick=(action "submit")
+        disabled=(v-get this "isInvalid")
+        label="Continue"
+      }}
+    </span>
+  </p>
 {{/dds/template-body}}

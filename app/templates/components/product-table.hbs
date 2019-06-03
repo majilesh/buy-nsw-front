@@ -12,10 +12,10 @@
 {{#each rows as |item|}}
   {{#if (and item.placeHolder (or item.hide (eq item.description null)))}}
     <div class="row">
-      <div class="col-sm-5">
+      <div class="col-sm-15">
         <b>{{item.title}}</b>
       </div>
-      <div class="col-sm-7">
+      <div class="col-sm-21">
         {{item.placeHolder}}
       </div>
     </div>
@@ -24,10 +24,10 @@
   {{/if}}
   {{#unless (or item.hide (eq item.description null))}}
     <div class="row">
-      <div class="col-sm-5">
+      <div class="col-sm-15">
         <b>{{item.title}}</b>
       </div>
-      <div class="col-sm-7">
+      <div class="col-sm-21">
         {{#if (or (eq item.booleanText true) (eq item.booleanText false))}}
           {{if (eq item.booleanText true) "Yes" "No"}}
         {{else if item.description}}
@@ -43,10 +43,10 @@
         {{else if item.rows}}
           {{#each item.rows as |row|}}
             <div class="row">
-              <div class="col-sm-6">
+              <div class="col-sm-18">
                 <b>{{row.title}}</b>
               </div>
-              <div class="col-sm-6">
+              <div class="col-sm-18">
                 {{row.description}}
               </div>
               <br>
