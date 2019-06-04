@@ -1,7 +1,5 @@
 {{#dds/template-body signin=true}}
   <div class="row">
-    <div class="col-sm-3">
-    </div>
     <div class="col-sm-12">
       <h2>Dashboard</h2>
     </div>
@@ -12,8 +10,6 @@
 
   {{# if this.model.seller }}
     <div class="row">
-      <div class="col-sm-3">
-      </div>
       <div class="col-sm-30">
         {{#dds/call-out}}
           <h5 class="au-display-sm"><b>Your company profile {{this.model.seller.statusMessage}}.</b></h5>
@@ -22,7 +18,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm-3">
       </div>
       <div class="col-sm-24">
         {{# if this.model.seller.expired }}
@@ -35,10 +31,10 @@
     </div>
     <br>
     <div class="row">
-      <div class="col-sm-15 dash-title">
+      <div class="col-sm-12 dash-title">
         <b>{{this.model.seller.name}}</b>
       </div>
-      <div class="col-sm-15">
+      <div class="col-sm-12">
         <div class="btn-cta-group">
             {{ link-to
               "Manage company profile"
@@ -50,10 +46,10 @@
     </div>
     {{#if this.model.seller.offersCloudLive}}
       <div class="row">
-        <div class="col-sm-15 dash-title">
+        <div class="col-sm-12 dash-title">
           <b>{{this.model.products.length}} products</b>
         </div>
-        <div class="col-sm-15">
+        <div class="col-sm-12">
           <div class="btn-cta-group">
             {{ link-to
               "Manage cloud products"
@@ -65,10 +61,10 @@
       </div>
     {{/if}}
     <div class="row">
-      <div class="col-sm-15 dash-title">
+      <div class="col-sm-12 dash-title">
         <b>{{this.model.members.length}} members</b>
       </div>
-      <div class="col-sm-15">
+      <div class="col-sm-12">
         <div class="btn-cta-group">
           {{ link-to
             "Manage team members"
@@ -80,9 +76,9 @@
     </div>
   {{else}}
     <div class="row">
-      <div class="col-sm-15">
+      <div class="col-sm-12">
       </div>
-      <div class="col-sm-15">
+      <div class="col-sm-12">
         <div class="btn-cta-group">
           {{ link-to
             "Apply to sell ICT products and services"
@@ -96,10 +92,10 @@
   {{/if}}
 
   <div class="row">
-    <div class="col-sm-15 dash-title">
+    <div class="col-sm-12 dash-title">
       <b>{{this.model.user.email}}</b>
     </div>
-    <div class="col-sm-15">
+    <div class="col-sm-12">
       <div class="btn-cta-group">
         {{link-to
           "Change email or password"
