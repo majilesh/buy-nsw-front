@@ -6,6 +6,9 @@ const {$} = Ember;
 
 export default Route.extend({
   auth: service(),
+  metrics: service(),
+  router: service(),
+
   actions: {
     loading: function(transition, originRoute) {
       $('.overlay').show();
@@ -16,6 +19,10 @@ export default Route.extend({
       return true;
     },
     didTransition: function() {
+      const page = this.router.currentURL;
+      const title = this.router.currentRouteName || 'unknown';
+      this.metrics.trackPage({ page, title });
+
       $('.overlay').hide();
       this.get('auth').reauthenticate();
     },
