@@ -5,9 +5,9 @@
       {{dds/progress-indicator
         items=(array
           (hash route="seller-form" step="eligibility" status="done" title="Eligibility")
-          (hash route="seller-form" step="company-details" status="doing" title="Company details")
-          (hash route="seller-form" step="disclosures" status="doing" title="Disclosures")
-          (hash route="seller-form" step="insurances" status="todo" title="Insurances")
+          (hash route="seller-form" step="company-detail" status="doing" title="Company details")
+          (hash route="seller-form" step="disclosure" status="doing" title="Disclosures")
+          (hash route="seller-form" step="insurance" status="todo" title="Insurances")
           (hash route="seller-form" step="company-profile" status="todo" title="Company profile")
           (hash route="seller-form" step="complete-application" status="todo" title="Complete application")
         )
@@ -32,7 +32,7 @@
     </h2>
     <br>
     <br>
-    {{component (concat "seller-form/" stepName) form=this.model.form}}
+    {{component (concat "seller-form/" stepName) form=(mut this.model.form)}}
     <hr class="light">
   </div>
   <div class="clear-both"></div>
