@@ -1,11 +1,28 @@
-{{#file-upload name="photos"
-               accept="image/*"
-               onfileadd=(action "uploadDocument") as |queue|}}
-  <a class="button">
-    {{#if queue.files.length}}
-      Uploading...
-    {{else}}
-      Upload file
-    {{/if}}
-  </a>
-{{/file-upload}}
+<p>
+  <ul class="au-tags files">
+  {{#each documents as |document index|}}
+    <li class="files">
+      <a class="file">
+        {{document.original_filename}}
+      </a>
+      <a class="pointer right" onclick={{action "removeDocument" index}}>
+        x
+      </a>
+    </li>
+  {{/each}}
+  </ul>
+  <br>
+  {{#file-upload name="photos"
+                 accept=(array 'image/jpeg' 'image/png' 'application/pdf')
+                 multiple=true
+                 onfileadd=(action "uploadDocument") as |queue|}}
+    <a class="au-btn au-btn--secondary float-right">
+      {{#if documents.length}}
+        Upload another file
+      {{else}}
+        Upload file
+      {{/if}}
+    </a>
+  {{/file-upload}}
+</p>
+<div class="clear-both"></div>
