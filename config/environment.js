@@ -66,7 +66,7 @@ module.exports = function(environment) {
     ENV.airbrake = {
       projectId:  '186737',
       projectKey: '983b2689ca96b751452a0e541f865bfc'
-    }
+    };
   }
 
   return ENV;
