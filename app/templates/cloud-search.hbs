@@ -27,7 +27,7 @@
       {{#dds/accordion-container title="Products for" expanded=true}}
         {{dds/checkbox-array
           checkAll=true
-          field=(mut audience)
+          field=(mut this.audience)
           break=true
           wide=true
           items=(array
@@ -82,7 +82,7 @@
       {{#dds/accordion-container title="Product characteristics" expanded=true}}
         {{dds/checkbox-array
           checkAll=true
-          field=(mut characteristic)
+          field=(mut this.characteristic)
           break=true
           wide=true
           items=(array
@@ -109,7 +109,7 @@
       {{#dds/accordion-container title="Pricing" expanded=true}}
         {{dds/checkbox-array
           checkAll=true
-          field=(mut pricing)
+          field=(mut this.pricing)
           break=true
           wide=true
           items=(array
@@ -136,7 +136,7 @@
       {{#dds/accordion-container title="Business identifiers" expanded=true}}
         {{dds/checkbox-array
           checkAll=true
-          field=(mut identifiers)
+          field=(mut this.identifiers)
           break=true
           wide=true
           items=(array
@@ -171,7 +171,7 @@
       <br>
       {{#dds/accordion-container title="Reseller type" expanded=true}}
         {{dds/checkbox-array
-          field=(mut reseller)
+          field=(mut this.reseller)
           break=true
           wide=true
           items=(array
@@ -191,7 +191,7 @@
       {{#dds/accordion-container title="Security standards" expanded=true}}
         {{dds/checkbox-array
           checkAll=true
-          field=(mut security)
+          field=(mut this.security)
           break=true
           wide=true
           items=(array
@@ -234,7 +234,7 @@
       {{#dds/accordion-container title="Connections to government networks" expanded=true}}
         {{dds/checkbox-array
           checkAll=true
-          field=(mut government_network_type)
+          field=(mut this.government_network_type)
           break=true
           wide=true
           items=(array
@@ -276,7 +276,7 @@
       {{dds/text-input
         wide=true
         allRow=true
-        field=(mut term)
+        field=(mut this.term)
         enter=(action "search")
         placeHolder="Search by keyword"
       }}

@@ -6,8 +6,16 @@ export default Controller.extend({
   ajax: inject(),
   auth: inject(),
   pageNum: 1,
+  audience: [],
+  characteristic: [],
+  pricing: [],
+  identifiers: [],
+  security: [],
+  government_network_type: [],
+  term: '',
   products: null,
   productsCount: 0,
+
   totalPages: computed('productsCount', function() {
     return Math.ceil(this.get('productsCount') / 25);
   }),
@@ -26,14 +34,6 @@ export default Controller.extend({
 
   init() {
     this._super();
-    this.set('pageNum', 1);
-    this.set('audience', '');
-    this.set('characteristic', '');
-    this.set('pricing', '');
-    this.set('identifiers', '');
-    this.set('security', '');
-    this.set('government_network_type', '');
-    this.set('term', '');
     this.updateCounts();
     this.updateResults();
   },
@@ -52,7 +52,7 @@ export default Controller.extend({
       'government_network_type',
     ]) {
       var value = this.get(key);
-      if(value) {
+      if(value.length) {
         params['with_' + key] = value;
       }
     }

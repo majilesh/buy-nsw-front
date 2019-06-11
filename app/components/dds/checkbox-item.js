@@ -9,6 +9,7 @@ export default Component.extend({
   actions: {
     toggle() {
       var fieldValue = this.get('name');
+
       if(this.field.includes(fieldValue)) {
         this.field.removeObject(fieldValue);
         this.set('checked', false);

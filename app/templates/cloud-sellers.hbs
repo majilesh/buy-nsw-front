@@ -27,7 +27,7 @@
       {{#dds/accordion-container title="Services" expanded=true}}
         {{dds/checkbox-array
           checkAll=true
-          field=(mut services)
+          field=(mut this.services)
           break=true
           wide=true
           items=(array
@@ -74,7 +74,7 @@
       {{#dds/accordion-container title="Business identifiers" expanded=true}}
         {{dds/checkbox-array
           checkAll=true
-          field=(mut identifiers)
+          field=(mut this.identifiers)
           break=true
           wide=true
           items=(array
@@ -108,7 +108,7 @@
       <br>
       {{#dds/accordion-container title="GovDC" expanded=true}}
         {{dds/checkbox-array
-          field=(mut govdc)
+          field=(mut this.govdc)
           break=true
           wide=true
           items=(array
@@ -134,7 +134,7 @@
       {{dds/text-input
         wide=true
         allRow=true
-        field=(mut term)
+        field=(mut this.term)
         enter=(action "search")
         placeHolder="Keyword search"
       }}

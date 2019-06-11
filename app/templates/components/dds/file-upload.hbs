@@ -18,11 +18,14 @@
                  onfileadd=(action "uploadDocument") as |queue|}}
     <a class="au-btn au-btn--secondary float-right">
       {{#if documents.length}}
-        Upload another file
+        Add another file
       {{else}}
-        Upload file
+        Choose file
       {{/if}}
     </a>
+    {{#unless documents.length}}
+      No file chosen
+    {{/unless}}
   {{/file-upload}}
 </p>
 <div class="clear-both"></div>
