@@ -21,6 +21,8 @@ export default Route.extend({
     didTransition: function() {
       const page = this.router.currentURL;
       const title = this.router.currentRouteName || 'unknown';
+      // Increase site sample rate for average page load time to 10%
+      // this.metrics.trackPage({ page, title, siteSpeedSampleRate: 10 });
       this.metrics.trackPage({ page, title });
 
       $('.overlay').hide();
