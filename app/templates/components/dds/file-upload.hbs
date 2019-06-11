@@ -1,3 +1,10 @@
+<br>
+<p>
+  <b> Upload a file</b>
+</p>
+<p class="gray">
+The file should be no larger than 5MB and in PDF, PNG or JPEG format. You can upload a single document or separate documents by using the 'Add another file' button below.
+</p>
 <p>
   <ul class="au-tags files">
   {{#each documents as |document index|}}
@@ -12,7 +19,9 @@
   {{/each}}
   </ul>
   <br>
-  {{#file-upload name="photos"
+  <p>
+  </p>
+  {{#file-upload name=name
                  accept=(array 'image/jpeg' 'image/png' 'application/pdf')
                  multiple=true
                  onfileadd=(action "uploadDocument") as |queue|}}

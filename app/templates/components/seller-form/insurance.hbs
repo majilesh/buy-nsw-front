@@ -1,3 +1,46 @@
-{{dds/file-upload
-  field=(mut form.financial_statement_ids)
+{{dds/inpage-nav
+  sections=(array
+    (hash name="Professional indemnity, product and public liability insurances" anchor="professional-indemnity")
+    (hash name="Workers' compensation insurance" anchor="workers-compensation")
+  )
 }}
+<hr class="light">
+<h2 class="au-display-lg" id="professional-indemnity">
+  <b>Professional indemnity, product and public liability insurances</b>
+</h2>
+<p>
+  This information will not appear on your supplier profile and will only be made available to interested buyers upon request. When a buyer requests your documentation, we will verify with you the records we hold are complete, accurate and up-to-date.
+</p>
+<p>
+  These documents help buyers interested in your business to understand it better, without having to ask you for more information. So make sure they're up to date.
+</p>
+<p>
+  Your insurer can issue a certificate of currency.
+</p>
+{{dds/file-upload
+  name="professional_indemnity_certificate"
+  field=(mut form.professional_indemnity_certificate_ids)
+}}
+<p>
+  <b>Expiry date</b>
+</p>
+<p>
+  We'll ask you to upload a new document when this one expires.
+</p>
+<hr class="light">
+<h2 class="au-display-lg" id="workers-compensation">
+  <b>Workers’ compensation insurance</b>
+</h2>
+<p>
+  Your workers’ compensations insurance must cover the same number of employees as you selected in the company details section of this application. We understand there may be discrepancies, for example due to the part-time or casual nature of your employees, if so please provide details.
+</p>
+{{dds/file-upload
+  name="workers_compensation_certificate"
+  field=(mut form.workers_compensation_certificate_ids)
+}}
+<p>
+  <b>Expiry date</b>
+</p>
+<p>
+  We'll ask you to upload a new document when this one expires.
+</p>

@@ -25,12 +25,11 @@ export default Component.extend({
     let response = yield file.upload('/api/documents/documents/', {
       headers: { "X-CSRF-Token": this.get('auth.csrfToken') },
       data: { original_filename: file.get('name') }
-    }).then((response) => {
-      var id = response.body.id;
-      this.field.pushObject(id);
-      this.store.findRecord('document', id).then((response) =>{
-        this.documents.pushObject(response);
-      });
+    });
+    var id = response.body.id;
+    this.field.pushObject(id);
+    this.store.findRecord('document', id).then((response) =>{
+      this.documents.pushObject(response);
     });
   }).maxConcurrency(4).enqueue(),
   actions: {
