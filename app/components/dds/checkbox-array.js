@@ -6,7 +6,7 @@ export default Component.extend({
     checkAll() {
       this.toggleProperty('allChecked');
       if (this.get('allChecked')) {
-        this.set('field', this.get('items').mapBy('key').join(','));
+        this.set('field', this.get('items').mapBy('key'));
       } else {
         this.set('field', '');
       }

@@ -32,7 +32,7 @@ export default Controller.extend({
     ]) {
       var value = this.get(key);
       if(value) {
-        params['with_' + key] = value.split(',');
+        params['with_' + key] = value;
       }
     }
     if(this.get('term')) {

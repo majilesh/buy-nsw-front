@@ -17,5 +17,5 @@ const Validations = buildValidations({
 export default DS.Model.extend(Validations, {
   offers_cloud: DS.attr('string'),
   govdc: DS.attr('string'),
-  services: DS.attr('string'),
+  services: DS.attr('json'),
 });
