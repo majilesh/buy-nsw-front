@@ -249,3 +249,12 @@ p.gray {
   color: gray;
   font-size: 80%;
 }
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="date"]::-webkit-inner-spin-button{
+    display: none;
+    -webkit-appearance: none;
+}
+input[type="date"]:after {
+    content: "";
+}
+
