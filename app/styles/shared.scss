@@ -134,7 +134,9 @@ span.field-error {
   border-bottom: 4px solid white;
   float: left;
   @include AU-media( sm ) {
-    float: right;
+    &:not(.float-left) {
+      float: right;
+    }
   }
   &.short,&.error {
     color: $AU-color-error;

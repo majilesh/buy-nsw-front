@@ -1,9 +1,24 @@
-<input
-  class="au-text-input"
-  type="date"
-  placeholder="DD/MM/YYYY"
-  pattern="\d{1,2}/\d{1,2}/\d{4}"
-  title=""
-  min=min
-  max=max
-/>
+<div>
+  {{input
+    class="au-text-input"
+    value=(mut field)
+    type="date"
+    disabled=disabled
+    pattern="\d{4}-\d{1,2}-\d{1,2}"
+    focus-out=focusOut
+    enter=enter
+    placeholder="YYYY-MM-DD"
+    title=""
+    min=min
+    max=max
+    required=required
+  }}
+</div>
+{{#unless present}}
+  <span class="field-error error float-left">Please enter a valid expiry date</span>
+{{else unless valid}}
+  <span class="field-error error float-left">Enter a valid date in YYYY-MM-DD format</span>
+{{else unless inRange}}
+  <span class="field-error error float-left">Enter a date between today and 2050</span>
+{{/unless}}
+<div class="clear-both"></div>

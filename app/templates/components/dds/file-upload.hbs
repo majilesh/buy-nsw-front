@@ -6,35 +6,34 @@
 The file should be no larger than 5MB and in PDF, PNG or JPEG format. You can upload a single document or separate documents by using the 'Add another file' button below.
 </p>
 <p>
-  <ul class="au-tags files">
-  {{#each documents as |document index|}}
-    <li class="files">
-      <a class="file">
-        {{document.original_filename}}
-      </a>
-      <a class="pointer right" onclick={{action "removeDocument" index}}>
-        x
-      </a>
-    </li>
-  {{/each}}
-  </ul>
+  {{#if documents.length}}
+    <ul class="au-tags files">
+    {{#each documents as |document index|}}
+      <li class="files">
+        <a class="file">
+          {{document.original_filename}}
+        </a>
+        <a class="pointer right" onclick={{action "removeDocument" index}}>
+          x
+        </a>
+      </li>
+    {{/each}}
+    </ul>
+  {{else}}
+    No file chosen
+  {{/if}}
   <br>
-  <p>
-  </p>
   {{#file-upload name=name
                  accept=(array 'image/jpeg' 'image/png' 'application/pdf')
                  multiple=true
                  onfileadd=(action "uploadDocument") as |queue|}}
-    <a class="au-btn au-btn--secondary float-right">
+    <a class="au-btn au-btn--tertiary">
       {{#if documents.length}}
         Add another file
       {{else}}
         Choose file
       {{/if}}
     </a>
-    {{#unless documents.length}}
-      No file chosen
-    {{/unless}}
   {{/file-upload}}
 </p>
 <div class="clear-both"></div>
