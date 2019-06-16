@@ -3,4 +3,10 @@
   class="au-text-input au-text-input--block"
   focus-out=focusOut
   value=(mut field)
+  maxlength=maxLength
 }}
+{{#if maxLength}}
+  <p class="gray">
+    {{sub maxLength (if field (get field "length") 0)}} characters remaining
+  </p>
+{{/if}}

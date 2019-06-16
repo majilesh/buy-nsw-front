@@ -1,0 +1,26 @@
+{{#each field as |item index|}}
+  <p>
+    <span class="col-sm-3 col-md-2 list-item">
+      <b>{{inc index}}.</b>
+    </span>
+    <div class="col-sm-33 col-md-24">
+      {{seller-form/single-text
+        value=item
+        index=index
+        field=(mut field)
+      }}
+    </div>
+    <div class="clear-both"></div>
+  </p>
+{{/each}}
+<p>
+  <div class="col-sm-3 col-md-2">
+  </div>
+  <div class="col-sm-18">
+    {{dds/primary-button
+      onClick=(action "addRow")
+      label="Add a row"
+    }}
+  </div>
+  <div class="clear-both"></div>
+</p>

@@ -23,23 +23,24 @@ export default DS.RESTAdapter.extend({
   namespace: '/api',
   pathForType(type) {
     const type_to_api = {
-      sellers: 'sellers',
-      public_sellers: 'sellers',
-      "seller_form/eligibilities": 'sellers',
-      "seller_form/insurances": 'sellers',
-      products: 'products',
-      public_products: 'products',
-      product_orders: 'products',
-      buyers: 'buyers',
-      events: 'events',
-      feedbacks: 'events',
-      users: 'users',
-      members: 'users',
-      documents: 'documents',
-      // telco_products: 'telco_products',
-      // public_telco_products: 'telco_products',
+      'seller': 'sellers/sellers',
+      'public-seller': 'sellers/public_sellers',
+      'seller-form/eligibility': 'sellers/seller_form/eligibility',
+      'seller-form/insurance': 'sellers/seller_form/insurance',
+      'seller-form/company-profile': 'sellers/seller_form/company_profile',
+      'seller-form/complete-application': 'sellers/seller_form/complete_application',
+      'product': 'products/products',
+      'public-product': 'products/public_products',
+      'product-order': 'products/product_orders',
+      'buyer': 'buyers/buyers',
+      'event': 'events/events',
+      'feedback': 'events/feedbacks',
+      'user': 'users/users',
+      'member': 'users/members',
+      'document': 'documents/documents',
+      // telco-product: 'telco_products/telco_products',
+      // public-telco-product: 'telco_products/public_telco_products',
     }
-    var type_name = pluralize(underscore(type));
-    return type_to_api[type_name] + '/' + type_name;
+    return type_to_api[type];
   }
 });

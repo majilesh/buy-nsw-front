@@ -1,11 +1,13 @@
 <div class="row">
-  <div class={{if allRow "col-sm-36 text-input-label" "col-sm-12 text-input-label"}}>
-    <label for="text-input">
-      {{label-text}}
-      {{yield}}
-    </label>
-  </div>
-  <div class={{if allRow "col-sm-36" "col-sm-24"}}>
+  {{#unless noLabel}}
+    <div class={{if allRow "col-sm-36 text-input-label" "col-sm-36 col-md-12 text-input-label"}}>
+      <label for="text-input">
+        {{label-text}}
+        {{yield}}
+      </label>
+    </div>
+  {{/unless}}
+  <div class={{if allRow "col-sm-36" "col-sm-36 col-md-24"}}>
     {{input
       class=(if wide "au-text-input au-text-input--block" "au-text-input")
       value=(mut field)
