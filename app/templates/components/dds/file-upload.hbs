@@ -20,7 +20,10 @@ The file should be no larger than 5MB and in PDF, PNG or JPEG format. You can up
     {{/each}}
     </ul>
   {{else}}
-    No file chosen
+    <span class="field-error error float-left">
+      No file chosen
+    </span>
+    <div class="clear-both"></div>
   {{/if}}
   <br>
   {{#file-upload name=name
@@ -31,7 +34,7 @@ The file should be no larger than 5MB and in PDF, PNG or JPEG format. You can up
       {{#if documents.length}}
         Add another file
       {{else}}
-        Choose file
+        Choose a file
       {{/if}}
     </a>
   {{/file-upload}}

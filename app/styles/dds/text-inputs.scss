@@ -155,4 +155,13 @@ textarea.au-text-input {
 	min-height: 6em;
   resize: vertical;
 }
-
+input[type=date]::-webkit-calendar-picker-indicator,
+input[type=date]::-webkit-inner-spin-button,
+input[type=date]::-webkit-outer-spin-button{
+    display: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+input[type=date]:after {
+    content: "";
+}
