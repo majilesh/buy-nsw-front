@@ -2,6 +2,12 @@
   {{input
     class="au-text-input"
     value=field
+    type=(if (or (or (or
+          (user-agent "device.isMobile")
+          (user-agent "device.isTablet")
+          (user-agent "browser.isChrome")
+          (user-agent "browser.isFirefox")
+         ))) 'date' 'text')
     type="date"
     disabled=disabled
     pattern="\d{4}-\d{1,2}-\d{1,2}"
