@@ -233,8 +233,9 @@
       onClick=(action "removeAddress" index)
     }}
   {{/if}}
-  {{dds/top-link}}
-  <hr class="light">
+  {{#if (or (eq index 0) (lt index (dec form.addresses.length)))}}
+    <hr class="light">
+  {{/if}}
   {{#if (eq index 0)}}
     <p>
       <b>Additional locations</b>
@@ -251,4 +252,10 @@
     }}
   </div>
   <div class="clear-both"></div>
+  <br>
 {{/if}}
+<p>
+  {{dds/top-link}}
+</p>
+<hr class="light">
+<br>
