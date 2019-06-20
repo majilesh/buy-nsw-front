@@ -1,6 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
+  status: DS.attr('string'),
   summary: DS.attr('string'),
   website_url: DS.attr('string'),
   linkedin_url: DS.attr('string'),

@@ -6,6 +6,11 @@
       field=(mut field)
       disabled=disabled
       onChange=onChange
+      onClick=(action (mut hasChanged) true)
     }}
   </div>
 {{/each}}
+{{#if (and (or showError hasChanged) invalid)}}
+  <span class="field-error error">{{errorMessage}}</span>
+  <div class="clear-both"></div>
+{{/if}}

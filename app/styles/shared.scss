@@ -9,7 +9,7 @@
     color: $AU-color-warning;
   }
 }
-a.au-btn.no-padding {
+a.au-btn.no-padding, div.no-padding {
   padding: 0;
 }
 div.little-padding {
@@ -32,7 +32,9 @@ a.au-btn.learn-how {
 hr.less-margin {
   margin: 1.0rem 0 1.0rem 0;
 }
-
+hr.no-margin {
+  margin: 0;
+}
 a.pointer {
   cursor: pointer;
   text-decoration: none;
@@ -235,6 +237,25 @@ div.cool-callout {
   background-color: $NSW-colordark-foreground-muted;
 }
 
+div.cool-infobox {
+  border-radius: 10px;
+  padding: 1.0rem;
+  margin: 2rem 0;
+  border: solid 0.5px $NSW-colordark-foreground-border;
+  background-color: $NSW-colordark-background-muted;
+  i.fa {
+    float: left;
+    color: $NSW-colordark-icon-muted;
+    margin: 12px 8px 10px 16px;
+  }
+  > span {
+    padding: 1rem;
+    float: left;
+    width: calc(100% - 90px);
+    text-align: center;
+  }
+}
+
 ul.au-tags.files {
   padding-right: 1rem;
   li.files {
@@ -254,4 +275,7 @@ p.gray {
 }
 span.list-item {
   padding: 0.5rem;
+}
+div.margin-top {
+  margin-top: 1.5rem;
 }

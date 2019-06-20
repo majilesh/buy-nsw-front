@@ -76,9 +76,9 @@
   &.active {
 		border-left-color: $AU-color-foreground-action;
     span {
-      font-family: "GothamBook";
+      font-family: "gothambook";
     }
-    font-family: "GothamBold";
+    font-family: "gothambold";
   }
 
 	&.au-progress-indicator__link--doing {
@@ -167,3 +167,48 @@
 	}
 }
 
+a.au-progress-indicator__sub-item {
+  &:before {
+    content: " ";
+    @include AU-space( width, 1unit );
+    @include AU-space( height, 1unit );
+    @include AU-space( background-size, 1unit );
+    @include AU-space( margin-left, -1.5unit );
+    display: block;
+    float: left;
+    background-repeat: no-repeat;
+    background-image: AU-svguri('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">' +
+      '<path fill="#{ $AU-color-foreground-border }" d="M2 10h12v1H2zM2 5h1v5H2z"/>' +
+    '</svg>');
+  }
+
+	@include AU-fontgrid( sm, heading ); // Needed for button elements that reset fontsize
+	@include AU-space( padding, .75unit .75unit .75unit 3.5unit );
+  font-size: 85%;
+  color: #626262;
+	position: relative;
+	display: block;
+	text-decoration: none;
+	appearance: none;
+	background: transparent;
+	box-sizing: border-box;
+	width: 100%;
+	text-align: left;
+	border: none;
+	transition: background-color 0.1s ease-in-out;
+	cursor: pointer;
+
+  &.active {
+    font-weight: 600;
+    color: $AU-color-foreground-text;
+    &:before {
+      background-image: AU-svguri('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">' +
+        '<path fill="#{ $AU-color-foreground-border }" stroke="black" d="M2 10h12v1H2zM2 5h1v5H2z"/>' +
+      '</svg>');
+    }
+  }
+
+	&:hover {
+		background-color: $AU-color-background-shade;
+	}
+}

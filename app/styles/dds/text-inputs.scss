@@ -22,6 +22,7 @@
 	border-radius: $AU-border-radius;
 	vertical-align: middle;
 	appearance: none;
+  width: 65%;
 
 	// state styling
 	&.au-text-input--dark:invalid,

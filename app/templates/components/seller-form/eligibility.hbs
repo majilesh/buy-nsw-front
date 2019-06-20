@@ -1,3 +1,8 @@
+<h2 class="au-display-xl underline-light">
+  <b>Eligibility</b>
+</h2>
+<br>
+<br>
 {{dds/inpage-nav
   sections=(array
     (hash name="Do you provide cloud products, services or support?" anchor="cloud-products")
@@ -27,15 +32,18 @@
   {{dds/radio-group
     items=(array
       (hash
-        key="yes"
+        key="true"
         label="Yes"
       )
       (hash
-        key="no"
+        key="false"
         label="No"
       )
     )
     field=(mut form.offers_cloud)
+    showError=(not-eq form.status 'todo')
+    invalid=(v-get form 'offers_cloud' 'isInvalid')
+    errorMessage=(v-get form 'offers_cloud' 'message')
   }}
 </p>
 <p>
@@ -59,15 +67,18 @@
   {{dds/radio-group
     items=(array
       (hash
-        key="yes"
+        key="true"
         label="Yes"
       )
       (hash
-        key="no"
+        key="false"
         label="No"
       )
     )
     field=(mut form.govdc)
+    showError=(not-eq form.status 'todo')
+    invalid=(v-get form 'govdc' 'isInvalid')
+    errorMessage=(v-get form 'govdc' 'message')
   }}
 </p>
 
@@ -130,3 +141,4 @@
     )
   )
 }}
+<hr class="light">

@@ -1,0 +1,254 @@
+<h2 class="au-display-xl underline-light">
+  <b>Company details</b>
+</h2>
+<br>
+<h2 class="au-display-lg">
+  <b>Contact details</b>
+</h2>
+<div class="cool-infobox">
+  {{fa-icon "exclamation-circle" size='xl'}}
+  <span>
+    Some of this information will appear on your supplier profile and product pages, but only to logged in buyers.
+  </span>
+  <div class="clear-both"></div>
+</div>
+<p>
+  <b>Business contact name</b>
+</p>
+<p>
+  This contact will display on your supplier profile and can only be seen by logged in buyers. It is the person you nominate to receive  communications from buyers and buy.nsw.
+</p>
+<p>
+  <b>Full name</b>
+</p>
+<p>
+  {{dds/text-input
+    wide=true
+    noLabel=true
+    field=(mut form.contact_name)
+    showError=(not-eq form.status 'todo')
+    invalid=(v-get form 'contact_name' 'isInvalid')
+    errorMessage=(v-get form 'contact_name' 'message')
+  }}
+</p>
+<p>
+  <b>Email address</b>
+</p>
+<p>
+  {{dds/text-input
+    wide=true
+    noLabel=true
+    field=(mut form.contact_email)
+    showError=(not-eq form.status 'todo')
+    invalid=(v-get form 'contact_email' 'isInvalid')
+    errorMessage=(v-get form 'contact_email' 'message')
+  }}
+</p>
+<p>
+  <b>Contact number</b>
+</p>
+<p>
+  {{dds/text-input
+    noLabel=true
+    field=(mut form.contact_phone)
+    showError=(not-eq form.status 'todo')
+    invalid=(v-get form 'contact_phone' 'isInvalid')
+    errorMessage=(v-get form 'contact_phone' 'message')
+  }}
+</p>
+<p>
+  {{dds/top-link}}
+</p>
+<hr class="light">
+<p>
+  <b>Authorised representative</b>
+</p>
+<p>
+  This is the person authorised to enter into contracts with the NSW government on behalf of your business. These contact details are not available to buyers.
+</p>
+<p>
+  <label class="au-control-input">
+    <input
+      class="au-control-input__input"
+      type="checkbox"
+      onChange={{action "sameClicked"}}
+    >
+    <span class="au-control-input__text">
+      Same as above
+    </span>
+  </label>
+</p>
+<div class="col-sm-36 margin-top">
+  <p>
+    <b>Full name</b>
+  </p>
+  <p>
+    {{dds/text-input
+      wide=true
+      noLabel=true
+      disabled=sameAsAbove
+      field=(mut form.representative_name)
+      showError=(not-eq form.status 'todo')
+      invalid=(v-get form 'representative_name' 'isInvalid')
+      errorMessage=(v-get form 'representative_name' 'message')
+    }}
+  </p>
+</div>
+<div class="col-sm-36 margin-top">
+  <p>
+    <b>Email address</b>
+  </p>
+  <p>
+    {{dds/text-input
+      wide=true
+      noLabel=true
+      disabled=sameAsAbove
+      field=(mut form.representative_email)
+      showError=(not-eq form.status 'todo')
+      invalid=(v-get form 'representative_email' 'isInvalid')
+      errorMessage=(v-get form 'representative_email' 'message')
+    }}
+  </p>
+</div>
+<div class="col-sm-36 col-md-24 col-lg-15 margin-top">
+  <p>
+    <b>Contact number</b>
+  </p>
+  <p>
+    {{dds/text-input
+      noLabel=true
+      disabled=sameAsAbove
+      wide=true
+      allRow=true
+      field=(mut form.representative_phone)
+      showError=(not-eq form.status 'todo')
+      invalid=(v-get form 'representative_phone' 'isInvalid')
+      errorMessage=(v-get form 'representative_phone' 'message')
+    }}
+  </p>
+</div>
+<div class="col-sm-36 col-md-24 col-lg-15 margin-top">
+  <p>
+    <b>Position in organisation</b>
+  </p>
+  <p>
+    {{dds/text-input
+      noLabel=true
+      wide=true
+      allRow=true
+      field=(mut form.representative_position)
+      showError=(not-eq form.status 'todo')
+      invalid=(v-get form 'representative_position' 'isInvalid')
+      errorMessage=(v-get form 'representative_position' 'message')
+    }}
+  </p>
+</div>
+<div class="clear-both"></div>
+<p>
+  {{dds/top-link}}
+</p>
+<hr class="light">
+<h2 class="au-display-lg">
+  <b>Address</b>
+</h2>
+<p>
+  This information will appear on your supplier profile and is publicly available.
+</p>
+<p>
+  <b>Head office</b>
+</p>
+<p>
+  This is the business address of your head office.
+</p>
+{{#each form.addresses as |address index|}}
+  <div class="col-sm-36 margin-top">
+    <p>
+      <b>Business address</b>
+    </p>
+    <p>
+      {{dds/text-input
+        wide=true
+        noLabel=true
+        field=(mut address.address)
+      }}
+    </p>
+  </div>
+  <div class="col-sm-36 col-md-24 col-lg-21 margin-top">
+    <p>
+      <b>Suburb or city</b>
+    </p>
+    <p>
+      {{dds/text-input
+        wide=true
+        allRow=true
+        noLabel=true
+        field=(mut address.suburb)
+      }}
+    </p>
+  </div>
+  <div class="col-sm-36 col-md-24 col-lg-9 margin-top">
+    <p>
+      <b>Postcode or ZIP</b>
+    </p>
+    <p>
+      {{dds/text-input
+        wide=true
+        allRow=true
+        noLabel=true
+        field=(mut address.postcode)
+      }}
+    </p>
+  </div>
+  <div class="col-sm-36 col-md-24 col-lg-12 margin-top">
+    <p>
+      <b>Provience, state or territory</b>
+    </p>
+    <p>
+      {{dds/text-input
+        wide=true
+        allRow=true
+        noLabel=true
+        field=(mut address.state)
+      }}
+    </p>
+  </div>
+  <div class="col-sm-36 col-md-24 col-lg-18 margin-top">
+    <p>
+      <b>Country</b>
+    </p>
+    <p>
+      {{dds/text-input
+        wide=true
+        allRow=true
+        noLabel=true
+        field=(mut address.country)
+      }}
+    </p>
+  </div>
+  <div class="clear-both"></div>
+  {{#if (gt index 0)}}
+    <br>
+    {{dds/tertiary-button
+      label="Discard this address"
+      onClick=(action "removeAddress" index)
+    }}
+  {{/if}}
+  {{dds/top-link}}
+  <hr class="light">
+  {{#if (eq index 0)}}
+    <p>
+      <b>Additional locations</b>
+    </p>
+    <p>List any additional business locations in Australia.</p>
+  {{/if}}
+{{/each}}
+{{#if (lt form.addresses.length 6)}}
+  <div class="col-sm-36">
+    <br>
+    {{dds/primary-button
+      label="Add an address"
+      onClick=(action "addAddress")
+    }}
+  </div>
+  <div class="clear-both"></div>
+{{/if}}

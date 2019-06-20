@@ -21,8 +21,10 @@ $AU-grid-12-gutter-width: 24px !default; //gutter space
 		box-sizing: border-box; //we can’t assume that has been added on * {}
 		position: relative;
 		min-height: 1px;
-		padding-left:  ceil( ( $AU-grid-12-gutter-width / 2 ) );
-		padding-right: floor( ( $AU-grid-12-gutter-width / 2 ) );
+    &:not(.no-padding) {
+      padding-left:  ceil( ( $AU-grid-12-gutter-width / 2 ) );
+      padding-right: floor( ( $AU-grid-12-gutter-width / 2 ) );
+    }
 	}
 }
 

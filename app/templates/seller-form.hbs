@@ -1,15 +1,45 @@
 {{#dds/template-body}}
-  <div class="col-sm-15 col-md-12 col-lg-9">
+  <div class="col-sm-15 col-md-12 col-lg-10">
     <div class="progress-menu">
       <b>Supplier application</b><br><br>
       {{dds/progress-indicator
+        stepName=stepName
         items=(array
-          (hash route="seller-form" step="eligibility" status="done" title="Eligibility")
-          (hash route="seller-form" step="company-detail" status="doing" title="Company details")
-          (hash route="seller-form" step="disclosure" status="doing" title="Disclosures")
-          (hash route="seller-form" step="insurance" status="todo" title="Insurances")
-          (hash route="seller-form" step="company-profile" status="todo" title="Company profile")
-          (hash route="seller-form" step="complete-application" status="todo" title="Complete application")
+          (hash route="seller-form" step="eligibility"
+           status=this.model.steps.eligibility
+           title="Eligibility")
+          (hash route="seller-form" status="todo" step="business-name" title="Company details"
+            subItems=(array
+              (hash route="seller-form" step="business-name"
+               status=this.model.steps.business_name
+               title="Business name and ABN")
+              (hash route="seller-form" step="contact-detail"
+               status=this.model.steps.contact_detail
+               title="Contact details and address")
+              (hash route="seller-form" step="company-type"
+               status=this.model.steps.company_type
+               title="Company type and business identifiers")
+            )
+          )
+          (hash route="seller-form" status="todo" step="legal-disclosure" title="Disclosures"
+            subItems=(array
+              (hash route="seller-form" step="legal-disclosure"
+               status=this.model.steps.legal_disclosure
+               title="Legal disclosures")
+              (hash route="seller-form" step="financial-statement"
+               status=this.model.steps.financial_statement
+               title="Financial statements")
+            )
+          )
+          (hash route="seller-form" step="insurance"
+           status=this.model.steps.insurance
+           title="Insurances")
+          (hash route="seller-form" step="company-profile"
+           status=this.model.steps.company_profile
+           title="Company profile")
+          (hash route="seller-form" step="complete-application"
+           status=this.model.steps.complete_application
+           title="Complete application")
         )
       }}
       <br>
@@ -21,7 +51,7 @@
   </div>
   <div class="col-sm-1">
   </div>
-  <div class="col-sm-20 col-md-23 col-lg-26">
+  <div class="col-sm-20 col-md-23 col-lg-25">
     {{ dds/bread-crumbs
       links=(array
         (hash name="buy.nsw" route="index")
@@ -29,13 +59,8 @@
         (hash name=(humanize stepName))
       )
     }}
-    <h2 class="au-display-xl underline-light">
-      <b>{{humanize stepName}}</b>
-    </h2>
-    <br>
     <br>
     {{component (concat "seller-form/" stepName) form=(mut this.model.form)}}
-    <hr class="light">
   </div>
   <div class="clear-both"></div>
   <div>
@@ -43,6 +68,7 @@
       {{dds/primary-button
         onClick=(action "saveContinue")
         label="Continue"
+        disabled=(v-get this.model.form 'isInvalid')
       }}
     </span>
     <span class="float-right">

@@ -2,12 +2,12 @@ import DS from 'ember-data';
 import { buildValidations, validator } from 'ember-cp-validations';
 
 const Validations = buildValidations({
-  'form.offers_cloud': {
+  offers_cloud: {
     validators: [
       validator('presence', true),
     ]
   },
-  'form.govdc': {
+  govdc: {
     validators: [
       validator('presence', true),
     ]
@@ -15,6 +15,7 @@ const Validations = buildValidations({
 });
 
 export default DS.Model.extend(Validations, {
+  status: DS.attr('string'),
   offers_cloud: DS.attr('string'),
   govdc: DS.attr('string'),
   services: DS.attr('json'),

@@ -16,8 +16,18 @@
       pattern=pattern
       focus-out=focusOut
       enter=enter
+      key-up=(action (mut hasChanged) true)
       placeholder=placeHolder
       autocomplete=(if noAutoComplete "new-password" "true")
     }}
+    {{#if (and (not disabled) (and (or showError hasChanged) invalid))}}
+      {{#unless wide}}
+        <br>
+      {{/unless}}
+      <span class="field-error error float-left">
+        {{errorMessage}}
+      </span>
+      <div class="clear-both"></div>
+    {{/if}}
   </div>
 </div>

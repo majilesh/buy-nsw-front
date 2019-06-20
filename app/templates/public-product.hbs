@@ -7,7 +7,6 @@
     )
   }}
   <br>
-  <span id="top"></span>
   {{#if (not auth.user.can_buy)}}
     {{#dds/call-out}}
       {{link-to "Become a registered buyer" "signup" "buyer"}} to purchase this product.
