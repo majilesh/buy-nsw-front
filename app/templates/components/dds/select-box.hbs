@@ -1,0 +1,18 @@
+<select
+  class="au-select fixed-width au-select--block"
+  onChange={{action "onChange" value="target.value"}}
+>
+  <option
+    disabled
+    selected={{if (eq field "") "selected"}}
+  >
+    Please select
+  </option>
+  {{#each items as |item|}}
+    <option selected={{if (eq field item.value) "selected"}} value={{item.value}}>{{item.label}}</option>
+  {{/each}}
+</select>
+{{#if (and (or showError hasChanged) invalid)}}
+  <span class="field-error error">{{errorMessage}}</span>
+  <div class="clear-both"></div>
+{{/if}}

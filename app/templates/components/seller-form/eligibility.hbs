@@ -41,7 +41,7 @@
       )
     )
     field=(mut form.offers_cloud)
-    showError=(not-eq form.status 'todo')
+    showError=(or showError (not-eq form.status 'todo'))
     invalid=(v-get form 'offers_cloud' 'isInvalid')
     errorMessage=(v-get form 'offers_cloud' 'message')
   }}
@@ -76,7 +76,7 @@
       )
     )
     field=(mut form.govdc)
-    showError=(not-eq form.status 'todo')
+    showError=(or showError (not-eq form.status 'todo'))
     invalid=(v-get form 'govdc' 'isInvalid')
     errorMessage=(v-get form 'govdc' 'message')
   }}

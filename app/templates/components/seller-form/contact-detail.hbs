@@ -26,7 +26,7 @@
     wide=true
     noLabel=true
     field=(mut form.contact_name)
-    showError=(not-eq form.status 'todo')
+    showError=(or showError (not-eq form.status 'todo'))
     invalid=(v-get form 'contact_name' 'isInvalid')
     errorMessage=(v-get form 'contact_name' 'message')
   }}
@@ -39,7 +39,7 @@
     wide=true
     noLabel=true
     field=(mut form.contact_email)
-    showError=(not-eq form.status 'todo')
+    showError=(or showError (not-eq form.status 'todo'))
     invalid=(v-get form 'contact_email' 'isInvalid')
     errorMessage=(v-get form 'contact_email' 'message')
   }}
@@ -51,7 +51,7 @@
   {{dds/text-input
     noLabel=true
     field=(mut form.contact_phone)
-    showError=(not-eq form.status 'todo')
+    showError=(or showError (not-eq form.status 'todo'))
     invalid=(v-get form 'contact_phone' 'isInvalid')
     errorMessage=(v-get form 'contact_phone' 'message')
   }}
@@ -88,7 +88,7 @@
       noLabel=true
       disabled=sameAsAbove
       field=(mut form.representative_name)
-      showError=(not-eq form.status 'todo')
+      showError=(or showError (not-eq form.status 'todo'))
       invalid=(v-get form 'representative_name' 'isInvalid')
       errorMessage=(v-get form 'representative_name' 'message')
     }}
@@ -104,7 +104,7 @@
       noLabel=true
       disabled=sameAsAbove
       field=(mut form.representative_email)
-      showError=(not-eq form.status 'todo')
+      showError=(or showError (not-eq form.status 'todo'))
       invalid=(v-get form 'representative_email' 'isInvalid')
       errorMessage=(v-get form 'representative_email' 'message')
     }}
@@ -121,7 +121,7 @@
       wide=true
       allRow=true
       field=(mut form.representative_phone)
-      showError=(not-eq form.status 'todo')
+      showError=(or showError (not-eq form.status 'todo'))
       invalid=(v-get form 'representative_phone' 'isInvalid')
       errorMessage=(v-get form 'representative_phone' 'message')
     }}
@@ -137,7 +137,7 @@
       wide=true
       allRow=true
       field=(mut form.representative_position)
-      showError=(not-eq form.status 'todo')
+      showError=(or showError (not-eq form.status 'todo'))
       invalid=(v-get form 'representative_position' 'isInvalid')
       errorMessage=(v-get form 'representative_position' 'message')
     }}
@@ -201,14 +201,22 @@
   </div>
   <div class="col-sm-36 col-md-24 col-lg-12 margin-top">
     <p>
-      <b>Provience, state or territory</b>
+      <b>State or territory</b>
     </p>
     <p>
-      {{dds/text-input
-        wide=true
-        allRow=true
-        noLabel=true
+      {{dds/select-box
         field=(mut address.state)
+        items=(array
+          (hash value="nsw" label="New South Wales")
+          (hash value="act" label="Australian Capital Territory")
+          (hash value="nt" label="Northern Territory")
+          (hash value="qld" label="Queensland")
+          (hash value="sa" label="South Australia")
+          (hash value="tas" label="Tasmania")
+          (hash value="vic" label="Victoria")
+          (hash value="wa" label="Western Australia")
+          (hash value="outside_au" label="Outside Australia")
+        )
       }}
     </p>
   </div>
@@ -217,11 +225,9 @@
       <b>Country</b>
     </p>
     <p>
-      {{dds/text-input
-        wide=true
-        allRow=true
-        noLabel=true
+      {{dds/select-box
         field=(mut address.country)
+        items=countries
       }}
     </p>
   </div>

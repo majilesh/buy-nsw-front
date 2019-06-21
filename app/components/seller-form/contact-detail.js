@@ -1,10 +1,14 @@
 import Component from '@ember/component';
+import Countries from 'ember-cli-countries/enums/countries';
 
 export default Component.extend({
+  countries: Countries.toKeyValueJson().map(country => { return { value: country.key, label: country.value }; }),
   sameAsAbove: false,
+
   actions: {
     sameClicked() {
       this.toggleProperty('sameAsAbove')
+      console.log(this.get('countries'));
       if(this.get('sameAsAbove')) {
         this.set('form.representative_name', this.get('form.contact_name'));
         this.set('form.representative_email', this.get('form.contact_email'));
@@ -12,7 +16,7 @@ export default Component.extend({
       }
     },
     addAddress() {
-      this.form.addresses.pushObject({address: '', suburb: '', postcode: '', state: '', country: 'AU'});
+      this.form.addresses.pushObject({address: '', suburb: '', postcode: '', state: '', country: ''});
     },
     removeAddress(index) {
       this.form.addresses.removeAt(index);

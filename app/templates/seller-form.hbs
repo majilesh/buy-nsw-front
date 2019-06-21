@@ -60,7 +60,7 @@
       )
     }}
     <br>
-    {{component (concat "seller-form/" stepName) form=(mut this.model.form)}}
+    {{component (concat "seller-form/" stepName) form=(mut this.model.form) showError=showError}}
   </div>
   <div class="clear-both"></div>
   <div>

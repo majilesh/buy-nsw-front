@@ -4,19 +4,14 @@
     <input
       class="au-control-input__input"
       type="checkbox"
-      name={{name}}
       onChange={{action "toggle"}}
-      checked={{if checked "checked" ""}}
+      checked={{if field "checked" ""}}
       disabled={{if disabled "disabled" ""}}
     >
     <span class="au-control-input__text">
-      {{#if bold}}
-        <b>
-          {{label}}
-        </b>
-      {{else}}
+      <b>
         {{label}}
-      {{/if}}
+      </b>
     </span>
   </label>
 </p>
