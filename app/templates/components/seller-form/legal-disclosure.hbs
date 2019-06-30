@@ -2,5 +2,280 @@
   <b>Disclosures</b>
 </h2>
 <br>
-<br>
+<h2 class="au-display-lg">
+  <b>Legal disclosures</b>
+</h2>
+<div class="cool-infobox">
+  {{fa-icon "exclamation-circle" size="2x" prefix="fal" pull="left"}}
+  <span>
+    This information will appear on your supplier profile, but only to logged in buyers.
+  </span>
+  <div class="clear-both"></div>
+</div>
+<p>
+  You must update this information if there is change in your business that affects your answers. We will also ask you annually to update your responses to this section.
+</p>
+<p>
+  <b>
+    If you answer ‘yes’ to any question, you will not automatically be disqualified, however our assessors may contact you to request more information.
+  </b>
+</p>
+<hr class="light">
+<p>
+  <b>
+    Is your organisation in receivership, administration or unable to meet its debts as they fall due?
+  </b>
+</p>
+<p>
+  {{dds/radio-group
+    items=(array
+      (hash
+        key="true"
+        label="Yes"
+      )
+      (hash
+        key="false"
+        label="No"
+      )
+    )
+    field=(mut form.receivership)
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'receivership' 'isInvalid')
+    errorMessage=(v-get form 'receivership' 'message')
+  }}
+</p>
+{{#if (eq form.receivership 'true')}}
+  <p>
+    <b>
+      Please provide details
+    </b>
+  </p>
+  <p>
+    Include specific dates, details of the event and what counter measures you have implemented.
+  </p>
+  <p>
+    {{dds/text-area
+      field=(mut form.receivership_details)
+      maxLength=1000
+      showError=(or showError (not-eq form.status 'todo'))
+      invalid=(v-get form 'receivership_details' 'isInvalid')
+      errorMessage=(v-get form 'receivership_details' 'message')
+    }}
+  </p>
+{{/if}}
+<hr class="light">
+<p>
+  <b>
+    Has your organisation — or any of its directors or principals — been or referred to or investigated by any agency, authority or regulator in connection with improper business practices in the last 5 years?
+  </b>
+</p>
+<p>
+  {{dds/radio-group
+    items=(array
+      (hash
+        key="true"
+        label="Yes"
+      )
+      (hash
+        key="false"
+        label="No"
+      )
+    )
+    field=(mut form.investigations)
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'investigations' 'isInvalid')
+    errorMessage=(v-get form 'investigations' 'message')
+  }}
+</p>
+{{#if (eq form.investigations 'true')}}
+  <p>
+    <b>
+      Please provide details
+    </b>
+  </p>
+  <p>
+    Include specific dates, details of the event and what counter measures you have implemented.
+  </p>
+  <p>
+    {{dds/text-area
+      field=(mut form.investigations_details)
+      maxLength=1000
+      showError=(or showError (not-eq form.status 'todo'))
+      invalid=(v-get form 'investigations_details' 'isInvalid')
+      errorMessage=(v-get form 'investigations_details' 'message')
+    }}
+  </p>
+{{/if}}
+<hr class="light">
+<p>
+  <b>
+    Has your organisation been involved in any action or procedure in a court of law in the last 5 years?
+  </b>
+</p>
+<p>
+  {{dds/radio-group
+    items=(array
+      (hash
+        key="true"
+        label="Yes"
+      )
+      (hash
+        key="false"
+        label="No"
+      )
+    )
+    field=(mut form.legal_proceedings)
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'legal_proceedings' 'isInvalid')
+    errorMessage=(v-get form 'legal_proceedings' 'message')
+  }}
+</p>
+{{#if (eq form.legal_proceedings 'true')}}
+  <p>
+    <b>
+      Please provide details
+    </b>
+  </p>
+  <p>
+  Include specific dates, details of the legal action or procedure, and the outcome, as well as what counter measures have been implemented.
+  </p>
+  <p>
+    {{dds/text-area
+      field=(mut form.legal_proceedings_details)
+      maxLength=1000
+      showError=(or showError (not-eq form.status 'todo'))
+      invalid=(v-get form 'legal_proceedings_details' 'isInvalid')
+      errorMessage=(v-get form 'legal_proceedings_details' 'message')
+    }}
+  </p>
+{{/if}}
+<hr class="light">
+<p>
+  <b>
+    Has your organisation made any claims on your professional indemnity, public liability, cyber, directors or fidelity insurance in the last 5 years?
+  </b>
+</p>
+<p>
+  {{dds/radio-group
+    items=(array
+      (hash
+        key="true"
+        label="Yes"
+      )
+      (hash
+        key="false"
+        label="No"
+      )
+    )
+    field=(mut form.insurance_claims)
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'insurance_claims' 'isInvalid')
+    errorMessage=(v-get form 'insurance_claims' 'message')
+  }}
+</p>
+{{#if (eq form.insurance_claims 'true')}}
+  <p>
+    <b>
+      Please provide details
+    </b>
+  </p>
+  <p>
+    Include specific dates, details of the claims, and the outcome, as well as what counter measures you have implemented.
+  </p>
+  <p>
+    {{dds/text-area
+      field=(mut form.insurance_claims_details)
+      maxLength=1000
+      showError=(or showError (not-eq form.status 'todo'))
+      invalid=(v-get form 'insurance_claims_details' 'isInvalid')
+      errorMessage=(v-get form 'insurance_claims_details' 'message')
+    }}
+  </p>
+{{/if}}
+<hr class="light">
+<p>
+  <b>
+    Are you aware of any potential or actual conflicts of interest that may affect your organisation's application to register or transact with NSW Government?
+  </b>
+</p>
+<p>
+  {{dds/radio-group
+    items=(array
+      (hash
+        key="true"
+        label="Yes"
+      )
+      (hash
+        key="false"
+        label="No"
+      )
+    )
+    field=(mut form.conflicts_of_interest)
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'conflicts_of_interest' 'isInvalid')
+    errorMessage=(v-get form 'conflicts_of_interest' 'message')
+  }}
+</p>
+{{#if (eq form.conflicts_of_interest 'true')}}
+  <p>
+    <b>
+      Please provide details
+    </b>
+  </p>
+  <p>
+    Include specific dates, details of the event and what counter measures you have implemented.
+  </p>
+  <p>
+    {{dds/text-area
+      field=(mut form.conflicts_of_interest_details)
+      maxLength=1000
+      showError=(or showError (not-eq form.status 'todo'))
+      invalid=(v-get form 'conflicts_of_interest_details' 'isInvalid')
+      errorMessage=(v-get form 'conflicts_of_interest_details' 'message')
+    }}
+  </p>
+{{/if}}
+<hr class="light">
+<p>
+  <b>
+    Is there anything else we should know that may impact your ability or eligibility to sell to NSW Government?
+  </b>
+</p>
+<p>
+  {{dds/radio-group
+    items=(array
+      (hash
+        key="true"
+        label="Yes"
+      )
+      (hash
+        key="false"
+        label="No"
+      )
+    )
+    field=(mut form.other_circumstances)
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'other_circumstances' 'isInvalid')
+    errorMessage=(v-get form 'other_circumstances' 'message')
+  }}
+</p>
+{{#if (eq form.other_circumstances 'true')}}
+  <p>
+    <b>
+      Please provide details
+    </b>
+  </p>
+  <p>
+    Include specific dates, details of the event and what counter measures you have implemented.
+  </p>
+  <p>
+    {{dds/text-area
+      field=(mut form.other_circumstances_details)
+      maxLength=1000
+      showError=(or showError (not-eq form.status 'todo'))
+      invalid=(v-get form 'other_circumstances_details' 'isInvalid')
+      errorMessage=(v-get form 'other_circumstances_details' 'message')
+    }}
+  </p>
+{{/if}}
 <hr class="light">

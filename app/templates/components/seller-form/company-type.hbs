@@ -6,7 +6,7 @@
   <b>Contact details</b>
 </h2>
 <div class="cool-infobox">
-  {{fa-icon "exclamation-circle" size='xl'}}
+  {{fa-icon "exclamation-circle" size="2x" prefix="fal" pull="left"}}
   <span>
     This information will appear on your supplier profile and is publicly available.
   </span>
@@ -69,7 +69,7 @@
   <b>Business identifiers (optional)</b>
 </h2>
 <div class="cool-infobox">
-  {{fa-icon "exclamation-circle" size='xl'}}
+  {{fa-icon "exclamation-circle" size="2x" prefix="fal" pull="left"}}
   <span>
     The following fields are optional but will help buyers find you.
   </span>
@@ -82,7 +82,8 @@
 }}
 {{dds/checkbox-input
   field=(mut form.sme)
-  label="Small business"
+  label="Small or medium business"
+  disabled=(or (eq form.corporate_structure 'subsidiary') (eq form.number_of_employees '200plus'))
   description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et."
 }}
 {{dds/checkbox-input

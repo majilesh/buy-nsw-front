@@ -29,6 +29,9 @@
   {{dds/text-area
     field=(mut form.summary)
     maxLength=1000
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'summary' 'isInvalid')
+    errorMessage=(v-get form 'summary' 'message')
   }}
 </p>
 <p>
@@ -42,6 +45,9 @@
     field=(mut form.website_url)
     noLabel=true
     wide=true
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'website_url' 'isInvalid')
+    errorMessage=(v-get form 'website_url' 'message')
   }} 
 </p>
 <p>
@@ -55,6 +61,9 @@
     field=(mut form.linkedin_url)
     noLabel=true
     wide=true
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'linkedin_url' 'isInvalid')
+    errorMessage=(v-get form 'linkedin_url' 'message')
   }} 
 </p>
 

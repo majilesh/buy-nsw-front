@@ -63,15 +63,33 @@
     {{component (concat "seller-form/" stepName) form=(mut this.model.form) showError=showError}}
   </div>
   <div class="clear-both"></div>
-  <div>
-    <span class="float-right">
-      {{dds/primary-button
-        onClick=(action "saveContinue")
-        label="Continue"
-        disabled=(v-get this.model.form 'isInvalid')
-      }}
-    </span>
-    <span class="float-right">
+  <br>
+  <div class="col-sm-10 col-md-9 col-lg-7">
+  </div>
+  <div class="col-sm-26 col-md-27 col-lg-29">
+    {{#unless (eq stepName "eligibility")}}
+      {{#link-to "seller-form" previousStep}}
+        ← Back
+      {{/link-to}}
+    {{/unless}}
+    {{#if (eq stepName "complete-application")}}
+      <span class="pull-right">
+        {{dds/primary-button
+          onClick=(action "submit")
+          label="Submit"
+          disabled=(v-get this.model.form 'isInvalid')
+        }}
+      </span>
+    {{else}}
+      <span class="pull-right">
+        {{dds/primary-button
+          onClick=(action "saveContinue")
+          label="Continue"
+          disabled=(v-get this.model.form 'isInvalid')
+        }}
+      </span>
+    {{/if}}
+    <span class="pull-right">
       {{dds/secondary-button
         onClick=(action "saveExit")
         label="Save and exit"

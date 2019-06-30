@@ -20,3 +20,7 @@
     {{description}}
   </p>
 {{/if}}
+{{#if (and (or showError hasChanged) invalid)}}
+  <span class="field-error error">{{errorMessage}}</span>
+  <div class="clear-both"></div>
+{{/if}}

@@ -44,6 +44,11 @@ div.feedback {
   padding-bottom: 1.5rem;
 }
 
+span.pull-right {
+  padding: 0 0.5rem;
+  float: right;
+}
+
 div.float-right, span.float-right, a.float-right, b.float-right, p.float-right {
   padding-right: 1rem;
   float: none;
@@ -159,9 +164,6 @@ span.field-error {
   }
 }
 div.success-message {
-  i.fa {
-    font-size: 400%;
-  }
   padding: 2rem;
   text-align: center;
   background-color: #0a7cb9;
@@ -172,9 +174,6 @@ div.success-message {
   }
 }
 div.failure-message {
-  i.fa {
-    font-size: 400%;
-  }
   padding: 2rem;
   text-align: center;
   background-color: $AU-color-error;
@@ -244,8 +243,7 @@ div.cool-infobox {
   margin: 2rem 0;
   border: solid 0.5px $NSW-colordark-foreground-border;
   background-color: $NSW-colordark-background-muted;
-  i.fa {
-    float: left;
+  .svg-inline--fa {
     color: $NSW-colordark-icon-muted;
     margin: 12px 8px 10px 16px;
   }

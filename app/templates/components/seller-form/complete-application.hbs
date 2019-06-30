@@ -17,41 +17,35 @@ Core&amp; Agreement</a> (for low risk work)
 Procure IT 3.2
 </a>
 </p>
-<!--
-<% if !(legals_can_be_accepted?) %>
-  <div class="block-error" role="alert">
-    <h2>You can't accept the ProcureIT Contracting Framework</h2>
-    <% if @form.errors['not_authorised_representative'].present? %>
-      <p>Only <strong><%= seller_version.representative_email %></strong> can accept the ProcureIT Contracting Framework on behalf of your organisation.</p>
-
-      <% unless seller_version.owners.map(&:email).include?(seller_version.representative_email) %>
-        <p>You need to <%= link_to 'invite them to your seller account', new_sellers_application_invitation_path(application, email: seller_version.representative_email) %> and ask them to sign in to accept the terms.</p>
-      <% else %>
+{{#if form.agreed_at}}
+  <p>The ProcureIT Contracting Framework was agreed to at {{form.agreed_at}} by {{form.agreed_by_email}}.</p>
+{{else if (eq form.representative_email auth.user.email)}}
+  <p>
+      {{dds/checkbox-input
+        field=(mut form.agreed)
+        label="I agree that I am joining the ICT Services Scheme and will abide by its rules."
+        showError=(or showError (not-eq form.status 'todo'))
+        invalid=(v-get form 'agreed' 'isInvalid')
+        errorMessage=(v-get form 'agreed' 'message')
+      }}
+  </p>
+{{else}}
+  <p><b>You can't accept the ProcureIT Contracting Framework</b></p>
+  {{#if form.representative_email}}
+    <p>
+      Only <strong>{{form.representative_email}}</strong>
+      can accept the ProcureIT Contracting Framework on behalf of your organisation.
+    </p>
+    {{#if (eq form.representative_user_status "not_invited")}}
+        <p>You need to invite them to your seller account, and ask them to sign in to accept the terms.</p>
+    {{else if (eq form.representative_user_status "another_seller")}}
+        <p><u>They have joined another seller account, please contact us for more information.</u></p>
+    {{else}}
         <p>They have already been invited to sign in and accept the terms.</p>
-      <% end %>
-    <% elsif @form.errors['missing_representative_details'].present? %>
-      <p>Only your authorised representative can accept the terms on behalf of your organisation.</p>
-
-      <p>You need to <%= link_to 'nominate who they are', sellers_application_step_path(application, 'contacts') %>. If it's not you, they will need to sign in and accept the ProcureIT Contracting Framework.</p>
-    <% end %>
-    <% if @form.errors['missing_business_details'].present? %>
-      <p>Please <%= ('also ' if @form.errors.messages.size > 1) %><%= link_to 'complete your basic company information', sellers_application_step_path(application, 'business-details') %>.</p>
-    <% end %>
-  </div>
-<% end %>
-
-The ProcureIT Contracting Framework was agreed to at December 05, 2018 17:27 by en719@gmail.com.
--->
-<p>
-  <label class="au-control-input">
-    {{input
-      class="au-control-input__input"
-      type="checkbox"
-      checked=(mut checked)
-    }}
-    <span class="au-control-input__text">
-      I agree that I am joining the ICT Services Scheme and will abide by its rules.
-    </span>
-  </label>
-</p>
+    {{/if}}
+  {{else}}
+    <p>Only your authorised representative can accept the terms on behalf of your organisation.</p>
+    <p>You need to nominate who they are in company details &gt; contact details section, If it's not you, they will need to sign in and accept the ProcureIT Contracting Framework.</p>
+  {{/if}}
+{{/if}}
 <hr class="light">
