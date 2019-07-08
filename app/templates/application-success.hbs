@@ -1,4 +1,14 @@
 {{#dds/template-body signin=true}}
+  {{ dds/bread-crumbs
+    links=(array
+      (hash name="buy.nsw" route="index")
+      (hash name="Dashboard" route="seller-dashboard")
+      (hash name="Supplier application" route="supplier-application")
+    )
+  }}
+  <br>
+  <div class="col-md-3"></div>
+  <div class="col-sm-36 col-md-30">
   <h2 class="au-display-xxl underline-light">
     <b>Thank you</b>
   </h2>
@@ -32,11 +42,15 @@
       <span class="gray"> {{fa-icon "edit" size="6x" prefix="fal"}} </span>
       <p><b>Customise your profile</b></p>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id laoreet magna, at scelerisque odio. Donec vulputate semper magna eget tempus. Integer in dui orci.</p>
+      <br>
+      <br>
     </div>
     <div class="col-sm-12 center">
       <span class="gray"> {{fa-icon "users" size="6x" prefix="fal"}} </span>
       <p><b>Connect with buyers</b></p>
       <p>In pellentesque nisl in lorem consequat tincidunt. Phasellus nec finibus nibh, a dictum risus. Donec posuere velit ac neque cursus, quis suscipit nibh tincidunt.</p>
+      <br>
+      <br>
     </div>
     <div class="col-sm-12 center">
       <span class="gray"> {{fa-icon "lightbulb-on" size="6x" prefix="fal"}} </span>
@@ -49,7 +63,9 @@
         {{link-to "Help" "help-page"}}
         <br>
         <a target="_blank" href="https://www.procurepoint.nsw.gov.au/">ProcurePoint</a>
+        <br>
       </p>
     </div>
+  </div>
   </div>
 {{/dds/template-body}}

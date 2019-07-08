@@ -13,11 +13,11 @@
     {{link-to "Invite a team member" "invite-team-member" class="au-btn"}}
     </p>
     <br>
-    <h2 class="au-display-md">Current team members</h2>
-    <hr>
+    <h2 class="au-display-md"><b>Current team members</b></h2>
+    <hr class="light">
     {{#each this.model as |member|}}
       {{member.email}}
-      <hr>
+      <hr class="light">
     {{/each}}
   </div>
 {{/dds/template-body}}

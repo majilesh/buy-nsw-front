@@ -12,7 +12,7 @@ const Validations = buildValidations({
       validator('inline', {
         message: 'Please provide details',
         validate(value, options, model, attributes) {
-          return model.receivership.toString() == "false" ||
+          return model.receivership == null || model.receivership.toString() == "false" ||
             (value != null && value != "") ||
             options.message;
         }
@@ -29,7 +29,7 @@ const Validations = buildValidations({
       validator('inline', {
         message: 'Please provide details',
         validate(value, options, model, attributes) {
-          return model.investigations.toString() == "false" ||
+          return model.investigations == null || model.investigations.toString() == "false" ||
             (value != null && value != "") ||
             options.message;
         }
@@ -46,7 +46,7 @@ const Validations = buildValidations({
       validator('inline', {
         message: 'Please provide details',
         validate(value, options, model, attributes) {
-          return model.legal_proceedings.toString() == "false" ||
+          return model.legal_proceedings == null || model.legal_proceedings.toString() == "false" ||
             (value != null && value != "") ||
             options.message;
         }
@@ -63,7 +63,7 @@ const Validations = buildValidations({
       validator('inline', {
         message: 'Please provide details',
         validate(value, options, model, attributes) {
-          return model.insurance_claims.toString() == "false" ||
+          return model.insurance_claims == null || model.insurance_claims.toString() == "false" ||
             (value != null && value != "") ||
             options.message;
         }
@@ -80,7 +80,7 @@ const Validations = buildValidations({
       validator('inline', {
         message: 'Please provide details',
         validate(value, options, model, attributes) {
-          return model.conflicts_of_interest.toString() == "false" ||
+          return model.conflicts_of_interest == null || model.conflicts_of_interest.toString() == "false" ||
             (value != null && value != "") ||
             options.message;
         }
@@ -97,7 +97,7 @@ const Validations = buildValidations({
       validator('inline', {
         message: 'Please provide details',
         validate(value, options, model, attributes) {
-          return model.other_circumstances.toString() == "false" ||
+          return model.other_circumstances == null || model.other_circumstances.toString() == "false" ||
             (value != null && value != "") ||
             options.message;
         }
@@ -108,6 +108,7 @@ const Validations = buildValidations({
 
 export default DS.Model.extend(Validations, {
   status: DS.attr('string'),
+  feedbacks: DS.attr('json'),
 
   receivership: DS.attr('string'),
   receivership_details: DS.attr('string'),

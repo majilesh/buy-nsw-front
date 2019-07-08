@@ -27,6 +27,7 @@ const Validations = buildValidations({
 
 export default DS.Model.extend(Validations, {
   status: DS.attr('string'),
+  feedbacks: DS.attr('json'),
   summary: DS.attr('string'),
   website_url: DS.attr('string'),
   linkedin_url: DS.attr('string'),

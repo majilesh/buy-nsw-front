@@ -16,6 +16,7 @@ const Validations = buildValidations({
 
 export default DS.Model.extend(Validations, {
   status: DS.attr('string'),
+  feedbacks: DS.attr('json'),
   number_of_employees: DS.attr('string'),
   corporate_structure: DS.attr('string'),
   start_up: DS.attr('boolean'),
