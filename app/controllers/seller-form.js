@@ -23,21 +23,31 @@ export default Controller.extend({
   actions: {
     submit() {
       this.set('showError', true);
-      this.model.form.save();
+      let self = this;
+      this.model.form.save().then(() => {
+        self.model.seller.submit().then(() => {
+          self.transitionToRoute('application-success');
+        });
+      });
     },
     saveContinue() {
       this.set('showError', true);
-      this.model.form.save();
-      let index = this.steps.indexOf(this.get('stepName'));
+      let controller = this;
       let nextStep = 'complete-application';
+      let index = this.steps.indexOf(this.get('stepName'));
       if(index < this.steps.length - 1) {
         nextStep = this.steps[index + 1];
       }
-      this.transitionToRoute('seller-form', nextStep);
+      this.model.form.save().then(()=>{
+        controller.transitionToRoute('seller-form', nextStep);
+      });
     },
     saveExit() {
       this.set('showError', true);
-      this.model.form.save();
+      let controller = this;
+      this.model.form.save().then(()=>{
+        this.transitionToRoute('supplier-application');
+      });
     }
   }
 });

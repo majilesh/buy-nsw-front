@@ -1,0 +1,249 @@
+{{#dds/template-body signin=true}}
+  {{ dds/bread-crumbs
+    links=(array
+      (hash name="buy.nsw" route="index")
+      (hash name="Dashboard" route="seller-dashboard")
+      (hash name="Supplier application")
+    )
+  }}
+  <h2 class="au-display-xl underline-light">
+    <b>Apply to be a supplier</b>
+  </h2>
+  <br>
+  <p>
+    To become a supplier on buy.nsw you need to tell us about your business.
+  </p>
+  <p>
+    We will use the information you provide to create your supplier profile. First, we need to confirm your business meets the basic requirements to work with NSW Government.
+  </p>
+  <br>
+  <p>
+  {{#if this.model.seller.pending}}
+    {{#dds/page-alert alertType="info"}}
+      <h2 class="au-display-lg">
+        Profile is locked for review
+      </h2>
+      <p>
+        You have submitted entries or changes.
+        While these are under review,
+        you won't be able to view or edit the details of your profile.
+      </p>
+      {{#if this.model.seller.canBeWithdrawn}}
+        <p>
+          You can
+          <a
+            class="au-btn au-btn--tertiary no-padding"
+            onclick={{action "withdrawSubmission"}}
+          >
+            withdraw your submission
+          </a>
+          to edit your profile and submit again.
+        </p>
+      {{/if}}
+    {{/dds/page-alert}}
+  {{else if this.model.seller.declined}}
+    {{#dds/page-alert alertType="warning"}}
+      <h2 class="au-display-lg">
+        Your submission was not accepted.
+      </h2>
+      <p>
+         You can
+        <a
+          class="au-btn au-btn--tertiary no-padding"
+          onclick={{action "reviseProfile"}}
+        >
+          revise your profile
+        </a>
+        and submit again.
+      </p>
+    {{/dds/page-alert}}
+  {{else if (eq this.model.seller.status 'live')}}
+    {{#dds/page-alert alertType="success"}}
+      <h2 class="au-display-lg">
+        Your profile has been accepted
+      </h2>
+      <p>
+        To amend your profile you can
+        <a
+          class="au-btn au-btn--tertiary no-padding"
+          onclick={{action "amendProfile"}}
+        >
+          start an amendment
+        </a>
+        process.
+      </p>
+    {{/dds/page-alert}}
+  {{else}}
+    <p>
+      It may take more than one session for you to complete this application. But don't worry, you can save and exit if you need to come back later. At each step we indicate the time it might take you to complete it.
+    </p>
+    <p><b>Who you will need:</b></p>
+    <p>
+      <ul>
+        <li>the person in your organisation who is authorised to sign contracts</li>
+        <li>a person authorised to check your legal disclosures and financial statement</li>
+      </ul>
+    </p>
+    <p>
+      {{#link-to "team-members" class="au-cta-link small"}}
+        Invite a team member
+      {{/link-to}}
+    </p>
+  {{/ if }}
+  </p>
+  <br>
+  <br>
+  {{#supplier-application-section
+    title="Eligibility"
+    first_form="eligibility"
+    forms=(array
+      (hash key='eligibility' name='Eligibility')
+    )
+    steps=this.model.steps
+    seller=this.model.seller
+  }}
+    <p><b>Information we will ask for:</b></p>
+    <p>
+      <ul>
+        <li>Any cloud products, services or support</li>
+        <li>Any services you offer in NSW Government Data Centres (GovDC)</li>
+      </ul>
+    </p>
+    <br>
+  {{/supplier-application-section}}
+
+  {{#supplier-application-section
+    title="Company details"
+    first_form="business-name"
+    seller=this.model.seller
+    steps=this.model.steps
+    forms=(array
+      (hash key='business_name' name='Business name and ABN')
+      (hash key='contact_detail' name='Contact details')
+      (hash key='company_type' name='Company details')
+    )
+  }}
+    <p><b>Information we will ask for:</b></p>
+    <p>
+      <ul>
+        <li>Business name and ABN</li>
+        <li>Contact details</li>
+        <li>Business address</li>
+        <li>Company type and size</li>
+      </ul>
+    </p>
+  {{/supplier-application-section}}
+
+  {{#supplier-application-section
+    title="Disclosures"
+    first_form="legal-disclosure"
+    seller=this.model.seller
+    steps=this.model.steps
+    forms=(array
+      (hash key='legal_disclosure' name='Legal disclosures')
+      (hash key='financial_statement' name='Financial statements')
+    )
+  }}
+    <div class="col-md-18">
+      <p><b>Information we will ask for:</b></p>
+      <p>
+        <ul>
+          <li>Legal disclosures</li>
+          <li>Financial statements</li>
+        </ul>
+      </p>
+      <br>
+    </div>
+    <div class="col-md-18">
+      <p><b>Documentation we will ask for:</b></p>
+      <p>
+        A current financial statement including:
+        <ul>
+          <li>profit or loss statement</li>
+          <li>balance sheet</li>
+          <li>statement of cash flows</li>
+          <li>statement of changes in equity</li>
+          <li>and notes to the financial statements</li>
+        </ul>
+      </p>
+    </div>
+    <div class="clear-both"></div>
+  {{/supplier-application-section}}
+
+  {{#supplier-application-section
+    title="Insurances"
+    first_form="insurance"
+    seller=this.model.seller
+    steps=this.model.steps
+    forms=(array
+      (hash key='insurance' name='Insurances')
+    )
+  }}
+    <div class="col-md-18">
+      <p><b>Information we will ask for:</b></p>
+      <p>
+        <ul>
+          <li>Professional indemnity and public liability insurance</li>
+          <li>Workers' compensation insurance</li>
+        </ul>
+      </p>
+      <br>
+    </div>
+    <div class="col-md-18">
+      <p><b>Documentation we will ask for:</b></p>
+      <p>
+        <ul>
+          <li>A certificate of currency fo each respective insurance</li>
+        </ul>
+      </p>
+    </div>
+    <div class="clear-both"></div>
+  {{/supplier-application-section}}
+
+  {{#supplier-application-section
+    title="Company profile"
+    first_form="company-profile"
+    optional=true
+    seller=this.model.seller
+    steps=this.model.steps
+    forms=(array
+      (hash key='company_profile' name='Company profile')
+    )
+  }}
+    <p><b>Information we will ask for:</b></p>
+    <p>
+      <ul>
+        <li>Company description and website</li>
+        <li>Any awards and acceditations</li>
+      </ul>
+    </p>
+  {{/supplier-application-section}}
+  {{#supplier-application-section
+    title="Complete application"
+    first_form="complete-application"
+    seller=this.model.seller
+    steps=this.model.steps
+    forms=(array
+      (hash key='complete_application' name='Complete application')
+    )
+  }}
+  {{/supplier-application-section}}
+  <p>
+    <span class="float-left">
+      {{dds/tertiary-button
+        route="seller-dashboard"
+        label="← Return to dashboard"
+      }}
+    </span>
+    {{#if this.model.seller.discardable}}
+      <span class="float-right">
+        <button
+          class="au-btn au-btn--tertiary"
+          onclick={{action "cancelProfile"}}
+        >
+          Cancel amendment draft ✗
+        </button>
+      </span>
+    {{/if}}
+  </p>
+{{/dds/template-body}}

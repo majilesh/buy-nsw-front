@@ -44,6 +44,11 @@ div.feedback {
   padding-bottom: 1.5rem;
 }
 
+span.pull-left {
+  padding: 0 0.5rem;
+  float: left;
+}
+
 span.pull-right {
   padding: 0 0.5rem;
   float: right;
@@ -199,8 +204,8 @@ div.sticky-nav {
     width: 33.33%;
   }
 }
-div.max48 {
-  max-width: 48rem;
+div.max60 {
+  max-width: 60rem;
 }
 div.pretend {
   background-color: lightyellow;
@@ -277,4 +282,23 @@ span.list-item {
 }
 div.margin-top {
   margin-top: 1.5rem;
+}
+span.fixed-width {
+  width: 10rem;
+}
+div.shaded-box {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  span.fixed-width {
+    width: 8rem;
+  }
+}
+div.center {
+  text-align: center;
+}
+.green {
+  color: $AU-color-success;
+}
+.gray {
+  color: #888;
 }

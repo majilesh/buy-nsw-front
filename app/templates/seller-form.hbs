@@ -36,6 +36,7 @@
            title="Insurances")
           (hash route="seller-form" step="company-profile"
            status=this.model.steps.company_profile
+           optional=true
            title="Company profile")
           (hash route="seller-form" step="complete-application"
            status=this.model.steps.complete_application
@@ -55,12 +56,16 @@
     {{ dds/bread-crumbs
       links=(array
         (hash name="buy.nsw" route="index")
-        (hash name="Supplier application" route="seller-application")
+        (hash name="Supplier application" route="supplier-application")
         (hash name=(humanize stepName))
       )
     }}
     <br>
-    {{component (concat "seller-form/" stepName) form=(mut this.model.form) showError=showError}}
+    {{component (concat "seller-form/" stepName)
+      form=(mut this.model.form)
+      seller=this.model.seller
+      showError=showError
+    }}
   </div>
   <div class="clear-both"></div>
   <br>
@@ -88,13 +93,13 @@
           disabled=(v-get this.model.form 'isInvalid')
         }}
       </span>
+      <span class="pull-right">
+        {{dds/secondary-button
+          onClick=(action "saveExit")
+          label="Save and exit"
+        }}
+      </span>
     {{/if}}
-    <span class="pull-right">
-      {{dds/secondary-button
-        onClick=(action "saveExit")
-        label="Save and exit"
-      }}
-    </span>
     <div class="clear-both"></div>
     <span class="float-right">
       <br>

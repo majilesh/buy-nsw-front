@@ -10,7 +10,7 @@
       focusOut=(action (mut showNameError) true)
     }}
     {{#if (and showNameError (v-get this "buyer.name" "isInvalid"))}}
-      <div class="max48">
+      <div class="max60">
         <span class="field-error error">{{v-get this "buyer.name" "message"}}</span>
       </div>
       <div class="clear-both"></div>
@@ -26,7 +26,7 @@
       focusOut=(action (mut showOrganisationError) true)
     }}
     {{#if (and showOrganisationError (v-get this "buyer.organisation" "isInvalid"))}}
-      <div class="max48">
+      <div class="max60">
         <span class="field-error error">{{v-get this "buyer.organisation" "message"}}</span>
       </div>
       <div class="clear-both"></div>

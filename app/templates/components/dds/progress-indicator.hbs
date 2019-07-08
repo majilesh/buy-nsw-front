@@ -8,7 +8,7 @@
         )
       }}
         <span class="au-progress-indicator__status">
-          {{humanize item.status}}
+          {{if item.optional "Optional" (humanize item.status)}}
         </span>
         {{item.title}}
       {{/link-to}}

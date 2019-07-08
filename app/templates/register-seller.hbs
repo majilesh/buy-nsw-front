@@ -1,41 +1,141 @@
 {{#dds/template-body signin=true}}
-  <div class="col-sm-3">
-  </div>
-  <div class="col-sm-30">
-    <h1>Apply to sell to NSW Government</h1>
+  {{ dds/bread-crumbs
+    links=(array
+      (hash name="buy.nsw" route="index")
+      (hash name="Supplier application")
+    )
+  }}
+  <h2 class="au-display-xl underline-light">
+    <b>Apply to be a supplier</b>
+  </h2>
+  <br>
+  <p>
+    To become a supplier on buy.nsw you need to tell us about your business.
+  </p>
+  <p>
+    We will use the information you provide to create your supplier profile. First, we need to confirm your business meets the basic requirements to work with NSW Government.
+  </p>
+  <p>
+    It may take more than one session for you to complete this application. But don't worry, you can save and exit if you need to come back later. At each step we indicate the time it might take you to complete it.
+  </p>
+  <p><b>Who you will need:</b></p>
+  <p>
+    <ul>
+      <li>the person in your organisation who is authorised to sign contracts</li>
+      <li>a person authorised to check your legal disclosures and financial statement</li>
+    </ul>
+  </p>
+  <p>
+    {{#link-to "team-members" class="au-cta-link small"}}
+      Invite a team member
+    {{/link-to}}
+  </p>
+  <br>
+  <h2 class="au-display-lg">
+    <b>Eligibility</b>
+  </h2>
+  <span class="pull-right">Approx 15m</span>
+  <hr class="light">
+  <p><b>Information we will ask for:</b></p>
+  <p>
+    <ul>
+      <li>Any cloud products, services or support</li>
+      <li>Any services you offer in NSW Government Data Centres (GovDC)</li>
+    </ul>
+  </p>
+  <br>
 
-    <p>To become a registered seller you need to tell us about your ICT business.</p>
-    <p>The information you share will be used to create your seller profile and confirm your business meets the basic requirements to work with NSW government.</p>
-    <p>It may take more than one visit to complete this application. But don't worry, your information is saved automatically if you need to come back later.</p>
-    <h3>You'll need</h3>
+  <h2 class="au-display-lg">
+    <b>Company details</b>
+  </h2>
+  <span class="pull-right">Approx 5m</span>
+  <hr class="light">
+  <p><b>Information we will ask for:</b></p>
+  <p>
     <ul>
-      <li>your basic business information</li>
-      <li>recent financial records</li>
-      <li>current insurance documents</li>
+      <li>Business name and ABN</li>
+      <li>Contact details</li>
+      <li>Business address</li>
+      <li>Company type and size</li>
     </ul>
-    <h3>You'll be asked to</h3>
-    <ul>
-      <li>share details about products and services you offer</li>
-      <li>provide details about your offering to support your application</li>
-      <li>
-        agree to use the
-        <a
-          target="_blank"
-          href="https://www.procurepoint.nsw.gov.au/before-you-buy/standard-procurement-contract-templates/it-contract-templates/procure-it-framework-0"
-        >
-          ProcureIT Contracting Framework
-        </a>
-      </li>
-    </ul>
-    <br>
-    <br>
+  </p>
+  <br>
+
+  <h2 class="au-display-lg">
+    <b>Disclosures</b>
+  </h2>
+  <span class="pull-right">Approx 20m</span>
+  <hr class="light">
+  <div class="col-md-18">
+    <p><b>Information we will ask for:</b></p>
     <p>
-      <button
-        class="au-btn"
-        onclick={{action "startApplication"}}
-      >
-        Start application
-      </button>
+      <ul>
+        <li>Legal disclosures</li>
+        <li>Financial statements</li>
+      </ul>
+    </p>
+    <br>
+  </div>
+  <div class="col-md-18">
+    <p><b>Documentation we will ask for:</b></p>
+    <p>
+      A current financial statement including:
+      <ul>
+        <li>profit or loss statement</li>
+        <li>balance sheet</li>
+        <li>statement of cash flows</li>
+        <li>statement of changes in equity</li>
+        <li>and notes to the financial statements</li>
+      </ul>
     </p>
   </div>
+  <div class="clear-both"></div>
+  <br>
+
+  <h2 class="au-display-lg">
+    <b>Insurances</b>
+  </h2>
+  <span class="pull-right">Approx 15m</span>
+  <hr class="light">
+  <div class="col-md-18">
+    <p><b>Information we will ask for:</b></p>
+    <p>
+      <ul>
+        <li>Professional indemnity and public liability insurance</li>
+        <li>Workers' compensation insurance</li>
+      </ul>
+    </p>
+    <br>
+  </div>
+  <div class="col-md-18">
+    <p><b>Documentation we will ask for:</b></p>
+    <p>
+      <ul>
+        <li>A certificate of currency fo each respective insurance</li>
+      </ul>
+    </p>
+  </div>
+  <div class="clear-both"></div>
+  <br>
+
+  <h2 class="au-display-lg">
+    <b>Company profile</b> (optional)
+  </h2>
+  <span class="pull-right">Approx 5m</span>
+  <hr class="light">
+  <p><b>Information we will ask for:</b></p>
+  <p>
+    <ul>
+      <li>Company description and website</li>
+      <li>Any awards and acceditations</li>
+    </ul>
+  </p>
+  <br>
+  <hr class="light">
+  <span class="float-right">
+    {{dds/primary-button
+      onClick=(action "startApplication")
+      label="Start application"
+    }}
+  </span>
 {{/dds/template-body}}

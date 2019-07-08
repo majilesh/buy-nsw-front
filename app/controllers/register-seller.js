@@ -6,7 +6,7 @@ export default Controller.extend({
       var controller = this;
       this.store.createRecord('seller').save().then(function(seller){
         seller.store.queryRecord('user', {current: true});
-        controller.transitionToRoute('seller-dashboard');
+        controller.transitionToRoute('supplier-application');
       });
     }
   }
