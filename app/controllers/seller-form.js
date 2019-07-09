@@ -13,6 +13,16 @@ export default Controller.extend({
     'company-profile',
     'complete-application',
   ],
+  submitable: computed('model.steps', function() {
+    console.log('computed');
+
+    return this.get('steps').every( (key) => {
+      console.log(key);
+      let step = this.get('model.steps.'+key.replace('-', '_'));
+      console.log(step);
+      return step.status == 'done' || step.optional;
+    });
+  }),
   previousStep: computed('stepName', function () {
     let index = this.get('steps').indexOf(this.get('stepName'));
     if(index > 0) {

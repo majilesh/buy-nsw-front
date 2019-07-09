@@ -34,9 +34,9 @@
     <br>
     <hr class="light no-margin">
     {{#each forms as |form|}}
-      <div class={{concat "supplier-status " (get steps form.key) }}>
+      <div class={{concat "supplier-status " (get (get steps form.key) "status") }}>
         {{form.name}}
-        <span class="pull-right">{{humanize (get steps form.key)}}</span>
+        <span class="pull-right">{{humanize (get (get steps form.key) "status") }}</span>
       </div>
       <hr class="light no-margin">
     {{/each}}

@@ -6,40 +6,41 @@
         stepName=stepName
         items=(array
           (hash route="seller-form" step="eligibility"
-           status=this.model.steps.eligibility
+           status=this.model.steps.eligibility.status
            title="Eligibility")
           (hash route="seller-form" status="todo" step="business-name" title="Company details"
             subItems=(array
               (hash route="seller-form" step="business-name"
-               status=this.model.steps.business_name
+               status=this.model.steps.business_name.status
                title="Business name and ABN")
               (hash route="seller-form" step="contact-detail"
-               status=this.model.steps.contact_detail
+               status=this.model.steps.contact_detail.status
                title="Contact details and address")
               (hash route="seller-form" step="company-type"
-               status=this.model.steps.company_type
+               status=this.model.steps.company_type.status
                title="Company type and business identifiers")
             )
           )
           (hash route="seller-form" status="todo" step="legal-disclosure" title="Disclosures"
             subItems=(array
               (hash route="seller-form" step="legal-disclosure"
-               status=this.model.steps.legal_disclosure
+               status=this.model.steps.legal_disclosure.status
                title="Legal disclosures")
               (hash route="seller-form" step="financial-statement"
-               status=this.model.steps.financial_statement
+               status=this.model.steps.financial_statement.status
                title="Financial statements")
             )
           )
           (hash route="seller-form" step="insurance"
-           status=this.model.steps.insurance
+           status=this.model.steps.insurance.status
+           optional=true
            title="Insurances")
           (hash route="seller-form" step="company-profile"
-           status=this.model.steps.company_profile
+           status=this.model.steps.company_profile.status
            optional=true
            title="Company profile")
           (hash route="seller-form" step="complete-application"
-           status=this.model.steps.complete_application
+           status=this.model.steps.complete_application.status
            title="Complete application")
         )
       }}
@@ -82,7 +83,7 @@
         {{dds/primary-button
           onClick=(action "submit")
           label="Submit"
-          disabled=(v-get this.model.form 'isInvalid')
+          disabled=(not submitable)
         }}
       </span>
     {{else}}

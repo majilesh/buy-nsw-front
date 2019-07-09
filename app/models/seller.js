@@ -54,7 +54,8 @@ export default DS.Model.extend({
     ].includes(this.status);
   }),
   submitable: computed('status', 'steps', 'underEdit', function() {
-    if(this.underEdit==false) {
+    // This is just for the old profile page, to be removed
+    if(this.get('underEdit')==false) {
       return false;
     }
     for (var key in this.steps) {

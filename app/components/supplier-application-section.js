@@ -7,7 +7,7 @@ export default Component.extend({
     let done = true;
     let self = this;
     this.get('forms').forEach(function(form) {
-      let status = self.get('steps')[form.key];
+      let status = self.get('steps')[form.key].status;
       if(status != 'done') {
         done = false;
       }
