@@ -16,11 +16,18 @@
 <p>
   <div class="col-sm-3 col-md-2">
   </div>
-  <div class="col-sm-18">
+  <div class="col-sm-24">
     {{dds/primary-button
       onClick=(action "addRow")
       label="Add a row"
     }}
+    {{#if (and (or showError hasChanged) invalid)}}
+      <span class="field-error error">{{errorMessage}}</span>
+      <div class="clear-both"></div>
+    {{else if (and (eq adminFeedback "rejected") (not hasChanged))}}
+      <span class="field-error warning float-left">Changes requested upon your previous submission</span>
+      <div class="clear-both"></div>
+    {{/if}}
   </div>
   <div class="clear-both"></div>
 </p>

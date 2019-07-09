@@ -17,14 +17,15 @@
   This information will not appear on your supplier profile and will only be made available to interested buyers upon request. When a buyer requests your documentation, we will verify with you the records we hold are complete, accurate and up-to-date.
 </p>
 <p>
-  These documents help buyers interested in your business to understand it better, without having to ask you for more information. So make sure they're up to date.
+  These documents help buyers interested in your business to understand it better, without having to ask you for more information. So make sure they're up to date. Your insurer can issue a certificate of currency.
 </p>
-<p>
-  Your insurer can issue a certificate of currency.
-</p>
+<h2 class="au-display-lg">
+  <b>Professional indemnity and public liability</b>
+</h2>
 {{dds/file-upload
   name="professional_indemnity_certificate"
   field=(mut form.professional_indemnity_certificate_ids)
+  adminFeedback=form.feedbacks.professional_indemnity_certificate_ids
 }}
 <p>
   <b>Expiry date</b>
@@ -37,6 +38,25 @@
     field=(mut form.professional_indemnity_certificate_expiry)
   }}
 </p>
+<h2 class="au-display-lg">
+  <b>Product liability</b>
+</h2>
+{{dds/file-upload
+  name="product_liability_certificate"
+  field=(mut form.product_liability_certificate_ids)
+  adminFeedback=form.feedbacks.product_liability_certificate_ids
+}}
+<p>
+  <b>Expiry date</b>
+  <br>
+  We'll ask you to upload a new document when this one expires.
+</p>
+<p>
+  {{dds/date-input
+    required=true
+    field=(mut form.product_liability_certificate_expiry)
+  }}
+</p>
 <hr class="light">
 <h2 class="au-display-lg" id="workers-compensation">
   <b>Workers’ compensation insurance</b>
@@ -47,6 +67,7 @@
 {{dds/file-upload
   name="workers_compensation_certificate"
   field=(mut form.workers_compensation_certificate_ids)
+  adminFeedback=form.feedbacks.workers_compensation_certificate_ids
 }}
 <p>
   <b>Expiry date</b>

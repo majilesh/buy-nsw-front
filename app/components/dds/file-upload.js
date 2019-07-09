@@ -14,8 +14,9 @@ export default Component.extend({
     if(!Array.isArray(this.field)){
       this.set('field', []);
     }
+    let component = this;
     this.store.query('document', {"ids": this.get("field")}).then((response) => {
-      this.set('documents', response.toArray());
+      component.set('documents', response.toArray());
     });
   },
   uploadFile: task(function * (file) {
@@ -28,16 +29,19 @@ export default Component.extend({
     });
     var id = response.body.id;
     this.field.pushObject(id);
+    let component = this;
     this.store.findRecord('document', id).then((response) =>{
-      this.documents.pushObject(response);
+      component.documents.pushObject(response);
     });
   }).maxConcurrency(4).enqueue(),
   actions: {
     removeDocument(index) {
+      this.set('hasChanged', true);
       this.field.removeAt(index);
       this.documents.removeAt(index);
     },
     uploadDocument(file) {
+      this.set('hasChanged', true);
       get(this, 'uploadFile').perform(file);
     }
   }

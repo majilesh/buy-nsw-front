@@ -32,6 +32,7 @@
     showError=(or showError (not-eq form.status 'todo'))
     invalid=(v-get form 'summary' 'isInvalid')
     errorMessage=(v-get form 'summary' 'message')
+    adminFeedback=form.feedbacks.summary
   }}
 </p>
 <p>
@@ -48,6 +49,7 @@
     showError=(or showError (not-eq form.status 'todo'))
     invalid=(v-get form 'website_url' 'isInvalid')
     errorMessage=(v-get form 'website_url' 'message')
+    adminFeedback=form.feedbacks.website_url
   }} 
 </p>
 <p>
@@ -64,6 +66,7 @@
     showError=(or showError (not-eq form.status 'todo'))
     invalid=(v-get form 'linkedin_url' 'isInvalid')
     errorMessage=(v-get form 'linkedin_url' 'message')
+    adminFeedback=form.feedbacks.linkedin_url
   }} 
 </p>
 
@@ -87,6 +90,7 @@
 <br>
 {{seller-form/multi-text
   field=(mut form.accreditations)
+  adminFeedback=form.feedbacks.accreditations
 }}
 <hr class="light">
 <p>
@@ -98,6 +102,7 @@
 <br>
 {{seller-form/multi-text
   field=(mut form.engagements)
+  adminFeedback=form.feedbacks.engagements
 }}
 <hr class="light">
 <p>
@@ -109,5 +114,6 @@
 <br>
 {{seller-form/multi-text
   field=(mut form.awards)
+  adminFeedback=form.feedbacks.awards
 }}
 <hr class="light">

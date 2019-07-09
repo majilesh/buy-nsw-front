@@ -35,6 +35,7 @@
       showError=(or showError (not-eq form.status 'todo'))
       invalid=(v-get form 'number_of_employees' 'isInvalid')
       errorMessage=(v-get form 'number_of_employees' 'message')
+      adminFeedback=form.feedbacks.number_of_employees
     }}
   </p>
 </div>
@@ -62,6 +63,7 @@
     showError=(or showError (not-eq form.status 'todo'))
     invalid=(v-get form 'corporate_structure' 'isInvalid')
     errorMessage=(v-get form 'corporate_structure' 'message')
+    adminFeedback=form.feedbacks.corporate_structure
   }}
 </p>
 <hr class="light">
@@ -77,22 +79,26 @@
 </div>
 {{dds/checkbox-input
   field=(mut form.start_up)
+  adminFeedback=form.feedbacks.start_up
   label="Start-up"
   description="To be classified as a start-up your business must be less than 5 years old and must not be listed on any stock exchange."
 }}
 {{dds/checkbox-input
   field=(mut form.sme)
+  adminFeedback=form.feedbacks.sme
   label="Small or medium business"
   disabled=(or (eq form.corporate_structure 'subsidiary') (eq form.number_of_employees '200plus'))
   description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et."
 }}
 {{dds/checkbox-input
   field=(mut form.not_for_profit)
+  adminFeedback=form.feedbacks.not_for_profit
   label="Not-for-profit or social enterprise"
   description="To be classified as a not-for-profit or social enterprise business, the purpose of your business must be to improve human or environmental wellbeing and to reinvest profits to fulfil this mission."
 }}
 {{dds/checkbox-input
   field=(mut form.australian_owned)
+  adminFeedback=form.feedbacks.australian_owned
   label="Australian owned"
   description="To be classified as Australian owned your business must have been founded and have your headquarters in Australia, and be owned by Australian nationals."
 }}
@@ -103,11 +109,13 @@
 <br>
 {{dds/checkbox-input
   field=(mut form.indigenous)
+  adminFeedback=form.feedbacks.indigenous
   label="Aboriginal or Torres Strait Islander"
   description="To be classified as an Aboriginal or Torres Strait Islander business, your business must be recognised by an appropriate organisation such as NSW Indigenous Chamber of Commerce, Supply Nation or the First Australians Chamber of Commerce and Industry."
 }}
 {{dds/checkbox-input
   field=(mut form.disability)
+  adminFeedback=form.feedbacks.disability
   label="Australian disability enterprise"
   description="To be classified as an Australian disability enterprise your business must be listed on the Australian disability enterprise register."
 }}
