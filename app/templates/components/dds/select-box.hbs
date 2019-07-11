@@ -4,7 +4,7 @@
 >
   <option
     disabled
-    selected={{if (eq field "") "selected"}}
+    selected={{if (or (eq field "") (eq field null)) "selected"}}
   >
     Please select
   </option>
