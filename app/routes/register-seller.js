@@ -5,7 +5,7 @@ export default Route.extend({
     return  this.store.queryRecord('user', {current: true});
   },
   afterModel(model, transition) {
-    if (model.hasSeller) {
+    if (model.seller_id != null) {
       this.transitionTo('supplier-application');
     }
   }
