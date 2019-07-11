@@ -83,6 +83,14 @@
   label="Start-up"
   description="To be classified as a start-up your business must be less than 5 years old and must not be listed on any stock exchange."
 }}
+{{#if form.can_be_regional}}
+  {{dds/checkbox-input
+    field=(mut form.regional)
+    adminFeedback=form.feedbacks.regional
+    label="Regional"
+    description="It looks like your head office is located in regional NSW. Would you like to identify your business as a regional NSW supplier?"
+  }}
+{{/if}}
 {{dds/checkbox-input
   field=(mut form.sme)
   adminFeedback=form.feedbacks.sme

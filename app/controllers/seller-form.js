@@ -14,12 +14,8 @@ export default Controller.extend({
     'complete-application',
   ],
   submitable: computed('model.steps', function() {
-    console.log('computed');
-
     return this.get('steps').every( (key) => {
-      console.log(key);
       let step = this.get('model.steps.'+key.replace('-', '_'));
-      console.log(step);
       return step.status == 'done' || step.optional;
     });
   }),
@@ -32,6 +28,7 @@ export default Controller.extend({
   }),
   actions: {
     submit() {
+      $('.overlay').show();
       this.set('showError', true);
       let self = this;
       this.model.form.save().then(() => {
@@ -41,6 +38,7 @@ export default Controller.extend({
       });
     },
     saveContinue() {
+      $('.overlay').show();
       this.set('showError', true);
       let controller = this;
       let nextStep = 'complete-application';
@@ -53,6 +51,7 @@ export default Controller.extend({
       });
     },
     saveExit() {
+      $('.overlay').show();
       this.set('showError', true);
       let controller = this;
       this.model.form.save().then(()=>{
