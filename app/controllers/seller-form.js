@@ -13,10 +13,11 @@ export default Controller.extend({
     'company-profile',
     'complete-application',
   ],
-  submitable: computed('model.steps', function() {
+  submitable: computed('model.steps', 'model.form.agreed', function() {
     return this.get('steps').every( (key) => {
       let step = this.get('model.steps.'+key.replace('-', '_'));
-      return step.status == 'done' || step.optional;
+      return step.status == 'done' || step.optional ||
+             (key == 'complete-application' && this.get('model.form.agreed'));
     });
   }),
   previousStep: computed('stepName', function () {
