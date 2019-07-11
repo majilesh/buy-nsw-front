@@ -82,6 +82,14 @@
     errorMessage=(v-get form 'govdc' 'message')
   }}
 </p>
+{{#if (v-get form 'eligible' 'isInvalid')}}
+  <p>
+    <span class="field-error error float-left">
+      {{v-get form 'eligible' 'message'}}
+    </span>
+    <div class="clear-both"></div>
+  </p>
+{{/if}}
 
 <hr class="light">
 
