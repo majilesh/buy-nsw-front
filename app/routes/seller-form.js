@@ -22,6 +22,7 @@ export default Route.extend({
   actions: {
     didTransition() {
       this.controller.set('stepName', this.get('stepName'));
+      this.controller.set('showError', false);
       return true;
     },
   }
