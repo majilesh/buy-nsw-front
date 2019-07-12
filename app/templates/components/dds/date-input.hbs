@@ -10,20 +10,20 @@
          ))) 'date' 'text')
     disabled=disabled
     pattern="\d{4}-\d{1,2}-\d{1,2}"
-    focus-out=focusOut
+    focus-out=(action "focusOut")
     enter=enter
     placeholder="YYYY-MM-DD"
     title=""
+    required=(and (or showError hasChanged) invalid)
     min=min
     max=max
-    required=required
   }}
 </div>
-{{#unless present}}
-  <span class="field-error error float-left">Please enter a valid expiry date</span>
-{{else unless valid}}
-  <span class="field-error error float-left">Enter a valid date in YYYY-MM-DD format</span>
-{{else unless inRange}}
-  <span class="field-error error float-left">Enter a valid date not earlier than today</span>
-{{/unless}}
+{{#if (and (or showError hasChanged) invalid)}}
+  <span class="field-error error float-left">{{errorMessage}}</span>
+  <div class="clear-both"></div>
+{{else if (and (eq adminFeedback "rejected") (not hasChanged))}}
+  <span class="field-error warning float-left">Changes requested upon your previous submission</span>
+  <div class="clear-both"></div>
+{{/if}}
 <div class="clear-both"></div>

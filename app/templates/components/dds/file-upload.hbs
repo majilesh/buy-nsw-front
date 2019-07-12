@@ -20,10 +20,7 @@ The file should be no larger than 5MB and in PDF, PNG or JPEG format. You can up
     {{/each}}
     </ul>
   {{else}}
-    <span class={{if invalid "field-error error float-left" "field-error gray float-left"}}>
-      No file chosen
-    </span>
-    <div class="clear-both"></div>
+    No file selected
   {{/if}}
   <br>
   {{#file-upload name=name

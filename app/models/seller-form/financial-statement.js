@@ -2,21 +2,12 @@ import DS from 'ember-data';
 import { buildValidations, validator } from 'ember-cp-validations';
 
 const Validations = buildValidations({
-  financial_statement_ids: {
-    validators: [
-      validator('inline', {
-        validate(value, options, model, attributes) {
-          return value.length > 0 || "Please select a file";
-        }
-      }),
-    ]
-  },
   financial_statement_confirmed: {
     validators: [
       validator('inline', {
         message: 'Please confirm the validity of attached documents',
         validate(value, options, model, attributes) {
-          return value == true || options.message;
+          return model.get('financial_statement_ids').length == 0 || value == true || options.message;
         }
       }),
     ]
