@@ -8,6 +8,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
 
 COPY . /ember
 WORKDIR /ember
+RUN npm install cldr-core@29.0.0 cldr-numbers-full@29.0.0
 RUN npm install
 
 EXPOSE 2400
