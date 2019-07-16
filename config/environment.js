@@ -63,6 +63,10 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     // here you can enable a production-specific feature
+    ENV.airbrake = {
+      projectId:  '186737',
+      projectKey: '983b2689ca96b751452a0e541f865bfc'
+    };
   }
 
   return ENV;
