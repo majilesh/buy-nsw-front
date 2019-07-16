@@ -5,9 +5,7 @@
       (hash name="Your team members" route="team-members")
     )
   }}
-  <div class="col-xs-1">
-  </div>
-  <div class="col-sm-10">
+  <div class="col-sm-30">
     <br>
     <h1 class="au-display-lg">Your team members</h1>
     <p>You can collaborate on this application with other people from your organisation.</p>
@@ -15,11 +13,11 @@
     {{link-to "Invite a team member" "invite-team-member" class="au-btn"}}
     </p>
     <br>
-    <h2 class="au-display-md">Current team members</h2>
-    <hr>
+    <h2 class="au-display-md"><b>Current team members</b></h2>
+    <hr class="light">
     {{#each this.model as |member|}}
       {{member.email}}
-      <hr>
+      <hr class="light">
     {{/each}}
   </div>
 {{/dds/template-body}}

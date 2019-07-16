@@ -1,7 +1,7 @@
 {{#dds/template-body signout=true}}
-  <div class="col-sm-1">
+  <div class="col-sm-3">
   </div>
-  <div class="col-sm-10">
+  <div class="col-sm-30">
     <h1 class="au-display-xl">Your invitation to join this supplier</h1>
     <p>Before you join, set a password. You'll need this when you sign in again.</p>
     <b>Password</b>
@@ -16,7 +16,7 @@
         field=(mut password)
         enter=(action "submit")
       }}
-      <div class="max48">
+      <div class="max60">
         {{#if (eq password.length 0)}}
           <span class="field-error blank">Password is blank</span>
         {{else if (lt password.length 8)}}
@@ -43,7 +43,7 @@
         focusOut=(action (mut showConfirmError) true)
       }}
       {{#if (and showConfirmError (v-get this "confirmPassword" "isInvalid"))}}
-        <div class="max48">
+        <div class="max60">
           <span class="field-error error">Passwords don't match</span>
         </div>
         <div class="clear-both"></div>
@@ -51,14 +51,14 @@
       <hr>
     </p>
     {{#if apiError}}
-      <div class="max48">
+      <div class="max60">
         <span class="field-error error">{{apiError}}</span>
       </div>
       <div class="clear-both"></div>
     {{/if}}
     <p>
       <span class="float-right">
-        {{dds/link-button
+        {{dds/primary-button
           onClick=(action "submit")
           disabled=(v-get this "isInvalid")
           label="Accept invitation"

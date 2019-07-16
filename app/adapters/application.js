@@ -23,20 +23,29 @@ export default DS.RESTAdapter.extend({
   namespace: '/api',
   pathForType(type) {
     const type_to_api = {
-      sellers: 'sellers',
-      public_sellers: 'sellers',
-      products: 'products',
-      public_products: 'products',
-      product_orders: 'products',
-      buyers: 'buyers',
-      events: 'events',
-      feedbacks: 'events',
-      users: 'users',
-      members: 'users',
-      // telco_products: 'telco_products',
-      // public_telco_products: 'telco_products',
+      'seller': 'sellers/sellers',
+      'public-seller': 'sellers/public_sellers',
+      'seller-form/eligibility': 'sellers/seller_form/eligibility',
+      'seller-form/business-name': 'sellers/seller_form/business_name',
+      'seller-form/contact-detail': 'sellers/seller_form/contact_detail',
+      'seller-form/company-type': 'sellers/seller_form/company_type',
+      'seller-form/legal-disclosure': 'sellers/seller_form/legal_disclosure',
+      'seller-form/financial-statement': 'sellers/seller_form/financial_statement',
+      'seller-form/insurance': 'sellers/seller_form/insurance',
+      'seller-form/company-profile': 'sellers/seller_form/company_profile',
+      'seller-form/complete-application': 'sellers/seller_form/complete_application',
+      'product': 'products/products',
+      'public-product': 'products/public_products',
+      'product-order': 'products/product_orders',
+      'buyer': 'buyers/buyers',
+      'event': 'events/events',
+      'feedback': 'events/feedbacks',
+      'user': 'users/users',
+      'member': 'users/members',
+      'document': 'documents/documents',
+      // telco-product: 'telco_products/telco_products',
+      // public-telco-product: 'telco_products/public_telco_products',
     }
-    var type_name = pluralize(underscore(type));
-    return type_to_api[type_name] + '/' + type_name;
+    return type_to_api[type];
   }
 });

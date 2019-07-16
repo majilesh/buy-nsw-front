@@ -1,21 +1,36 @@
 <div class="row">
-  <div class={{if allRow "col-sm-12 text-input-label" "col-sm-4 text-input-label"}}>
-    <label for="text-input">
-      {{label-text}}
-      {{yield}}
-    </label>
-  </div>
-  <div class={{if allRow "col-sm-12" "col-sm-8"}}>
+  {{#unless noLabel}}
+    <div class={{if allRow "col-sm-36 text-input-label" "col-sm-36 col-md-12 text-input-label"}}>
+      <label for="text-input">
+        {{label-text}}
+        {{yield}}
+      </label>
+    </div>
+  {{/unless}}
+  <div class={{if allRow "col-sm-36" "col-sm-36 col-md-24"}}>
     {{input
       class=(if wide "au-text-input au-text-input--block" "au-text-input")
       value=(mut field)
       type=(if password "password" "text")
       disabled=disabled
       pattern=pattern
-      focus-out=focusOut
+      focus-out=(action "focusOut")
       enter=enter
+      key-up=(action (mut hasChanged) true)
       placeholder=placeHolder
       autocomplete=(if noAutoComplete "new-password" "true")
     }}
+    {{#if (and (not disabled) (and (or showError hasChanged) invalid))}}
+      {{#unless wide}}
+        <br>
+      {{/unless}}
+      <span class="field-error error float-left">
+        {{errorMessage}}
+      </span>
+      <div class="clear-both"></div>
+    {{else if (and (eq adminFeedback "rejected") (not hasChanged))}}
+      <span class="field-error warning float-left">Changes requested upon your previous submission</span>
+      <div class="clear-both"></div>
+    {{/if}}
   </div>
 </div>

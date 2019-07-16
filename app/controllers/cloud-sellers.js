@@ -6,6 +6,10 @@ export default Controller.extend({
   ajax: inject(),
   auth: inject(),
   pageNum: 1,
+  identifiers: [],
+  services: [],
+  govdc: [],
+  term: '',
   sellers: null,
   sellersCount: 0,
   totalPages: computed('sellersCount', function() {
@@ -14,11 +18,6 @@ export default Controller.extend({
 
   init() {
     this._super();
-    this.set('pageNum', 1);
-    this.set('identifiers', '');
-    this.set('services', '');
-    this.set('govdc', '');
-    this.set('term', '');
     this.updateCounts();
     this.updateResults();
   },
@@ -31,8 +30,8 @@ export default Controller.extend({
       'govdc',
     ]) {
       var value = this.get(key);
-      if(value) {
-        params['with_' + key] = value.split(',');
+      if(value.length) {
+        params['with_' + key] = value;
       }
     }
     if(this.get('term')) {

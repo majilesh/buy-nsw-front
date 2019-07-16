@@ -1,11 +1,11 @@
 {{#dds/template-body}}
   <div class="row">
-    <div class="col-sm-1">
+    <div class="col-sm-3">
     </div>
-    <div class="col-sm-5">
+    <div class="col-sm-15">
       <h1 class="au-display-lg">{{this.model.category}}</h1>
     </div>
-    <div class="col-sm-5">
+    <div class="col-sm-15">
       Product ID: <h2 class="au-display-md">{{this.model.id}}</h2>
     </div>
   </div>
@@ -15,9 +15,9 @@
   </div>
   {{#if this.model.public}}
     <div class="row">
-      <div class="col-sm-1">
+      <div class="col-sm-3">
       </div>
-      <div class="col-sm-10">
+      <div class="col-sm-30">
         <p class="au-callout">
           To see the full details of a product, create a buyer account, or sign in.
         </p>
@@ -26,12 +26,12 @@
   {{else}}
     {{#each-in this.model.fields as |field value|}}
       <div class="row">
-        <div class="col-sm-1">
+        <div class="col-sm-3">
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-12">
           <b>{{field}}</b>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-12">
           {{value}}
         </div>
       </div>

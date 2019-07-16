@@ -1,0 +1,119 @@
+<h2 class="au-display-xl underline-light">
+  <b>Company profile</b>
+</h2>
+<br>
+<br>
+{{dds/inpage-nav
+  sections=(array
+    (hash name="Company description and website" anchor="company-description")
+    (hash name="Awards and accreditations" anchor="awards-accreditations")
+  )
+}}
+<hr class="light">
+<h2 class="au-display-lg" id="company-description">
+  <b>Company description and website</b>
+</h2>
+<div class="cool-callout">
+  Providing this information is optional, but will display publicly on your profile and will help users find you.
+</div>
+<p>
+  <b>Short description</b>
+</p>
+<p>
+  Describe what your business is or does and the problems you aim to solve with your product or service.
+</p>
+<p>
+  You will be able to log in at any time to update your company profile, once it has been approved and published.
+</p>
+<p>
+  {{dds/text-area
+    field=(mut form.summary)
+    maxLength=1000
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'summary' 'isInvalid')
+    errorMessage=(v-get form 'summary' 'message')
+    adminFeedback=form.feedbacks.summary
+  }}
+</p>
+<p>
+  <b>Website URL</b>
+</p>
+<p>
+  Provide a link to your website beginning with http://
+</p>
+<p>
+  {{dds/text-input
+    field=(mut form.website_url)
+    noLabel=true
+    wide=true
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'website_url' 'isInvalid')
+    errorMessage=(v-get form 'website_url' 'message')
+    adminFeedback=form.feedbacks.website_url
+  }} 
+</p>
+<p>
+  <b>LinkedIn URL (optional)</b>
+</p>
+<p>
+  Provide a LinkedIn URL beginning with http://
+</p>
+<p>
+  {{dds/text-input
+    field=(mut form.linkedin_url)
+    noLabel=true
+    wide=true
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'linkedin_url' 'isInvalid')
+    errorMessage=(v-get form 'linkedin_url' 'message')
+    adminFeedback=form.feedbacks.linkedin_url
+  }} 
+</p>
+
+<hr class="light">
+<h2 class="au-display-lg" id="awards-accreditations">
+  <b>Awards and accreditations</b>
+</h2>
+<p>
+  This information will appear on your supplier profile and is available publicly.
+</p>
+<p>
+  This is your opportunity to share some of the things you are proud of. All questions are optional but can help your business attract potential buyers. If you're a start-up you can also list achievements from past roles or business ventures.
+</p>
+<hr class="light">
+<p>
+  <b>Accreditations (optional)</b>
+</p>
+<p>
+  Add the name of an accrediting authority and an accreditation, that will be of value to a buyer. Membership of government schemes and panels are not considered accreditations.
+</p>
+<br>
+{{seller-form/multi-text
+  field=(mut form.accreditations)
+  adminFeedback=form.feedbacks.accreditations
+}}
+<hr class="light">
+<p>
+  <b>Industry engagement (optional)</b>
+</p>
+<p>
+  Are you involved in any industry boards, committees or groups?
+</p>
+<br>
+{{seller-form/multi-text
+  field=(mut form.engagements)
+  adminFeedback=form.feedbacks.engagements
+}}
+<hr class="light">
+<p>
+  <b>Awards (optional)</b>
+</p>
+<p>
+  Add the name of an award and sponsor, that will be of relevance to a buyer.
+</p>
+<br>
+{{seller-form/multi-text
+  field=(mut form.awards)
+  adminFeedback=form.feedbacks.awards
+}}
+<hr class="light">

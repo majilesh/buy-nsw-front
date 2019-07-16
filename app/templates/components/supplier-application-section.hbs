@@ -1,0 +1,46 @@
+<p>
+<div class={{if (and (eq status "doing") seller.underEdit) "shaded-box" ""}}>
+  <h2 class="au-display-lg">
+    <b>
+      {{#if seller.underEdit}}
+        {{#link-to "seller-form" first_form}}
+          {{title}}
+        {{/link-to}}
+      {{else}}
+        {{title}}
+      {{/if}}
+
+    </b>
+    {{#if seller.underEdit}}
+      <span class="pull-right fixed-width">
+        {{dds/progress-status
+          status=status
+          optional=optional
+        }}
+      </span>
+      <div class="clear-both"></div>
+    {{/if}}
+  </h2>
+  {{#if seller.underEdit}}
+    <hr class="light">
+    {{yield}}
+    {{#if (eq status "doing")}}
+      {{#link-to "seller-form" first_form  class="au-cta-link small float-right"}}
+        Continue
+      {{/link-to}}
+      <br>
+    {{/if}}
+  {{else}}
+    <br>
+    <hr class="light no-margin">
+    {{#each forms as |form|}}
+      <div class={{concat "supplier-status " (get (get steps form.key) "status") }}>
+        {{form.name}}
+        <span class="pull-right">{{humanize (get (get steps form.key) "status") }}</span>
+      </div>
+      <hr class="light no-margin">
+    {{/each}}
+  {{/if}}
+</div>
+<br>
+</p>

@@ -9,7 +9,7 @@
     color: $AU-color-warning;
   }
 }
-a.au-btn.no-padding {
+a.au-btn.no-padding, div.no-padding {
   padding: 0;
 }
 div.little-padding {
@@ -32,16 +32,30 @@ a.au-btn.learn-how {
 hr.less-margin {
   margin: 1.0rem 0 1.0rem 0;
 }
-
+hr.no-margin {
+  margin: 0;
+}
 a.pointer {
   cursor: pointer;
+  text-decoration: none;
 }
 
 div.feedback {
   padding-bottom: 1.5rem;
 }
 
+span.pull-left {
+  padding: 0 0.5rem;
+  float: left;
+}
+
+span.pull-right {
+  padding: 0 0.5rem;
+  float: right;
+}
+
 div.float-right, span.float-right, a.float-right, b.float-right, p.float-right {
+  padding-right: 1rem;
   float: none;
   @include AU-media( sm ) {
     float: right;
@@ -133,7 +147,9 @@ span.field-error {
   border-bottom: 4px solid white;
   float: left;
   @include AU-media( sm ) {
-    float: right;
+    &:not(.float-left) {
+      float: right;
+    }
   }
   &.short,&.error {
     color: $AU-color-error;
@@ -153,9 +169,6 @@ span.field-error {
   }
 }
 div.success-message {
-  i.fa {
-    font-size: 400%;
-  }
   padding: 2rem;
   text-align: center;
   background-color: #0a7cb9;
@@ -166,9 +179,6 @@ div.success-message {
   }
 }
 div.failure-message {
-  i.fa {
-    font-size: 400%;
-  }
   padding: 2rem;
   text-align: center;
   background-color: $AU-color-error;
@@ -190,12 +200,12 @@ hr.light {
 div.sticky-nav {
   @include AU-media( sm ) {
     position: absolute;
-    height: calc(100% - 650px);
-    width: 33.333333%;
+    height: calc(100% - 350px);
+    width: 33.33%;
   }
 }
-div.max48 {
-  max-width: 48rem;
+div.max60 {
+  max-width: 60rem;
 }
 div.pretend {
   background-color: lightyellow;
@@ -207,9 +217,88 @@ img.newsletter {
 ul.less-left-padding {
   padding-left: 1rem;
 }
+p.checkbox-description {
+  padding: 0.0rem 0.7rem 2rem;
+  @include AU-media( sm ) {
+    padding: 0rem 2rem 1.5rem 2.7rem;
+    margin-top: 0.5rem;
+  }
+}
 p.five-lines {
   display: -webkit-box;
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+div.progress-menu {
+  padding: 2rem 0;
+  box-shadow: 6px 1px 6px 0 rgba(0, 0, 0, 0.1);
+}
+div.cool-callout {
+  border-radius: 5px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  border: solid 0.5px $NSW-colordark-foreground-border;
+  background-color: $NSW-colordark-foreground-muted;
+}
+
+div.cool-infobox {
+  border-radius: 10px;
+  padding: 1.0rem;
+  margin: 2rem 0;
+  border: solid 0.5px $NSW-colordark-foreground-border;
+  background-color: $NSW-colordark-background-muted;
+  .svg-inline--fa {
+    color: $NSW-colordark-icon-muted;
+    margin: 12px 8px 10px 16px;
+  }
+  > span {
+    padding: 1rem;
+    float: left;
+    width: calc(100% - 90px);
+    text-align: center;
+  }
+}
+
+ul.au-tags.files {
+  padding-right: 1rem;
+  li.files {
+    width: 100%;
+    a.file {
+      text-decoration: none;
+    }
+    a.right {
+      float: right;
+      text-decoration: none;
+    }
+  }
+}
+p.gray {
+  color: gray;
+  font-size: 80%;
+}
+span.list-item {
+  padding: 0.5rem;
+}
+div.margin-top {
+  margin-top: 1.5rem;
+}
+span.fixed-width {
+  width: 10rem;
+}
+div.shaded-box {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  span.fixed-width {
+    width: 8rem;
+  }
+}
+div.center {
+  text-align: center;
+}
+.green {
+  color: $AU-color-success;
+}
+.gray {
+  color: #888;
 }

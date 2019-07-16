@@ -1,0 +1,130 @@
+<h2 class="au-display-xl underline-light">
+  <b>Company details</b>
+</h2>
+<br>
+<h2 class="au-display-lg">
+  <b>Contact details</b>
+</h2>
+<div class="cool-infobox">
+  {{fa-icon "exclamation-circle" size="2x" prefix="fal" pull="left"}}
+  <span>
+    This information will appear on your supplier profile and is publicly available.
+  </span>
+  <div class="clear-both"></div>
+</div>
+<p>
+  <b>Number of employees</b>
+</p>
+<p>
+  Calculate the number of full-time employees. For part-time employees, add their hours to estimate the number of full-time equivalent staff.
+</p>
+<div class="col-sm-36 col-md-24 col-lg-15">
+  <br>
+  <p>
+    {{dds/select-box
+      field=(mut form.number_of_employees)
+      items=(array
+        (hash value="sole" label="1")
+        (hash value="2to4" label="2-4")
+        (hash value="5to19" label="5-19")
+        (hash value="20to49" label="20-49")
+        (hash value="50to99" label="50-99")
+        (hash value="100to199" label="100-199")
+        (hash value="200plus" label="More than 200 employees")
+        )
+      showError=(or showError (not-eq form.status 'todo'))
+      invalid=(v-get form 'number_of_employees' 'isInvalid')
+      errorMessage=(v-get form 'number_of_employees' 'message')
+      adminFeedback=form.feedbacks.number_of_employees
+    }}
+  </p>
+</div>
+<div class="clear-both"></div>
+<p class="gray">
+  * This number should match the workers compensation insurance documentation we ask you to supply in Insurances.
+</p>
+<hr class="light">
+<p>
+  <b>Corporate structure</b>
+</p>
+<p>
+  {{dds/radio-group
+    items=(array
+      (hash
+        key="standalone"
+        label="An Australian company that is not a subsidiary of another company"
+      )
+      (hash
+        key="subsidiary"
+        label="A locally-based company that is a subsidiary of a multinational corporation"
+      )
+    )
+    field=(mut form.corporate_structure)
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'corporate_structure' 'isInvalid')
+    errorMessage=(v-get form 'corporate_structure' 'message')
+    adminFeedback=form.feedbacks.corporate_structure
+  }}
+</p>
+<hr class="light">
+<h2 class="au-display-lg">
+  <b>Business identifiers (optional)</b>
+</h2>
+<div class="cool-infobox">
+  {{fa-icon "exclamation-circle" size="2x" prefix="fal" pull="left"}}
+  <span>
+    The following fields are optional but will help buyers find you.
+  </span>
+  <div class="clear-both"></div>
+</div>
+{{dds/checkbox-input
+  field=(mut form.start_up)
+  adminFeedback=form.feedbacks.start_up
+  label="Start-up"
+  description="To be classified as a start-up your business must be less than 5 years old and must not be listed on any stock exchange."
+}}
+{{#if form.can_be_regional}}
+  {{dds/checkbox-input
+    field=(mut form.regional)
+    adminFeedback=form.feedbacks.regional
+    label="Regional"
+    description="It looks like your head office is located in regional NSW. Would you like to identify your business as a regional NSW supplier?"
+  }}
+{{/if}}
+{{dds/checkbox-input
+  field=(mut form.sme)
+  adminFeedback=form.feedbacks.sme
+  label="Small or medium business"
+  disabled=(or (eq form.corporate_structure 'subsidiary') (eq form.number_of_employees '200plus'))
+  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et."
+}}
+{{dds/checkbox-input
+  field=(mut form.not_for_profit)
+  adminFeedback=form.feedbacks.not_for_profit
+  label="Not-for-profit or social enterprise"
+  description="To be classified as a not-for-profit or social enterprise business, the purpose of your business must be to improve human or environmental wellbeing and to reinvest profits to fulfil this mission."
+}}
+{{dds/checkbox-input
+  field=(mut form.australian_owned)
+  adminFeedback=form.feedbacks.australian_owned
+  label="Australian owned"
+  description="To be classified as Australian owned your business must have been founded and have your headquarters in Australia, and be owned by Australian nationals."
+}}
+<hr class="light">
+<h2 class="au-display-lg">
+  <b>Diversity and inclusion (optional)</b>
+</h2>
+<br>
+{{dds/checkbox-input
+  field=(mut form.indigenous)
+  adminFeedback=form.feedbacks.indigenous
+  label="Aboriginal or Torres Strait Islander"
+  description="To be classified as an Aboriginal or Torres Strait Islander business, your business must be recognised by an appropriate organisation such as NSW Indigenous Chamber of Commerce, Supply Nation or the First Australians Chamber of Commerce and Industry."
+}}
+{{dds/checkbox-input
+  field=(mut form.disability)
+  adminFeedback=form.feedbacks.disability
+  label="Australian disability enterprise"
+  description="To be classified as an Australian disability enterprise your business must be listed on the Australian disability enterprise register."
+}}
+<hr class="light">

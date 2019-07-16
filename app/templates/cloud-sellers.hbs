@@ -7,7 +7,7 @@
   }}
   <br>
   <div class="row">
-    <div class="col-sm-7">
+    <div class="col-sm-21">
       <h2 class="au-display-xl underline-light">
         <b>All suppliers</b>
       </h2>
@@ -16,7 +16,7 @@
   <br>
   <br>
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm-18 col-md-15 col-lg-12">
       <h2 class="au-display-lg">
         <b>Apply filters</b>
       </h2>
@@ -27,7 +27,7 @@
       {{#dds/accordion-container title="Services" expanded=true}}
         {{dds/checkbox-array
           checkAll=true
-          field=(mut services)
+          field=(mut this.services)
           break=true
           wide=true
           items=(array
@@ -74,7 +74,7 @@
       {{#dds/accordion-container title="Business identifiers" expanded=true}}
         {{dds/checkbox-array
           checkAll=true
-          field=(mut identifiers)
+          field=(mut this.identifiers)
           break=true
           wide=true
           items=(array
@@ -108,7 +108,7 @@
       <br>
       {{#dds/accordion-container title="GovDC" expanded=true}}
         {{dds/checkbox-array
-          field=(mut govdc)
+          field=(mut this.govdc)
           break=true
           wide=true
           items=(array
@@ -125,7 +125,7 @@
       <br>
       <br>
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-18 col-md-21 col-lg-24">
       <h2 class="au-display-lg underline-dark">
         <b>{{sellersCount}} suppliers</b>
       </h2>
@@ -134,7 +134,7 @@
       {{dds/text-input
         wide=true
         allRow=true
-        field=(mut term)
+        field=(mut this.term)
         enter=(action "search")
         placeHolder="Keyword search"
       }}

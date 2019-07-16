@@ -1,6 +1,20 @@
 <label for="textarea">{{label-text}}</label>
 {{textarea
   class="au-text-input au-text-input--block"
-  focus-out=focusOut
+  focus-out=(action "focusOut")
+  key-up = (action (mut hasChanged) true)
   value=(mut field)
+  maxlength=maxLength
 }}
+{{#if maxLength}}
+  <p class="gray">
+    {{sub maxLength (if field (get field "length") 0)}} characters remaining
+  </p>
+{{/if}}
+{{#if (and (or showError hasChanged) invalid)}}
+  <span class="field-error error float-left">{{errorMessage}}</span>
+  <div class="clear-both"></div>
+{{else if (and (eq adminFeedback "rejected") (not hasChanged))}}
+  <span class="field-error warning float-left">Changes requested upon your previous submission</span>
+  <div class="clear-both"></div>
+{{/if}}

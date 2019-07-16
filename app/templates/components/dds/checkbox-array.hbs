@@ -1,5 +1,5 @@
 {{#if checkAll}}
-  <div class={{if (or break wide) "col-sm-12" "col-sm-3"}}>
+  <div class={{if (or break wide) "col-sm-36" "col-sm-9"}}>
     <p>
       <label class="au-control-input">
         <input
@@ -25,16 +25,25 @@
   {{/if}}
 {{/if}}
 {{#each items as |item|}}
-  <div class={{if wide (if break "col-sm-12" "col-sm-6") "col-sm-3"}}>
+  <div class={{if wide (if break "col-sm-36" "col-sm-18") "col-sm-9"}}>
     {{dds/checkbox-item
       name=item.key
       label=item.label
       field=(mut field)
+      bold=bold
       disabled=disabled
       onChange=onChange
+      description=item.description
     }}
   </div>
   {{#if break}}
     <div class="clear-both"></div>
   {{/if}}
 {{/each}}
+{{#if (and (or showError hasChanged) invalid)}}
+  <span class="field-error error">{{errorMessage}}</span>
+  <div class="clear-both"></div>
+{{else if (and (eq adminFeedback "rejected") (not hasChanged))}}
+  <span class="field-error warning">Changes requested upon your previous submission</span>
+  <div class="clear-both"></div>
+{{/if}}

@@ -34,7 +34,7 @@
   <br>
   <br>
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm-12">
     </div>
     <div class="sticky-nav">
       <div class="inpage-nav">
@@ -48,7 +48,7 @@
         }}
       </div>
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-24">
       <div class="row" id="company-details">
         <h2 class="au-display-lg">
           Company details
@@ -57,10 +57,10 @@
       </div>
       {{#if this.model.seller.website_url}}
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-18">
             <b>Website</b>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-18">
             <a target="_blank" href={{this.model.seller.website_url}}>{{this.model.seller.website_url}}</a>
           </div>
         </div>
@@ -68,10 +68,10 @@
       {{/if}}
       {{#if this.model.seller.linkedin_url}}
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-18">
             <b>LinkedIn</b>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-18">
             <a href={{this.model.seller.linkedin_url}}>{{this.model.seller.linkedin_url}}</a>
           </div>
         </div>
@@ -79,10 +79,10 @@
       {{/if}}
       {{#if auth.user.can_buy}}
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-18">
             <b>Business contact</b>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-18">
             {{this.model.seller.contact_name}}
             <br>
             <a href="telto:{{this.model.seller.contact_phone}}">{{this.model.seller.contact_phone}}</a>
@@ -94,10 +94,10 @@
       {{/if}}
       {{#if auth.user.can_buy}}
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-18">
             <b>Authorised representative</b>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-18">
             {{this.model.seller.representative_name}}
             <br>
             <a href="telto:{{this.model.seller.representative_phone}}">{{this.model.seller.representative_phone}}</a>
@@ -108,20 +108,20 @@
         <hr class="light">
       {{/if}}
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-18">
           <b>ABN</b>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-18">
           <a target="_blank" href="https://abr.business.gov.au/ABN/View/{{this.model.seller.abn}}">{{this.model.seller.abn}}</a>
         </div>
       </div>
       <hr class="light">
       {{#if auth.user.can_buy}}
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-18">
             <b>Location</b>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-18">
             <ul class="less-left-padding">
               {{#each this.model.seller.addresses as |address|}}
                 <li>
@@ -148,10 +148,10 @@
           <hr class="light">
         </div>
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-18">
             <b>Receivership</b>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-18">
             {{#if this.model.seller.receivership}}
               {{breaklines this.model.seller.receivership_details}}
             {{else}}
@@ -161,10 +161,10 @@
         </div>
         <hr class="light">
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-18">
             <b>Investigation</b>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-18">
             {{#if this.model.seller.investigations}}
               {{breaklines this.model.seller.investigations_details}}
             {{else}}
@@ -174,10 +174,10 @@
         </div>
         <hr class="light">
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-18">
             <b>Legal Proceedings</b>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-18">
             {{#if this.model.seller.legal_proceedings}}
               {{breaklines this.model.seller.legal_proceedings_details}}
             {{else}}
@@ -187,10 +187,10 @@
         </div>
         <hr class="light">
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-18">
             <b>Insurance Claims</b>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-18">
             {{#if this.model.seller.insurance_claims}}
               {{breaklines this.model.seller.insurance_claims_details}}
             {{else}}
@@ -200,10 +200,10 @@
         </div>
         <hr class="light">
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-18">
             <b>Conflicts Of Interest</b>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-18">
             {{#if this.model.seller.conflicts_of_interest}}
               {{breaklines this.model.seller.conflicts_of_interest_details}}
             {{else}}
@@ -213,10 +213,10 @@
         </div>
         <hr class="light">
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-18">
             <b>Other Circumstances</b>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-18">
             {{#if this.model.seller.other_circumstances}}
               {{this.model.seller.other_circumstances_details}}
             {{else}}
@@ -238,10 +238,10 @@
       </div>
       {{#if (not (is-empty this.model.seller.awards))}}
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-18">
             <b>Awards</b>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-18">
             <ul class="less-left-padding">
               {{#each this.model.seller.awards as |item|}}
                 <li>{{item}}</li>
@@ -253,10 +253,10 @@
       {{/if}}
       {{#if (not (is-empty this.model.seller.accreditations))}}
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-18">
             <b>Accreditations</b>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-18">
             <ul class="less-left-padding">
               {{#each this.model.seller.accreditations as |item|}}
                 <li>{{item}}</li>
@@ -268,10 +268,10 @@
       {{/if}}
       {{#if (not (is-empty this.model.seller.engagements))}}
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-18">
             <b>Industry engagements</b>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-18">
             <ul class="less-left-padding">
               {{#each this.model.seller.engagements as |item|}}
                 <li>{{item}}</li>
@@ -283,10 +283,10 @@
       {{/if}}
       {{#if auth.user.can_buy}}
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-18">
             <b>Government experience</b>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-18">
             {{#if this.model.seller.no_experience}}
               No, we're looking forward to working with government for the first time
               <br>
@@ -324,10 +324,10 @@
         </div>
         {{#each this.model.products as |product|}}
           <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-9">
               {{link-to product.name "public-product" product.id}}
             </div>
-            <div class="col-sm-9">
+            <div class="col-sm-27">
               {{product.summary}}
             </div>
           </div>

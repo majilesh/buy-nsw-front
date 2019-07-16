@@ -1,8 +1,8 @@
 {{#dds/template-body signout=true}}
-  <div class="col-sm-5">
+  <div class="col-sm-15">
     <h1 class="au-display-lg">Create an account</h1>
   </div>
-  <div class="col-sm-7">
+  <div class="col-sm-21">
     <p>
       You can create buyer account if you're a NSW Government employee or an employee of
       <a
@@ -20,7 +20,7 @@
     {{link-to "Create a supplier account" "signup" "seller" class="au-btn"}}
     <hr>
   </div>
-  <div class="col-sm-5">
+  <div class="col-sm-15">
     <h1 class="au-display-lg">Already have an account?</h1>
     <p>
       Get help if you have
@@ -29,7 +29,7 @@
       {{link-to "haven't received a confirmation email" "reconfirm-email"}}.
     </p>
   </div>
-  <div class="col-sm-7">
+  <div class="col-sm-21">
     <p>
       {{#dds/text-input
         wide=true
@@ -48,7 +48,7 @@
       }}
         <b>Password</b>
       {{/dds/text-input}}
-      <div class="max48">
+      <div class="max60">
         <span class="field-error error">{{auth.message}}</span>
       </div>
       <div class="clear-both"></div>

@@ -69,7 +69,7 @@ main > .au-body {
 
 
 // Home page highlighted spacing on mobile
-.highlighted-section .col-sm-4 + .col-sm-4 {
+.highlighted-section .col-sm-12 + .col-sm-12 {
 	@include AU-space( margin-top, 4unit );
 
 	@include AU-media( sm ) {

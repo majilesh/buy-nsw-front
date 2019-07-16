@@ -1,16 +1,16 @@
 <div class="container-fluid less-space">
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-36">
       {{#if (and signout auth.user)}}
-        <div class="col-sm-3">
+        <div class="col-sm-9">
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-18">
           {{logout-first}}
         </div> 
       {{else if (and signin (not auth.user))}}
-        <div class="col-sm-3">
+        <div class="col-sm-9">
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-18">
           {{login-first}}
         </div> 
       {{else}}

@@ -1,0 +1,154 @@
+<h2 class="au-display-xl underline-light">
+  <b>Eligibility</b>
+</h2>
+<br>
+<br>
+{{dds/inpage-nav
+  sections=(array
+    (hash name="Do you provide cloud products, services or support?" anchor="cloud-products")
+    (hash name="Do you provide products, services or support in one or more of the following ICT categories?" anchor="other-products")
+  )
+}}
+<hr class="light">
+<p>
+  For now, buy.nsw is only open to suppliers who either:
+	<ul>
+    <li>provide cloud products, services or support</li>
+	  <li>provide services in NSW Government Data Centres (GovDC)</li>
+  </ul>
+</p>
+<h2 class="au-display-lg" id="cloud-products">
+  <b>Do you provide cloud products, services or support?</b>
+</h2>
+<p>
+  These include:
+  <ul>
+    <li>cloud software</li>
+    <li>hosting and infrastructure</li>
+    <li>support services for transitioning to cloud and for monitoring and managing cloud environments.</li>
+  </ul>
+</p>
+<p>
+  {{dds/radio-group
+    items=(array
+      (hash
+        key="true"
+        label="Yes"
+      )
+      (hash
+        key="false"
+        label="No"
+      )
+    )
+    field=(mut form.offers_cloud)
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'offers_cloud' 'isInvalid')
+    errorMessage=(v-get form 'offers_cloud' 'message')
+  }}
+</p>
+<p>
+  As a supplier of cloud, you'll be able to add information about your products to your
+  supplier profile from your buy.nsw dashboard. Once your application is approved,
+  we'll be in touch with next steps.
+</p>
+
+<hr class="light">
+
+<h2 class="au-display-lg">
+  <b>Do you offer services in NSW Government Data Centres (GovDC)?</b>
+</h2>
+<p>
+  This means you provide colocation services inside GovDC or you have a subscription to the GovDC Managed Services Backbone.
+</p>
+<p>
+  Not sure if you are a GovDC supplier? Contact the GovDC team at govdc@finance.nsw.gov.au.
+</p>
+<p>
+  {{dds/radio-group
+    items=(array
+      (hash
+        key="true"
+        label="Yes"
+      )
+      (hash
+        key="false"
+        label="No"
+      )
+    )
+    field=(mut form.govdc)
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'govdc' 'isInvalid')
+    adminFeedback=form.feedbacks.govdc
+    errorMessage=(v-get form 'govdc' 'message')
+  }}
+</p>
+{{#if (v-get form 'eligible' 'isInvalid')}}
+  <p>
+    <span class="field-error error float-left">
+      {{v-get form 'eligible' 'message'}}
+    </span>
+    <div class="clear-both"></div>
+  </p>
+{{/if}}
+
+<hr class="light">
+
+<h2 class="au-display-lg" id="other-products">
+  <b>Do you provide products, services or support in one or more of the following ICT categories?</b>
+</h2>
+
+<div class="cool-callout">
+  As an eligible supplier, you can also select other ICT products or services.
+  They will appear on your profile and make it easier for buyers to find you.
+</div>
+
+{{dds/checkbox-array
+  field=(mut form.services)
+  break=true
+  wide=true
+  bold=true
+  adminFeedback=form.feedbacks.services
+  items=(array
+    (hash
+      key="software-development"
+      label="Software design and development"
+      description="Design and delivery of software and software modifications, including the implementation and configuration of vendor-owned software. Includes all disciplines that support the delivery of software, including design, delivery, data analysis, coding, quality assurance, compliance, security and accessibility testing."
+    )
+    (hash
+      key="software-licensing"
+      label="Software licensing and maintenance"
+      description="Software licensed on any basis other than as a cloud-hosted subscription service. Includes the maintenance and updates of these software licences."
+    )
+    (hash
+      key="end-user-computing"
+      label="End-user computing and peripherals"
+      description="Provision, installation, configuration or maintenance of devices that help end users access and operate computer applications. Includes desktops, laptops and tablets, interactive whiteboards, as well as peripherals such as keyboards, screens and assistive technologies such as screen readers."
+    )
+    (hash
+      key="infrastructure"
+      label="Infrastructure and networks"
+      description="Datacentre infrastructure including servers, UPS and generators. Hardware and software that enables computer systems to connect and communicate with each other, together with hardware and software that underpins the operations and management of networks, such as racking, cabling, routers and switches."
+    )
+    (hash
+      key="telecommunications"
+      label="Telecommunications"
+      description="Fixed and mobile telephony; internet and data; emergency comms and all services and equipment to support the exchange of information in voice, data or video form over distance by electronic means."
+    )
+    (hash
+      key="managed-services"
+      label="Managed services"
+      description="Using third parties to fulfil the responsibilities and functions that support day-to-day technology management. Examples include service desk and contact centres, network operations, security operations, and desktop support. May also include the infrastructure associated with a service such as printers and desktops."
+    )
+    (hash
+      key="advisory-consulting"
+      label="Advisory and consulting"
+      description="Specialist ICT expertise acting in an advisory capacity to government. Includes building business cases and strategic roadmaps, process and technology audits, security and risk assessment, continuity planning, developing enterprise architectures, policy analysis and digital transformation advice."
+    )
+    (hash
+      key="training-learning"
+      label="Training and learning"
+      description="ICT skills training delivered in person or online. Examples include technical training, agile coaching, PRINCE2 certification and information handling."
+    )
+  )
+}}
+<hr class="light">

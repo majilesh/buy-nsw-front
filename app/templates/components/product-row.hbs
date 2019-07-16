@@ -18,7 +18,7 @@
 </p>
 <br>
 <div class="row">
-  <div class="col-xs-8">
+  <div class="col-sm-24">
     <button class="au-btn" onclick={{action "confirmProductAction"}}>Confirm</button>
     <select
       class="au-select fixed-width"
@@ -35,7 +35,7 @@
       {{/each}}
     </select>
   </div>
-  <div class="col-xs-4">
+  <div class="col-sm-12">
     <span
       class="product-status {{if product.live "live"}} {{if (eq product.status "deactivated") "deactivated"}}"
     >

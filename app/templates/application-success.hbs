@@ -1,0 +1,78 @@
+{{#dds/template-body signin=true}}
+  {{ dds/bread-crumbs
+    links=(array
+      (hash name="buy.nsw" route="index")
+      (hash name="Dashboard" route="seller-dashboard")
+      (hash name="Supplier application" route="supplier-application")
+    )
+  }}
+  <br>
+  <div class="col-md-3"></div>
+  <div class="col-sm-36 col-md-30">
+  <h2 class="au-display-xxl underline-light">
+    <b>Thank you</b>
+  </h2>
+  <h3 class="au-display-lg">
+    <b>Your application has been received</b>
+  </h3>
+  <div class="center max60">
+    <hr class="light">
+    <br>
+    <span class="green"> {{fa-icon "check-circle" size="6x"}} </span>
+    <br>
+    <br>
+    <h3 class="au-display-lg">
+      <b>What next?</b>
+    </h3>
+  </div>
+  <br>
+  <p>
+    We're assessing your application. We will be in touch within 5 working days.
+  </p>
+  <p>
+    We will notify you by email regarding the success of your application. If there are any issues with the information you have provided, we will contact you with feedback to ensure that your application is successful. 
+  </p>
+  <p>
+    In the meantime, if you have any questions or concerns, feel free to contact us. We will get back to you as soon as we can.
+  </p>
+  <br>
+  <br>
+  <div class="max60">
+    <div class="col-sm-12 center">
+      <span class="gray"> {{fa-icon "edit" size="6x" prefix="fal"}} </span>
+      <p><b>Customise your profile</b></p>
+      <p>
+        If you are unsure about your submission, it can be withdrawn from the
+        {{link-to "application page" "supplier-application"}} before it is under review.<br>
+        You can make further amendments to your profile after the review is complete.
+      </p>
+      <br>
+      <br>
+    </div>
+    <div class="col-sm-12 center">
+      <span class="gray"> {{fa-icon "users" size="6x" prefix="fal"}} </span>
+      <p><b>Connect with buyers</b></p>
+      <p>
+        After approval, your profile will be live on <b>buy.nsw</b>. Buyers will be able to search and find you.<br>
+        You will be also able to add your products to increase your connectivity with buyers.
+      </p>
+      <br>
+      <br>
+    </div>
+    <div class="col-sm-12 center">
+      <span class="gray"> {{fa-icon "lightbulb-on" size="6x" prefix="fal"}} </span>
+      <p><b>Useful links</b></p>
+      <p>
+        {{link-to "Supplier guide" "seller-guide"}}
+        <br>
+        {{link-to "About buy.nsw" "about-page"}}
+        <br>
+        {{link-to "Help" "help-page"}}
+        <br>
+        <a target="_blank" href="https://www.procurepoint.nsw.gov.au/">ProcurePoint</a>
+        <br>
+      </p>
+    </div>
+  </div>
+  </div>
+{{/dds/template-body}}

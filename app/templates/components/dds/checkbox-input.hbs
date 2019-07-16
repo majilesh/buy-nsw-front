@@ -1,0 +1,29 @@
+<p class="thin-lines">
+  <br>
+  <label class="au-control-input">
+    <input
+      class="au-control-input__input"
+      type="checkbox"
+      onChange={{action "toggle"}}
+      checked={{if field "checked" ""}}
+      disabled={{if disabled "disabled" ""}}
+    >
+    <span class="au-control-input__text">
+      <b>
+        {{label}}
+      </b>
+    </span>
+  </label>
+</p>
+{{#if description}}
+  <p class="checkbox-description">
+    {{description}}
+  </p>
+{{/if}}
+{{#if (and (or showError hasChanged) invalid)}}
+  <span class="field-error error">{{errorMessage}}</span>
+  <div class="clear-both"></div>
+{{else if (and (eq adminFeedback "rejected") (not hasChanged))}}
+  <span class="field-error warning">Changes requested upon your previous submission</span>
+  <div class="clear-both"></div>
+{{/if}}

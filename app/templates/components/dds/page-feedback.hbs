@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row feedback">
     <hr class="less-margin">
-    <div class="col-md-12">
+    <div class="col-sm-36 col-md-30 col-lg-24">
       {{#if activated}}
         <br>
         <h2 class="au-header__heading au-display-lg">
@@ -33,7 +33,7 @@
 
         <br>
         <span class="float-right">
-          {{dds/link-button
+          {{dds/primary-button
             wide=true
             onClick=(action "sendFeedback")
             disabled=(v-get this "isInvalid")

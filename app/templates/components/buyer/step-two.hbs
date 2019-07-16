@@ -1,6 +1,4 @@
-<div class="col-sm-1">
-</div>
-<div class="col-sm-10">
+<div class="col-sm-30">
   <h1 class="au-display-lg">About you and buy.nsw</h1>
   <br>
   <p>
@@ -13,7 +11,7 @@
       focusOut=(action (mut showBodyError) true)
     }}
     {{#if (and showBodyError (v-get this "buyer.application_body" "isInvalid"))}}
-      <div class="max48">
+      <div class="max60">
         <span class="field-error error">{{v-get this "buyer.application_body" "message"}}</span>
       </div>
       <div class="clear-both"></div>
@@ -71,7 +69,7 @@
         focusOut=(action (mut showNumberError) true)
       }}
       {{#if (and showNumberError (v-get this "buyer.contact_number" "isInvalid"))}}
-        <div class="max48">
+        <div class="max60">
           <span class="field-error error">{{v-get this "buyer.contact_number" "message"}}</span>
         </div>
         <div class="clear-both"></div>
@@ -85,7 +83,7 @@
       onClick={{action "back"}}
     >← Back</a>
     <span class="float-right">
-      {{dds/link-button
+      {{dds/primary-button
         onClick=(action "next")
         disabled=(v-get this "isInvalid")
         label="Next"

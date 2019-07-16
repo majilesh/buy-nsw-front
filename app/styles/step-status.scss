@@ -56,3 +56,16 @@
     margin-bottom: 0.5rem;
   }
 }
+.supplier-status {
+  padding: 0.5rem 0;
+  border-right: solid white 10px;
+  &.accepted {
+    border-right: solid $AU-color-success 10px;
+  }
+  &.declined {
+    border-right: solid $AU-color-warning 10px;
+  }
+  &.under_review {
+    border-right: solid #AAA 10px;
+  }
+}

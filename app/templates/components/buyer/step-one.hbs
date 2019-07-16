@@ -1,6 +1,4 @@
-<div class="col-sm-1">
-</div>
-<div class="col-sm-10">
+<div class="col-sm-30">
   <h1 class="au-display-lg">Apply to become a buyer</h1>
   <br>
   <p>
@@ -12,7 +10,7 @@
       focusOut=(action (mut showNameError) true)
     }}
     {{#if (and showNameError (v-get this "buyer.name" "isInvalid"))}}
-      <div class="max48">
+      <div class="max60">
         <span class="field-error error">{{v-get this "buyer.name" "message"}}</span>
       </div>
       <div class="clear-both"></div>
@@ -28,7 +26,7 @@
       focusOut=(action (mut showOrganisationError) true)
     }}
     {{#if (and showOrganisationError (v-get this "buyer.organisation" "isInvalid"))}}
-      <div class="max48">
+      <div class="max60">
         <span class="field-error error">{{v-get this "buyer.organisation" "message"}}</span>
       </div>
       <div class="clear-both"></div>
@@ -37,7 +35,7 @@
   <hr class="light">
   <p>
     <span class="float-right">
-      {{dds/link-button
+      {{dds/primary-button
         onClick=(action "next")
         disabled=(v-get this "isInvalid")
         label="Next"

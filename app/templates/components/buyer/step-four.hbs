@@ -1,6 +1,4 @@
-<div class="col-sm-1">
-</div>
-<div class="col-sm-10">
+<div class="col-sm-30">
   <h1 class="au-display-lg">Approval from your line manager</h1>
   <br>
   <p>
@@ -19,7 +17,7 @@
       focusOut=(action (mut showManagerNameError) true)
     }}
     {{#if (and showManagerNameError (v-get this "buyer.manager_name" "isInvalid"))}}
-      <div class="max48">
+      <div class="max60">
         <span class="field-error error">{{v-get this "buyer.manager_name" "message"}}</span>
       </div>
       <div class="clear-both"></div>
@@ -34,7 +32,7 @@
       focusOut=(action (mut showManagerEmailError) true)
     }}
     {{#if (and showManagerEmailError (v-get this "buyer.manager_email" "isInvalid"))}}
-      <div class="max48">
+      <div class="max60">
         <span class="field-error error">{{v-get this "buyer.manager_email" "message"}}</span>
       </div>
       <div class="clear-both"></div>
@@ -47,7 +45,7 @@
       onClick={{action "back"}}
     >← Back</a>
     <span class="float-right">
-      {{dds/link-button
+      {{dds/primary-button
         onClick=(action "next")
         disabled=(v-get this "isInvalid")
         label="Next"

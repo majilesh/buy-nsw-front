@@ -6,9 +6,7 @@
       (hash name="Invite a team member" route="invite-team-member")
     )
   }}
-  <div class="col-xs-1">
-  </div>
-  <div class="col-sm-10">
+  <div class="col-sm-30">
     <br>
     <h1 class="au-display-lg">Invite a team member</h1>
     <p>
@@ -31,14 +29,14 @@
       {{/dds/text-input}}
       {{#if showError}}
         {{#if invitationErrors}}
-          <div class="max48">
+          <div class="max60">
             <span class="field-error error">
               {{invitationErrors}}
             </span>
           </div>
         {{/if}}
         {{#if (v-get this "model.email" "isInvalid")}}
-          <div class="max48">
+          <div class="max60">
             <span class="field-error error">
               {{v-get this "model.email" "message"}}
             </span>
@@ -49,7 +47,7 @@
     <div class="clear-both"></div>
     <p>
       <span class="float-right">
-        {{dds/link-button
+        {{dds/primary-button
           onClick=(if (v-get this "model.email" "isValid") (action "invite"))
           disabled=(v-get this "model.email" "isInvalid")
           label="Send invitation"

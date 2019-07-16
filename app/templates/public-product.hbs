@@ -7,7 +7,6 @@
     )
   }}
   <br>
-  <span id="top"></span>
   {{#if (not auth.user.can_buy)}}
     {{#dds/call-out}}
       {{link-to "Become a registered buyer" "signup" "buyer"}} to purchase this product.
@@ -19,7 +18,7 @@
   </h2>
   <br>
   <div class="row">
-    <div class="col-sm-5">
+    <div class="col-sm-15">
       by {{link-to this.model.product.public_seller_name "cloud-seller" this.model.product.public_seller_id}}
       <br>
       <ul class="au-tags">
@@ -34,10 +33,10 @@
       </ul>
       <br>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-9">
       <b>Product ID:</b> {{this.model.product.id}}
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-12">
       {{#if auth.user.can_buy}}
         {{link-to "Enquire now" "product-order" this.model.product.id class="au-btn float-right"}}
         <br>
@@ -60,7 +59,7 @@
   </div>
   <br>
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm-18 col-md-15 col-lg-12">
     </div>
     <div class="sticky-nav">
       <div class="inpage-nav">
@@ -90,9 +89,7 @@
         }}
       </div>
     </div>
-    <div class="col-sm-1">
-    </div>
-    <div class="col-sm-7">
+    <div class="col-sm-18 col-md-21 col-lg-24">
       {{product-table
         title="Short description"
         id="short-description"

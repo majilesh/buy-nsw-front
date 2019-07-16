@@ -22,6 +22,7 @@
 	border-radius: $AU-border-radius;
 	vertical-align: middle;
 	appearance: none;
+  width: 65%;
 
 	// state styling
 	&.au-text-input--dark:invalid,
@@ -146,12 +147,24 @@
 
 
 /**
- * Textarea styling. (Not nested because sass does odd stuff)
+ * Textarea styling. (Not nested because sass doesn't handle it well)
  */
 textarea.au-text-input {
 	@include AU-fontgrid( sm );
 	height: auto;
 	max-width: 100%;
 	min-height: 6em;
+  resize: vertical;
 }
-
+input[type=date]::-webkit-calendar-picker-indicator,
+input[type=date]::-webkit-inner-spin-button,
+input[type=date]::-webkit-outer-spin-button{
+  display: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+}
+input[type=date]:after {
+  content: "";
+}

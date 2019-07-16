@@ -1,8 +1,8 @@
 {{#dds/template-body signin=true}}
-  <div class="col-sm-4">
+  <div class="col-sm-12">
     <h1 class="au-display-lg">Your account settings</h1>
   </div>
-  <div class="col-sm-8">
+  <div class="col-sm-24">
     <b>Your email address</b>
     {{dds/text-input
       wide=true
@@ -12,12 +12,12 @@
       focusOut=(action (mut showEmailError) true)
     }}
     {{#if (v-get this "model.email" "isInvalid")}}
-      <div class="max48">
+      <div class="max60">
         <span class="field-error error">Email address is not valid</span>
       </div>
       <div class="clear-both"></div>
     {{/if}}
-    <hr>
+    <hr class="light">
     <b>Your new password</b>
     <p>
       Leave blank if you don't want to change it.
@@ -32,7 +32,7 @@
       field=(mut newPassword)
       enter=(action "submit")
     }}
-    <div class="max48">
+    <div class="max60">
       {{#if (eq newPassword.length 0)}}
         <span class="field-error blank">Password is blank</span>
       {{else if (lt newPassword.length 8)}}
@@ -56,12 +56,12 @@
       enter=(action "submit")
     }}
     {{#if (v-get this "confirmPassword" "isInvalid")}}
-      <div class="max48">
+      <div class="max60">
         <span class="field-error short">Passwords don't match</span>
       </div>
       <div class="clear-both"></div>
     {{/if}}
-    <hr>
+    <hr class="light">
     <b>Enter your current password</b>
     <p>We need this to confirm your changes</p>
     {{dds/text-input
@@ -73,14 +73,14 @@
       enter=(action "submit")
     }}
     {{#if apiError}}
-      <div class="max48">
+      <div class="max60">
         <span class="field-error error">{{apiError}}</span>
       </div>
       <div class="clear-both"></div>
     {{/if}}
     <p>
       <span class="float-right">
-        {{dds/link-button
+        {{dds/primary-button
           onClick=(action "submit")
           disabled=(v-get this "isInvalid")
           label="Update account details"
