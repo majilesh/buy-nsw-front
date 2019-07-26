@@ -49,7 +49,7 @@ span.pull-left {
   float: left;
 }
 
-span.pull-right {
+a.pull-right, span.pull-right {
   padding: 0 0.5rem;
   float: right;
 }
@@ -253,7 +253,7 @@ div.cool-infobox {
     margin: 12px 8px 10px 16px;
   }
   > span {
-    padding: 1rem;
+    padding: 1.0rem 0.5rem;
     float: left;
     width: calc(100% - 90px);
     text-align: center;

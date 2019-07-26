@@ -2,6 +2,11 @@ import DS from 'ember-data';
 import { buildValidations, validator } from 'ember-cp-validations';
 
 const Validations = buildValidations({
+  flagship_product: {
+    validators: [
+      validator('presence', true),
+    ]
+  },
   summary: {
     validators: [
       validator('presence', true),
@@ -22,16 +27,50 @@ const Validations = buildValidations({
         type: 'url'
       })
     ]
+  },
+  facebook_url: {
+    validators: [
+      validator('format', {
+        allowBlank: true,
+        type: 'url'
+      })
+    ]
+  },
+  youtube_url: {
+    validators: [
+      validator('format', {
+        allowBlank: true,
+        type: 'url'
+      })
+    ]
+  },
+  twitter_url: {
+    validators: [
+      validator('format', {
+        allowBlank: true,
+        type: 'url'
+      })
+    ]
+  },
+  instagram_url: {
+    validators: [
+      validator('format', {
+        allowBlank: true,
+        type: 'url'
+      })
+    ]
   }
 });
 
 export default DS.Model.extend(Validations, {
   status: DS.attr('string'),
   feedbacks: DS.attr('json'),
+  flagship_product: DS.attr('string'),
   summary: DS.attr('string'),
   website_url: DS.attr('string'),
   linkedin_url: DS.attr('string'),
-  awards: DS.attr('json'),
-  accreditations: DS.attr('json'),
-  engagements: DS.attr('json'),
+  facebook_url: DS.attr('string'),
+  youtube_url: DS.attr('string'),
+  twitter_url: DS.attr('string'),
+  instagram_url: DS.attr('string'),
 });

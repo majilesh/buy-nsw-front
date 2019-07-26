@@ -1,10 +1,7 @@
 <h2 class="au-display-xl underline-light">
-  <b>Company details</b>
+  <b>Business details</b>
 </h2>
 <br>
-<h2 class="au-display-lg">
-  <b>Business name and ABN</b>
-</h2>
 <p>
   You need an Australian Business Number (ABN) to do business in Australia.
   <a target="_blank" href="https://abr.business.gov.au/">Look up your ABN</a>.
@@ -12,7 +9,7 @@
 <div class="cool-infobox">
   {{fa-icon "exclamation-circle" size="2x" prefix="fal" pull="left"}}
   <span>
-    This information will appear on your supplier profile, but only to logged in buyers.
+    This information will appear on your supplier profile, but only to registered buyers.
   </span>
   <div class="clear-both"></div>
 </div>
@@ -33,6 +30,7 @@
     adminFeedback=form.feedbacks.name
   }}
 </p>
+<br>
 <p>
   <b>ABN</b>
 </p>
@@ -45,6 +43,19 @@
     invalid=(v-get form 'abn' 'isInvalid')
     errorMessage=(v-get form 'abn' 'message')
     adminFeedback=form.feedbacks.abn
+  }}
+</p>
+<br>
+<p>
+  <b>Date established</b>
+</p>
+<p>
+  {{dds/date-input
+    required=true
+    field=(mut form.establishment_date)
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'establishment_date' 'isInvalid')
+    errorMessage=(v-get form 'establishment_date' 'message')
   }}
 </p>
 <hr class="light">

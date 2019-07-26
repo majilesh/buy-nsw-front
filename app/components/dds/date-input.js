@@ -3,7 +3,7 @@ import { computed } from '@ember/object';
 import moment from 'moment';
 
 export default Component.extend({
-  min: '1900-01-01',
+  min: '1800-01-01',
   max: '2100-01-01',
   actions: {
     focusOut() {

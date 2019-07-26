@@ -3,7 +3,7 @@ import { buildValidations, validator } from 'ember-cp-validations';
 import { computed } from '@ember/object';
 
 const Validations = buildValidations({
-  offers_cloud: {
+  offers_ict: {
     validators: [
       validator('presence', true),
     ]
@@ -28,11 +28,10 @@ const Validations = buildValidations({
 export default DS.Model.extend(Validations, {
   status: DS.attr('string'),
   feedbacks: DS.attr('json'),
-  offers_cloud: DS.attr('string'),
+  offers_ict: DS.attr('string'),
   govdc: DS.attr('string'),
-  services: DS.attr('json'),
 
-  eligible: computed('offers_cloud', 'govdc', function() {
-    return this.get('offers_cloud') == 'true' || this.get('govdc') == 'true';
+  eligible: computed('offers_ict', 'govdc', function() {
+    return this.get('offers_ict') == 'true' || this.get('govdc') == 'true';
   }),
 });

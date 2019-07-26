@@ -78,4 +78,5 @@ export default DS.Model.extend(Validations, {
   representative_phone: DS.attr('string'),
   representative_position: DS.attr('string'),
   addresses: DS.attr('json'),
+  same_as_above: DS.attr('boolean'),
 });

@@ -12,6 +12,10 @@
     <option selected={{if (eq field item.value) "selected"}} value={{item.value}}>{{item.label}}</option>
   {{/each}}
 </select>
+{{#if (and required (or (eq field "") (eq field null)))}}
+  <span class="field-error error float-left">This field is required</span>
+  <div class="clear-both"></div>
+{{/if}}
 {{#if (and (or showError hasChanged) invalid)}}
   <span class="field-error error float-left">{{errorMessage}}</span>
   <div class="clear-both"></div>

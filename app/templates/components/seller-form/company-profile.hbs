@@ -1,29 +1,47 @@
 <h2 class="au-display-xl underline-light">
-  <b>Company profile</b>
+  <b>Company description and social links</b>
 </h2>
 <br>
 <br>
 {{dds/inpage-nav
   sections=(array
     (hash name="Company description and website" anchor="company-description")
-    (hash name="Awards and accreditations" anchor="awards-accreditations")
+    (hash name="Social channels" anchor="social-channels")
   )
 }}
 <hr class="light">
 <h2 class="au-display-lg" id="company-description">
   <b>Company description and website</b>
 </h2>
-<div class="cool-callout">
-  Providing this information is optional, but will display publicly on your profile and will help users find you.
+<div class="cool-infobox">
+  {{fa-icon "exclamation-circle" size="2x" prefix="fal" pull="left"}}
+  <span>Providing this information is optional, but will display publicly on your profile and will help users find you. You will be able to log in at any time to update your company profile, once it has been approved and published.</span>
+  <div class="clear-both"></div>
 </div>
+<p>
+  <b>Flagship product</b>
+</p>
+<p>
+  Describe your product or service that your company is well known for.
+</p>
+<p>
+  {{dds/text-input
+    field=(mut form.flagship_product)
+    maxLength=50
+    noLabel=true
+    wide=true
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'flagship_product' 'isInvalid')
+    errorMessage=(v-get form 'flagship_product' 'message')
+    adminFeedback=form.feedbacks.flagship_product
+  }}
+</p>
+<br>
 <p>
   <b>Short description</b>
 </p>
 <p>
   Describe what your business is or does and the problems you aim to solve with your product or service.
-</p>
-<p>
-  You will be able to log in at any time to update your company profile, once it has been approved and published.
 </p>
 <p>
   {{dds/text-area
@@ -35,6 +53,7 @@
     adminFeedback=form.feedbacks.summary
   }}
 </p>
+<br>
 <p>
   <b>Website URL</b>
 </p>
@@ -52,11 +71,20 @@
     adminFeedback=form.feedbacks.website_url
   }} 
 </p>
+<br>
 <p>
-  <b>LinkedIn URL (optional)</b>
+  {{dds/top-link}}
+</p>
+<hr class="light">
+<h2 class="au-display-lg" id="social-channels">
+  <b>Social channels (optional)</b>
+</h2>
+<br>
+<p>
+  <b>LinkedIn URL</b>
 </p>
 <p>
-  Provide a LinkedIn URL beginning with http://
+  Provide a LinkedIn URL beginning with http:// or https://
 </p>
 <p>
   {{dds/text-input
@@ -69,51 +97,79 @@
     adminFeedback=form.feedbacks.linkedin_url
   }} 
 </p>
-
-<hr class="light">
-<h2 class="au-display-lg" id="awards-accreditations">
-  <b>Awards and accreditations</b>
-</h2>
+<br>
 <p>
-  This information will appear on your supplier profile and is available publicly.
+  <b>Facebook URL</b>
 </p>
 <p>
-  This is your opportunity to share some of the things you are proud of. All questions are optional but can help your business attract potential buyers. If you're a start-up you can also list achievements from past roles or business ventures.
-</p>
-<hr class="light">
-<p>
-  <b>Accreditations (optional)</b>
+  Provide a Facebook URL beginning with http:// or https://
 </p>
 <p>
-  Add the name of an accrediting authority and an accreditation, that will be of value to a buyer. Membership of government schemes and panels are not considered accreditations.
+  {{dds/text-input
+    field=(mut form.facebook_url)
+    noLabel=true
+    wide=true
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'facebook_url' 'isInvalid')
+    errorMessage=(v-get form 'facebook_url' 'message')
+    adminFeedback=form.feedbacks.facebook_url
+  }} 
 </p>
 <br>
-{{seller-form/multi-text
-  field=(mut form.accreditations)
-  adminFeedback=form.feedbacks.accreditations
-}}
-<hr class="light">
 <p>
-  <b>Industry engagement (optional)</b>
+  <b>Youtube URL</b>
 </p>
 <p>
-  Are you involved in any industry boards, committees or groups?
-</p>
-<br>
-{{seller-form/multi-text
-  field=(mut form.engagements)
-  adminFeedback=form.feedbacks.engagements
-}}
-<hr class="light">
-<p>
-  <b>Awards (optional)</b>
+  Provide a Youtube URL beginning with http:// or https://
 </p>
 <p>
-  Add the name of an award and sponsor, that will be of relevance to a buyer.
+  {{dds/text-input
+    field=(mut form.youtube_url)
+    noLabel=true
+    wide=true
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'youtube_url' 'isInvalid')
+    errorMessage=(v-get form 'youtube_url' 'message')
+    adminFeedback=form.feedbacks.youtube_url
+  }} 
 </p>
 <br>
-{{seller-form/multi-text
-  field=(mut form.awards)
-  adminFeedback=form.feedbacks.awards
-}}
+<p>
+  <b>Twitter URL</b>
+</p>
+<p>
+  Provide a Twitter URL beginning with http:// or https://
+</p>
+<p>
+  {{dds/text-input
+    field=(mut form.twitter_url)
+    noLabel=true
+    wide=true
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'twitter_url' 'isInvalid')
+    errorMessage=(v-get form 'twitter_url' 'message')
+    adminFeedback=form.feedbacks.twitter_url
+  }} 
+</p>
+<br>
+<p>
+  <b>Instagram URL</b>
+</p>
+<p>
+  Provide a Instagram URL beginning with http:// or https://
+</p>
+<p>
+  {{dds/text-input
+    field=(mut form.instagram_url)
+    noLabel=true
+    wide=true
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'instagram_url' 'isInvalid')
+    errorMessage=(v-get form 'instagram_url' 'message')
+    adminFeedback=form.feedbacks.instagram_url
+  }} 
+</p>
+<p>
+  {{dds/top-link}}
+</p>
 <hr class="light">

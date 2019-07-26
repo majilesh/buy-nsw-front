@@ -8,7 +8,7 @@
 <div class="cool-infobox">
   {{fa-icon "exclamation-circle" size="2x" prefix="fal" pull="left"}}
   <span>
-    This information will appear on your supplier profile, but only to logged in buyers.
+    This information will appear on your supplier profile, but only to registered buyers.
   </span>
   <div class="clear-both"></div>
 </div>
@@ -17,7 +17,7 @@
 </p>
 <p>
   <b>
-    If you answer ‘yes’ to any question, you will not automatically be disqualified, however our assessors may contact you to request more information.
+    If you answer ‘yes’ to any question, you will not be disqualified, however our assessors may contact you to request more information.
   </b>
 </p>
 <hr class="light">
@@ -62,6 +62,51 @@
       invalid=(v-get form 'receivership_details' 'isInvalid')
       errorMessage=(v-get form 'receivership_details' 'message')
       adminFeedback=form.feedbacks.receivership_details
+    }}
+  </p>
+{{/if}}
+<hr class="light">
+<p>
+  <b>
+    Are any of your organisation’s directors or principals currently considered a discharged bankrupt?
+  </b>
+</p>
+<p>
+  {{dds/radio-group
+    items=(array
+      (hash
+        key="true"
+        label="Yes"
+      )
+      (hash
+        key="false"
+        label="No"
+      )
+    )
+    field=(mut form.bankruptcy)
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'bankruptcy' 'isInvalid')
+    errorMessage=(v-get form 'bankruptcy' 'message')
+    adminFeedback=form.feedbacks.bankruptcy
+  }}
+</p>
+{{#if (eq form.bankruptcy 'true')}}
+  <p>
+    <b>
+      Please provide details
+    </b>
+  </p>
+  <p>
+  Include specific dates, details of the legal action or procedure, and the outcomes.
+  </p>
+  <p>
+    {{dds/text-area
+      field=(mut form.bankruptcy_details)
+      maxLength=1000
+      showError=(or showError (not-eq form.status 'todo'))
+      invalid=(v-get form 'bankruptcy_details' 'isInvalid')
+      errorMessage=(v-get form 'bankruptcy_details' 'message')
+      adminFeedback=form.feedbacks.bankruptcy_details
     }}
   </p>
 {{/if}}
@@ -155,139 +200,7 @@
     }}
   </p>
 {{/if}}
-<hr class="light">
 <p>
-  <b>
-    Has your organisation made any claims on your professional indemnity, public liability, cyber, directors or fidelity insurance in the last 5 years?
-  </b>
+  {{dds/top-link}}
 </p>
-<p>
-  {{dds/radio-group
-    items=(array
-      (hash
-        key="true"
-        label="Yes"
-      )
-      (hash
-        key="false"
-        label="No"
-      )
-    )
-    field=(mut form.insurance_claims)
-    showError=(or showError (not-eq form.status 'todo'))
-    invalid=(v-get form 'insurance_claims' 'isInvalid')
-    errorMessage=(v-get form 'insurance_claims' 'message')
-    adminFeedback=form.feedbacks.insurance_claims
-  }}
-</p>
-{{#if (eq form.insurance_claims 'true')}}
-  <p>
-    <b>
-      Please provide details
-    </b>
-  </p>
-  <p>
-    Include specific dates, details of the claims, and the outcome, as well as what counter measures you have implemented.
-  </p>
-  <p>
-    {{dds/text-area
-      field=(mut form.insurance_claims_details)
-      maxLength=1000
-      showError=(or showError (not-eq form.status 'todo'))
-      invalid=(v-get form 'insurance_claims_details' 'isInvalid')
-      errorMessage=(v-get form 'insurance_claims_details' 'message')
-      adminFeedback=form.feedbacks.insurance_claims_details
-    }}
-  </p>
-{{/if}}
-<hr class="light">
-<p>
-  <b>
-    Are you aware of any potential or actual conflicts of interest that may affect your organisation's application to register or transact with NSW Government?
-  </b>
-</p>
-<p>
-  {{dds/radio-group
-    items=(array
-      (hash
-        key="true"
-        label="Yes"
-      )
-      (hash
-        key="false"
-        label="No"
-      )
-    )
-    field=(mut form.conflicts_of_interest)
-    showError=(or showError (not-eq form.status 'todo'))
-    invalid=(v-get form 'conflicts_of_interest' 'isInvalid')
-    errorMessage=(v-get form 'conflicts_of_interest' 'message')
-    adminFeedback=form.feedbacks.conflicts_of_interest
-  }}
-</p>
-{{#if (eq form.conflicts_of_interest 'true')}}
-  <p>
-    <b>
-      Please provide details
-    </b>
-  </p>
-  <p>
-    Include specific dates, details of the event and what counter measures you have implemented.
-  </p>
-  <p>
-    {{dds/text-area
-      field=(mut form.conflicts_of_interest_details)
-      maxLength=1000
-      showError=(or showError (not-eq form.status 'todo'))
-      invalid=(v-get form 'conflicts_of_interest_details' 'isInvalid')
-      errorMessage=(v-get form 'conflicts_of_interest_details' 'message')
-      adminFeedback=form.feedbacks.conflicts_of_interest_details
-    }}
-  </p>
-{{/if}}
-<hr class="light">
-<p>
-  <b>
-    Is there anything else we should know that may impact your ability or eligibility to sell to NSW Government?
-  </b>
-</p>
-<p>
-  {{dds/radio-group
-    items=(array
-      (hash
-        key="true"
-        label="Yes"
-      )
-      (hash
-        key="false"
-        label="No"
-      )
-    )
-    field=(mut form.other_circumstances)
-    showError=(or showError (not-eq form.status 'todo'))
-    invalid=(v-get form 'other_circumstances' 'isInvalid')
-    errorMessage=(v-get form 'other_circumstances' 'message')
-    adminFeedback=form.feedbacks.other_circumstances
-  }}
-</p>
-{{#if (eq form.other_circumstances 'true')}}
-  <p>
-    <b>
-      Please provide details
-    </b>
-  </p>
-  <p>
-    Include specific dates, details of the event and what counter measures you have implemented.
-  </p>
-  <p>
-    {{dds/text-area
-      field=(mut form.other_circumstances_details)
-      maxLength=1000
-      showError=(or showError (not-eq form.status 'todo'))
-      invalid=(v-get form 'other_circumstances_details' 'isInvalid')
-      errorMessage=(v-get form 'other_circumstances_details' 'message')
-      adminFeedback=form.feedbacks.other_circumstances_details
-    }}
-  </p>
-{{/if}}
 <hr class="light">

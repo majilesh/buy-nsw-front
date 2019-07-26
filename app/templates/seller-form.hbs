@@ -19,6 +19,9 @@
               (hash route="seller-form" step="company-type"
                status=this.model.steps.company_type.status
                title="Company type and business identifiers")
+              (hash route="seller-form" step="product-category"
+               status=this.model.steps.product_category.status
+               title="Products and services")
             )
           )
           (hash route="seller-form" status="todo" step="legal-disclosure" title="Disclosures"
@@ -26,22 +29,31 @@
               (hash route="seller-form" step="legal-disclosure"
                status=this.model.steps.legal_disclosure.status
                title="Legal disclosures")
-              (hash route="seller-form" step="financial-statement"
-               status=this.model.steps.financial_statement.status
-               title="Financial statements")
+              (hash route="seller-form" step="insurance-and-financial-document"
+               optional=true
+               status=this.model.steps.insurance_and_financial_document.status
+               title="Insurance and financial documents")
             )
           )
-          (hash route="seller-form" step="insurance"
-           status=this.model.steps.insurance.status
-           optional=true
-           title="Insurances")
-          (hash route="seller-form" step="company-profile"
-           status=this.model.steps.company_profile.status
-           optional=true
-           title="Company profile")
+          (hash route="seller-form" status="todo" step="company-profile" title="Company profile"
+            subItems=(array
+              (hash route="seller-form" step="company-profile"
+               status=this.model.steps.company_profile.status
+               optional=true
+               title="Company description and website")
+              (hash route="seller-form" step="accreditation-and-license"
+               status=this.model.steps.accreditation_and_license.status
+               optional=true
+               title="Accreditations and licenses")
+              (hash route="seller-form" step="membership-and-award"
+               status=this.model.steps.membership_and_award.status
+               optional=true
+               title="Membership and awards")
+            )
+          )
           (hash route="seller-form" step="complete-application"
            status=this.model.steps.complete_application.status
-           title="Complete application")
+           title="Complete and submit")
         )
       }}
       <br>

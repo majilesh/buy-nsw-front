@@ -1,0 +1,70 @@
+<h2 class="au-display-xl underline-light">
+  <b>Accreditations and licenses</b>
+</h2>
+<br>
+<br>
+{{dds/inpage-nav
+  sections=(array
+    (hash name="Accreditations and supporting documents" anchor="accreditations")
+    (hash name="Licenses and supporting documents" anchor="licenses")
+  )
+}}
+<div class="cool-infobox">
+  {{fa-icon "exclamation-circle" size="2x" prefix="fal" pull="left"}}
+  <span>
+    Providing this information is optional, but will display publicly on your profile and will help users find you.
+    <br><br>
+    This information will appear on your supplier profile and is available publicly.
+  </span>
+  <div class="clear-both"></div>
+</div>
+<p>
+  This is your opportunity to share some of the things you are proud of. All questions are optional but can help your business attract potential buyers. If you're a start-up you can also list achievements from past roles or business ventures.
+</p>
+<hr class="light">
+<h2 class="au-display-lg" id="accreditations">
+  <b>Accreditations and supporting documents</b>
+</h2>
+<p>
+  List relevant accreditations awarded by an accredited certification body. Add the name of accrediting authorities and accreditations, that will be of value to a buyer. Membership of government schemes and panels are not considered accreditations.
+</p>
+<br>
+{{seller-form/multi-text
+  field=(mut form.accreditations)
+  adminFeedback=form.feedbacks.accreditations
+}}
+{{dds/file-upload
+  name="accreditation_document"
+  field=(mut form.accreditation_document_ids)
+  adminFeedback=form.feedbacks.accreditation_document_ids
+  showError=(or showError (not-eq form.status 'todo'))
+  invalid=(v-get form 'accreditation_document_ids' 'isInvalid')
+  errorMessage=(v-get form 'accreditation_document_ids' 'message')
+}}
+<p>
+  {{dds/top-link}}
+</p>
+<hr class="light">
+<h2 class="au-display-lg" id="licenses">
+  <b>Licenses and supporting documents</b>
+</h2>
+<p>
+  List relevant licenses awarded by a licensing authority. Add the name of licensing authority and title of your certificate.
+</p>
+<br>
+{{seller-form/multi-text
+  field=(mut form.licenses)
+  adminFeedback=form.feedbacks.licenses
+}}
+{{dds/file-upload
+  name="license_document"
+  field=(mut form.license_document_ids)
+  adminFeedback=form.feedbacks.license_document_ids
+  showError=(or showError (not-eq form.status 'todo'))
+  invalid=(v-get form 'license_document_ids' 'isInvalid')
+  errorMessage=(v-get form 'license_document_ids' 'message')
+}}
+<p>
+  {{dds/top-link}}
+</p>
+<hr class="light">

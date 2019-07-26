@@ -134,6 +134,8 @@
     </p>
   {{/supplier-application-section}}
 
+  <br>
+
   {{#supplier-application-section
     title="Disclosures"
     first_form="legal-disclosure"
@@ -141,7 +143,7 @@
     steps=this.model.steps
     forms=(array
       (hash key='legal_disclosure' name='Legal disclosures')
-      (hash key='financial_statement' name='Financial statements')
+      (hash key='insurance_and_financial_document' name='Insurance and financial documents')
     )
   }}
     <div class="col-md-18">
@@ -149,6 +151,9 @@
       <p>
         <ul>
           <li>Legal disclosures</li>
+          <li>Professional indemnity and public liability insurance</li>
+          <li>Product liability insurance</li>
+          <li>Workers' compensation insurance</li>
           <li>Financial statements</li>
         </ul>
       </p>
@@ -166,39 +171,12 @@
           <li>and notes to the financial statements</li>
         </ul>
       </p>
+      <p>A certificate of currency fo each respective insurance</p>
     </div>
     <div class="clear-both"></div>
   {{/supplier-application-section}}
 
-  {{#supplier-application-section
-    title="Insurances"
-    first_form="insurance"
-    seller=this.model.seller
-    steps=this.model.steps
-    forms=(array
-      (hash key='insurance' name='Insurances')
-    )
-  }}
-    <div class="col-md-18">
-      <p><b>Information we will ask for:</b></p>
-      <p>
-        <ul>
-          <li>Professional indemnity and public liability insurance</li>
-          <li>Workers' compensation insurance</li>
-        </ul>
-      </p>
-      <br>
-    </div>
-    <div class="col-md-18">
-      <p><b>Documentation we will ask for:</b></p>
-      <p>
-        <ul>
-          <li>A certificate of currency fo each respective insurance</li>
-        </ul>
-      </p>
-    </div>
-    <div class="clear-both"></div>
-  {{/supplier-application-section}}
+  <br>
 
   {{#supplier-application-section
     title="Company profile"
@@ -218,16 +196,18 @@
       </ul>
     </p>
   {{/supplier-application-section}}
-  {{#supplier-application-section
-    title="Complete application"
+
+  <br>
+
+  {{supplier-application-section
+    title="Complete and submit"
     first_form="complete-application"
     seller=this.model.seller
     steps=this.model.steps
     forms=(array
-      (hash key='complete_application' name='Complete application')
+      (hash key='complete_application' name='Complete and submit')
     )
   }}
-  {{/supplier-application-section}}
   <p>
     <span class="float-left">
       {{dds/tertiary-button

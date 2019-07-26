@@ -1,0 +1,51 @@
+<h2 class="au-display-xl underline-light">
+  <b>Membership and awards</b>
+</h2>
+<br>
+<br>
+{{dds/inpage-nav
+  sections=(array
+    (hash name="Memberships and engagements" anchor="memberships")
+    (hash name="Awards and recognitions" anchor="awards")
+  )
+}}
+<div class="cool-infobox">
+  {{fa-icon "exclamation-circle" size="2x" prefix="fal" pull="left"}}
+  <span>This information will appear on your supplier profile and is available publicly.</span>
+  <div class="clear-both"></div>
+</div>
+<p>
+  This is your opportunity to share some of the things you are proud of. All questions are optional but can help your business attract potential buyers. If you're a start-up you can also list achievements from past roles or business ventures.
+</p>
+<hr class="light">
+<h3 class="au-display-md" id="memberships">
+  <b>Memberships and engagements</b>
+</h3>
+<br>
+<p>
+  Are you member of any association, industry boards, committees or groups?
+</p>
+<br>
+{{seller-form/multi-text
+  field=(mut form.engagements)
+  adminFeedback=form.feedbacks.engagements
+}}
+<p>
+  {{dds/top-link}}
+</p>
+<hr class="light">
+<h3 class="au-display-md" id="awards">
+  <b>Awards and recognitions</b>
+</h3>
+<p>
+  Add the name of an award and sponsor, that will be of relevance to a buyer.
+</p>
+<br>
+{{seller-form/multi-text
+  field=(mut form.awards)
+  adminFeedback=form.feedbacks.awards
+}}
+<p>
+  {{dds/top-link}}
+</p>
+<hr class="light">

@@ -19,7 +19,17 @@
       key-up=(action (mut hasChanged) true)
       placeholder=placeHolder
       autocomplete=(if noAutoComplete "new-password" "true")
+      maxlength=maxLength
     }}
+    {{#if maxLength}}
+      <p class="gray">
+        {{sub maxLength (if field (get field "length") 0)}} characters remaining
+      </p>
+    {{/if}}
+    {{#if (and required (or (eq field "") (eq field null)))}}
+      <span class="field-error error float-left">This field is required</span>
+      <div class="clear-both"></div>
+    {{/if}}
     {{#if (and (not disabled) (and (or showError hasChanged) invalid))}}
       {{#unless wide}}
         <br>

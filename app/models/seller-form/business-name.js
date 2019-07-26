@@ -1,5 +1,17 @@
 import DS from 'ember-data';
 import { buildValidations, validator } from 'ember-cp-validations';
+import moment from 'moment';
+
+function dateValid(date) {
+  return date != "" && date != undefined &&
+         date.match(/^\d{4}-\d{1,2}-\d{1,2}$/) != null &&
+         moment.parseZone(date, 'YYYY-MM-DD').isValid();
+}
+
+function dateInRange(date) {
+    let m = moment.parseZone(date, 'YYYY-MM-DD');
+    return m.isBetween('1800-01-01', moment().format('YYYY-MM-DD'));
+}
 
 const Validations = buildValidations({
   name: {
@@ -31,6 +43,24 @@ const Validations = buildValidations({
       }),
     ]
   },
+  establishment_date: {
+    validators: [
+      validator('inline', {
+        message: 'Please enter a valid establishmeny date',
+        validate(value, options, model, attributes) {
+          return dateValid(value) ||
+                 options.message;
+        }
+      }),
+      validator('inline', {
+        message: 'Establishment date can not be later than today',
+        validate(value, options, model, attributes) {
+          return dateValid(value) && dateInRange(value) ||
+                 options.message;
+        }
+      }),
+    ]
+  },
 });
 
 export default DS.Model.extend(Validations, {
@@ -38,4 +68,5 @@ export default DS.Model.extend(Validations, {
   feedbacks: DS.attr('json'),
   name: DS.attr('string'),
   abn: DS.attr('string'),
+  establishment_date: DS.attr('string'),
 });

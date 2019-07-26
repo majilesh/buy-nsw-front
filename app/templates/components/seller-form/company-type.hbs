@@ -1,9 +1,17 @@
 <h2 class="au-display-xl underline-light">
-  <b>Company details</b>
+  <b>Company type and business identifiers</b>
 </h2>
 <br>
-<h2 class="au-display-lg">
-  <b>Contact details</b>
+<br>
+{{dds/inpage-nav
+  sections=(array
+    (hash name="Company type and size" anchor="company-type")
+    (hash name="Business identifiers" anchor="business-identifiers")
+  )
+}}
+<hr class="light">
+<h2 class="au-display-lg" id="company-type">
+  <b>Company type and size</b>
 </h2>
 <div class="cool-infobox">
   {{fa-icon "exclamation-circle" size="2x" prefix="fal" pull="left"}}
@@ -23,15 +31,7 @@
   <p>
     {{dds/select-box
       field=(mut form.number_of_employees)
-      items=(array
-        (hash value="sole" label="1")
-        (hash value="2to4" label="2-4")
-        (hash value="5to19" label="5-19")
-        (hash value="20to49" label="20-49")
-        (hash value="50to99" label="50-99")
-        (hash value="100to199" label="100-199")
-        (hash value="200plus" label="More than 200 employees")
-        )
+      items=companySizeOptions
       showError=(or showError (not-eq form.status 'todo'))
       invalid=(v-get form 'number_of_employees' 'isInvalid')
       errorMessage=(v-get form 'number_of_employees' 'message')
@@ -43,6 +43,42 @@
 <p class="gray">
   * This number should match the workers compensation insurance documentation we ask you to supply in Insurances.
 </p>
+<br>
+<p>
+  <b>Number of employees in australia</b>
+</p>
+<br>
+<div class="col-sm-36 col-md-24 col-lg-15">
+  <p>
+    {{dds/select-box
+      field=(mut form.australia_employees)
+      items=companySizeOptionsAu
+      showError=(or showError (not-eq form.status 'todo'))
+      invalid=(v-get form 'australia_employees' 'isInvalid')
+      errorMessage=(v-get form 'australia_employees' 'message')
+      adminFeedback=form.feedbacks.australia_employees
+    }}
+  </p>
+</div>
+<div class="clear-both"></div>
+<br>
+<p>
+  <b>Number of employees in NSW</b>
+</p>
+<br>
+<div class="col-sm-36 col-md-24 col-lg-15">
+  <p>
+    {{dds/select-box
+      field=(mut form.nsw_employees)
+      items=companySizeOptionsNsw
+      showError=(or showError (not-eq form.status 'todo'))
+      invalid=(v-get form 'nsw_employees' 'isInvalid')
+      errorMessage=(v-get form 'nsw_employees' 'message')
+      adminFeedback=form.feedbacks.nsw_employees
+    }}
+  </p>
+</div>
+<div class="clear-both"></div>
 <hr class="light">
 <p>
   <b>Corporate structure</b>
@@ -66,8 +102,69 @@
     adminFeedback=form.feedbacks.corporate_structure
   }}
 </p>
+<br>
+<p>
+  <b>Business structure</b>
+</p>
+<p>
+  {{dds/radio-group
+    items=(array
+      (hash
+        key="sole-trader"
+        label="Sole trader"
+      )
+      (hash
+        key="company"
+        label="Company"
+      )
+      (hash
+        key="partnership"
+        label="Partnership"
+      )
+      (hash
+        key="trust"
+        label="Trust"
+      )
+    )
+    field=(mut form.business_structure)
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'business_structure' 'isInvalid')
+    errorMessage=(v-get form 'business_structure' 'message')
+    adminFeedback=form.feedbacks.business_structure
+  }}
+</p>
+<p>
+  <b>Annual turnover</b>
+</p>
+<p>
+  Your aggregated turnover including all ordinary income you earned in the ordinary course of running a business for last financial year.
+</p>
+<div class="col-sm-36 col-md-24 col-lg-15">
+  <br>
+  <p>
+    {{dds/select-box
+      field=(mut form.annual_turnover)
+      items=(array
+              (hash value="under-3m" label="Under $3m")
+              (hash value="3m-10m" label="$3-10m")
+              (hash value="10m-25m" label="$10-25m")
+              (hash value="25m-50m" label="$25-50m")
+              (hash value="50m-100m" label="$50-100m")
+              (hash value="over-100m" label="Over $100m")
+            )
+      showError=(or showError (not-eq form.status 'todo'))
+      invalid=(v-get form 'annual_turnover' 'isInvalid')
+      errorMessage=(v-get form 'annual_turnover' 'message')
+      adminFeedback=form.feedbacks.annual_turnover
+    }}
+  </p>
+</div>
+<div class="clear-both"></div>
+<p>
+  {{dds/top-link}}
+</p>
 <hr class="light">
-<h2 class="au-display-lg">
+<h2 class="au-display-lg" id="business-identifiers">
   <b>Business identifiers (optional)</b>
 </h2>
 <div class="cool-infobox">
@@ -82,21 +179,21 @@
   adminFeedback=form.feedbacks.start_up
   label="Start-up"
   description="To be classified as a start-up your business must be less than 5 years old and must not be listed on any stock exchange."
+  disabled=(not form.can_be_startup)
 }}
-{{#if form.can_be_regional}}
-  {{dds/checkbox-input
-    field=(mut form.regional)
-    adminFeedback=form.feedbacks.regional
-    label="Regional"
-    description="It looks like your head office is located in regional NSW. Would you like to identify your business as a regional NSW supplier?"
-  }}
-{{/if}}
+{{dds/checkbox-input
+  field=(mut form.regional)
+  adminFeedback=form.feedbacks.regional
+  label="Regional"
+  disabled=(not form.can_be_regional)
+  description=(if form.can_be_regional "It looks like your head office is located in regional NSW. Would you like to identify your business as a regional NSW supplier?" "To be classified as NSW Regional business your head office must be in regional NSW.")
+}}
 {{dds/checkbox-input
   field=(mut form.sme)
   adminFeedback=form.feedbacks.sme
-  label="Small or medium business"
+  label="Small or medium enterprise"
   disabled=(or (eq form.corporate_structure 'subsidiary') (eq form.number_of_employees '200plus'))
-  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et."
+  description="To be classified as a small and medium enterprise (SME) your business must be Australian or New Zealand based with less than 200 full time employees."
 }}
 {{dds/checkbox-input
   field=(mut form.not_for_profit)
@@ -127,4 +224,7 @@
   label="Australian disability enterprise"
   description="To be classified as an Australian disability enterprise your business must be listed on the Australian disability enterprise register."
 }}
+<p>
+  {{dds/top-link}}
+</p>
 <hr class="light">

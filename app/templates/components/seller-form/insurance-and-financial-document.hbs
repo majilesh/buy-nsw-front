@@ -1,0 +1,156 @@
+<h2 class="au-display-xl underline-light">
+  <b>Insurances</b>
+</h2>
+<br>
+<br>
+{{dds/inpage-nav
+  sections=(array
+    (hash name="Professional indemnity and public liability insurances" anchor="professional-indemnity")
+    (hash name="Product liability insurance" anchor="product-liability")
+    (hash name="Workers' compensation insurance" anchor="workers-compensation")
+    (hash name="Financial statements" anchor="financial-statements")
+  )
+}}
+<div class="cool-infobox">
+  {{fa-icon "exclamation-circle" size="2x" prefix="fal" pull="left"}}
+  <span>
+    This information will not appear on your supplier profile and will only be made available to interested buyers upon request. When a buyer requests your documentation, we will verify with you the records we hold are complete, accurate and up-to-date.
+  </span>
+  <div class="clear-both"></div>
+</div>
+<hr class="light">
+<h2 class="au-display-lg" id="professional-indemnity">
+  <b>Professional indemnity and public liability</b>
+</h2>
+<p>
+  These documents help buyers interested in your business to understand it better, without having to ask you for more information. So make sure they're up to date. Your insurer can issue a certificate of currency.
+</p>
+{{dds/file-upload
+  name="professional_indemnity_certificate"
+  field=(mut form.professional_indemnity_certificate_ids)
+  adminFeedback=form.feedbacks.professional_indemnity_certificate_ids
+}}
+<p>
+  <b>Expiry date</b>
+  <br>
+  We'll ask you to upload a new document when this one expires.
+</p>
+<p>
+  {{dds/date-input
+    required=true
+    field=(mut form.professional_indemnity_certificate_expiry)
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'professional_indemnity_certificate_expiry' 'isInvalid')
+    errorMessage=(v-get form 'professional_indemnity_certificate_expiry' 'message')
+  }}
+</p>
+<p>
+  {{dds/top-link}}
+</p>
+<hr class="light">
+<h2 class="au-display-lg" id="product-liability">
+  <b>Product liability insurance</b>
+</h2>
+<p>
+  These documents help buyers interested in your business to understand it better, without having to ask you for more information. So make sure they're up to date. Your insurer can issue a certificate of currency.
+</p>
+{{dds/file-upload
+  name="product_liability_certificate"
+  field=(mut form.product_liability_certificate_ids)
+  adminFeedback=form.feedbacks.product_liability_certificate_ids
+}}
+<p>
+  <b>Expiry date</b>
+  <br>
+  We'll ask you to upload a new document when this one expires.
+</p>
+<p>
+  {{dds/date-input
+    required=true
+    field=(mut form.product_liability_certificate_expiry)
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'product_liability_certificate_expiry' 'isInvalid')
+    errorMessage=(v-get form 'product_liability_certificate_expiry' 'message')
+  }}
+</p>
+<p>
+  {{dds/top-link}}
+</p>
+<hr class="light">
+<h2 class="au-display-lg" id="workers-compensation">
+  <b>Workers’ compensation insurance</b>
+</h2>
+<p>
+  Your workers’ compensations insurance must cover the same number of employees as you selected in the company details section of this application. We understand there may be discrepancies, for example due to the part-time or casual nature of your employees, if so please provide details.
+</p>
+{{dds/file-upload
+  name="workers_compensation_certificate"
+  field=(mut form.workers_compensation_certificate_ids)
+  adminFeedback=form.feedbacks.workers_compensation_certificate_ids
+}}
+<p>
+  <b>Expiry date</b>
+  <br>
+  We'll ask you to upload a new document when this one expires.
+</p>
+<p>
+  {{dds/date-input
+    required=true
+    field=(mut form.workers_compensation_certificate_expiry)
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'workers_compensation_certificate_expiry' 'isInvalid')
+    errorMessage=(v-get form 'workers_compensation_certificate_expiry' 'message')
+  }}
+</p>
+<p>
+  {{dds/top-link}}
+</p>
+<hr class="light">
+<h2 class="au-display-lg" id="financial-statements">
+  <b>Financial statements</b>
+</h2>
+<p>
+  <b>What to provide</b>
+</p>
+<p>
+  Up-to-date financial statements help buyers to determine the financial stability of your organisation so that they can make an informed decision. These documents are required before a buyer is able to engage your business.
+</p>
+<p>
+  Financial statements provide detailed information about the financial performance and position of your organisation. Ideally your financial statement should include your:
+</p>
+<p>
+  <ul>
+    <li>  profit or loss statement </li>
+    <li>	balance sheet </li>
+    <li>	statement of cash flows </li>
+    <li>	statement of changes in equity </li>
+    <li>	and notes to the financial statements. </li>
+  </ul>
+</p>
+<p>
+  If you are unable to share the documents listed above, you can also ask your external accountant for a letter confirming your business can meet its debts when they're due and doesn't have any issues that could impact your ability to deliver your products or services.
+</p>
+{{dds/file-upload
+  name="financial_statement"
+  field=(mut form.financial_statement_ids)
+  adminFeedback=form.feedbacks.financial_statement_ids
+}}
+<p>
+  Please confirm the financial statements you have provided are for the most recently ended financial year or your organisation’s annual reporting period.
+</p>
+<p>
+We'll ask you to upload a new document one year from now.
+</p>
+<p>
+  {{dds/checkbox-input
+    field=(mut form.financial_statement_confirmed)
+    label="I confirm that at the time of upload the financial documents I have provided are complete, correct and up-to-date."
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'financial_statement_confirmed' 'isInvalid')
+    errorMessage=(v-get form 'financial_statement_confirmed' 'message')
+  }}
+</p>
+<p>
+  {{dds/top-link}}
+</p>
+<hr>
