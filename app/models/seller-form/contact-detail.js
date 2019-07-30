@@ -2,7 +2,16 @@ import DS from 'ember-data';
 import { buildValidations, validator } from 'ember-cp-validations';
 
 const Validations = buildValidations({
-  contact_name: {
+  contact_first_name: {
+    validators: [
+      validator('presence', true),
+      validator('format', {
+        regex: /^[a-zA-Z .]*$/,
+        message: "Please only use alphabets, space and period."
+      })
+    ]
+  },
+  contact_last_name: {
     validators: [
       validator('presence', true),
       validator('format', {
@@ -29,7 +38,16 @@ const Validations = buildValidations({
       })
     ],
   },
-  representative_name: {
+  representative_first_name: {
+    validators: [
+      validator('presence', true),
+      validator('format', {
+        regex: /^[a-zA-Z .]*$/,
+        message: "Please only use alphabets, space and period."
+      })
+    ]
+  },
+  representative_last_name: {
     validators: [
       validator('presence', true),
       validator('format', {
@@ -70,10 +88,12 @@ const Validations = buildValidations({
 export default DS.Model.extend(Validations, {
   status: DS.attr('string'),
   feedbacks: DS.attr('json'),
-  contact_name: DS.attr('string'),
+  contact_first_name: DS.attr('string'),
+  contact_last_name: DS.attr('string'),
   contact_email: DS.attr('string'),
   contact_phone: DS.attr('string'),
-  representative_name: DS.attr('string'),
+  representative_first_name: DS.attr('string'),
+  representative_last_name: DS.attr('string'),
   representative_email: DS.attr('string'),
   representative_phone: DS.attr('string'),
   representative_position: DS.attr('string'),

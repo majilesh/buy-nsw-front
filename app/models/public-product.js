@@ -8,7 +8,8 @@ export default DS.Model.extend({
   public_seller_id: DS.attr('string'),
   public_seller_name: DS.attr('string'),
 
-  contact_name: DS.attr('string'),
+  contact_first_name: DS.attr('string'),
+  contact_last_name: DS.attr('string'),
   contact_email: DS.attr('string'),
   contact_phone: DS.attr('string'),
 

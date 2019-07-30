@@ -1,122 +1,130 @@
 {{#dds/template-body}}
-  <div class="col-sm-15 col-md-12 col-lg-10">
-    <div class="progress-menu">
-      <b>Supplier application</b><br><br>
-      {{dds/progress-indicator
-        stepName=stepName
-        items=(array
-          (hash route="seller-form" step="eligibility"
-           status=this.model.steps.eligibility.status
-           title="Eligibility")
-          (hash route="seller-form" status="todo" step="business-name" title="Company details"
-            subItems=(array
-              (hash route="seller-form" step="business-name"
-               status=this.model.steps.business_name.status
-               title="Business name and ABN")
-              (hash route="seller-form" step="contact-detail"
-               status=this.model.steps.contact_detail.status
-               title="Contact details and address")
-              (hash route="seller-form" step="company-type"
-               status=this.model.steps.company_type.status
-               title="Company type and business identifiers")
-              (hash route="seller-form" step="product-category"
-               status=this.model.steps.product_category.status
-               title="Products and services")
+  <div class="row">
+    <div class="col-sm-15 col-md-12 col-lg-10">
+      <div class="progress-menu">
+        <b>Supplier application</b><br><br>
+        {{dds/progress-indicator
+          stepName=stepName
+          items=(array
+            (hash route="seller-form" step="eligibility"
+             status=this.model.steps.eligibility.status
+             title="Eligibility")
+            (hash route="seller-form" status="todo" step="business-name" title="Company details"
+              subItems=(array
+                (hash route="seller-form" step="business-name"
+                 status=this.model.steps.business_name.status
+                 title="Business name and ABN")
+                (hash route="seller-form" step="contact-detail"
+                 status=this.model.steps.contact_detail.status
+                 title="Contact details and address")
+                (hash route="seller-form" step="company-type"
+                 status=this.model.steps.company_type.status
+                 title="Company type and business identifiers")
+                (hash route="seller-form" step="product-category"
+                 status=this.model.steps.product_category.status
+                 title="Products and services")
+              )
             )
-          )
-          (hash route="seller-form" status="todo" step="legal-disclosure" title="Disclosures"
-            subItems=(array
-              (hash route="seller-form" step="legal-disclosure"
-               status=this.model.steps.legal_disclosure.status
-               title="Legal disclosures")
-              (hash route="seller-form" step="insurance-and-financial-document"
-               optional=true
-               status=this.model.steps.insurance_and_financial_document.status
-               title="Insurance and financial documents")
+            (hash route="seller-form" status="todo" step="legal-disclosure" title="Disclosures"
+              subItems=(array
+                (hash route="seller-form" step="legal-disclosure"
+                 status=this.model.steps.legal_disclosure.status
+                 title="Legal disclosures")
+                (hash route="seller-form" step="insurance-and-financial-document"
+                 optional=true
+                 status=this.model.steps.insurance_and_financial_document.status
+                 title="Insurance and financial documents")
+              )
             )
-          )
-          (hash route="seller-form" status="todo" step="company-profile" title="Company profile"
-            subItems=(array
-              (hash route="seller-form" step="company-profile"
-               status=this.model.steps.company_profile.status
-               optional=true
-               title="Company description and website")
-              (hash route="seller-form" step="accreditation-and-license"
-               status=this.model.steps.accreditation_and_license.status
-               optional=true
-               title="Accreditations and licenses")
-              (hash route="seller-form" step="membership-and-award"
-               status=this.model.steps.membership_and_award.status
-               optional=true
-               title="Membership and awards")
+            (hash route="seller-form" status="todo" step="company-profile" title="Company profile"
+              subItems=(array
+                (hash route="seller-form" step="company-profile"
+                 status=this.model.steps.company_profile.status
+                 optional=true
+                 title="Company description and website")
+                (hash route="seller-form" step="accreditation-and-license"
+                 status=this.model.steps.accreditation_and_license.status
+                 optional=true
+                 title="Accreditations and licenses")
+                (hash route="seller-form" step="membership-and-award"
+                 status=this.model.steps.membership_and_award.status
+                 optional=true
+                 title="Membership and awards")
+              )
             )
+            (hash route="seller-form" step="complete-application"
+             status=this.model.steps.complete_application.status
+             title="Complete and submit")
           )
-          (hash route="seller-form" step="complete-application"
-           status=this.model.steps.complete_application.status
-           title="Complete and submit")
+        }}
+        <br>
+        {{#link-to "team-members"}}
+          Invite a team member
+          {{fa-icon "angle-right"}}
+        {{/link-to}}
+      </div>
+    </div>
+    <div class="col-sm-1">
+    </div>
+    <div class="col-sm-20 col-md-23 col-lg-25">
+      {{ dds/bread-crumbs
+        links=(array
+          (hash name="buy.nsw" route="index")
+          (hash name="Supplier application" route="supplier-application")
+          (hash name=(humanize stepName))
         )
       }}
       <br>
-      {{#link-to "team-members"}}
-        Invite a team member
-        {{fa-icon "angle-right"}}
-      {{/link-to}}
+      {{component (concat "seller-form/" stepName)
+        form=(mut this.model.form)
+        seller=this.model.seller
+        showError=showError
+      }}
     </div>
   </div>
-  <div class="col-sm-1">
-  </div>
-  <div class="col-sm-20 col-md-23 col-lg-25">
-    {{ dds/bread-crumbs
-      links=(array
-        (hash name="buy.nsw" route="index")
-        (hash name="Supplier application" route="supplier-application")
-        (hash name=(humanize stepName))
-      )
-    }}
-    <br>
-    {{component (concat "seller-form/" stepName)
-      form=(mut this.model.form)
-      seller=this.model.seller
-      showError=showError
-    }}
-  </div>
-  <div class="clear-both"></div>
   <br>
-  <div class="col-sm-10 col-md-9 col-lg-7">
-  </div>
-  <div class="col-sm-26 col-md-27 col-lg-29">
-    {{#unless (eq stepName "eligibility")}}
-      {{#link-to "seller-form" previousStep}}
-        ← Back
-      {{/link-to}}
-    {{/unless}}
-    {{#if (eq stepName "complete-application")}}
-      <span class="pull-right">
-        {{dds/primary-button
-          onClick=(action "submit")
-          label="Submit"
-          disabled=(not submitable)
-        }}
+  <div class="row">
+    <div class="col-sm-15 col-md-12 col-lg-10">
+      {{#unless (eq stepName "eligibility")}}
+        <br>
+        <span class="float-right">
+          {{#link-to "seller-form" previousStep}}
+            ← Back
+          {{/link-to}}
+          <br>
+          <br>
+        </span>
+      {{/unless}}
+    </div>
+    <div class="col-sm-20 col-md-23 col-lg-25">
+      {{#if (eq stepName "complete-application")}}
+        <span class="pull-right">
+          {{dds/primary-button
+            onClick=(action "submit")
+            label="Submit"
+            disabled=(not submitable)
+          }}
+        </span>
+      {{else}}
+        <span class="pull-right">
+          {{dds/primary-button
+            onClick=(action "saveContinue")
+            label="Continue"
+            disabled=(v-get this.model.form 'isInvalid')
+          }}
+        </span>
+        <span class="pull-right">
+          {{dds/secondary-button
+            onClick=(action "saveExit")
+            label="Save and exit"
+          }}
+        </span>
+      {{/if}}
+      <div class="clear-both"></div>
+      <span class="float-right">
+        <br>
+        <small>All your data will be saved.</small>
       </span>
-    {{else}}
-      <span class="pull-right">
-        {{dds/primary-button
-          onClick=(action "saveContinue")
-          label="Continue"
-          disabled=(v-get this.model.form 'isInvalid')
-        }}
-      </span>
-      <span class="pull-right">
-        {{dds/secondary-button
-          onClick=(action "saveExit")
-          label="Save and exit"
-        }}
-      </span>
-    {{/if}}
-    <div class="clear-both"></div>
-    <span class="float-right">
-      <br>
-      <small>All your data will be saved.</small>
-    </span>
+    </div>
   </div>
 {{/dds/template-body}}

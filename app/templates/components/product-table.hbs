@@ -2,12 +2,10 @@
   <div id={{id}}></div>
 {{/if}}
 {{#if title}}
-  <div class="row">
-    <h2 class="au-display-lg">
-      {{title}}
-    </h2>
-    <hr class="light">
-  </div>
+  <h2 class="au-display-lg">
+    {{title}}
+  </h2>
+  <hr class="light">
 {{/if}}
 {{#each rows as |item|}}
   {{#if (and item.placeHolder (or item.hide (eq item.description null)))}}

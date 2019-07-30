@@ -49,12 +49,10 @@
       </div>
     </div>
     <div class="col-sm-24">
-      <div class="row" id="company-details">
-        <h2 class="au-display-lg">
-          Company details
-        </h2>
-        <hr class="light">
-      </div>
+      <h2 class="au-display-lg">
+        Company details
+      </h2>
+      <hr class="light">
       {{#if this.model.seller.website_url}}
         <div class="row">
           <div class="col-sm-18">
@@ -72,7 +70,7 @@
             <b>LinkedIn</b>
           </div>
           <div class="col-sm-18">
-            <a href={{this.model.seller.linkedin_url}}>{{this.model.seller.linkedin_url}}</a>
+            <a target="_blank" href={{this.model.seller.linkedin_url}}>{{this.model.seller.linkedin_url}}</a>
           </div>
         </div>
         <hr class="light">
@@ -83,7 +81,7 @@
             <b>Business contact</b>
           </div>
           <div class="col-sm-18">
-            {{this.model.seller.contact_name}}
+            {{this.model.seller.contact_first_name}} {{this.model.seller.contact_last_name}}
             <br>
             <a href="telto:{{this.model.seller.contact_phone}}">{{this.model.seller.contact_phone}}</a>
             <br>
@@ -98,7 +96,7 @@
             <b>Authorised representative</b>
           </div>
           <div class="col-sm-18">
-            {{this.model.seller.representative_name}}
+            {{this.model.seller.representative_first_name}} {{this.model.seller.representative_last_name}}
             <br>
             <a href="telto:{{this.model.seller.representative_phone}}">{{this.model.seller.representative_phone}}</a>
             <br>
@@ -125,7 +123,9 @@
             <ul class="less-left-padding">
               {{#each this.model.seller.addresses as |address|}}
                 <li>
-                  {{address.address}}<br>
+                  {{address.address}}
+                  {{address.address_2}}
+                  {{address.address_3}}<br>
                   {{address.suburb}}<br>
                   {{address.state}}, {{address.postcode}}<br>
                   {{address.country}}

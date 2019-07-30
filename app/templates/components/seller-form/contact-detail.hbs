@@ -24,20 +24,42 @@
 <p>
   This contact will display on your supplier profile and can only be seen by logged in buyers. It is the person you nominate to receive  communications from buyers and buy.nsw.
 </p>
-<p>
-  <b>Full name</b>
-</p>
-<p>
-  {{dds/text-input
-    wide=true
-    noLabel=true
-    field=(mut form.contact_name)
-    showError=(or showError (not-eq form.status 'todo'))
-    invalid=(v-get form 'contact_name' 'isInvalid')
-    errorMessage=(v-get form 'contact_name' 'message')
-    adminFeedback=form.feedbacks.contact_name
-  }}
-</p>
+<div class="row">
+  <div class="col-sm-36 col-md-24 col-lg-18 margin-top">
+    <p>
+      <b>First name</b>
+    </p>
+    <p>
+      {{dds/text-input
+        wide=true
+        allRow=true
+        noLabel=true
+        field=(mut form.contact_first_name)
+        showError=(or showError (not-eq form.status 'todo'))
+        invalid=(v-get form 'contact_first_name' 'isInvalid')
+        errorMessage=(v-get form 'contact_first_name' 'message')
+        adminFeedback=form.feedbacks.contact_first_name
+      }}
+    </p>
+  </div>
+  <div class="col-sm-36 col-md-24 col-lg-18 margin-top">
+    <p>
+      <b>Last name</b>
+    </p>
+    <p>
+      {{dds/text-input
+        wide=true
+        allRow=true
+        noLabel=true
+        field=(mut form.contact_last_name)
+        showError=(or showError (not-eq form.status 'todo'))
+        invalid=(v-get form 'contact_last_name' 'isInvalid')
+        errorMessage=(v-get form 'contact_last_name' 'message')
+        adminFeedback=form.feedbacks.contact_last_name
+      }}
+    </p>
+  </div>
+</div>
 <p>
   <b>Email address</b>
 </p>
@@ -82,72 +104,98 @@
     onChange=(action "sameClicked")
   }}
 </p>
-<div class="col-sm-36 margin-top">
-  <p>
-    <b>Full name</b>
-  </p>
-  <p>
-    {{dds/text-input
-      wide=true
-      noLabel=true
-      disabled=form.same_as_above
-      field=(mut form.representative_name)
-      showError=(or showError (not-eq form.status 'todo'))
-      invalid=(v-get form 'representative_name' 'isInvalid')
-      errorMessage=(v-get form 'representative_name' 'message')
-      adminFeedback=form.feedbacks.representative_name
-    }}
-  </p>
+<div class="row">
+  <div class="col-sm-36 col-md-24 col-lg-18 margin-top">
+    <p>
+      <b>First name</b>
+    </p>
+    <p>
+      {{dds/text-input
+        wide=true
+        allRow=true
+        noLabel=true
+        disabled=form.same_as_above
+        field=(mut form.representative_first_name)
+        showError=(or showError (not-eq form.status 'todo'))
+        invalid=(v-get form 'representative_first_name' 'isInvalid')
+        errorMessage=(v-get form 'representative_first_name' 'message')
+        adminFeedback=form.feedbacks.representative_first_name
+      }}
+    </p>
+  </div>
+  <div class="col-sm-36 col-md-24 col-lg-18 margin-top">
+    <p>
+      <b>Last name</b>
+    </p>
+    <p>
+      {{dds/text-input
+        wide=true
+        allRow=true
+        noLabel=true
+        disabled=form.same_as_above
+        field=(mut form.representative_last_name)
+        showError=(or showError (not-eq form.status 'todo'))
+        invalid=(v-get form 'representative_last_name' 'isInvalid')
+        errorMessage=(v-get form 'representative_last_name' 'message')
+        adminFeedback=form.feedbacks.representative_last_name
+      }}
+    </p>
+  </div>
 </div>
-<div class="col-sm-36 margin-top">
-  <p>
-    <b>Email address</b>
-  </p>
-  <p>
-    {{dds/text-input
-      wide=true
-      noLabel=true
-      disabled=form.same_as_above
-      field=(mut form.representative_email)
-      showError=(or showError (not-eq form.status 'todo'))
-      invalid=(v-get form 'representative_email' 'isInvalid')
-      errorMessage=(v-get form 'representative_email' 'message')
-      adminFeedback=form.feedbacks.representative_email
-    }}
-  </p>
+<div class="row">
+  <div class="col-sm-36 margin-top">
+    <p>
+      <b>Email address</b>
+    </p>
+    <p>
+      {{dds/text-input
+        wide=true
+        noLabel=true
+        disabled=form.same_as_above
+        field=(mut form.representative_email)
+        showError=(or showError (not-eq form.status 'todo'))
+        invalid=(v-get form 'representative_email' 'isInvalid')
+        errorMessage=(v-get form 'representative_email' 'message')
+        adminFeedback=form.feedbacks.representative_email
+      }}
+    </p>
+  </div>
 </div>
-<div class="col-sm-36 margin-top">
-  <p>
-    <b>Contact number</b>
-  </p>
-  <p>
-    {{dds/text-input
-      noLabel=true
-      disabled=form.same_as_above
-      field=(mut form.representative_phone)
-      showError=(or showError (not-eq form.status 'todo'))
-      invalid=(v-get form 'representative_phone' 'isInvalid')
-      errorMessage=(v-get form 'representative_phone' 'message')
-      adminFeedback=form.feedbacks.representative_phone
-    }}
-  </p>
+<div class="row">
+  <div class="col-sm-36 margin-top">
+    <p>
+      <b>Contact number</b>
+    </p>
+    <p>
+      {{dds/text-input
+        noLabel=true
+        disabled=form.same_as_above
+        field=(mut form.representative_phone)
+        showError=(or showError (not-eq form.status 'todo'))
+        invalid=(v-get form 'representative_phone' 'isInvalid')
+        errorMessage=(v-get form 'representative_phone' 'message')
+        adminFeedback=form.feedbacks.representative_phone
+      }}
+    </p>
+  </div>
 </div>
-<div class="col-sm-36 margin-top">
-  <p>
-    <b>Position in organisation</b>
-  </p>
-  <p>
-    {{dds/text-input
-      noLabel=true
-      field=(mut form.representative_position)
-      showError=(or showError (not-eq form.status 'todo'))
-      invalid=(v-get form 'representative_position' 'isInvalid')
-      errorMessage=(v-get form 'representative_position' 'message')
-      adminFeedback=form.feedbacks.representative_position
-    }}
-  </p>
+<div class="row">
+  <div class="col-sm-36 margin-top">
+    <p>
+      <b>Position in organisation</b>
+    </p>
+    <p>
+      {{dds/text-input
+        noLabel=true
+        field=(mut form.representative_position)
+        showError=(or showError (not-eq form.status 'todo'))
+        invalid=(v-get form 'representative_position' 'isInvalid')
+        errorMessage=(v-get form 'representative_position' 'message')
+        adminFeedback=form.feedbacks.representative_position
+      }}
+    </p>
+  </div>
 </div>
-<div class="clear-both"></div>
 <p>
   {{dds/top-link}}
 </p>
@@ -165,84 +213,101 @@
   This is the business address of your head office.
 </p>
 {{#each form.addresses as |address index|}}
-  <div class="col-sm-36 margin-top">
-    <p>
-      <b>Business address</b>
-    </p>
-    <p>
-      {{dds/text-input
-        wide=true
-        noLabel=true
-        field=(mut address.address)
-        required=true
-      }}
-    </p>
+  <div class="row">
+    <div class="col-sm-36 margin-top">
+      <p>
+        <b>Business address</b>
+      </p>
+      <p>
+        {{dds/text-input
+          wide=true
+          noLabel=true
+          field=(mut address.address)
+          required=true
+        }}
+      </p>
+      <p>
+        {{dds/text-input
+          wide=true
+          noLabel=true
+          field=(mut address.address_2)
+        }}
+      </p>
+      <p>
+        {{dds/text-input
+          wide=true
+          noLabel=true
+          field=(mut address.address_3)
+        }}
+      </p>
+    </div>
   </div>
-  <div class="clear-both"></div>
-  <div class="col-sm-36 col-md-24 col-lg-21 margin-top">
-    <p>
-      <b>Suburb or city</b>
-    </p>
-    <p>
-      {{dds/text-input
-        wide=true
-        allRow=true
-        noLabel=true
-        field=(mut address.suburb)
-        required=true
-      }}
-    </p>
+  <div class="row">
+    <div class="col-sm-36 col-md-24 col-lg-21 margin-top">
+      <p>
+        <b>Suburb or city</b>
+      </p>
+      <p>
+        {{dds/text-input
+          wide=true
+          allRow=true
+          noLabel=true
+          field=(mut address.suburb)
+          required=true
+        }}
+      </p>
+    </div>
+    <div class="col-sm-36 col-md-24 col-lg-9 margin-top">
+      <p>
+        <b>Postcode or ZIP</b>
+      </p>
+      <p>
+        {{dds/text-input
+          wide=true
+          allRow=true
+          noLabel=true
+          field=(mut address.postcode)
+          required=true
+        }}
+      </p>
+    </div>
   </div>
-  <div class="col-sm-36 col-md-24 col-lg-9 margin-top">
-    <p>
-      <b>Postcode or ZIP</b>
-    </p>
-    <p>
-      {{dds/text-input
-        wide=true
-        allRow=true
-        noLabel=true
-        field=(mut address.postcode)
-        required=true
-      }}
-    </p>
+  <div class="row">
+    <div class="col-sm-36 col-md-24 col-lg-12 margin-top">
+      <p>
+        <b>State or territory</b>
+      </p>
+      <p>
+        {{dds/select-box
+          field=(mut address.state)
+          items=(array
+            (hash value="nsw" label="New South Wales")
+            (hash value="act" label="Australian Capital Territory")
+            (hash value="nt" label="Northern Territory")
+            (hash value="qld" label="Queensland")
+            (hash value="sa" label="South Australia")
+            (hash value="tas" label="Tasmania")
+            (hash value="vic" label="Victoria")
+            (hash value="wa" label="Western Australia")
+            (hash value="outside_au" label="Outside Australia")
+          )
+          required=true
+        }}
+      </p>
+    </div>
+    <div class="col-sm-36 col-md-24 col-lg-18 margin-top">
+      <p>
+        <b>Country</b>
+      </p>
+      <p>
+        {{dds/select-box
+          field=(mut address.country)
+          items=countries
+          required=true
+        }}
+      </p>
+    </div>
   </div>
-  <div class="clear-both"></div>
-  <div class="col-sm-36 col-md-24 col-lg-12 margin-top">
-    <p>
-      <b>State or territory</b>
-    </p>
-    <p>
-      {{dds/select-box
-        field=(mut address.state)
-        items=(array
-          (hash value="nsw" label="New South Wales")
-          (hash value="act" label="Australian Capital Territory")
-          (hash value="nt" label="Northern Territory")
-          (hash value="qld" label="Queensland")
-          (hash value="sa" label="South Australia")
-          (hash value="tas" label="Tasmania")
-          (hash value="vic" label="Victoria")
-          (hash value="wa" label="Western Australia")
-          (hash value="outside_au" label="Outside Australia")
-        )
-        required=true
-      }}
-    </p>
-  </div>
-  <div class="col-sm-36 col-md-24 col-lg-18 margin-top">
-    <p>
-      <b>Country</b>
-    </p>
-    <p>
-      {{dds/select-box
-        field=(mut address.country)
-        items=countries
-        required=true
-      }}
-    </p>
-  </div>
-  <div class="clear-both"></div>
   {{#if (gt index 0)}}
     <br>
     {{dds/tertiary-button
@@ -250,6 +315,9 @@
       onClick=(action "removeAddress" index)
     }}
   {{/if}}
+  <p>
+    {{dds/top-link}}
+  </p>
   {{#if (or (eq index 0) (lt index (dec form.addresses.length)))}}
     <hr class="light">
   {{/if}}
@@ -275,8 +343,5 @@
   <span class="field-error warning float-left">Changes requested upon your previous submission</span>
   <div class="clear-both"></div>
 {{/if}}
-<p>
-  {{dds/top-link}}
-</p>
 <hr class="light">
 <br>
