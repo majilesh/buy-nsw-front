@@ -29,6 +29,7 @@
   name="professional_indemnity_certificate"
   field=(mut form.professional_indemnity_certificate_ids)
   adminFeedback=form.feedbacks.professional_indemnity_certificate_ids
+  signal=form.signal
 }}
 <p>
   <b>Expiry date</b>
@@ -40,8 +41,8 @@
     required=true
     field=(mut form.professional_indemnity_certificate_expiry)
     showError=(or showError (not-eq form.status 'todo'))
-    invalid=(v-get form 'professional_indemnity_certificate_expiry' 'isInvalid')
-    errorMessage=(v-get form 'professional_indemnity_certificate_expiry' 'message')
+    invalid=(v-get form 'professional_indemnity_certificate_expiry_valid' 'isInvalid')
+    errorMessage=(v-get form 'professional_indemnity_certificate_expiry_valid' 'message')
   }}
 </p>
 <p>
@@ -58,6 +59,7 @@
   name="product_liability_certificate"
   field=(mut form.product_liability_certificate_ids)
   adminFeedback=form.feedbacks.product_liability_certificate_ids
+  signal=form.signal
 }}
 <p>
   <b>Expiry date</b>
@@ -69,8 +71,8 @@
     required=true
     field=(mut form.product_liability_certificate_expiry)
     showError=(or showError (not-eq form.status 'todo'))
-    invalid=(v-get form 'product_liability_certificate_expiry' 'isInvalid')
-    errorMessage=(v-get form 'product_liability_certificate_expiry' 'message')
+    invalid=(v-get form 'product_liability_certificate_expiry_valid' 'isInvalid')
+    errorMessage=(v-get form 'product_liability_certificate_expiry_valid' 'message')
   }}
 </p>
 <p>
@@ -87,6 +89,7 @@
   name="workers_compensation_certificate"
   field=(mut form.workers_compensation_certificate_ids)
   adminFeedback=form.feedbacks.workers_compensation_certificate_ids
+  signal=form.signal
 }}
 <p>
   <b>Expiry date</b>
@@ -98,8 +101,8 @@
     required=true
     field=(mut form.workers_compensation_certificate_expiry)
     showError=(or showError (not-eq form.status 'todo'))
-    invalid=(v-get form 'workers_compensation_certificate_expiry' 'isInvalid')
-    errorMessage=(v-get form 'workers_compensation_certificate_expiry' 'message')
+    invalid=(v-get form 'workers_compensation_certificate_expiry_valid' 'isInvalid')
+    errorMessage=(v-get form 'workers_compensation_certificate_expiry_valid' 'message')
   }}
 </p>
 <p>
@@ -134,20 +137,21 @@
   name="financial_statement"
   field=(mut form.financial_statement_ids)
   adminFeedback=form.feedbacks.financial_statement_ids
+  signal=form.signal
 }}
 <p>
   Please confirm the financial statements you have provided are for the most recently ended financial year or your organisation’s annual reporting period.
 </p>
 <p>
-We'll ask you to upload a new document one year from now.
+  We'll ask you to upload a new document one year from now.
 </p>
 <p>
   {{dds/checkbox-input
     field=(mut form.financial_statement_confirmed)
     label="I confirm that at the time of upload the financial documents I have provided are complete, correct and up-to-date."
     showError=(or showError (not-eq form.status 'todo'))
-    invalid=(v-get form 'financial_statement_confirmed' 'isInvalid')
-    errorMessage=(v-get form 'financial_statement_confirmed' 'message')
+    invalid=(v-get form 'financial_statement_confirmed_valid' 'isInvalid')
+    errorMessage=(v-get form 'financial_statement_confirmed_valid' 'message')
   }}
 </p>
 <p>

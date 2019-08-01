@@ -268,6 +268,7 @@
           noLabel=true
           field=(mut address.postcode)
           required=true
+          signal=form.signal
         }}
       </p>
     </div>
@@ -304,10 +305,48 @@
           field=(mut address.country)
           items=countries
           required=true
+          signal=form.signal
         }}
       </p>
     </div>
   </div>
+  {{#if (eq index 0)}}
+    <br>
+    {{#if form.headOfficeAustralia}}
+      <p>
+        <b>Corporate structure</b>
+      </p>
+      <p>
+        {{dds/radio-group
+          items=(array
+            (hash
+              key="standalone"
+              label="An Australian company that is not a subsidiary of another company"
+            )
+            (hash
+              key="subsidiary"
+              label="A locally-based company that is a subsidiary of a multinational corporation"
+            )
+          )
+          field=(mut form.corporate_structure)
+          showError=(or showError (not-eq form.status 'todo'))
+          invalid=(v-get form 'corporate_structure' 'isInvalid')
+          errorMessage=(v-get form 'corporate_structure' 'message')
+          adminFeedback=form.feedbacks.corporate_structure
+        }}
+      </p>
+    {{/if}}
+    {{#if form.headOfficeRegional}}
+      <p>
+        {{dds/checkbox-input
+          field=(mut form.regional)
+          adminFeedback=form.feedbacks.regional
+          label="Regional"
+          description=(if form.can_be_regional "It looks like your head office is located in regional NSW. Would you like to identify your business as a regional NSW supplier?" "To be classified as NSW Regional business your head office must be in regional NSW.")
+        }}
+      </p>
+    {{/if}}
+  {{/if}}
   {{#if (gt index 0)}}
     <br>
     {{dds/tertiary-button

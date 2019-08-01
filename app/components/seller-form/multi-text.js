@@ -1,23 +1,18 @@
 import Component from '@ember/component';
 
 export default Component.extend({
-   didReceiveAttrs() {
-     this._super(...arguments);
-     let field = this.get('field')
-     if(!Array.isArray(field)){
-       field = ["",""];
-     }
-     while(field.length < 2) {
-       field.pushObject('');
-       this.set('field', field);
-     }
-   },
    actions: {
      addRow() {
        this.field.pushObject('');
+       if(this.get('signal') != undefined) {
+         this.incrementProperty('signal');
+       }
      },
      removeRow(index) {
        this.field.removeAt(index);
+       if(this.get('signal') != undefined) {
+         this.incrementProperty('signal');
+       }
      }
    }
 });

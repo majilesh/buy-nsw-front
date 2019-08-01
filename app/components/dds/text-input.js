@@ -7,6 +7,9 @@ export default Component.extend({
       if (this.get('focusOut')) {
         this.focusOut();
       }
+      if(this.get('signal') != undefined) {
+        this.incrementProperty('signal');
+      }
     }
   }
 });

@@ -32,12 +32,21 @@ export default Component.extend({
     let component = this;
     this.store.findRecord('document', id).then((response) =>{
       component.documents.pushObject(response);
+      if(component.get('signal') != undefined) {
+        component.incrementProperty('signal');
+      }
     });
+    if(this.get('signal') != undefined) {
+      this.incrementProperty('signal');
+    }
   }).maxConcurrency(4).enqueue(),
   actions: {
     removeDocument(index) {
       this.set('hasChanged', true);
       this.field.removeAt(index);
+      if(this.get('signal') != undefined) {
+        this.incrementProperty('signal');
+      }
       this.documents.removeAt(index);
     },
     uploadDocument(file) {

@@ -49,7 +49,5 @@ export default DS.Model.extend(Validations, {
   australian_owned: DS.attr('boolean'),
   indigenous: DS.attr('boolean'),
   disability: DS.attr('boolean'),
-  regional: DS.attr('boolean'),
-  can_be_regional: DS.attr('boolean'),
   can_be_startup: DS.attr('boolean'),
 });

@@ -1,5 +1,6 @@
 import DS from 'ember-data';
 import { buildValidations, validator } from 'ember-cp-validations';
+import { computed } from '@ember/object';
 
 const Validations = buildValidations({
   contact_first_name: {
@@ -83,20 +84,59 @@ const Validations = buildValidations({
       })
     ]
   },
+  corporate_structure: {
+    validators: [
+      validator('presence', true),
+    ]
+  },
 });
 
 export default DS.Model.extend(Validations, {
   status: DS.attr('string'),
   feedbacks: DS.attr('json'),
+
   contact_first_name: DS.attr('string'),
   contact_last_name: DS.attr('string'),
   contact_email: DS.attr('string'),
   contact_phone: DS.attr('string'),
+
   representative_first_name: DS.attr('string'),
   representative_last_name: DS.attr('string'),
   representative_email: DS.attr('string'),
   representative_phone: DS.attr('string'),
   representative_position: DS.attr('string'),
+
   addresses: DS.attr('json'),
+  regional: DS.attr('boolean'),
+  headOfficeAustralia: computed(
+    'addresses',
+    'addresses.[]',
+    'addresses.@each.country',
+    function() {
+      let country = this.get('addresses')[0].country;
+      return country == 'AU' || country == 'NZ';
+  }),
+  headOfficeRegional: computed(
+    'addresses',
+    'addresses.[]',
+    'addresses.@each.postcode',
+    function() {
+      let postcode = parseInt(this.get('addresses')[0].postcode);
+      return this.get('addresses')[0].state == 'nsw' && Number.isInteger(postcode) && (
+        2250 <= postcode && postcode <= 2251 ||
+        2256 <= postcode && postcode <= 2263 ||
+        2311 <= postcode && postcode <= 2312 ||
+        2328 <= postcode && postcode <= 2411 ||
+        2415 == postcode ||
+        2420 <= postcode && postcode <= 2490 ||
+        2536 <= postcode && postcode <= 2551 ||
+        2575 <= postcode && postcode <= 2594 ||
+        2618 <= postcode && postcode <= 2739 ||
+        2787 <= postcode && postcode <= 2898
+      );
+  }),
+
+  corporate_structure: DS.attr('string'),
   same_as_above: DS.attr('boolean'),
+  signal: DS.attr('number', { defaultValue: 0 }),
 });

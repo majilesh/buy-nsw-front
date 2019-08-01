@@ -8,6 +8,9 @@ export default Component.extend({
       let field = this.get('field');
       field[index] = value;
       this.field.setObjects(field);
+      if(this.get('signal') != undefined) {
+        this.incrementProperty('signal');
+      }
     }
   }
 });

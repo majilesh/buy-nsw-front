@@ -1,5 +1,6 @@
 import DS from 'ember-data';
 import { buildValidations, validator } from 'ember-cp-validations';
+import { computed } from '@ember/object';
 import moment from 'moment';
 
 function dateValid(date) {
@@ -14,72 +15,42 @@ function dateInRange(date) {
 }
 
 const Validations = buildValidations({
-  professional_indemnity_certificate_expiry: {
+  professional_indemnity_certificate_expiry_valid: {
     validators: [
       validator('inline', {
         message: 'Please enter a valid expiry date',
         validate(value, options, model, attributes) {
-          return model.get('professional_indemnity_certificate_ids').length == 0 ||
-                 dateValid(value) ||
-                 options.message;
-        }
-      }),
-      validator('inline', {
-        message: 'Expiry date can not be earlier than today',
-        validate(value, options, model, attributes) {
-          return model.get('professional_indemnity_certificate_ids').length == 0 ||
-                 dateValid(value) && dateInRange(value) ||
-                 options.message;
+          return value == true || options.message;
         }
       }),
     ]
   },
-  product_liability_certificate_expiry: {
+  product_liability_certificate_expiry_valid: {
     validators: [
       validator('inline', {
         message: 'Please enter a valid expiry date',
         validate(value, options, model, attributes) {
-          return model.get('product_liability_certificate_ids').length == 0 ||
-                 dateValid(value) ||
-                 options.message;
-        }
-      }),
-      validator('inline', {
-        message: 'Expiry date can not be earlier than today',
-        validate(value, options, model, attributes) {
-          return model.get('product_liability_certificate_ids').length == 0 ||
-                 dateValid(value) && dateInRange(value) ||
-                 options.message;
+          return value == true || options.message;
         }
       }),
     ]
   },
-  workers_compensation_certificate_expiry: {
+  workers_compensation_certificate_expiry_valid: {
     validators: [
       validator('inline', {
         message: 'Please enter a valid expiry date',
         validate(value, options, model, attributes) {
-          return model.get('workers_compensation_certificate_ids').length == 0 ||
-                 dateValid(value) ||
-                 options.message;
-        }
-      }),
-      validator('inline', {
-        message: 'Expiry date can not be earlier than today',
-        validate(value, options, model, attributes) {
-          return model.get('workers_compensation_certificate_ids').length == 0 ||
-                 dateValid(value) && dateInRange(value) ||
-                 options.message;
+          return value == true || options.message;
         }
       }),
     ]
   },
-  financial_statement_confirmed: {
+  financial_statement_confirmed_valid: {
     validators: [
       validator('inline', {
         message: 'Please confirm the validity of attached documents',
         validate(value, options, model, attributes) {
-          return model.get('financial_statement_ids').length == 0 || value == true || options.message;
+          return value == true || options.message;
         }
       }),
     ]
@@ -89,14 +60,53 @@ const Validations = buildValidations({
 export default DS.Model.extend(Validations, {
   status: DS.attr('string'),
   feedbacks: DS.attr('json'),
-  professional_indemnity_certificate_ids: DS.attr('json'),
-  product_liability_certificate_ids: DS.attr('json'),
-  workers_compensation_certificate_ids: DS.attr('json'),
 
+  professional_indemnity_certificate_ids: DS.attr('json'),
   professional_indemnity_certificate_expiry: DS.attr('string'),
+  professional_indemnity_certificate_expiry_valid: computed(
+    'professional_indemnity_certificate_ids',
+    'professional_indemnity_certificate_ids.[]',
+    'professional_indemnity_certificate_expiry',
+    function() {
+      let value = this.get('professional_indemnity_certificate_expiry');
+      return this.get('professional_indemnity_certificate_ids').length == 0 ||
+             dateValid(value) && dateInRange(value);
+  }),
+
+  product_liability_certificate_ids: DS.attr('json'),
   product_liability_certificate_expiry: DS.attr('string'),
+  product_liability_certificate_expiry_valid: computed(
+    'product_liability_certificate_ids',
+    'product_liability_certificate_ids.[]',
+    'product_liability_certificate_expiry',
+    function() {
+      let value = this.get('product_liability_certificate_expiry');
+      return this.get('product_liability_certificate_ids').length == 0 ||
+             dateValid(value) && dateInRange(value);
+  }),
+
+  workers_compensation_certificate_ids: DS.attr('json'),
   workers_compensation_certificate_expiry: DS.attr('string'),
+  workers_compensation_certificate_expiry_valid: computed(
+    'workers_compensation_certificate_ids',
+    'workers_compensation_certificate_ids.[]',
+    'workers_compensation_certificate_expiry',
+    function() {
+      let value = this.get('workers_compensation_certificate_expiry');
+      return this.get('workers_compensation_certificate_ids').length == 0 ||
+             dateValid(value) && dateInRange(value);
+  }),
 
   financial_statement_ids: DS.attr('json'),
   financial_statement_confirmed: DS.attr('boolean'),
+  financial_statement_confirmed_valid: computed(
+    'financial_statement_ids',
+    'financial_statement_ids.[]',
+    'financial_statement_confirmed',
+    function() {
+      return this.get('financial_statement_ids').length == 0 ||
+             this.get('financial_statement_confirmed') == true;
+  }),
+
+  signal: DS.attr('number', { defaultValue: 0 }),
 });
