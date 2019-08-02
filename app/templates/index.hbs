@@ -26,29 +26,85 @@
         <div class="col-sm-3">
         </div>
         <div class="col-sm-18 home-top-links">
-          {{#link-to "signup" "seller"}}
-            <p class="au-callout au-callout--home-top light">
-              <div class="right-arrow">
-                {{fa-icon "chevron-right"}}
-              </div>
-              <b>Register to supply cloud products and services to NSW Government</b>
-              <br>
-              <br>
-              {{link-to "Find out more about becoming a supplier" "seller-guide"}}
-            </p>
-          {{/link-to}}
+          {{#if auth.user}}
+            {{#if auth.isSeller}}
+              {{#link-to "seller-dashboard"}}
+                <p class="au-callout au-callout--home-top light">
+                  <div class="right-arrow">
+                    {{fa-icon "chevron-right"}}
+                  </div>
+                  <b>See your dashboard to continue with your supplier registration process</b>
+                  <br>
+                  <br>
+                  {{link-to "Find out more about becoming a supplier" "seller-guide"}}
+                </p>
+              {{/link-to}}
+            {{else}}
+              <a class="pointer" onClick={{action "logout"}}>
+                <p class="au-callout au-callout--home-top light">
+                  <div class="right-arrow">
+                    {{fa-icon "chevron-right"}}
+                  </div>
+                  <b>To become a supplier you need to first logout from your buyer account</b>
+                  <br>
+                  <br>
+                  {{link-to "Find out more about becoming a buyer" "buyer-guide"}}
+                </p>
+              </a>
+            {{/if}}
+          {{else}}
+            {{#link-to "signup" "seller"}}
+              <p class="au-callout au-callout--home-top light">
+                <div class="right-arrow">
+                  {{fa-icon "chevron-right"}}
+                </div>
+                <b>Register to supply cloud products and services to NSW Government</b>
+                <br>
+                <br>
+                {{link-to "Find out more about becoming a supplier" "seller-guide"}}
+              </p>
+            {{/link-to}}
+          {{/if}}
           <br>
-          {{#link-to "signup" "buyer"}}
-            <p class="au-callout au-callout--home-top">
-              <div class="right-arrow">
-                {{fa-icon "chevron-right"}}
-              </div>
-              <b>Register to browse and buy cloud products and services for NSW Government</b>
-              <br>
-              <br>
-              {{link-to "Find out more about becoming a buyer" "buyer-guide"}}
-            </p>
-          {{/link-to}}
+          {{#if auth.user}}
+            {{#if auth.isBuyer}}
+              {{#link-to "buyer-dashboard"}}
+                <p class="au-callout au-callout--home-top">
+                  <div class="right-arrow">
+                    {{fa-icon "chevron-right"}}
+                  </div>
+                  <b>See your dashboard to continue with your buyer registration process</b>
+                  <br>
+                  <br>
+                  {{link-to "Find out more about becoming a buyer" "buyer-guide"}}
+                </p>
+              {{/link-to}}
+            {{else}}
+              <a class="pointer" onClick={{action "logout"}}>
+                <p class="au-callout au-callout--home-top">
+                  <div class="right-arrow">
+                    {{fa-icon "chevron-right"}}
+                  </div>
+                  <b>To become a buyer you need to first logout from your supplier account.</b>
+                  <br>
+                  <br>
+                  {{link-to "Find out more about becoming a buyer" "buyer-guide"}}
+                </p>
+              </a>
+            {{/if}}
+          {{else}}
+            {{#link-to "signup" "buyer"}}
+              <p class="au-callout au-callout--home-top">
+                <div class="right-arrow">
+                  {{fa-icon "chevron-right"}}
+                </div>
+                <b>Register to browse and buy cloud products and services for NSW Government</b>
+                <br>
+                <br>
+                {{link-to "Find out more about becoming a buyer" "buyer-guide"}}
+              </p>
+            {{/link-to}}
+          {{/if}}
         </div>
       </div>
     {{/dds/template-body}}
@@ -102,14 +158,16 @@
             <h6 class="au-display-lg"><b>Supply cloud products</b></h6>
             <div class="clear-both"></div>
             <hr class="light">
-            <div class="highlight">
-              {{#link-to "signup" "seller"}}
-                <b>Register to supply cloud products and services to NSW Government</b>
-              {{/link-to}}
-            </div>
-            <p>
-              Incl. cloud applications and software, hosting and infrastructure, and support services
-            </p>
+            {{#unless auth.user}}
+              <div class="highlight">
+                {{#link-to "signup" "seller"}}
+                  <b>Register to supply cloud products and services to NSW Government</b>
+                {{/link-to}}
+              </div>
+              <p>
+                Incl. cloud applications and software, hosting and infrastructure, and support services
+              </p>
+            {{/unless}}
             <br>
             <div class="highlight">
               {{#link-to "seller-guide"}}
