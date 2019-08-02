@@ -33,7 +33,7 @@
                   <div class="right-arrow">
                     {{fa-icon "chevron-right"}}
                   </div>
-                  <b>See your dashboard to continue with your supplier registration process</b>
+                  <b>Go to your dashboard to continue with your supplier registration process</b>
                   <br>
                   <br>
                   {{link-to "Find out more about becoming a supplier" "seller-guide"}}
@@ -45,10 +45,10 @@
                   <div class="right-arrow">
                     {{fa-icon "chevron-right"}}
                   </div>
-                  <b>To become a supplier you need to first logout from your buyer account</b>
+                  <b>To become a supplier you should logout from your buyer account first</b>
                   <br>
                   <br>
-                  {{link-to "Find out more about becoming a buyer" "buyer-guide"}}
+                  <a class="pointer" onClick={{action "logout"}}>Sign out</a>
                 </p>
               </a>
             {{/if}}
@@ -73,7 +73,7 @@
                   <div class="right-arrow">
                     {{fa-icon "chevron-right"}}
                   </div>
-                  <b>See your dashboard to continue with your buyer registration process</b>
+                  <b>Go to your dashboard to continue with your buyer registration process</b>
                   <br>
                   <br>
                   {{link-to "Find out more about becoming a buyer" "buyer-guide"}}
@@ -85,10 +85,10 @@
                   <div class="right-arrow">
                     {{fa-icon "chevron-right"}}
                   </div>
-                  <b>To become a buyer you need to first logout from your supplier account.</b>
+                  <b>To become a buyer you should logout from your supplier account first</b>
                   <br>
                   <br>
-                  {{link-to "Find out more about becoming a buyer" "buyer-guide"}}
+                  <a class="pointer" onClick={{action "logout"}}>Sign out</a>
                 </p>
               </a>
             {{/if}}
