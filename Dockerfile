@@ -9,6 +9,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
 COPY . /ember
 WORKDIR /ember
 RUN npm install cldr-core@29.0.0 cldr-numbers-full@29.0.0
+RUN npm install acorn@6.2.1 acorn-jsx@5.0.1
 RUN npm install || (rm -rf node_modules/*/.git/ && npm install)
 
 EXPOSE 2400
