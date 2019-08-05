@@ -5,11 +5,9 @@
       {{#unless item.hide}}
         <li>
           {{#if item.anchor}}
-            <a href="#{{item.anchor}}">
-              {{item.name}}
-            </a>
+            {{scroll-to label=item.name target=(concat "#" item.anchor) tagName="a" offset=200 duration=300 classNames="pointer"}}
           {{else}}
-            {{item-to item.name item.route}}
+            {{link-to item.name item.route}}
           {{/if}}
         </li>
         <div class="clear-both"></div>

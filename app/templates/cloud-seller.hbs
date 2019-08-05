@@ -6,7 +6,6 @@
       (hash name=this.model.seller.name)
     )
   }}
-  <span id="top"></span>
   <br>
   {{#if (not auth.user)}}
     {{#dds/call-out}}
@@ -48,7 +47,7 @@
         }}
       </div>
     </div>
-    <div class="col-sm-24">
+    <div id="company-details" class="col-sm-24">
       <h2 class="au-display-lg">
         Company details
       </h2>
@@ -136,9 +135,9 @@
         </div>
         <hr class="light">
       {{/if}}
-      <div class="back-to-top">
-        <a href="#top" class="float-right">Back to top ↑</a>
-      </div>
+      <p>
+        {{dds/top-link}}
+      </p>
       {{#if auth.user.can_buy}}
         <div class="row" id="disclosures">
           <br>
@@ -225,9 +224,9 @@
           </div>
         </div>
         <hr class="light">
-        <div class="back-to-top">
-          <a href="#top" class="float-right">Back to top ↑</a>
-        </div>
+        <p>
+          {{dds/top-link}}
+        </p>
       {{/if}}
       <div class="row" id="recognition">
         <br>
@@ -311,9 +310,9 @@
         </div>
         <hr class="light">
       {{/if}}
-      <div class="back-to-top">
-        <a href="#top" class="float-right">Back to top ↑</a>
-      </div>
+      <p>
+        {{dds/top-link}}
+      </p>
       {{#if (not (is-empty this.model.products))}}
         <div class="row" id="products">
           <br>
@@ -333,9 +332,9 @@
           </div>
           <hr class="light">
         {{/each}}
-        <div class="back-to-top">
-          <a href="#top" class="float-right">Back to top ↑</a>
-        </div>
+        <p>
+          {{dds/top-link}}
+        </p>
       {{/if}}
     </div>
   </div>
