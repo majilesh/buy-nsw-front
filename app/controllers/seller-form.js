@@ -17,7 +17,7 @@ export default Controller.extend({
   ],
   submitable: computed('model.steps', 'model.form.agreed', function() {
     return this.get('steps').every( (key) => {
-      let step = this.get('model.steps.'+key.replace('-', '_'));
+      let step = this.get('model.steps.'+key.replace(/-/g, '_'));
       return step.status == 'done' || step.optional ||
              (key == 'complete-application' && this.get('model.form.agreed'));
     });
