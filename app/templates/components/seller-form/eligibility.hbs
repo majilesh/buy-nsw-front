@@ -83,7 +83,7 @@
     errorMessage=(v-get form 'govdc' 'message')
   }}
 </p>
-{{#if (v-get form 'eligible' 'isInvalid')}}
+{{#if (and (or showError (not-eq form.status 'todo') (v-get form 'eligible' 'isInvalid')))}}
   <p>
     <span class="field-error error float-left">
       {{v-get form 'eligible' 'message'}}

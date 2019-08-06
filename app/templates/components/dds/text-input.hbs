@@ -26,7 +26,7 @@
         {{sub maxLength (if field (get field "length") 0)}} characters remaining
       </p>
     {{/if}}
-    {{#if (and required (or (eq field "") (eq field null)))}}
+    {{#if (and (or showError hasChanged) (and required (or (eq field "") (eq field null))))}}
       <span class="field-error error float-left">This field is required</span>
       <div class="clear-both"></div>
     {{/if}}
