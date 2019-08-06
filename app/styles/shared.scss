@@ -198,6 +198,7 @@ hr.light {
   border-top: 1px solid #e0e0e0;
 }
 div.sticky-nav {
+  margin-left: 10px;
   @include AU-media( sm ) {
     position: absolute;
     height: calc(100% - 500px);
