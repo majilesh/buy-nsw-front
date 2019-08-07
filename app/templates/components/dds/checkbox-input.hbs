@@ -21,9 +21,7 @@
   </p>
 {{/if}}
 {{#if (and (or showError hasChanged) invalid)}}
-  <span class="field-error error">{{errorMessage}}</span>
-  <div class="clear-both"></div>
-{{else if (and (eq adminFeedback "rejected") (not hasChanged))}}
-  <span class="field-error warning">Changes requested upon your previous submission</span>
-  <div class="clear-both"></div>
+  {{dds/validation-error type="error" message=errorMessage float="right"}}
+{{else if (and apiError (not hasChanged))}}
+  {{dds/validation-error type="warning" message=apiError float="right"}}
 {{/if}}

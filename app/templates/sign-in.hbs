@@ -45,13 +45,12 @@
         password=true
         field=(mut password)
         enter=(action "login")
+        apiError=auth.message
+        keepApiError=true
+        float="right"
       }}
         <b>Password</b>
       {{/dds/text-input}}
-      <div class="max60">
-        <span class="field-error error">{{auth.message}}</span>
-      </div>
-      <div class="clear-both"></div>
     </p>
     <p>
       <label class="au-control-input">

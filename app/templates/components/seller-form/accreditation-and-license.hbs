@@ -31,13 +31,13 @@
 <br>
 {{seller-form/multi-text
   field=(mut form.accreditations)
-  adminFeedback=form.feedbacks.accreditations
+  apiError=form.feedbacks.accreditations
   signal=form.signal
 }}
 {{dds/file-upload
   name="accreditation_document"
   field=(mut form.accreditation_document_ids)
-  adminFeedback=form.feedbacks.accreditation_document_ids
+  apiError=form.feedbacks.accreditation_document_ids
   showError=(or showError (not-eq form.status 'todo'))
   invalid=(v-get form 'accreditation_document_ids_valid' 'isInvalid')
   errorMessage=(v-get form 'accreditation_document_ids_valid' 'message')
@@ -56,13 +56,13 @@
 <br>
 {{seller-form/multi-text
   field=(mut form.licenses)
-  adminFeedback=form.feedbacks.licenses
+  apiError=form.feedbacks.licenses
   signal=form.signal
 }}
 {{dds/file-upload
   name="license_document"
   field=(mut form.license_document_ids)
-  adminFeedback=form.feedbacks.license_document_ids
+  apiError=form.feedbacks.license_document_ids
   showError=(or showError (not-eq form.status 'todo'))
   invalid=(v-get form 'license_document_ids_valid' 'isInvalid')
   errorMessage=(v-get form 'license_document_ids_valid' 'message')

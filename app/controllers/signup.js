@@ -26,7 +26,7 @@ const Validations = buildValidations({
     validators: [
       validator('confirmation', {
         on: 'password',
-        message: '{description} do not match',
+        message: '{description} does not match',
         description: 'Password confirmation'
       })
     ],

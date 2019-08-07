@@ -159,7 +159,7 @@ span.field-error {
     color: $AU-color-warning;
     border-color: $AU-color-warning;
   }
-  &.strong {
+  &.strong,&.green {
     color: $AU-color-success;
     border-color: $AU-color-success;
   }

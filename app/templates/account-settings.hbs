@@ -10,13 +10,10 @@
       field=(mut this.model.email)
       enter=(action "submit")
       focusOut=(action (mut showEmailError) true)
+      invalid=(v-get this "model.email" "isInvalid")
+      errorMessage=(v-get this "model.email" "message")
+      float="right"
     }}
-    {{#if (v-get this "model.email" "isInvalid")}}
-      <div class="max60">
-        <span class="field-error error">Email address is not valid</span>
-      </div>
-      <div class="clear-both"></div>
-    {{/if}}
     <hr class="light">
     <b>Your new password</b>
     <p>
@@ -32,18 +29,15 @@
       field=(mut newPassword)
       enter=(action "submit")
     }}
-    <div class="max60">
-      {{#if (eq newPassword.length 0)}}
-        <span class="field-error blank">Password is blank</span>
-      {{else if (lt newPassword.length 8)}}
-        <span class="field-error short">Password is too short</span>
-      {{else if (lt strength 3)}}
-        <span class="field-error weak">Password is not strong enough</span>
-      {{else}}
-        <span class="field-error strong">Password is strong</span>
-      {{/if}}
-      <div class="clear-both"></div>
-    </div>
+    {{#if (eq newPassword.length 0)}}
+      {{dds/validation-error type="gray" message="Password is blank" float="right"}}
+    {{else if (lt newPassword.length 8)}}
+      {{dds/validation-error type="error" message="Password is too short" float="right"}}
+    {{else if (lt strength 3)}}
+      {{dds/validation-error type="warning" message="Password is not strong enough" float="right"}}
+    {{else}}
+      {{dds/validation-error type="green" message="Password is strong" float="right"}}
+    {{/if}}
     <br>
     <b>Confirm your new password</b>
     <br>
@@ -54,13 +48,10 @@
       noAutoComplete=true
       field=(mut confirmPassword)
       enter=(action "submit")
+      invalid=(v-get this "confirmPassword" "isInvalid")
+      errorMessage=(v-get this "confirmPassword" "message")
+      float="right"
     }}
-    {{#if (v-get this "confirmPassword" "isInvalid")}}
-      <div class="max60">
-        <span class="field-error short">Passwords don't match</span>
-      </div>
-      <div class="clear-both"></div>
-    {{/if}}
     <hr class="light">
     <b>Enter your current password</b>
     <p>We need this to confirm your changes</p>
@@ -71,13 +62,10 @@
       noAutoComplete=true
       field=(mut currentPassword)
       enter=(action "submit")
+      invalid=apiError
+      errorMessage=apiError
+      float="right"
     }}
-    {{#if apiError}}
-      <div class="max60">
-        <span class="field-error error">{{apiError}}</span>
-      </div>
-      <div class="clear-both"></div>
-    {{/if}}
     <p>
       <span class="float-right">
         {{dds/primary-button

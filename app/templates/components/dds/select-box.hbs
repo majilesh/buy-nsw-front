@@ -13,13 +13,9 @@
   {{/each}}
 </select>
 {{#if (and (or showError hasChanged) (and required (or (eq field "") (eq field null))))}}
-  <span class="field-error error float-left">This field is required</span>
-  <div class="clear-both"></div>
-{{/if}}
-{{#if (and (or showError hasChanged) invalid)}}
-  <span class="field-error error float-left">{{errorMessage}}</span>
-  <div class="clear-both"></div>
-{{else if (and (eq adminFeedback "rejected") (not hasChanged))}}
-  <span class="field-error warning float-left">Changes requested upon your previous submission</span>
-  <div class="clear-both"></div>
+  {{dds/validation-error type="error" message="This field is required" float="left"}}
+{{else if (and (or showError hasChanged) invalid)}}
+  {{dds/validation-error type="error" message=errorMessage float="left"}}
+{{else if (and apiError (not hasChanged))}}
+  {{dds/validation-error type="warning" message=apiError float="left"}}
 {{/if}}

@@ -7,14 +7,10 @@
       wide=true
       allRow=true
       field=(mut buyer.name)
-      focusOut=(action (mut showNameError) true)
+      invalid=(v-get this "buyer.name" "isInvalid")
+      errorMessage=(v-get this "buyer.name" "message")
+      float="right"
     }}
-    {{#if (and showNameError (v-get this "buyer.name" "isInvalid"))}}
-      <div class="max60">
-        <span class="field-error error">{{v-get this "buyer.name" "message"}}</span>
-      </div>
-      <div class="clear-both"></div>
-    {{/if}}
   </p>
   <p>
     <b>Organisation name</b><br>
@@ -23,14 +19,10 @@
       wide=true
       allRow=true
       field=(mut buyer.organisation)
-      focusOut=(action (mut showOrganisationError) true)
+      invalid=(v-get this "buyer.organisation" "isInvalid")
+      errorMessage=(v-get this "buyer.organisation" "message")
+      float="right"
     }}
-    {{#if (and showOrganisationError (v-get this "buyer.organisation" "isInvalid"))}}
-      <div class="max60">
-        <span class="field-error error">{{v-get this "buyer.organisation" "message"}}</span>
-      </div>
-      <div class="clear-both"></div>
-    {{/if}}
   </p>
   <hr class="light">
   <p>

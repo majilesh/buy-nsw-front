@@ -38,7 +38,7 @@
         showError=(or showError (not-eq form.status 'todo'))
         invalid=(v-get form 'contact_first_name' 'isInvalid')
         errorMessage=(v-get form 'contact_first_name' 'message')
-        adminFeedback=form.feedbacks.contact_first_name
+        apiError=form.feedbacks.contact_first_name
       }}
     </p>
   </div>
@@ -55,7 +55,7 @@
         showError=(or showError (not-eq form.status 'todo'))
         invalid=(v-get form 'contact_last_name' 'isInvalid')
         errorMessage=(v-get form 'contact_last_name' 'message')
-        adminFeedback=form.feedbacks.contact_last_name
+        apiError=form.feedbacks.contact_last_name
       }}
     </p>
   </div>
@@ -71,7 +71,7 @@
     showError=(or showError (not-eq form.status 'todo'))
     invalid=(v-get form 'contact_email' 'isInvalid')
     errorMessage=(v-get form 'contact_email' 'message')
-    adminFeedback=form.feedbacks.contact_email
+    apiError=form.feedbacks.contact_email
   }}
 </p>
 <p>
@@ -84,7 +84,7 @@
     showError=(or showError (not-eq form.status 'todo'))
     invalid=(v-get form 'contact_phone' 'isInvalid')
     errorMessage=(v-get form 'contact_phone' 'message')
-    adminFeedback=form.feedbacks.contact_phone
+    apiError=form.feedbacks.contact_phone
   }}
 </p>
 <p>
@@ -119,7 +119,7 @@
         showError=(or showError (not-eq form.status 'todo'))
         invalid=(v-get form 'representative_first_name' 'isInvalid')
         errorMessage=(v-get form 'representative_first_name' 'message')
-        adminFeedback=form.feedbacks.representative_first_name
+        apiError=form.feedbacks.representative_first_name
       }}
     </p>
   </div>
@@ -137,7 +137,7 @@
         showError=(or showError (not-eq form.status 'todo'))
         invalid=(v-get form 'representative_last_name' 'isInvalid')
         errorMessage=(v-get form 'representative_last_name' 'message')
-        adminFeedback=form.feedbacks.representative_last_name
+        apiError=form.feedbacks.representative_last_name
       }}
     </p>
   </div>
@@ -156,7 +156,7 @@
         showError=(or showError (not-eq form.status 'todo'))
         invalid=(v-get form 'representative_email' 'isInvalid')
         errorMessage=(v-get form 'representative_email' 'message')
-        adminFeedback=form.feedbacks.representative_email
+        apiError=form.feedbacks.representative_email
       }}
     </p>
   </div>
@@ -174,7 +174,7 @@
         showError=(or showError (not-eq form.status 'todo'))
         invalid=(v-get form 'representative_phone' 'isInvalid')
         errorMessage=(v-get form 'representative_phone' 'message')
-        adminFeedback=form.feedbacks.representative_phone
+        apiError=form.feedbacks.representative_phone
       }}
     </p>
   </div>
@@ -191,7 +191,7 @@
         showError=(or showError (not-eq form.status 'todo'))
         invalid=(v-get form 'representative_position' 'isInvalid')
         errorMessage=(v-get form 'representative_position' 'message')
-        adminFeedback=form.feedbacks.representative_position
+        apiError=form.feedbacks.representative_position
       }}
     </p>
   </div>
@@ -337,7 +337,7 @@
           showError=(or showError (not-eq form.status 'todo'))
           invalid=(v-get form 'corporate_structure' 'isInvalid')
           errorMessage=(v-get form 'corporate_structure' 'message')
-          adminFeedback=form.feedbacks.corporate_structure
+          apiError=form.feedbacks.corporate_structure
         }}
       </p>
     {{/if}}
@@ -345,7 +345,7 @@
       <p>
         {{dds/checkbox-input
           field=(mut form.regional)
-          adminFeedback=form.feedbacks.regional
+          apiError=form.feedbacks.regional
           label="Regional"
           description=(if form.can_be_regional "It looks like your head office is located in regional NSW. Would you like to identify your business as a regional NSW supplier?" "To be classified as NSW Regional business your head office must be in regional NSW.")
         }}
@@ -383,9 +383,8 @@
   <div class="clear-both"></div>
   <br>
 {{/if}}
-{{#if (eq form.feedbacks.addresses "rejected")}}
-  <span class="field-error warning float-left">Changes requested upon your previous submission</span>
-  <div class="clear-both"></div>
+{{#if form.feedbacks.addresses}}
+  {{dds/validation-error type="warning" message=form.feedbacks.addresses float="left"}}
 {{/if}}
 <hr class="light">
 <br>

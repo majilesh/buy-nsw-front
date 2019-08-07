@@ -16,18 +16,15 @@
         field=(mut password)
         enter=(action "submit")
       }}
-      <div class="max60">
-        {{#if (eq password.length 0)}}
-          <span class="field-error blank">Password is blank</span>
-        {{else if (lt password.length 8)}}
-          <span class="field-error short">Password is too short</span>
-        {{else if (lt strength 3)}}
-          <span class="field-error weak">Password is not strong enough</span>
-        {{else}}
-          <span class="field-error strong">Password is strong</span>
-        {{/if}}
-        <div class="clear-both"></div>
-      </div>
+      {{#if (eq password.length 0)}}
+        {{dds/validation-error float="right" type="gray" message="Password is blank"}}
+      {{else if (lt password.length 8)}}
+        {{dds/validation-error float="right" type="error" message="Password is too short"}}
+      {{else if (lt strength 3)}}
+        {{dds/validation-error float="right" type="warning" message="Password is not strong enough"}}
+      {{else}}
+        {{dds/validation-error float="right" type="green" message="Password is string"}}
+      {{/if}}
     </p>
     <br>
     <p>
@@ -40,21 +37,14 @@
         noAutoComplete=true
         field=(mut confirmPassword)
         enter=(action "submit")
-        focusOut=(action (mut showConfirmError) true)
+        invalid=(v-get this "confirmPassword" "isInvalid")
+        errorMessage=(v-get this "confirmPassword" "message")
+        float="right"
       }}
-      {{#if (and showConfirmError (v-get this "confirmPassword" "isInvalid"))}}
-        <div class="max60">
-          <span class="field-error error">Passwords don't match</span>
-        </div>
-        <div class="clear-both"></div>
-      {{/if}}
       <hr>
     </p>
     {{#if apiError}}
-      <div class="max60">
-        <span class="field-error error">{{apiError}}</span>
-      </div>
-      <div class="clear-both"></div>
+      {{dds/validation-error float="right" type="error" message=apiError}}
     {{/if}}
     <p>
       <span class="float-right">

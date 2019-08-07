@@ -14,14 +14,10 @@
       wide=true
       allRow=true
       field=(mut buyer.manager_name)
-      focusOut=(action (mut showManagerNameError) true)
+      invalid=(v-get this "buyer.manager_name" "isInvalid")
+      errorMessage=(v-get this "buyer.manager_name" "message")
+      float="right"
     }}
-    {{#if (and showManagerNameError (v-get this "buyer.manager_name" "isInvalid"))}}
-      <div class="max60">
-        <span class="field-error error">{{v-get this "buyer.manager_name" "message"}}</span>
-      </div>
-      <div class="clear-both"></div>
-    {{/if}}
   </p>
   <p>
     <b>Your manager's email</b>
@@ -29,14 +25,10 @@
       wide=true
       allRow=true
       field=(mut buyer.manager_email)
-      focusOut=(action (mut showManagerEmailError) true)
+      invalid=(v-get this "buyer.manager_email" "isInvalid")
+      errorMessage=(v-get this "buyer.manager_email" "message")
+      float="right"
     }}
-    {{#if (and showManagerEmailError (v-get this "buyer.manager_email" "isInvalid"))}}
-      <div class="max60">
-        <span class="field-error error">{{v-get this "buyer.manager_email" "message"}}</span>
-      </div>
-      <div class="clear-both"></div>
-    {{/if}}
   </p>
   <hr class="light">
   <p>

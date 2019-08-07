@@ -13,16 +13,10 @@
         allRow=true
         field=(mut this.model.order.estimatedContractValue)
         enter=(action "submit")
-        focusOut=(action (mut showValueError) true)
+        invalid=(v-get this "model.order.estimatedContractValue" "isInvalid")
+        errorMessage=(v-get this "model.order.estimatedContractValue" "message")
+        float="right"
       }}
-      {{#if (and showValueError (v-get this "model.order.estimatedContractValue" "isInvalid"))}}
-        <div class="max60">
-          <span class="field-error error">
-            Please enter a number only - no symbols, spaces or commas
-          </span>
-        </div>
-        <div class="clear-both"></div>
-      {{/if}}
     </p>
     <br>
     <p>

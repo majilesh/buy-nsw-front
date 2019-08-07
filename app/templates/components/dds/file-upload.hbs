@@ -38,9 +38,7 @@ The file should be no larger than 5MB and in PDF, PNG or JPEG format. You can up
 </p>
 <div class="clear-both"></div>
 {{#if (and (or showError hasChanged) invalid)}}
-  <span class="field-error error float-left">{{errorMessage}}</span>
-  <div class="clear-both"></div>
-{{else if (and (eq adminFeedback "rejected") (not hasChanged))}}
-  <span class="field-error warning float-left">Changes requested upon your previous submission</span>
-  <div class="clear-both"></div>
+  {{dds/validation-error type="error" message=errorMessage float="left"}}
+{{else if (and apiError (not hasChanged))}}
+  {{dds/validation-error type="warning" message=apiError float="left"}}
 {{/if}}

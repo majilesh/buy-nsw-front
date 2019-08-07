@@ -8,14 +8,10 @@
       wide=true
       allRow=true
       field=(mut buyer.application_body)
-      focusOut=(action (mut showBodyError) true)
+      invalid=(v-get this "buyer.application_body" "isInvalid")
+      errorMessage=(v-get this "buyer.application_body" "message")
+      float="right"
     }}
-    {{#if (and showBodyError (v-get this "buyer.application_body" "isInvalid"))}}
-      <div class="max60">
-        <span class="field-error error">{{v-get this "buyer.application_body" "message"}}</span>
-      </div>
-      <div class="clear-both"></div>
-    {{/if}}
   </p>
   <hr class="light">
   <p>
@@ -66,14 +62,10 @@
         wide=true
         allRow=true
         field=(mut buyer.contact_number)
-        focusOut=(action (mut showNumberError) true)
+        invalid=(v-get this "buyer.contact_number" "isInvalid")
+        errorMessage=(v-get this "buyer.contact_number" "message")
+        float="right"
       }}
-      {{#if (and showNumberError (v-get this "buyer.contact_number" "isInvalid"))}}
-        <div class="max60">
-          <span class="field-error error">{{v-get this "buyer.contact_number" "message"}}</span>
-        </div>
-        <div class="clear-both"></div>
-      {{/if}}
     </p>
   {{/if}}
   <hr class="light">

@@ -9,6 +9,7 @@ const Validations = buildValidations({
     validators: [
       validator('presence', true),
       validator('number', {
+        message: "Please enter a number only - no symbols, spaces or commas",
         allowString: true,
         integer: true
       })
