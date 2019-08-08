@@ -8,7 +8,8 @@ export default Component.extend({
     let self = this;
     this.get('forms').forEach(function(form) {
       let status = self.get('steps')[form.key].status;
-      if(status != 'done') {
+      let optional = self.get('steps')[form.key].optional;
+      if(status == 'doing' || (status == 'todo' && !optional)) {
         done = false;
       }
       if(status != 'todo') {

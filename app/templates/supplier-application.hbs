@@ -121,7 +121,7 @@
       (hash key='business_name' name='Business name and ABN')
       (hash key='contact_detail' name='Contact details')
       (hash key='company_type' name='Company type')
-      (hash key='product_category' name='Product category')
+      (hash key='product_category' name='Product category' optional=true)
     )
   }}
     <p><b>Information we will ask for:</b></p>
@@ -144,7 +144,7 @@
     steps=this.model.steps
     forms=(array
       (hash key='legal_disclosure' name='Legal disclosures')
-      (hash key='insurance_and_financial_document' name='Insurance and financial documents')
+      (hash key='insurance_and_financial_document' name='Insurance and financial documents' optional=true)
     )
   }}
     <div class="col-md-18">
@@ -186,9 +186,9 @@
     seller=this.model.seller
     steps=this.model.steps
     forms=(array
-      (hash key='company_profile' name='Company profile')
-      (hash key='accreditation_and_license' name='Accreditation and license')
-      (hash key='membership_and_award' name='Membership and award')
+      (hash key='company_profile' name='Company profile' optional=true)
+      (hash key='accreditation_and_license' name='Accreditation and license' optional=true)
+      (hash key='membership_and_award' name='Membership and award' optional=true)
     )
   }}
     <p><b>Information we will ask for:</b></p>

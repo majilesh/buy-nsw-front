@@ -2,23 +2,14 @@ import DS from 'ember-data';
 import { buildValidations, validator } from 'ember-cp-validations';
 
 const Validations = buildValidations({
-  flagship_product: {
-    validators: [
-      validator('presence', true),
-    ]
-  },
-  summary: {
-    validators: [
-      validator('presence', true),
-    ]
-  },
   website_url: {
     validators: [
-      validator('presence', true),
       validator('format', {
+        allowBlank: true,
         type: 'url'
       }),
       validator('format', {
+        allowBlank: true,
         regex: /^(http:\/\/)|(https:\/\/)/,
         message: 'URL must start with http:// or https://',
       }),
