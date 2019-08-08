@@ -43,6 +43,7 @@
     showError=(or showError (not-eq form.status 'todo'))
     invalid=(v-get form 'professional_indemnity_certificate_expiry_valid' 'isInvalid')
     errorMessage=(v-get form 'professional_indemnity_certificate_expiry_valid' 'message')
+    hasChanged=true
   }}
 </p>
 <p>
@@ -73,6 +74,7 @@
     showError=(or showError (not-eq form.status 'todo'))
     invalid=(v-get form 'product_liability_certificate_expiry_valid' 'isInvalid')
     errorMessage=(v-get form 'product_liability_certificate_expiry_valid' 'message')
+    hasChanged=true
   }}
 </p>
 <p>
@@ -103,6 +105,7 @@
     showError=(or showError (not-eq form.status 'todo'))
     invalid=(v-get form 'workers_compensation_certificate_expiry_valid' 'isInvalid')
     errorMessage=(v-get form 'workers_compensation_certificate_expiry_valid' 'message')
+    hasChanged=true
   }}
 </p>
 <p>
@@ -152,6 +155,7 @@
     showError=(or showError (not-eq form.status 'todo'))
     invalid=(v-get form 'financial_statement_confirmed_valid' 'isInvalid')
     errorMessage=(v-get form 'financial_statement_confirmed_valid' 'message')
+    hasChanged=true
   }}
 </p>
 <p>
