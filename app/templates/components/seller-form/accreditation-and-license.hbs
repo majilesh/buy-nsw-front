@@ -38,10 +38,9 @@
   name="accreditation_document"
   field=(mut form.accreditation_document_ids)
   apiError=form.feedbacks.accreditation_document_ids
-  showError=(or showError (not-eq form.status 'todo'))
+  showError=true
   invalid=(v-get form 'accreditation_document_ids_valid' 'isInvalid')
   errorMessage=(v-get form 'accreditation_document_ids_valid' 'message')
-  hasChanged=true
   signal=form.signal
 }}
 <p>
@@ -64,10 +63,9 @@
   name="license_document"
   field=(mut form.license_document_ids)
   apiError=form.feedbacks.license_document_ids
-  showError=(or showError (not-eq form.status 'todo'))
+  showError=true
   invalid=(v-get form 'license_document_ids_valid' 'isInvalid')
   errorMessage=(v-get form 'license_document_ids_valid' 'message')
-  hasChanged=true
   signal=form.signal
 }}
 <p>

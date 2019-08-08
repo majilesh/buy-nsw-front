@@ -40,10 +40,9 @@
   {{dds/date-input
     required=true
     field=(mut form.professional_indemnity_certificate_expiry)
-    showError=(or showError (not-eq form.status 'todo'))
+    showError=true
     invalid=(v-get form 'professional_indemnity_certificate_expiry_valid' 'isInvalid')
     errorMessage=(v-get form 'professional_indemnity_certificate_expiry_valid' 'message')
-    hasChanged=true
   }}
 </p>
 <p>
@@ -71,10 +70,9 @@
   {{dds/date-input
     required=true
     field=(mut form.product_liability_certificate_expiry)
-    showError=(or showError (not-eq form.status 'todo'))
+    showError=true
     invalid=(v-get form 'product_liability_certificate_expiry_valid' 'isInvalid')
     errorMessage=(v-get form 'product_liability_certificate_expiry_valid' 'message')
-    hasChanged=true
   }}
 </p>
 <p>
