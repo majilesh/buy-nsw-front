@@ -16,10 +16,10 @@ export default Component.extend({
         todo = false;
       }
     });
-    if(done) {
-      this.set('status', 'done');
-    } else if(todo) {
+    if(todo) {
       this.set('status', 'todo');
+    } else if(done) {
+      this.set('status', 'done');
     } else {
       this.set('status', 'doing');
     }

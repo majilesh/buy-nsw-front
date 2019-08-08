@@ -22,10 +22,10 @@ export default Component.extend({
             todo = false;
           }
         });
-        if(done) {
-          item.status = 'done';
-        } else if(todo) {
+        if(todo) {
           item.status = 'todo';
+        } else if(done) {
+          item.status = 'done';
         } else {
           item.status = 'doing';
         }
