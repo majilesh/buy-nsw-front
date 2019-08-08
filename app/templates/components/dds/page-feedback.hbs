@@ -1,10 +1,12 @@
 <div class="container-fluid">
   <div class="row feedback">
     <hr class="less-margin">
+    <div class="col-sm-36 col-md-3 col-lg-6">
+    </div>
     <div class="col-sm-36 col-md-30 col-lg-24">
       {{#if activated}}
         <br>
-        <h2 class="au-header__heading au-display-lg">
+        <h2 class="au-header__heading au-display-md">
           Help us improve buy.nsw
           <a class="pull-right pointer" onclick={{action "cancelFeedback"}}>
             {{fa-icon "times" prefix="fal"}}
@@ -16,7 +18,7 @@
             wide=true
             field=(mut feedback.task)
           }}
-            <b>What were you doing?</b>
+            What were you doing?
           {{/dds/text-input}}
         </p>
 
@@ -25,7 +27,7 @@
             wide=true
             field=(mut feedback.issue)
           }}
-            <b>What went wrong?</b>
+            What went wrong?
           {{/dds/text-input}}
         </p>
 
@@ -35,14 +37,17 @@
 
         <br>
         <span class="float-right">
-          {{dds/primary-button
+          {{dds/secondary-button
             wide=true
             onClick=(action "sendFeedback")
             disabled=(v-get this "isInvalid")
             label="Send feedback"
           }}
         </span>
-      {{else}}
+      {{/if}}
+    </div>
+    <div class="col-sm-36">
+      {{#unless activated}}
         {{#if feedback}}
           <b>Thank you for your feedback.</b>
         {{else}}
@@ -53,7 +58,7 @@
             Is there anything wrong with this page?
           </button>
         {{/if}}
-      {{/if}}
+      {{/unless}}
     </div>
   </div>
 </div>
