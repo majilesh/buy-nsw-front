@@ -2,8 +2,12 @@ import Component from '@ember/component';
 
 export default Component.extend({
   actions: {
+    keyUp() {
+      this.set('apiError', '');
+      this.set('hasChanged', true);
+    },
     focusOut() {
-      this.set('hasChange', true);
+      this.set('hasChanged', true);
       if (this.get('focusOut')) {
         this.focusOut();
       }

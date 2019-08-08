@@ -16,7 +16,7 @@
       pattern=pattern
       focus-out=(action "focusOut")
       enter=enter
-      key-up=(action (mut hasChanged) true)
+      key-up=(action "keyUp")
       placeholder=placeHolder
       autocomplete=(if noAutoComplete "new-password" "true")
       maxlength=maxLength
