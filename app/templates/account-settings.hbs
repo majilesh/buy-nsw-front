@@ -10,6 +10,8 @@
       field=(mut this.model.email)
       enter=(action "submit")
       focusOut=(action (mut showEmailError) true)
+      apiError=apiError.email
+      keepApiError=true
       invalid=(v-get this "model.email" "isInvalid")
       errorMessage=(v-get this "model.email" "message")
       float="right"
@@ -62,8 +64,8 @@
       noAutoComplete=true
       field=(mut currentPassword)
       enter=(action "submit")
-      invalid=apiError
-      errorMessage=apiError
+      apiError=apiError.password
+      keepApiError=true
       float="right"
     }}
     <p>

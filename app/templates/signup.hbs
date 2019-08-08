@@ -17,6 +17,8 @@
       allRow=true
       field=(mut email)
       enter=(action "submit")
+      apiError=apiError
+      keepApiError=true
       invalid=(v-get this "email" "isInvalid")
       errorMessage=(v-get this "email" "message")
       float="right"
@@ -63,9 +65,6 @@
     <hr>
   </p>
   <p>By creating an account you confirm your acceptance of the {{link-to "terms of use" "terms-of-use"}}.</p>
-  {{#if apiError}}
-    {{dds/validation-error type="error" message=apiError}}
-  {{/if}}
   <p>
     <span class="float-right">
       {{dds/primary-button
