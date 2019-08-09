@@ -76,9 +76,9 @@
   &.active {
 		border-left-color: $AU-color-foreground-action;
     span {
-      font-family: "gothambook";
+      font-family: "MontserratRegular";
     }
-    font-family: "gothambold";
+    font-family: "MontserratBold";
   }
 
 	&.au-progress-indicator__link--doing {
