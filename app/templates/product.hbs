@@ -11,8 +11,8 @@
     {{#unless this.model.underEdit}}
       <br>
       <br>
-      {{#dds/page-alert alertType="warning"}}
-        {{# if this.model.pending }}
+      {{# if this.model.pending }}
+        {{#dds/page-alert alertType="info"}}
           <h3>Product is locked for review</h3>
           <p>You have submitted entries or changes. While these are under review, you won't be able to view or edit the details of your product.</p>
           {{# if this.model.canBeWithdrawn }}
@@ -27,7 +27,23 @@
               to edit your product and submit again.
             </p>
           {{/ if }}
-        {{ else }}
+        {{/dds/page-alert}}
+      {{ else if (eq this.model.status 'live') }}
+        {{#dds/page-alert alertType="success"}}
+          <h3>Your product is currently live</h3>
+          <p>
+            To amend your product you can
+            <a
+              class="au-btn au-btn--tertiary no-padding"
+              onclick={{action "amendProduct"}}
+            >
+              start an amendment
+            </a>
+            process.
+          </p>
+        {{/dds/page-alert}}
+      {{ else }}
+        {{#dds/page-alert alertType="warning"}}
           {{#if this.model.changesRequested}}
             <p>
               Your submission was not approved by our operation officers. You can
@@ -40,23 +56,10 @@
               and submit again.
             </p>
           {{/if}}
-          {{#if (eq this.model.status 'live')}}
-            <h3>Your product is currently live</h3>
-            <p>
-              To amend your product you can
-              <a
-                class="au-btn au-btn--tertiary no-padding"
-                onclick={{action "amendProduct"}}
-              >
-                start an amendment
-              </a>
-              process.
-            </p>
-          {{/ if }}
-        {{/ if }}
-
-      {{/dds/page-alert}}
+        {{/dds/page-alert}}
+      {{/ if }}
     {{/unless}}
+
     <h3 class="au-display-lg">Add cloud products</h3>
 
     <p class="au-callout">

@@ -87,7 +87,15 @@ const Validations = buildValidations({
   corporate_structure: {
     validators: [
       validator('presence', true),
-    ]
+      validator('inline', {
+        message: 'Please select your corporate structure',
+        dependentKeys: ['corporate_structure', 'headOfficeAustralia'],
+        validate(value, options, model, attributes) {
+          return !model.headOfficeAustralia ||
+            value == 'subsidiary' || value == 'standalone' || options.message;
+        }
+      }),
+    ],
   },
 });
 

@@ -162,7 +162,7 @@
   field=(mut form.sme)
   apiError=form.feedbacks.sme
   label="Small or medium enterprise"
-  disabled=(or (eq form.corporate_structure 'overseas') (eq form.number_of_employees '200plus'))
+  disabled=(or form.overseas (eq form.number_of_employees '200plus'))
   description="To be classified as a small and medium enterprise (SME) your business must be Australian or New Zealand based with less than 200 full time employees."
 }}
 {{dds/checkbox-input

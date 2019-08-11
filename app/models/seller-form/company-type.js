@@ -17,11 +17,6 @@ const Validations = buildValidations({
       validator('presence', true),
     ]
   },
-  corporate_structure: {
-    validators: [
-      validator('presence', true),
-    ]
-  },
   business_structure: {
     validators: [
       validator('presence', true),
@@ -40,7 +35,6 @@ export default DS.Model.extend(Validations, {
   number_of_employees: DS.attr('string'),
   australia_employees: DS.attr('string'),
   nsw_employees: DS.attr('string'),
-  corporate_structure: DS.attr('string'),
   business_structure: DS.attr('string'),
   annual_turnover: DS.attr('string'),
   start_up: DS.attr('boolean'),
@@ -49,5 +43,6 @@ export default DS.Model.extend(Validations, {
   australian_owned: DS.attr('boolean'),
   indigenous: DS.attr('boolean'),
   disability: DS.attr('boolean'),
+  overseas: DS.attr('boolean'),
   can_be_startup: DS.attr('boolean'),
 });
