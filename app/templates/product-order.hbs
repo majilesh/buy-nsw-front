@@ -12,7 +12,7 @@
         wide=true
         allRow=true
         field=(mut this.model.order.estimatedContractValue)
-        enter=(action "submit")
+        enter=(if (v-get this "isValid") (action "submit"))
         invalid=(v-get this "model.order.estimatedContractValue" "isInvalid")
         errorMessage=(v-get this "model.order.estimatedContractValue" "message")
         float="right"

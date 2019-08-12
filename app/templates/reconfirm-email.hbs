@@ -8,7 +8,7 @@
       wide=true
       allRow=true
       field=(mut email)
-      enter=(action "submit")
+      enter=(if (v-get this "isValid") (action "submit"))
       apiError=apiError
       keepApiError=true
       invalid=(v-get this "email" "isInvalid")

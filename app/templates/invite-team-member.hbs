@@ -22,7 +22,7 @@
       {{#dds/text-input
         wide=true
         field=(mut this.model.email)
-        enter=(action "invite")
+        enter=(if (v-get this "isValid") (action "invite"))
         apiError=invitationErrors
         keepApiError=true
         invalid=(v-get this "model.email" "isInvalid")
@@ -36,8 +36,8 @@
     <p>
       <span class="float-right">
         {{dds/primary-button
-          onClick=(if (v-get this "model.email" "isValid") (action "invite"))
-          disabled=(v-get this "model.email" "isInvalid")
+          onClick=(action "invite")
+          disabled=(v-get this "isInvalid")
           label="Send invitation"
         }}
       </span>

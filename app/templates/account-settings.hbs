@@ -8,7 +8,7 @@
       wide=true
       allRow=true
       field=(mut this.model.email)
-      enter=(action "submit")
+      enter=(if (v-get this "isValid") (action "submit"))
       focusOut=(action (mut showEmailError) true)
       apiError=apiError.email
       keepApiError=true
@@ -29,7 +29,7 @@
       password=true
       noAutoComplete=true
       field=(mut newPassword)
-      enter=(action "submit")
+      enter=(if (v-get this "isValid") (action "submit"))
     }}
     {{#if (eq newPassword.length 0)}}
       {{dds/validation-error type="gray" message="Password is blank" float="right"}}
@@ -49,7 +49,7 @@
       password=true
       noAutoComplete=true
       field=(mut confirmPassword)
-      enter=(action "submit")
+      enter=(if (v-get this "isValid") (action "submit"))
       invalid=(v-get this "confirmPassword" "isInvalid")
       errorMessage=(v-get this "confirmPassword" "message")
       float="right"
@@ -63,7 +63,7 @@
       password=true
       noAutoComplete=true
       field=(mut currentPassword)
-      enter=(action "submit")
+      enter=(if (v-get this "isValid") (action "submit"))
       apiError=apiError.password
       keepApiError=true
       float="right"

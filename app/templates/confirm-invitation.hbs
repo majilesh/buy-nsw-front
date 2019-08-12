@@ -14,7 +14,7 @@
         password=true
         noAutoComplete=true
         field=(mut password)
-        enter=(action "submit")
+        enter=(if (v-get this "isValid") (action "submit"))
       }}
       {{#if (eq password.length 0)}}
         {{dds/validation-error float="right" type="gray" message="Password is blank"}}
@@ -36,7 +36,7 @@
         password=true
         noAutoComplete=true
         field=(mut confirmPassword)
-        enter=(action "submit")
+        enter=(if (v-get this "isValid") (action "submit"))
         invalid=(v-get this "confirmPassword" "isInvalid")
         errorMessage=(v-get this "confirmPassword" "message")
         float="right"
