@@ -1,21 +1,36 @@
 @font-face {
-	font-family: "MontserratThin";
-  src: url("/ict/fonts/Montserrat/Montserrat-Thin.ttf") format("truetype");
+  font-family: "GothamBook";
+  src: url("/ict/fonts/Gotham/Gotham-Book.eot") format("eot"),
+       url("/ict/fonts/Gotham/Gotham-Book.woff") format("woff"),
+       url("/ict/fonts/Gotham/Gotham-Book.ttf") format("truetype");
 }
 
 @font-face {
-	font-family: "MontserratRegular";
-  src: url("/ict/fonts/Montserrat/Montserrat-Regular.ttf") format("truetype");
+  font-family: "GothamBold";
+  src: url("/ict/fonts/Gotham/Gotham-Bold.eot") format("eot"),
+       url("/ict/fonts/Gotham/Gotham-Bold.woff") format("woff"),
+       url("/ict/fonts/Gotham/Gotham-Bold.ttf") format("truetype");
 }
 
 @font-face {
-	font-family: "MontserratBold";
-  src: url("/ict/fonts/Montserrat/Montserrat-Bold.ttf") format("truetype");
+  font-family: "MontserratRegular";
+  src: url("/ict/fonts/Montserrat/Montserrat-Regular.woff") format("woff"),
+       url("/ict/fonts/Montserrat/Montserrat-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "MontserratBold";
+  src: url("/ict/fonts/Montserrat/Montserrat-Bold.woff") format("woff"),
+       url("/ict/fonts/Montserrat/Montserrat-Bold.ttf") format("truetype");
 }
 
 b, strong {
   color: #333;
   font-weight: 400;
+  @-moz-document url-prefix() {
+    font-weight: lighter;
+    font-size: 96%;
+  }
   font-family: "MontserratBold";
 }
 
@@ -26,6 +41,10 @@ $AU-main-nav-breakpoint: sm;
 body {
 	padding: 0;
 	margin: 0;
+  -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  font-weight: 400;
 }
 
 
