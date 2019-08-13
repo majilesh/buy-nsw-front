@@ -176,7 +176,7 @@
 
 		> dt {
 			@include AU-space( margin-top, 1.5unit );
-			font-weight: bold;
+			font-weight: normal;
 
 			&:first-of-type {
 				margin-top: 0;
@@ -202,7 +202,8 @@
 	 */
 	strong,
 	b {
-		font-weight: bold;
+		font-weight: normal;
+    font-family: MontserratBold;
 	}
 
 

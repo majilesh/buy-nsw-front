@@ -136,7 +136,8 @@ $AU-side-nav-breakpoint: sm !default;
 
 
 	.active > span {
-		font-weight: bold;
+		font-weight: normal;
+    font-family: MontserratBold;
 		color: $AU-color-foreground-text;
 	}
 

@@ -199,7 +199,6 @@ a.au-progress-indicator__sub-item {
 	cursor: pointer;
 
   &.active {
-    font-weight: 600;
     color: $AU-color-foreground-text;
     &:before {
       background-image: AU-svguri('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">' +

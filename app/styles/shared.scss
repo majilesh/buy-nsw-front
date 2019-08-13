@@ -1,5 +1,4 @@
 .product-status {
-  font-weight: bold;
   font-family: MontserratBold;
   color: gray;
   &.live {
@@ -77,7 +76,6 @@ span.float-left, a.float-left, b.float-left {
   padding-left: 0.8rem;
   padding-top: 1.2rem;
   font-size: 0.9rem;
-  font-weight: bold;
   color: $AU-color-error;
 }
 
