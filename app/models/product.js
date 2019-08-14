@@ -3,12 +3,14 @@ import { computed } from '@ember/object';
 import { modelAction } from "ember-custom-actions";
 
 export default DS.Model.extend({
+  state: DS.attr('string'),
   name: DS.attr('string'),
   summary: DS.attr('string'),
-  state: DS.attr('string'),
   status: DS.attr('string'),
-  submitable: computed('status', 'steps', 'underEdit', function() {
-    if(this.underEdit==false) {
+  can_be_withdrawn: DS.attr('boolean'),
+  steps: DS.attr(),
+  submitable: computed('status', 'steps', function() {
+    if(!['draft','amendment_draft'].includes(this.get('status'))) {
       return false;
     }
     for (var key in this.steps) {
@@ -61,7 +63,6 @@ export default DS.Model.extend({
       deactivated: "Deactivated"
     }[this.status];
   }),
-  steps: DS.attr(),
   submit: modelAction('submit'),
   copy: modelAction('copy'),
   cancel: modelAction('cancel'),
@@ -70,7 +71,8 @@ export default DS.Model.extend({
   startAmendment: modelAction('start_amendment'),
   deactivate: modelAction('deactivate'),
   activate: modelAction('activate'),
-  validActions: computed('status', function(){
+  validActions: computed('status', 'can_be_withdrawn', function(){
+    let canBeWithdrawn = this.get('can_be_withdrawn');
     return {
       started: [],
       archived: [],
@@ -78,10 +80,12 @@ export default DS.Model.extend({
         { code: 'copy', name: 'Clone' },
         { code: 'cancel', name: 'Discard' }
       ],
-      pending_approval: [
+      pending_approval: (canBeWithdrawn ? [
         { code: 'withdraw', name: 'Withdraw Submission' },
         { code: 'copy', name: 'Clone' }
-      ],
+      ] : [
+        { code: 'copy', name: 'Clone' }
+      ]),
       changes_requested: [
         { code: 'revise', name: 'Revise' },
         { code: 'copy', name: 'Clone' }
@@ -100,11 +104,14 @@ export default DS.Model.extend({
         { code: 'deactivate', name: 'Deactivate' },
         { code: 'copy', name: 'Clone'}
       ],
-      amendment_pending: [
+      amendment_pending: (canBeWithdrawn ? [
         { code: 'withdraw', name: 'Withdraw Submission' },
         { code: 'copy', name: 'Clone' },
         { code: 'deactivate', name: 'Deactivate' }
-      ],
+      ] : [
+        { code: 'copy', name: 'Clone' },
+        { code: 'deactivate', name: 'Deactivate' }
+      ]),
       amendment_changes_requested: [
         { code: 'revise', name: 'Revise' },
         { code: 'deactivate', name: 'Deactivate' },

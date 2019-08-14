@@ -10,7 +10,6 @@ export default DS.Model.extend({
   offersCloud: DS.attr('boolean'),
   offersTelco: DS.attr('boolean'),
   canBeWithdrawn: DS.attr('boolean'),
-  steps: DS.attr(),
   declined: computed('status', function() {
     return [
       'changes_requested',
