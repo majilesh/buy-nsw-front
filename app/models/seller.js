@@ -47,6 +47,14 @@ export default DS.Model.extend({
       'amendment_draft'
     ].includes(this.status);
   }),
+  live: computed('status', function() {
+    return [
+      'live',
+      'amendment_pending',
+      'amendment_draft',
+      'amendment_changes_requested',
+    ].includes(this.status);
+  }),
   pending: computed('status', function() {
     return [
       'pending',
