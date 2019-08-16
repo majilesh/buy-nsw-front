@@ -1,6 +1,6 @@
-import Controller from '@ember/controller';
+import BaseController from './base-controller';
 import { inject } from '@ember/service';
 
-export default Controller.extend({
+export default BaseController.extend({
   auth: inject(),
 });

@@ -1,4 +1,4 @@
-import Controller from '@ember/controller';
+import BaseController from './base-controller';
 import { buildValidations, validator } from 'ember-cp-validations';
 import Ember from 'ember';
 const {$} = Ember;
@@ -16,7 +16,7 @@ const Validations = buildValidations({
   }
 });
 
-export default Controller.extend(Validations, {
+export default BaseController.extend(Validations, {
   showError: false,
   actions: {
     invite() {

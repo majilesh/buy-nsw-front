@@ -1,4 +1,4 @@
-import Controller from '@ember/controller';
+import BaseController from './base-controller';
 import { buildValidations, validator } from 'ember-cp-validations';
 import { computed } from '@ember/object';
 import { inject } from '@ember/service';
@@ -31,7 +31,7 @@ const Validations = buildValidations({
   },
 });
 
-export default Controller.extend(Validations, {
+export default BaseController.extend(Validations, {
   actions: {
     submit() {
       $('.overlay').show();

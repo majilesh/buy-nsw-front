@@ -2,11 +2,12 @@
 
 {{user-pretender}}
 
-{{dds/template-header}}
+{{dds/template-header auth=auth}}
+{{dds/main-nav auth=auth}}
 
 <main id="content">
   <div class="au-body">
-    {{#dds/template-body}}
+    {{#dds/template-body auth=auth}}
       <br>
       <div class="row">
         <div class="col-sm-15">
@@ -110,7 +111,7 @@
     {{/dds/template-body}}
   </div>
   <div class="au-body au-body--alt">
-    {{#dds/template-body}}
+    {{#dds/template-body auth=auth}}
       <div class="row">
         <div class="col-sm-12">
           <div class="home-middle-box">
@@ -181,7 +182,7 @@
     {{/dds/template-body}}
   </div>
   <div class="au-body">
-    {{#dds/template-body}}
+    {{#dds/template-body auth=auth}}
       &nbsp;
       <h6 class="au-display-xl"><b>News</b></h6>
       <br>
@@ -235,4 +236,4 @@
 </main>
 {{dds/register-newsletter}}
 
-{{dds/template-footer}}
+{{dds/template-footer auth=auth}}

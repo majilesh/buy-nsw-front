@@ -1,8 +1,8 @@
-import Controller from '@ember/controller';
+import BaseController from './base-controller';
 import { computed } from '@ember/object';
 import { inject } from '@ember/service';
 
-export default Controller.extend({
+export default BaseController.extend({
   ajax: inject(),
   auth: inject(),
   pageNum: 1,

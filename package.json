@@ -30,6 +30,7 @@
     "active-model-adapter": "^2.2.0",
     "bootstrap": "^4.3.1",
     "broccoli-asset-rev": "^3.0.0",
+    "buy-nsw-style": "git+https://github.com/digitalnsw/buy-nsw-style.git",
     "clean-css": "^4.2.1",
     "ember-ajax": "^5.0.0",
     "ember-array-contains-helper": "^2.0.0",
@@ -87,7 +88,6 @@
   },
   "ember-addon": {
     "paths": [
-      "lib/dds",
       "lib/telco"
     ]
   },

@@ -1,7 +1,7 @@
-import Controller from '@ember/controller';
+import BaseController from './base-controller';
 import { computed } from '@ember/object';
 
-export default Controller.extend({
+export default BaseController.extend({
   steps: [
     'eligibility',
     'business-name',

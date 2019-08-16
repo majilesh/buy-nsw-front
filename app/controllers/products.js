@@ -1,6 +1,6 @@
-import Controller from '@ember/controller';
+import BaseController from './base-controller';
 
-export default Controller.extend({
+export default BaseController.extend({
   pageAlertMessage: null,
   pageAlertType: null,
   actions: {

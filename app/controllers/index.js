@@ -1,8 +1,6 @@
-import Controller from '@ember/controller';
-import { inject } from '@ember/service';
+import BaseController from './base-controller';
 
-export default Controller.extend({
-  auth: inject(),
+export default BaseController.extend({
   actions: {
     logout() {
       this.get("auth").logout();
