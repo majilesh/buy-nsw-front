@@ -1,0 +1,443 @@
+{{dds/skip-link}}
+
+{{user-pretender}}
+
+{{dds/template-header auth=auth}}
+{{dds/main-nav auth=auth noBorder=true}}
+
+{{#dds/banner title="Supplier name" subline="Last update to supplier profile: 25 August 2019"}}
+  {{dds/jump-to class="on-the-edge pull-right"
+    sections=(array
+      (hash name="Licenses, accreditations and awards" anchor="licenses-accreditations")
+      (hash name="Special capabilities and expertise" anchor="special-capabilities")
+      (hash name="References and case studies" anchor="references-and-case-studies")
+      (hash name="Government credentials" anchor="government-credentials")
+      (hash name="Team members" anchor="team-members")
+      (hash name="Promotional video" anchor="promotional-video")
+    )
+  }}
+{{/dds/banner}}
+
+<main id="content">
+  <div class="au-body">
+    {{#dds/template-body auth=auth}}
+      <div class="row">
+        <div class="col-sm-17 col-md-14 col-lg-11">
+          {{#dds/simple-box theme="ice"}}
+            <h4 class="au-display-lg"> 
+              <center><b class="dark-sapphire">Company details</b></center>
+            </h4>
+            <br>
+            <p>
+              <b>Contact</b><br>
+              {{this.model.seller.contact_first_name}}
+              {{this.model.seller.contact_last_name}}
+            </p>
+            <p>
+              <b>Phone no</b><br>
+              {{this.model.seller.contact_phone}}
+            </p>
+            <p>
+              <b>ABN</b><br>
+              {{this.model.seller.abn}}
+            </p>
+            <p>
+              <b>Address</b><br>
+              {{#with this.model.seller.addresses.[0] as |address|}}
+                {{address.address}}
+                {{address.address_2}}
+                {{address.address_3}}
+                {{address.suburb}}
+                {{address.state}}
+                {{address.country}}
+                {{address.postcode}}
+              {{/with}}
+            </p>
+            <p>
+              <b>Email</b><br>
+              {{this.model.seller.contact_email}}
+            </p>
+            <p>
+              <b>Website</b><br>
+              <a target="_blank" href={{this.model.profile.website_url}}>
+                {{this.model.profile.website_url}}
+              </a>
+            </p>
+            {{#if (or (or (or 
+              this.model.profile.linkedin_url
+              this.model.profile.twitter_url)
+              this.model.profile.facebook_url)
+              this.model.profile.instagram_url)
+            }}
+              <p>
+                <b>Social media channels</b><br><br>
+                {{#if this.model.profile.linkedin_url}}
+                  <a target="_blank" href={{this.model.profile.linkedin_url}}>
+                    {{fa-icon "linkedin" size="2x" prefix="fab"}}
+                  </a>
+                {{/if}}
+                {{#if this.model.profile.twitter_url}}
+                  <a target="_blank" href={{this.model.profile.twitter_url}}>
+                    {{fa-icon "twitter" size="2x" prefix="fab"}}
+                  </a>
+                {{/if}}
+                {{#if this.model.profile.facebook_url}}
+                  <a target="_blank" href={{this.model.profile.facebook_url}}>
+                    {{fa-icon "facebook" size="2x" prefix="fab"}}
+                  </a>
+                {{/if}}
+                {{#if this.model.profile.instagram_url}}
+                  <a target="_blank" href={{this.model.profile.instagram_url}}>
+                    {{fa-icon "instagram" size="2x" prefix="fab"}}
+                  </a>
+                {{/if}}
+              </p>
+            {{/if}}
+            {{#if this.model.seller.tags}}
+              <p>
+                <b>Business identifiers</b><br>
+                {{#each this.model.seller.tags as |tag|}}
+                  {{dds/tag theme="sapphire" label=tag class="inline"}}
+                {{/each}}
+              </p>
+            {{/if}}
+          {{/dds/simple-box}}
+          <br>
+          <br>
+        </div>
+        <div class="col-sm-19 col-md-22 col-lg-25">
+          <h5 class="au-display-md">
+            <b class="dark-sapphire">About this supplier</b>
+          </h5>
+          <p>
+            {{breaklines this.model.profile.summary}}
+          </p>
+          <hr class="light">
+          {{#if this.model.seller.level_2_services}}
+            <p><b>This supplier provieds</b></p>
+            <ul>
+              {{#each this.model.seller.level_2_services as |service|}}
+                <ul>{{humanize service}}</ul>
+              {{/each}}
+            </ul>
+            <br>
+            <br>
+          {{/if}}
+          {{#if this.model.seller.documents}}
+            {{#dds/simple-box theme="sapphire"}}
+              <b>This supplier has provided the following documentation:</b><br>
+              <ul>
+                {{#each this.model.seller.documents as |document|}}
+                  <li>{{document}}</li>
+                {{/each}}
+              </ul>
+            {{/dds/simple-box}}
+          {{/if}}
+        </div>
+      </div>
+      <div>
+        {{dds/top-link}}
+      </div>
+
+      <h5 class="au-display-lg" id="licenses-accreditations">
+        <b class="dark-sapphire">Licenses, Accreditations, industry engagements and awards</b>
+      </h5>
+      <br>
+      <h5 class="au-display-md">
+        <b class="sapphire">Licenses</b>
+      </h5>
+      <p>
+        <b>Add the name of a license that will be of relevance to a buyer.</b>
+      </p>
+      {{#if this.model.profile.licenses}}
+        <ol>
+          {{#each this.model.profile.licenses as |license|}}
+            <li>{{license}}</li>
+          {{/each}}
+        </ol>
+        <br>
+        {{dds/file-download
+          field=this.model.profile.license_document_ids
+          multiple=true
+        }}
+      {{else}}
+        <p>
+          No licenses are currently listed.
+        </p>
+      {{/if}}
+      <hr class="light">
+
+      <h5 class="au-display-md">
+        <b class="sapphire">Accreditations</b>
+      </h5>
+      <p>
+        <b>Add the name of an accrediting authority and an accreditation, that will be of value to a buyer.  Membership of government schemes and panels are not considered accreditations.</b>
+      </p>
+      {{#if this.model.profile.accreditations}}
+        <ol>
+          {{#each this.model.profile.accreditations as |accreditation|}}
+            <li>{{accreditation}}</li>
+          {{/each}}
+        </ol>
+        <br>
+        {{dds/file-download
+          field=this.model.profile.accreditation_document_ids
+          multiple=true
+        }}
+      {{else}}
+        <p>
+          No accreditations are currently listed.
+        </p>
+      {{/if}}
+      <hr class="light">
+
+      <h5 class="au-display-md">
+        <b class="sapphire">Industry engagements</b>
+      </h5>
+      <p>
+        <b>Are you involved in any industry boards, committees or groups?</b>
+      </p>
+      {{#if this.model.profile.engagements}}
+        <ol>
+          {{#each this.model.profile.engagements as |engagement|}}
+            <li>{{engagement}}</li>
+          {{/each}}
+        </ol>
+      {{else}}
+        <p>
+          No industry engagements are currently listed.
+        </p>
+      {{/if}}
+      <hr class="light">
+
+      <h5 class="au-display-md">
+        <b class="sapphire">Awards</b>
+      </h5>
+      <p>
+        <b>Add the name of an award and sponsor that will be of relevance to a buyer.</b>
+      </p>
+      {{#if this.model.profile.awards}}
+        <ol>
+          {{#each this.model.profile.awards as |award|}}
+            <li>{{award}}</li>
+          {{/each}}
+        </ol>
+      {{else}}
+        <p>
+          No awards are currently listed.
+        </p>
+      {{/if}}
+      <hr class="light">
+
+      <div>
+        {{dds/top-link}}
+      </div>
+
+      <h5 class="au-display-lg" id="special-capabilities">
+        <b class="dark-sapphire">Special capabilities and expertise</b>
+      </h5>
+      <br>
+      <h5 class="au-display-md">
+        <b class="sapphire">Methodologies</b>
+      </h5>
+      <p>
+        <b>What are the different project management methodologies used within your company that may be of interest to buyers?</b>
+      </p>
+      {{#if this.model.profile.methodologies}}
+        <p>
+          {{breaklines this.model.profile.methodologies}}
+        </p>
+      {{else}}
+        <p>
+          No methodologies are currently listed.
+        </p>
+      {{/if}}
+      <hr class="light">
+
+      <h5 class="au-display-md">
+        <b class="sapphire">Knowledge base</b>
+      </h5>
+      <p>
+        <b>What products and/or services does your business have specialist knowledge in?</b>
+      </p>
+      {{#if this.model.profile.knowledge_base}}
+        <p>
+          {{breaklines this.model.profile.knowledge_base}}
+        </p>
+      {{else}}
+        <p>
+          No knowledge bases are currently listed.
+        </p>
+      {{/if}}
+      <hr class="light">
+
+      <h5 class="au-display-md">
+        <b class="sapphire">Quality control</b>
+      </h5>
+      <p>
+        <b>What methods and processes have you implemented to ensure the quality of your products and services?</b>
+      </p>
+      {{#if this.model.profile.quality_control}}
+        <p>
+          {{breaklines this.model.profile.quality_control}}
+        </p>
+      {{else}}
+        <p>
+          No quality controls are currently listed.
+        </p>
+      {{/if}}
+      <hr class="light">
+
+      <h5 class="au-display-md">
+        <b class="sapphire">Security</b>
+      </h5>
+      <p>
+        <b>What security protocols and safeguards have you implemented in relation to your products and services?</b>
+      </p>
+      {{#if this.model.profile.security}}
+        <p>
+          {{breaklines this.model.profile.security}}
+        </p>
+      {{else}}
+        <p>
+          No security information is currently listed.
+        </p>
+      {{/if}}
+      <hr class="light">
+
+      <h5 class="au-display-lg" id="references-and-case-studies">
+        <b class="dark-sapphire">References and case studies</b>
+      </h5>
+
+      <br>
+      <h5 class="au-display-md">
+        <b class="sapphire">References</b>
+      </h5>
+      <br>
+      {{#if this.model.profile.references}}
+        {{#each this.model.profile.references as |reference|}}
+          <div class="row">
+            <div class="col-sm-18">
+              <p>
+                <b>Contact</b><br>
+                {{reference.first_name}} {{reference.last_name}}<br>
+                {{reference.role}}
+              </p>
+            </div>
+            <div class="col-sm-18">
+              <p>
+                <b>Associated projects</b><br>
+                {{reference.associated_project}}<br>
+                {{reference.project_description}}
+              </p>
+            </div>
+          </div>
+        {{/each}}
+      {{else}}
+        <p>No references are listed</p>
+      {{/if}}
+      <hr class="light">
+
+      <h5 class="au-display-md">
+        <b class="sapphire">Case studies</b>
+      </h5>
+      <br>
+      {{#if this.model.profile.case_studies}}
+        {{#each this.model.profile.case_studies as |case_study|}}
+          {{dds/file-download
+            field=case_study.document_id
+            showOriginalFilename=true
+          }}
+        {{/each}}
+      {{else}}
+        <p>No case studies are listed</p>
+      {{/if}}
+      <hr class="light">
+
+      <div>
+        {{dds/top-link}}
+      </div>
+
+      <h5 class="au-display-lg" id="government-credentials">
+        <b class="dark-sapphire">Government credentials</b>
+      </h5>
+
+      <p><b>Describe products and services you have provided to government.  Buyers are interested in previous experience you may have working on similar projects.</b></p>
+
+      {{#if this.model.profile.government_credentials}}
+        {{#each this.model.profile.government_credentials as |cred|}}
+          <h5 class="au-display-md">
+            <b class="sapphire">{{cred.provided_services}}</b>
+          </h5>
+          <p>
+            {{cred.project_description}}
+          </p>
+          <p>
+            <b>Contact</b><br>
+            {{cred.first_name}} {{cred.last_name}}<br>
+            {{cred.role}}
+          </p>
+        {{/each}}
+      {{else}}
+        <p>No government credentials are listed.</p>
+      {{/if}}
+
+      <hr class="light">
+
+      <div>
+        {{dds/top-link}}
+      </div>
+
+      <h5 class="au-display-lg" id="team-members">
+        <b class="dark-sapphire">Team members</b>
+      </h5>
+
+      <p><b>Buyers may want to contact a specialist team member with specific questions about their requirements</b></p>
+      <br>
+      <br>
+      {{#if this.model.profile.team_members}}
+        {{#each this.model.profile.team_members as |member|}}
+          <div class="row">
+            <div class="col-xs-15 col-sm-12 col-md-9 col-lg-6">
+              {{dds/avatar avatarId=member.avatar_id}}
+            </div>
+            <div class="col-xs-21 col-sm-24 col-md-27 col-lg-30">
+              <div class="member-details">
+                {{member.first_name}} {{member.last_name}}<br>
+                <b>{{member.role}}</b><br>
+                <p>
+                  {{member.speciality}}
+                </p>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+      {{else}}
+        <p>
+          Team members are not listed.
+        </p>
+      {{/if}}
+
+      <div>
+        {{dds/top-link}}
+      </div>
+
+      <h5 class="au-display-lg" id="promotional-video">
+        <b class="dark-sapphire">Promotional video</b>
+      </h5>
+      <br>
+      <br>
+      {{#if this.model.profile.promotional_video}}
+        {{ember-youtube ytid=this.model.profile.promotional_video class="center fit-to-page"}}
+      {{else}}
+        <p>
+          No promotional video is provided.
+        </p>
+      {{/if}}
+      
+    {{/dds/template-body}}
+  </div>
+  {{dds/page-feedback}}
+</main>
+
+{{dds/template-footer auth=auth}}

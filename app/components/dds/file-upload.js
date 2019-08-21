@@ -11,16 +11,26 @@ export default Component.extend({
   documents: [],
   didReceiveAttrs() {
     this._super(...arguments);
-    if(!Array.isArray(this.field)){
-      this.set('field', []);
+    if(this.get('multiple')) {
+      if(!Array.isArray(this.field)){
+        this.set('field', []);
+      }
+      let component = this;
+      this.store.query('document', {"ids": this.get("field")}).then((response) => {
+        component.set('documents', response.toArray());
+      });
+    } else {
+      let component = this;
+      component.set('documents', []);
+      if (this.get('field')) {
+        this.store.query('document', { "ids": [this.get("field")] }).then((response) => {
+          component.set('documents', response.toArray());
+        });
+      }
     }
-    let component = this;
-    this.store.query('document', {"ids": this.get("field")}).then((response) => {
-      component.set('documents', response.toArray());
-    });
   },
   uploadFile: task(function * (file) {
-    if (this.get('field') == null) {
+    if (this.get('multiple') && this.get('field') == null) {
       this.set('field', []);
     }
     let response = yield file.upload('/api/documents/documents/', {
@@ -28,7 +38,11 @@ export default Component.extend({
       data: { original_filename: file.get('name') }
     });
     var id = response.body.id;
-    this.field.pushObject(id);
+    if (this.get('multiple')) {
+      this.field.pushObject(id);
+    } else {
+      this.set('field', id);
+    }
     let component = this;
     this.store.findRecord('document', id).then((response) =>{
       component.documents.pushObject(response);
@@ -43,7 +57,11 @@ export default Component.extend({
   actions: {
     removeDocument(index) {
       this.set('hasChanged', true);
-      this.field.removeAt(index);
+      if (this.get('multiple')) {
+        this.field.removeAt(index);
+      } else {
+        this.set('field', null);
+      }
       if(this.get('signal') != undefined) {
         this.incrementProperty('signal');
       }

@@ -29,7 +29,7 @@ export default Route.extend({
       this.get('auth').reauthenticate();
     },
     error: function(error) {
-      console.log(error);
+      Ember.Logger.error(error);
       //if (isUnauthorizedError(error)) {
         this.get('auth').authenticate();
         this.transitionTo('sign-in');

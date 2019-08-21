@@ -11,11 +11,13 @@ The file should be no larger than 5MB and in PDF, PNG or JPEG format. You can up
     {{#each documents as |document index|}}
       <li class="files">
         <a class="file">
-          {{document.original_filename}}
+          {{document.original_filename}} ( {{document.extension}} , {{number-to-human-size document.size}} )
         </a>
-        <a class="pointer right" onclick={{action "removeDocument" index}}>
-          x
-        </a>
+        {{#unless disabled}}
+          <a class="pointer right" onclick={{action "removeDocument" index}}>
+            x
+          </a>
+        {{/unless}}
       </li>
     {{/each}}
     </ul>
@@ -23,18 +25,20 @@ The file should be no larger than 5MB and in PDF, PNG or JPEG format. You can up
     No file selected
   {{/if}}
   <br>
-  {{#file-upload name=name
-                 accept=(array 'image/jpeg' 'image/png' 'application/pdf')
-                 multiple=true
-                 onfileadd=(action "uploadDocument") as |queue|}}
-    <a class="au-btn au-btn--tertiary">
-      {{#if documents.length}}
-        Add another file
-      {{else}}
-        Choose a file
-      {{/if}}
-    </a>
-  {{/file-upload}}
+  {{#unless disabled}}
+    {{#file-upload name=name
+                   accept=(if fileTypes fileTypes (array 'image/jpeg' 'image/png' 'application/pdf'))
+                   multiple=multiple
+                   onfileadd=(action "uploadDocument") as |queue|}}
+      <a class="au-btn au-btn--tertiary">
+        {{#if documents.length}}
+          Add another file
+        {{else}}
+          Choose a file
+        {{/if}}
+      </a>
+    {{/file-upload}}
+  {{/unless}}
 </p>
 <div class="clear-both"></div>
 {{#if (and (or showError hasChanged) invalid)}}

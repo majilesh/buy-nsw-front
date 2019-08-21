@@ -25,6 +25,7 @@ Router.map(function() {
   this.route('register-buyer', { path: '/buyer/register'});
   this.route('buyer-dashboard', { path: '/buyer/dashboard'});
   this.route('profile', { path: '/supplier/profile'});
+  this.route('seller-profile', { path: '/supplier/profile/:seller_id' } );
   this.route('not-found', { path: '/*path' });
   this.route('team-members', { path: '/supplier/team'});
   this.route('invite-team-member', { path: '/supplier/team/invite'});

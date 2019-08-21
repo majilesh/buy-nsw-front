@@ -48,7 +48,7 @@ span.pull-left {
   float: left;
 }
 
-a.pull-right, span.pull-right {
+a.pull-right, span.pull-right, div.pull-right {
   padding: 0 0.5rem;
   float: right;
 }
@@ -193,7 +193,7 @@ p.thin-lines {
   margin-top: 0.6rem;
 }
 hr.light {
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid #E0E0E0;
 }
 div.sticky-nav {
   margin-left: 10px;
@@ -305,4 +305,28 @@ header.au-header {
   a.au-btn {
     margin: 1.6rem 0.8rem 0;
   }
+}
+.on-the-edge {
+  margin-bottom: -3.3rem;
+}
+.inline {
+  display: inline-block;
+}
+.center {
+  text-align: center;
+}
+.fit-to-page {
+  iframe.EmberYoutube-player {
+    max-width: 100%;
+  }
+  overflow: scroll;
+}
+.avatar {
+  border-radius: 100rem;
+  margin: 1rem;
+  width: 80%;
+}
+.member-details {
+  padding: 2rem;
+  border-left: 1px solid #E0E0E0;
 }

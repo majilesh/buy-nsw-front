@@ -25,6 +25,7 @@ export default DS.RESTAdapter.extend({
     const type_to_api = {
       'seller': 'sellers/sellers',
       'public-seller': 'sellers/public_sellers',
+      'seller-profile': 'sellers/seller_profiles',
       'seller-form/eligibility': 'sellers/seller_form/eligibility',
       'seller-form/business-name': 'sellers/seller_form/business_name',
       'seller-form/contact-detail': 'sellers/seller_form/contact_detail',
