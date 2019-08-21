@@ -5,6 +5,9 @@ import { inject } from '@ember/service';
 export default Service.extend({
   store: inject(),
   auth: inject(),
+  find(id) {
+    return this.store.findRecord('document', id);
+  },
   load(ids) {
     return this.store.query('document', { "ids": ids });
   },
