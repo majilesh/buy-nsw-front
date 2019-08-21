@@ -4,7 +4,7 @@ import { inject } from '@ember/service';
 export default Service.extend({
   store: inject(),
   unloadAll() {
-    self.get('store').unloadAll('feedback');
+    this.get('store').unloadAll('feedback');
   },
   createRecord() {
     return this.get('store').createRecord('feedback', {
