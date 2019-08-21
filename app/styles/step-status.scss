@@ -1,3 +1,13 @@
+.product-status {
+  font-family: MontserratBold;
+  color: gray;
+  &.live {
+    color: $AU-color-success;
+  }
+  &.deactivated {
+    color: $AU-color-warning;
+  }
+}
 .steps-list {
   .accepted {
     background: $AU-color-success;

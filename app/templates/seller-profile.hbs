@@ -158,6 +158,7 @@
         <br>
         {{dds/file-download
           field=this.model.profile.license_document_ids
+          fileService=fileService
           multiple=true
         }}
       {{else}}
@@ -182,6 +183,7 @@
         <br>
         {{dds/file-download
           field=this.model.profile.accreditation_document_ids
+          fileService=fileService
           multiple=true
         }}
       {{else}}
@@ -346,6 +348,7 @@
         {{#each this.model.profile.case_studies as |case_study|}}
           {{dds/file-download
             field=case_study.document_id
+            fileService=fileService
             showOriginalFilename=true
           }}
         {{/each}}
@@ -399,7 +402,7 @@
         {{#each this.model.profile.team_members as |member|}}
           <div class="row">
             <div class="col-xs-15 col-sm-12 col-md-9 col-lg-6">
-              {{dds/avatar avatarId=member.avatar_id}}
+              {{dds/avatar avatarId=member.avatar_id fileService=fileService}}
             </div>
             <div class="col-xs-21 col-sm-24 col-md-27 col-lg-30">
               <div class="member-details">
@@ -437,7 +440,7 @@
       
     {{/dds/template-body}}
   </div>
-  {{dds/page-feedback}}
+  {{dds/page-feedback user=auth.user feedbackService=feedbackService}}
 </main>
 
 {{dds/template-footer auth=auth}}
