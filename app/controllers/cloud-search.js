@@ -32,12 +32,6 @@ export default BaseController.extend({
     return section;
   }),
 
-  init() {
-    this._super();
-    this.updateCounts();
-    this.updateResults();
-  },
-
   filters() {
     var params = { page: this.get('pageNum'), with_section: this.get('section') };
     if (this.get('section') == 'all') {

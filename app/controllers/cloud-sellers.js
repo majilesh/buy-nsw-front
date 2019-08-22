@@ -16,12 +16,6 @@ export default BaseController.extend({
     return Math.ceil(this.get('sellersCount') / 25);
   }),
 
-  init() {
-    this._super();
-    this.updateCounts();
-    this.updateResults();
-  },
-
   filters() {
     var params = { page: this.get('pageNum'), section: this.get('section') };
     for (var key of [
