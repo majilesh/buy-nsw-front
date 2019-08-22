@@ -17,5 +17,5 @@ export default Service.extend({
       data: { original_filename: file.get('name') }
     });
     success(response.body);
-  })
+  }).maxConcurrency(4).enqueue()
 });
