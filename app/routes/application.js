@@ -1,13 +1,13 @@
 import Route from '@ember/routing/route';
 import Ember from 'ember';
 import {inject as service} from '@ember/service';
-import { isUnauthorizedError } from 'ember-ajax/errors';
 const {$} = Ember;
 
 export default Route.extend({
   auth: service(),
   metrics: service(),
   router: service(),
+  airbrake: service(),
 
   actions: {
     loading: function(transition, originRoute) {
@@ -21,21 +21,23 @@ export default Route.extend({
     didTransition: function() {
       const page = this.router.currentURL;
       const title = this.router.currentRouteName || 'unknown';
-      // Increase site sample rate for average page load time to 10%
-      // this.metrics.trackPage({ page, title, siteSpeedSampleRate: 10 });
-      this.metrics.trackPage({ page, title });
+      this.metrics.trackPage({ page, title, siteSpeedSampleRate: 10 });
 
       $('.overlay').hide();
-      this.get('auth').reauthenticate();
+      this.get('auth').authenticate();
     },
-    error: function(error) {
-      Ember.Logger.error(error);
-      //if (isUnauthorizedError(error)) {
-        this.get('auth').authenticate();
+    error: function(response) {
+      let errors = response.errors;
+      if ( errors[0].status == 401 ) {
         this.transitionTo('sign-in');
-        return false;
-      //}
-      //return true;
+        this.get('auth').transitToSignin();
+      } else {
+        let airbrake = this.get('airbrake');
+        airbrake.notify(error);
+        Ember.Logger.error(error);
+        this.transitionTo('index');
+      }
+      return false;
     }
   },
 });

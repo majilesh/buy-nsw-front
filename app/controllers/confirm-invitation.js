@@ -50,7 +50,7 @@ export default BaseController.extend(Validations, {
           password: this.get('password'),
         }
       }).then((response) => {
-        controller.get('auth').authenticate();
+        controller.get('auth').reauthenticate();
         controller.transitionToRoute('success', 'invitation_accepted')
       }).catch((error) => {
         controller.get('auth').authenticateIfUnauthorized(error);

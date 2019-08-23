@@ -2,6 +2,7 @@ import Service from '@ember/service';
 import { inject } from '@ember/service';
 import { computed } from '@ember/object';
 import { isUnauthorizedError } from 'ember-ajax/errors';
+import { task } from 'ember-concurrency';
 import Ember from 'ember';
 const {$} = Ember;
 
@@ -15,22 +16,6 @@ export default Service.extend({
   trueUser: null,
   csrfToken: null,
   message: null,
-
-  // checkCookie() {
-  //   var cookie = document.cookie;
-  //   if (cookie != this.get('cookieCache')) {
-  //     this.set('cookieCache', cookie);
-  //     this.authenticate();
-  //   }
-  // },
-
-  // tick: function() {
-  //   this.checkCookie();
-  //   var service = this;
-  //   Ember.run.later(function() {
-  //     service.tick();
-  //   }, 1000);
-  // },
 
   isSeller: computed('user.roles', function() {
     let roles = this.get('user.roles');
@@ -50,11 +35,6 @@ export default Service.extend({
     this.set('csrfToken', response.csrf_token);
     this.set('user', response.user);
     this.set('trueUser', response.true_user);
-
-    if(goHome) {
-      this.set('message', null);
-      this.get('router').transitionTo("index");
-    }
   },
 
   handleError(response) {
@@ -72,8 +52,13 @@ export default Service.extend({
     $('.overlay').show();
     this.get('ajax').request('/api/users/logout', {
       method: 'POST',
-    }).then((response) =>
-        this.handleSuccess(response, goHome))
+    }).then((response) => {
+      this.handleSuccess(response);
+      if(goHome) {
+        this.set('message', null);
+        this.get('router').transitionTo("index");
+      }
+    })
     .finally(() => $('.overlay').hide())
   },
 
@@ -86,28 +71,43 @@ export default Service.extend({
         password: password,
         remember: remember,
       }
-    }).then((response) => this.handleSuccess(response, true))
-      .catch((response) => this.handleError(response))
+    }).then((response) => {
+      this.handleSuccess(response);
+      this.set('message', null);
+      this.get('router').transitionTo("index");
+    }).catch((response) => this.handleError(response))
     .finally(() => $('.overlay').hide());
   },
 
-  authenticate() {
-    this.get('ajax').request('/api/users/authenticate')
-      .then((response) =>
-        this.handleSuccess(response, false))
-  },
+  reauthenticateTask: task(function * () {
+    let response = yield this.get('ajax').request('/api/users/authenticate');
+    this.handleSuccess(response);
+  }).maxConcurrency(1).enqueue(),
+
+  authenticateTask: task(function * () {
+    if (this.get('config') == null) {
+      let response = yield this.get('ajax').request('/api/users/authenticate');
+      this.handleSuccess(response);
+    }
+  }).maxConcurrency(1).enqueue(),
 
   reauthenticate() {
-    if (this.get('config') == null) {
-      this.authenticate();
-    }
+    this.get('reauthenticateTask').perform();
+  },
+
+  authenticate() {
+    this.get('authenticateTask').perform();
   },
 
   authenticateIfUnauthorized(error) {
     if (isUnauthorizedError(error)) {
-      this.authenticate();
+      this.authenticate2();
       return;
     }
+  },
+
+  transitToSignin() {
+    this.get('router').transitionTo("sign-in");
   },
 
   init() {

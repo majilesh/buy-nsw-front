@@ -20,7 +20,7 @@ Router.map(function() {
   this.route('terms-of-use');
   this.route('accessibility');
   this.route('license');
-  this.route('sign-in', { path: '/signin'});
+  this.route('sign-in', { path: '/login'});
   this.route('performance');
   this.route('register-buyer', { path: '/buyer/register'});
   this.route('buyer-dashboard', { path: '/buyer/dashboard'});

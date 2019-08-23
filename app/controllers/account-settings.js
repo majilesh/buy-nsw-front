@@ -71,7 +71,7 @@ export default BaseController.extend(Validations, {
           currentPassword: this.get('currentPassword'),
         }
       }).then((response) => {
-        controller.get('auth').authenticate();
+        controller.get('auth').reauthenticate();
         controller.transitionToRoute('success', 'account_updated');
       }).catch((error) => {
         controller.get('auth').authenticateIfUnauthorized(error);
