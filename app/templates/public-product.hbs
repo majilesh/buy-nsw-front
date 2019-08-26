@@ -45,7 +45,7 @@
           <div>{{this.model.product.contact_name}}</div>
           <div> <a href="mailto:{{this.model.product.contact_email}}">{{this.model.product.contact_email}}</a></div>
           {{#if this.model.product.contact_phone}}
-            <div><a href="telto:{{this.model.product.contact_phone}}">{{this.model.product.contact_phone}}</a></div>
+            <div><a href="tel:{{this.model.product.contact_phone}}">{{this.model.product.contact_phone}}</a></div>
           {{/if}}
         </p>
       {{/if}}

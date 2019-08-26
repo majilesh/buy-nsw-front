@@ -12,6 +12,7 @@
       (hash name="Special capabilities and expertise" anchor="special-capabilities")
       (hash name="References and case studies" anchor="references-and-case-studies")
       (hash name="Government credentials" anchor="government-credentials")
+      (hash name="Schemes and panels" anchor="schemes-and-panels")
       (hash name="Team members" anchor="team-members")
       (hash name="Promotional video" anchor="promotional-video")
     )
@@ -28,15 +29,19 @@
               <center><b class="dark-sapphire">Company details</b></center>
             </h4>
             <br>
-            <p>
-              <b>Contact</b><br>
-              {{this.model.seller.contact_first_name}}
-              {{this.model.seller.contact_last_name}}
-            </p>
-            <p>
-              <b>Phone no</b><br>
-              {{this.model.seller.contact_phone}}
-            </p>
+            {{#if (and auth.user auth.isBuyer) }}
+              <p>
+                <b>Contact</b><br>
+                {{this.model.seller.contact_first_name}}
+                {{this.model.seller.contact_last_name}}
+              </p>
+              <p>
+                <b>Phone no</b><br>
+                <a href="tel:{{this.model.seller.contact_phone}}">
+                  {{this.model.seller.contact_phone}}
+                </a>
+              </p>
+            {{/if}}
             <p>
               <b>ABN</b><br>
               <a target="_blank" href="https://abr.business.gov.au/ABN/View/{{remove-spaces this.model.seller.abn}}">
@@ -44,22 +49,26 @@
                 {{this.model.seller.abn}}
               </a>
             </p>
-            <p>
-              <b>Address</b><br>
-              {{#with this.model.seller.addresses.[0] as |address|}}
-                {{address.address}}
-                {{address.address_2}}
-                {{address.address_3}}
-                {{address.suburb}}
-                {{address.state}}
-                {{address.country}}
-                {{address.postcode}}
-              {{/with}}
-            </p>
-            <p>
-              <b>Email</b><br>
-              {{this.model.seller.contact_email}}
-            </p>
+            {{#if (and auth.user auth.isBuyer) }}
+              <p>
+                <b>Address</b><br>
+                {{#with this.model.seller.addresses.[0] as |address|}}
+                  {{address.address}}
+                  {{address.address_2}}
+                  {{address.address_3}}
+                  {{address.suburb}}
+                  {{address.state}}
+                  {{address.country}}
+                  {{address.postcode}}
+                {{/with}}
+              </p>
+              <p>
+                <b>Email</b><br>
+                <a target="_blank" href="mailto:{{this.model.seller.contact_email}}">
+                  {{this.model.seller.contact_email}}
+                </a>
+              </p>
+            {{/if}}
             <p>
               <b>Website</b><br>
               <a target="_blank" href={{this.model.profile.website_url}}>
@@ -121,18 +130,30 @@
           <p>
             {{breaklines this.model.profile.summary}}
           </p>
-          <hr class="light">
+          <hr class="super-light">
           {{#if this.model.seller.level_2_services}}
             <p><b>This supplier provieds</b></p>
             <ul>
-              {{#each this.model.seller.level_2_services as |service|}}
-                <ul>{{humanize service}}</ul>
+              {{#each this.model.seller.level_2_services as |service index|}}
+                {{# if (lt index 6) }}
+                  <li>{{humanize service}}</li>
+                {{/if}}
               {{/each}}
             </ul>
-            <br>
-            <br>
+          {{/if}}
+          {{#if this.model.profile.schemes_and_panels}}
+            <hr class="super-light">
+            <p><b>Registered with government schemes or panels</b></p>
+            <ul>
+              {{#each this.model.profile.schemes_and_panels as |scheme index|}}
+                {{# if (lt index 3) }}
+                  <li>{{scheme}}</li>
+                {{/if}}
+              {{/each}}
+            </ul>
           {{/if}}
           {{#if this.model.seller.documents}}
+            <br> <br>
             {{#dds/simple-box theme="sapphire"}}
               <b>This supplier has provided the following documentation:</b><br>
               <ul>
@@ -141,6 +162,7 @@
                 {{/each}}
               </ul>
             {{/dds/simple-box}}
+            <br>
           {{/if}}
         </div>
       </div>
@@ -175,7 +197,7 @@
           No licenses are currently listed.
         </p>
       {{/if}}
-      <hr class="light">
+      <hr class="super-light">
 
       <h5 class="au-display-md">
         <b class="sapphire">Accreditations</b>
@@ -200,7 +222,7 @@
           No accreditations are currently listed.
         </p>
       {{/if}}
-      <hr class="light">
+      <hr class="super-light">
 
       <h5 class="au-display-md">
         <b class="sapphire">Industry engagements</b>
@@ -219,7 +241,7 @@
           No industry engagements are currently listed.
         </p>
       {{/if}}
-      <hr class="light">
+      <hr class="super-light">
 
       <h5 class="au-display-md">
         <b class="sapphire">Awards</b>
@@ -263,7 +285,7 @@
           No methodologies are currently listed.
         </p>
       {{/if}}
-      <hr class="light">
+      <hr class="super-light">
 
       <h5 class="au-display-md">
         <b class="sapphire">Knowledge base</b>
@@ -280,7 +302,7 @@
           No knowledge bases are currently listed.
         </p>
       {{/if}}
-      <hr class="light">
+      <hr class="super-light">
 
       <h5 class="au-display-md">
         <b class="sapphire">Quality control</b>
@@ -297,7 +319,7 @@
           No quality controls are currently listed.
         </p>
       {{/if}}
-      <hr class="light">
+      <hr class="super-light">
 
       <h5 class="au-display-md">
         <b class="sapphire">Security</b>
@@ -315,6 +337,10 @@
         </p>
       {{/if}}
       <hr class="light">
+
+      <div>
+        {{dds/top-link}}
+      </div>
 
       <h5 class="au-display-lg" id="references-and-case-studies">
         <b class="dark-sapphire">References and case studies</b>
@@ -347,7 +373,7 @@
       {{else}}
         <p>No references are listed</p>
       {{/if}}
-      <hr class="light">
+      <hr class="super-light">
 
       <h5 class="au-display-md">
         <b class="sapphire">Case studies</b>
@@ -394,7 +420,27 @@
         <p>No government credentials are listed.</p>
       {{/if}}
 
-      <hr class="light">
+      <hr class="super-light">
+
+      <div>
+        {{dds/top-link}}
+      </div>
+
+      <h5 class="au-display-lg" id="schemes-and-panels">
+        <b class="dark-sapphire">Schemes and panels</b>
+      </h5>
+
+      {{#if this.model.profile.schemes_and_panels}}
+        <p>
+          {{#each this.model.profile.schemes_and_panels as |scheme|}}
+            <b>{{scheme}}</b>
+            <hr class="super-light less-margin">
+          {{/each}}
+        </p>
+      {{else}}
+        <p>No schemes or panels are listed.</p>
+        <hr class="light">
+      {{/if}}
 
       <div>
         {{dds/top-link}}
@@ -413,7 +459,7 @@
             <div class="col-xs-15 col-sm-12 col-md-9 col-lg-6">
               {{dds/avatar avatarId=member.avatar_id fileService=fileService}}
             </div>
-            <div class="col-xs-21 col-sm-24 col-md-27 col-lg-30">
+            <div class="col-xs-21 col-sm-24 col-lg-27">
               <div class="member-details">
                 {{member.first_name}} {{member.last_name}}<br>
                 <b>{{member.role}}</b><br>
@@ -423,6 +469,24 @@
               </div>
             </div>
           </div>
+          <div class="row">
+            <div class="col-xs-36 col-md-33">
+              {{#if (and auth.user auth.isBuyer)}}
+                <div class="float-right">
+                  <br>
+                  <a target="_blank" class="au-btn au-btn--sapphire" href="mailto:{{member.email}}">
+                    <b class="white">
+                      Contact {{member.first_name}}
+                    </b>
+                  </a>
+                </div>
+                <div class="clear-both"></div>
+                <br>
+              {{else}}
+                <br>
+              {{/if}}
+            </div>
+          </div>
         {{/each}}
       {{else}}
         <p>
@@ -430,6 +494,7 @@
         </p>
       {{/if}}
 
+      <br> <br>
       <div>
         {{dds/top-link}}
       </div>
