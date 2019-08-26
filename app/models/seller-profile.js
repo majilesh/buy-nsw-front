@@ -10,6 +10,7 @@ export default Model.extend({
   twitter_url: DS.attr('string'),
   facebook_url: DS.attr('string'),
   instagram_url: DS.attr('string'),
+  youtube_url: DS.attr('string'),
 
   accreditations: DS.attr(),
   accreditation_document_ids: DS.attr(),

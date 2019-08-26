@@ -39,7 +39,7 @@
             </p>
             <p>
               <b>ABN</b><br>
-              <a target="_blank" rel="noopener" href="https://abr.business.gov.au/ABN/View/{{remove-spaces this.model.seller.abn}}">
+              <a target="_blank" href="https://abr.business.gov.au/ABN/View/{{remove-spaces this.model.seller.abn}}">
                 {{fa-icon "external-link" prefix="far"}}
                 {{this.model.seller.abn}}
               </a>
@@ -62,15 +62,16 @@
             </p>
             <p>
               <b>Website</b><br>
-              <a target="_blank" rel="noopener" href={{this.model.profile.website_url}}>
+              <a target="_blank" href={{this.model.profile.website_url}}>
                 {{fa-icon "external-link" prefix="far"}} {{this.model.profile.website_url}}
               </a>
             </p>
-            {{#if (or (or (or 
+            {{#if (or (or (or (or
               this.model.profile.linkedin_url
               this.model.profile.twitter_url)
               this.model.profile.facebook_url)
               this.model.profile.instagram_url)
+              this.model.profile.youtube_url)
             }}
               <p>
                 <b>Social media channels</b><br><br>
@@ -92,6 +93,11 @@
                 {{#if this.model.profile.instagram_url}}
                   <a target="_blank" href={{this.model.profile.instagram_url}}>
                     {{fa-icon "instagram" size="2x" prefix="fab"}}
+                  </a>
+                {{/if}}
+                {{#if this.model.profile.youtube_url}}
+                  <a target="_blank" href={{this.model.profile.youtube_url}}>
+                    {{fa-icon "youtube" size="2x" prefix="fab"}}
                   </a>
                 {{/if}}
               </p>
