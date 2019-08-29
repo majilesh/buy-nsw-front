@@ -46,6 +46,7 @@ export default DS.RESTAdapter.extend({
       'user': 'users/users',
       'member': 'users/members',
       'document': 'documents/documents',
+      'avatar': 'documents/avatars',
       // telco-product: 'telco_products/telco_products',
       // public-telco-product: 'telco_products/public_telco_products',
     }
