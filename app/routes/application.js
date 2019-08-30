@@ -27,8 +27,11 @@ export default Route.extend({
       this.get('auth').authenticate();
     },
     error: function(response) {
-      let errors = response.errors;
-      if ( errors[0].status == 401 ) {
+      let error = response;
+      if (error.errors) {
+        error = error.errors[0];
+      }
+      if ( error.status == 401 ) {
         this.transitionTo('sign-in');
         this.get('auth').transitToSignin();
       } else {
