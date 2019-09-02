@@ -188,6 +188,7 @@
         </ol>
         <br>
         {{dds/file-download
+          auth=auth
           field=this.model.profile.license_document_ids
           fileService=fileService
           multiple=true
@@ -213,6 +214,7 @@
         </ol>
         <br>
         {{dds/file-download
+          auth=auth
           field=this.model.profile.accreditation_document_ids
           fileService=fileService
           multiple=true
@@ -382,6 +384,7 @@
       {{#if this.model.profile.case_studies}}
         {{#each this.model.profile.case_studies as |case_study|}}
           {{dds/file-download
+            auth=auth
             field=case_study.document_id
             fileService=fileService
             showOriginalFilename=true
