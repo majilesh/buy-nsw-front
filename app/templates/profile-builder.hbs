@@ -5,19 +5,19 @@
 {{dds/template-header auth=auth}}
 {{dds/main-nav auth=auth noBorder=true}}
 
-{{#dds/banner title=this.model.seller.name
-  subline=(concat "Last update to supplier profile: " this.model.profile.updated_at)}}
-  {{dds/jump-to class="on-the-edge pull-right"
-    sections=(array
-      (hash name="Licenses, accreditations and awards" anchor="licenses-accreditations")
-      (hash name="Special capabilities and expertise" anchor="special-capabilities")
-      (hash name="References and case studies" anchor="references-and-case-studies")
-      (hash name="Government credentials" anchor="government-credentials")
-      (hash name="Schemes and panels" anchor="schemes-and-panels")
-      (hash name="Team members" anchor="team-members")
-      (hash name="Promotional video" anchor="promotional-video")
-    )
-  }}
+{{#dds/banner
+  title="Supplier profile builder"
+  heading=this.model.seller.name
+  subline=(concat "Last update to supplier profile: " this.model.profile.updated_at)
+  light=true}}
+  <div class="on-the-edge float-right">
+    {{link-to "View your profile as buyer" "seller-profile" this.model.seller.id
+      class="au-btn au-btn--sapphire banner-button float-right"}}
+    {{link-to "Edit company account details" "seller-profile" this.model.seller.id
+      class="au-btn au-btn--turquoise banner-button float-right"}}
+  </div>
+{{dds/primary-btn}}
+
 {{/dds/banner}}
 
 <main id="content">
@@ -45,7 +45,7 @@
             {{/if}}
             <p>
               <b>ABN</b><br>
-              <a target="_blank" href="https://abr.business.gov.au/ABN/View/{{remove-spaces this.model.seller.abn}}">
+              <a target="_blank" href="https://abr.business.gov.au/ABN/View/{{this.model.seller.abn}}">
                 {{fa-icon "external-link" prefix="far"}}
                 {{this.model.seller.abn}}
               </a>

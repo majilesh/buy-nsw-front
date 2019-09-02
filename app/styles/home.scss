@@ -1,6 +1,10 @@
 p.home-title {
-  margin-top: 60px;
-  margin-bottom: 60px;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  @include AU-media( sm ) {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+  }
   padding-left: 2rem;
   padding-right: 2rem;
   b.dark-blue {
@@ -15,11 +19,11 @@ a.no-decoration {
 div.right-arrow {
   color: $AU-colordark-background;
   float: right;
-  min-width: 60px;
-  padding-top: 10px;
-  padding-left: 40px;
+  min-width: 3rem;
+  padding-top: 0;
+  padding-left: 1.5rem;
   vertical-align: center;
-  font-size: 40px;
+  font-size: 3rem;
 }
 
 div.home-top-links {
@@ -74,15 +78,12 @@ div.home-middle-box {
 div.home-news-box {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
   margin-top: 2rem;
-  padding: 20px;
+  padding: 0;
   div.right-arrow {
     color: $NSW-colordark-foreground-border;
   }
   h6 {
     margin-top: 7px;
-  }
-  hr {
-    margin: 1.0rem -1.3rem;
   }
   div.highlight {
     border-left: 0.5rem solid $NSW-colordark-foreground-border;
@@ -91,6 +92,12 @@ div.home-news-box {
   background-color: white;
   span.date {
     color: $AU-colorblack-background;
+  }
+  .padding {
+    padding: 0.5rem 2rem 1rem 2rem;
+  }
+  img.newsletter {
+    width: 100%;
   }
 }
 a.au-btn.learn-how {

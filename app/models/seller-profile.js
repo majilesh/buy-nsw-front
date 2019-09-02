@@ -30,4 +30,6 @@ export default Model.extend({
   schemes_and_panels: DS.attr(),
   team_members: DS.attr(),
   promotional_video: DS.attr('string'),
+
+  updated_at: DS.attr('string'),
 });

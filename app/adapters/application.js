@@ -8,13 +8,6 @@ const { String: { pluralize } } = Ember;
 
 export default DS.RESTAdapter.extend({
   auth: service(),
-  // ajaxError: function(jqXHR) {
-  //   var error = this._super(jqXHR);
-  //   if (jqXHR && jqXHR.status === 401) {
-  //     this.get('auth').authenticate();
-  //   }
-  //   return error;
-  // },
   headers: computed('auth.csrfToken', function() {
     return {
       "X-CSRF-Token": this.get('auth.csrfToken'),
@@ -37,6 +30,16 @@ export default DS.RESTAdapter.extend({
       'seller-form/membership-and-award': 'sellers/seller_form/membership_and_award',
       'seller-form/accreditation-and-license': 'sellers/seller_form/accreditation_and_license',
       'seller-form/complete-application': 'sellers/seller_form/complete_application',
+
+      'seller-profile/essential-information': 'sellers/seller_profile/essential_information',
+      'seller-profile/reputation-and-distinction': 'sellers/seller_profile/reputation_and_distinction',
+      'seller-profile/capability-and-experty': 'sellers/seller_profile/capability_and_experty',
+      'seller-profile/reference-and-case-study': 'sellers/seller_profile/reference_and_case_study',
+      'seller-profile/government-credential': 'sellers/seller_profile/government_credential',
+      'seller-profile/scheme-and-panel': 'sellers/seller_profile/scheme_and_panel',
+      'seller-profile/team-member': 'sellers/seller_profile/team_member',
+      'seller-profile/promotional-video': 'sellers/seller_profile/promotional_video',
+
       'product': 'products/products',
       'public-product': 'products/public_products',
       'product-order': 'products/product_orders',
