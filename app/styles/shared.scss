@@ -85,24 +85,6 @@ div.cool-callout {
   border: solid 0.5px $NSW-colordark-foreground-border;
   background-color: $NSW-colordark-foreground-muted;
 }
-
-div.cool-infobox {
-  border-radius: 10px;
-  padding: 1.0rem;
-  margin: 2rem 0;
-  border: solid 0.5px $NSW-colordark-foreground-border;
-  background-color: $NSW-colordark-background-muted;
-  .svg-inline--fa {
-    color: $NSW-colordark-icon-muted;
-    margin: 12px 8px 10px 16px;
-  }
-  > span {
-    padding: 1.0rem 0.5rem;
-    float: left;
-    width: calc(100% - 90px);
-    text-align: center;
-  }
-}
 span.list-item {
   padding: 0.5rem;
 }

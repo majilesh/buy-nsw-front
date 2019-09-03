@@ -9,6 +9,12 @@
   title="Supplier profile builder"
   heading=this.model.seller.name
   subline=(concat "Last update to supplier profile: " this.model.profile.updated_at)
+  links=(array
+      (hash name="buy.nsw" route="index")
+      (hash name="Dashboard" route="seller-dashboard")
+      (hash name=(concat "Edit " this.model.seller.name))
+    )
+  background="editting"
   light=true}}
   <div class="on-the-edge float-right">
     {{link-to "View your profile as buyer" "seller-profile" this.model.seller.id
@@ -24,8 +30,19 @@
   <div class="au-body">
     {{#dds/template-body auth=auth}}
       <div class="row">
+        <div class="col-sm-36">
+          <div class="cool-infobox sapphire">
+            {{fa-icon "exclamation-circle" size="2x" prefix="fal" pull="left"}}
+            <span>
+              Use this page to update your details and to provide buyers with additional useful information about your business.
+            </span>
+            <div class="clear-both"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
         <div class="col-sm-17 col-md-14 col-lg-11">
-          {{#dds/simple-box theme="ice"}}
+          {{#dds/simple-box theme="turquoise"}}
             <h4 class="au-display-lg"> 
               <center><b class="dark-sapphire">Company details</b></center>
             </h4>
@@ -76,94 +93,66 @@
                 {{fa-icon "external-link" prefix="far"}} {{this.model.profile.website_url}}
               </a>
             </p>
-            {{#if (or (or (or (or
-              this.model.profile.linkedin_url
-              this.model.profile.twitter_url)
-              this.model.profile.facebook_url)
-              this.model.profile.instagram_url)
-              this.model.profile.youtube_url)
-            }}
+            <p>
+              <b>Social media channels</b><br><br>
+                <a target="_blank" href={{this.model.profile.linkedin_url}}>
+                  {{fa-icon "linkedin" size="2x" prefix="fab"}}
+                </a>
+                <a target="_blank" href={{this.model.profile.twitter_url}}>
+                  {{fa-icon "twitter" size="2x" prefix="fab"}}
+                </a>
+                <a target="_blank" href={{this.model.profile.facebook_url}}>
+                  {{fa-icon "facebook" size="2x" prefix="fab"}}
+                </a>
+                <a target="_blank" href={{this.model.profile.instagram_url}}>
+                  {{fa-icon "instagram" size="2x" prefix="fab"}}
+                </a>
+                <a target="_blank" href={{this.model.profile.youtube_url}}>
+                  {{fa-icon "youtube" size="2x" prefix="fab"}}
+                </a>
+            </p>
+            {{#if this.model.seller.documents}}
               <p>
-                <b>Social media channels</b><br><br>
-                {{#if this.model.profile.linkedin_url}}
-                  <a target="_blank" href={{this.model.profile.linkedin_url}}>
-                    {{fa-icon "linkedin" size="2x" prefix="fab"}}
-                  </a>
-                {{/if}}
-                {{#if this.model.profile.twitter_url}}
-                  <a target="_blank" href={{this.model.profile.twitter_url}}>
-                    {{fa-icon "twitter" size="2x" prefix="fab"}}
-                  </a>
-                {{/if}}
-                {{#if this.model.profile.facebook_url}}
-                  <a target="_blank" href={{this.model.profile.facebook_url}}>
-                    {{fa-icon "facebook" size="2x" prefix="fab"}}
-                  </a>
-                {{/if}}
-                {{#if this.model.profile.instagram_url}}
-                  <a target="_blank" href={{this.model.profile.instagram_url}}>
-                    {{fa-icon "instagram" size="2x" prefix="fab"}}
-                  </a>
-                {{/if}}
-                {{#if this.model.profile.youtube_url}}
-                  <a target="_blank" href={{this.model.profile.youtube_url}}>
-                    {{fa-icon "youtube" size="2x" prefix="fab"}}
-                  </a>
-                {{/if}}
-              </p>
-            {{/if}}
-            {{#if this.model.seller.tags}}
-              <p>
-                <b>Business identifiers</b><br>
-                {{#each this.model.seller.tags as |tag|}}
-                  {{dds/tag theme="sapphire" label=tag class="inline"}}
-                {{/each}}
+                <br>
+                <b class="small">This supplier has provided the following documentation</b><br>
+                <ul>
+                  {{#each this.model.seller.documents as |document|}}
+                    <li class="small">{{document}}</li>
+                  {{/each}}
+                </ul>
+                <br>
+                {{link-to "Go to Account to update documents" "seller-profile" this.model.seller.id class="small bold"}}
               </p>
             {{/if}}
           {{/dds/simple-box}}
           <br>
           <br>
         </div>
-        <div class="col-sm-19 col-md-22 col-lg-25">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-18 col-md-21 col-lg-24">
           <h5 class="au-display-md">
             <b class="dark-sapphire">About this supplier</b>
           </h5>
           <p>
             {{breaklines this.model.profile.summary}}
           </p>
-          <hr class="super-light">
           {{#if this.model.seller.level_2_services}}
+            <hr class="super-light">
             <p><b>This supplier provieds</b></p>
             <ul>
               {{#each this.model.seller.level_2_services as |service index|}}
-                {{# if (lt index 6) }}
-                  <li>{{humanize service}}</li>
-                {{/if}}
+                <li>{{humanize service}}</li>
               {{/each}}
             </ul>
           {{/if}}
-          {{#if this.model.profile.schemes_and_panels}}
+          {{#if this.model.seller.tags}}
             <hr class="super-light">
-            <p><b>Registered with government schemes or panels</b></p>
+            <p><b>Business identifiers</b></p>
             <ul>
-              {{#each this.model.profile.schemes_and_panels as |scheme index|}}
-                {{# if (lt index 3) }}
-                  <li>{{scheme}}</li>
-                {{/if}}
+              {{#each this.model.seller.tags as |tag|}}
+                <li>{{tag}}</li>
               {{/each}}
             </ul>
-          {{/if}}
-          {{#if this.model.seller.documents}}
-            <br> <br>
-            {{#dds/simple-box theme="sapphire"}}
-              <b>This supplier has provided the following documentation:</b><br>
-              <ul>
-                {{#each this.model.seller.documents as |document|}}
-                  <li>{{document}}</li>
-                {{/each}}
-              </ul>
-            {{/dds/simple-box}}
-            <br>
           {{/if}}
         </div>
       </div>
