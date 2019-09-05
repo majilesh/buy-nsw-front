@@ -32,6 +32,7 @@ export default DS.RESTAdapter.extend({
       'seller-form/complete-application': 'sellers/seller_form/complete_application',
 
       'seller-profile/essential-information': 'sellers/seller_profile/essential_information',
+      'seller-profile/contact-detail': 'sellers/seller_profile/contact_detail',
       'seller-profile/reputation-and-distinction': 'sellers/seller_profile/reputation_and_distinction',
       'seller-profile/capability-and-experty': 'sellers/seller_profile/capability_and_experty',
       'seller-profile/reference-and-case-study': 'sellers/seller_profile/reference_and_case_study',

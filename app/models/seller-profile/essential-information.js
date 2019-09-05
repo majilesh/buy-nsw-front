@@ -7,4 +7,6 @@ const Validations = buildValidations({
 });
 
 export default Model.extend(Validations, {
+  flagship_product: DS.attr('string'),
+  summary: DS.attr('string'),
 });

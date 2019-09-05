@@ -87,30 +87,13 @@
                 </a>
               </p>
             {{/if}}
-            <p>
-              <b>Website</b><br>
-              <a target="_blank" href={{this.model.profile.website_url}}>
-                {{fa-icon "external-link" prefix="far"}} {{this.model.profile.website_url}}
-              </a>
-            </p>
-            <p>
-              <b>Social media channels</b><br><br>
-                <a target="_blank" href={{this.model.profile.linkedin_url}}>
-                  {{fa-icon "linkedin" size="2x" prefix="fab"}}
-                </a>
-                <a target="_blank" href={{this.model.profile.twitter_url}}>
-                  {{fa-icon "twitter" size="2x" prefix="fab"}}
-                </a>
-                <a target="_blank" href={{this.model.profile.facebook_url}}>
-                  {{fa-icon "facebook" size="2x" prefix="fab"}}
-                </a>
-                <a target="_blank" href={{this.model.profile.instagram_url}}>
-                  {{fa-icon "instagram" size="2x" prefix="fab"}}
-                </a>
-                <a target="_blank" href={{this.model.profile.youtube_url}}>
-                  {{fa-icon "youtube" size="2x" prefix="fab"}}
-                </a>
-            </p>
+            <br>
+            {{seller-profile/contact-detail form=this.model.contact_detail}}
+            <br>
+            {{seller-profile/edit-save
+              theme="turquoise"
+              form=this.model.contact_detail
+            }}
             {{#if this.model.seller.documents}}
               <p>
                 <br>
@@ -121,7 +104,7 @@
                   {{/each}}
                 </ul>
                 <br>
-                {{link-to "Go to Account to update documents" "seller-profile" this.model.seller.id class="small bold"}}
+                {{link-to "Go to your Account to update documents" "seller-profile" this.model.seller.id class="small bold"}}
               </p>
             {{/if}}
           {{/dds/simple-box}}
@@ -130,29 +113,43 @@
         </div>
         <div class="col-sm-1"></div>
         <div class="col-sm-18 col-md-21 col-lg-24">
-          <h5 class="au-display-md">
-            <b class="dark-sapphire">About this supplier</b>
-          </h5>
-          <p>
-            {{breaklines this.model.profile.summary}}
-          </p>
+          {{seller-profile/essential-information form=this.model.essential_information}}
+          {{seller-profile/edit-save
+            theme="sapphire"
+            form=this.model.essential_information
+          }}
+
           {{#if this.model.seller.level_2_services}}
             <hr class="super-light">
             <p><b>This supplier provieds</b></p>
-            <ul>
+            <p>
               {{#each this.model.seller.level_2_services as |service index|}}
-                <li>{{humanize service}}</li>
+                {{dds/tag theme="turquoise" label=(humanize service) class="inline"}}
               {{/each}}
-            </ul>
+            </p>
           {{/if}}
           {{#if this.model.seller.tags}}
             <hr class="super-light">
             <p><b>Business identifiers</b></p>
-            <ul>
+            <p>
               {{#each this.model.seller.tags as |tag|}}
-                <li>{{tag}}</li>
+                {{dds/tag theme="sapphire" label=tag class="inline"}}
+              {{/each}}
+            </p>
+          {{/if}}
+          {{#if this.model.profile.schemes_and_panels}}
+            <hr class="super-light">
+            <p><b>Registered with government schemes or panels</b></p>
+            <ul>
+              {{#each this.model.profile.schemes_and_panels as |scheme index|}}
+                {{# if (lt index 3) }}
+                  <li class="small">{{scheme}}</li>
+                {{/if}}
               {{/each}}
             </ul>
+            <p>
+              {{link-to "Go to your Account to update your services, business identifiers and ergistered schemes or panels" "seller-profile" this.model.seller.id class="small bold"}}
+            </p>
           {{/if}}
         </div>
       </div>
