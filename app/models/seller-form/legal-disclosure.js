@@ -10,6 +10,7 @@ const Validations = buildValidations({
   receivership_details: {
     validators: [
       validator('inline', {
+        dependentKeys: ['receivership', 'receivership_details'],
         message: 'Please provide details',
         validate(value, options, model, attributes) {
           return model.receivership == null || model.receivership.toString() == "false" ||
@@ -27,6 +28,7 @@ const Validations = buildValidations({
   bankruptcy_details: {
     validators: [
       validator('inline', {
+        dependentKeys: ['bankruptcy', 'bankruptcy_details'],
         message: 'Please provide details',
         validate(value, options, model, attributes) {
           return model.bankruptcy == null || model.bankruptcy.toString() == "false" ||
@@ -44,6 +46,7 @@ const Validations = buildValidations({
   investigations_details: {
     validators: [
       validator('inline', {
+        dependentKeys: ['investigations', 'investigations_details'],
         message: 'Please provide details',
         validate(value, options, model, attributes) {
           return model.investigations == null || model.investigations.toString() == "false" ||
@@ -61,6 +64,7 @@ const Validations = buildValidations({
   legal_proceedings_details: {
     validators: [
       validator('inline', {
+        dependentKeys: ['legal_proceedings', 'legal_proceedings_details'],
         message: 'Please provide details',
         validate(value, options, model, attributes) {
           return model.legal_proceedings == null || model.legal_proceedings.toString() == "false" ||
