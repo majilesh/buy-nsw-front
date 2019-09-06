@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+const { Model } = DS;
 import { buildValidations, validator } from 'ember-cp-validations';
 
 const Validations = buildValidations({
@@ -82,11 +83,7 @@ const Validations = buildValidations({
   }
 });
 
-export default DS.Model.extend(Validations, {
-  status: DS.attr('string'),
-  feedbacks: DS.attr('json'),
-  flagship_product: DS.attr('string'),
-  summary: DS.attr('string'),
+export default Model.extend(Validations, {
   website_url: DS.attr('string'),
   linkedin_url: DS.attr('string'),
   facebook_url: DS.attr('string'),

@@ -1,1 +1,32 @@
-{{yield}}
+<h5 class="au-display-md">
+  <b>Describe your main product or service</b>
+</h5>
+<p>
+  {{dds/text-input
+    field=(mut form.flagship_product)
+    maxLength=50
+    noLabel=true
+    wide=true
+    thin=true
+    invalid=(v-get form 'flagship_product' 'isInvalid')
+    errorMessage=(v-get form 'flagship_product' 'message')
+  }}
+</p>
+<br>
+<p>
+  <b>Describe your company below</b>
+</p>
+<p>
+  {{dds/text-area
+    field=(mut form.summary)
+    maxLength=1000
+    thin=true
+    invalid=(v-get form 'summary' 'isInvalid')
+    errorMessage=(v-get form 'summary' 'message')
+  }}
+</p>
+<br>
+{{seller-profile/edit-save
+  theme="sapphire"
+  form=form
+}}

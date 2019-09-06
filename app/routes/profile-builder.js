@@ -10,6 +10,7 @@ export default Route.extend({
   model(params) {
     return RSVP.hash({
       essential_information: this.store.queryRecord("seller-profile/essential-information", {}),
+      contact_detail: this.store.queryRecord("seller-profile/contact-detail", {}),
       reputation_and_distinction: this.store.queryRecord("seller-profile/reputation-and-distinction", {}),
       capability_and_experty: this.store.queryRecord("seller-profile/capability-and-experty", {}),
       reference_and_case_study: this.store.queryRecord("seller-profile/reference-and-case-study", {}),

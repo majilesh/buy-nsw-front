@@ -87,30 +87,8 @@
                 </a>
               </p>
             {{/if}}
-            <p>
-              <b>Website</b><br>
-              <a target="_blank" href={{this.model.profile.website_url}}>
-                {{fa-icon "external-link" prefix="far"}} {{this.model.profile.website_url}}
-              </a>
-            </p>
-            <p>
-              <b>Social media channels</b><br><br>
-                <a target="_blank" href={{this.model.profile.linkedin_url}}>
-                  {{fa-icon "linkedin" size="2x" prefix="fab"}}
-                </a>
-                <a target="_blank" href={{this.model.profile.twitter_url}}>
-                  {{fa-icon "twitter" size="2x" prefix="fab"}}
-                </a>
-                <a target="_blank" href={{this.model.profile.facebook_url}}>
-                  {{fa-icon "facebook" size="2x" prefix="fab"}}
-                </a>
-                <a target="_blank" href={{this.model.profile.instagram_url}}>
-                  {{fa-icon "instagram" size="2x" prefix="fab"}}
-                </a>
-                <a target="_blank" href={{this.model.profile.youtube_url}}>
-                  {{fa-icon "youtube" size="2x" prefix="fab"}}
-                </a>
-            </p>
+            <br>
+            {{seller-profile/contact-detail form=this.model.contact_detail}}
             {{#if this.model.seller.documents}}
               <p>
                 <br>
@@ -121,7 +99,7 @@
                   {{/each}}
                 </ul>
                 <br>
-                {{link-to "Go to Account to update documents" "seller-profile" this.model.seller.id class="small bold"}}
+                {{link-to "Go to your Account to update documents" "seller-profile" this.model.seller.id class="small bold"}}
               </p>
             {{/if}}
           {{/dds/simple-box}}
@@ -130,29 +108,39 @@
         </div>
         <div class="col-sm-1"></div>
         <div class="col-sm-18 col-md-21 col-lg-24">
-          <h5 class="au-display-md">
-            <b class="dark-sapphire">About this supplier</b>
-          </h5>
-          <p>
-            {{breaklines this.model.profile.summary}}
-          </p>
+          {{seller-profile/essential-information form=this.model.essential_information}}
+
           {{#if this.model.seller.level_2_services}}
             <hr class="super-light">
             <p><b>This supplier provieds</b></p>
-            <ul>
+            <p>
               {{#each this.model.seller.level_2_services as |service index|}}
-                <li>{{humanize service}}</li>
+                {{dds/tag theme="turquoise" label=(humanize service) class="inline"}}
               {{/each}}
-            </ul>
+            </p>
           {{/if}}
           {{#if this.model.seller.tags}}
             <hr class="super-light">
             <p><b>Business identifiers</b></p>
-            <ul>
+            <p>
               {{#each this.model.seller.tags as |tag|}}
-                <li>{{tag}}</li>
+                {{dds/tag theme="sapphire" label=tag class="inline"}}
+              {{/each}}
+            </p>
+          {{/if}}
+          {{#if this.model.profile.schemes_and_panels}}
+            <hr class="super-light">
+            <p><b>Registered with government schemes or panels</b></p>
+            <ul>
+              {{#each this.model.profile.schemes_and_panels as |scheme index|}}
+                {{# if (lt index 3) }}
+                  <li class="small">{{scheme}}</li>
+                {{/if}}
               {{/each}}
             </ul>
+            <p>
+              {{link-to "Go to your Account to update your services, business identifiers and registered schemes or panels" "seller-profile" this.model.seller.id class="small bold"}}
+            </p>
           {{/if}}
         </div>
       </div>
@@ -252,87 +240,9 @@
           No awards are currently listed.
         </p>
       {{/if}}
-      <hr class="light">
 
-      <div>
-        {{dds/top-link}}
-      </div>
-
-      <h5 class="au-display-lg" id="special-capabilities">
-        <b class="dark-sapphire">Special capabilities and expertise</b>
-      </h5>
       <br>
-      <h5 class="au-display-md">
-        <b class="sapphire">Methodologies</b>
-      </h5>
-      <p>
-        <b>What are the different project management methodologies used within your company that may be of interest to buyers?</b>
-      </p>
-      {{#if this.model.profile.methodologies}}
-        <p>
-          {{breaklines this.model.profile.methodologies}}
-        </p>
-      {{else}}
-        <p>
-          No methodologies are currently listed.
-        </p>
-      {{/if}}
-      <hr class="super-light">
-
-      <h5 class="au-display-md">
-        <b class="sapphire">Knowledge base</b>
-      </h5>
-      <p>
-        <b>What products and/or services does your business have specialist knowledge in?</b>
-      </p>
-      {{#if this.model.profile.knowledge_base}}
-        <p>
-          {{breaklines this.model.profile.knowledge_base}}
-        </p>
-      {{else}}
-        <p>
-          No knowledge bases are currently listed.
-        </p>
-      {{/if}}
-      <hr class="super-light">
-
-      <h5 class="au-display-md">
-        <b class="sapphire">Quality control</b>
-      </h5>
-      <p>
-        <b>What methods and processes have you implemented to ensure the quality of your products and services?</b>
-      </p>
-      {{#if this.model.profile.quality_control}}
-        <p>
-          {{breaklines this.model.profile.quality_control}}
-        </p>
-      {{else}}
-        <p>
-          No quality controls are currently listed.
-        </p>
-      {{/if}}
-      <hr class="super-light">
-
-      <h5 class="au-display-md">
-        <b class="sapphire">Security</b>
-      </h5>
-      <p>
-        <b>What security protocols and safeguards have you implemented in relation to your products and services?</b>
-      </p>
-      {{#if this.model.profile.security}}
-        <p>
-          {{breaklines this.model.profile.security}}
-        </p>
-      {{else}}
-        <p>
-          No security information is currently listed.
-        </p>
-      {{/if}}
-      <hr class="light">
-
-      <div>
-        {{dds/top-link}}
-      </div>
+      {{seller-profile/capability-and-experty form=this.model.capability_and_experty}}
 
       <h5 class="au-display-lg" id="references-and-case-studies">
         <b class="dark-sapphire">References and case studies</b>
@@ -419,25 +329,6 @@
         {{dds/top-link}}
       </div>
 
-      <h5 class="au-display-lg" id="schemes-and-panels">
-        <b class="dark-sapphire">Schemes and panels</b>
-      </h5>
-
-      {{#if this.model.profile.schemes_and_panels}}
-        <p>
-          {{#each this.model.profile.schemes_and_panels as |scheme|}}
-            <b>{{scheme}}</b>
-            <hr class="super-light less-margin">
-          {{/each}}
-        </p>
-      {{else}}
-        <p>No schemes or panels are listed.</p>
-        <hr class="light">
-      {{/if}}
-
-      <div>
-        {{dds/top-link}}
-      </div>
 
       <h5 class="au-display-lg" id="team-members">
         <b class="dark-sapphire">Team members</b>
