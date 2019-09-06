@@ -323,22 +323,8 @@
         <p>No government credentials are listed.</p>
       {{/if}}
 
-      <br>
       {{seller-profile/team-member form=this.model.team_member}}
-
-
-      <h5 class="au-display-lg" id="promotional-video">
-        <b class="dark-sapphire">Promotional video</b>
-      </h5>
-      <br>
-      <br>
-      {{#if this.model.profile.promotional_video}}
-        {{ember-youtube ytid=this.model.profile.promotional_video class="center fit-to-page"}}
-      {{else}}
-        <p>
-          No promotional video is provided.
-        </p>
-      {{/if}}
+      {{seller-profile/promotional-video form=this.model.promotional_video}}
       
     {{/dds/template-body}}
   </div>
