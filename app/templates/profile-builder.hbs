@@ -323,65 +323,9 @@
         <p>No government credentials are listed.</p>
       {{/if}}
 
-      <hr class="super-light">
-
-      <div>
-        {{dds/top-link}}
-      </div>
-
-
-      <h5 class="au-display-lg" id="team-members">
-        <b class="dark-sapphire">Team members</b>
-      </h5>
-
-      <p><b>Buyers may want to contact a specialist team member with specific questions about their requirements</b></p>
       <br>
-      <br>
-      {{#if this.model.profile.team_members}}
-        {{#each this.model.profile.team_members as |member|}}
-          <div class="row">
-            <div class="col-xs-15 col-sm-12 col-md-9 col-lg-6">
-              {{dds/avatar avatarId=member.avatar_id fileService=fileService}}
-            </div>
-            <div class="col-xs-21 col-sm-24 col-lg-27">
-              <div class="member-details">
-                {{member.first_name}} {{member.last_name}}<br>
-                <b>{{member.role}}</b><br>
-                <p>
-                  {{member.speciality}}
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-36 col-md-33">
-              {{#if (and auth.user auth.isBuyer)}}
-                <div class="float-right">
-                  <br>
-                  <a target="_blank" class="au-btn au-btn--sapphire" href="mailto:{{member.email}}">
-                    <b class="white">
-                      Contact {{member.first_name}}
-                    </b>
-                  </a>
-                </div>
-                <div class="clear-both"></div>
-                <br>
-              {{else}}
-                <br>
-              {{/if}}
-            </div>
-          </div>
-        {{/each}}
-      {{else}}
-        <p>
-          Team members are not listed.
-        </p>
-      {{/if}}
+      {{seller-profile/team-member form=this.model.team_member}}
 
-      <br> <br>
-      <div>
-        {{dds/top-link}}
-      </div>
 
       <h5 class="au-display-lg" id="promotional-video">
         <b class="dark-sapphire">Promotional video</b>
