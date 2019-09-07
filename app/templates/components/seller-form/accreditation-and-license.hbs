@@ -34,6 +34,13 @@
   apiError=form.feedbacks.accreditations
   signal=form.signal
 }}
+<br>
+<p>
+  <b> Upload a file</b>
+</p>
+<p class="gray">
+  The file should be no larger than 5MB and in PDF, PNG or JPEG format. You can upload a single document or separate documents by using the 'Add another file' button below.
+</p>
 {{dds/file-upload
   name="accreditation_document"
   field=(mut form.accreditation_document_ids)
@@ -61,6 +68,13 @@
   apiError=form.feedbacks.licenses
   signal=form.signal
 }}
+<br>
+<p>
+  <b> Upload a file</b>
+</p>
+<p class="gray">
+  The file should be no larger than 5MB and in PDF, PNG or JPEG format. You can upload a single document or separate documents by using the 'Add another file' button below.
+</p>
 {{dds/file-upload
   name="license_document"
   field=(mut form.license_document_ids)

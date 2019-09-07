@@ -5,7 +5,6 @@ export default Component.extend({
   fileService: inject(),
   actions: {
     addMember() {
-      this.incrementProperty('form.signal');
       let team_members = this.get('form.team_members');
       team_members.pushObject({
         avatar_id: null,
@@ -15,13 +14,12 @@ export default Component.extend({
         email: "",
         speciality: ""
       });
+      this.incrementProperty('form.signal');
     },
     removeMember(index) {
       let members = this.get('form.team_members');
       members.removeAt(index);
-      if (this.get('signal') != undefined) {
-        this.incrementProperty('signal');
-      }
+      this.incrementProperty('form.signal');
     },
   }
 });

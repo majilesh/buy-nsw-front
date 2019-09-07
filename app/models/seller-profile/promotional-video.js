@@ -9,7 +9,7 @@ const Validations = buildValidations({
       validator('format', {
         allowBlank: true,
         regex: /^[0-9A-Za-z_-]{10}[048AEIMQUYcgkosw]$/,
-        message: "Please a valid youtube video ID here."
+        message: "Please enter a valid youtube video ID here."
       })
     ]
   },
