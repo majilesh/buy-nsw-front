@@ -47,19 +47,17 @@
               <center><b class="dark-sapphire">Company details</b></center>
             </h4>
             <br>
-            {{#if (and auth.user auth.isBuyer) }}
-              <p>
-                <b>Contact</b><br>
-                {{this.model.seller.contact_first_name}}
-                {{this.model.seller.contact_last_name}}
-              </p>
-              <p>
-                <b>Phone no</b><br>
-                <a href="tel:{{this.model.seller.contact_phone}}">
-                  {{this.model.seller.contact_phone}}
-                </a>
-              </p>
-            {{/if}}
+            <p>
+              <b>Contact</b><br>
+              {{this.model.seller.contact_first_name}}
+              {{this.model.seller.contact_last_name}}
+            </p>
+            <p>
+              <b>Phone no</b><br>
+              <a href="tel:{{this.model.seller.contact_phone}}">
+                {{this.model.seller.contact_phone}}
+              </a>
+            </p>
             <p>
               <b>ABN</b><br>
               <a target="_blank" href="https://abr.business.gov.au/ABN/View/{{this.model.seller.abn}}">
@@ -67,26 +65,24 @@
                 {{this.model.seller.abn}}
               </a>
             </p>
-            {{#if (and auth.user auth.isBuyer) }}
-              <p>
-                <b>Address</b><br>
-                {{#with this.model.seller.addresses.[0] as |address|}}
-                  {{address.address}}
-                  {{address.address_2}}
-                  {{address.address_3}}
-                  {{address.suburb}}
-                  {{address.state}}
-                  {{address.country}}
-                  {{address.postcode}}
-                {{/with}}
-              </p>
-              <p>
-                <b>Email</b><br>
-                <a target="_blank" href="mailto:{{this.model.seller.contact_email}}">
-                  {{this.model.seller.contact_email}}
-                </a>
-              </p>
-            {{/if}}
+            <p>
+              <b>Address</b><br>
+              {{#with this.model.seller.addresses.[0] as |address|}}
+                {{address.address}}
+                {{address.address_2}}
+                {{address.address_3}}
+                {{address.suburb}}
+                {{address.state}}
+                {{address.country}}
+                {{address.postcode}}
+              {{/with}}
+            </p>
+            <p>
+              <b>Email</b><br>
+              <a target="_blank" href="mailto:{{this.model.seller.contact_email}}">
+                {{this.model.seller.contact_email}}
+              </a>
+            </p>
             <br>
             {{seller-profile/contact-detail form=this.model.contact_detail}}
             {{#if this.model.seller.documents}}

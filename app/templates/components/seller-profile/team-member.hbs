@@ -1,8 +1,8 @@
 {{#dds/accordion-container
   title="Team members"
+  subline="Tip: Do you have team leads with specialist technical knowledge?"
   theme="sapphire"
   expanded=false}}
-  <p><b>Tip:</b> Do you have team leads with specialist technical knowledge?</p>
   <hr class="super-light">
   <p><b>Buyers may want to contact a specialist team member with specific questions about their requirements</b></p>
   <br>
@@ -89,10 +89,14 @@
       </p>
     </div>
   </div>
-  <p>
-    {{seller-profile/edit-save
-      theme="sapphire"
-      form=form
-    }}
-  </p>
+  <div class="row">
+    <div class="col-sm-12">
+    </div>
+    <div class="col-sm-24">
+      {{seller-profile/edit-save
+        theme="sapphire"
+        form=form
+      }}
+    </div>
+  </div>
 {{/dds/accordion-container}}
