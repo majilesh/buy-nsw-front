@@ -1,1 +1,17 @@
-{{yield}}
+{{#dds/accordion-container
+  title="Special capabilities and expertise"
+  subline="Tip: subline."
+  theme="sapphire"
+  expanded=false}}
+  <hr class="super-light">
+  <h5 class="au-display-md">
+    <b class="sapphire">title</b>
+  </h5>
+  <p>
+    <b>some bold text</b>
+  </p>
+  {{seller-profile/edit-save
+    theme="sapphire"
+    form=form
+  }}
+{{/dds/accordion-container}}
