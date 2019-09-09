@@ -94,10 +94,10 @@
                     <li class="small">{{document}}</li>
                   {{/each}}
                 </ul>
-                <br>
-                {{link-to "Go to your Account to update documents" "seller-profile" this.model.seller.id class="small bold"}}
               </p>
             {{/if}}
+            <br>
+            {{link-to "Go to your Account to update documents" "seller-profile" this.model.seller.id class="small bold"}}
           {{/dds/simple-box}}
           <br>
           <br>
@@ -124,8 +124,8 @@
               {{/each}}
             </p>
           {{/if}}
+          <hr class="super-light">
           {{#if this.model.profile.schemes_and_panels}}
-            <hr class="super-light">
             <p><b>Registered with government schemes or panels</b></p>
             <ul>
               {{#each this.model.profile.schemes_and_panels as |scheme index|}}
@@ -134,12 +134,13 @@
                 {{/if}}
               {{/each}}
             </ul>
-            <p>
-              {{link-to "Go to your Account to update your services, business identifiers and registered schemes or panels" "seller-profile" this.model.seller.id class="small bold"}}
-            </p>
           {{/if}}
+          <p>
+            {{link-to "Go to your Account to update your services, business identifiers and registered schemes or panels" "seller-profile" this.model.seller.id class="small bold"}}
+          </p>
         </div>
       </div>
+      {{seller-profile/reputation-and-distinction form=this.model.reputation_and_distinction}}
       {{seller-profile/capability-and-experty form=this.model.capability_and_experty}}
       {{seller-profile/reference-and-case-study form=this.model.reference_and_case_study}}
       {{seller-profile/government-credential form=this.model.government_credential}}
