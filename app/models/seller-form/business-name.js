@@ -46,7 +46,7 @@ const Validations = buildValidations({
   establishment_date: {
     validators: [
       validator('inline', {
-        message: 'Please enter a valid establishmeny date',
+        message: 'Please enter a valid establishment date',
         validate(value, options, model, attributes) {
           return dateValid(value) ||
                  options.message;

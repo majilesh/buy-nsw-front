@@ -39,11 +39,19 @@
       </div>
       <div class="col-sm-12">
         <div class="btn-cta-group">
+          {{#if this.model.seller.live}}
             {{ link-to
               "Manage company profile"
+              "profile-builder"
+              class="au-cta-link small"
+            }}
+          {{else}}
+            {{ link-to
+              "Continue supplier application"
               "supplier-application"
               class="au-cta-link small"
             }}
+          {{/if}}
         </div>
       </div>
     </div>
