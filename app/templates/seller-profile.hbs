@@ -30,7 +30,7 @@
               <center><b class="dark-sapphire">Company details</b></center>
             </h4>
             <br>
-            {{#if (and auth.user auth.isBuyer) }}
+            {{#if buyerView }}
               <p>
                 <b>Contact</b><br>
                 {{this.model.seller.contact_first_name}}
@@ -50,7 +50,7 @@
                 {{this.model.seller.abn}}
               </a>
             </p>
-            {{#if (and auth.user auth.isBuyer) }}
+            {{#if buyerView }}
               <p>
                 <b>Address</b><br>
                 {{#with this.model.seller.addresses.[0] as |address|}}
@@ -483,7 +483,7 @@
           </div>
           <div class="row">
             <div class="col-xs-36 col-md-33">
-              {{#if (and auth.user auth.isBuyer)}}
+              {{#if buyerView}}
                 <div class="float-right">
                   <br>
                   <a target="_blank" class="au-btn au-btn--sapphire" href="mailto:{{member.email}}">
