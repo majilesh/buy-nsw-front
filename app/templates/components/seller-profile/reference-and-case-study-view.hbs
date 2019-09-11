@@ -1,0 +1,45 @@
+{{#if form.references}}
+  {{#each form.references as |reference|}}
+    <div class="row">
+      <div class="col-sm-18">
+        <p>
+          <b>Contact</b><br>
+          {{reference.first_name}} {{reference.last_name}}<br>
+          {{reference.role}}
+        </p>
+      </div>
+      <div class="col-sm-18">
+        <p>
+          <b>Associated projects</b><br>
+          {{reference.associated_project}}<br>
+          {{reference.project_description}}
+        </p>
+      </div>
+    </div>
+  {{/each}}
+{{else}}
+  <p>No references are listed</p>
+{{/if}}
+<hr class="super-light">
+
+<h5 class="au-display-md">
+  <b class="sapphire">Case studies</b>
+</h5>
+<br>
+{{#if form.case_studies}}
+  {{#each form.case_studies as |case_study|}}
+    <p>
+      {{case_study.description}}
+      <br>
+      {{#if buyerView}}
+        {{dds/file-download
+          field=case_study.document_id
+          fileService=fileService
+          showOriginalFilename=true
+        }}
+      {{/if}}
+    </p>
+  {{/each}}
+{{else}}
+  <p>No case studies are listed</p>
+{{/if}}

@@ -4,26 +4,23 @@
   theme="sapphire"
   expanded=false}}
   <hr class="super-light">
-  <h5 class="au-display-md">
-    <b class="sapphire">Embed a video</b>
-  </h5>
-  <p>
-    Provide a youtube ID of your video
-  </p>
-  <p>
-    {{dds/text-input
-      field=(mut form.promotional_video)
-      invalid=(v-get form 'promotional_video' 'isInvalid')
-      errorMessage=(v-get form 'promotional_video' 'message')
-      theme="sapphire"
-      thin=true
-      wide=true
-      allRow=true
-    }}
-  </p>
+  {{#if underEdit}}
+    {{seller-profile/promotional-video-edit form=form}}
+  {{else}}
+    <div class="cool-infobox sapphire">
+      {{fa-icon "exclamation-circle" size="2x" prefix="fal" pull="left"}}
+      <span>
+        In this section you can upload a video of a recent case study or other informative content about your business.
+      </span>
+      <div class="clear-both"></div>
+    </div>
+
+    {{seller-profile/promotional-video-view form=form}}
+  {{/if}}
   <p>
     {{seller-profile/edit-save
       theme="sapphire"
+      underEdit=(mut underEdit)
       form=form
     }}
   </p>

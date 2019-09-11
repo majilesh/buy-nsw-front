@@ -26,7 +26,7 @@
       <div class="row">
         <div class="col-sm-17 col-md-14 col-lg-11">
           {{#dds/simple-box theme="turquoise"}}
-            <h4 class="au-display-lg"> 
+            <h4 class="au-display-lg">
               <center><b class="dark-sapphire">Company details</b></center>
             </h4>
             <br>
@@ -70,96 +70,33 @@
                 </a>
               </p>
             {{/if}}
-            <p>
-              <b>Website</b><br>
-              <a target="_blank" href={{this.model.profile.website_url}}>
-                {{fa-icon "external-link" prefix="far"}} {{this.model.profile.website_url}}
-              </a>
-            </p>
-            {{#if (or (or (or (or
-              this.model.profile.linkedin_url
-              this.model.profile.twitter_url)
-              this.model.profile.facebook_url)
-              this.model.profile.instagram_url)
-              this.model.profile.youtube_url)
-            }}
-              <p>
-                <b>Social media channels</b><br><br>
-                {{#if this.model.profile.linkedin_url}}
-                  <a target="_blank" class="icon" href={{this.model.profile.linkedin_url}}>
-                    {{fa-icon "linkedin" size="2x" prefix="fab"}}
-                  </a>
-                {{/if}}
-                {{#if this.model.profile.twitter_url}}
-                  <a target="_blank" class="icon" href={{this.model.profile.twitter_url}}>
-                    {{fa-icon "twitter" size="2x" prefix="fab"}}
-                  </a>
-                {{/if}}
-                {{#if this.model.profile.facebook_url}}
-                  <a target="_blank" class="icon" href={{this.model.profile.facebook_url}}>
-                    {{fa-icon "facebook" size="2x" prefix="fab"}}
-                  </a>
-                {{/if}}
-                {{#if this.model.profile.instagram_url}}
-                  <a target="_blank" class="icon" href={{this.model.profile.instagram_url}}>
-                    {{fa-icon "instagram" size="2x" prefix="fab"}}
-                  </a>
-                {{/if}}
-                {{#if this.model.profile.youtube_url}}
-                  <a target="_blank" class="icon" href={{this.model.profile.youtube_url}}>
-                    {{fa-icon "youtube" size="2x" prefix="fab"}}
-                  </a>
-                {{/if}}
-              </p>
-            {{/if}}
-            {{#if this.model.seller.tags}}
-              <p>
-                <b>Business identifiers</b><br>
-                {{#each this.model.seller.tags as |tag|}}
-                  {{dds/tag theme="sapphire" label=tag class="inline"}}
-                {{/each}}
-              </p>
-            {{/if}}
+            <br>
+            {{seller-profile/contact-detail-view form=this.model.contact_detail buyerView=buyerView}}
           {{/dds/simple-box}}
           <br>
           <br>
         </div>
         <div class="col-sm-1"></div>
         <div class="col-sm-18 col-md-21 col-lg-24">
-          <h5 class="au-display-md">
-            <b class="dark-sapphire">Flagship product or service</b>
-          </h5>
-          <p>
-            {{this.model.profile.flagship_product}}
-          </p>
-          <hr class="super-light">
-          <h5 class="au-display-md">
-            <b class="dark-sapphire">About this supplier</b>
-          </h5>
-          <p>
-            {{breaklines this.model.profile.summary}}
-          </p>
-          <hr class="super-light">
+          {{seller-profile/essential-information-view form=this.model.essential_information buyerView=buyerView}}
+
           {{#if this.model.seller.level_2_services}}
-            <p><b>This supplier provieds</b></p>
-            <ul>
-              {{#each this.model.seller.level_2_services as |service index|}}
-                {{# if (lt index 6) }}
-                  <li>{{humanize service}}</li>
-                {{/if}}
-              {{/each}}
-            </ul>
-          {{/if}}
-          {{#if this.model.profile.schemes_and_panels}}
             <hr class="super-light">
-            <p><b>Registered with government schemes or panels</b></p>
-            <ul>
-              {{#each this.model.profile.schemes_and_panels as |scheme index|}}
-                {{# if (lt index 3) }}
-                  <li>{{scheme}}</li>
-                {{/if}}
+            <p><b>This supplier provieds</b></p>
+            <p>
+              {{#each this.model.seller.level_2_services as |service index|}}
+                {{dds/tag theme="turquoise" label=(humanize service) class="inline"}}
               {{/each}}
-            </ul>
+            </p>
+          {{/if}}
+          {{#if this.model.seller.tags}}
+            <hr class="super-light">
+            <p><b>Business identifiers</b></p>
+            <p>
+              {{#each this.model.seller.tags as |tag|}}
+                {{dds/tag theme="sapphire" label=tag class="inline"}}
+              {{/each}}
+            </p>
           {{/if}}
           {{#if this.model.seller.documents}}
             <br> <br>
@@ -183,94 +120,7 @@
         <b class="dark-sapphire">Licenses, Accreditations, industry engagements and awards</b>
       </h5>
       <br>
-      <h5 class="au-display-md">
-        <b class="sapphire">Licenses</b>
-      </h5>
-      <p>
-        <b>Add the name of a license that will be of relevance to a buyer.</b>
-      </p>
-      {{#if this.model.profile.licenses}}
-        <ol>
-          {{#each this.model.profile.licenses as |license|}}
-            <li>{{license}}</li>
-          {{/each}}
-        </ol>
-        <br>
-        {{dds/file-download
-          auth=auth
-          field=this.model.profile.license_document_ids
-          fileService=fileService
-          multiple=true
-        }}
-      {{else}}
-        <p>
-          No licenses are currently listed.
-        </p>
-      {{/if}}
-      <hr class="super-light">
-
-      <h5 class="au-display-md">
-        <b class="sapphire">Accreditations</b>
-      </h5>
-      <p>
-        <b>Add the name of an accrediting authority and an accreditation, that will be of value to a buyer.  Membership of government schemes and panels are not considered accreditations.</b>
-      </p>
-      {{#if this.model.profile.accreditations}}
-        <ol>
-          {{#each this.model.profile.accreditations as |accreditation|}}
-            <li>{{accreditation}}</li>
-          {{/each}}
-        </ol>
-        <br>
-        {{dds/file-download
-          auth=auth
-          field=this.model.profile.accreditation_document_ids
-          fileService=fileService
-          multiple=true
-        }}
-      {{else}}
-        <p>
-          No accreditations are currently listed.
-        </p>
-      {{/if}}
-      <hr class="super-light">
-
-      <h5 class="au-display-md">
-        <b class="sapphire">Industry engagements</b>
-      </h5>
-      <p>
-        <b>Are you involved in any industry boards, committees or groups?</b>
-      </p>
-      {{#if this.model.profile.engagements}}
-        <ol>
-          {{#each this.model.profile.engagements as |engagement|}}
-            <li>{{engagement}}</li>
-          {{/each}}
-        </ol>
-      {{else}}
-        <p>
-          No industry engagements are currently listed.
-        </p>
-      {{/if}}
-      <hr class="super-light">
-
-      <h5 class="au-display-md">
-        <b class="sapphire">Awards</b>
-      </h5>
-      <p>
-        <b>Add the name of an award and sponsor that will be of relevance to a buyer.</b>
-      </p>
-      {{#if this.model.profile.awards}}
-        <ol>
-          {{#each this.model.profile.awards as |award|}}
-            <li>{{award}}</li>
-          {{/each}}
-        </ol>
-      {{else}}
-        <p>
-          No awards are currently listed.
-        </p>
-      {{/if}}
+      {{seller-profile/reputation-and-distinction-view form=this.model.reputation_and_distinction buyerView=buyerView}}
       <hr class="light">
 
       <div>
@@ -281,72 +131,7 @@
         <b class="dark-sapphire">Special capabilities and expertise</b>
       </h5>
       <br>
-      <h5 class="au-display-md">
-        <b class="sapphire">Methodologies</b>
-      </h5>
-      <p>
-        <b>What are the different project management methodologies used within your company that may be of interest to buyers?</b>
-      </p>
-      {{#if this.model.profile.methodologies}}
-        <p>
-          {{breaklines this.model.profile.methodologies}}
-        </p>
-      {{else}}
-        <p>
-          No methodologies are currently listed.
-        </p>
-      {{/if}}
-      <hr class="super-light">
-
-      <h5 class="au-display-md">
-        <b class="sapphire">Knowledge base</b>
-      </h5>
-      <p>
-        <b>What products and/or services does your business have specialist knowledge in?</b>
-      </p>
-      {{#if this.model.profile.knowledge_base}}
-        <p>
-          {{breaklines this.model.profile.knowledge_base}}
-        </p>
-      {{else}}
-        <p>
-          No knowledge bases are currently listed.
-        </p>
-      {{/if}}
-      <hr class="super-light">
-
-      <h5 class="au-display-md">
-        <b class="sapphire">Quality control</b>
-      </h5>
-      <p>
-        <b>What methods and processes have you implemented to ensure the quality of your products and services?</b>
-      </p>
-      {{#if this.model.profile.quality_control}}
-        <p>
-          {{breaklines this.model.profile.quality_control}}
-        </p>
-      {{else}}
-        <p>
-          No quality controls are currently listed.
-        </p>
-      {{/if}}
-      <hr class="super-light">
-
-      <h5 class="au-display-md">
-        <b class="sapphire">Security</b>
-      </h5>
-      <p>
-        <b>What security protocols and safeguards have you implemented in relation to your products and services?</b>
-      </p>
-      {{#if this.model.profile.security}}
-        <p>
-          {{breaklines this.model.profile.security}}
-        </p>
-      {{else}}
-        <p>
-          No security information is currently listed.
-        </p>
-      {{/if}}
+      {{seller-profile/capability-and-experty-view form=this.model.capability_and_experty buyerView=buyerView}}
       <hr class="light">
 
       <div>
@@ -358,50 +143,7 @@
       </h5>
 
       <br>
-      <h5 class="au-display-md">
-        <b class="sapphire">References</b>
-      </h5>
-      <br>
-      {{#if this.model.profile.references}}
-        {{#each this.model.profile.references as |reference|}}
-          <div class="row">
-            <div class="col-sm-18">
-              <p>
-                <b>Contact</b><br>
-                {{reference.first_name}} {{reference.last_name}}<br>
-                {{reference.role}}
-              </p>
-            </div>
-            <div class="col-sm-18">
-              <p>
-                <b>Associated projects</b><br>
-                {{reference.associated_project}}<br>
-                {{reference.project_description}}
-              </p>
-            </div>
-          </div>
-        {{/each}}
-      {{else}}
-        <p>No references are listed</p>
-      {{/if}}
-      <hr class="super-light">
-
-      <h5 class="au-display-md">
-        <b class="sapphire">Case studies</b>
-      </h5>
-      <br>
-      {{#if this.model.profile.case_studies}}
-        {{#each this.model.profile.case_studies as |case_study|}}
-          {{dds/file-download
-            auth=auth
-            field=case_study.document_id
-            fileService=fileService
-            showOriginalFilename=true
-          }}
-        {{/each}}
-      {{else}}
-        <p>No case studies are listed</p>
-      {{/if}}
+      {{seller-profile/reference-and-case-study-view form=this.model.reference_and_case_study buyerView=buyerView}}
       <hr class="light">
 
       <div>
@@ -411,27 +153,7 @@
       <h5 class="au-display-lg" id="government-credentials">
         <b class="dark-sapphire">Government credentials</b>
       </h5>
-
-      <p><b>Describe products and services you have provided to government.  Buyers are interested in previous experience you may have working on similar projects.</b></p>
-
-      {{#if this.model.profile.government_credentials}}
-        {{#each this.model.profile.government_credentials as |cred|}}
-          <h5 class="au-display-md">
-            <b class="sapphire">{{cred.provided_services}}</b>
-          </h5>
-          <p>
-            {{cred.project_description}}
-          </p>
-          <p>
-            <b>Contact</b><br>
-            {{cred.first_name}} {{cred.last_name}}<br>
-            {{cred.role}}
-          </p>
-        {{/each}}
-      {{else}}
-        <p>No government credentials are listed.</p>
-      {{/if}}
-
+      {{seller-profile/government-credential-view form=this.model.government_credential buyerView=buyerView}}
       <hr class="super-light">
 
       <div>
@@ -441,18 +163,8 @@
       <h5 class="au-display-lg" id="schemes-and-panels">
         <b class="dark-sapphire">Schemes and panels</b>
       </h5>
-
-      {{#if this.model.profile.schemes_and_panels}}
-        <p>
-          {{#each this.model.profile.schemes_and_panels as |scheme|}}
-            <b>{{scheme}}</b>
-            <hr class="super-light less-margin">
-          {{/each}}
-        </p>
-      {{else}}
-        <p>No schemes or panels are listed.</p>
-        <hr class="light">
-      {{/if}}
+      <br>
+      {{seller-profile/scheme-and-panel-view form=this.model.scheme_and_panel buyerView=buyerView}}
 
       <div>
         {{dds/top-link}}
@@ -461,51 +173,7 @@
       <h5 class="au-display-lg" id="team-members">
         <b class="dark-sapphire">Team members</b>
       </h5>
-
-      <p><b>Buyers may want to contact a specialist team member with specific questions about their requirements</b></p>
-      <br>
-      <br>
-      {{#if this.model.profile.team_members}}
-        {{#each this.model.profile.team_members as |member|}}
-          <div class="row">
-            <div class="col-xs-15 col-sm-12 col-md-9 col-lg-6">
-              {{dds/avatar avatarId=member.avatar_id fileService=fileService}}
-            </div>
-            <div class="col-xs-21 col-sm-24 col-lg-27">
-              <div class="member-details">
-                {{member.first_name}} {{member.last_name}}<br>
-                <b>{{member.role}}</b><br>
-                <p>
-                  {{member.speciality}}
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-36 col-md-33">
-              {{#if buyerView}}
-                <div class="float-right">
-                  <br>
-                  <a target="_blank" class="au-btn au-btn--sapphire" href="mailto:{{member.email}}">
-                    <b class="white">
-                      Contact {{member.first_name}}
-                    </b>
-                  </a>
-                </div>
-                <div class="clear-both"></div>
-                <br>
-              {{else}}
-                <br>
-              {{/if}}
-            </div>
-          </div>
-        {{/each}}
-      {{else}}
-        <p>
-          Team members are not listed.
-        </p>
-      {{/if}}
-
+      {{seller-profile/team-member-view form=this.model.team_member buyerView=buyerView}}
       <br> <br>
       <div>
         {{dds/top-link}}
@@ -514,16 +182,10 @@
       <h5 class="au-display-lg" id="promotional-video">
         <b class="dark-sapphire">Promotional video</b>
       </h5>
+      {{seller-profile/promotional-video-view form=this.model.promotional_video buyerView=buyerView}}
       <br>
       <br>
-      {{#if this.model.profile.promotional_video}}
-        {{ember-youtube ytid=this.model.profile.promotional_video class="center fit-to-page"}}
-      {{else}}
-        <p>
-          No promotional video is provided.
-        </p>
-      {{/if}}
-      
+
     {{/dds/template-body}}
   </div>
   {{dds/page-feedback user=auth.user feedbackService=feedbackService}}
