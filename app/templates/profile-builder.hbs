@@ -19,7 +19,7 @@
   <div class="on-the-edge float-right">
     {{link-to "View your profile as buyer" "seller-profile" this.model.seller.id
       class="au-btn au-btn--sapphire banner-button float-right"}}
-    {{link-to "Edit company account details" "seller-profile" this.model.seller.id
+    {{link-to "Edit company account details" "supplier-application"
       class="au-btn au-btn--turquoise banner-button float-right"}}
   </div>
 {{dds/primary-btn}}
@@ -113,6 +113,7 @@
             </p>
           {{/if}}
           {{#if this.model.seller.documents}}
+            <hr class="super-light">
             <p>
               <br>
               <b>This supplier has provided the following documentation</b><br>
@@ -123,9 +124,8 @@
               </ul>
             </p>
           {{/if}}
-          <hr class="super-light">
           <p>
-            {{link-to "Go to your Account to update your services, business identifiers and documents" "seller-profile" this.model.seller.id class="small bold"}}
+            {{link-to "Go to your Account to update your services, business identifiers and documents" "supplier-application" class="small bold"}}
           </p>
         </div>
       </div>
