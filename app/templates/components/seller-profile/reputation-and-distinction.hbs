@@ -3,6 +3,13 @@
   subline="Tip: this is your opportunity to share some of the things you are proud of."
   theme="sapphire"
   expanded=false}}
+  <p>
+    {{seller-profile/edit-save
+      theme="sapphire"
+      underEdit=(mut underEdit)
+      form=form
+    }}
+  </p>
   {{#if underEdit}}
     {{seller-profile/reputation-and-distinction-edit form=form}}
   {{else}}

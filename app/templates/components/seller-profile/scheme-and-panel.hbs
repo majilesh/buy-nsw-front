@@ -3,6 +3,13 @@
   subline="Tip: ."
   theme="sapphire"
   expanded=false}}
+  <p>
+    {{seller-profile/edit-save
+      theme="sapphire"
+      underEdit=(mut underEdit)
+      form=form
+    }}
+  </p>
   {{#if underEdit}}
     {{seller-profile/scheme-and-panel-edit form=form}}
   {{else}}
