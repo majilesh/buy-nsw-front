@@ -4,23 +4,34 @@
   theme="sapphire"
   class="has-tip"
   expanded=false}}
-  {{seller-profile/edit-save
-    theme="sapphire"
-    class="float-right"
-    underEdit=(mut underEdit)
-    form=form
-  }}
+
+  <hr class="super-light">
+  <div class="row">
+    <div class="col-sm-12">
+    </div>
+    <div class="col-sm-24">
+      {{seller-profile/edit-save
+        theme="sapphire"
+        underEdit=(mut underEdit)
+        form=form
+      }}
+    </div>
+  </div>
   {{#if underEdit}}
     {{seller-profile/team-member-edit form=form}}
   {{else}}
     {{seller-profile/team-member-view form=form buyerView=true}}
   {{/if}}
-  <p>
-    {{seller-profile/edit-save
-      theme="sapphire"
-      underEdit=(mut underEdit)
-      form=form
-    }}
-  </p>
+  <div class="row">
+    <div class="col-sm-12">
+    </div>
+    <div class="col-sm-24">
+      {{seller-profile/edit-save
+        theme="sapphire"
+        underEdit=(mut underEdit)
+        form=form
+      }}
+    </div>
+  </div>
 
 {{/dds/accordion-container}}

@@ -5,6 +5,13 @@
   class="has-tip"
   expanded=false}}
   <hr class="super-light">
+  <p>
+    {{seller-profile/edit-save
+      theme="sapphire"
+      underEdit=(mut underEdit)
+      form=form
+    }}
+  </p>
   {{#if underEdit}}
     {{seller-profile/reference-and-case-study-edit form=form}}
   {{else}}

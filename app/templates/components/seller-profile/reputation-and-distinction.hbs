@@ -4,12 +4,14 @@
   theme="sapphire"
   class="has-tip"
   expanded=false}}
-  {{seller-profile/edit-save
-    theme="sapphire"
-    class="float-right"
-    underEdit=(mut underEdit)
-    form=form
-  }}
+
+  <p>
+    {{seller-profile/edit-save
+      theme="sapphire"
+      underEdit=(mut underEdit)
+      form=form
+    }}
+  </p>
   {{#if underEdit}}
     {{seller-profile/reputation-and-distinction-edit form=form}}
   {{else}}
