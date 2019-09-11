@@ -1,9 +1,14 @@
 {{#dds/accordion-container
   title="Special capabilities and expertise"
-  subline="Tip: We recommend adding these details to your profile to increase your visibility and legitimacy to buyers."
+  subtitle="We recommend adding these details to your profile to increase your visibility and legitimacy to buyers."
   theme="sapphire"
+  class="has-tip"
   expanded=false}}
-  <hr class="super-light">
+  {{seller-profile/edit-save
+    theme="sapphire"
+    class="float-right"
+    form=form
+  }}
   <h5 class="au-display-md">
     <b class="sapphire">Methodologies</b>
   </h5>
@@ -22,7 +27,6 @@
       errorMessage=(v-get form 'methodologies' 'message')
     }}
   </p>
-  <hr class="super-light">
 
   <h5 class="au-display-md">
     <b class="sapphire">Knowledge base</b>
@@ -42,7 +46,6 @@
       errorMessage=(v-get form 'knowledge_base' 'message')
     }}
   </p>
-  <hr class="super-light">
 
   <h5 class="au-display-md">
     <b class="sapphire">Quality control</b>
@@ -62,7 +65,6 @@
       errorMessage=(v-get form 'quality_control' 'message')
     }}
   </p>
-  <hr class="super-light">
 
   <h5 class="au-display-md">
     <b class="sapphire">Security</b>

@@ -1,9 +1,14 @@
 {{#dds/accordion-container
   title="Team members"
-  subline="Tip: Do you have team leads with specialist technical knowledge?"
+  subtitle="Do you have team leads with specialist technical knowledge?"
   theme="sapphire"
+  class="has-tip"
   expanded=false}}
-  <hr class="super-light">
+  {{seller-profile/edit-save
+    theme="sapphire"
+    class="float-right"
+    form=form
+  }}
   <p><b>Buyers may want to contact a specialist team member with specific questions about their requirements</b></p>
   <br>
   {{#each form.team_members as |member index|}}

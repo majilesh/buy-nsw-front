@@ -140,12 +140,14 @@
           </p>
         </div>
       </div>
-      {{seller-profile/reputation-and-distinction form=this.model.reputation_and_distinction}}
-      {{seller-profile/capability-and-experty form=this.model.capability_and_experty}}
-      {{seller-profile/reference-and-case-study form=this.model.reference_and_case_study}}
-      {{seller-profile/government-credential form=this.model.government_credential}}
-      {{seller-profile/team-member form=this.model.team_member}}
-      {{seller-profile/promotional-video form=this.model.promotional_video}}
+      <section class="more-info">
+        {{seller-profile/reputation-and-distinction form=this.model.reputation_and_distinction}}
+        {{seller-profile/capability-and-experty form=this.model.capability_and_experty}}
+        {{seller-profile/reference-and-case-study form=this.model.reference_and_case_study}}
+        {{seller-profile/government-credential form=this.model.government_credential}}
+        {{seller-profile/team-member form=this.model.team_member}}
+        {{seller-profile/promotional-video form=this.model.promotional_video}}
+      </section>
       
     {{/dds/template-body}}
   </div>

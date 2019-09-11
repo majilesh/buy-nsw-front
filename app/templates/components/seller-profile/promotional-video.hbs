@@ -1,9 +1,14 @@
 {{#dds/accordion-container
   title="Promotional video"
-  subline="Tip: You can upload relevant video content here to provide buyers with project or business information."
+  subtitle="You can upload relevant video content here to provide buyers with project or business information."
   theme="sapphire"
+  class="has-tip"
   expanded=false}}
-  <hr class="super-light">
+  {{seller-profile/edit-save
+    theme="sapphire"
+    class="float-right"
+    form=form
+  }}
   <h5 class="au-display-md">
     <b class="sapphire">Embed a video</b>
   </h5>
