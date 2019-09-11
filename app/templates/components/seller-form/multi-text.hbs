@@ -17,10 +17,11 @@
 <p>
   <div class="col-sm-3 col-md-2">
   </div>
-  <div class="col-sm-24">
+  <div class="col-sm-24 plus-circle">
     {{dds/tertiary-button
       onClick=(action "addRow")
-      label="Add a row"
+      icon="plus-circle"
+      label="Add row"
     }}
     {{#if (and (or showError hasChanged) invalid)}}
       {{dds/validation-error type="error" message=errorMessage float="left"}}
