@@ -9,6 +9,8 @@
         index=index
         signal=signal
         field=(mut field)
+        theme=theme
+        thin=thin
       }}
     </div>
     <div class="clear-both"></div>
@@ -22,6 +24,8 @@
       onClick=(action "addRow")
       icon="plus-circle"
       label="Add row"
+      theme=theme
+      thin=thin
     }}
     {{#if (and (or showError hasChanged) invalid)}}
       {{dds/validation-error type="error" message=errorMessage float="left"}}

@@ -1,5 +1,9 @@
 {{input
-  class="au-text-input au-text-input--block"
+  class=(concat (concat (concat
+      "au-text-input "
+      "au-text-input--block "
+      (if thin "au-text-input--thin "))
+      (if theme (concat "au-text-input--" theme))))
   value=(mut value)
   type="text"
   focus-out=(action "updateValue")
