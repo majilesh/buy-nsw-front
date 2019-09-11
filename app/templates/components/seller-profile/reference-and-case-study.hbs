@@ -5,143 +5,15 @@
   class="has-tip"
   expanded=false}}
   <hr class="super-light">
-  <h5 class="au-display-md">
-    <br>
-    <b class="sapphire">References</b>
-    <br>
-  </h5>
-  <p><b>You can nominate your references by providing the details below. Buyers may contact them in order to gain more understanding about your work.</b></p>
-  <br>
-  {{#each form.references as |reference index|}}
-    <div class="row">
-      <div class="col-sm-24">
-        <div class="row">
-          <div class="col-sm-18">
-            {{dds/text-input
-              label-text="First name"
-              field=(mut reference.first_name)
-              signal=(mut form.signal)
-              thin=true
-              allRow=true
-              wide=true
-            }}
-          </div>
-          <div class="col-sm-18">
-            {{dds/text-input
-              label-text="Last name"
-              field=(mut reference.last_name)
-              signal=(mut form.signal)
-              thin=true
-              allRow=true
-              wide=true
-            }}
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-18">
-            {{dds/text-input
-              label-text="Role"
-              field=(mut reference.role)
-              signal=(mut form.signal)
-              thin=true
-              allRow=true
-              wide=true
-            }}
-          </div>
-          <div class="col-sm-18">
-            {{dds/text-input
-              label-text="Associated project(s)"
-              field=(mut reference.provided_services)
-              signal=(mut form.signal)
-              thin=true
-              allRow=true
-              wide=true
-            }}
-          </div>
-        </div>
-        <p>
-          {{dds/text-area
-            field=(mut reference.project_description)
-            label-text="Briefly describe this project"
-            signal=(mut form.signal)
-            maxLength=500
-            thin=true
-          }}
-          {{dds/tertiary-button
-            thin=true
-            class="pull-right"
-            theme="sapphire"
-            onClick=(action "removeReference" index)
-            label="Remove this reference"
-          }}
-        </p>
-      </div>
-    </div>
-    <hr class="super-light">
-  {{/each}}
-  <div class="row">
-    <div class="col-sm-24">
-      <p>
-        {{dds/tertiary-button icon="plus-circle" thin=true theme="sapphire" onClick=(action "addReference") label="Add row"}}
-      </p>
-    </div>
-  </div>
+  {{#if underEdit}}
+    {{seller-profile/reference-and-case-study-edit form=form}}
+  {{else}}
+    {{seller-profile/reference-and-case-study-view form=form buyerView=true}}
+  {{/if}}
   <p>
     {{seller-profile/edit-save
       theme="sapphire"
-      form=form
-    }}
-  </p>
-  <hr class="super-light">
-  <h5 class="au-display-md">
-    <br>
-    <b class="sapphire">Case studies</b>
-    <br>
-  </h5>
-  <br>
-  {{#each form.case_studies as |case index|}}
-    <div class="row">
-      <div class="col-sm-24">
-        <p><b>Upload a PDF file and enter a description below</b></p>
-        {{dds/file-upload
-          name=(concat "case_study_" index)
-          field=(mut case.document_id)
-          signal=(mut form.signal)
-          fileService=fileService
-          fileTypes=(array "application/pdf")
-          multiple=false
-          theme="sapphire"
-        }}
-        <p>
-          {{dds/text-area
-            field=(mut case.description)
-            label-text="Briefly describe this case study"
-            signal=(mut form.signal)
-            maxLength=300
-            thin=true
-          }}
-          {{dds/tertiary-button
-            thin=true
-            class="pull-right"
-            theme="sapphire"
-            onClick=(action "removeCaseStudy" index)
-            label="Remove this case study"
-          }}
-        </p>
-      </div>
-    </div>
-    <hr class="super-light">
-  {{/each}}
-  <div class="row">
-    <div class="col-sm-24">
-      <p>
-        {{dds/tertiary-button icon="plus-circle" thin=true theme="sapphire" onClick=(action "addCaseStudy") label="Add row"}}
-      </p>
-    </div>
-  </div>
-  <p>
-    {{seller-profile/edit-save
-      theme="sapphire"
+      underEdit=(mut underEdit)
       form=form
     }}
   </p>

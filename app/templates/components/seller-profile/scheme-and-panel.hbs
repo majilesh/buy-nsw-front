@@ -1,1 +1,19 @@
-{{yield}}
+{{#dds/accordion-container
+  title="Schemes and panels"
+  subline="Tip: ."
+  theme="sapphire"
+  expanded=false}}
+  {{#if underEdit}}
+    {{seller-profile/scheme-and-panel-edit form=form}}
+  {{else}}
+    {{seller-profile/scheme-and-panel-view form=form}}
+  {{/if}}
+  <p>
+    {{seller-profile/edit-save
+      theme="sapphire"
+      underEdit=(mut underEdit)
+      form=form
+    }}
+  </p>
+
+{{/dds/accordion-container}}

@@ -17,9 +17,9 @@
   background="editting"
   light=true}}
   <div class="on-the-edge float-right">
-    {{link-to "View your profile as buyer" "seller-profile" this.model.profile.id
+    {{link-to "View your profile as buyer" "seller-profile" this.model.seller.id
       class="au-btn au-btn--sapphire banner-button float-right"}}
-    {{link-to "Edit company account details" "seller-profile" this.model.profile.id
+    {{link-to "Edit company account details" "supplier-application"
       class="au-btn au-btn--turquoise banner-button float-right"}}
   </div>
 {{dds/primary-btn}}
@@ -43,8 +43,8 @@
       <div class="row">
         <div class="col-sm-17 col-md-14 col-lg-11">
           {{#dds/simple-box theme="turquoise"}}
-            <h4 class="au-display-lg"> 
-              <center><b class="dark-sapphire">Company details</b></center>
+            <h4 class="au-display-lg">
+              <center><b class="dark-sapphire">Contact details</b></center>
             </h4>
             <br>
             <p>
@@ -85,19 +85,7 @@
             </p>
             <br>
             {{seller-profile/contact-detail form=this.model.contact_detail}}
-            {{#if this.model.seller.documents}}
-              <p>
-                <br>
-                <b class="small">This supplier has provided the following documentation</b><br>
-                <ul>
-                  {{#each this.model.seller.documents as |document|}}
-                    <li class="small">{{document}}</li>
-                  {{/each}}
-                </ul>
-              </p>
-            {{/if}}
-            <br>
-            {{link-to "Go to your Account to update documents" "seller-profile" this.model.seller.id class="small bold"}}
+
           {{/dds/simple-box}}
           <br>
           <br>
@@ -124,31 +112,30 @@
               {{/each}}
             </p>
           {{/if}}
-          <hr class="super-light">
-          {{#if this.model.profile.schemes_and_panels}}
-            <p><b>Registered with government schemes or panels</b></p>
-            <ul>
-              {{#each this.model.profile.schemes_and_panels as |scheme index|}}
-                {{# if (lt index 3) }}
-                  <li class="small">{{scheme}}</li>
-                {{/if}}
-              {{/each}}
-            </ul>
+          {{#if this.model.seller.documents}}
+            <hr class="super-light">
+            <p>
+              <br>
+              <b>This supplier has provided the following documentation</b><br>
+              <ul>
+                {{#each this.model.seller.documents as |document|}}
+                  <li>{{document}}</li>
+                {{/each}}
+              </ul>
+            </p>
           {{/if}}
           <p>
-            {{link-to "Go to your Account to update your services, business identifiers and registered schemes or panels" "seller-profile" this.model.seller.id class="small bold"}}
+            {{link-to "Go to your Account to update your services, business identifiers and documents" "supplier-application" class="small bold"}}
           </p>
         </div>
       </div>
-      <section class="more-info">
-        {{seller-profile/reputation-and-distinction form=this.model.reputation_and_distinction}}
-        {{seller-profile/capability-and-experty form=this.model.capability_and_experty}}
-        {{seller-profile/reference-and-case-study form=this.model.reference_and_case_study}}
-        {{seller-profile/government-credential form=this.model.government_credential}}
-        {{seller-profile/team-member form=this.model.team_member}}
-        {{seller-profile/promotional-video form=this.model.promotional_video}}
-      </section>
-      
+      {{seller-profile/reputation-and-distinction form=this.model.reputation_and_distinction}}
+      {{seller-profile/capability-and-experty form=this.model.capability_and_experty}}
+      {{seller-profile/reference-and-case-study form=this.model.reference_and_case_study}}
+      {{seller-profile/government-credential form=this.model.government_credential}}
+      {{seller-profile/team-member form=this.model.team_member}}
+      {{seller-profile/promotional-video form=this.model.promotional_video}}
+
     {{/dds/template-body}}
   </div>
   {{dds/page-feedback user=auth.user feedbackService=feedbackService}}

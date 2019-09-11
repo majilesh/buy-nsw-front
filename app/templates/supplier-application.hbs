@@ -177,28 +177,31 @@
     <div class="clear-both"></div>
   {{/supplier-application-section}}
 
-  <br>
 
-  {{#supplier-application-section
-    title="Company profile"
-    first_form="company-profile"
-    optional=true
-    seller=this.model.seller
-    steps=this.model.steps
-    forms=(array
-      (hash key='company_profile' name='Company profile' optional=true)
-      (hash key='accreditation_and_license' name='Accreditation and license' optional=true)
-      (hash key='membership_and_award' name='Membership and award' optional=true)
-    )
-  }}
-    <p><b>Information we will ask for:</b></p>
-    <p>
-      <ul>
-        <li>Company description and website</li>
-        <li>Any awards and accreditations</li>
-      </ul>
-    </p>
-  {{/supplier-application-section}}
+  {{#unless this.model.seller.live}}
+    <br>
+
+    {{#supplier-application-section
+      title="Company profile"
+      first_form="company-profile"
+      optional=true
+      seller=this.model.seller
+      steps=this.model.steps
+      forms=(array
+        (hash key='company_profile' name='Company profile' optional=true)
+        (hash key='accreditation_and_license' name='Accreditation and license' optional=true)
+        (hash key='membership_and_award' name='Membership and award' optional=true)
+      )
+    }}
+      <p><b>Information we will ask for:</b></p>
+      <p>
+        <ul>
+          <li>Company description and website</li>
+          <li>Any awards and accreditations</li>
+        </ul>
+      </p>
+    {{/supplier-application-section}}
+  {{/unless}}
 
   <br>
 

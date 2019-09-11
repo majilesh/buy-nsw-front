@@ -1,0 +1,11 @@
+{{#if form.schemes_and_panels}}
+  <p>
+    {{#each form.schemes_and_panels as |scheme|}}
+      <b>{{scheme}}</b>
+      <hr class="super-light less-margin">
+    {{/each}}
+  </p>
+{{else}}
+  <p>No schemes or panels are listed.</p>
+  <hr class="light">
+{{/if}}

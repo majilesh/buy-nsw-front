@@ -1,18 +1,27 @@
 <p>
-  {{dds/primary-button
-    theme=theme
-    class="pull-right"
-    thin=true
-    label="Save"
-    onClick=(action "saveClicked")
-    disabled=(or (v-get form 'isInvalid') (not form.hasDirtyAttributes))
-  }}
-  {{dds/tertiary-button
-    class="pull-right" 
-    thin=true
-    onClick=(action "cancelClicked")
-    label="Cancel"
-    disabled=(not form.hasDirtyAttributes)
-   }}
+  {{#if underEdit}}
+    {{dds/primary-button
+      theme=theme
+      class="pull-right"
+      thin=true
+      label="Save"
+      onClick=(action "saveClicked")
+      disabled=(or (v-get form 'isInvalid') (not form.hasDirtyAttributes))
+    }}
+    {{dds/tertiary-button
+      class="pull-right"
+      thin=true
+      onClick=(action "cancelClicked")
+      label="Cancel"
+     }}
+  {{else}}
+    {{dds/primary-button
+      theme=theme
+      class="pull-right"
+      thin=true
+      label="Edit"
+      onClick=(action "editClicked")
+    }}
+  {{/if}}
   <div class="clear-both"></div>
 </p>

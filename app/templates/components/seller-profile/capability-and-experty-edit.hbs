@@ -1,0 +1,78 @@
+<h5 class="au-display-md">
+  <b class="sapphire">Methodologies</b>
+</h5>
+<p>
+  <b>What are the different project management methodologies used within your company that may be of interest to buyers?</b>
+</p>
+<p>
+  Describe a methodology that is of interest to buyers below.
+</p>
+<p>
+  {{dds/text-area
+    field=(mut form.methodologies)
+    maxLength=1000
+    thin=true
+    invalid=(v-get form 'methodologies' 'isInvalid')
+    errorMessage=(v-get form 'methodologies' 'message')
+  }}
+</p>
+<hr class="super-light">
+
+<h5 class="au-display-md">
+  <b class="sapphire">Knowledge base</b>
+</h5>
+<p>
+  <b>What products and/or services does your business have specialist knowledge in?</b>
+</p>
+<p>
+  Add information about your knowledge base below.
+</p>
+<p>
+  {{dds/text-area
+    field=(mut form.knowledge_base)
+    maxLength=1000
+    thin=true
+    invalid=(v-get form 'knowledge_base' 'isInvalid')
+    errorMessage=(v-get form 'knowledge_base' 'message')
+  }}
+</p>
+<hr class="super-light">
+
+<h5 class="au-display-md">
+  <b class="sapphire">Quality control</b>
+</h5>
+<p>
+  <b>What methods and processes have you implemented to ensure the quality of your products and services?</b>
+</p>
+<p>
+  Add information about your quality control processes below.
+</p>
+<p>
+  {{dds/text-area
+    field=(mut form.quality_control)
+    maxLength=1000
+    thin=true
+    invalid=(v-get form 'quality_control' 'isInvalid')
+    errorMessage=(v-get form 'quality_control' 'message')
+  }}
+</p>
+<hr class="super-light">
+
+<h5 class="au-display-md">
+  <b class="sapphire">Security</b>
+</h5>
+<p>
+  <b>What security protocols and safeguards have you implemented in relation to your products and services?</b>
+</p>
+<p>
+  Add information about your security safeguards below.
+</p>
+<p>
+  {{dds/text-area
+    field=(mut form.security)
+    maxLength=1000
+    thin=true
+    invalid=(v-get form 'security' 'isInvalid')
+    errorMessage=(v-get form 'security' 'message')
+  }}
+</p>
