@@ -1,9 +1,11 @@
-<p>
-  <b>Website</b><br>
-  <a target="_blank" href={{form.website_url}}>
-    {{fa-icon "external-link" prefix="far"}} {{form.website_url}}
-  </a>
-</p>
+{{#if form.website_url}}
+  <p>
+    <b>Website</b><br>
+    <a target="_blank" href={{form.website_url}}>
+      {{fa-icon "external-link" prefix="far"}} {{form.website_url}}
+    </a>
+  </p>
+{{/if}}
 {{#if (or (or (or (or
   form.linkedin_url
   form.twitter_url)
