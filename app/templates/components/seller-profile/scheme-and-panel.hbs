@@ -3,24 +3,20 @@
   subline="Tip: ."
   theme="sapphire"
   expanded=false}}
-  <p>
-    {{seller-profile/edit-save
-      theme="sapphire"
-      underEdit=(mut underEdit)
-      form=form
-    }}
-  </p>
+  {{seller-profile/edit-save
+    theme="sapphire"
+    underEdit=(mut underEdit)
+    form=form
+  }}
   {{#if underEdit}}
     {{seller-profile/scheme-and-panel-edit form=form}}
   {{else}}
     {{seller-profile/scheme-and-panel-view form=form}}
   {{/if}}
-  <p>
-    {{seller-profile/edit-save
-      theme="sapphire"
-      underEdit=(mut underEdit)
-      form=form
-    }}
-  </p>
+  {{seller-profile/edit-save
+    theme="sapphire"
+    underEdit=(mut underEdit)
+    form=form
+  }}
 
 {{/dds/accordion-container}}

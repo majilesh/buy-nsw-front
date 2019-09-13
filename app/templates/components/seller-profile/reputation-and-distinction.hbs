@@ -5,24 +5,20 @@
   class="has-tip"
   expanded=false}}
   <hr class="super-light">
-  <p>
-    {{seller-profile/edit-save
-      theme="sapphire"
-      underEdit=(mut underEdit)
-      form=form
-    }}
-  </p>
+  {{seller-profile/edit-save
+    theme="sapphire"
+    underEdit=(mut underEdit)
+    form=form
+  }}
   {{#if underEdit}}
     {{seller-profile/reputation-and-distinction-edit form=form}}
   {{else}}
     {{seller-profile/reputation-and-distinction-view form=form buyerView=true}}
   {{/if}}
-  <p>
-    {{seller-profile/edit-save
-      theme="sapphire"
-      underEdit=(mut underEdit)
-      form=form
-    }}
-  </p>
+  {{seller-profile/edit-save
+    theme="sapphire"
+    underEdit=(mut underEdit)
+    form=form
+  }}
 
 {{/dds/accordion-container}}
