@@ -20,7 +20,6 @@ export default Route.extend({
       promotional_video: this.store.queryRecord("seller-profile/promotional-video", {}),
 
       seller: this.store.queryRecord('public-seller', { current: true }),
-      profile: this.store.findRecord('seller-profile', 'current'),
     });
   },
 });

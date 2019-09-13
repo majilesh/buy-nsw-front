@@ -8,7 +8,7 @@
 {{#dds/banner
   title="Supplier profile builder"
   heading=this.model.seller.name
-  subline=(concat "Last update to supplier profile: " this.model.profile.updated_at)
+  subline=(concat "Last update to supplier profile: " this.model.seller.profile_updated_at)
   links=(array
       (hash name="buy.nsw" route="index")
       (hash name="Dashboard" route="seller-dashboard")
