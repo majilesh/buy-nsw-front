@@ -1,7 +1,8 @@
 import Component from '@ember/component';
-const {$} = Ember;
+import { inject } from '@ember/service';
 
 export default Component.extend({
+  overlay: inject(),
   actions: {
     editClicked() {
       this.set('underEdit', true);
@@ -14,12 +15,12 @@ export default Component.extend({
       });
     },
     saveClicked() {
-      $('.overlay').show();
+      this.get('overlay').show();
       let component = this;
       this.get('form').save().then(() => {
         component.set('underEdit', false);
       }).finally(() => {
-        $('.overlay').hide();
+        this.get('overlay').hide();
       });
     }
   }

@@ -1,19 +1,19 @@
 import Route from '@ember/routing/route';
 import Ember from 'ember';
 import {inject as service} from '@ember/service';
-const {$} = Ember;
 
 export default Route.extend({
   auth: service(),
+  overlay: service(),
   metrics: service(),
   router: service(),
   airbrake: service(),
 
   actions: {
     loading: function(transition, originRoute) {
-      $('.overlay').show();
+      this.get('overlay').show();
       transition.promise.finally(() => {
-        $('.overlay').hide();
+        this.get('overlay').hide();
       });
 
       return true;
@@ -23,7 +23,7 @@ export default Route.extend({
       const title = this.router.currentRouteName || 'unknown';
       this.metrics.trackPage({ page, title, siteSpeedSampleRate: 10 });
 
-      $('.overlay').hide();
+      this.get('overlay').hide();
       this.get('auth').authenticate();
     },
     error: function(response) {

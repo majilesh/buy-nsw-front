@@ -11,42 +11,42 @@ export default BaseController.extend({
       this.get('ajax').request('/api/sellers/sellers/steps', {
         method: 'GET',
       }).then(response => controller.set('model.steps', response))
-        .finally(() => $('.overlay').hide());
+        .finally(() => this.get('overlay').hide());
     },
     submitProfile() {
-      $('.overlay').show();
+      this.get('overlay').show();
       var controller = this;
       this.model.seller.submit().then(function() {
         controller.send('refresh');
-      }).finally(() => $('.overlay').hide());
+      }).finally(() => this.get('overlay').hide());
     },
     cancelProfile() {
-      $('.overlay').show();
+      this.get('overlay').show();
       var controller = this;
       this.model.seller.cancel().then(function(response) {
         controller.send('refresh');
-      }).finally(() => $('.overlay').hide());
+      }).finally(() => this.get('overlay').hide());
     },
     withdrawSubmission() {
-      $('.overlay').show();
+      this.get('overlay').show();
       var controller = this;
       this.model.seller.withdraw().then(function(response) {
         controller.send('refresh');
-      }).finally(() => $('.overlay').hide());
+      }).finally(() => this.get('overlay').hide());
     },
     reviseProfile() {
-      $('.overlay').show();
+      this.get('overlay').show();
       var controller = this;
       this.model.seller.revise().then(function(response) {
         controller.send('refresh');
-      }).finally(() => $('.overlay').hide());
+      }).finally(() => this.get('overlay').hide());
     },
     amendProfile() {
-      $('.overlay').show();
+      this.get('overlay').show();
       var controller = this;
       this.model.seller.startAmendment().then(function(response) {
         controller.send('refresh');
-      }).finally(() => $('.overlay').hide());
+      }).finally(() => this.get('overlay').hide());
     },
   }
 });

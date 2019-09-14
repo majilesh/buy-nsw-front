@@ -1,7 +1,5 @@
 import BaseController from './base-controller';
 import { buildValidations, validator } from 'ember-cp-validations';
-import Ember from 'ember';
-const {$} = Ember;
 
 const Validations = buildValidations({
   'model.email': {
@@ -22,7 +20,7 @@ export default BaseController.extend(Validations, {
     invite() {
       this.set('showError', true);
       var self = this;
-      $('.overlay').show();
+      this.get('overlay').show();
 
       this.get('model').save().then(function() {
         self.set('invitationErrors', null);
@@ -31,7 +29,7 @@ export default BaseController.extend(Validations, {
         self.set('invitationErrors', 'This email address is already taken!');
         window.scrollTo(0,230);
       }).finally(function() {
-        $('.overlay').hide();
+        this.get('overlay').hide();
       });
     }
   }

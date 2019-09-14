@@ -57,13 +57,13 @@ export default BaseController.extend({
   },
 
   updateCounts() {
-    $('.overlay').show();
+    this.get('overlay').show();
     this.get('ajax').request('/api/products/public_products/count', {
       method: 'GET',
       data: this.filters()
     }).then( (response) => this.set('productsCount', response.totalCount) )
     .catch((error) => this.get('auth').authenticateIfUnauthorized(error))
-    .finally(() => $('.overlay').hide())
+    .finally(() => this.get('overlay').hide())
   },
 
   updateResults() {

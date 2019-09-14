@@ -3,5 +3,6 @@ import { inject } from '@ember/service';
 
 export default Controller.extend({
   auth: inject(),
+  overlay: inject(),
   feedbackService: inject(),
 });

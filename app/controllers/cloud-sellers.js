@@ -34,13 +34,13 @@ export default BaseController.extend({
     return params;
   },
   updateCounts() {
-    $('.overlay').show();
+    this.get('overlay').show();
     this.get('ajax').request('/api/sellers/public_sellers/count', {
       method: 'GET',
       data: this.filters()
     }).then( (response) => this.set('sellersCount', response.totalCount) )
     .catch((error) => this.get('auth').authenticateIfUnauthorized(error))
-    .finally(() => $('.overlay').hide())
+    .finally(() => this.get('overlay').hide())
   },
   updateResults() {
     this.set('sellers', this.store.query('public-seller', this.filters()));

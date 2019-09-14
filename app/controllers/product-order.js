@@ -34,7 +34,7 @@ const Validations = buildValidations({
 export default BaseController.extend(Validations, {
   actions: {
     submit() {
-      $('.overlay').show();
+      this.get('overlay').show();
       this.set('showValueError', true);
       let controller = this;
       this.model.order.set('product_id', this.model.product.get('id'));
@@ -44,7 +44,7 @@ export default BaseController.extend(Validations, {
         if(response.payload.error) {
           controller.set('apiError', response.payload.error);
         }
-      }).finally(() => $('.overlay').hide());
+      }).finally(() => this.get('overlay').hide());
     }
   }
 });

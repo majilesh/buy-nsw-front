@@ -49,7 +49,7 @@ export default BaseController.extend(Validations, {
 
   actions: {
     submit() {
-      $('.overlay').show();
+      this.get('overlay').show();
       let controller = this;
       this.get('ajax').request('/api/users/users/signup', {
         method: 'POST',
@@ -68,7 +68,7 @@ export default BaseController.extend(Validations, {
         if(error.payload.error) {
           controller.set('apiError', error.payload.error);
         }
-      }).finally(() => $('.overlay').hide());
+      }).finally(() => this.get('overlay').hide());
     }
   }
 });

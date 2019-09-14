@@ -3,12 +3,11 @@ import { inject } from '@ember/service';
 import { computed } from '@ember/object';
 import { isUnauthorizedError } from 'ember-ajax/errors';
 import { task } from 'ember-concurrency';
-import Ember from 'ember';
-const {$} = Ember;
 
 export default Service.extend({
   ajax: inject(),
   router: inject(),
+  overlay: inject(),
   cookieCache: null,
 
   config: null,
@@ -49,7 +48,7 @@ export default Service.extend({
   },
 
   logout(goHome = true) {
-    $('.overlay').show();
+    this.get('overlay').show();
     this.get('ajax').request('/api/users/logout', {
       method: 'POST',
     }).then((response) => {
@@ -59,11 +58,11 @@ export default Service.extend({
         this.get('router').transitionTo("index");
       }
     })
-    .finally(() => $('.overlay').hide())
+    .finally(() => this.get('overlay').hide())
   },
 
   login(email, password, remember) {
-    $('.overlay').show();
+    this.get('overlay').show();
     this.get('ajax').request('/api/users/login', {
       method: 'POST',
       data: {
@@ -76,7 +75,7 @@ export default Service.extend({
       this.set('message', null);
       this.get('router').transitionTo("index");
     }).catch((response) => this.handleError(response))
-    .finally(() => $('.overlay').hide());
+    .finally(() => this.get('overlay').hide());
   },
 
   reauthenticateTask: task(function * () {

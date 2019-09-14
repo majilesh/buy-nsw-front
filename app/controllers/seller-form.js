@@ -31,7 +31,7 @@ export default BaseController.extend({
   }),
   actions: {
     submit() {
-      $('.overlay').show();
+      this.get('overlay').show();
       this.set('showError', true);
       let self = this;
       this.model.form.save().then(() => {
@@ -41,7 +41,7 @@ export default BaseController.extend({
       });
     },
     saveContinue() {
-      $('.overlay').show();
+      this.get('overlay').show();
       this.set('showError', true);
       let controller = this;
       let nextStep = 'complete-application';
@@ -54,7 +54,7 @@ export default BaseController.extend({
       });
     },
     saveExit() {
-      $('.overlay').show();
+      this.get('overlay').show();
       this.set('showError', true);
       let controller = this;
       this.model.form.save().then(()=>{

@@ -3,6 +3,7 @@ import {inject as service} from '@ember/service';
 
 export default Component.extend({
   router: service(),
+  overlay: service(),
   actions: {
     back() {
       if(this.get('buyer.employment_status') == 'contractor') {
@@ -12,11 +13,11 @@ export default Component.extend({
       }
     },
     submit() {
-      $('.overlay').show();
+      this.get('overlay').show();
       var self = this;
       this.buyer.save().then(function() {
         self.get('router').transitionTo('buyer-dashboard');
-      }).finally(() => $('.overlay').hide());
+      }).finally(() => this.get('overlay').hide());
     }
   }
 });
