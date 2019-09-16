@@ -37,10 +37,7 @@ export default DS.Model.extend(Validations, {
   accreditations: DS.attr('json'),
   accreditation_document_ids: DS.attr('json'),
   accreditation_document_ids_valid: computed(
-    'accreditation_document_ids',
-    'accreditation_document_ids.[]',
-    'accreditations',
-    'accreditations.[]',
+    'signal',
     function() {
       return filterTrim(this.get('accreditations')).length == 0 ||
              this.get('accreditation_document_ids').length > 0 ;
@@ -48,10 +45,7 @@ export default DS.Model.extend(Validations, {
   licenses: DS.attr('json'),
   license_document_ids: DS.attr('json'),
   license_document_ids_valid: computed(
-    'license_document_ids',
-    'license_document_ids.[]',
-    'licenses',
-    'licenses.[]',
+    'signal',
     function() {
     return filterTrim(this.get('licenses')).length == 0 ||
            this.get('license_document_ids').length > 0 ;
