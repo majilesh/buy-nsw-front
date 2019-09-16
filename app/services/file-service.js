@@ -19,7 +19,7 @@ export default Service.extend({
     return this.store.query('document', { "ids": ids });
   },
 
-  uploadAvatar: task(function * (blob, fileName, contentType, success) {
+  uploadAvatar: task(function * (blob, fileName, contentType, success, lastly) {
     const formData = new FormData();
     formData.append('file', blob, fileName);
     formData.append('original_filename', fileName);
@@ -32,7 +32,7 @@ export default Service.extend({
       data: formData,
     }).then((response) => {
       success(response);
-    });
+    }).finally(lastly);
   }).maxConcurrency(4).enqueue(),
 
   uploadDocument: task(function * (file, success) {

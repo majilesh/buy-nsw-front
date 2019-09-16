@@ -3,7 +3,7 @@
 {{#each form.team_members as |member index|}}
   <div class="row">
     <div class="col-sm-12">
-      {{dds/avatar-upload signal=(mut form.signal) field=(mut member.avatar_id) fileService=fileService}}
+      {{dds/avatar-upload signal=(mut form.signal) field=(mut member.avatar_id) fileService=fileService overlay=overlay}}
     </div>
     <div class="col-sm-24">
       <h5 class="au-display-md">
