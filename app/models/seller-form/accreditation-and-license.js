@@ -4,7 +4,7 @@ import { computed } from '@ember/object';
 
 function filterTrim(a) {
   return a.filter(function(e) {
-    return e.trim() != "";
+    return e != null && e.trim() != "";
   });
 }
 

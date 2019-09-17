@@ -100,7 +100,7 @@ export default Service.extend({
 
   authenticateIfUnauthorized(error) {
     if (isUnauthorizedError(error)) {
-      this.authenticate2();
+      this.authenticate();
       return;
     }
   },
