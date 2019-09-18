@@ -28,10 +28,10 @@ export default Route.extend({
     },
     error: function(response) {
       let error = response;
-      if (error.errors) {
+      if (error && error.errors && Array.isArray(error.errors)) {
         error = error.errors[0];
       }
-      if ( error.status == 401 ) {
+      if ( error && error.status == 401 ) {
         this.transitionTo('sign-in');
         this.get('auth').transitToSignin();
       } else {

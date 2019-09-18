@@ -6,7 +6,7 @@
 {{dds/main-nav auth=auth noBorder=true}}
 
 {{#dds/banner title=this.model.seller.name
-  subline=(concat "Last update to supplier profile: " this.model.seller.profile_updated_at)}}
+  subline=(concat "Last update to supplier profile: " this.model.seller.updated_at)}}
   {{dds/jump-to class="on-the-edge pull-right"
     sections=(array
       (hash name="Licenses, accreditations and awards" anchor="licenses-accreditations")
@@ -182,6 +182,7 @@
       <h5 class="au-display-lg" id="promotional-video">
         <b class="dark-sapphire">Promotional video</b>
       </h5>
+      <br> <br>
       {{seller-profile/promotional-video-view form=this.model.promotional_video buyerView=buyerView}}
       <br>
       <br>

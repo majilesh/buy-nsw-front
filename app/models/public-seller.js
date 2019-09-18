@@ -42,4 +42,5 @@ export default DS.Model.extend({
   federal_government_experience: DS.attr('boolean'),
   international_government_experience: DS.attr('boolean'),
   documents: DS.attr(),
+  updated_at: DS.attr('string')
 });
