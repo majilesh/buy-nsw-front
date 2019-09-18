@@ -71,9 +71,10 @@ export default Service.extend({
         remember: remember,
       }
     }).then((response) => {
-      this.handleSuccess(response);
-      this.set('message', null);
-      this.get('router').transitionTo("index");
+      // this.handleSuccess(response);
+      // this.set('message', null);
+      // this.get('router').transitionTo("index");
+      window.location = '/';
     }).catch((response) => this.handleError(response))
     .finally(() => this.get('overlay').hide());
   },
