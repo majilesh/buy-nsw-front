@@ -21,6 +21,7 @@ export default BaseController.extend(Validations, {
       this.set('showError', true);
       var self = this;
       this.get('overlay').show();
+      let controller = this;
 
       this.get('model').save().then(function() {
         self.set('invitationErrors', null);
@@ -29,7 +30,7 @@ export default BaseController.extend(Validations, {
         self.set('invitationErrors', 'This email address is already taken!');
         window.scrollTo(0,230);
       }).finally(function() {
-        this.get('overlay').hide();
+        controller.get('overlay').hide();
       });
     }
   }
