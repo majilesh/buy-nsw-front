@@ -8,6 +8,7 @@ export default Component.extend({
       this.set('underEdit', true);
     },
     cancelClicked() {
+      this.get('form').set('apiErrors', null);
       this.get('form').rollbackAttributes();
       let component = this;
       this.get('form').reload().then(() => {
@@ -17,10 +18,14 @@ export default Component.extend({
     saveClicked() {
       this.get('overlay').show();
       let component = this;
-      this.get('form').save().then(() => {
+      let form = this.get('form');
+      form.save().then(() => {
         component.set('underEdit', false);
+      }).catch((adapterError) => {
+        let errors = adapterError.errors[0];
+        form.set('apiErrors', errors);
       }).finally(() => {
-        this.get('overlay').hide();
+        component.get('overlay').hide();
       });
     }
   }

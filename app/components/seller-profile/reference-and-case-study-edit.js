@@ -11,7 +11,7 @@ export default Component.extend({
         last_name: "",
         role: "",
         provided_services: "",
-        description: ""
+        project_description: ""
       });
       this.incrementProperty('form.signal');
     },
