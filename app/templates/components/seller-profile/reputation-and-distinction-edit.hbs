@@ -10,6 +10,7 @@
     signal=(mut form.signal)
     theme="sapphire"
     thin=true
+    apiError=form.feedbacks.licenses
   }}
 </p>
 <p>
@@ -24,6 +25,10 @@
     multiple=true
     theme="sapphire"
     thin=true
+    apiError=form.feedbacks.license_document_ids
+    showError=true
+    invalid=(v-get form 'license_document_ids_valid' 'isInvalid')
+    errorMessage=(v-get form 'license_document_ids_valid' 'message')
   }}
 </p>
 <hr class="super-light">
@@ -39,6 +44,7 @@
     signal=(mut form.signal)
     theme="sapphire"
     thin=true
+    apiError=form.feedbacks.accreditations
   }}
 </p>
 <p>
@@ -53,6 +59,10 @@
     multiple=true
     theme="sapphire"
     thin=true
+    apiError=form.feedbacks.accreditation_document_ids
+    showError=true
+    invalid=(v-get form 'accreditation_document_ids_valid' 'isInvalid')
+    errorMessage=(v-get form 'accreditation_document_ids_valid' 'message')
   }}
 </p>
 <hr class="super-light">
