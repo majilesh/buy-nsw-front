@@ -3,6 +3,7 @@ import { inject } from '@ember/service';
 
 export default Component.extend({
   fileService: inject(),
+  overlay: inject(),
   actions: {
     addReference() {
       let references= this.get('form.references');
