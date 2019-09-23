@@ -36,7 +36,8 @@ export default Route.extend({
         this.get('auth').transitToSignin();
       } else {
         let airbrake = this.get('airbrake');
-        let airError = response.message.split("Payload")[0];
+        let airError = response.message || "Route transition failed";
+        airError = airError.split("Payload")[0];
         let context = {
           title: error.title,
           status: error.status,
