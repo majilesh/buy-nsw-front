@@ -26,7 +26,7 @@ export default Route.extend({
       this.get('overlay').hide();
       this.get('auth').authenticate();
     },
-    error: function(response) {
+    error: function(response, transition) {
       let error = response;
       if (error && error.errors && Array.isArray(error.errors)) {
         error = error.errors[0];
@@ -36,8 +36,19 @@ export default Route.extend({
         this.get('auth').transitToSignin();
       } else {
         let airbrake = this.get('airbrake');
-        airbrake.notify(error);
-        Ember.Logger.error(error);
+        let airError = response.message.split("Payload")[0];
+        let context = {
+          title: error.title,
+          status: error.status,
+          isAdapterError: response.isAdapterError,
+          transitionRoute: transition.targetName,
+          transitionUrl: transition.intent.url,
+        };
+        airbrake.notify({
+          message: airError,
+          context: context
+        });
+        console.error(airError);
         this.transitionTo('index');
       }
       return false;

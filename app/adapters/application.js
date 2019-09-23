@@ -13,6 +13,7 @@ export default DS.RESTAdapter.extend({
       "X-CSRF-Token": this.get('auth.csrfToken'),
     };
   }),
+
   namespace: '/api',
   pathForType(type) {
     const type_to_api = {
