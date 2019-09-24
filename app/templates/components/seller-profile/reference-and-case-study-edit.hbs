@@ -87,7 +87,7 @@
 <div class="row">
   <div class="col-sm-24">
     <p>
-      {{dds/tertiary-button icon="plus-circle" thin=true theme="sapphire" onClick=(action "addReference") label="Add row"}}
+      {{dds/tertiary-button icon="plus-circle" thin=true theme="sapphire" onClick=(action "addReference") label="Add a reference"}}
     </p>
   </div>
 </div>
@@ -102,7 +102,7 @@
   {{#let (get form.apiErrors.case_studies index) as |apiError|}}
     <div class="row">
       <div class="col-sm-24">
-        <p><b>Upload a PDF file and enter a description below</b></p>
+        <p><b>Upload a single PDF file smaller than 10MB and enter a description below</b></p>
         {{dds/file-upload
           name=(concat "case_study_" index)
           field=(mut case.document_id)
@@ -141,7 +141,7 @@
 <div class="row">
   <div class="col-sm-24">
     <p>
-      {{dds/tertiary-button icon="plus-circle" thin=true theme="sapphire" onClick=(action "addCaseStudy") label="Add row"}}
+      {{dds/tertiary-button icon="plus-circle" thin=true theme="sapphire" onClick=(action "addCaseStudy") label="Add a case study"}}
     </p>
   </div>
 </div>
