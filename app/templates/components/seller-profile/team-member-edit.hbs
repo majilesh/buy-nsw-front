@@ -1,78 +1,97 @@
 <p><b>Buyers may want to contact a specialist team member with specific questions about their requirements</b></p>
 <br>
 {{#each form.team_members as |member index|}}
-  <div class="row">
-    <div class="col-sm-12">
-      {{dds/avatar-upload signal=(mut form.signal) field=(mut member.avatar_id) fileService=fileService overlay=overlay}}
-    </div>
-    <div class="col-sm-24">
-      <h5 class="au-display-md">
-        <br>
-        <b class="sapphire">Contact</b>
-      </h5>
-      <div class="row">
-        <div class="col-sm-18">
-          {{dds/text-input
-            label-text="First name"
-            field=(mut member.first_name)
-            signal=(mut form.signal)
-            thin=true
-            allRow=true
-            wide=true
-          }}
-        </div>
-        <div class="col-sm-18">
-          {{dds/text-input
-            label-text="Last name"
-            field=(mut member.last_name)
-            signal=(mut form.signal)
-            thin=true
-            allRow=true
-            wide=true
-          }}
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-18">
-          {{dds/text-input
-            label-text="Role"
-            field=(mut member.role)
-            signal=(mut form.signal)
-            thin=true
-            allRow=true
-            wide=true
-          }}
-        </div>
-        <div class="col-sm-18">
-          {{dds/text-input
-            label-text="Email address"
-            field=(mut member.email)
-            signal=(mut form.signal)
-            thin=true
-            allRow=true
-            wide=true
-          }}
-        </div>
-      </div>
-      <p>
-        {{dds/text-area
-          field=(mut member.speciality)
-          label-text="What are their specialist areas of knowledge?"
+  {{#let (get form.apiErrors.team_members index) as |apiError|}}
+    <div class="row">
+      <div class="col-sm-12">
+        {{dds/avatar-upload
           signal=(mut form.signal)
-          maxLength=500
-          thin=true
+          field=(mut member.avatar_id)
+          fileService=fileService
+          overlay=overlay
+          apiError=apiError.avatar_id
+          keepApiError=true
         }}
-        {{dds/tertiary-button
-          thin=true
-          class="pull-right"
-          theme="sapphire"
-          onClick=(action "removeMember" index)
-          label="Remove this team member"
-        }}
-      </p>
+      </div>
+      <div class="col-sm-24">
+        <h5 class="au-display-md">
+          <br>
+          <b class="sapphire">Contact</b>
+        </h5>
+        <div class="row">
+          <div class="col-sm-18">
+            {{dds/text-input
+              label-text="First name"
+              field=(mut member.first_name)
+              signal=(mut form.signal)
+              thin=true
+              allRow=true
+              wide=true
+              apiError=apiError.first_name
+              keepApiError=true
+            }}
+          </div>
+          <div class="col-sm-18">
+            {{dds/text-input
+              label-text="Last name"
+              field=(mut member.last_name)
+              signal=(mut form.signal)
+              thin=true
+              allRow=true
+              wide=true
+              apiError=apiError.last_name
+              keepApiError=true
+            }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-18">
+            {{dds/text-input
+              label-text="Role"
+              field=(mut member.role)
+              signal=(mut form.signal)
+              thin=true
+              allRow=true
+              wide=true
+              apiError=apiError.role
+              keepApiError=true
+            }}
+          </div>
+          <div class="col-sm-18">
+            {{dds/text-input
+              label-text="Email address"
+              field=(mut member.email)
+              signal=(mut form.signal)
+              thin=true
+              allRow=true
+              wide=true
+              apiError=apiError.email
+              keepApiError=true
+            }}
+          </div>
+        </div>
+        <p>
+          {{dds/text-area
+            field=(mut member.speciality)
+            label-text="What are their specialist areas of knowledge?"
+            signal=(mut form.signal)
+            maxLength=500
+            thin=true
+            apiError=apiError.speciality
+            keepApiError=true
+          }}
+          {{dds/tertiary-button
+            thin=true
+            class="pull-right"
+            theme="sapphire"
+            onClick=(action "removeMember" index)
+            label="Remove this team member"
+          }}
+        </p>
+      </div>
     </div>
-  </div>
-  <hr class="super-light">
+    <hr class="super-light">
+  {{/let}}
 {{/each}}
 <div class="row">
   <div class="col-sm-12">
