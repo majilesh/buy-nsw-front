@@ -4,16 +4,26 @@
   theme="sapphire"
   expanded=false}}
   {{#if underEdit}}
+    {{seller-profile/edit-save
+      theme="sapphire"
+      underEdit=(mut underEdit)
+      form=form
+    }}
     {{seller-profile/promotional-video-edit form=form}}
   {{else}}
-    <div class="cool-infobox sapphire">
-      {{fa-icon "exclamation-circle" size="2x" prefix="fal" pull="left"}}
-      <span>
-        In this section you can upload a video of a recent case study or other informative content about your business.
-      </span>
-      <div class="clear-both"></div>
+    <div class="row">
+      <p class="simple-alert simple-alert--greentick col-xs-18">Publicly viewable</p>
+      <div class="col-xs-18">
+        {{seller-profile/edit-save
+          theme="sapphire"
+          underEdit=(mut underEdit)
+          form=form
+        }}    
+      </div>
     </div>
-
+    <div class="cool-infobox sapphire">
+      In this section you can upload a video of a recent case study or other informative content about your business.
+    </div>
     {{seller-profile/promotional-video-view form=form}}
   {{/if}}
   {{seller-profile/edit-save
