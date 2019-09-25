@@ -16,6 +16,7 @@ export default Component.extend({
       this.incrementProperty('form.signal');
     },
     removeCredential(index) {
+      this.set('form.apiErrors', null);
       let members = this.get('form.government_credentials');
       members.removeAt(index);
       this.incrementProperty('form.signal');

@@ -2,13 +2,14 @@
   title="Team members"
   subtitle="Tip: Do you have team leads with specialist technical knowledge?"
   theme="sapphire"
-  expanded=false}}
+  expanded=false
+}}
   {{seller-profile/edit-save
     theme="sapphire"
     underEdit=(mut underEdit)
     form=form
+    class="pull-right"
   }}
-  <br>
   {{#if underEdit}}
     {{seller-profile/team-member-edit form=form}}
   {{else}}

@@ -17,6 +17,7 @@ export default Component.extend({
       this.incrementProperty('form.signal');
     },
     removeReference(index) {
+      this.set('form.apiErrors', null);
       let members = this.get('form.references');
       members.removeAt(index);
       this.incrementProperty('form.signal');
@@ -30,6 +31,7 @@ export default Component.extend({
       this.incrementProperty('form.signal');
     },
     removeCaseStudy(index) {
+      this.set('form.apiErrors', null);
       let caseStudies = this.get('form.case_studies');
       caseStudies.removeAt(index);
       this.incrementProperty('form.signal');
