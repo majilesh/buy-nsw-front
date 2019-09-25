@@ -61,6 +61,32 @@
             }}
           </div>
         </div>
+        <div class="row">
+          <div class="col-sm-18">
+            {{dds/text-input
+              label-text="Phone number"
+              field=(mut reference.phone)
+              signal=(mut form.signal)
+              thin=true
+              allRow=true
+              wide=true
+              apiError=apiError.phone
+              keepApiError=true
+            }}
+          </div>
+          <div class="col-sm-18">
+            {{dds/text-input
+              label-text="Email address"
+              field=(mut reference.email)
+              signal=(mut form.signal)
+              thin=true
+              allRow=true
+              wide=true
+              apiError=apiError.email
+              keepApiError=true
+            }}
+          </div>
+        </div>
         <p>
           {{dds/text-area
             field=(mut reference.project_description)
@@ -91,7 +117,7 @@
     </p>
   </div>
 </div>
-<hr class="super-light">
+<br>
 <h5 class="au-display-md">
   <br>
   <b class="sapphire">Case studies</b>
