@@ -10,7 +10,7 @@
   subline=(concat "Last update to supplier profile: " this.model.seller.updated_at)}}
   {{dds/jump-to class="on-the-edge pull-right"
     sections=(array
-      (hash name="Licenses, accreditations and awards" anchor="licenses-accreditations" show=buyerView)
+      (hash name="Licenses, accreditations and awards" anchor="licenses-accreditations" show=true)
       (hash name="Special capabilities and expertise" anchor="special-capabilities" show=buyerView)
       (hash name="References and case studies" anchor="references-and-case-studies" show=buyerView)
       (hash name="Government credentials" anchor="government-credentials" show=buyerView)
@@ -102,17 +102,29 @@
             {{/if}}
           {{/if}}
           {{#if this.model.seller.documents}}
+            {{#if buyerView}}
+              <br> <br>
+              {{#dds/simple-box theme="sapphire"}}
+                <b>This supplier has provided the following documentation:</b>
+                <ul>
+                  {{#each this.model.seller.documents as |document|}}
+                    <li>{{document}}</li>
+                  {{/each}}
+                </ul>
+              {{/dds/simple-box}}
+              <br>
+            {{/if}}
+          {{/if}}
+          {{#unless buyerView}}
             <br> <br>
             {{#dds/simple-box theme="sapphire"}}
-              <b>This supplier has provided the following documentation:</b><br>
-              <ul>
-                {{#each this.model.seller.documents as |document|}}
-                  <li>{{document}}</li>
-                {{/each}}
-              </ul>
+              <b>Further information on this supplier is available to registered buyers</b>
+              <p>
+                If you would like to see contact details, special capabilities and expertise, reference and case studies, government credentials and teams members, please register as a buyer.
+              </p>
             {{/dds/simple-box}}
             <br>
-          {{/if}}
+          {{/unless}}
         </div>
       </div>
       <div>
@@ -141,21 +153,19 @@
         <div>
           {{dds/top-link}}
         </div>
-      {{/if}}
 
-      <h5 class="au-display-lg" id="references-and-case-studies">
-        <b class="dark-sapphire">References and case studies</b>
-      </h5>
+        <h5 class="au-display-lg" id="references-and-case-studies">
+          <b class="dark-sapphire">References and case studies</b>
+        </h5>
 
-      <br>
-      {{seller-profile/reference-and-case-study-view form=this.model.reference_and_case_study buyerView=buyerView}}
-      <hr class="light">
+        <br>
+        {{seller-profile/reference-and-case-study-view form=this.model.reference_and_case_study buyerView=buyerView}}
+        <hr class="light">
 
-      <div>
-        {{dds/top-link}}
-      </div>
+        <div>
+          {{dds/top-link}}
+        </div>
 
-      {{#if buyerView}}
         <h5 class="au-display-lg" id="government-credentials">
           <b class="dark-sapphire">Government credentials</b>
         </h5>
@@ -165,19 +175,17 @@
         <div>
           {{dds/top-link}}
         </div>
-      {{/if}}
 
-      <h5 class="au-display-lg" id="schemes-and-panels">
-        <b class="dark-sapphire">Schemes and panels</b>
-      </h5>
-      <br>
-      {{seller-profile/scheme-and-panel-view form=this.model.scheme_and_panel buyerView=buyerView}}
+        <h5 class="au-display-lg" id="schemes-and-panels">
+          <b class="dark-sapphire">Schemes and panels</b>
+        </h5>
+        <br>
+        {{seller-profile/scheme-and-panel-view form=this.model.scheme_and_panel buyerView=buyerView}}
 
-      <div>
-        {{dds/top-link}}
-      </div>
+        <div>
+          {{dds/top-link}}
+        </div>
 
-      {{#if buyerView}}
         <h5 class="au-display-lg" id="team-members">
           <b class="dark-sapphire">Team members</b>
         </h5>
