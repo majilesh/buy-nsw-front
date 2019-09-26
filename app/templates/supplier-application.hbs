@@ -3,20 +3,36 @@
     links=(array
       (hash name="buy.nsw" route="index")
       (hash name="Dashboard" route="seller-dashboard")
-      (hash name="Supplier application")
+      (hash name=(if this.model.seller.live "Account settings" "Supplier application"))
     )
   }}
   <h2 class="au-display-xl underline-light">
-    <b>Apply to be a supplier</b>
+    {{#if this.model.seller.live}}
+      <b>Supplier account settings</b>
+    {{else}}
+      <b>Apply to be a supplier</b>
+    {{/if}}
   </h2>
   <br>
-  <p>
-    To become a supplier on buy.nsw you need to tell us about your business.
-  </p>
-  <p>
-    We will use the information you provide to create your supplier profile. First, we need to confirm your business meets the basic requirements to work with NSW Government.
-  </p>
-  <br>
+  {{#unless this.model.seller.live}}
+    <p>
+      To become a supplier on buy.nsw you need to tell us about your business.
+    </p>
+    <p>
+      We will use the information you provide to create your supplier account. First, we need to confirm your business meets the basic requirements to work with NSW Government.
+    </p>
+    <br>
+    <p>
+      It may take more than one session for you to complete this application. But don't worry, you can save and exit if you need to come back later. At each step we indicate the time it might take you to complete it.
+    </p>
+    <p><b>Who you will need:</b></p>
+    <p>
+      <ul>
+        <li>the person in your organisation who is authorised to sign contracts</li>
+        <li>a person authorised to check your legal disclosures and financial statement</li>
+      </ul>
+    </p>
+  {{/unless}}
   <p>
   {{#if this.model.seller.pending}}
     {{#dds/page-alert alertType="info"}}
@@ -26,7 +42,7 @@
       <p>
         You have submitted entries or changes.
         While these are under review,
-        you won't be able to view or edit the details of your profile.
+        you won't be able to view or edit the details of your account.
       </p>
       {{#if this.model.seller.canBeWithdrawn}}
         <p>
@@ -37,7 +53,7 @@
           >
             withdraw your submission
           </a>
-          to edit your profile and submit again.
+          to edit your account and submit again.
         </p>
       {{/if}}
     {{/dds/page-alert}}
@@ -52,7 +68,7 @@
           class="au-btn au-btn--tertiary no-padding"
           onclick={{action "reviseProfile"}}
         >
-          revise your profile
+          revise your account
         </a>
         and submit again.
       </p>
@@ -60,10 +76,10 @@
   {{else if (eq this.model.seller.status 'live')}}
     {{#dds/page-alert alertType="success"}}
       <h2 class="au-display-lg">
-        Your profile has been accepted
+        Your application has been accepted
       </h2>
       <p>
-        To amend your profile you can
+        To amend your account you can
         <a
           class="au-btn au-btn--tertiary no-padding"
           onclick={{action "amendProfile"}}
@@ -73,23 +89,12 @@
         process.
       </p>
     {{/dds/page-alert}}
-  {{else}}
-    <p>
-      It may take more than one session for you to complete this application. But don't worry, you can save and exit if you need to come back later. At each step we indicate the time it might take you to complete it.
-    </p>
-    <p><b>Who you will need:</b></p>
-    <p>
-      <ul>
-        <li>the person in your organisation who is authorised to sign contracts</li>
-        <li>a person authorised to check your legal disclosures and financial statement</li>
-      </ul>
-    </p>
-    <p>
-      {{#link-to "team-members" class="au-cta-link small"}}
-        Invite a team member
-      {{/link-to}}
-    </p>
   {{/ if }}
+  <p>
+    {{#link-to "team-members" class="au-cta-link small"}}
+      <b>Invite a team member</b>
+    {{/link-to}}
+  </p>
   </p>
   <br>
   <br>
@@ -118,19 +123,19 @@
     seller=this.model.seller
     steps=this.model.steps
     forms=(array
-      (hash key='business_name' name='Business name and ABN')
-      (hash key='contact_detail' name='Contact details')
-      (hash key='company_type' name='Company type')
-      (hash key='product_category' name='Product category' optional=true)
+      (hash key='business_name' name='Business name, ABN and establishment date')
+      (hash key='contact_detail' name='Contact details and addresses')
+      (hash key='company_type' name='Company type and business identifiers')
+      (hash key='product_category' name='Products and services' optional=true)
     )
   }}
     <p><b>Information we will ask for:</b></p>
     <p>
       <ul>
-        <li>Business name and ABN</li>
-        <li>Contact details</li>
-        <li>Business address</li>
-        <li>Company type and size</li>
+        <li>Business name, ABN and establishment date</li>
+        <li>Contact details and addresses</li>
+        <li>Company type and business identifiers</li>
+        <li>Products and services</li>
       </ul>
     </p>
   {{/supplier-application-section}}
@@ -188,16 +193,17 @@
       seller=this.model.seller
       steps=this.model.steps
       forms=(array
-        (hash key='company_profile' name='Company profile' optional=true)
-        (hash key='accreditation_and_license' name='Accreditation and license' optional=true)
-        (hash key='membership_and_award' name='Membership and award' optional=true)
+        (hash key='company_profile' name='Company description, website and social channels' optional=true)
+        (hash key='accreditation_and_license' name='Accreditations and licenses' optional=true)
+        (hash key='membership_and_award' name='Membership and awards' optional=true)
       )
     }}
       <p><b>Information we will ask for:</b></p>
       <p>
         <ul>
-          <li>Company description and website</li>
-          <li>Any awards and accreditations</li>
+          <li>Company description, website and social channels</li>
+          <li>Accreditations and lincenses</li>
+          <li>Membership and awards</li>
         </ul>
       </p>
     {{/supplier-application-section}}

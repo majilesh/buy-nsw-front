@@ -213,164 +213,174 @@
   This is the business address of your head office.
 </p>
 {{#each form.addresses as |address index|}}
-  <div class="row">
-    <div class="col-sm-36 margin-top">
-      <p>
-        <b>Business address</b>
-      </p>
-      <p>
-        {{dds/text-input
-          wide=true
-          noLabel=true
-          field=(mut address.address)
-          required=true
-          showError=(or showError (not-eq form.status 'todo'))
-        }}
-      </p>
-      <p>
-        {{dds/text-input
-          wide=true
-          noLabel=true
-          field=(mut address.address_2)
-        }}
-      </p>
-      <p>
-        {{dds/text-input
-          wide=true
-          noLabel=true
-          field=(mut address.address_3)
-        }}
-      </p>
+  {{#let (get form.feedbacks.addresses index) as |apiError|}}
+    <div class="row">
+      <div class="col-sm-36 margin-top">
+        <p>
+          <b>Business address</b>
+        </p>
+        <p>
+          {{dds/text-input
+            wide=true
+            noLabel=true
+            field=(mut address.address)
+            required=true
+            showError=(or showError (not-eq form.status 'todo'))
+            apiError=apiError.address
+          }}
+        </p>
+        <p>
+          {{dds/text-input
+            wide=true
+            noLabel=true
+            field=(mut address.address_2)
+            apiError=apiError.address_2
+          }}
+        </p>
+        <p>
+          {{dds/text-input
+            wide=true
+            noLabel=true
+            field=(mut address.address_3)
+            apiError=apiError.address_3
+          }}
+        </p>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-36 col-md-24 col-lg-21 margin-top">
-      <p>
-        <b>Suburb or city</b>
-      </p>
-      <p>
-        {{dds/text-input
-          wide=true
-          allRow=true
-          noLabel=true
-          field=(mut address.suburb)
-          required=true
-          showError=(or showError (not-eq form.status 'todo'))
-        }}
-      </p>
+    <div class="row">
+      <div class="col-sm-36 col-md-24 col-lg-21 margin-top">
+        <p>
+          <b>Suburb or city</b>
+        </p>
+        <p>
+          {{dds/text-input
+            wide=true
+            allRow=true
+            noLabel=true
+            field=(mut address.suburb)
+            required=true
+            showError=(or showError (not-eq form.status 'todo'))
+            apiError=apiError.suburb
+            keepApiError=true
+          }}
+        </p>
+      </div>
+      <div class="col-sm-36 col-md-24 col-lg-9 margin-top">
+        <p>
+          <b>Postcode or ZIP</b>
+        </p>
+        <p>
+          {{dds/text-input
+            wide=true
+            allRow=true
+            noLabel=true
+            field=(mut address.postcode)
+            required=true
+            showError=(or showError (not-eq form.status 'todo'))
+            signal=form.signal
+            apiError=apiError.postcode
+          }}
+        </p>
+      </div>
     </div>
-    <div class="col-sm-36 col-md-24 col-lg-9 margin-top">
-      <p>
-        <b>Postcode or ZIP</b>
-      </p>
-      <p>
-        {{dds/text-input
-          wide=true
-          allRow=true
-          noLabel=true
-          field=(mut address.postcode)
-          required=true
-          showError=(or showError (not-eq form.status 'todo'))
-          signal=form.signal
-        }}
-      </p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-36 col-md-24 col-lg-12 margin-top">
-      <p>
-        <b>State or territory</b>
-      </p>
-      <p>
-        {{dds/select-box
-          field=(mut address.state)
-          items=(array
-            (hash value="nsw" label="New South Wales")
-            (hash value="act" label="Australian Capital Territory")
-            (hash value="nt" label="Northern Territory")
-            (hash value="qld" label="Queensland")
-            (hash value="sa" label="South Australia")
-            (hash value="tas" label="Tasmania")
-            (hash value="vic" label="Victoria")
-            (hash value="wa" label="Western Australia")
-            (hash value="outside_au" label="Outside Australia")
-          )
-          required=true
-          showError=(or showError (not-eq form.status 'todo'))
-        }}
-      </p>
-    </div>
-    <div class="col-sm-36 col-md-24 col-lg-18 margin-top">
-      <p>
-        <b>Country</b>
-      </p>
-      <p>
-        {{dds/select-box
-          field=(mut address.country)
-          items=countries
-          required=true
-          showError=(or showError (not-eq form.status 'todo'))
-          signal=form.signal
-        }}
-      </p>
-    </div>
-  </div>
-  {{#if (eq index 0)}}
-    <br>
-    {{#if form.headOfficeAustralia}}
-      <p>
-        <b>Corporate structure</b>
-      </p>
-      <p>
-        {{dds/radio-group
-          items=(array
-            (hash
-              key="standalone"
-              label="An Australian company that is not a subsidiary of another company"
+    <div class="row">
+      <div class="col-sm-36 col-md-24 col-lg-12 margin-top">
+        <p>
+          <b>State or territory</b>
+        </p>
+        <p>
+          {{dds/select-box
+            field=(mut address.state)
+            items=(array
+              (hash value="nsw" label="New South Wales")
+              (hash value="act" label="Australian Capital Territory")
+              (hash value="nt" label="Northern Territory")
+              (hash value="qld" label="Queensland")
+              (hash value="sa" label="South Australia")
+              (hash value="tas" label="Tasmania")
+              (hash value="vic" label="Victoria")
+              (hash value="wa" label="Western Australia")
+              (hash value="outside_au" label="Outside Australia")
             )
-            (hash
-              key="subsidiary"
-              label="A locally-based company that is a subsidiary of a multinational corporation"
+            required=true
+            showError=(or showError (not-eq form.status 'todo'))
+            apiError=apiError.state
+          }}
+        </p>
+      </div>
+      <div class="col-sm-36 col-md-24 col-lg-18 margin-top">
+        <p>
+          <b>Country</b>
+        </p>
+        <p>
+          {{dds/select-box
+            field=(mut address.country)
+            items=countries
+            required=true
+            showError=(or showError (not-eq form.status 'todo'))
+            signal=form.signal
+            apiError=apiError.country
+          }}
+        </p>
+      </div>
+    </div>
+    {{#if (eq index 0)}}
+      <br>
+      {{#if form.headOfficeAustralia}}
+        <p>
+          <b>Corporate structure</b>
+        </p>
+        <p>
+          {{dds/radio-group
+            items=(array
+              (hash
+                key="standalone"
+                label="An Australian company that is not a subsidiary of another company"
+              )
+              (hash
+                key="subsidiary"
+                label="A locally-based company that is a subsidiary of a multinational corporation"
+              )
             )
-          )
-          field=(mut form.corporate_structure)
-          showError=(or showError (not-eq form.status 'todo'))
-          invalid=(v-get form 'corporate_structure' 'isInvalid')
-          errorMessage=(v-get form 'corporate_structure' 'message')
-          apiError=form.feedbacks.corporate_structure
-        }}
-      </p>
+            field=(mut form.corporate_structure)
+            showError=(or showError (not-eq form.status 'todo'))
+            invalid=(v-get form 'corporate_structure' 'isInvalid')
+            errorMessage=(v-get form 'corporate_structure' 'message')
+            apiError=form.feedbacks.corporate_structure
+          }}
+        </p>
+      {{/if}}
+      {{#if form.headOfficeRegional}}
+        <p>
+          {{dds/checkbox-input
+            field=(mut form.regional)
+            apiError=form.feedbacks.regional
+            label="Regional"
+            description=(if form.can_be_regional "It looks like your head office is located in regional NSW. Would you like to identify your business as a regional NSW supplier?" "To be classified as NSW Regional business your head office must be in regional NSW.")
+          }}
+        </p>
+      {{/if}}
     {{/if}}
-    {{#if form.headOfficeRegional}}
-      <p>
-        {{dds/checkbox-input
-          field=(mut form.regional)
-          apiError=form.feedbacks.regional
-          label="Regional"
-          description=(if form.can_be_regional "It looks like your head office is located in regional NSW. Would you like to identify your business as a regional NSW supplier?" "To be classified as NSW Regional business your head office must be in regional NSW.")
-        }}
-      </p>
+    {{#if (gt index 0)}}
+      <br>
+      {{dds/tertiary-button
+        label="Discard this address"
+        onClick=(action "removeAddress" index)
+      }}
     {{/if}}
-  {{/if}}
-  {{#if (gt index 0)}}
-    <br>
-    {{dds/tertiary-button
-      label="Discard this address"
-      onClick=(action "removeAddress" index)
-    }}
-  {{/if}}
-  <p>
-    {{dds/top-link}}
-  </p>
-  {{#if (or (eq index 0) (lt index (dec form.addresses.length)))}}
-    <hr class="light">
-  {{/if}}
-  {{#if (eq index 0)}}
     <p>
-      <b>Additional locations</b>
+      {{dds/top-link}}
     </p>
-    <p>List any additional business locations in Australia.</p>
-  {{/if}}
+    {{#if (or (eq index 0) (lt index (dec form.addresses.length)))}}
+      <hr class="light">
+    {{/if}}
+    {{#if (eq index 0)}}
+      <p>
+        <b>Additional locations</b>
+      </p>
+      <p>List any additional business locations in Australia.</p>
+    {{/if}}
+  {{/let}}
 {{/each}}
 {{#if (lt form.addresses.length 6)}}
   <div class="col-sm-36">
@@ -382,9 +392,6 @@
   </div>
   <div class="clear-both"></div>
   <br>
-{{/if}}
-{{#if form.feedbacks.addresses}}
-  {{dds/validation-error type="warning" message=form.feedbacks.addresses float="left"}}
 {{/if}}
 <hr class="light">
 <br>

@@ -18,7 +18,7 @@ Procure IT 3.2
 </a>
 </p>
 {{#if form.agreed_at_date}}
-  <p>The ProcureIT Contracting Framework was agreed to at {{form.agreed_at_date}} by {{form.agreed_by_email}}.</p>
+  <p>The ProcureIT Contracting Framework was agreed to on {{form.agreed_at_date}} by {{form.agreed_by_email}}.</p>
 {{else if (eq form.representative_user_status "ready_to_sign")}}
   <p>
       {{dds/checkbox-input
