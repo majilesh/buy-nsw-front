@@ -128,16 +128,18 @@
         {{dds/top-link}}
       </div>
 
-      <h5 class="au-display-lg" id="special-capabilities">
-        <b class="dark-sapphire">Special capabilities and expertise</b>
-      </h5>
-      <br>
-      {{seller-profile/capability-and-experty-view form=this.model.capability_and_experty buyerView=buyerView}}
-      <hr class="light">
+      {{#if buyerView}}
+        <h5 class="au-display-lg" id="special-capabilities">
+          <b class="dark-sapphire">Special capabilities and expertise</b>
+        </h5>
+        <br>
+        {{seller-profile/capability-and-experty-view form=this.model.capability_and_experty buyerView=buyerView}}
+        <hr class="light">
 
-      <div>
-        {{dds/top-link}}
-      </div>
+        <div>
+          {{dds/top-link}}
+        </div>
+      {{/if}}
 
       <h5 class="au-display-lg" id="references-and-case-studies">
         <b class="dark-sapphire">References and case studies</b>
@@ -151,15 +153,17 @@
         {{dds/top-link}}
       </div>
 
-      <h5 class="au-display-lg" id="government-credentials">
-        <b class="dark-sapphire">Government credentials</b>
-      </h5>
-      {{seller-profile/government-credential-view form=this.model.government_credential buyerView=buyerView}}
-      <hr class="super-light">
+      {{#if buyerView}}
+        <h5 class="au-display-lg" id="government-credentials">
+          <b class="dark-sapphire">Government credentials</b>
+        </h5>
+        {{seller-profile/government-credential-view form=this.model.government_credential buyerView=buyerView}}
+        <hr class="super-light">
 
-      <div>
-        {{dds/top-link}}
-      </div>
+        <div>
+          {{dds/top-link}}
+        </div>
+      {{/if}}
 
       <h5 class="au-display-lg" id="schemes-and-panels">
         <b class="dark-sapphire">Schemes and panels</b>
@@ -171,14 +175,16 @@
         {{dds/top-link}}
       </div>
 
-      <h5 class="au-display-lg" id="team-members">
-        <b class="dark-sapphire">Team members</b>
-      </h5>
-      {{seller-profile/team-member-view form=this.model.team_member buyerView=buyerView}}
-      <br> <br>
-      <div>
-        {{dds/top-link}}
-      </div>
+      {{#if buyerView}}
+        <h5 class="au-display-lg" id="team-members">
+          <b class="dark-sapphire">Team members</b>
+        </h5>
+        {{seller-profile/team-member-view form=this.model.team_member buyerView=buyerView}}
+        <br> <br>
+        <div>
+          {{dds/top-link}}
+        </div>
+      {{/if}}
 
       <h5 class="au-display-lg" id="promotional-video">
         <b class="dark-sapphire">Promotional video</b>
