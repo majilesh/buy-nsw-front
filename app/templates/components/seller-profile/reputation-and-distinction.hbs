@@ -3,15 +3,27 @@
   subtitle="Tip: This is your opportunity to share some of the things you are proud of."
   theme="sapphire"
   expanded=false}}
-  {{seller-profile/edit-save
-    theme="sapphire"
-    underEdit=(mut underEdit)
-    form=form
-    class="pull-right"
-  }}
   {{#if underEdit}}
+    {{seller-profile/edit-save
+      theme="sapphire"
+      underEdit=(mut underEdit)
+      form=form
+    }} 
     {{seller-profile/reputation-and-distinction-edit form=form}}
   {{else}}
+    <div class="row">
+      <p class="simple-alert col-xs-18">Only available to registered buyers</p>
+      <div class="col-xs-18">
+        {{seller-profile/edit-save
+          theme="sapphire"
+          underEdit=(mut underEdit)
+          form=form
+        }}    
+      </div>
+    </div>
+    <div class="cool-infobox sapphire">
+      You can add and update your accreditations, engagements and awards at any time.
+    </div>
     {{seller-profile/reputation-and-distinction-view form=form buyerView=true}}
   {{/if}}
   {{seller-profile/edit-save
@@ -19,5 +31,4 @@
     underEdit=(mut underEdit)
     form=form
   }}
-
 {{/dds/accordion-container}}

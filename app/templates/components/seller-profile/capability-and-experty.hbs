@@ -3,15 +3,27 @@
   subtitle="Tip: We recommend adding these details to your profile to increase your visibility and legitimacy to buyers."
   theme="sapphire"
   expanded=false}}
-  {{seller-profile/edit-save
-    theme="sapphire"
-    underEdit=(mut underEdit)
-    form=form
-    class="pull-right"
-  }}
   {{#if underEdit}}
+    {{seller-profile/edit-save
+      theme="sapphire"
+      underEdit=(mut underEdit)
+      form=form
+    }} 
     {{seller-profile/capability-and-experty-edit form=form}}
   {{else}}
+    <div class="row">
+      <p class="simple-alert col-xs-18">Only available to registered buyers</p>
+      <div class="col-xs-18">
+        {{seller-profile/edit-save
+          theme="sapphire"
+          underEdit=(mut underEdit)
+          form=form
+        }}    
+      </div>
+    </div>
+    <div class="cool-infobox sapphire">
+      You can add and update your special capabilities and expertise at any time.
+    </div>
     {{seller-profile/capability-and-experty-view form=form}}
   {{/if}}
   {{seller-profile/edit-save

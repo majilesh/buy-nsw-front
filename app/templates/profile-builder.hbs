@@ -30,16 +30,8 @@
 <main id="content">
   <div class="au-body">
     {{#dds/template-body auth=auth}}
-      <div class="row">
-        <div class="col-sm-36">
-          <div class="cool-infobox sapphire">
-            {{fa-icon "exclamation-circle" size="2x" prefix="fal" pull="left"}}
-            <span>
-              Use this page to update your details and to provide buyers with additional useful information about your business.
-            </span>
-            <div class="clear-both"></div>
-          </div>
-        </div>
+      <div class="cool-infobox sapphire">
+        Use this page to update your details and to provide buyers with additional useful information about your business.
       </div>
       <div class="row">
         <div class="col-sm-17 col-md-14 col-lg-11">
@@ -100,7 +92,7 @@
 
           {{#if this.model.seller.level_2_services}}
             <hr class="super-light">
-            <p><b>This supplier provieds</b></p>
+            <p><b>This supplier provides</b></p>
             <p>
               {{#each this.model.seller.level_2_services as |service index|}}
                 {{dds/tag theme="turquoise" label=(humanize service) class="inline"}}
