@@ -76,6 +76,9 @@
                 {{this.model.seller.contact_email}}
               </a>
             </p>
+            <p>
+              {{link-to "Go to your Account to update the fields above." "supplier-application" class="small bold"}}
+            </p>
             <br>
             {{seller-profile/contact-detail form=this.model.contact_detail}}
 
@@ -118,7 +121,7 @@
             </p>
           {{/if}}
           <p>
-            {{link-to "Go to your Account to update your services, business identifiers and documents" "supplier-application" class="small bold"}}
+            {{link-to "Go to your Account to update your services, business identifiers or documents." "supplier-application" class="small bold"}}
           </p>
         </div>
       </div>

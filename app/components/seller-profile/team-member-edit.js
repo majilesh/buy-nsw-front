@@ -18,6 +18,7 @@ export default Component.extend({
       this.incrementProperty('form.signal');
     },
     removeMember(index) {
+      this.set('form.apiErrors', null);
       let members = this.get('form.team_members');
       members.removeAt(index);
       this.incrementProperty('form.signal');

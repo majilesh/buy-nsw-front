@@ -24,7 +24,7 @@ export default Service.extend({
     formData.append('file', blob, fileName);
     formData.append('original_filename', fileName);
     formData.append('Content-Type', contentType);
-    let response = this.get('ajax').request('/api/documents/avatars/', {
+    yield this.get('ajax').request('/api/documents/avatars/', {
       method: 'POST',
       headers: { "X-CSRF-Token": this.get('auth.csrfToken') },
       contentType: false,
@@ -35,11 +35,12 @@ export default Service.extend({
     }).finally(lastly);
   }).maxConcurrency(4).enqueue(),
 
-  uploadDocument: task(function * (file, success) {
-    let response = yield file.upload('/api/documents/documents/', {
+  uploadDocument: task(function * (file, success, lastly) {
+    yield file.upload('/api/documents/documents/', {
       headers: { "X-CSRF-Token": this.get('auth.csrfToken') },
       data: { original_filename: file.get('name') }
-    });
-    success(response.body);
+    }).then((response) => {
+      success(response.body);
+    }).finally(lastly);
   }).maxConcurrency(4).enqueue()
 });
