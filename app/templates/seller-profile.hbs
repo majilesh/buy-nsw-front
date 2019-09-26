@@ -10,13 +10,13 @@
   subline=(concat "Last update to supplier profile: " this.model.seller.updated_at)}}
   {{dds/jump-to class="on-the-edge pull-right"
     sections=(array
-      (hash name="Licenses, accreditations and awards" anchor="licenses-accreditations")
-      (hash name="Special capabilities and expertise" anchor="special-capabilities")
-      (hash name="References and case studies" anchor="references-and-case-studies")
-      (hash name="Government credentials" anchor="government-credentials")
-      (hash name="Schemes and panels" anchor="schemes-and-panels")
-      (hash name="Team members" anchor="team-members")
-      (hash name="Promotional video" anchor="promotional-video")
+      (hash name="Licenses, accreditations and awards" anchor="licenses-accreditations" show=buyerView)
+      (hash name="Special capabilities and expertise" anchor="special-capabilities" show=buyerView)
+      (hash name="References and case studies" anchor="references-and-case-studies" show=buyerView)
+      (hash name="Government credentials" anchor="government-credentials" show=buyerView)
+      (hash name="Schemes and panels" anchor="schemes-and-panels" show=buyerView)
+      (hash name="Team members" anchor="team-members" show=buyerView)
+      (hash name="Promotional video" anchor="promotional-video" show=true)
     )
   }}
 {{/dds/banner}}
@@ -83,7 +83,7 @@
 
           {{#if this.model.seller.level_2_services}}
             <hr class="super-light">
-            <p><b>This supplier provieds</b></p>
+            <p><b>This supplier provides</b></p>
             <p>
               {{#each this.model.seller.level_2_services as |service index|}}
                 {{dds/tag theme="turquoise" label=(humanize service) class="inline"}}
@@ -91,13 +91,15 @@
             </p>
           {{/if}}
           {{#if this.model.seller.tags}}
-            <hr class="super-light">
-            <p><b>Business identifiers</b></p>
-            <p>
-              {{#each this.model.seller.tags as |tag|}}
-                {{dds/tag theme="sapphire" label=tag class="inline"}}
-              {{/each}}
-            </p>
+            {{#if buyerView}}
+              <hr class="super-light">
+              <p><b>Business identifiers</b></p>
+              <p>
+                {{#each this.model.seller.tags as |tag|}}
+                  {{dds/tag theme="sapphire" label=tag class="inline"}}
+                {{/each}}
+              </p>
+            {{/if}}
           {{/if}}
           {{#if this.model.seller.documents}}
             <br> <br>
