@@ -18,7 +18,6 @@
       field=(mut email)
       enter=(if (v-get this "isValid") (action "submit"))
       apiError=apiError
-      keepApiError=true
       invalid=(v-get this "email" "isInvalid")
       errorMessage=(v-get this "email" "message")
       float="right"

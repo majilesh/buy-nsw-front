@@ -11,7 +11,6 @@
       enter=(if (v-get this "isValid") (action "submit"))
       focusOut=(action (mut showEmailError) true)
       apiError=apiError.email
-      keepApiError=true
       invalid=(v-get this "model.email" "isInvalid")
       errorMessage=(v-get this "model.email" "message")
       float="right"
@@ -65,7 +64,6 @@
       field=(mut currentPassword)
       enter=(if (v-get this "isValid") (action "submit"))
       apiError=apiError.password
-      keepApiError=true
       float="right"
     }}
     <p>
