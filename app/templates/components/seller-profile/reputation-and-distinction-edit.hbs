@@ -10,20 +10,28 @@
     signal=(mut form.signal)
     theme="sapphire"
     thin=true
+    apiError=form.apiErrors.licenses
+    keepApiError=true
   }}
 </p>
 <p>
   Provide supporting documents for the above licenses.
+</p>
+<p class="small gray">
+ Files should be smaller than 10MB and in PDF, PNG or JPEG format. You can upload a single document or separate documents by using the 'Add another file' button below.
 </p>
 <p>
   {{dds/file-upload
     name="license_document"
     field=(mut form.license_document_ids)
     fileService=fileService
+    overlay=overlay
     signal=(mut form.signal)
     multiple=true
     theme="sapphire"
     thin=true
+    invalid=(v-get form 'license_document_ids_valid' 'isInvalid')
+    errorMessage=(v-get form 'license_document_ids_valid' 'message')
   }}
 </p>
 <hr class="super-light">
@@ -39,20 +47,28 @@
     signal=(mut form.signal)
     theme="sapphire"
     thin=true
+    apiError=form.apiErrors.accreditations
+    keepApiError=true
   }}
 </p>
 <p>
   Provide supporting documents for the above accreditations.
+</p>
+<p class="small gray">
+ Files should be smaller than 10MB and in PDF, PNG or JPEG format. You can upload a single document or separate documents by using the 'Add another file' button below.
 </p>
 <p>
   {{dds/file-upload
     name="accreditation_document"
     field=(mut form.accreditation_document_ids)
     fileService=fileService
+    overlay=overlay
     signal=(mut form.signal)
     multiple=true
     theme="sapphire"
     thin=true
+    invalid=(v-get form 'accreditation_document_ids_valid' 'isInvalid')
+    errorMessage=(v-get form 'accreditation_document_ids_valid' 'message')
   }}
 </p>
 <hr class="super-light">
@@ -68,6 +84,8 @@
     signal=(mut form.signal)
     theme="sapphire"
     thin=true
+    apiError=form.apiErrors.engagements
+    keepApiError=true
   }}
 </p>
 <hr class="super-light">
@@ -83,5 +101,7 @@
     signal=(mut form.signal)
     theme="sapphire"
     thin=true
+    apiError=form.apiErrors.awards
+    keepApiError=true
   }}
 </p>

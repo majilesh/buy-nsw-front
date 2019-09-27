@@ -42,7 +42,7 @@
     showError=(or showError (not-eq form.status 'todo'))
     invalid=(v-get form 'receivership' 'isInvalid')
     errorMessage=(v-get form 'receivership' 'message')
-    apiError=form.feedbacks.receivership
+    apiError=form.apiErrors.receivership
   }}
 </p>
 {{#if (eq form.receivership 'true')}}
@@ -61,7 +61,7 @@
       showError=(or showError (not-eq form.status 'todo'))
       invalid=(v-get form 'receivership_details' 'isInvalid')
       errorMessage=(v-get form 'receivership_details' 'message')
-      apiError=form.feedbacks.receivership_details
+      apiError=form.apiErrors.receivership_details
     }}
   </p>
 {{/if}}
@@ -87,7 +87,7 @@
     showError=(or showError (not-eq form.status 'todo'))
     invalid=(v-get form 'bankruptcy' 'isInvalid')
     errorMessage=(v-get form 'bankruptcy' 'message')
-    apiError=form.feedbacks.bankruptcy
+    apiError=form.apiErrors.bankruptcy
   }}
 </p>
 {{#if (eq form.bankruptcy 'true')}}
@@ -106,7 +106,7 @@
       showError=(or showError (not-eq form.status 'todo'))
       invalid=(v-get form 'bankruptcy_details' 'isInvalid')
       errorMessage=(v-get form 'bankruptcy_details' 'message')
-      apiError=form.feedbacks.bankruptcy_details
+      apiError=form.apiErrors.bankruptcy_details
     }}
   </p>
 {{/if}}
@@ -132,7 +132,7 @@
     showError=(or showError (not-eq form.status 'todo'))
     invalid=(v-get form 'investigations' 'isInvalid')
     errorMessage=(v-get form 'investigations' 'message')
-    apiError=form.feedbacks.investigations
+    apiError=form.apiErrors.investigations
   }}
 </p>
 {{#if (eq form.investigations 'true')}}
@@ -151,7 +151,7 @@
       showError=(or showError (not-eq form.status 'todo'))
       invalid=(v-get form 'investigations_details' 'isInvalid')
       errorMessage=(v-get form 'investigations_details' 'message')
-      apiError=form.feedbacks.investigations_details
+      apiError=form.apiErrors.investigations_details
     }}
   </p>
 {{/if}}
@@ -177,7 +177,7 @@
     showError=(or showError (not-eq form.status 'todo'))
     invalid=(v-get form 'legal_proceedings' 'isInvalid')
     errorMessage=(v-get form 'legal_proceedings' 'message')
-    apiError=form.feedbacks.legal_proceedings
+    apiError=form.apiErrors.legal_proceedings
   }}
 </p>
 {{#if (eq form.legal_proceedings 'true')}}
@@ -196,7 +196,7 @@
       showError=(or showError (not-eq form.status 'todo'))
       invalid=(v-get form 'legal_proceedings_details' 'isInvalid')
       errorMessage=(v-get form 'legal_proceedings_details' 'message')
-      apiError=form.feedbacks.legal_proceedings_details
+      apiError=form.apiErrors.legal_proceedings_details
     }}
   </p>
 {{/if}}

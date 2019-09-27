@@ -2,19 +2,34 @@ import BaseController from './base-controller';
 import { computed } from '@ember/object';
 
 export default BaseController.extend({
-  steps: [
-    'eligibility',
-    'business-name',
-    'contact-detail',
-    'company-type',
-    'product-category',
-    'legal-disclosure',
-    'insurance-and-financial-document',
-    'company-profile',
-    'accreditation-and-license',
-    'membership-and-award',
-    'complete-application',
-  ],
+  steps: computed('model.seller', function() {
+    if(this.get('model.seller.live')) {
+      return [
+        'eligibility',
+        'business-name',
+        'contact-detail',
+        'company-type',
+        'product-category',
+        'legal-disclosure',
+        'insurance-and-financial-document',
+        'complete-application',
+      ];
+    } else {
+      return [
+        'eligibility',
+        'business-name',
+        'contact-detail',
+        'company-type',
+        'product-category',
+        'legal-disclosure',
+        'insurance-and-financial-document',
+        'company-profile',
+        'accreditation-and-license',
+        'membership-and-award',
+        'complete-application',
+      ];
+    }
+  }),
   submitable: computed('model.steps', 'model.form.agreed', function() {
     return this.get('steps').every( (key) => {
       let step = this.get('model.steps.'+key.replace(/-/g, '_'));
@@ -38,6 +53,11 @@ export default BaseController.extend({
         self.model.seller.submit().then(() => {
           self.transitionToRoute('application-success');
         });
+      }).catch((adapterError) => {
+        let errors = adapterError.errors[0];
+        self.set('model.form.apiErrors', errors);
+      }).finally(() => {
+        self.get('overlay').hide();
       });
     },
     saveContinue() {
@@ -51,14 +71,19 @@ export default BaseController.extend({
       }
       this.model.form.save().then(()=>{
         controller.transitionToRoute('seller-form', nextStep);
+      }).catch((adapterError) => {
+        let errors = adapterError.errors[0];
+        controller.set('model.form.apiErrors', errors);
+      }).finally(() => {
+        controller.get('overlay').hide();
       });
     },
     saveExit() {
       this.get('overlay').show();
       this.set('showError', true);
       let controller = this;
-      this.model.form.save().then(()=>{
-        this.transitionToRoute('supplier-application');
+      this.model.form.save().finally(()=>{
+        controller.transitionToRoute('supplier-application');
       });
     }
   }

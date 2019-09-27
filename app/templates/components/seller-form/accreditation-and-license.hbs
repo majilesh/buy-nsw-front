@@ -31,25 +31,26 @@
 <br>
 {{dds/multi-text
   field=(mut form.accreditations)
-  apiError=form.feedbacks.accreditations
+  apiError=form.apiErrors.accreditations
   signal=form.signal
 }}
 <br>
 <p>
-  <b> Upload a file</b>
+  <b> Upload files</b>
 </p>
 <p class="gray">
-  The file should be no larger than 5MB and in PDF, PNG or JPEG format. You can upload a single document or separate documents by using the 'Add another file' button below.
+  Files should be smaller than 10MB and in PDF, PNG or JPEG format. You can upload a single document or separate documents by using the 'Add another file' button below.
 </p>
 {{dds/file-upload
   name="accreditation_document"
   field=(mut form.accreditation_document_ids)
-  apiError=form.feedbacks.accreditation_document_ids
+  apiError=form.apiErrors.accreditation_document_ids
   showError=true
   invalid=(v-get form 'accreditation_document_ids_valid' 'isInvalid')
   errorMessage=(v-get form 'accreditation_document_ids_valid' 'message')
   signal=form.signal
   fileService=fileService
+  overlay=overlay
   multiple=true
 }}
 <p>
@@ -65,25 +66,26 @@
 <br>
 {{dds/multi-text
   field=(mut form.licenses)
-  apiError=form.feedbacks.licenses
+  apiError=form.apiErrors.licenses
   signal=form.signal
 }}
 <br>
 <p>
-  <b> Upload a file</b>
+  <b> Upload files</b>
 </p>
 <p class="gray">
-  The file should be no larger than 5MB and in PDF, PNG or JPEG format. You can upload a single document or separate documents by using the 'Add another file' button below.
+  Files should be smaller than 10MB and in PDF, PNG or JPEG format. You can upload a single document or separate documents by using the 'Add another file' button below.
 </p>
 {{dds/file-upload
   name="license_document"
   field=(mut form.license_document_ids)
-  apiError=form.feedbacks.license_document_ids
+  apiError=form.apiErrors.license_document_ids
   showError=true
   invalid=(v-get form 'license_document_ids_valid' 'isInvalid')
   errorMessage=(v-get form 'license_document_ids_valid' 'message')
   signal=form.signal
   fileService=fileService
+  overlay=overlay
   multiple=true
 }}
 <p>

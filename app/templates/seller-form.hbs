@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-15 col-md-12 col-lg-10">
       <div class="progress-menu">
-        <b>Supplier application</b><br><br>
+        <b>{{if this.model.seller.live "Account settings" "Supplier application"}}</b><br><br>
         {{dds/progress-indicator
           stepName=stepName
           items=(array
@@ -37,7 +37,7 @@
                  title="Insurance and financial documents")
               )
             )
-            (hash route="seller-form" status="todo" step="company-profile" title="Company profile" optional=true
+            (hash route="seller-form" hide=this.model.seller.live status="todo" step="company-profile" title="Company profile" optional=true
               subItems=(array
                 (hash route="seller-form" step="company-profile"
                  status=this.model.steps.company_profile.status
@@ -71,7 +71,7 @@
       {{ dds/bread-crumbs
         links=(array
           (hash name="buy.nsw" route="index")
-          (hash name="Supplier application" route="supplier-application")
+          (hash name=(if this.model.seller.live "Account settings" "Supplier application") route="supplier-application")
           (hash name=(humanize stepName))
         )
       }}

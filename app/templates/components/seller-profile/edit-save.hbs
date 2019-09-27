@@ -1,8 +1,8 @@
-<div>
+
   {{#if underEdit}}
     {{dds/primary-button
       theme=theme
-      class="pull-right"
+      class="pull-right no-margin"
       thin=true
       label="Save"
       onClick=(action "saveClicked")
@@ -17,11 +17,11 @@
   {{else}}
     {{dds/primary-button
       theme=theme
-      class="pull-right"
+      class="pull-right no-margin"
       thin=true
       label="Edit"
       onClick=(action "editClicked")
     }}
   {{/if}}
   <div class="clear-both"></div>
-</div>
+

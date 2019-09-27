@@ -27,17 +27,18 @@
 </p>
 <br>
 <p>
-  <b> Upload a file</b>
+  <b> Upload files</b>
 </p>
 <p class="gray">
-  The file should be no larger than 5MB and in PDF, PNG or JPEG format. You can upload a single document or separate documents by using the 'Add another file' button below.
+  Files should be smaller than 10MB and in PDF, PNG or JPEG format. You can upload a single document or separate documents by using the 'Add another file' button below.
 </p>
 {{dds/file-upload
   name="professional_indemnity_certificate"
   field=(mut form.professional_indemnity_certificate_ids)
-  apiError=form.feedbacks.professional_indemnity_certificate_ids
+  apiError=form.apiErrors.professional_indemnity_certificate_ids
   signal=form.signal
   fileService=fileService
+  overlay=overlay
   multiple=true
 }}
 <p>
@@ -66,17 +67,18 @@
 </p>
 <br>
 <p>
-  <b> Upload a file</b>
+  <b> Upload files</b>
 </p>
 <p class="gray">
-  The file should be no larger than 5MB and in PDF, PNG or JPEG format. You can upload a single document or separate documents by using the 'Add another file' button below.
+  Files should be smaller than 10MB and in PDF, PNG or JPEG format. You can upload a single document or separate documents by using the 'Add another file' button below.
 </p>
 {{dds/file-upload
   name="product_liability_certificate"
   field=(mut form.product_liability_certificate_ids)
-  apiError=form.feedbacks.product_liability_certificate_ids
+  apiError=form.apiErrors.product_liability_certificate_ids
   signal=form.signal
   fileService=fileService
+  overlay=overlay
   multiple=true
 }}
 <p>
@@ -105,17 +107,18 @@
 </p>
 <br>
 <p>
-  <b> Upload a file</b>
+  <b> Upload files</b>
 </p>
 <p class="gray">
-  The file should be no larger than 5MB and in PDF, PNG or JPEG format. You can upload a single document or separate documents by using the 'Add another file' button below.
+  Files should be smaller than 10MB and in PDF, PNG or JPEG format. You can upload a single document or separate documents by using the 'Add another file' button below.
 </p>
 {{dds/file-upload
   name="workers_compensation_certificate"
   field=(mut form.workers_compensation_certificate_ids)
-  apiError=form.feedbacks.workers_compensation_certificate_ids
+  apiError=form.apiErrors.workers_compensation_certificate_ids
   signal=form.signal
   fileService=fileService
+  overlay=overlay
   multiple=true
 }}
 <p>
@@ -163,17 +166,18 @@
 </p>
 <br>
 <p>
-  <b> Upload a file</b>
+  <b> Upload files</b>
 </p>
 <p class="gray">
-  The file should be no larger than 5MB and in PDF, PNG or JPEG format. You can upload a single document or separate documents by using the 'Add another file' button below.
+  Files should be smaller than 10MB and in PDF, PNG or JPEG format. You can upload a single document or separate documents by using the 'Add another file' button below.
 </p>
 {{dds/file-upload
   name="financial_statement"
   field=(mut form.financial_statement_ids)
-  apiError=form.feedbacks.financial_statement_ids
+  apiError=form.apiErrors.financial_statement_ids
   signal=form.signal
   fileService=fileService
+  overlay=overlay
   multiple=true
 }}
 <p>

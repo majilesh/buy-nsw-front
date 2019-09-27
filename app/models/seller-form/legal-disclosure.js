@@ -78,7 +78,7 @@ const Validations = buildValidations({
 
 export default DS.Model.extend(Validations, {
   status: DS.attr('string'),
-  feedbacks: DS.attr('json'),
+  apiErrors: DS.attr('json'),
 
   receivership: DS.attr('string'),
   receivership_details: DS.attr('string'),

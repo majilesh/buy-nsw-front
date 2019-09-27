@@ -16,7 +16,7 @@ const Validations = buildValidations({
 
 export default DS.Model.extend(Validations, {
   status: DS.attr('string'),
-  feedbacks: DS.attr('json'),
+  apiErrors: DS.attr('json'),
   agreed: DS.attr('boolean'),
   agreed_at_date: DS.attr('string'),
   agreed_by_email: DS.attr('string'),
