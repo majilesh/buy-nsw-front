@@ -13,14 +13,15 @@
     {{seller-profile/reputation-and-distinction-edit form=form}}
   {{else}}
     <div class="row">
-      <p class="simple-alert col-xs-18">Only available to registered buyers</p>
-      <div class="col-xs-18">
-        {{seller-profile/edit-save
-          theme="sapphire"
-          underEdit=(mut underEdit)
-          form=form
-        }}    
-      </div>
+      {{#dds/info-box class="col-xs-18"}}
+        {{fa-icon "info-circle" prefix="fas"}} Only available to registered buyers
+      {{/dds/info-box}}
+      {{seller-profile/edit-save
+        class="col-xs-18"
+        theme="sapphire"
+        underEdit=(mut underEdit)
+        form=form
+      }} 
     </div>
     <div class="cool-infobox sapphire">
       You can add and update your accreditations, engagements and awards at any time.
