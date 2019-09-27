@@ -31,7 +31,7 @@
 <br>
 {{dds/multi-text
   field=(mut form.accreditations)
-  apiError=form.feedbacks.accreditations
+  apiError=form.apiErrors.accreditations
   signal=form.signal
 }}
 <br>
@@ -44,7 +44,7 @@
 {{dds/file-upload
   name="accreditation_document"
   field=(mut form.accreditation_document_ids)
-  apiError=form.feedbacks.accreditation_document_ids
+  apiError=form.apiErrors.accreditation_document_ids
   showError=true
   invalid=(v-get form 'accreditation_document_ids_valid' 'isInvalid')
   errorMessage=(v-get form 'accreditation_document_ids_valid' 'message')
@@ -66,7 +66,7 @@
 <br>
 {{dds/multi-text
   field=(mut form.licenses)
-  apiError=form.feedbacks.licenses
+  apiError=form.apiErrors.licenses
   signal=form.signal
 }}
 <br>
@@ -79,7 +79,7 @@
 {{dds/file-upload
   name="license_document"
   field=(mut form.license_document_ids)
-  apiError=form.feedbacks.license_document_ids
+  apiError=form.apiErrors.license_document_ids
   showError=true
   invalid=(v-get form 'license_document_ids_valid' 'isInvalid')
   errorMessage=(v-get form 'license_document_ids_valid' 'message')

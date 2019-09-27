@@ -55,9 +55,9 @@ export default BaseController.extend({
         });
       }).catch((adapterError) => {
         let errors = adapterError.errors[0];
-        this.set('model.form.feedbacks', errors);
+        self.set('model.form.apiErrors', errors);
       }).finally(() => {
-        this.get('overlay').hide();
+        self.get('overlay').hide();
       });
     },
     saveContinue() {
@@ -73,9 +73,9 @@ export default BaseController.extend({
         controller.transitionToRoute('seller-form', nextStep);
       }).catch((adapterError) => {
         let errors = adapterError.errors[0];
-        this.set('model.form.feedbacks', errors);
+        controller.set('model.form.apiErrors', errors);
       }).finally(() => {
-        this.get('overlay').hide();
+        controller.get('overlay').hide();
       });
     },
     saveExit() {
@@ -83,7 +83,7 @@ export default BaseController.extend({
       this.set('showError', true);
       let controller = this;
       this.model.form.save().finally(()=>{
-        this.transitionToRoute('supplier-application');
+        controller.transitionToRoute('supplier-application');
       });
     }
   }
