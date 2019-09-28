@@ -235,6 +235,7 @@
             noLabel=true
             field=(mut address.address_2)
             apiError=apiError.address_2
+            showError=(or showError (not-eq form.status 'todo'))
           }}
         </p>
         <p>
@@ -243,6 +244,7 @@
             noLabel=true
             field=(mut address.address_3)
             apiError=apiError.address_3
+            showError=(or showError (not-eq form.status 'todo'))
           }}
         </p>
       </div>
@@ -354,6 +356,7 @@
           {{dds/checkbox-input
             field=(mut form.regional)
             apiError=form.apiErrors.regional
+            showError=(or showError (not-eq form.status 'todo'))
             label="Regional"
             description=(if form.can_be_regional "It looks like your head office is located in regional NSW. Would you like to identify your business as a regional NSW supplier?" "To be classified as NSW Regional business your head office must be in regional NSW.")
           }}
