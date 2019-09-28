@@ -21,6 +21,7 @@
   break=true
   wide=true
   bold=true
+  showError=(or showError (not-eq form.status 'todo'))
   apiError=form.apiErrors.services
   items=(array
     (hash

@@ -29,6 +29,7 @@
 {{dds/multi-text
   field=(mut form.engagements)
   apiError=form.apiErrors.engagements
+  showError=(or showError (not-eq form.status 'todo'))
 }}
 <p>
   {{dds/top-link}}
@@ -44,6 +45,7 @@
 {{dds/multi-text
   field=(mut form.awards)
   apiError=form.apiErrors.awards
+  showError=(or showError (not-eq form.status 'todo'))
 }}
 <p>
   {{dds/top-link}}

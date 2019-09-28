@@ -153,6 +153,7 @@
 </div>
 {{dds/checkbox-input
   field=(mut form.start_up)
+  showError=(or showError (not-eq form.status 'todo'))
   apiError=form.apiErrors.start_up
   label="Start-up"
   description="To be classified as a start-up your business must be less than 5 years old and must not be listed on any stock exchange."
@@ -160,6 +161,7 @@
 }}
 {{dds/checkbox-input
   field=(mut form.sme)
+  showError=(or showError (not-eq form.status 'todo'))
   apiError=form.apiErrors.sme
   label="Small or medium enterprise"
   disabled=(or form.overseas (eq form.number_of_employees '200plus'))
@@ -167,12 +169,14 @@
 }}
 {{dds/checkbox-input
   field=(mut form.not_for_profit)
+  showError=(or showError (not-eq form.status 'todo'))
   apiError=form.apiErrors.not_for_profit
   label="Not-for-profit or social enterprise"
   description="To be classified as a not-for-profit or social enterprise business, the purpose of your business must be to improve human or environmental wellbeing and to reinvest profits to fulfil this mission."
 }}
 {{dds/checkbox-input
   field=(mut form.australian_owned)
+  showError=(or showError (not-eq form.status 'todo'))
   apiError=form.apiErrors.australian_owned
   label="Australian owned"
   description="To be classified as Australian owned your business must have been founded and have your headquarters in Australia, and be owned by Australian nationals."
@@ -184,12 +188,14 @@
 <br>
 {{dds/checkbox-input
   field=(mut form.indigenous)
+  showError=(or showError (not-eq form.status 'todo'))
   apiError=form.apiErrors.indigenous
   label="Aboriginal or Torres Strait Islander"
   description="To be classified as an Aboriginal or Torres Strait Islander business, your business must be recognised by an appropriate organisation such as NSW Indigenous Chamber of Commerce, Supply Nation or the First Australians Chamber of Commerce and Industry."
 }}
 {{dds/checkbox-input
   field=(mut form.disability)
+  showError=(or showError (not-eq form.status 'todo'))
   apiError=form.apiErrors.disability
   label="Australian disability enterprise"
   description="To be classified as an Australian disability enterprise your business must be listed on the Australian disability enterprise register."
