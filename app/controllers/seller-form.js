@@ -82,7 +82,7 @@ export default BaseController.extend({
       this.get('overlay').show();
       this.set('showError', true);
       let controller = this;
-      this.model.form.save().finally(()=>{
+      this.model.form.save().catch(()=>{}).finally(()=>{
         controller.transitionToRoute('supplier-application');
       });
     }
