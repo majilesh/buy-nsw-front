@@ -10,13 +10,13 @@
   subline=(concat "Last update to supplier profile: " this.model.seller.updated_at)}}
   {{dds/jump-to class="on-the-edge pull-right"
     sections=(array
-      (hash name="Licenses, accreditations and awards" anchor="licenses-accreditations" show=true)
-      (hash name="Special capabilities and expertise" anchor="special-capabilities" show=buyerView)
-      (hash name="References and case studies" anchor="references-and-case-studies" show=buyerView)
-      (hash name="Government credentials" anchor="government-credentials" show=buyerView)
-      (hash name="Schemes and panels" anchor="schemes-and-panels" show=buyerView)
-      (hash name="Team members" anchor="team-members" show=buyerView)
-      (hash name="Promotional video" anchor="promotional-video" show=true)
+      (hash name="Licenses, accreditations and awards" anchor="licenses-accreditations")
+      (hash name="Special capabilities and expertise" anchor="special-capabilities" hide=(not buyerView))
+      (hash name="References and case studies" anchor="references-and-case-studies" hide=(not buyerView))
+      (hash name="Government credentials" anchor="government-credentials" hide=(not buyerView))
+      (hash name="Schemes and panels" anchor="schemes-and-panels" hide=(not buyerView))
+      (hash name="Team members" anchor="team-members" hide=(not buyerView))
+      (hash name="Promotional video" anchor="promotional-video")
     )
   }}
 {{/dds/banner}}
