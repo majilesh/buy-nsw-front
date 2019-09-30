@@ -2,7 +2,7 @@
   {{#if underEdit}}
     {{dds/primary-button
       theme=theme
-      class="pull-right no-margin"
+      class="pull-right no-margin-right"
       thin=true
       label="Save"
       onClick=(action "saveClicked")
@@ -17,7 +17,7 @@
   {{else}}
     {{dds/primary-button
       theme=theme
-      class="pull-right no-margin"
+      class="pull-right no-margin-right"
       thin=true
       label="Edit"
       onClick=(action "editClicked")
