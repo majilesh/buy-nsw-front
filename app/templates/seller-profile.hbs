@@ -90,30 +90,26 @@
               {{/each}}
             </p>
           {{/if}}
-          {{#if this.model.seller.tags}}
-            {{#if buyerView}}
-              <hr class="super-light">
-              <p><b>Business identifiers</b></p>
-              <p>
-                {{#each this.model.seller.tags as |tag|}}
-                  {{dds/tag theme="sapphire" label=tag class="inline"}}
-                {{/each}}
-              </p>
-            {{/if}}
+          {{#if (and this.model.seller.tags buyerView)}}
+            <hr class="super-light">
+            <p><b>Business identifiers</b></p>
+            <p>
+              {{#each this.model.seller.tags as |tag|}}
+                {{dds/tag theme="sapphire" label=tag class="inline"}}
+              {{/each}}
+            </p>
           {{/if}}
-          {{#if this.model.seller.documents}}
-            {{#if buyerView}}
-              <br> <br>
-              {{#dds/simple-box theme="sapphire"}}
-                <b>This supplier has provided the following documentation:</b>
-                <ul>
-                  {{#each this.model.seller.documents as |document|}}
-                    <li>{{document}}</li>
-                  {{/each}}
-                </ul>
-              {{/dds/simple-box}}
-              <br>
-            {{/if}}
+          {{#if (and this.model.seller.documents buyerView)}}
+            <br> <br>
+            {{#dds/simple-box theme="sapphire"}}
+              <b>This supplier has provided the following documentation:</b>
+              <ul>
+                {{#each this.model.seller.documents as |document|}}
+                  <li>{{document}}</li>
+                {{/each}}
+              </ul>
+            {{/dds/simple-box}}
+            <br>
           {{/if}}
           {{#unless buyerView}}
             <br> <br>
