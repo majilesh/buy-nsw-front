@@ -79,13 +79,12 @@
     field=(mut form.govdc)
     showError=(or showError (not-eq form.status 'todo'))
     invalid=(v-get form 'govdc' 'isInvalid')
-    apiError=form.apiErrors.govdc
     errorMessage=(v-get form 'govdc' 'message')
   }}
 </p>
 {{#if (and (or showError (not-eq form.status 'todo') (v-get form 'eligible' 'isInvalid')))}}
   <p>
-    {{dds/validation-error type="warning" message=(v-get form 'eligible' 'message') float="left"}}
+    {{dds/validation-error type="error" message=(v-get form 'eligible' 'message') float="left"}}
   </p>
 {{/if}}
 
