@@ -7,6 +7,10 @@ export default Route.extend({
       into: 'seller-profile'
     });
   },
+  setupController(controller, model) {
+    this._super(controller, model);
+    controller.set('showDocumentDownloads', null);
+  },
   model(params) {
     return RSVP.hash({
       essential_information: this.store.findRecord("seller-profile/essential-information", params.seller_id),

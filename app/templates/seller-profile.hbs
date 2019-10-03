@@ -103,11 +103,31 @@
             <br> <br>
             {{#dds/simple-box theme="sapphire"}}
               <b>This supplier has provided the following documentation:</b>
-              <ul>
-                {{#each this.model.seller.documents as |document|}}
-                  <li>{{document}}</li>
-                {{/each}}
-              </ul>
+              {{#if showDocumentDownloads}}
+                <ul>
+                  {{#each this.model.seller.documents as |document|}}
+                    <li>
+                      {{document.name}}
+                      {{dds/file-download
+                        field=document.ids
+                        fileService=fileService
+                        multiple=true
+                        dark=true
+                      }}
+                    </li>
+                  {{/each}}
+                </ul>
+              {{else}}
+                <ul>
+                  {{#each this.model.seller.documents as |document|}}
+                    <li>{{document.name}}</li>
+                  {{/each}}
+                </ul>
+                <p>
+                  {{dds/tertiary-button thin=true dark=true theme="sapphire" onClick=(action "getDocuments")
+                     label="Download this supplier’s documentation."}}
+               </p>
+              {{/if}}
             {{/dds/simple-box}}
             <br>
           {{/if}}

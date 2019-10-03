@@ -1,7 +1,6 @@
 {{#dds/accordion-container
   title="References and case studies"
-  subtitle="References (especially for other government projects) and case studies may help buyers make a decision."
-  subtitleBold="Tip:"
+  subtitle="𝗧𝗶𝗽: References (especially for other government projects) and case studies may help buyers make a decision."
   theme="sapphire"
   expanded=false}}
   {{#if underEdit}}
@@ -13,11 +12,11 @@
     {{seller-profile/reference-and-case-study-edit form=form}}
   {{else}}
     <div class="row">
-      {{#dds/info-box class="col-xs-18"}}
+      {{#dds/info-box class="col-xs-27"}}
         {{fa-icon "info-circle" prefix="fas"}} Only available to registered buyers
       {{/dds/info-box}}
       {{seller-profile/edit-save
-        class="col-xs-18"
+        class="col-xs-9"
         theme="sapphire"
         underEdit=(mut underEdit)
         form=form
