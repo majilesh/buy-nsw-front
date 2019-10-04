@@ -10,6 +10,34 @@ export default DS.Model.extend({
   offersCloud: DS.attr('boolean'),
   offersTelco: DS.attr('boolean'),
   canBeWithdrawn: DS.attr('boolean'),
+  steps: computed('live', function() {
+    if(this.get('live')) {
+      return [
+        'eligibility',
+        'business-name',
+        'contact-detail',
+        'company-type',
+        'product-category',
+        'legal-disclosure',
+        'insurance-and-financial-document',
+        'complete-application',
+      ];
+    } else {
+      return [
+        'eligibility',
+        'business-name',
+        'contact-detail',
+        'company-type',
+        'product-category',
+        'legal-disclosure',
+        'insurance-and-financial-document',
+        'company-profile',
+        'accreditation-and-license',
+        'membership-and-award',
+        'complete-application',
+      ];
+    }
+  }),
   declined: computed('status', function() {
     return [
       'changes_requested',

@@ -33,11 +33,11 @@ Procure IT 3.2
   <p><b>You can't accept the ProcureIT Contracting Framework</b></p>
   {{#if form.representative_email}}
     <p>
-      Only <strong>{{form.representative_email}}</strong>
+      Only your authorised representative <strong>{{form.representative_email}}</strong>
       can accept the ProcureIT Contracting Framework on behalf of your organisation.
     </p>
     {{#if (eq form.representative_user_status "not_invited")}}
-        <p>You need to invite them to your seller account, and ask them to sign in to accept the terms.</p>
+        <p>You need to invite them to your seller account, and ask them to sign in and accept the terms.</p>
     {{else if (eq form.representative_user_status "another_seller")}}
         <p><u>They have joined another seller account, please contact us for more information.</u></p>
     {{else}}
