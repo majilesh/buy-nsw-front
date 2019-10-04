@@ -210,17 +210,27 @@
   {{/unless}}
 
   <br>
+  {{#if (not-eq this.model.steps.complete_application.status 'done')}}
+    {{supplier-application-section
+      title="Complete and submit"
+      first_form="complete-application"
+      seller=this.model.seller
+      steps=this.model.steps
+      forms=(array
+        (hash key='complete_application' name='Complete and submit')
+      )
+    }}
+  {{/if}}
 
-  {{supplier-application-section
-    title="Complete and submit"
-    first_form="complete-application"
-    seller=this.model.seller
-    steps=this.model.steps
-    forms=(array
-      (hash key='complete_application' name='Complete and submit')
-    )
-  }}
   <p>
+    {{#if submitable}}
+      <span class="float-right">
+        {{dds/primary-button
+          onClick=(action "submitProfile")
+          label="Submit"
+        }}
+      </span>
+    {{/if}}
     <span class="float-left">
       {{dds/tertiary-button
         route="seller-dashboard"

@@ -1,9 +1,16 @@
 import BaseController from './base-controller';
 import { inject } from '@ember/service';
+import { computed } from '@ember/object';
 
 export default BaseController.extend({
   ajax: inject(),
 
+  submitable: computed('model.steps', 'model.form.agreed', function() {
+    return this.get('model.seller.steps').every( (key) => {
+      let step = this.get('model.steps.'+key.replace(/-/g, '_'));
+      return step.status == 'done' || (step.optional && step.status == 'todo');
+    });
+  }),
   actions: {
     refresh() {
       let controller = this;
