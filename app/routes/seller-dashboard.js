@@ -4,6 +4,11 @@ import { inject } from '@ember/service';
 
 export default Route.extend({
   ajax: inject(),
+  renderTemplate: function() {
+    this.render('seller-dashboard', {
+      into: 'seller-dashboard'
+    });
+  },
   model() {
     return RSVP.hash({
       productsCount: this.get('ajax').request('/api/products/products/count', {
