@@ -7,8 +7,9 @@
 {{dds/main-nav auth=auth noBorder=true}}
 
 {{#dds/banner title=this.model.seller.name
+  sideContent=true
   subline=(concat "Last update to supplier profile: " this.model.seller.updated_at)}}
-  {{dds/jump-to class="on-the-edge pull-right"
+  {{dds/jump-to class="on-the-edge float-right full-width"
     sections=(array
       (hash name="Licenses, accreditations and awards" anchor="licenses-accreditations")
       (hash name="Special capabilities and expertise" anchor="special-capabilities" hide=(not buyerView))
