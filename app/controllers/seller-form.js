@@ -2,45 +2,17 @@ import BaseController from './base-controller';
 import { computed } from '@ember/object';
 
 export default BaseController.extend({
-  steps: computed('model.seller', function() {
-    if(this.get('model.seller.live')) {
-      return [
-        'eligibility',
-        'business-name',
-        'contact-detail',
-        'company-type',
-        'product-category',
-        'legal-disclosure',
-        'insurance-and-financial-document',
-        'complete-application',
-      ];
-    } else {
-      return [
-        'eligibility',
-        'business-name',
-        'contact-detail',
-        'company-type',
-        'product-category',
-        'legal-disclosure',
-        'insurance-and-financial-document',
-        'company-profile',
-        'accreditation-and-license',
-        'membership-and-award',
-        'complete-application',
-      ];
-    }
-  }),
   submitable: computed('model.steps', 'model.form.agreed', function() {
-    return this.get('steps').every( (key) => {
+    return this.get('model.seller.steps').every( (key) => {
       let step = this.get('model.steps.'+key.replace(/-/g, '_'));
       return step.status == 'done' || (step.optional && step.status == 'todo') ||
              (key == 'complete-application' && this.get('model.form.agreed'));
     });
   }),
   previousStep: computed('stepName', function () {
-    let index = this.get('steps').indexOf(this.get('stepName'));
+    let index = this.get('model.seller.steps').indexOf(this.get('stepName'));
     if(index > 0) {
-      return this.get('steps')[index - 1];
+      return this.get('model.seller.steps')[index - 1];
     }
     return 'eligibility';
   }),
@@ -65,9 +37,10 @@ export default BaseController.extend({
       this.set('showError', true);
       let controller = this;
       let nextStep = 'complete-application';
-      let index = this.steps.indexOf(this.get('stepName'));
-      if(index < this.steps.length - 1) {
-        nextStep = this.steps[index + 1];
+      let steps = this.get('model.seller.steps');
+      let index = steps.indexOf(this.get('stepName'));
+      if(index < steps.length - 1) {
+        nextStep = steps[index + 1];
       }
       this.model.form.save().then(()=>{
         controller.transitionToRoute('seller-form', nextStep);

@@ -126,7 +126,7 @@
       (hash key='business_name' name='Business name, ABN and establishment date')
       (hash key='contact_detail' name='Contact details and addresses')
       (hash key='company_type' name='Company type and business identifiers')
-      (hash key='product_category' name='Products and services' optional=true)
+      (hash key='product_category' name='Products and services')
     )
   }}
     <p><b>Information we will ask for:</b></p>
@@ -210,17 +210,28 @@
   {{/unless}}
 
   <br>
+  {{#if (not-eq this.model.steps.complete_application.status 'done')}}
+    {{supplier-application-section
+      title="Complete and submit"
+      first_form="complete-application"
+      seller=this.model.seller
+      steps=this.model.steps
+      forms=(array
+        (hash key='complete_application' name='Complete and submit')
+      )
+    }}
+  {{/if}}
 
-  {{supplier-application-section
-    title="Complete and submit"
-    first_form="complete-application"
-    seller=this.model.seller
-    steps=this.model.steps
-    forms=(array
-      (hash key='complete_application' name='Complete and submit')
-    )
-  }}
   <p>
+    {{#if submitable}}
+      <hr class="light">
+      <span class="float-right">
+        {{dds/primary-button
+          onClick=(action "submitProfile")
+          label="Submit"
+        }}
+      </span>
+    {{/if}}
     <span class="float-left">
       {{dds/tertiary-button
         route="seller-dashboard"

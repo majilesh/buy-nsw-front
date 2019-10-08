@@ -1,7 +1,6 @@
 {{#dds/accordion-container
   title="Promotional video"
-  subtitle="You can upload relevant video content here to provide buyers with project or business information."
-  subtitleBold="Tip:"
+  subtitle="𝗧𝗶𝗽: You can upload relevant video content here to provide buyers with project or business information."
   theme="sapphire"
   expanded=false}}
   {{#if underEdit}}
@@ -13,11 +12,11 @@
     {{seller-profile/promotional-video-edit form=form}}
   {{else}}
     <div class="row">
-      {{#dds/info-box class="col-xs-18"}}
+      {{#dds/info-box class="col-xs-27"}}
         {{fa-icon "check-circle" prefix="fas"}} Publicly viewable
       {{/dds/info-box}}
       {{seller-profile/edit-save
-        class="col-xs-18"
+        class="col-xs-9"
         theme="sapphire"
         underEdit=(mut underEdit)
         form=form

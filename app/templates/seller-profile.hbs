@@ -14,12 +14,12 @@
       (hash name="Special capabilities and expertise" anchor="special-capabilities" hide=(not buyerView))
       (hash name="References and case studies" anchor="references-and-case-studies" hide=(not buyerView))
       (hash name="Government credentials" anchor="government-credentials" hide=(not buyerView))
-      (hash name="Schemes and panels" anchor="schemes-and-panels" hide=(not buyerView))
       (hash name="Team members" anchor="team-members" hide=(not buyerView))
       (hash name="Promotional video" anchor="promotional-video")
     )
   }}
 {{/dds/banner}}
+<!--(hash name="Schemes and panels" anchor="schemes-and-panels" hide=(not buyerView))-->
 
 <main id="content">
   <div class="au-body">
@@ -103,11 +103,31 @@
             <br> <br>
             {{#dds/simple-box theme="sapphire"}}
               <b>This supplier has provided the following documentation:</b>
-              <ul>
-                {{#each this.model.seller.documents as |document|}}
-                  <li>{{document}}</li>
-                {{/each}}
-              </ul>
+              {{#if showDocumentDownloads}}
+                <ul>
+                  {{#each this.model.seller.documents as |document|}}
+                    <li>
+                      {{document.name}}
+                      {{dds/file-download
+                        field=document.ids
+                        fileService=fileService
+                        multiple=true
+                        dark=true
+                      }}
+                    </li>
+                  {{/each}}
+                </ul>
+              {{else}}
+                <ul>
+                  {{#each this.model.seller.documents as |document|}}
+                    <li>{{document.name}}</li>
+                  {{/each}}
+                </ul>
+                <p>
+                  {{dds/tertiary-button thin=true dark=true theme="sapphire" onClick=(action "getDocuments")
+                     label="Download these documents."}}
+               </p>
+              {{/if}}
             {{/dds/simple-box}}
             <br>
           {{/if}}
@@ -172,7 +192,7 @@
           {{dds/top-link}}
         </div>
 
-        <h5 class="au-display-lg" id="schemes-and-panels">
+<!--        <h5 class="au-display-lg" id="schemes-and-panels">
           <b class="dark-sapphire">Schemes and panels</b>
         </h5>
         <br>
@@ -181,12 +201,14 @@
         <div>
           {{dds/top-link}}
         </div>
+-->
 
         <h5 class="au-display-lg" id="team-members">
           <b class="dark-sapphire">Team members</b>
         </h5>
         {{seller-profile/team-member-view form=this.model.team_member buyerView=buyerView}}
         <br> <br>
+        <hr class="super-light">
         <div>
           {{dds/top-link}}
         </div>
