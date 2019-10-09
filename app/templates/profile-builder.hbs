@@ -18,12 +18,12 @@
   background="editing"
   light=true}}
   <div class="row on-the-edge">
-    <div class="col-md-9 col-md-offset-12 col-sm-18">
-      {{link-to "Edit company profile" "supplier-application"
+    <div class="col-sm-18 col-md-9 col-md-offset-18">
+      {{link-to "View profile as a buyer" "seller-profile" this.model.seller.id
       class="au-btn au-btn--turquoise banner-button"}}
     </div>
-    <div class="col-md-9 col-sm-18">
-      {{link-to "Invite a team member" "seller-profile" this.model.seller.id
+    <div class="col-sm-18 col-md-9">
+      {{link-to "Edit company account settings" "supplier-application"
       class="au-btn au-btn--sapphire banner-button"}}
     </div>
   </div>

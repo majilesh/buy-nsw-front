@@ -107,6 +107,9 @@ div.shaded-box {
 .au-banner__subline + .on-the-edge {
   @include AU-space( top, 2.3unit);
 }
+.full-width {
+  width: 100%;
+}
 .fit-to-page {
   iframe.EmberYoutube-player {
     max-width: 100%;
