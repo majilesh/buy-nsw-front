@@ -7,18 +7,21 @@
 {{dds/main-nav auth=auth noBorder=true}}
 
 {{#dds/banner title=this.model.seller.name
-  sideContent=true
   subline=(concat "Last update to supplier profile: " this.model.seller.updated_at)}}
-  {{dds/jump-to class="on-the-edge float-right full-width"
-    sections=(array
-      (hash name="Licenses, accreditations and awards" anchor="licenses-accreditations")
-      (hash name="Special capabilities and expertise" anchor="special-capabilities" hide=(not buyerView))
-      (hash name="References and case studies" anchor="references-and-case-studies" hide=(not buyerView))
-      (hash name="Government credentials" anchor="government-credentials" hide=(not buyerView))
-      (hash name="Team members" anchor="team-members" hide=(not buyerView))
-      (hash name="Promotional video" anchor="promotional-video")
-    )
-  }}
+  <div class="row on-the-edge">
+    <div class="col-sm-18 col-sm-offset-18 col-md-15 col-md-offset-21 col-lg-12 col-lg-offset-24">
+      {{dds/jump-to
+        sections=(array
+          (hash name="Licenses, accreditations and awards" anchor="licenses-accreditations")
+          (hash name="Special capabilities and expertise" anchor="special-capabilities" hide=(not buyerView))
+          (hash name="References and case studies" anchor="references-and-case-studies" hide=(not buyerView))
+          (hash name="Government credentials" anchor="government-credentials" hide=(not buyerView))
+          (hash name="Team members" anchor="team-members" hide=(not buyerView))
+          (hash name="Promotional video" anchor="promotional-video")
+        )
+      }}
+    </div>
+  </div>
 {{/dds/banner}}
 <!--(hash name="Schemes and panels" anchor="schemes-and-panels" hide=(not buyerView))-->
 
