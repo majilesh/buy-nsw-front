@@ -50,7 +50,7 @@
     {{#dds/template-body auth=auth}}
       <div class="row dashboard-notes">
         <div class="col-md-12">on the <b>buy.nsw</b> platform</div>
-        <div class="col-md-21">
+        <div class="col-md-15 col-lg-offset-3">
           {{#if this.model.seller.lastProfileUpdate}}
             <strong>Last updated:</strong> {{this.model.seller.lastProfileUpdate}}
           {{/if}}
@@ -59,7 +59,7 @@
 
       {{# if this.model.seller }}
         {{#dds/call-out}}
-          <h5 class="au-display-sm"><b>Your company profile {{this.model.seller.statusMessage}}.</b></h5>
+          <h5 class="au-display-sm"><b>Your company {{this.model.seller.statusMessage}}.</b></h5>
         {{/dds/call-out}}
       {{/if}}
 
@@ -149,7 +149,7 @@
           {{/dds/simple-box}}
           {{#dds/simple-box theme="lilac" class="col-sm-12"}}
             <div>{{fa-icon "edit" prefix="fas"}}</div>
-            {{ link-to "Change your password" "account-settings" }}
+            {{ link-to "Change your email or password" "account-settings" }}
           {{/dds/simple-box}}
         </div>
       </section>
