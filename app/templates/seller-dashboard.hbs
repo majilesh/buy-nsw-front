@@ -133,18 +133,22 @@
       <section class="make-changes center">
         <h4 class="au-display-xl"><b>Need to make changes?</b></h4>
         <div class="row">
-          {{#if this.model.seller.live}}
-            {{#dds/simple-box theme="iceblue" class="col-sm-12"}}
-              <div>{{fa-icon "cogs" prefix="fas"}}</div>
+          {{#dds/simple-box theme="iceblue" class="col-sm-12"}}
+            <div>{{fa-icon "cogs" prefix="fas"}}</div>
+            {{#if this.model.seller.live}}
               {{ link-to "Edit your cloud products" "products" }}
-            {{/dds/simple-box}}
-          {{/if}}
-          {{#if this.model.seller}}
-            {{#dds/simple-box theme="lightpeach" class="col-sm-12"}}
-              <div>{{fa-icon "user-circle" prefix="fas"}}</div>
+            {{else}}
+              <span> You will be able to add your products after you supplier application is approved </span>
+            {{/if}}
+          {{/dds/simple-box}}
+          {{#dds/simple-box theme="lightpeach" class="col-sm-12"}}
+            <div>{{fa-icon "user-circle" prefix="fas"}}</div>
+            {{#if this.model.seller}}
               {{ link-to "Manage team members" "team-members" }}
-            {{/dds/simple-box}}
-          {{/if}}
+            {{else}}
+              <span> You will be able to edit team members as soon as you start registration process </span>
+            {{/if}}
+          {{/dds/simple-box}}
           {{#dds/simple-box theme="lilac" class="col-sm-12"}}
             <div>{{fa-icon "edit" prefix="fas"}}</div>
             {{ link-to "Change your password" "account-settings" }}
