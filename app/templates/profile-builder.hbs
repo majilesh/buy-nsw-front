@@ -31,7 +31,7 @@
   <div class="au-body">
     {{#dds/template-body auth=auth}}
       <div class="cool-infobox sapphire">
-        Use this page to update your details and to provide buyers with additional useful information about your business.
+        Use this page to build your company profile. Your company profile is visible to buyers. Here you can share useful information about your business that will make you more attractive to a buyer.
       </div>
       <div class="row">
         <div class="col-sm-17 col-md-14 col-lg-11">
@@ -77,7 +77,7 @@
               </a>
             </p>
             <p>
-              {{link-to "Go to your Account to update the fields above." "supplier-application" class="small bold"}}
+              {{link-to "Edit company account details to make changes to fields above." "supplier-application" class="small bold"}}
             </p>
             <br>
             {{seller-profile/contact-detail form=this.model.contact_detail}}
@@ -112,7 +112,7 @@
             <hr class="super-light">
             <p>
               <br>
-              <b>This supplier has provided the following documentation</b><br>
+              <b>This supplier has provided the following documentation:</b><br>
               <ul>
                 {{#each this.model.seller.documents as |document|}}
                   <li>{{document.name}}</li>
@@ -121,7 +121,7 @@
             </p>
           {{/if}}
           <p>
-            {{link-to "Go to your Account to update your services, business identifiers or documents." "supplier-application" class="small bold"}}
+            {{link-to "Edit company account details to update your services, business identifiers or documents." "supplier-application" class="small bold"}}
           </p>
         </div>
       </div>

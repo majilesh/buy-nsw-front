@@ -36,6 +36,30 @@
         <div class="row">
           <div class="col-sm-18">
             {{dds/text-input
+              label-text="Email address"
+              field=(mut reference.email)
+              signal=(mut form.signal)
+              thin=true
+              allRow=true
+              wide=true
+              apiError=apiError.email
+            }}
+          </div>
+          <div class="col-sm-18">
+            {{dds/text-input
+              label-text="Phone number"
+              field=(mut reference.phone)
+              signal=(mut form.signal)
+              thin=true
+              allRow=true
+              wide=true
+              apiError=apiError.phone
+            }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-18">
+            {{dds/text-input
               label-text="Role"
               field=(mut reference.role)
               signal=(mut form.signal)
@@ -54,30 +78,6 @@
               allRow=true
               wide=true
               apiError=apiError.provided_services
-            }}
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-18">
-            {{dds/text-input
-              label-text="Phone number"
-              field=(mut reference.phone)
-              signal=(mut form.signal)
-              thin=true
-              allRow=true
-              wide=true
-              apiError=apiError.phone
-            }}
-          </div>
-          <div class="col-sm-18">
-            {{dds/text-input
-              label-text="Email address"
-              field=(mut reference.email)
-              signal=(mut form.signal)
-              thin=true
-              allRow=true
-              wide=true
-              apiError=apiError.email
             }}
           </div>
         </div>
