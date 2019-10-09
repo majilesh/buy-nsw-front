@@ -8,7 +8,7 @@
 
 {{#dds/banner
   title="Supplier dashboard"
-  heading=this.model.seller.name
+  heading=(if this.model.seller.name this.model.seller.name "No name provided yet")
   links=(array
       (hash name="buy.nsw" route="index")
       (hash name="Dashboard" route="seller-dashboard")
