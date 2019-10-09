@@ -102,7 +102,10 @@ div.shaded-box {
 .on-the-edge {
   position: relative;
   @include AU-space( margin-top, -1.5unit);
-  @include AU-space( top, 3.3unit);
+  @include AU-space( top, 4.3unit);
+}
+.au-banner__subline + .on-the-edge {
+  @include AU-space( top, 2.3unit);
 }
 .fit-to-page {
   iframe.EmberYoutube-player {
