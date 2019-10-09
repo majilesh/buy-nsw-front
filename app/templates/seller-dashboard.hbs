@@ -12,30 +12,39 @@
   links=(array
       (hash name="buy.nsw" route="index")
       (hash name="Dashboard" route="seller-dashboard")
-      (hash name=this.model.seller.name)
     )
   background="editing"
   light=true}}
   <div class="row on-the-edge">
     <div class="col-md-12">
       <span class="banner-button tally">
-        <span>199 suppliers</span>
-        <span>262 buyers</span>
+        <span>{{this.model.sellersCount}} suppliers</span>
+        <span>{{this.model.buyersCount}} buyers</span>
       </span>
+      <br>
     </div>
-    <div class="col-md-9 col-sm-18">
+
+    <div class="col-xs-0 col-md-2 col-lg-6">
+    </div>
+    <div class="col-sm-18 col-md-11 col-lg-9">
       {{#if this.model.seller.live}}
         {{ link-to "Manage company profile" "profile-builder" class="au-btn au-btn--turquoise banner-button" }}
-      {{else}}
-        {{ link-to "Continue supplier application" "supplier-application" class="au-btn au-btn--turquoise banner-button" }}
       {{/if}}
+      <br>
     </div>
-    <div class="col-md-9 col-sm-18">
-      {{link-to "Edit company account details" "seller-profile" this.model.seller.id
-      class="au-btn au-btn--sapphire banner-button"}}
+    <div class="col-sm-18 col-md-11 col-lg-9">
+      {{#if this.model.seller}}
+        {{#if this.model.seller.live}}
+          {{link-to "Edit company account details" "supplier-application" class="au-btn au-btn--sapphire banner-button"}}
+        {{else}}
+          {{ link-to "Continue supplier application" "supplier-application" class="au-btn au-btn--sapphire banner-button" }}
+        {{/if}}
+      {{else}}
+          {{ link-to "Apply to become ICT supplier" "register-seller" class="au-btn au-btn--sapphire banner-button" }}
+      {{/if}}
+      <br>
     </div>
   </div>
-  {{dds/primary-btn}}
 {{/dds/banner}}
 
 <main id="content">
@@ -43,16 +52,24 @@
     {{#dds/template-body auth=auth}}
       <div class="row dashboard-notes">
         <div class="col-md-12">on the <b>buy.nsw</b> platform</div>
-        <div class="col-md-9">
-          <strong>Last updated:</strong> 25 September 2019<!--{{this.model.seller.updated_at}}-->
+        <div class="col-md-21">
+          {{#if this.model.seller.lastProfileUpdate}}
+            <strong>Last updated:</strong> {{this.model.seller.lastProfileUpdate}}
+          {{/if}}
         </div>
       </div>
+
+      {{# if this.model.seller }}
+        {{#dds/call-out}}
+          <h5 class="au-display-sm"><b>Your company profile {{this.model.seller.statusMessage}}.</b></h5>
+        {{/dds/call-out}}
+      {{/if}}
 
       <h4 class="au-display-xl center"><b>Welcome to buy.nsw</b></h4>
       <p class="center"><b class="sapphire">What would you like to do today?</b></p>
 
       <div class="welcome row">
-        {{#dds/simple-box theme="lilac" class="col-md-12"}}
+        {{#dds/simple-box theme="lilac" class="col-sm-12"}}
           <div class="img-wrap">
             <img src="/ict/buy-nsw-style/images/whiteboard.jpg" alt="whiteboard" />
           </div>
@@ -65,7 +82,7 @@
           </ul>
           <a class="au-btn au-btn--sapphire" href="https://tenders.nsw.gov.au/" target="_blank" rel="noopener">Go to eTendering</a>
         {{/dds/simple-box}}
-        {{#dds/simple-box theme="iceblue" class="col-md-12"}}
+        {{#dds/simple-box theme="iceblue" class="col-sm-12"}}
           <div class="img-wrap">
             <img src="/ict/buy-nsw-style/images/bookstore.jpg" alt="bookstore" />
           </div>
@@ -78,7 +95,7 @@
           </ul>
           <a class="au-btn au-btn--sapphire" href="https://beta.buy.nsw.gov.au" target="_blank" rel="noopener">Go to Guided Buying beta</a>
         {{/dds/simple-box}}
-        {{#dds/simple-box theme="whitesmoke" class="col-md-12"}}
+        {{#dds/simple-box theme="whitesmoke" class="col-sm-12"}}
           <div class="img-wrap">
             <img src="/ict/buy-nsw-style/images/collaboration-screens.jpg" alt="collaboration using computer screens" />
           </div>
@@ -93,65 +110,48 @@
         {{/dds/simple-box}}
       </div>
 
-      <section class="improve-visibility row">
-        <div class="col-md-15 col-md-offset-3">
-          <h4 class="au-display-lg"><b>How do I improve my visibility to buyers?</b></h4>
-          <br />
-          <p>Buyers have told us they are interested in suppliers sharing the following:</p>
-          <br />
-          <ul class="au-link-list">
-            <li>{{ link-to "Describe your approach to quality control" "profile-builder" class="au-cta-link small" }}</li>
-            <li>{{ link-to "Describe your methodology" "profile-builder" class="au-cta-link small" }}</li>
-            <li>{{ link-to "Add an accreditation" "profile-builder" class="au-cta-link small" }}</li>
-            <li>{{ link-to "Describe a specialty" "profile-builder" class="au-cta-link small" }}</li>
-          </ul>
-          <br />
-          {{ link-to "View profile as a buyer" "seller-guide" class="au-btn au-btn--sapphire" }}
-        </div>
-      </section>
+      {{#if this.model.seller.live}}
+        <section class="improve-visibility row">
+          <div class="col-sm-15 col-sm-offset-3">
+            <h4 class="au-display-lg"><b>How do I improve my visibility to buyers?</b></h4>
+            <br />
+            <p>Buyers have told us they are interested in suppliers sharing the following:</p>
+            <br />
+            <ul class="au-link-list">
+              <li>{{ link-to "Describe your approach to quality control" "profile-builder" class="au-cta-link small" }}</li>
+              <li>{{ link-to "Describe your methodology" "profile-builder" class="au-cta-link small" }}</li>
+              <li>{{ link-to "Add an accreditation" "profile-builder" class="au-cta-link small" }}</li>
+              <li>{{ link-to "Describe a specialty" "profile-builder" class="au-cta-link small" }}</li>
+            </ul>
+            <br />
+            {{ link-to "View profile as a buyer" "seller-profile" this.model.seller.id class="au-btn au-btn--sapphire" }}
+          </div>
+        </section>
+      {{/if}}
       <br />
 
       <section class="make-changes center">
         <h4 class="au-display-xl"><b>Need to make changes?</b></h4>
         <div class="row">
-          {{#dds/simple-box theme="iceblue" class="col-md-12"}}
-            <div>{{fa-icon "cogs" prefix="fas"}}</div>
-            {{#if this.model.seller.live}}
+          {{#if this.model.seller.live}}
+            {{#dds/simple-box theme="iceblue" class="col-sm-12"}}
+              <div>{{fa-icon "cogs" prefix="fas"}}</div>
               {{ link-to "Edit your cloud products" "products" }}
-              <!--<span>{{this.model.productsCount.all}} products</span>-->
-            {{else}}
-              Cloud products
-            {{/if}}
-          {{/dds/simple-box}}
-          {{#dds/simple-box theme="lightpeach" class="col-md-12"}}
-            <div>{{fa-icon "user-circle" prefix="fas"}}</div>
-            {{ link-to "Invite a team member" "team-members" }}
-          {{/dds/simple-box}}
-          {{#dds/simple-box theme="lilac" class="col-md-12"}}
+            {{/dds/simple-box}}
+          {{/if}}
+          {{#if this.model.seller}}
+            {{#dds/simple-box theme="lightpeach" class="col-sm-12"}}
+              <div>{{fa-icon "user-circle" prefix="fas"}}</div>
+              {{ link-to "Manage team members" "team-members" }}
+            {{/dds/simple-box}}
+          {{/if}}
+          {{#dds/simple-box theme="lilac" class="col-sm-12"}}
             <div>{{fa-icon "edit" prefix="fas"}}</div>
             {{ link-to "Change your password" "account-settings" }}
           {{/dds/simple-box}}
         </div>
       </section>
       <br /><br />
-
-      {{# if this.model.seller }}
-        {{#dds/call-out}}
-          <h5 class="au-display-sm"><b>Your company profile {{this.model.seller.statusMessage}}.</b></h5>
-        {{/dds/call-out}}
-        <br />
-        {{# if this.model.seller.expired }}
-          {{#dds/page-alert alertType="warning"}}
-            <h5>Some of your documents are expired now, please refresh them as soon as possible.</h5>
-          {{/dds/page-alert}}
-          <br />
-        {{/ if }}
-      {{else}}
-        <div class="btn-cta-group">
-          {{ link-to "Apply to sell ICT products and services" "register-seller" class="au-cta-link small" }}
-        </div>
-        <br />
-      {{/if}}
     {{/dds/template-body}}
   </div>
   {{dds/page-feedback user=auth.user feedbackService=feedbackService}}

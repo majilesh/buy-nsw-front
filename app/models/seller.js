@@ -10,6 +10,7 @@ export default DS.Model.extend({
   offersCloud: DS.attr('boolean'),
   offersTelco: DS.attr('boolean'),
   canBeWithdrawn: DS.attr('boolean'),
+  lastProfileUpdate: DS.attr('string'),
   steps: computed('live', function() {
     if(this.get('live')) {
       return [
