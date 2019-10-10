@@ -8,11 +8,14 @@ export default Component.extend({
       this.set('underEdit', true);
     },
     cancelClicked() {
+      this.get('overlay').show();
       this.get('form').set('apiErrors', null);
       this.get('form').rollbackAttributes();
       let component = this;
       this.get('form').reload().then(() => {
         component.set('underEdit', false);
+      }).finally(() => {
+        component.get('overlay').hide();
       });
     },
     saveClicked() {
