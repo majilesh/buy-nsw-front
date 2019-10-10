@@ -10,6 +10,7 @@ export default DS.Model.extend({
   offersCloud: DS.attr('boolean'),
   offersTelco: DS.attr('boolean'),
   canBeWithdrawn: DS.attr('boolean'),
+  lastProfileUpdate: DS.attr('string'),
   steps: computed('live', function() {
     if(this.get('live')) {
       return [
@@ -46,14 +47,14 @@ export default DS.Model.extend({
   }),
   statusMessage: computed('status', function() {
     return {
-      live: "is live",
-      amendment_changes_requested: "is live but it requires attention",
-      amendment_draft: "is live but your latest changes are not submitted",
-      amendment_pending: "is live and your changes are under review",
-      draft: "is not submitted",
-      pending: "is under review",
-      changes_requested: "requires attention",
-      deactivated: "is deactivated"
+      live: "profile is live",
+      amendment_changes_requested: "profile is live but it requires changes",
+      amendment_draft: "profile is live but your latest account changes are not submitted",
+      amendment_pending: "profile is live and your account changes are under review",
+      draft: "supplier application is not submitted",
+      pending: "supplier application is under review",
+      changes_requested: "supplier application requires changes",
+      deactivated: "supplier application is deactivated"
     }[this.status];
   }),
   statusType: computed('status', function() {

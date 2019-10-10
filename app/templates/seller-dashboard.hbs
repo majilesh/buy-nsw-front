@@ -1,119 +1,162 @@
-{{#dds/template-body auth=auth signin=true}}
-  <br>
-  <div class="row">
-    <div class="col-sm-12">
-      <h2 class="au-display-xl underline-light">
-        Dashboard
-      </h2>
+{{dds/skip-link}}
+
+{{user-pretender}}
+
+{{dds/browser-compatibility browser=(user-agent "browser")}}
+{{dds/template-header auth=auth}}
+{{dds/main-nav auth=auth noBorder=true}}
+
+{{#dds/banner
+  title="Supplier dashboard"
+  heading=(if this.model.seller.name this.model.seller.name "No name provided yet")
+  links=(array
+      (hash name="buy.nsw" route="index")
+      (hash name="Dashboard" route="seller-dashboard")
+    )
+  background="editing"
+  light=true}}
+  <div class="row on-the-edge">
+    <div class="col-md-12">
+      <span class="banner-button tally">
+        <span>{{this.model.sellersCount}} suppliers</span>
+        <span>{{this.model.buyersCount}} buyers</span>
+      </span>
+      <br>
+    </div>
+
+    <div class="col-sm-18 col-md-11 col-md-offset-2 col-lg-9 col-lg-offset-6">
+      {{#if this.model.seller.live}}
+        {{ link-to "Manage company profile" "profile-builder" class="au-btn au-btn--turquoise banner-button" }}
+      {{/if}}
+      <br>
+    </div>
+    <div class="col-sm-18 col-md-11 col-lg-9">
+      {{#if this.model.seller}}
+        {{#if this.model.seller.live}}
+          {{link-to "Edit company account details" "supplier-application" class="au-btn au-btn--sapphire banner-button"}}
+        {{else}}
+          {{ link-to "Continue supplier application" "supplier-application" class="au-btn au-btn--sapphire banner-button" }}
+        {{/if}}
+      {{else}}
+          {{ link-to "Apply to become ICT supplier" "register-seller" class="au-btn au-btn--sapphire banner-button" }}
+      {{/if}}
+      <br>
     </div>
   </div>
+{{/dds/banner}}
 
-  <br>
-  <br>
-
-  {{# if this.model.seller }}
-    <div class="row">
-      <div class="col-sm-30">
-        {{#dds/call-out}}
-          <h5 class="au-display-sm"><b>Your company profile {{this.model.seller.statusMessage}}.</b></h5>
-        {{/dds/call-out}}
-        <br>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-3">
-      </div>
-      <div class="col-sm-24">
-        {{# if this.model.seller.expired }}
-          {{#dds/page-alert alertType="warning"}}
-            <h5>Some of your documents are expired now, please refresh them as soon as possible.</h5>
-          {{/dds/page-alert}}
-        {{/ if }}
-        <br>
-      </div>
-    </div>
-    <br>
-    <div class="row">
-      <div class="col-sm-12 dash-title">
-        <b>{{this.model.seller.name}}</b>
-      </div>
-      <div class="col-sm-12">
-        <div class="btn-cta-group">
-          {{#if this.model.seller.live}}
-            {{ link-to
-              "Manage company profile"
-              "profile-builder"
-              class="au-cta-link small"
-            }}
-          {{else}}
-            {{ link-to
-              "Continue supplier application"
-              "supplier-application"
-              class="au-cta-link small"
-            }}
+<main id="content">
+  <div class="au-body">
+    {{#dds/template-body auth=auth}}
+      <div class="row dashboard-notes">
+        <div class="col-md-12">on the <b>buy.nsw</b> platform</div>
+        <div class="col-md-15 col-lg-offset-3">
+          {{#if this.model.seller.lastProfileUpdate}}
+            <strong>Last updated:</strong> {{this.model.seller.lastProfileUpdate}}
           {{/if}}
         </div>
       </div>
-    </div>
-    {{#if this.model.seller.live}}
-      <div class="row">
-        <div class="col-sm-12 dash-title">
-          <b>{{this.model.productsCount.all}} products</b>
-        </div>
-        <div class="col-sm-12">
-          <div class="btn-cta-group">
-            {{ link-to
-              "Manage cloud products"
-              "products"
-              class="au-cta-link small"
-            }}
-          </div>
-        </div>
-      </div>
-    {{/if}}
-    <div class="row">
-      <div class="col-sm-12 dash-title">
-        <b>{{this.model.members.length}} members</b>
-      </div>
-      <div class="col-sm-12">
-        <div class="btn-cta-group">
-          {{ link-to
-            "Manage team members"
-            "team-members"
-            class="au-cta-link small"
-          }}
-        </div>
-      </div>
-    </div>
-  {{else}}
-    <div class="row">
-      <div class="col-sm-12">
-      </div>
-      <div class="col-sm-12">
-        <div class="btn-cta-group">
-          {{ link-to
-            "Apply to sell ICT products and services"
-            "register-seller"
-            class="au-cta-link small"
-          }}
-        </div>
-      </div>
-    </div>
-    <br>
-  {{/if}}
 
-  <div class="row">
-    <div class="col-sm-12 dash-title">
-      <b>{{this.model.user.email}}</b>
-    </div>
-    <div class="col-sm-12">
-      <div class="btn-cta-group">
-        {{link-to
-          "Change email or password"
-          "account-settings"
-          class="au-cta-link small"
-        }}
+      {{# if this.model.seller }}
+        {{#dds/call-out}}
+          <h5 class="au-display-sm"><b>Your company {{this.model.seller.statusMessage}}.</b></h5>
+        {{/dds/call-out}}
+      {{/if}}
+
+      <h4 class="au-display-xl center"><b>Welcome to buy.nsw</b></h4>
+      <p class="center"><b class="sapphire">What would you like to do today?</b></p>
+
+      <div class="welcome row">
+        {{#dds/simple-box theme="lilac" class="col-md-12"}}
+          <div class="img-wrap">
+            <img src="/ict/buy-nsw-style/images/whiteboard.jpg" alt="whiteboard" />
+          </div>
+          <h5 class="au-display-lg center"><b class="sapphire">eTendering</b></h5>
+          <p><b>Visit eTendering to:</b></p>
+          <ul>
+            <li>Find tenders and opportunities</li>
+            <li>Research agency procurement plans</li>
+            <li>Apply for the ICT Services Scheme</li>
+          </ul>
+          <a class="au-btn au-btn--sapphire" href="https://tenders.nsw.gov.au/" target="_blank" rel="noopener">Go to eTendering</a>
+        {{/dds/simple-box}}
+        {{#dds/simple-box theme="iceblue" class="col-md-12"}}
+          <div class="img-wrap">
+            <img src="/ict/buy-nsw-style/images/bookstore.jpg" alt="bookstore" />
+          </div>
+          <h5 class="au-display-lg center"><b class="sapphire">Guided Buying beta</b></h5>
+          <p><b>Visit the Guided Buying beta to:</b></p>
+          <ul>
+            <li>Learn to win business with government</li>
+            <li>Discover initiatives for small and medium enterprises</li>
+            <li>Search the policy library</li>
+          </ul>
+          <a class="au-btn au-btn--sapphire" href="https://beta.buy.nsw.gov.au" target="_blank" rel="noopener">Go to Guided Buying beta</a>
+        {{/dds/simple-box}}
+        {{#dds/simple-box theme="whitesmoke" class="col-md-12"}}
+          <div class="img-wrap">
+            <img src="/ict/buy-nsw-style/images/collaboration-screens.jpg" alt="collaboration using computer screens" />
+          </div>
+          <h5 class="au-display-lg center"><b class="sapphire">ProcurePoint</b></h5>
+          <p><b>Visit ProcurePoint to:</b></p>
+          <ul>
+            <li>Learn about the ICT Services Scheme</li>
+            <li>Find guidance on the Procure IT contract framework</li>
+            <li>Access training and support</li>
+          </ul>
+          <a class="au-btn au-btn--sapphire" href="https://www.procurepoint.nsw.gov.au/" target="_blank" rel="noopener">Go to ProcurePoint</a>
+        {{/dds/simple-box}}
       </div>
-    </div>
+
+      {{#if this.model.seller.live}}
+        <section class="improve-visibility row">
+          <div class="col-sm-15 col-md-offset-3">
+            <h4 class="au-display-lg"><b>How do I improve my visibility to buyers?</b></h4>
+            <br />
+            <p>Buyers have told us they are interested in suppliers sharing the following:</p>
+            <br />
+            <ul class="au-link-list">
+              <li>{{ link-to "Describe your approach to quality control" "profile-builder" class="au-cta-link small" }}</li>
+              <li>{{ link-to "Describe your methodology" "profile-builder" class="au-cta-link small" }}</li>
+              <li>{{ link-to "Add an accreditation" "profile-builder" class="au-cta-link small" }}</li>
+              <li>{{ link-to "Describe a specialty" "profile-builder" class="au-cta-link small" }}</li>
+            </ul>
+            <br />
+            {{ link-to "View profile as a buyer" "seller-profile" this.model.seller.id class="au-btn au-btn--sapphire" }}
+          </div>
+        </section>
+      {{/if}}
+      <br />
+
+      <section class="make-changes center">
+        <h4 class="au-display-xl"><b>Need to make changes?</b></h4>
+        <div class="row">
+          {{#dds/simple-box theme="iceblue" class="col-sm-12"}}
+            <div>{{fa-icon "cogs" prefix="fas"}}</div>
+            {{#if this.model.seller.live}}
+              {{ link-to "Edit your cloud products" "products" }}
+            {{else}}
+              <span> You will be able to add your products after you supplier application is approved </span>
+            {{/if}}
+          {{/dds/simple-box}}
+          {{#dds/simple-box theme="lightpeach" class="col-sm-12"}}
+            <div>{{fa-icon "user-circle" prefix="fas"}}</div>
+            {{#if this.model.seller}}
+              {{ link-to "Manage team members" "team-members" }}
+            {{else}}
+              <span> You will be able to edit team members as soon as you start registration process </span>
+            {{/if}}
+          {{/dds/simple-box}}
+          {{#dds/simple-box theme="lilac" class="col-sm-12"}}
+            <div>{{fa-icon "edit" prefix="fas"}}</div>
+            {{ link-to "Change your email or password" "account-settings" }}
+          {{/dds/simple-box}}
+        </div>
+      </section>
+      <br /><br />
+    {{/dds/template-body}}
   </div>
-{{/dds/template-body}}
+  {{dds/page-feedback user=auth.user feedbackService=feedbackService}}
+</main>
+
+{{dds/template-footer auth=auth}}
