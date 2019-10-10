@@ -1,9 +1,9 @@
 {{#dds/template-body auth=auth signout=true}}
-  <h1 class="au-display-xl">Create a {{accountType}} account</h1>
+  <h1 class="au-display-xl">Sign up as a {{accountType}}</h1>
   {{#if (eq accountType "seller")}}
-    <p>Once you've verified your details, you'll be able to start your supplier application.</p>
+    <p>Once you've verified your details, you'll be able to start your supplier account registration.</p>
   {{/if}}
-  <p>Already have an account? {{link-to "Sign in" "sign-in"}}</p>
+  <p>Already have a log-in? {{link-to "Sign in" "sign-in"}}</p>
   <p>
     <b>Email address</b>
     <br>
@@ -63,7 +63,7 @@
     }}
     <hr>
   </p>
-  <p>By creating an account you confirm your acceptance of the {{link-to "terms of use" "terms-of-use"}}.</p>
+  <p>By signing up you confirm your acceptance of the {{link-to "terms of use" "terms-of-use"}}.</p>
   <p>
     <span class="float-right">
       {{dds/primary-button
