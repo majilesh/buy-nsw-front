@@ -212,6 +212,9 @@
 <p>
   This is the business address of your head office.
 </p>
+{{#if (eq form.apiErrors.addresses "Changes requested upon your previous submission")}}
+  {{dds/validation-error type="warning" message=form.apiErrors.addresses float="left"}}
+{{/if}}
 {{#each form.addresses as |address index|}}
   {{#let (get form.apiErrors.addresses index) as |apiError|}}
     <div class="row">

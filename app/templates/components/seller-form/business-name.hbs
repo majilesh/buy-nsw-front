@@ -56,6 +56,7 @@
     showError=(or showError (not-eq form.status 'todo'))
     invalid=(v-get form 'establishment_date' 'isInvalid')
     errorMessage=(v-get form 'establishment_date' 'message')
+    apiError=form.apiErrors.establishment_date
   }}
 </p>
 <hr class="light">
