@@ -27,6 +27,8 @@
     <div class="col-sm-18 col-md-11 col-md-offset-2 col-lg-9 col-lg-offset-6">
       {{#if this.model.seller.live}}
         {{ link-to "Manage company profile" "profile-builder" class="au-btn au-btn--turquoise banner-button" }}
+      {{else}}
+          {{ link-to "Change email or password" "account-settings" class="au-btn au-btn--turquoise banner-button" }}
       {{/if}}
       <br>
     </div>
@@ -38,7 +40,7 @@
           {{ link-to "Continue supplier application" "supplier-application" class="au-btn au-btn--sapphire banner-button" }}
         {{/if}}
       {{else}}
-          {{ link-to "Apply to become ICT supplier" "register-seller" class="au-btn au-btn--sapphire banner-button" }}
+          {{ link-to "Register as a cloud supplier" "register-seller" class="au-btn au-btn--sapphire banner-button" }}
       {{/if}}
       <br>
     </div>
