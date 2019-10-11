@@ -1,20 +1,24 @@
-<h2 class="au-display-xl underline-light">
+<h2 class="underline-light">
   <b>Products and services</b>
 </h2>
 <br>
 
-<h2 class="au-display-lg" id="other-products">
+<h3 id="other-products">
   <b>Please select the domain, products and services that best describes your business</b>
-</h2>
+</h3>
 
 <div class="cool-infobox">
   {{fa-icon "exclamation-circle" size="2x" prefix="fal" pull="left"}}
   <span>
-    As an eligible supplier, you can select ICT products or services you provide.
-    They will appear on your profile and make it easier for buyers to find you.
+    This information will appear on your supplier profile and is publicly available.
   </span>
   <div class="clear-both"></div>
 </div>
+
+<p>As an eligible supplier, you can select ICT products or services you provide. The following fields are required and are used by buyers to find you.</p>
+
+<p><b>Tip:</b> Buyers are looking for businesses they can trust. Please select the products and services your business has a track record of delivering.</p>
+<br />
 
 {{dds/checkbox-tree
   field=(mut form.services)
@@ -49,7 +53,7 @@
     (hash
       key="software-development"
       label="Software design and development"
-      description="Design and delivery of software and software modifications, including the implementation and configuration of vendor-owned software. Includes all disciplines that support the delivery of software, including design, delivery, data analysis, coding, quality assurance, compliance, security and accessibility testing."
+      description="Design and delivery of software and software modifications, including the implementation and configuration of vendor-owned software, as well as all disciplines that support the delivery of software, such as design, delivery, data analysis, coding, quality assurance, compliance, security and accessibility testing."
       subItems=(array
         (hash
           key="digital-design"
@@ -76,7 +80,7 @@
     (hash
       key="software-licensing"
       label="Software licensing and maintenance"
-      description="Software licensed on any basis other than as a cloud-hosted subscription service. Includes the maintenance and updates of these software licences."
+      description="Software licensed on any basis other than as a cloud-hosted subscription service, including the maintenance and updates of these software licences."
       subItems=(array
         (hash
           key="systems-and-operating-software"
@@ -111,7 +115,7 @@
     (hash
       key="end-user-computing"
       label="End-user computing and peripherals"
-      description="Provision, installation, configuration or maintenance of devices that help end users access and operate computer applications. Includes desktops, laptops and tablets, interactive whiteboards, as well as peripherals such as keyboards, screens and assistive technologies such as screen readers."
+      description="Provision, installation, configuration or maintenance of devices that help end-users access and operate computer applications, including desktops, laptops and tablets, interactive whiteboards, as well as peripherals such as keyboards, screens and assistive technologies such as screen readers."
       subItems=(array
         (hash
           key="desktops-workstations-and-thin-clients"
@@ -165,7 +169,7 @@
     (hash
       key="telecommunications"
       label="Telecommunications"
-      description="Fixed and mobile telephony; internet and data; emergency comms and all services and equipment to support the exchange of information in voice, data or video form over distance by electronic means."
+      description="Fixed and mobile telephony, internet and data, emergency comms and all services and equipment to support the exchange of information in voice, data or video form over distance by electronic means."
       subItems=(array
         (hash
           key="fixed-data-and-internet"
@@ -192,15 +196,11 @@
     (hash
       key="managed-services"
       label="Managed and outsourced services"
-      description="Using third parties to fulfil the responsibilities and functions that support day-to-day technology management. Examples include service desk and contact centres, network operations, security operations, and desktop support. May also include the infrastructure associated with a service such as printers and desktops."
+      description="Using third parties to fulfil the responsibilities and functions that support day-to-day technology management. Examples include service desk and contact centres, network operations and security operations."
       subItems=(array
         (hash
           key="service-desk"
-          label="Service desk"
-        )
-        (hash
-          key="contact-centre"
-          label="Contact centre"
+          label="Service desk and contact centre"
         )
         (hash
           key="network-and-security-operations"
@@ -221,10 +221,6 @@
       label="Advisory and consulting"
       description="Specialist ICT expertise acting in an advisory capacity to government. Includes building business cases and strategic roadmaps, process and technology audits, security and risk assessment, continuity planning, developing enterprise architectures, policy analysis and digital transformation advice."
       subItems=(array
-        (hash
-          key="ict-workforce"
-          label="ICT workforce"
-        )
         (hash
           key="strategy-planning-policy-and-risk"
           label="Strategy, planning, policy and risk"
