@@ -11,7 +11,7 @@
     }} 
     {{seller-profile/reputation-and-distinction-edit form=form}}
   {{else}}
-    <div class="row">
+    <div class="row" id="reputation-and-distinction">
       {{#dds/info-box class="col-xs-27"}}
         {{fa-icon "check-circle" prefix="fas"}} Publicly viewable
       {{/dds/info-box}}
@@ -22,7 +22,7 @@
         form=form
       }} 
     </div>
-    <div class="cool-infobox sapphire" id="reputation-and-distinction">
+    <div class="cool-infobox sapphire">
       You can add and update your accreditations, engagements and awards at any time.
     </div>
     {{seller-profile/reputation-and-distinction-view form=form buyerView=true}}

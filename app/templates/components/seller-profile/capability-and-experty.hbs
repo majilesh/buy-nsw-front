@@ -11,7 +11,7 @@
     }} 
     {{seller-profile/capability-and-experty-edit form=form}}
   {{else}}
-    <div class="row">
+    <div class="row" id="capability-and-experty">
       {{#dds/info-box class="col-xs-27"}}
         {{fa-icon "info-circle" prefix="fas"}} Only available to registered buyers
       {{/dds/info-box}}
@@ -22,7 +22,7 @@
         form=form
       }} 
     </div>
-    <div class="cool-infobox sapphire" id="capability-and-experty">
+    <div class="cool-infobox sapphire">
       You can add and update your special capabilities and expertise at any time.
     </div>
     {{seller-profile/capability-and-experty-view form=form}}

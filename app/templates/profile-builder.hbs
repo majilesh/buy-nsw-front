@@ -138,7 +138,9 @@
 
     {{/dds/template-body}}
   </div>
-  {{scroll-to autoScroll=true target=(concat "#" expandedSection) tagName="div" duration=300}}
+  {{#if expandedSection}}
+    {{scroll-to autoScroll=true target=(concat "#" expandedSection) tagName="div" duration=300}}
+  {{/if}}
   {{dds/page-feedback user=auth.user feedbackService=feedbackService}}
 </main>
 

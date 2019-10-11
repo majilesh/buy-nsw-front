@@ -12,7 +12,7 @@
     }} 
     {{seller-profile/team-member-edit form=form}}
   {{else}}
-    <div class="row">
+    <div class="row" id="team-member">
       {{#dds/info-box class="col-xs-27"}}
         {{fa-icon "info-circle" prefix="fas"}} Only available to registered buyers
       {{/dds/info-box}}
@@ -23,7 +23,7 @@
         form=form
       }} 
     </div>
-    <div class="cool-infobox sapphire" id="team-member">
+    <div class="cool-infobox sapphire">
       You can add and update team members at any time.
     </div>
     {{seller-profile/team-member-view form=form buyerView=true}}

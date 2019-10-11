@@ -11,7 +11,7 @@
     }}
     {{seller-profile/promotional-video-edit form=form}}
   {{else}}
-    <div class="row">
+    <div class="row" id="promotional-video">
       {{#dds/info-box class="col-xs-27"}}
         {{fa-icon "check-circle" prefix="fas"}} Publicly viewable
       {{/dds/info-box}}
@@ -22,7 +22,7 @@
         form=form
       }} 
     </div>
-    <div class="cool-infobox sapphire" id="promotional-video">
+    <div class="cool-infobox sapphire">
       In this section you can upload a video of a recent case study or other informative content about your business.
     </div>
     {{seller-profile/promotional-video-view form=form}}
