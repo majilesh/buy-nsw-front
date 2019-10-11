@@ -40,7 +40,7 @@ Procure IT 3.2
         <p>You need to invite them to your seller account, and ask them to sign in and accept the terms.</p>
     {{else if (eq form.representative_user_status "another_seller")}}
         <p><u>They have joined another seller account, please contact us for more information.</u></p>
-    {{else}}
+    {{else if (eq form.representative_user_status "invited")}}
         <p>They have already been invited to sign in and joined your seller account.</p>
     {{/if}}
   {{else}}
