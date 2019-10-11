@@ -1,4 +1,4 @@
-<h2 class="au-display-xl underline-light">
+<h2 class="underline-light">
   <b>Company type and business identifiers</b>
 </h2>
 <br>
@@ -10,13 +10,13 @@
   )
 }}
 <hr class="light">
-<h2 class="au-display-lg" id="company-type">
+<h3 id="company-type">
   <b>Company type and size</b>
-</h2>
+</h3>
 <div class="cool-infobox">
   {{fa-icon "exclamation-circle" size="2x" prefix="fal" pull="left"}}
   <span>
-    This information will appear on your supplier profile and is publicly available.
+    This information will not appear on your supplier profile and will be used to help buyers find you.
   </span>
   <div class="clear-both"></div>
 </div>
@@ -45,7 +45,7 @@
 </p>
 <br>
 <p>
-  <b>Number of employees in australia</b>
+  <b>Number of employees in Australia</b>
 </p>
 <br>
 <div class="col-sm-36 col-md-24 col-lg-15">
@@ -141,16 +141,18 @@
   {{dds/top-link}}
 </p>
 <hr class="light">
-<h2 class="au-display-lg" id="business-identifiers">
+<h3 id="business-identifiers">
   <b>Business identifiers (optional)</b>
-</h2>
+</h3>
 <div class="cool-infobox">
   {{fa-icon "exclamation-circle" size="2x" prefix="fal" pull="left"}}
   <span>
-    The following fields are optional but will help buyers find you.
+    This information will appear on your supplier profile and can only be seen by registered buyers.
   </span>
   <div class="clear-both"></div>
 </div>
+<p>The following fields are optional but will help buyers find you.</p>
+<br />
 {{dds/checkbox-input
   field=(mut form.start_up)
   showError=(or showError (not-eq form.status 'todo'))
@@ -182,10 +184,18 @@
   description="To be classified as Australian owned your business must have been founded and have your headquarters in Australia, and be owned by Australian nationals."
 }}
 <hr class="light">
-<h2 class="au-display-lg">
+<h3>
   <b>Diversity and inclusion (optional)</b>
-</h2>
-<br>
+</h3>
+<div class="cool-infobox">
+  {{fa-icon "exclamation-circle" size="2x" prefix="fal" pull="left"}}
+  <span>
+    This information will appear on your supplier profile and can only be seen by registered buyers.
+  </span>
+  <div class="clear-both"></div>
+</div>
+<p>The following fields are optional but will help buyers find you.</p>
+<br />
 {{dds/checkbox-input
   field=(mut form.indigenous)
   showError=(or showError (not-eq form.status 'todo'))

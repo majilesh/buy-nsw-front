@@ -32,11 +32,11 @@ export default BaseController.extend({
   }),
   description: computed('message', function () {
     return {
-      signup_confirmation_sent: 'To complete the sign-up process, please click the one-time link sent to your email address and continue registration.',
+      signup_confirmation_sent: 'To complete the sign-up process, please click the one-time link sent to your email address.',
       confirmation_sent: 'We have sent a one-time link to your email address. Please click the link to verify your email address and continue your registration.',
       password_reset_sent: 'If your email address is in our database, you will receive a password recovery email in a few minutes.',
       account_updated: 'Please login again! If you requested a change of email, you should confirm the new address first.',
-      email_confirmation: 'Thanks for confirming your email address. Please go to dashboard to continue with your application.',
+      email_confirmation: 'Thanks for confirming your email address. Now you\'re ready to start your registration.',
       invitation_accepted: 'Thanks for accepting the invitation. Please go to dashboard to continue with your application.',
       password_updated: 'Your password is recovered. Please go to dashboard to continue with your application.',
       account_unlocked: 'You are now logged in and can access your account.',

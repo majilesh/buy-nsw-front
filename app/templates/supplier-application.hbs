@@ -6,7 +6,7 @@
       (hash name=(if this.model.seller.live "Account settings" "Supplier application"))
     )
   }}
-  <h2 class="au-display-xl underline-light">
+  <h2 class="underline-light">
     {{#if this.model.seller.live}}
       <b>Supplier account settings</b>
     {{else}}
@@ -16,33 +16,28 @@
   <br>
   {{#unless this.model.seller.live}}
     <p>
-      To become a supplier on buy.nsw you need to tell us about your business.
+      To become a registered supplier on buy.nsw you need to tell us about your business.
     </p>
     <p>
-      We will use the information you provide to create your supplier account. First, we need to confirm your business meets the basic requirements to work with NSW Government.
+      We will use the information you provide to create your supplier profile. First, we need to confirm your business meets the basic requirements to work with NSW Government.
     </p>
-    <br>
     <p>
-      It may take more than one session for you to complete this application. But don't worry, you can save and exit if you need to come back later. At each step we indicate the time it might take you to complete it.
+      It may take more than one session for you to complete your registration. But don't worry; you can save and exit if you need to come back later. At each step we indicate the time it might take you to complete it.
     </p>
     <p><b>Who you will need:</b></p>
-    <p>
-      <ul>
-        <li>the person in your organisation who is authorised to sign contracts</li>
-        <li>a person authorised to check your legal disclosures and financial statement</li>
-      </ul>
-    </p>
+    <ul>
+      <li>the person in your organisation who is authorised to sign contracts</li>
+      <li>a person authorised to check your legal disclosures and financial statement</li>
+    </ul>
   {{/unless}}
-  <p>
   {{#if this.model.seller.pending}}
     {{#dds/page-alert alertType="info"}}
-      <h2 class="au-display-lg">
+      <h3>
         Profile is locked for review
-      </h2>
+      </h3>
       <p>
         You have submitted entries or changes.
-        While these are under review,
-        you won't be able to view or edit the details of your account.
+        While these are under review, you won't be able to view or edit the details of your account.
       </p>
       {{#if this.model.seller.canBeWithdrawn}}
         <p>
@@ -59,9 +54,9 @@
     {{/dds/page-alert}}
   {{else if this.model.seller.declined}}
     {{#dds/page-alert alertType="warning"}}
-      <h2 class="au-display-lg">
+      <h3>
         Your submission was not accepted.
-      </h2>
+      </h3>
       <p>
          You can
         <a
@@ -75,9 +70,9 @@
     {{/dds/page-alert}}
   {{else if (eq this.model.seller.status 'live')}}
     {{#dds/page-alert alertType="success"}}
-      <h2 class="au-display-lg">
+      <h3>
         Your application has been accepted
-      </h2>
+      </h3>
       <p>
         To amend your account you can
         <a
@@ -95,7 +90,6 @@
       <b>Invite a team member</b>
     {{/link-to}}
   </p>
-  </p>
   <br>
   <br>
   {{#supplier-application-section
@@ -108,12 +102,10 @@
     seller=this.model.seller
   }}
     <p><b>Information we will ask for:</b></p>
-    <p>
-      <ul>
-        <li>Any cloud products, services or support</li>
-        <li>Any services you offer in NSW Government Data Centres (GovDC)</li>
-      </ul>
-    </p>
+    <ul>
+      <li>Whether your business supplies cloud products, services or support</li>
+      <li>Whether your business offers any services in NSW Government Data Centres (GovDC)</li>
+    </ul>
     <br>
   {{/supplier-application-section}}
 
@@ -130,14 +122,12 @@
     )
   }}
     <p><b>Information we will ask for:</b></p>
-    <p>
-      <ul>
-        <li>Business name, ABN and establishment date</li>
-        <li>Contact details and addresses</li>
-        <li>Company type and business identifiers</li>
-        <li>Products and services</li>
-      </ul>
-    </p>
+    <ul>
+      <li>Business name and ABN</li>
+      <li>Contact details</li>
+      <li>Business address</li>
+      <li>Company type and size</li>
+    </ul>
   {{/supplier-application-section}}
 
   <br>
@@ -154,29 +144,25 @@
   }}
     <div class="col-md-18">
       <p><b>Information we will ask for:</b></p>
-      <p>
-        <ul>
-          <li>Legal disclosures</li>
-          <li>Professional indemnity and public liability insurance</li>
-          <li>Product liability insurance</li>
-          <li>Workers' compensation insurance</li>
-          <li>Financial statements</li>
-        </ul>
-      </p>
+      <ul>
+        <li>Legal disclosures</li>
+        <li>Professional indemnity and public liability insurance</li>
+        <li>Product liability insurance</li>
+        <li>Workers' compensation insurance</li>
+        <li>Financial statements</li>
+      </ul>
       <br>
     </div>
     <div class="col-md-18">
       <p><b>Documentation we will ask for:</b></p>
-      <p>
-        A current financial statement including:
-        <ul>
-          <li>profit or loss statement</li>
-          <li>balance sheet</li>
-          <li>statement of cash flows</li>
-          <li>statement of changes in equity</li>
-          <li>and notes to the financial statements</li>
-        </ul>
-      </p>
+      <p>A current financial statement including:</p>
+      <ul>
+        <li>profit or loss statement</li>
+        <li>balance sheet</li>
+        <li>statement of cash flows</li>
+        <li>statement of changes in equity</li>
+        <li>and notes to the financial statements</li>
+      </ul>      
       <p>A certificate of currency for each respective insurance</p>
     </div>
     <div class="clear-both"></div>
@@ -199,13 +185,10 @@
       )
     }}
       <p><b>Information we will ask for:</b></p>
-      <p>
-        <ul>
-          <li>Company description, website and social channels</li>
-          <li>Accreditations and lincenses</li>
-          <li>Membership and awards</li>
-        </ul>
-      </p>
+      <ul>
+        <li>Company description and website</li>
+        <li>Any licenses, accreditations or awards</li>
+      </ul>
     {{/supplier-application-section}}
   {{/unless}}
 

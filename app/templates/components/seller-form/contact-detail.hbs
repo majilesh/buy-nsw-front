@@ -1,4 +1,4 @@
-<h2 class="au-display-xl underline-light">
+<h2 class="underline-light">
   <b>Contact details and address</b>
 </h2>
 <br>
@@ -14,7 +14,7 @@
 <div class="cool-infobox">
   {{fa-icon "exclamation-circle" size="2x" prefix="fal" pull="left"}}
   <span>
-    Some of this information will appear on your supplier profile and product pages, but only to registered buyers.
+    Some of this information will appear on your supplier profile and can only be seen by registered buyers.
   </span>
   <div class="clear-both"></div>
 </div>
@@ -22,7 +22,7 @@
   <b>Business contact</b>
 </p>
 <p>
-  This contact will display on your supplier profile and can only be seen by logged in buyers. It is the person you nominate to receive  communications from buyers and buy.nsw.
+  This is the person you nominate to receive communications from buyers and buy.nsw. This contact will appear on your supplier profile and can only be seen by registered buyers.
 </p>
 <div class="row">
   <div class="col-sm-36 col-md-24 col-lg-18 margin-top">
@@ -95,7 +95,7 @@
   <b>Authorised representative</b>
 </p>
 <p>
-  This is the person authorised to enter into contracts with the NSW government on behalf of your business. These contact details are not available to buyers.
+  This is the person authorised to enter into contracts with the NSW government on behalf of your business. These contact details will not appear on your profile and are not available to buyers.
 </p>
 <p>
   {{dds/checkbox-input
@@ -200,12 +200,16 @@
   {{dds/top-link}}
 </p>
 <hr class="light">
-<h2 class="au-display-lg" id="business-address">
+<h3 id="business-address">
   <b>Business address</b>
-</h2>
-<p>
-  This information will appear on your supplier profile and is publicly available.
-</p>
+</h3>
+<div class="cool-infobox">
+  {{fa-icon "exclamation-circle" size="2x" prefix="fal" pull="left"}}
+  <span>
+    This information will appear on your supplier profile and is publicly available.
+  </span>
+  <div class="clear-both"></div>
+</div>
 <p>
   <b>Head office</b>
 </p>
