@@ -116,10 +116,26 @@
             <p>Buyers have told us they are interested in suppliers sharing the following:</p>
             <br />
             <ul class="au-link-list">
-              <li>{{ link-to "Describe your approach to quality control" "profile-builder" class="au-cta-link small" }}</li>
-              <li>{{ link-to "Describe your methodology" "profile-builder" class="au-cta-link small" }}</li>
-              <li>{{ link-to "Add an accreditation" "profile-builder" class="au-cta-link small" }}</li>
-              <li>{{ link-to "Describe a specialty" "profile-builder" class="au-cta-link small" }}</li>
+              <li>
+                {{#link-to route="profile-builder" class="au-cta-link small" query=(hash "expandedSection" "capability-and-experty")}}
+                  Describe your approach to quality control
+                {{/link-to}}
+              </li>
+              <li>
+                {{#link-to route="profile-builder" class="au-cta-link small"  query=(hash "expandedSection" "capability-and-experty")}}
+                  Describe your methodology
+                {{/link-to}}
+              </li>
+              <li>
+                {{#link-to route="profile-builder" class="au-cta-link small"  query=(hash "expandedSection" "reputation-and-distinction")}}
+                  Add an accreditation
+                {{/link-to}}
+              </li>
+              <li>
+                {{#link-to route="profile-builder" class="au-cta-link small"  query=(hash "expandedSection" "capability-and-experty")}}
+                  Describe a specialty
+                {{/link-to}}
+              </li>
             </ul>
             <br />
             {{ link-to "View profile as a buyer" "seller-profile" this.model.seller.id class="au-btn au-btn--sapphire" }}

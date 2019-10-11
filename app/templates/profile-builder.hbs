@@ -129,15 +129,16 @@
         </div>
       </div>
       <br>
-      {{seller-profile/reputation-and-distinction form=this.model.reputation_and_distinction}}
-      {{seller-profile/capability-and-experty form=this.model.capability_and_experty}}
-      {{seller-profile/reference-and-case-study form=this.model.reference_and_case_study}}
-      {{seller-profile/government-credential form=this.model.government_credential}}
-      {{seller-profile/team-member form=this.model.team_member}}
-      {{seller-profile/promotional-video form=this.model.promotional_video}}
+      {{seller-profile/reputation-and-distinction form=this.model.reputation_and_distinction expanded=(eq expandedSection "reputation-and-distinction")}}
+      {{seller-profile/capability-and-experty form=this.model.capability_and_experty expanded=(eq expandedSection "capability-and-experty")}}
+      {{seller-profile/reference-and-case-study form=this.model.reference_and_case_study expanded=(eq expandedSection "reference-and-case-study")}}
+      {{seller-profile/government-credential form=this.model.government_credential expanded=(eq expandedSection "government-credential")}}
+      {{seller-profile/team-member form=this.model.team_member expanded=(eq expandedSection "team-member")}}
+      {{seller-profile/promotional-video form=this.model.promotional_video expanded=(eq expandedSection "promotional-video")}}
 
     {{/dds/template-body}}
   </div>
+  {{scroll-to autoScroll=true target=(concat "#" expandedSection) tagName="div" duration=300}}
   {{dds/page-feedback user=auth.user feedbackService=feedbackService}}
 </main>
 

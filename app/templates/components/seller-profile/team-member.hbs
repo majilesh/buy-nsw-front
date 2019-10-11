@@ -2,7 +2,7 @@
   title="Team members"
   subtitle="𝗧𝗶𝗽: Do you have team leads with specialist technical knowledge?"
   theme="sapphire"
-  expanded=false
+  expanded=expanded
 }}
   {{#if underEdit}}
     {{seller-profile/edit-save
@@ -23,7 +23,7 @@
         form=form
       }} 
     </div>
-    <div class="cool-infobox sapphire">
+    <div class="cool-infobox sapphire" id="team-member">
       You can add and update team members at any time.
     </div>
     {{seller-profile/team-member-view form=form buyerView=true}}
