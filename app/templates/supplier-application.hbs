@@ -30,10 +30,11 @@
       <li>a person authorised to check your legal disclosures and financial statement</li>
     </ul>
   {{/unless}}
+  <p>
   {{#if this.model.seller.pending}}
     {{#dds/page-alert alertType="info"}}
       <h3>
-        Profile is locked for review
+        Account is locked for review
       </h3>
       <p>
         You have submitted entries or changes.
@@ -85,6 +86,7 @@
       </p>
     {{/dds/page-alert}}
   {{/ if }}
+  </p>
   <p>
     {{#link-to "team-members" class="au-cta-link small"}}
       <b>Invite a team member</b>
