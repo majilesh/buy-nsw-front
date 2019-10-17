@@ -4,6 +4,13 @@ import { inject } from '@ember/service';
 
 export default Route.extend({
   ajax: inject(),
+  auth: inject(),
+
+  activate: function() {
+    if(!this.get('auth.isSeller')) {
+      this.transitionTo('access-forbidden');
+    }
+  },
   model(params) {
     this.set('stepName', params.step_name);
     return RSVP.hash({
