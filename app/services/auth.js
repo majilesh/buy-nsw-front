@@ -74,7 +74,11 @@ export default Service.extend({
       // this.handleSuccess(response);
       // this.set('message', null);
       // this.get('router').transitionTo("index");
-      window.location = '/';
+      if(this.get('locationHref')) {
+        window.location = this.get('locationHref');
+      } else {
+        window.location = '/';
+      }
     }).catch((response) => this.handleError(response))
     .finally(() => this.get('overlay').hide());
   },
@@ -107,6 +111,7 @@ export default Service.extend({
   },
 
   transitToSignin() {
+    this.set('locationHref', window.location.href)
     this.get('router').transitionTo("sign-in");
   },
 

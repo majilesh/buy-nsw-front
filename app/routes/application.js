@@ -32,8 +32,9 @@ export default Route.extend({
         error = error.errors[0];
       }
       if ( error && error.status == 401 ) {
-        this.transitionTo('sign-in');
         this.get('auth').transitToSignin();
+      } else if ( error && error.status == 403 ) {
+        this.transitionTo('access-forbidden');
       } else {
         let airbrake = this.get('airbrake');
         let airError = response.message || "Route transition failed";
