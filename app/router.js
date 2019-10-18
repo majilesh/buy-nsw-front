@@ -49,6 +49,7 @@ Router.map(function() {
   this.route('help-page', { path: '/help' });
   this.route('about-page', { path: '/about' });
   this.route('seller-form', { path: '/supplier/forms/:step_name' });
+  this.route('supplier-account', { path: '/supplier/account' });
   this.route('supplier-application', { path: '/supplier/application' });
   this.route('application-success', { path: '/application/success'});
   this.route('profile-builder', { path: '/supplier/profile-builder'});
