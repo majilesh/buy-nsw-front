@@ -75,6 +75,7 @@ export default Service.extend({
       // this.set('message', null);
       // this.get('router').transitionTo("index");
       if(this.get('locationHref')) {
+        this.set('locationHref', null);
         window.location = this.get('locationHref');
       } else {
         window.location = '/';
