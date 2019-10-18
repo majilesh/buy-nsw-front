@@ -6,7 +6,7 @@ export default Route.extend({
 
   activate: function() {
     if(!this.get('auth.isBuyer')) {
-      this.transitionTo('access-forbidden');
+      // this.transitionTo('access-forbidden');
     }
   },
   model() {
