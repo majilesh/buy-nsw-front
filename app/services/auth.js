@@ -84,7 +84,8 @@ export default Service.extend({
   },
 
   login(email, password, remember) {
-    this.get('overlay').show();
+    let overlay = this.get('overlay');
+    overlay.show('login');
     this.get('ajax').request('/api/users/login', {
       method: 'POST',
       data: {
@@ -103,23 +104,25 @@ export default Service.extend({
       } else {
         window.location = '/';
       }
-    }).catch((response) => this.handleError(response))
-    .finally(() => this.get('overlay').hide());
+    }).catch((response) => {
+      this.handleError(response);
+      overlay.hide('login');
+    });
   },
 
   reauthenticateTask: task(function * () {
-    this.get('overlay').show();
+    this.get('overlay').show('auth');
     let response = yield this.get('ajax').request('/api/users/authenticate');
     this.handleSuccess(response);
-    this.get('overlay').hide();
+    this.get('overlay').hide('auth');
   }).maxConcurrency(1).enqueue(),
 
   authenticateTask: task(function * () {
     if (this.get('config') == null) {
-      this.get('overlay').show();
+      this.get('overlay').show('auth');
       let response = yield this.get('ajax').request('/api/users/authenticate');
       this.handleSuccess(response);
-      this.get('overlay').hide();
+      this.get('overlay').hide('auth');
     }
   }).maxConcurrency(1).enqueue(),
 

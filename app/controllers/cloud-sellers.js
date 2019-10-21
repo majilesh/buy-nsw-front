@@ -34,16 +34,20 @@ export default BaseController.extend({
     return params;
   },
   updateCounts() {
-    this.get('overlay').show();
+    this.get('overlay').show('count');
     this.get('ajax').request('/api/sellers/public_sellers/count', {
       method: 'GET',
       data: this.filters()
     }).then( (response) => this.set('sellersCount', response.totalCount) )
     .catch((error) => this.get('auth').authenticateIfUnauthorized(error))
-    .finally(() => this.get('overlay').hide())
+    .finally(() => this.get('overlay').hide('count'))
   },
   updateResults() {
-    this.set('sellers', this.store.query('public-seller', this.filters()));
+    this.get('overlay').show('search');
+    let self = this;
+    this.store.query('public-seller', this.filters()).then((sellers) => {
+      self.set('sellers', sellers);
+    }).finally(()=> this.get('overlay').hide('search'));
   },
 
   actions: {

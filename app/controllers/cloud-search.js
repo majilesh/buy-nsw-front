@@ -57,17 +57,21 @@ export default BaseController.extend({
   },
 
   updateCounts() {
-    this.get('overlay').show();
+    this.get('overlay').show('count');
     this.get('ajax').request('/api/products/public_products/count', {
       method: 'GET',
       data: this.filters()
     }).then( (response) => this.set('productsCount', response.totalCount) )
     .catch((error) => this.get('auth').authenticateIfUnauthorized(error))
-    .finally(() => this.get('overlay').hide())
+    .finally(() => this.get('overlay').hide('count'))
   },
 
   updateResults() {
-    this.set('products', this.store.query('public-product', this.filters()));
+    this.get('overlay').show('search');
+    let self = this;
+    this.store.query('public-product', this.filters()).then((products) => {
+      self.set('products', products);
+    }).finally(()=> this.get('overlay').hide('search'));
   },
 
   actions: {
