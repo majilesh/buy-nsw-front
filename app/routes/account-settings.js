@@ -1,6 +1,9 @@
 import Route from '@ember/routing/route';
 
 export default Route.extend({
+  activate: function() {
+    this.get('auth').setPageAccess('login');
+  },
   model() {
     return this.store.queryRecord('user', {current: true});
   },

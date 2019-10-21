@@ -7,9 +7,7 @@ export default Route.extend({
   auth: inject(),
 
   activate: function() {
-    if(!this.get('auth.isBuyer')) {
-      // this.transitionTo('access-forbidden');
-    }
+    this.get('auth').setPageAccess('buyer-only');
   },
   model() {
     return RSVP.hash({

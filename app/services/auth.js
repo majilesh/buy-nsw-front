@@ -15,6 +15,7 @@ export default Service.extend({
   trueUser: null,
   csrfToken: null,
   message: null,
+  accessType: null,
 
   isSeller: computed('user.roles', function() {
     let roles = this.get('user.roles');
@@ -34,6 +35,27 @@ export default Service.extend({
     this.set('csrfToken', response.csrf_token);
     this.set('user', response.user);
     this.set('trueUser', response.true_user);
+    this.checkPageAccess();
+  },
+
+  checkPageAccess() {
+    let accessType = this.get('accessType');
+    if(accessType != null) {
+      if(accessType == 'buyer-only' && !this.get('isBuyer')){
+        this.get('router').transitionTo("access-forbidden");
+      }
+      if(accessType == 'seller-only' && !this.get('isSeller')){
+        this.get('router').transitionTo("access-forbidden");
+      }
+      this.set('accessType', null);
+    }
+  },
+
+  setPageAccess(accessType) {
+    this.set('accessType', accessType);
+    if(this.get('config') != null) {
+      this.checkPageAccess();
+    }
   },
 
   handleError(response) {
@@ -86,14 +108,18 @@ export default Service.extend({
   },
 
   reauthenticateTask: task(function * () {
+    this.get('overlay').show();
     let response = yield this.get('ajax').request('/api/users/authenticate');
     this.handleSuccess(response);
+    this.get('overlay').hide();
   }).maxConcurrency(1).enqueue(),
 
   authenticateTask: task(function * () {
     if (this.get('config') == null) {
+      this.get('overlay').show();
       let response = yield this.get('ajax').request('/api/users/authenticate');
       this.handleSuccess(response);
+      this.get('overlay').hide();
     }
   }).maxConcurrency(1).enqueue(),
 
