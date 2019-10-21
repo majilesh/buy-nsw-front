@@ -24,7 +24,7 @@ const Validations = buildValidations({
 });
 
 export default BaseController.extend(Validations, {
-  ajax: inject(),
+  bjax: inject(),
   auth: inject(),
   resetPasswordToken: '',
   password: '',
@@ -38,9 +38,8 @@ export default BaseController.extend(Validations, {
 
   actions: {
     submit() {
-      this.get('overlay').show();
       let controller = this;
-      this.get('ajax').request('/api/users/users/update_lost_password', {
+      this.get('bjax').request('/api/users/users/update_lost_password', {
         method: 'POST',
         headers: {
           "X-CSRF-Token": this.get('auth.csrfToken'),
@@ -53,11 +52,10 @@ export default BaseController.extend(Validations, {
         controller.get('auth').reauthenticate();
         controller.transitionToRoute('success', 'password_updated')
       }).catch((error) => {
-        controller.get('auth').authenticateIfUnauthorized(error);
-        if(error.payload.error) {
-          controller.set('apiError', error.payload.error);
+        if(error.payload.errors) {
+          controller.set('apiError', error.payload.errors[0]);
         }
-      }).finally(() => this.get('overlay').hide());
+      });
     }
   }
 });

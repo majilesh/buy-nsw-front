@@ -41,8 +41,8 @@ export default BaseController.extend(Validations, {
       this.model.order.save().then(function() {
         controller.transitionToRoute('success', 'product_order')
       }).catch((response) => {
-        if(response.payload.error) {
-          controller.set('apiError', response.payload.error);
+        if(response.payload.errors) {
+          controller.set('apiError', response.payload.errors[0]);
         }
       }).finally(() => this.get('overlay').hide());
     }

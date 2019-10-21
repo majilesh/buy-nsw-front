@@ -10,6 +10,9 @@ export default Route.extend({
   setupController(controller, model) {
     this._super(controller, model);
     controller.set('apiError', null);
+    controller.set('newPassword', '');
+    controller.set('confirmPassword', '');
+    controller.set('currentPassword', '');
   },
   actions: {
     willTransition() {

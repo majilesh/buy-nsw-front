@@ -1,7 +1,7 @@
 import Service from '@ember/service';
 import { inject } from '@ember/service';
 import { computed } from '@ember/object';
-import { isUnauthorizedError } from 'ember-ajax/errors';
+import { isUnauthorizedError, isForbiddenError } from 'ember-ajax/errors';
 import { task } from 'ember-concurrency';
 
 export default Service.extend({
@@ -59,8 +59,8 @@ export default Service.extend({
   },
 
   handleError(response) {
-    if(response.payload.error) {
-      this.set('message', response.payload.error);
+    if(response.payload.errors) {
+      this.set('message', response.payload.errors[0]);
     } else {
       this.set('message', 'Login failed, please refresh the page!');
     }
@@ -135,10 +135,13 @@ export default Service.extend({
   },
 
   authenticateIfUnauthorized(error) {
-    if (isUnauthorizedError(error)) {
-      this.authenticate();
-      return;
+    if (isUnauthorizedError(error) || isForbiddenError(error)) {
+      this.reauthenticate();
     }
+    if (error.status == 405) {
+      this.get('router').transitionTo("access-forbidden");
+    }
+    return;
   },
 
   transitToSignin() {

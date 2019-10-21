@@ -8,6 +8,17 @@ const { String: { pluralize } } = Ember;
 
 export default DS.RESTAdapter.extend({
   auth: service(),
+  router: service(),
+  handleResponse(status, headers, payload, requestData) {
+    if (status == 401 || status == 403) {
+      this.get('auth').reauthenticate();
+    }
+    if (status == 405) {
+      this.get('router').transitionTo("access-forbidden");
+    }
+    return this._super(...arguments);
+  },
+
   headers: computed('auth.csrfToken', function() {
     return {
       "X-CSRF-Token": this.get('auth.csrfToken'),

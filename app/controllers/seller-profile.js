@@ -4,7 +4,7 @@ import { computed } from '@ember/object';
 
 export default BaseController.extend({
   fileService: inject(),
-  ajax: inject(),
+  bjax: inject(),
   buyerView: computed('auth.user', 'auth.isBuyer', 'model.seller.id', function () {
     return this.get('auth.user') && (
       this.get('auth.isBuyer') && this.get('auth.user').can_buy ||
@@ -14,8 +14,7 @@ export default BaseController.extend({
   actions: {
     getDocuments() {
       let self = this;
-      this.get('overlay').show();
-      this.get('ajax').request('/api/events/events/documents_requested', {
+      this.get('bjax').request('/api/events/events/documents_requested', {
         method: 'POST',
         headers: {
           "X-CSRF-Token": this.get('auth.csrfToken'),
@@ -25,8 +24,6 @@ export default BaseController.extend({
         }
       }).then(()=>{
         self.set('showDocumentDownloads', true);
-      }).finally(() => {
-        this.get('overlay').hide();
       })
     }
   }

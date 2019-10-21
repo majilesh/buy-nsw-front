@@ -3,7 +3,7 @@ import { computed } from '@ember/object';
 import { inject } from '@ember/service';
 
 export default BaseController.extend({
-  ajax: inject(),
+  bjax: inject(),
   auth: inject(),
   pageNum: 1,
   identifiers: [],
@@ -34,13 +34,10 @@ export default BaseController.extend({
     return params;
   },
   updateCounts() {
-    this.get('overlay').show('count');
-    this.get('ajax').request('/api/sellers/public_sellers/count', {
+    this.get('bjax').request('/api/sellers/public_sellers/count', {
       method: 'GET',
       data: this.filters()
-    }).then( (response) => this.set('sellersCount', response.totalCount) )
-    .catch((error) => this.get('auth').authenticateIfUnauthorized(error))
-    .finally(() => this.get('overlay').hide('count'))
+    }, 'count').then( (response) => this.set('sellersCount', response.totalCount) )
   },
   updateResults() {
     this.get('overlay').show('search');
