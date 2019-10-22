@@ -9,7 +9,7 @@
 {{#dds/banner
   title="Supplier Account"
   heading=this.model.seller.name
-  subline=(concat "Last update to supplier profile: " this.model.seller.updated_at)
+  subline=(concat "Last update to supplier account: " this.model.seller.updated_at)
   links=(array
       (hash name="buy.nsw" route="index")
       (hash name="Dashboard" route="seller-dashboard")
@@ -31,23 +31,11 @@
 <main id="content">
   <div class="au-body">
     {{#dds/template-body auth=auth}}
-      {{#unless this.model.seller.live}}
-        <p>
-          To become a registered supplier on buy.nsw you need to tell us about your business.
-        </p>
-        <p>
-          We will use the information you provide to create your supplier profile. First, we need to confirm your business meets the basic requirements to work with NSW Government.
-        </p>
-        <p>
-          It may take more than one session for you to complete your registration. But don't worry; you can save and exit if you need to come back later. At each step we indicate the time it might take you to complete it.
-        </p>
-        <p><b>Who you will need:</b></p>
-        <ul>
-          <li>the person in your organisation who is authorised to sign contracts</li>
-          <li>a person authorised to check your legal disclosures and financial statement</li>
-        </ul>
-      {{/unless}}
-      <p>
+      <div class="cool-infobox sapphire">
+        <p>You will find information that we have stored relating to your business operations here.</p>
+        <p>Submitting changes to this information will require the review of the buy.nsw operations team and will take 2-3 working days.</p>
+        <p><b>Not what you were looking for? Edit your {{ link-to "supplier profile" "profile-builder" }}.</b></p>
+      </div>
       {{#if this.model.seller.pending}}
         {{#dds/page-alert alertType="info"}}
           <h3>
@@ -70,187 +58,124 @@
             </p>
           {{/if}}
         {{/dds/page-alert}}
-      {{else if this.model.seller.declined}}
-        {{#dds/page-alert alertType="warning"}}
-          <h3>
-            Your submission was not accepted.
-          </h3>
-          <p>
-            You can
-            <a
-              class="au-btn au-btn--tertiary no-padding"
-              onclick={{action "reviseProfile"}}
-            >
-              revise your account
-            </a>
-            and submit again.
-          </p>
-        {{/dds/page-alert}}
-      {{else if (eq this.model.seller.status 'live')}}
-        {{#dds/page-alert alertType="success"}}
-          <h3>
-            Your application has been accepted
-          </h3>
-          <p>
-            To amend your account you can
-            <a
-              class="au-btn au-btn--tertiary no-padding"
-              onclick={{action "amendProfile"}}
-            >
-              start an amendment
-            </a>
-            process.
-          </p>
-        {{/dds/page-alert}}
       {{/ if }}
-      </p>
-      <p>
-        {{#link-to "team-members" class="au-cta-link small"}}
-          <b>Invite a team member</b>
-        {{/link-to}}
-      </p>
       <br>
-      <br>
-      {{#supplier-application-section
-        title="Eligibility"
-        first_form="eligibility"
-        forms=(array
-          (hash key='eligibility' name='Eligibility')
-        )
-        steps=this.model.steps
-        seller=this.model.seller
-      }}
-        <p><b>Information we will ask for:</b></p>
-        <ul>
-          <li>Whether your business supplies cloud products, services or support</li>
-          <li>Whether your business offers any services in NSW Government Data Centres (GovDC)</li>
-        </ul>
-        <br>
-      {{/supplier-application-section}}
-
-      {{#supplier-application-section
-        title="Company details"
-        first_form="business-name"
-        seller=this.model.seller
-        steps=this.model.steps
-        forms=(array
-          (hash key='business_name' name='Business name, ABN and establishment date')
-          (hash key='contact_detail' name='Contact details and addresses')
-          (hash key='company_type' name='Company type and business identifiers')
-          (hash key='product_category' name='Products and services')
-        )
-      }}
-        <p><b>Information we will ask for:</b></p>
-        <ul>
-          <li>Business name and ABN</li>
-          <li>Contact details</li>
-          <li>Business address</li>
-          <li>Company type and size</li>
-        </ul>
-      {{/supplier-application-section}}
-
-      <br>
-
-      {{#supplier-application-section
-        title="Disclosures"
-        first_form="legal-disclosure"
-        seller=this.model.seller
-        steps=this.model.steps
-        forms=(array
-          (hash key='legal_disclosure' name='Legal disclosures')
-          (hash key='insurance_and_financial_document' name='Insurance and financial documents' optional=true)
-        )
-      }}
-        <div class="col-md-18">
-          <p><b>Information we will ask for:</b></p>
-          <ul>
-            <li>Legal disclosures</li>
-            <li>Professional indemnity and public liability insurance</li>
-            <li>Product liability insurance</li>
-            <li>Workers' compensation insurance</li>
-            <li>Financial statements</li>
-          </ul>
-          <br>
-        </div>
-        <div class="col-md-18">
-          <p><b>Documentation we will ask for:</b></p>
-          <p>A current financial statement including:</p>
-          <ul>
-            <li>profit or loss statement</li>
-            <li>balance sheet</li>
-            <li>statement of cash flows</li>
-            <li>statement of changes in equity</li>
-            <li>and notes to the financial statements</li>
-          </ul>      
-          <p>A certificate of currency for each respective insurance</p>
-        </div>
-        <div class="clear-both"></div>
-      {{/supplier-application-section}}
-
-
-      {{#unless this.model.seller.live}}
-        <br>
-
-        {{#supplier-application-section
-          title="Company profile"
-          first_form="company-profile"
-          optional=true
-          seller=this.model.seller
-          steps=this.model.steps
-          forms=(array
-            (hash key='company_profile' name='Company description, website and social channels' optional=true)
-            (hash key='accreditation_and_license' name='Accreditations and licenses' optional=true)
-            (hash key='membership_and_award' name='Membership and awards' optional=true)
-          )
-        }}
-          <p><b>Information we will ask for:</b></p>
-          <ul>
-            <li>Company description and website</li>
-            <li>Any licenses, accreditations or awards</li>
-          </ul>
-        {{/supplier-application-section}}
-      {{/unless}}
-
-      <br>
-      {{#if (not-eq this.model.steps.complete_application.status 'done')}}
-        {{supplier-application-section
-          title="Complete and submit"
-          first_form="complete-application"
-          seller=this.model.seller
-          steps=this.model.steps
-          forms=(array
-            (hash key='complete_application' name='Complete and submit')
-          )
-        }}
-      {{/if}}
-
-      <p>
-        {{#if submitable}}
-          <hr class="light">
-          <span class="float-right">
-            {{dds/primary-button
-              onClick=(action "submitProfile")
-              label="Submit"
+      <div class="row">
+        <div class="col-sm-15 col-md-12 col-lg-10">
+          <div class="progress-menu sapphire">
+            <h4><b>My Account</b></h4>
+            {{dds/progress-indicator
+              stepName=stepName
+              items=(array
+                (hash route="seller-form" step="eligibility"
+                status=this.model.steps.eligibility.status
+                title="Login details")
+              )
             }}
-          </span>
-        {{/if}}
-        <span class="float-left">
-          {{dds/tertiary-button
-            route="seller-dashboard"
-            label="← Return to dashboard"
+            <h4><b>Company details</b></h4>
+            {{dds/progress-indicator
+              stepName=stepName
+              items=(array
+                (hash route="seller-form" step="business-name"
+                status=this.model.steps.business_name.status
+                title="Business name and ABN")
+                (hash route="seller-form" step="contact-detail"
+                status=this.model.steps.contact_detail.status
+                title="Contact details")
+                (hash route="seller-form" step="product-category"
+                status=this.model.steps.product_category.status
+                title="Business address")
+                (hash route="seller-form" step="company-type"
+                status=this.model.steps.company_type.status
+                title="Company type and size")
+                (hash route="seller-form" step="product-category"
+                status=this.model.steps.product_category.status
+                title="Business categories")
+              )
+            }}
+            <h4><b>Disclosures</b></h4>
+            {{dds/progress-indicator
+              stepName=stepName
+              items=(array
+                (hash route="seller-form" step="insurance-and-financial-document"
+                optional=true
+                status=this.model.steps.insurance_and_financial_document.status
+                title="Insurance documents")
+                (hash route="seller-form" step="insurance-and-financial-document"
+                optional=true
+                status=this.model.steps.insurance_and_financial_document.status
+                title="Financial disclosures")
+                (hash route="seller-form" step="legal-disclosure"
+                status=this.model.steps.legal_disclosure.status
+                title="Legal disclosures")
+              )
+            }}
+            <h4><b>Government engagements</b></h4>
+            {{dds/progress-indicator
+              stepName=stepName
+              items=(array
+                (hash route="seller-form" step="membership-and-award"
+                status=this.model.steps.membership_and_award.status
+                optional=true
+                title="Government schemes and panels")
+              )
+            }}
+          </div>
+        </div>
+        <div class="col-sm-20 col-md-23 col-lg-25 col-sm-offset-1">
+          content goes here content goes here content goes here content goes here content goes here content goes here content goes here content goes here content goes here
+          {{component (concat "seller-form/" stepName)
+            form=(mut this.model.form)
+            seller=this.model.seller
+            showError=showError
           }}
-        </span>
-        {{#if this.model.seller.discardable}}
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm-15 col-md-12 col-lg-10">
+          {{#unless (eq stepName "eligibility")}}
+            <br>
+            <span class="float-right">
+              {{#link-to "seller-form" previousStep}}
+                ← Back
+              {{/link-to}}
+              <br>
+              <br>
+            </span>
+          {{/unless}}
+        </div>
+        <div class="col-sm-20 col-md-23 col-lg-25">
+          {{#if (eq stepName "complete-application")}}
+            <span class="pull-right">
+              {{dds/primary-button
+                onClick=(action "submit")
+                label="Submit"
+                disabled=(not submitable)
+              }}
+            </span>
+          {{else}}
+            <span class="pull-right">
+              {{dds/primary-button
+                onClick=(action "saveContinue")
+                label="Continue"
+                disabled=(v-get this.model.form 'isInvalid')
+              }}
+            </span>
+            <span class="pull-right">
+              {{dds/secondary-button
+                onClick=(action "saveExit")
+                label="Save and exit"
+              }}
+            </span>
+          {{/if}}
+          <div class="clear-both"></div>
           <span class="float-right">
-            <button
-              class="au-btn au-btn--tertiary"
-              onclick={{action "cancelProfile"}}
-            >
-              Cancel amendment draft ✗
-            </button>
+            <br>
+            <small>All your data will be saved.</small>
           </span>
-        {{/if}}
-      </p>
+        </div>
+      </div><!--/.row - side nav and content -->
     {{/dds/template-body}}
   </div>
   {{dds/page-feedback user=auth.user feedbackService=feedbackService}}
