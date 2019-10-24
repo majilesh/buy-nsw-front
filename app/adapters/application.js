@@ -53,6 +53,15 @@ export default DS.RESTAdapter.extend({
       'seller-profile/team-member': 'sellers/seller_profile_form/team_member',
       'seller-profile/promotional-video': 'sellers/seller_profile_form/promotional_video',
 
+      'seller-account/business-address': 'sellers/seller_account_form/business_address',
+      'seller-account/business-category': 'sellers/seller_account_form/business_category',
+      'seller-account/business-name-and-abn': 'sellers/seller_account_form/business_name_and_abn',
+      'seller-account/company-type-and-size': 'sellers/seller_account_form/company_type_and_size',
+      'seller-account/contact-detail': 'sellers/seller_account_form/contact_detail',
+      'seller-account/financial-document': 'sellers/seller_account_form/financial_document',
+      'seller-account/insurance-document': 'sellers/seller_account_form/insurance_document',
+      'seller-account/legal-disclosure': 'sellers/seller_account_form/legal_disclosure',
+
       'product': 'products/products',
       'public-product': 'products/public_products',
       'product-order': 'products/product_orders',
