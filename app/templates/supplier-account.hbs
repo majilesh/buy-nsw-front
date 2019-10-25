@@ -36,6 +36,11 @@
         <p>Submitting changes to this information will require the review of the buy.nsw operations team and will take 2-3 working days.</p>
         <p><b>Not what you were looking for? Edit your {{ link-to "supplier profile" "profile-builder" }}.</b></p>
       </div>
+      <!-- if insurancePolicyExpires; logic required -->
+        {{#dds/info-box class="warning"}}
+          <b>NOTE:</b> Your insurance policy documentation will expire in 30 days. Please {{ link-to "update your documents in the insurance section" "supplier-account" step="insurance-document" }}.
+        {{/dds/info-box}}
+      <!-- end insurancePolicyExpires -->
       {{#if this.model.seller.pending}}
         {{#dds/page-alert alertType="info"}}
           <h3>
@@ -120,62 +125,23 @@
                 title="Government schemes and panels")
               )
             }}
+            <!-- start TEMP NAV items- DEMO ONLY - DELETE -->
+            <h4><b>Icon Test</b></h4>
+            <ul class="au-progress-indicator">
+              <li><a href="#" class="au-progress-indicator__link au-progress-indicator__link--review">Account documents A</a></li>
+              <li><a href="#" class="au-progress-indicator__link au-progress-indicator__link--user-edit">Account documents B</a></li>
+              <li><a href="#" class="au-progress-indicator__link au-progress-indicator__link--lock">Account documents C</a></li>
+            </ul>
+            <!-- end TEMP NAV items - DEMO ONLY - DELETE -->            
           </div>
         </div>
         <div class="col-sm-20 col-md-23 col-lg-25 col-sm-offset-1">
-          content goes here content goes here content goes here content goes here content goes here content goes here content goes here content goes here content goes here
-          {{component (concat "seller-form/" stepName)
-            form=(mut this.model.form)
-            seller=this.model.seller
-            showError=showError
-          }}
+          <!-- start TEMP MAIN content - DEMO ONLY - DELETE -->
+          Content goes here. Dummy content follows.<br><br>
+          Habeo visto un opus de theatro musicale illa septimana previa. Una femina retro me cantabat cum forte voce per illam presentationem. "Domina, per favorem desiste de cantare. Non habeo pagato octaginta dollares pro audir te." Iste resposta mea est venta in mente in train in via ad domum.
+          <!-- end TEMP MAIN content - DEMO ONLY - DELETE -->
         </div>
-      </div>
-      <br>
-      <div class="row">
-        <div class="col-sm-15 col-md-12 col-lg-10">
-          {{#unless (eq stepName "eligibility")}}
-            <br>
-            <span class="float-right">
-              {{#link-to "seller-form" previousStep}}
-                ← Back
-              {{/link-to}}
-              <br>
-              <br>
-            </span>
-          {{/unless}}
-        </div>
-        <div class="col-sm-20 col-md-23 col-lg-25">
-          {{#if (eq stepName "complete-application")}}
-            <span class="pull-right">
-              {{dds/primary-button
-                onClick=(action "submit")
-                label="Submit"
-                disabled=(not submitable)
-              }}
-            </span>
-          {{else}}
-            <span class="pull-right">
-              {{dds/primary-button
-                onClick=(action "saveContinue")
-                label="Continue"
-                disabled=(v-get this.model.form 'isInvalid')
-              }}
-            </span>
-            <span class="pull-right">
-              {{dds/secondary-button
-                onClick=(action "saveExit")
-                label="Save and exit"
-              }}
-            </span>
-          {{/if}}
-          <div class="clear-both"></div>
-          <span class="float-right">
-            <br>
-            <small>All your data will be saved.</small>
-          </span>
-        </div>
-      </div><!--/.row - side nav and content -->
+      </div><!--/.row -->
     {{/dds/template-body}}
   </div>
   {{dds/page-feedback user=auth.user feedbackService=feedbackService}}
