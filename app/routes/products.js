@@ -6,9 +6,7 @@ export default Route.extend({
   auth: inject(),
 
   activate: function() {
-    if(!this.get('auth.isSeller')) {
-      this.transitionTo('access-forbidden');
-    }
+    this.get('auth').setPageAccess('seller-only');
   },
 
   model() {

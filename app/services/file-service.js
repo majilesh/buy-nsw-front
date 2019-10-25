@@ -3,7 +3,7 @@ import { task } from 'ember-concurrency';
 import { inject } from '@ember/service';
 
 export default Service.extend({
-  ajax: inject(),
+  bjax: inject(),
   store: inject(),
   auth: inject(),
 
@@ -21,10 +21,11 @@ export default Service.extend({
 
   uploadAvatar: task(function * (blob, fileName, contentType, success, lastly) {
     const formData = new FormData();
+    let self = this;
     formData.append('file', blob, fileName);
     formData.append('original_filename', fileName);
     formData.append('Content-Type', contentType);
-    yield this.get('ajax').request('/api/documents/avatars/', {
+    yield this.get('bjax').request('/api/documents/avatars/', {
       method: 'POST',
       headers: { "X-CSRF-Token": this.get('auth.csrfToken') },
       contentType: false,
@@ -36,11 +37,14 @@ export default Service.extend({
   }).maxConcurrency(4).enqueue(),
 
   uploadDocument: task(function * (file, success, lastly) {
+    let self = this;
     yield file.upload('/api/documents/documents/', {
       headers: { "X-CSRF-Token": this.get('auth.csrfToken') },
       data: { original_filename: file.get('name') }
     }).then((response) => {
       success(response.body);
+    }).catch((error) => {
+      self.get('auth').authenticateIfUnauthorized(error);
     }).finally(lastly);
   }).maxConcurrency(4).enqueue()
 });

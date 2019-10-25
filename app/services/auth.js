@@ -1,7 +1,7 @@
 import Service from '@ember/service';
 import { inject } from '@ember/service';
 import { computed } from '@ember/object';
-import { isUnauthorizedError } from 'ember-ajax/errors';
+import { isUnauthorizedError, isForbiddenError } from 'ember-ajax/errors';
 import { task } from 'ember-concurrency';
 
 export default Service.extend({
@@ -15,6 +15,7 @@ export default Service.extend({
   trueUser: null,
   csrfToken: null,
   message: null,
+  accessType: null,
 
   isSeller: computed('user.roles', function() {
     let roles = this.get('user.roles');
@@ -34,11 +35,32 @@ export default Service.extend({
     this.set('csrfToken', response.csrf_token);
     this.set('user', response.user);
     this.set('trueUser', response.true_user);
+    this.checkPageAccess();
+  },
+
+  checkPageAccess() {
+    let accessType = this.get('accessType');
+    if(accessType != null) {
+      if(accessType == 'buyer-only' && !this.get('isBuyer')){
+        this.get('router').transitionTo("access-forbidden");
+      }
+      if(accessType == 'seller-only' && !this.get('isSeller')){
+        this.get('router').transitionTo("access-forbidden");
+      }
+      this.set('accessType', null);
+    }
+  },
+
+  setPageAccess(accessType) {
+    this.set('accessType', accessType);
+    if(this.get('config') != null) {
+      this.checkPageAccess();
+    }
   },
 
   handleError(response) {
-    if(response.payload.error) {
-      this.set('message', response.payload.error);
+    if(response.payload.errors) {
+      this.set('message', response.payload.errors[0]);
     } else {
       this.set('message', 'Login failed, please refresh the page!');
     }
@@ -62,7 +84,8 @@ export default Service.extend({
   },
 
   login(email, password, remember) {
-    this.get('overlay').show();
+    let overlay = this.get('overlay');
+    overlay.show('login');
     this.get('ajax').request('/api/users/login', {
       method: 'POST',
       data: {
@@ -75,23 +98,31 @@ export default Service.extend({
       // this.set('message', null);
       // this.get('router').transitionTo("index");
       if(this.get('locationHref')) {
-        window.location = this.get('locationHref');
+        let loc = this.get('locationHref');
+        this.set('locationHref', null);
+        window.location = loc;
       } else {
         window.location = '/';
       }
-    }).catch((response) => this.handleError(response))
-    .finally(() => this.get('overlay').hide());
+    }).catch((response) => {
+      this.handleError(response);
+      overlay.hide('login');
+    });
   },
 
   reauthenticateTask: task(function * () {
+    this.get('overlay').show('auth');
     let response = yield this.get('ajax').request('/api/users/authenticate');
     this.handleSuccess(response);
+    this.get('overlay').hide('auth');
   }).maxConcurrency(1).enqueue(),
 
   authenticateTask: task(function * () {
     if (this.get('config') == null) {
+      this.get('overlay').show('auth');
       let response = yield this.get('ajax').request('/api/users/authenticate');
       this.handleSuccess(response);
+      this.get('overlay').hide('auth');
     }
   }).maxConcurrency(1).enqueue(),
 
@@ -104,10 +135,13 @@ export default Service.extend({
   },
 
   authenticateIfUnauthorized(error) {
-    if (isUnauthorizedError(error)) {
-      this.authenticate();
-      return;
+    if (isUnauthorizedError(error) || isForbiddenError(error)) {
+      this.reauthenticate();
     }
+    if (error.status == 405) {
+      this.get('router').transitionTo("access-forbidden");
+    }
+    return;
   },
 
   transitToSignin() {

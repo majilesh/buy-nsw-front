@@ -3,7 +3,7 @@ import { inject } from '@ember/service';
 import { computed } from '@ember/object';
 
 export default BaseController.extend({
-  ajax: inject(),
+  bjax: inject(),
 
   submitable: computed('model.steps', 'model.form.agreed', function() {
     return this.get('model.seller.steps').every( (key) => {
@@ -15,10 +15,9 @@ export default BaseController.extend({
     refresh() {
       let controller = this;
       this.model.seller.reload();
-      this.get('ajax').request('/api/sellers/sellers/steps', {
+      this.get('bjax').request('/api/sellers/sellers/steps', {
         method: 'GET',
-      }).then(response => controller.set('model.steps', response))
-        .finally(() => controller.get('overlay').hide());
+      }).then(response => controller.set('model.steps', response));
     },
     submitProfile() {
       this.get('overlay').show();

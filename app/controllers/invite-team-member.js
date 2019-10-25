@@ -26,8 +26,8 @@ export default BaseController.extend(Validations, {
       this.get('model').save().then(function() {
         self.set('invitationErrors', null);
         self.transitionToRoute('team-members');
-      }).catch(function() {
-        self.set('invitationErrors', 'This email address is already taken!');
+      }).catch((adapterError) => {
+        self.set('invitationErrors', adapterError.errors[0]);
         window.scrollTo(0,230);
       }).finally(function() {
         controller.get('overlay').hide();

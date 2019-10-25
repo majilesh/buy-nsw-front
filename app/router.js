@@ -53,7 +53,8 @@ Router.map(function() {
   this.route('supplier-application', { path: '/supplier/application' });
   this.route('application-success', { path: '/application/success'});
   this.route('profile-builder', { path: '/supplier/profile-builder'});
-  this.route('access-forbidden');
+  this.route('access-forbidden', { path: '/forbidden' });
+  this.route('seller-account', { path: '/supplier/account/:step_name' });
 });
 
 export default Router;

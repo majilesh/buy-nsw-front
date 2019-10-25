@@ -4,6 +4,9 @@ import { inject } from '@ember/service';
 
 export default Route.extend({
   ajax: inject(),
+  activate: function() {
+    this.get('auth').setPageAccess('public');
+  },
   model() {
     return RSVP.hash({
       sellerStats: this.get('ajax').request('/api/sellers/public_sellers/stats', {

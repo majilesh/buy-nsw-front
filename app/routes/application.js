@@ -13,7 +13,7 @@ export default Route.extend({
     loading: function(transition, originRoute) {
       this.get('overlay').show();
       transition.promise.finally(() => {
-        this.get('overlay').hide();
+        // this.get('overlay').hide();
       });
 
       return true;
@@ -34,6 +34,8 @@ export default Route.extend({
       if ( error && error.status == 401 ) {
         this.get('auth').transitToSignin();
       } else if ( error && error.status == 403 ) {
+        this.get('auth').reauthenticate();
+      } else if ( error && error.status == 405 ) {
         this.transitionTo('access-forbidden');
       } else {
         let airbrake = this.get('airbrake');
