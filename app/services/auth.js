@@ -135,7 +135,10 @@ export default Service.extend({
   },
 
   authenticateIfUnauthorized(error) {
-    if (isUnauthorizedError(error) || isForbiddenError(error)) {
+    if (isUnauthorizedError(error)) {
+      this.transitToSignin();
+    }
+    if (isForbiddenError(error)) {
       this.reauthenticate();
     }
     if (error.status == 405) {
