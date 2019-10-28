@@ -10,7 +10,10 @@ export default DS.RESTAdapter.extend({
   auth: service(),
   router: service(),
   handleResponse(status, headers, payload, requestData) {
-    if (status == 401 || status == 403) {
+    if (status == 401) {
+      this.get('auth').transitToSignin();
+    }
+    if (status == 403) {
       this.get('auth').reauthenticate();
     }
     if (status == 405) {
