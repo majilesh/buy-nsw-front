@@ -21,6 +21,9 @@ export default DS.RESTAdapter.extend({
     if (status == 405) {
       this.get('router').transitionTo("access-forbidden");
     }
+    if (status == 422 && payload.errors && payload.errors[0].alert) {
+      this.get('overlay').showError(payload.errors[0].alert);
+    }
     return this._super(...arguments);
   },
 

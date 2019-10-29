@@ -145,6 +145,9 @@ export default Service.extend({
     if (error.status == 405) {
       this.get('router').transitionTo("access-forbidden");
     }
+    if (error.status == 422 && error.payload.errors && error.payload.errors[0].alert) {
+      this.get('overlay').showError(error.payload.errors[0].alert);
+    }
     return;
   },
 
