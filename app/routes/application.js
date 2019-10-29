@@ -38,10 +38,10 @@ export default Route.extend({
         this.get('overlay').showCsrfError();
       } else if ( error && error.status == 405 ) {
         this.transitionTo('access-forbidden');
+      } else if ( error && error.status == 422 && error.payload.errors && error.payload.errors[0].alert) {
+        this.get('overlay').showError(error.payload.errors[0].alert);
+        this.transitionTo('index');
       } else {
-        if ( error && error.status == 422 && error.payload.errors && error.payload.errors[0].alert) {
-          this.get('overlay').showError(error.payload.errors[0].alert);
-        }
         let airbrake = this.get('airbrake');
         let airError = response.message || "Route transition failed";
         airError = airError.split("Payload")[0];

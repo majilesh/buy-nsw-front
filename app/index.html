@@ -88,7 +88,7 @@
         top:0px;
         left:0px;
         z-index:1001;
-        opacity: 0.9;
+        opacity: 0.95;
         display: none;
       }
 
@@ -99,6 +99,10 @@
         top: 40%;
         padding: 2rem;
         position: relative;
+      }
+
+      .error-subline {
+        font-size: 14px;
       }
     </style>
     <script>
@@ -118,7 +122,9 @@
       </div>
     </div>
     <div id="error-overlay" class="error-overlay" onclick="hideError()">
-      <div id="error-overlay-message" class="error-message" onclick="hideError()">
+      <div class="error-message" onclick="hideError()">
+        <div id="error-overlay-message"></div>
+        <p class="error-subline">Click anywhere to close this message.<br>To contact us use the "<u>Is there any thing wrong with this page?</u>" link at the bottom of the page.</p>
       </div>
     </div>
 
