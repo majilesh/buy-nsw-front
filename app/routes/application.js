@@ -35,6 +35,7 @@ export default Route.extend({
         this.get('auth').transitToSignin();
       } else if ( error && error.status == 403 ) {
         this.get('auth').reauthenticate();
+        this.get('overlay').showCsrfError();
       } else if ( error && error.status == 405 ) {
         this.transitionTo('access-forbidden');
       } else {

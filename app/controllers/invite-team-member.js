@@ -24,10 +24,10 @@ export default BaseController.extend(Validations, {
       let controller = this;
 
       this.get('model').save().then(function() {
-        self.set('invitationErrors', null);
+        self.set('apiError', null);
         self.transitionToRoute('team-members');
       }).catch((adapterError) => {
-        self.set('invitationErrors', adapterError.errors[0]);
+        self.set('apiError', adapterError.errors && adapterError.errors[0]);
         window.scrollTo(0,230);
       }).finally(function() {
         controller.get('overlay').hide();

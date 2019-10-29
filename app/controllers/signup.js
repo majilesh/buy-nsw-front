@@ -64,9 +64,7 @@ export default BaseController.extend(Validations, {
       }).then((response) => {
         controller.transitionToRoute('success', 'signup_confirmation_sent')
       }).catch((error) => {
-        if(error.payload.errors) {
-          controller.set('apiError', error.payload.errors[0]);
-        }
+        controller.set('apiError',error.payload.errors && error.payload.errors[0]);
       }).finally(() => this.get('overlay').hide());
     }
   }

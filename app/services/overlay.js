@@ -14,5 +14,12 @@ export default Service.extend({
     if(this.get('keys').length == 0) {
       $('.overlay').hide();
     }
+  },
+  showError(message) {
+    $('#error-overlay').show();
+    $('#error-overlay-message').text(message);
+  },
+  showCsrfError() {
+    this.showError("Your action faild due to your recent login in another window. Please retry your action!");
   }
 });

@@ -43,8 +43,8 @@
       }}
       <hr>
     </p>
-    {{#if apiError}}
-      {{dds/validation-error float="right" type="error" message=apiError}}
+    {{#if apiError.email}}
+      {{dds/validation-error float="right" type="error" message=apiError.email}}
     {{/if}}
     <p>
       <span class="float-right">

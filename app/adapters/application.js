@@ -9,12 +9,14 @@ const { String: { pluralize } } = Ember;
 export default DS.RESTAdapter.extend({
   auth: service(),
   router: service(),
+  overlay: service(),
   handleResponse(status, headers, payload, requestData) {
     if (status == 401) {
       this.get('auth').transitToSignin();
     }
     if (status == 403) {
       this.get('auth').reauthenticate();
+      this.get('overlay').showCsrfError();
     }
     if (status == 405) {
       this.get('router').transitionTo("access-forbidden");
