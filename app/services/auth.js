@@ -142,6 +142,9 @@ export default Service.extend({
       this.reauthenticate();
       this.get('overlay').showCsrfError();
     }
+    if (error.status == 404) {
+      this.get('router').transitionTo("not-found");
+    }
     if (error.status == 405) {
       this.get('router').transitionTo("access-forbidden");
     }
