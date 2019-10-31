@@ -19,7 +19,7 @@ export default DS.RESTAdapter.extend({
       this.get('overlay').showCsrfError();
     }
     if (status == 404) {
-      this.get('router').transitionTo("not-found");
+      this.get('router').transitionTo("404");
     }
     if (status == 405) {
       this.get('router').transitionTo("access-forbidden");
