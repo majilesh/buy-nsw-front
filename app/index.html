@@ -7,6 +7,9 @@
     <meta http-equiv="Expires" content="0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>buy.nsw: Simplifying procurement</title>
+    <link rel="icon" href="/ict/images/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="/ict/images/favicon.ico" type="image/x-icon"/>
+    <script type="text/javascript" src="https://www.onegov.nsw.gov.au/CDN/feedbackassist/feedbackassist.v1.min.js"></script>
     <!--
     <script type="text/javascript">
       var $html = document.documentElement; if ($html.classList) $html.classList.remove("no-js"), $html.classList.add("js"); else { var className = "no-js"; $html.className = $html.className.replace(new RegExp("(^|\\b)" + className.split(" ").join("|") + "(\\b|$)", "gi"), " "), $html.className += " js" }
@@ -75,7 +78,39 @@
           -webkit-transform: scale(1.0);
         }
       }
+
+      .error-overlay {
+        text-align: center;
+        background-color:#eee;
+        position:fixed;
+        width:100%;
+        height:100%;
+        top:0px;
+        left:0px;
+        z-index:1001;
+        opacity: 0.95;
+        display: none;
+      }
+
+      .error-message {
+        background-color: #002664;
+        color: white;
+        font-size: 20px;
+        top: 40%;
+        padding: 2rem;
+        position: relative;
+      }
+
+      .error-subline {
+        font-size: 14px;
+      }
     </style>
+    <script>
+      function hideError() {
+        var overlay = document.getElementById("error-overlay");
+        overlay.style.display = "none";
+      }
+    </script>
 
     {{content-for "head-footer"}}
   </head>
@@ -86,10 +121,19 @@
           <div class="double-bounce2"></div>
       </div>
     </div>
+    <div id="error-overlay" class="error-overlay" onclick="hideError()">
+      <div class="error-message" onclick="hideError()">
+        <div id="error-overlay-message"></div>
+        <p class="error-subline">Click anywhere to close this message.<br>To contact us use the "<u>Is there any thing wrong with this page?</u>" link at the bottom of the page.</p>
+      </div>
+    </div>
 
     {{content-for "body"}}
 
     <script src="{{rootURL}}assets/vendor.js"></script>
     <script src="{{rootURL}}assets/buy-nsw-ember.js"></script>
+    <script type="text/javascript">
+      caBoootstrap.init("https://feedbackassist.onegov.nsw.gov.au/feedbackassist");
+    </script>
   </body>
 </html>

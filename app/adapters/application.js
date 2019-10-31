@@ -8,6 +8,28 @@ const { String: { pluralize } } = Ember;
 
 export default DS.RESTAdapter.extend({
   auth: service(),
+  router: service(),
+  overlay: service(),
+  handleResponse(status, headers, payload, requestData) {
+    if (status == 401) {
+      this.get('auth').transitToSignin();
+    }
+    if (status == 403) {
+      this.get('auth').reauthenticate();
+      this.get('overlay').showCsrfError();
+    }
+    if (status == 404) {
+      this.get('router').transitionTo("not-found");
+    }
+    if (status == 405) {
+      this.get('router').transitionTo("access-forbidden");
+    }
+    if (status == 422 && payload.errors && payload.errors[0].alert) {
+      this.get('overlay').showError(payload.errors[0].alert);
+    }
+    return this._super(...arguments);
+  },
+
   headers: computed('auth.csrfToken', function() {
     return {
       "X-CSRF-Token": this.get('auth.csrfToken'),
@@ -41,6 +63,15 @@ export default DS.RESTAdapter.extend({
       'seller-profile/scheme-and-panel': 'sellers/seller_profile_form/scheme_and_panel',
       'seller-profile/team-member': 'sellers/seller_profile_form/team_member',
       'seller-profile/promotional-video': 'sellers/seller_profile_form/promotional_video',
+
+      'seller-account/business-address': 'sellers/seller_account_form/business_address',
+      'seller-account/business-category': 'sellers/seller_account_form/business_category',
+      'seller-account/business-name-and-abn': 'sellers/seller_account_form/business_name_and_abn',
+      'seller-account/company-type-and-size': 'sellers/seller_account_form/company_type_and_size',
+      'seller-account/contact-detail': 'sellers/seller_account_form/contact_detail',
+      'seller-account/financial-document': 'sellers/seller_account_form/financial_document',
+      'seller-account/insurance-document': 'sellers/seller_account_form/insurance_document',
+      'seller-account/legal-disclosure': 'sellers/seller_account_form/legal_disclosure',
 
       'product': 'products/products',
       'public-product': 'products/public_products',

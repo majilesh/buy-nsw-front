@@ -24,7 +24,6 @@ Router.map(function() {
   this.route('performance');
   this.route('register-buyer', { path: '/buyer/register'});
   this.route('buyer-dashboard', { path: '/buyer/dashboard'});
-  this.route('profile', { path: '/supplier/profile'});
   this.route('seller-profile', { path: '/supplier/profile/:seller_id' } );
   this.route('not-found', { path: '/*path' });
   this.route('team-members', { path: '/supplier/team'});
@@ -53,6 +52,8 @@ Router.map(function() {
   this.route('supplier-application', { path: '/supplier/application' });
   this.route('application-success', { path: '/application/success'});
   this.route('profile-builder', { path: '/supplier/profile-builder'});
+  this.route('access-forbidden', { path: '/forbidden' });
+  this.route('seller-account', { path: '/supplier/account/:step_name' });
 });
 
 export default Router;

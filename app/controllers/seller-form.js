@@ -26,8 +26,7 @@ export default BaseController.extend({
           self.transitionToRoute('application-success');
         });
       }).catch((adapterError) => {
-        let errors = adapterError.errors[0];
-        self.set('model.form.apiErrors', errors);
+        self.set('model.form.apiErrors', error.payload.errors && error.payload.errors[0]);
       }).finally(() => {
         self.get('overlay').hide();
       });
@@ -45,8 +44,7 @@ export default BaseController.extend({
       this.model.form.save().then(()=>{
         controller.transitionToRoute('seller-form', nextStep);
       }).catch((adapterError) => {
-        let errors = adapterError.errors[0];
-        controller.set('model.form.apiErrors', errors);
+        controller.set('model.form.apiErrors', adapterError.errors && adapterError.errors[0]);
       }).finally(() => {
         controller.get('overlay').hide();
       });

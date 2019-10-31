@@ -1,7 +1,13 @@
 import Route from '@ember/routing/route';
 import RSVP from 'rsvp';
+import { inject } from '@ember/service';
 
 export default Route.extend({
+  auth: inject(),
+
+  activate: function() {
+    this.get('auth').setPageAccess('seller-only');
+  },
   renderTemplate: function() {
     this.render('profile-builder', {
       into: 'profile-builder'
