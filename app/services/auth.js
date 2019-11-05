@@ -155,8 +155,11 @@ export default Service.extend({
   },
 
   transitToSignin() {
-    this.set('locationHref', window.location.href)
-    this.get('router').transitionTo("sign-in");
+    if(window.location.pathname != '/ict/login') {
+      this.set('locationHref', window.location.href);
+      let router = this.get('router');
+      router.transitionTo("sign-in");
+    }
   },
 
   init() {

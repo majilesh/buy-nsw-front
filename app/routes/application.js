@@ -11,9 +11,10 @@ export default Route.extend({
 
   actions: {
     loading: function(transition, originRoute) {
-      this.get('overlay').show();
+      let overlay = this.get('overlay');
+      overlay.show();
       transition.promise.finally(() => {
-        // this.get('overlay').hide();
+        // overlay.hide();
       });
 
       return true;
