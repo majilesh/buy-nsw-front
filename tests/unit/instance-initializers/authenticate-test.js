@@ -1,6 +1,6 @@
 import Application from '@ember/application';
 
-import { initialize } from 'buy-nsw-ember/instance-initializers/authenticate';
+import { initialize } from 'buy-nsw-front/instance-initializers/authenticate';
 import { module, test } from 'qunit';
 import { run } from '@ember/runloop';
 

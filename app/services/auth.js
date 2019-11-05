@@ -14,7 +14,7 @@ export default Service.extend({
   user: null,
   trueUser: null,
   csrfToken: null,
-  message: null,
+  apiError: null,
   accessType: null,
 
   isSeller: computed('user.roles', function() {
@@ -60,9 +60,9 @@ export default Service.extend({
 
   handleError(response) {
     if(response.payload.errors) {
-      this.set('message', response.payload.errors[0]);
+      this.set('apiError', response.payload.errors[0]);
     } else {
-      this.set('message', 'Login failed, please refresh the page!');
+      this.set('apiError', 'Login failed, please refresh the page!');
     }
   },
 
@@ -76,7 +76,7 @@ export default Service.extend({
     }).then((response) => {
       this.handleSuccess(response);
       if(goHome) {
-        this.set('message', null);
+        this.set('apiError', null);
         this.get('router').transitionTo("index");
       }
     })
@@ -95,7 +95,7 @@ export default Service.extend({
       }
     }).then((response) => {
       // this.handleSuccess(response);
-      // this.set('message', null);
+      // this.set('apiError', null);
       // this.get('router').transitionTo("index");
       if(this.get('locationHref')) {
         let loc = this.get('locationHref');
@@ -140,16 +140,26 @@ export default Service.extend({
     }
     if (isForbiddenError(error)) {
       this.reauthenticate();
+      this.get('overlay').showCsrfError();
+    }
+    if (error.status == 404) {
+      this.get('router').transitionTo("404");
     }
     if (error.status == 405) {
       this.get('router').transitionTo("access-forbidden");
+    }
+    if (error.status == 422 && error.payload.errors && error.payload.errors[0].alert) {
+      this.get('overlay').showError(error.payload.errors[0].alert);
     }
     return;
   },
 
   transitToSignin() {
-    this.set('locationHref', window.location.href)
-    this.get('router').transitionTo("sign-in");
+    if(window.location.pathname != '/ict/login') {
+      this.set('locationHref', window.location.href);
+      let router = this.get('router');
+      router.transitionTo("sign-in");
+    }
   },
 
   init() {

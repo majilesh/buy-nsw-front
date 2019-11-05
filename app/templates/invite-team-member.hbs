@@ -23,7 +23,7 @@
         wide=true
         field=(mut this.model.email)
         enter=(if (v-get this "isValid") (action "invite"))
-        apiError=invitationErrors
+        apiError=apiError.email
         invalid=(v-get this "model.email" "isInvalid")
         errorMessage=(v-get this "model.email" "message")
         float="right"

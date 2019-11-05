@@ -140,6 +140,10 @@
           Content goes here. Dummy content follows.<br><br>
           Habeo visto un opus de theatro musicale illa septimana previa. Una femina retro me cantabat cum forte voce per illam presentationem. "Domina, per favorem desiste de cantare. Non habeo pagato octaginta dollares pro audir te." Iste resposta mea est venta in mente in train in via ad domum.
           <!-- end TEMP MAIN content - DEMO ONLY - DELETE -->
+          {{component (concat "seller-account/" stepName)
+            form=(mut this.model.form)
+            seller=this.model.seller
+          }}
         </div>
       </div><!--/.row -->
     {{/dds/template-body}}

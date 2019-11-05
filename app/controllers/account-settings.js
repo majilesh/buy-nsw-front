@@ -74,9 +74,7 @@ export default BaseController.extend(Validations, {
         controller.get('auth').reauthenticate();
         controller.transitionToRoute('success', 'account_updated');
       }).catch((error) => {
-        if(error.payload.errors) {
-          controller.set('apiError', error.payload.errors[0]);
-        }
+        controller.set('apiError', error.payload.errors && error.payload.errors[0]);
       });
     }
   }

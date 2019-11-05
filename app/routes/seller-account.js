@@ -10,8 +10,8 @@ export default Route.extend({
     this.get('auth').setPageAccess('seller-only');
   },
   renderTemplate: function() {
-    this.render('profile-builder', {
-      into: 'profile-builder'
+    this.render('seller-account', {
+      into: 'seller-account'
     });
   },
   model(params) {
