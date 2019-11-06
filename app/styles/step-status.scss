@@ -78,3 +78,28 @@
     border-right: solid #AAA 10px;
   }
 }
+span.form-status {
+  font-family: MontserratBold;
+  font-size: 0.80em;
+  padding: 0.3rem 0.5rem;
+  &.accepted {
+    border: 1px solid $AU-color-success;
+    color: $AU-color-success;
+  }
+  &.declined {
+    background-color: $AU-color-warning;
+    color: white;
+  }
+  &.editted {
+    background-color: gray;
+    color: white;
+  }
+  &.pending {
+    border: 1px solid $AU-color-info;
+    color: $AU-color-info;
+  }
+  &.pending-locked {
+    border: 1px solid $AU-color-info;
+    color: $AU-color-info;
+  }
+}
