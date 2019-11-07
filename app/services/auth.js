@@ -136,7 +136,6 @@ export default Service.extend({
 
   authenticateIfUnauthorized(error) {
     if (isUnauthorizedError(error)) {
-      this.reauthenticate();
       this.transitToSignin();
     }
     if (isForbiddenError(error)) {
@@ -156,6 +155,7 @@ export default Service.extend({
   },
 
   transitToSignin() {
+    this.reauthenticate();
     if(window.location.pathname != '/ict/login') {
       this.set('locationHref', window.location.href);
       let router = this.get('router');
