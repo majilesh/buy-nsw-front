@@ -152,9 +152,13 @@
           {{#dds/simple-box theme="iceblue" class="col-sm-12"}}
             <div>{{fa-icon "cogs" prefix="fas"}}</div>
             {{#if this.model.seller.live}}
-              {{ link-to "Edit your cloud products" "products" }}
+              {{#if this.model.seller.offersCloud}}
+                {{ link-to "Edit your cloud products" "products" }}
+              {{else}}
+                <span> Only approved cloud providers are able to add cloud products </span>
+              {{/if}}
             {{else}}
-              <span> You will be able to add your products after you supplier application is approved </span>
+              <span> You will be able to add cloud products after you supplier application is approved </span>
             {{/if}}
           {{/dds/simple-box}}
           {{#dds/simple-box theme="lightpeach" class="col-sm-12"}}

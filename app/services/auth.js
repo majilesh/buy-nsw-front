@@ -136,6 +136,7 @@ export default Service.extend({
 
   authenticateIfUnauthorized(error) {
     if (isUnauthorizedError(error)) {
+      this.reauthenticate();
       this.transitToSignin();
     }
     if (isForbiddenError(error)) {

@@ -12,6 +12,7 @@ export default DS.RESTAdapter.extend({
   overlay: service(),
   handleResponse(status, headers, payload, requestData) {
     if (status == 401) {
+      this.get('auth').reauthenticate();
       this.get('auth').transitToSignin();
     }
     if (status == 403) {
