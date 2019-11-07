@@ -33,6 +33,7 @@ export default Route.extend({
         error = error.errors[0];
       }
       if ( error && error.status == 401 ) {
+        this.get('auth').reauthenticate();
         this.get('auth').transitToSignin();
       } else if ( error && error.status == 403 ) {
         this.get('auth').reauthenticate();
