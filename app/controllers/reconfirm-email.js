@@ -16,16 +16,15 @@ const Validations = buildValidations({
 });
 
 export default BaseController.extend(Validations, {
-  ajax: inject(),
+  bjax: inject(),
   auth: inject(),
   email: '',
   apiError: '',
 
   actions: {
     submit() {
-      this.get('overlay').show();
       let controller = this;
-      this.get('ajax').request('/api/users/users/resend_confirmation', {
+      this.get('bjax').request('/api/users/users/resend_confirmation', {
         method: 'POST',
         headers: {
           "X-CSRF-Token": this.get('auth.csrfToken'),
@@ -36,11 +35,8 @@ export default BaseController.extend(Validations, {
       }).then((response) => {
         controller.transitionToRoute('success', 'confirmation_sent')
       }).catch((error) => {
-        controller.get('auth').authenticateIfUnauthorized(error);
-        if(error.payload.error) {
-          controller.set('apiError', error.payload.error);
-        }
-      }).finally(() => this.get('overlay').hide());
+        controller.set('apiError', response.payload.errors && error.payload.errors[0]);
+      });
     }
   }
 });

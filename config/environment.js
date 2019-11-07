@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   let ENV = {
-    modulePrefix: 'buy-nsw-ember',
+    modulePrefix: 'buy-nsw-front',
     environment,
     rootURL: '/ict/',
     locationType: 'router-scroll',

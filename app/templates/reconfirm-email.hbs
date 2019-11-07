@@ -9,7 +9,7 @@
       allRow=true
       field=(mut email)
       enter=(if (v-get this "isValid") (action "submit"))
-      apiError=apiError
+      apiError=apiError.email
       invalid=(v-get this "email" "isInvalid")
       errorMessage=(v-get this "email" "message")
       float="right"

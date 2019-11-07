@@ -1,6 +1,9 @@
 import Route from '@ember/routing/route';
 
 export default Route.extend({
+  activate: function() {
+    this.get('auth').setPageAccess('public');
+  },
   model(params) {
     this.set('accountType', params.account_type);
   },

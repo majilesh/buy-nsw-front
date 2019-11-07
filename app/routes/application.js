@@ -11,9 +11,10 @@ export default Route.extend({
 
   actions: {
     loading: function(transition, originRoute) {
-      this.get('overlay').show();
+      let overlay = this.get('overlay');
+      overlay.show();
       transition.promise.finally(() => {
-        this.get('overlay').hide();
+        // overlay.hide();
       });
 
       return true;
@@ -32,8 +33,17 @@ export default Route.extend({
         error = error.errors[0];
       }
       if ( error && error.status == 401 ) {
-        this.transitionTo('sign-in');
         this.get('auth').transitToSignin();
+      } else if ( error && error.status == 403 ) {
+        this.get('auth').reauthenticate();
+        this.get('overlay').showCsrfError();
+      } else if ( error && error.status == 404 ) {
+        this.transitionTo('404');
+      } else if ( error && error.status == 405 ) {
+        this.transitionTo('access-forbidden');
+      } else if ( error && error.status == 422 && error.payload.errors && error.payload.errors[0].alert) {
+        this.get('overlay').showError(error.payload.errors[0].alert);
+        this.transitionTo('index');
       } else {
         let airbrake = this.get('airbrake');
         let airError = response.message || "Route transition failed";

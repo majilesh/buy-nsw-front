@@ -4,6 +4,11 @@ import { inject } from '@ember/service';
 
 export default Route.extend({
   ajax: inject(),
+  auth: inject(),
+
+  activate: function() {
+    this.get('auth').setPageAccess('seller-only');
+  },
   renderTemplate: function() {
     this.render('seller-dashboard', {
       into: 'seller-dashboard'
