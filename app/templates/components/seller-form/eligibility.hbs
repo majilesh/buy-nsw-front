@@ -77,11 +77,6 @@
     errorMessage=(v-get form 'offers_ict' 'message')
   }}
 </p>
-{{#if (and (or showError (not-eq form.status 'todo') (v-get form 'eligible' 'isInvalid')))}}
-  <p>
-    {{dds/validation-error type="error" message=(v-get form 'eligible' 'message') float="left"}}
-  </p>
-{{/if}}
 
 <hr class="light">
 
