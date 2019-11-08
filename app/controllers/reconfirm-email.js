@@ -34,8 +34,8 @@ export default BaseController.extend(Validations, {
         }
       }).then((response) => {
         controller.transitionToRoute('success', 'confirmation_sent')
-      }).catch((error) => {
-        controller.set('apiError', response.payload.errors && error.payload.errors[0]);
+      }).catch((response) => {
+        controller.set('apiError', response.payload.errors && response.payload.errors[0]);
       });
     }
   }
