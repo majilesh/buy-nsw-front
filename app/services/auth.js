@@ -110,6 +110,10 @@ export default Service.extend({
     });
   },
 
+  currentRouteName: computed('router.currentRouteName', function () {
+    return this.get('router').get('currentRouteName');
+  }),
+
   reauthenticateTask: task(function * () {
     this.get('overlay').show('auth');
     let response = yield this.get('ajax').request('/api/users/authenticate');
