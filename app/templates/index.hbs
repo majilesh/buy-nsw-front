@@ -11,12 +11,9 @@
     {{#dds/template-body auth=auth}}
       <br>
       <div class="row">
-        <div class="col-sm-15">
-          <p class="home-title">
-            <big>
-              <b>buy.nsw</b>
-              is a place for buyers and suppliers of <b class="dark-blue">ICT products and services</b> to connect
-            </big>
+        <div class="col-sm-16">
+          <p class="home-title au-display-md">
+            Welcome to the <b>buy.nsw supplier hub</b>, a place for buyers and suppliers of <b class="dark-blue">digital products and services</b> to connect
             <br>
             <br>
             {{link-to "Learn more" "about-page" class="au-cta-link no-decoration"}}
@@ -25,9 +22,7 @@
             -->
           </p>
         </div>
-        <div class="col-sm-3">
-        </div>
-        <div class="col-sm-18 home-top-links">
+        <div class="col-sm-18 col-sm-offset-2 home-top-links">
           {{#if auth.user}}
             {{#if auth.isSeller}}
               {{#link-to "seller-dashboard"}}
@@ -38,7 +33,7 @@
                   <b>Go to dashboard to continue with your supplier registration</b>
                   <br>
                   <br>
-                  {{link-to "Find more about becoming a supplier" "seller-guide"}}
+                  {{link-to "Learn more about becoming a supplier" "seller-guide"}}
                 </p>
               {{/link-to}}
             {{else}}
@@ -60,10 +55,10 @@
                 <div class="right-arrow">
                   {{fa-icon "chevron-right"}}
                 </div>
-                <b>Register to supply cloud products and services to NSW government</b>
+                <b>Register as a NSW Government supplier of digital products and services</b>
                 <br>
                 <br>
-                {{link-to "Learn about becoming a supplier" "seller-guide"}}
+                {{link-to "Learn more about becoming a supplier" "seller-guide"}}
               </p>
             {{/link-to}}
           {{/if}}
@@ -78,7 +73,7 @@
                   <b>Go to dashboard to continue with your buyer registration</b>
                   <br>
                   <br>
-                  {{link-to "Learn about becoming a buyer" "buyer-guide"}}
+                  {{link-to "Learn more about becoming a buyer" "buyer-guide"}}
                 </p>
               {{/link-to}}
             {{else}}
@@ -100,10 +95,10 @@
                 <div class="right-arrow">
                   {{fa-icon "chevron-right"}}
                 </div>
-                <b>Register to browse and buy cloud products and services</b>
+                <b>Register as a NSW Government buyer of digital products and services</b>
                 <br>
                 <br>
-                {{link-to "Learn about becoming a buyer" "buyer-guide"}}
+                {{link-to "Learn more about becoming a buyer" "buyer-guide"}}
               </p>
             {{/link-to}}
           {{/if}}
@@ -116,66 +111,94 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="home-middle-box">
-            <h6 class="au-display-lg title"><b>Browse suppliers</b></h6>
+            <h6 class="au-display-lg title"><b>Popular supplier categories</b></h6>
             <div class="clear-both"></div>
             <hr class="light">
             <div class="highlight">
               {{#link-to "cloud-sellers"}}
-                <b>Supplier list</b>
+                <b>Advisory and consulting</b>
               {{/link-to}}
             </div>
             <p>
-              We’ll be adding more ICT categories as we grow.
-            </p>
-          </div>
-        </div>
-        <div class="col-sm-12">
-          <div class="home-middle-box">
-            <h6 class="au-display-lg title"><b>Browse cloud products</b></h6>
-            <div class="clear-both"></div>
-            <hr class="light">
-            <div class="highlight">
-              {{#link-to "cloud-search" "applications-software"}}
-                <b>Cloud applications and software</b>
-              {{/link-to}}
-            </div>
-            <p>
-              Incl. accounting tools and customer management softwaere
+              Specialist digital expertise acting in an advisory capability to government.
             </p>
             <br>
             <div class="highlight">
               {{#link-to "cloud-search" "hosting-infrastructure"}}
-                <b>Cloud hosting and infrastructure</b>
+                <b>Cloud products and services</b>
               {{/link-to}}
-              </div>
+            </div>
             <p>
-              Incl. website hosting and load balancing services
+              Cloud-hosted software and platforms as well as cloud hosting and broker services.
+            </p>
+            <br>
+            <div class="highlight">
+              {{#link-to "cloud-sellers"}}
+                <b>End-user computing and peripherals</b>
+              {{/link-to}}
+            </div>
+            <p>
+              All devices that help end users access and operate computer applications.
             </p>
           </div>
         </div>
         <div class="col-sm-12">
           <div class="home-middle-box">
-            <h6 class="au-display-lg title"><b>Supply cloud products</b></h6>
+            <h6 class="au-display-lg title"><b>Browse suppliers by type</b></h6>
             <div class="clear-both"></div>
             <hr class="light">
-            {{#unless auth.user}}
-              <div class="highlight">
-                {{#link-to "signup" "seller"}}
-                  <b>Register to supply cloud products and services to NSW Government</b>
-                {{/link-to}}
-              </div>
-              <p>
-                Incl. cloud applications and software, hosting and infrastructure, and support services
-              </p>
-            {{/unless}}
+            <div class="highlight">
+              {{#link-to "cloud-sellers"}}
+                <b>Regional NSW</b>
+              {{/link-to}}
+            </div>
+            <p>
+              Find a supplier headquartered in regional NSW
+            </p>
             <br>
             <div class="highlight">
-              {{#link-to "seller-guide"}}
-                <b>Read the supplier guide</b>
+              {{#link-to "cloud-sellers"}}
+                <b>Aboriginal or Torres Strait Islander</b>
               {{/link-to}}
               </div>
             <p>
-              Learn how to become a supplier on buy.nsw
+              Find a supplier recognised as Aboriginal or Torres Strait Islander
+            </p>
+            <br>
+            <div class="highlight">
+              {{#link-to "cloud-sellers"}}
+                <b>Small to medium enterprise</b>
+              {{/link-to}}
+              </div>
+            <p>
+              Find a supplier based in Australia or New Zealand with less than 200 employees
+            </p>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="home-middle-box">
+            <h6 class="au-display-lg title"><b>Find other buy.nsw services</b></h6>
+            <div class="clear-both"></div>
+            <hr class="light">
+            <div class="highlight">
+              <a href="https://beta.buy.nsw.gov.au" target="_blank"><b>buy.nsw</b></a>
+            </div>
+            <p>
+              Learn more about the buy.nsw program on our home page
+            </p>
+            <br>
+            <div class="highlight">
+              <a href="https://beta.buy.nsw.gov.au/policy-library" target="_blank"><b>Policy library</b></a>
+            </div>
+            <p>
+              A library of procurement policies that apply to NSW Government agencies, non-agency buyers and suppliers
+            </p>
+            <br>
+            <div class="highlight">
+              <a href="https://tenders.nsw.gov.au/" target="_blank"><b>eTendering</b></a>
+            </div>
+            <p>
+              Search for current NSW Government open tender opportunities and pre-qualification schemes
             </p>
           </div>
         </div>
