@@ -36,11 +36,6 @@
         <p>Submitting changes to this information will require the review of the buy.nsw operations team and will take 2-3 working days.</p>
         <p><b>Not what you were looking for? Edit your {{ link-to "supplier profile" "profile-builder" }}.</b></p>
       </div>
-      <!-- if insurancePolicyExpires; logic required -->
-        {{#dds/info-box class="warning"}}
-          <b>NOTE:</b> Your insurance policy documentation will expire in 30 days. Please {{ link-to "update your documents in the insurance section" "supplier-account" step="insurance-document" }}.
-        {{/dds/info-box}}
-      <!-- end insurancePolicyExpires -->
       {{#if this.model.seller.pending}}
         {{#dds/page-alert alertType="info"}}
           <h3>
@@ -72,7 +67,7 @@
             {{dds/progress-indicator
               stepName=stepName
               items=(array
-                (hash route="seller-form" step="eligibility"
+                (hash route="seller-account" step="login"
                 status=this.model.steps.eligibility.status
                 title="Login details")
               )
@@ -81,20 +76,20 @@
             {{dds/progress-indicator
               stepName=stepName
               items=(array
-                (hash route="seller-form" step="business-name"
+                (hash route="seller-account" step="business-name-and-abn"
                 status=this.model.steps.business_name.status
                 title="Business name and ABN")
-                (hash route="seller-form" step="contact-detail"
+                (hash route="seller-account" step="contact-detail"
                 status=this.model.steps.contact_detail.status
                 title="Contact details")
-                (hash route="seller-form" step="product-category"
-                status=this.model.steps.product_category.status
+                (hash route="seller-account" step="business-address"
+                status=this.model.steps.business_address.status
                 title="Business address")
-                (hash route="seller-form" step="company-type"
-                status=this.model.steps.company_type.status
+                (hash route="seller-account" step="company-type-and-size"
+                status=this.model.steps.company_type_and_size.status
                 title="Company type and size")
-                (hash route="seller-form" step="product-category"
-                status=this.model.steps.product_category.status
+                (hash route="seller-account" step="business-category"
+                status=this.model.steps.business_category.status
                 title="Business categories")
               )
             }}
@@ -102,15 +97,15 @@
             {{dds/progress-indicator
               stepName=stepName
               items=(array
-                (hash route="seller-form" step="insurance-and-financial-document"
+                (hash route="seller-account" step="insurance-document"
                 optional=true
-                status=this.model.steps.insurance_and_financial_document.status
+                status=this.model.steps.insurance_document.status
                 title="Insurance documents")
-                (hash route="seller-form" step="insurance-and-financial-document"
+                (hash route="seller-account" step="financial-document"
                 optional=true
-                status=this.model.steps.insurance_and_financial_document.status
+                status=this.model.steps.financial_document.status
                 title="Financial disclosures")
-                (hash route="seller-form" step="legal-disclosure"
+                (hash route="seller-account" step="legal-disclosure"
                 status=this.model.steps.legal_disclosure.status
                 title="Legal disclosures")
               )
@@ -119,20 +114,12 @@
             {{dds/progress-indicator
               stepName=stepName
               items=(array
-                (hash route="seller-form" step="membership-and-award"
-                status=this.model.steps.membership_and_award.status
+                (hash route="seller-account" step="government-schemes"
+                status=this.model.steps.government_schemes.status
                 optional=true
                 title="Government schemes and panels")
               )
             }}
-            <!-- start TEMP NAV items- DEMO ONLY - DELETE -->
-            <h4><b>Icon Test</b></h4>
-            <ul class="au-progress-indicator">
-              <li><a href="#" class="au-progress-indicator__link au-progress-indicator__link--review">Account documents A</a></li>
-              <li><a href="#" class="au-progress-indicator__link au-progress-indicator__link--user-edit">Account documents B</a></li>
-              <li><a href="#" class="au-progress-indicator__link au-progress-indicator__link--lock">Account documents C</a></li>
-            </ul>
-            <!-- end TEMP NAV items - DEMO ONLY - DELETE -->            
           </div>
         </div>
         <div class="col-sm-20 col-md-23 col-lg-25 col-sm-offset-1">
