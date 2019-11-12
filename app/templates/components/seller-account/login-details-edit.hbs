@@ -11,13 +11,10 @@
   apiError=apiError.email
 }}
 <br>
-<p>
-  <b class="sapphire">Password</b>
-</p>
 {{dds/new-password
   thin=true
-  noLabel=true
+  theme="sapphire"
   field=(mut form.newPassword)
   allowBlank=true
-  strong=(mut form.passwordStrong)
+  valid=(mut form.passwordValid)
 }}

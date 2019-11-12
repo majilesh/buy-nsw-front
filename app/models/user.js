@@ -13,7 +13,7 @@ const Validations = buildValidations({
       })
     ]
   },
-  passwordStrong: {
+  passwordValid: {
     validators: [
       validator('inline', {
         validate(value, options, model, attributes) {
@@ -25,7 +25,7 @@ const Validations = buildValidations({
 });
 
 export default DS.Model.extend(Validations, {
-  passwordStrong: true,
+  passwordValid: true,
   email: DS.attr('string'),
   confirmed: DS.attr('boolean'),
   newPassword: DS.attr('string'),

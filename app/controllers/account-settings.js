@@ -14,22 +14,13 @@ const Validations = buildValidations({
       })
     ]
   },
-  strength: {
+  passwordValid: {
     validators: [
-      validator('number', {
-        presence: false,
-        integer: true,
-        gt: 2,
-      })
-    ],
-  },
-  confirmPassword: {
-    validators: [
-      validator('confirmation', {
-        on: 'newPassword',
-        message: '{description} doesn\'t match',
-        description: 'Password confirmation'
-      })
+      validator('inline', {
+        validate(value, options, model, attributes) {
+          return value == true || "password is not strong enough";
+        }
+      }),
     ],
   },
   currentPassword: {
@@ -43,18 +34,7 @@ export default BaseController.extend(Validations, {
   bjax: inject(),
   auth: inject(),
   newPassword: '',
-  confirmPassword: '',
   currentPassword: '',
-  passwordStrength: inject(),
-
-  strength: computed('newPassword', function () {
-    if(this.get('newPassword')) {
-      const passwordStrength = this.get('passwordStrength');
-      return passwordStrength.strengthSync(this.get('newPassword')).score;
-    } else {
-      return null;
-    }
-  }),
 
   actions: {
     submit() {

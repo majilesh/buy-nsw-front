@@ -14,21 +14,13 @@ const Validations = buildValidations({
       })
     ]
   },
-  strength: {
+  passwordValid: {
     validators: [
-      validator('number', {
-        integer: true,
-        gt: 2,
-      })
-    ],
-  },
-  confirmPassword: {
-    validators: [
-      validator('confirmation', {
-        on: 'password',
-        message: '{description} does not match',
-        description: 'Password confirmation'
-      })
+      validator('inline', {
+        validate(value, options, model, attributes) {
+          return value == true || "Password is not strong enough";
+        }
+      }),
     ],
   },
 });
@@ -38,14 +30,8 @@ export default BaseController.extend(Validations, {
   auth: inject(),
   email: '',
   password: '',
-  confirmPassword: '',
-  passwordStrength: inject(),
   accountType: '',
 
-  strength: computed('password', function () {
-    const passwordStrength = this.get('passwordStrength');
-    return passwordStrength.strengthSync(this.get('password')).score;
-  }),
 
   actions: {
     submit() {
