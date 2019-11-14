@@ -47,6 +47,9 @@ export default Service.extend({
       if(accessType == 'seller-only' && !this.get('isSeller')){
         this.get('router').transitionTo("access-forbidden");
       }
+      if(accessType == 'login' && !this.get('user')){
+        this.transitToSignin();
+      }
       this.set('accessType', null);
     }
   },
