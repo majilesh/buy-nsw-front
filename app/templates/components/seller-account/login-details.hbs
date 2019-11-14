@@ -4,13 +4,12 @@
   class="pull-right"
   form=form
 }}
-<h2><b>Business name and ABN</b></h2>
-{{form-status status=form.status}}
+<h2><b>Account login details</b></h2>
 <br>
 {{#if underEdit}}
-  {{seller-account/business-name-and-abn-edit form=form}}
+  {{seller-account/login-details-edit form=form}}
 {{else}}
-  {{seller-account/business-name-and-abn-view form=form buyerView=true}}
+  {{seller-account/login-details-view form=form buyerView=true}}
 {{/if}}
 <br>
 {{seller-profile/edit-save

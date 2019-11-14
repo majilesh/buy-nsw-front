@@ -16,43 +16,19 @@
       float="right"
     }}
     <hr class="light">
-    <b>Your new password</b>
     <p>
-      Leave blank if you don't want to change it.
-      Passwords must be at least 8 characters long.
-      Tip: create a password with 3 or more words – it's secure and easy to remember.
+      {{dds/new-password
+        wide=true
+        allRow=true
+        tip="Passwords must be at least 8 characters long. Tip: create a password with 3 or more words – it's secure and easy to remember."
+        field=(mut newPassword)
+        title="New password"
+        confirm=true
+        allowBlank=true
+        valid=(mut passwordValid)
+        enter=(if (v-get this "isValid") (action "submit"))
+      }}
     </p>
-    {{dds/text-input
-      wide=true
-      allRow=true
-      password=true
-      noAutoComplete=true
-      field=(mut newPassword)
-      enter=(if (v-get this "isValid") (action "submit"))
-    }}
-    {{#if (eq newPassword.length 0)}}
-      {{dds/validation-error type="gray" message="Password is blank" float="right"}}
-    {{else if (lt newPassword.length 8)}}
-      {{dds/validation-error type="error" message="Password is too short" float="right"}}
-    {{else if (lt strength 3)}}
-      {{dds/validation-error type="warning" message="Password is not strong enough" float="right"}}
-    {{else}}
-      {{dds/validation-error type="green" message="Password is strong" float="right"}}
-    {{/if}}
-    <br>
-    <b>Confirm your new password</b>
-    <br>
-    {{dds/text-input
-      wide=true
-      allRow=true
-      password=true
-      noAutoComplete=true
-      field=(mut confirmPassword)
-      enter=(if (v-get this "isValid") (action "submit"))
-      invalid=(v-get this "confirmPassword" "isInvalid")
-      errorMessage=(v-get this "confirmPassword" "message")
-      float="right"
-    }}
     <hr class="light">
     <b>Enter your current password</b>
     <p>We need this to confirm your changes</p>

@@ -11,9 +11,10 @@ export default Route.extend({
 
   actions: {
     loading: function(transition, originRoute) {
-      this.get('overlay').show();
+      let overlay = this.get('overlay');
+      overlay.show();
       transition.promise.finally(() => {
-        // this.get('overlay').hide();
+        // overlay.hide();
       });
 
       return true;
@@ -37,7 +38,7 @@ export default Route.extend({
         this.get('auth').reauthenticate();
         this.get('overlay').showCsrfError();
       } else if ( error && error.status == 404 ) {
-        this.transitionTo('not-found');
+        this.transitionTo('404');
       } else if ( error && error.status == 405 ) {
         this.transitionTo('access-forbidden');
       } else if ( error && error.status == 422 && error.payload.errors && error.payload.errors[0].alert) {

@@ -1,0 +1,20 @@
+<p>
+  <b class="sapphire">Email address</b>
+</p>
+{{dds/text-input
+  thin=true
+  noLabel=true
+  field=(mut form.email)
+  showError=true
+  invalid=(v-get form "email" "isInvalid")
+  errorMessage=(v-get form "email" "message")
+  apiError=apiError.email
+}}
+<br>
+{{dds/new-password
+  thin=true
+  theme="sapphire"
+  field=(mut form.newPassword)
+  allowBlank=true
+  valid=(mut form.passwordValid)
+}}

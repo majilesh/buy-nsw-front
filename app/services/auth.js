@@ -110,6 +110,10 @@ export default Service.extend({
     });
   },
 
+  currentRouteName: computed('router.currentRouteName', function () {
+    return this.get('router').get('currentRouteName');
+  }),
+
   reauthenticateTask: task(function * () {
     this.get('overlay').show('auth');
     let response = yield this.get('ajax').request('/api/users/authenticate');
@@ -143,7 +147,7 @@ export default Service.extend({
       this.get('overlay').showCsrfError();
     }
     if (error.status == 404) {
-      this.get('router').transitionTo("not-found");
+      this.get('router').transitionTo("404");
     }
     if (error.status == 405) {
       this.get('router').transitionTo("access-forbidden");
@@ -155,8 +159,12 @@ export default Service.extend({
   },
 
   transitToSignin() {
-    this.set('locationHref', window.location.href)
-    this.get('router').transitionTo("sign-in");
+    this.reauthenticate();
+    if(window.location.pathname != '/ict/login') {
+      this.set('locationHref', window.location.href);
+      let router = this.get('router');
+      router.transitionTo("sign-in");
+    }
   },
 
   init() {

@@ -10,14 +10,16 @@ export default Route.extend({
     this.get('auth').setPageAccess('seller-only');
   },
   renderTemplate: function() {
-    this.render('profile-builder', {
-      into: 'profile-builder'
+    this.render('seller-account', {
+      into: 'seller-account'
     });
   },
   model(params) {
     this.set('stepName', params.step_name);
     return RSVP.hash({
-      form: this.store.queryRecord("seller-account/" + params.step_name, { current: true }),
+      form: (
+        params.step_name == 'login-details' ? this.store.queryRecord("user", {current: true}) :
+        this.store.queryRecord("seller-account/" + params.step_name, { current: true }) ),
       seller: this.store.queryRecord('seller', { current: true }),
       steps: this.get('ajax').request('/api/sellers/sellers/steps?account=true', {
         method: 'GET',

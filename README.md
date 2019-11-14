@@ -1,4 +1,4 @@
-# buy-nsw-ember
+# buy-nsw-front
 
 This README outlines the details of collaborating on this Ember application.
 A short introduction of this app could easily go here.
@@ -15,7 +15,7 @@ You will need the following things properly installed on your computer.
 ## Installation
 
 * `git clone <repository-url>` this repository
-* `cd buy-nsw-ember`
+* `cd buy-nsw-front`
 * `npm install`
 
 ## Running / Development
@@ -61,7 +61,7 @@ Make use of the many generators for code, try `ember help generate` for more det
   server {
     root /var/www/html;
     index index.html;
-    server_name buy-nsw-ember;
+    server_name buy-nsw-front;
     location / {
       include /etc/nginx/mime.types;
       try_files $uri $uri/ /index.html;
