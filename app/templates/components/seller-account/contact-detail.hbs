@@ -1,1 +1,11 @@
-{{yield}}
+{{#if underEdit}}
+  {{seller-account/contact-detail-edit form=form}}
+{{else}}
+  {{seller-account/contact-detail-view form=form buyerView=true}}
+{{/if}}
+<br>
+{{seller-account/edit-save
+  theme="turquoise"
+  underEdit=(mut underEdit)
+  form=form
+}}

@@ -1,0 +1,91 @@
+// ### start TEMP - remove; prevent build error - only just added to buy-color-sheet.scss in style repo  ###
+$BUY-color-border-grey-alt:      #d7d7d7;
+$BUY-color-heading-blue:         #122664;
+// ### end TEMP - remove
+
+.supplier-account {
+  article {
+    border-top: 1px solid $BUY-color-border-grey-alt;
+    border-bottom: 1px solid $BUY-color-border-grey-alt;
+    @include AU-space( margin-left, 1unit );
+    > header {
+      @include AU-space( margin-bottom, .5unit );
+      h3 {
+        float: left;
+      }
+      .au-btn {
+        float: right;
+      }
+      @include AU-clearfix;
+    }
+  }
+  nav {
+    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.1);
+  }
+  // padding variations (override .au-grid settings):
+  .au-grid & {
+    article {
+      &.col-sm-23 {
+        @include AU-space( padding, 2unit 3unit 1.5unit 4.5unit );
+      }
+    }
+    nav {
+      &.col-sm-11 {
+        @include AU-space( padding, 2unit 1unit 1.5unit 2unit );
+      }
+    }
+  }
+  .au-btn {
+    font-size: .87rem;
+    font-weight: 600;
+    @include AU-space( padding, .3unit 2unit );
+    text-transform: uppercase;
+  }
+  hr {
+    border-top: 1px solid #E0E0E0;
+    @include AU-space( margin, 1unit 0 1unit 0 );
+  }
+  .cool-infobox {
+    -ms-flex-align: center;
+    align-items: center;
+    display: -ms-flexbox;
+    display: flex;
+    &.sapphire {
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      @include AU-space( padding, .7unit 2unit .7unit .7unit );
+    }
+    svg {
+      @include AU-space( margin, .5unit 1.5unit .5unit .5unit );
+    }
+  }
+  h4 {
+    color: $BUY-color-heading-blue;
+    font-weight: 600;
+  }
+  dt {
+    font-weight: 600;
+  }
+  dd {
+    @include AU-space( margin, .5unit 0 );
+  }
+}
+
+// new status indicator in article
+.status.status--accepted {
+  background-color: transparent;
+  border: 1px $BUY-color-meta-tag solid;
+  color: $BUY-color-meta-tag;
+  display: inline-block;
+  @include AU-space( padding, .4unit 2.25unit );
+  text-transform: uppercase;
+  .au-body & {
+    font-size: .87rem;
+    font-weight: 600;
+  }
+}
+
+.status__reporter {
+  @include AU-fontgrid( xs );
+  @include AU-space( margin-top, .25unit );
+}
+// ### end supplier-account ###
