@@ -97,6 +97,8 @@
     ]
   },
   "dependencies": {
-    "@digitalnsw/buy-nsw-style": "git://github.com/digitalnsw/buy-nsw-style.git"
+    "@digitalnsw/buy-nsw-style": "git://github.com/digitalnsw/buy-nsw-style.git",
+    "acorn": "^6.3.0",
+    "cldr-core": "^29.0.0"
   }
 }
