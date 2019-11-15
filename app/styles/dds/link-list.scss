@@ -1,0 +1,28 @@
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------
+// link-lists module
+// A simple list of inline links.
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+/**
+ * list of links without bullet points
+ * 	default list is vertical
+ *	--inline variant is horizontal (side-by-side)
+ */
+.au-link-list {
+	@include AU-fontgrid( sm );
+	list-style-type: none;
+	margin: 0;
+	@include AU-space( padding, 0.25unit 0 );
+
+	> li {
+		@include AU-space( margin, 0.25unit );
+	}
+
+	&.au-link-list--inline {
+		display: inline-block;
+
+		> li {
+			display: inline-block;
+		}
+	}
+}

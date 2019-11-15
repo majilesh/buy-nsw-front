@@ -1,0 +1,19 @@
+{{#if (and signout auth.user)}}
+  <div class="row">
+    <div class="col-sm-9">
+    </div>
+    <div class="col-sm-18">
+      {{logout-first}}
+    </div> 
+  </div>
+{{else if (and signin (not auth.user))}}
+  <div class="row">
+    <div class="col-sm-9">
+    </div>
+    <div class="col-sm-18">
+      {{login-first}}
+    </div> 
+  </div>
+{{else}}
+  {{yield}}
+{{/if}}
