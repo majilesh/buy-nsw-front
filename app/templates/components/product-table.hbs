@@ -1,0 +1,63 @@
+{{#if id}}
+  <div id={{id}}></div>
+{{/if}}
+{{#if title}}
+  <h2 class="au-display-lg">
+    {{title}}
+  </h2>
+  <hr class="light">
+{{/if}}
+{{#each rows as |item|}}
+  {{#if (and item.placeHolder (or item.hide (eq item.description null)))}}
+    <div class="row">
+      <div class="col-sm-15">
+        <b>{{item.title}}</b>
+      </div>
+      <div class="col-sm-21">
+        {{item.placeHolder}}
+      </div>
+    </div>
+    <div class="clear-both"></div>
+    <hr class="light">
+  {{/if}}
+  {{#unless (or item.hide (eq item.description null))}}
+    <div class="row">
+      <div class="col-sm-15">
+        <b>{{item.title}}</b>
+      </div>
+      <div class="col-sm-21">
+        {{#if (or (eq item.booleanText true) (eq item.booleanText false))}}
+          {{if (eq item.booleanText true) "Yes" "No"}}
+        {{else if item.description}}
+          {{if item.humanize (humanize item.description) (breaklines item.description)}}
+        {{else if item.link}}
+          <a href={{item.link}} target="_blank">{{item.link}}</a>
+        {{else if item.list}}
+          <ul class="less-left-padding">
+          {{#each item.list as |listitem|}}
+            <li>{{humanize listitem}}</li>
+          {{/each}}
+          </ul>
+        {{else if item.rows}}
+          {{#each item.rows as |row|}}
+            <div class="row">
+              <div class="col-sm-18">
+                <b>{{row.title}}</b>
+              </div>
+              <div class="col-sm-18">
+                {{row.description}}
+              </div>
+              <br>
+              <br>
+            </div>
+          {{/each}}
+        {{/if}}
+      </div>
+      <div class="clear-both"></div>
+      <hr class="light">
+    </div>
+  {{/unless}}
+{{/each}}
+{{#unless noTopLink}}
+  {{dds/top-link}}
+{{/unless}}

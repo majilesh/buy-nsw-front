@@ -1,0 +1,111 @@
+<div class="col-sm-30">
+  <h1 class="au-display-lg">Review your details</h1>
+  <br>
+  <p>
+    Please check the details below before submitting your application.
+    <br>
+    <br>
+    <br>
+    <div class="row">
+      <div class="col-sm-12">
+        <b>Name</b>
+      </div>
+      <div class="col-sm-24">
+        {{buyer.name}}
+      </div>
+    </div>
+    <hr class="light less-margin">
+
+    <div class="row">
+      <div class="col-sm-12">
+        <b>Organisation</b>
+      </div>
+      <div class="col-sm-24">
+        {{buyer.organisation}}
+      </div>
+    </div>
+    <hr class="light less-margin">
+
+    <div class="row">
+      <div class="col-sm-12">
+        <b>Planned use</b>
+      </div>
+      <div class="col-sm-24">
+        {{buyer.application_body}}
+      </div>
+    </div>
+    <hr class="light less-margin">
+
+    <div class="row">
+      <div class="col-sm-12">
+        <b>Purchase timeline</b>
+      </div>
+      <div class="col-sm-24">
+        {{if (eq buyer.cloud_purchase 'make-purchase') "Yes, we’re currently looking to make a cloud purchase."}}
+        {{if (eq buyer.cloud_purchase 'plan-purchase') "Yes, we’re planning a cloud purchase in the next six months."}}
+        {{if (eq buyer.cloud_purchase 'no-plan') "We’re not currently planning a cloud purchase."}}
+      </div>
+    </div>
+    <hr class="light less-margin">
+
+    <div class="row">
+      <div class="col-sm-12">
+        <b>Welcome call</b>
+      </div>
+      <div class="col-sm-24">
+        {{if (eq buyer.contactable 'phone-number') "Yes."}}
+        {{if (eq buyer.contactable 'email') "I'd prefer email."}}
+        {{if (eq buyer.contactable 'none') "No thanks."}}
+      </div>
+    </div>
+    <hr class="light less-margin">
+
+    {{#if (eq buyer.contactable 'phone-number')}}
+      <div class="row">
+        <div class="col-sm-12">
+          <b>Contact number</b>
+        </div>
+        <div class="col-sm-24">
+          {{buyer.contact_number}}
+        </div>
+      </div>
+      <hr class="light less-margin">
+    {{/if}}
+
+    <div class="row">
+      <div class="col-sm-12">
+        <b>Employment status</b>
+      </div>
+      <div class="col-sm-24">
+        {{if (eq buyer.employment_status 'employee') "I'm a NSW Government employee and need access to buy.nsw to perform my role."}}
+        {{if (eq buyer.employment_status 'contractor') "I'm a contractor working in state or local government."}}
+        {{if (eq buyer.employment_status 'other-eligible') "I'm an employee of another organisation that has registered as an eligible buyer."}}
+      </div>
+    </div>
+    <hr class="light less-margin">
+
+    {{#if (eq buyer.employment_status 'contractor')}}
+      <div class="row">
+        <div class="col-sm-12">
+          <b>Manager's email</b>
+        </div>
+        <div class="col-sm-24">
+          {{buyer.manager_email}}
+        </div>
+      </div>
+      <hr class="light less-margin">
+    {{/if}}
+  </p>
+  <p>
+    <a
+      class="au-btn au-btn--tertiary"
+      onClick={{action "back"}}
+    >← Back</a>
+    <span class="float-right">
+      {{dds/primary-button
+        onClick=(action "submit")
+        label="Submit application"
+      }}
+    </span>
+  </p>
+</div>

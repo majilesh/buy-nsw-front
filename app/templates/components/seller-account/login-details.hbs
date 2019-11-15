@@ -1,0 +1,20 @@
+{{seller-profile/edit-save
+  theme="sapphire"
+  underEdit=(mut underEdit)
+  class="pull-right"
+  form=form
+}}
+<h2><b>Account login details</b></h2>
+<br>
+{{#if underEdit}}
+  {{seller-account/login-details-edit form=form}}
+{{else}}
+  {{seller-account/login-details-view form=form buyerView=true}}
+{{/if}}
+<br>
+{{seller-profile/edit-save
+  theme="sapphire"
+  underEdit=(mut underEdit)
+  class="pull-right"
+  form=form
+}}

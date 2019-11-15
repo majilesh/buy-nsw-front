@@ -1,0 +1,61 @@
+{{#link-to "product" product.id}}
+  <h3>
+    {{#if product.name}}
+      {{product.name}}
+    {{else}}
+      product {{product.id}}
+    {{/if}}
+  </h3>
+{{/link-to}}
+<p>
+  {{#if product.summary}}
+    {{product.summary}}
+  {{else}}
+    <small>
+      &lt; Product summary is blank &gt;
+    </small>
+  {{/if}}
+</p>
+<br>
+<div class="row">
+  <div class="col-sm-24">
+    <button class="au-btn" onclick={{action "confirmProductAction"}}>Confirm</button>
+    <select
+      class="au-select fixed-width"
+      onChange={{action "actionSelected" value="target.value"}}
+    >
+      <option
+        disabled
+        selected={{if (eq action "") "selected"}}
+      >
+        Please select
+      </option>
+      {{#each product.validActions as |item|}}
+        <option value={{item.code}}>{{item.name}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <div class="col-sm-12">
+    <span
+      class="product-status {{if product.live "live"}} {{if (eq product.status "deactivated") "deactivated"}}"
+    >
+      {{#if (eq product.status "live")}}
+        {{fa-icon "check"}}
+      {{/if}}
+      {{#if (eq product.status "deactivated")}}
+        {{fa-icon "ban"}}
+      {{/if}}
+      {{#if product.pending}}
+        {{fa-icon "eye"}}
+      {{/if}}
+      {{#if product.underEdit}}
+        {{fa-icon "edit"}}
+      {{/if}}
+      {{#if product.changesRequested}}
+        {{fa-icon "exclamination"}}
+      {{/if}}
+      {{product.friendlyStatus}}
+    </span>
+  </div>
+</div>
+<hr>

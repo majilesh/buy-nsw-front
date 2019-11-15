@@ -1,0 +1,68 @@
+{{#dds/template-body auth=auth signin=true}}
+  <div class="col-sm-3">
+  </div>
+  <div class="col-sm-30">
+    <h1 class="au-display-xl">Buy {{this.model.product.name}}</h1>
+    <p><b>buy.nsw</b> will help you through the ordering process. In order to tailor our help to you we need to ask you a few more questions.</p>
+    <p>A member of our team will then contact you to help finalise the order.</p>
+    <p>
+      <b>What is the approximate value of the contract, excluding GST</b><br>
+      <small>Please enter numbers only, for example 100000 not $100,000.</small><br>
+      {{dds/text-input
+        wide=true
+        allRow=true
+        field=(mut this.model.order.estimatedContractValue)
+        enter=(if (v-get this "isValid") (action "submit"))
+        invalid=(v-get this "model.order.estimatedContractValue" "isInvalid")
+        errorMessage=(v-get this "model.order.estimatedContractValue" "message")
+        float="right"
+      }}
+    </p>
+    <br>
+    <p>
+      <b>Have you contacted the supplier about your intention to buy?</b><br>
+      <br>
+      {{dds/radio-group
+        items=(array
+          (hash
+            key="yes"
+            label="Yes"
+          )
+          (hash
+            key="no"
+            label="No"
+          )
+        )
+        field=(mut this.model.order.contactedSeller)
+      }}
+    </p>
+    <br>
+    <p>
+      <b>Have you bought or been involved with buying cloud products before?</b><br>
+      <br>
+      {{dds/radio-group
+        items=(array
+          (hash
+            key="yes"
+            label="Yes"
+          )
+          (hash
+            key="no"
+            label="No"
+          )
+        )
+        field=(mut this.model.order.purchasedCloudBefore)
+      }}
+    </p>
+    <br>
+    <p>
+      <span class="float-right">
+        {{dds/primary-button
+          onClick=(action "submit")
+          disabled=(v-get this "isInvalid")
+          label="Submit"
+        }}
+      </span>
+    </p>
+  </div>
+{{/dds/template-body}}

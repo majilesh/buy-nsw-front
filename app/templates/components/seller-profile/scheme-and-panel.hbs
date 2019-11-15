@@ -1,0 +1,22 @@
+{{#dds/accordion-container
+  title="Schemes and panels"
+  subtitle="𝗧𝗶𝗽: Schemes and panels tip goes here"
+  theme="sapphire"
+  expanded=expanded}}
+  {{seller-profile/edit-save
+    theme="sapphire"
+    underEdit=(mut underEdit)
+    form=form
+  }}
+  {{#if underEdit}}
+    {{seller-profile/scheme-and-panel-edit form=form}}
+  {{else}}
+    {{seller-profile/scheme-and-panel-view form=form}}
+  {{/if}}
+  {{seller-profile/edit-save
+    theme="sapphire"
+    underEdit=(mut underEdit)
+    form=form
+  }}
+
+{{/dds/accordion-container}}

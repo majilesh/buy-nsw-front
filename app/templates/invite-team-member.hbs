@@ -1,0 +1,45 @@
+{{#dds/template-body auth=auth signin=true}}
+  {{ dds/bread-crumbs
+    links=(array
+      (hash name="Dashboard" route="seller-dashboard")
+      (hash name="Your team members" route="team-members")
+      (hash name="Invite a team member" route="invite-team-member")
+    )
+  }}
+  <div class="col-sm-30">
+    <br>
+    <h1 class="au-display-lg">Invite a team member</h1>
+    <p>
+      You can invite other members of your team to your supplier account.
+    </p>
+    <p>
+      Team members get full access to view and edit your company's registration and profile.
+    </p>
+    <p>
+      We will send an invitation to them by email with further instructions.
+    </p>
+    <p>
+      {{#dds/text-input
+        wide=true
+        field=(mut this.model.email)
+        enter=(if (v-get this "isValid") (action "invite"))
+        apiError=apiError.email
+        invalid=(v-get this "model.email" "isInvalid")
+        errorMessage=(v-get this "model.email" "message")
+        float="right"
+      }}
+      <b>Email address:</b>
+      {{/dds/text-input}}
+    </p>
+    <div class="clear-both"></div>
+    <p>
+      <span class="float-right">
+        {{dds/primary-button
+          onClick=(action "invite")
+          disabled=(v-get this "isInvalid")
+          label="Send invitation"
+        }}
+      </span>
+    </p>
+  </div>
+{{/dds/template-body}}

@@ -1,0 +1,11 @@
+<p>
+  {{#if product.underEdit}}
+    <a href="/products/{{product.id}}/{{step.code}}">
+      {{step.name}}
+    </a>
+  {{else}}
+    <u> {{step.name}} </u>
+  {{/if}}
+  <span class={{step.status}}>{{step.status}}</span>
+  <hr class="light">
+</p>

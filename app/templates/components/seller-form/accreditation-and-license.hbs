@@ -1,0 +1,93 @@
+<h2 class="underline-light">
+  <b>Accreditations and licenses</b>
+</h2>
+<br>
+<br>
+{{dds/inpage-nav
+  sections=(array
+    (hash name="Accreditations and supporting documents" anchor="accreditations")
+    (hash name="Licenses and supporting documents" anchor="licenses")
+  )
+}}
+<div class="cool-infobox">
+  {{fa-icon "exclamation-circle" size="2x" prefix="fal" pull="left"}}
+  <span>
+    This information will appear on your supplier profile and is publicly available.
+  </span>
+  <div class="clear-both"></div>
+</div>
+<p>
+  This is your opportunity to demonstrate your capability. The below fields are optional but can help your business attract potential buyers.
+</p>
+<hr class="light">
+<h3 id="accreditations">
+  <b>Accreditations and supporting documents</b>
+</h3>
+<p>
+  Here you can list accreditations awarded by an accredited certification body that will be of value to a buyer. To add an accreditation, please include the name of the accrediting authority and the title of the accreditation. If you list an accreditation, you will need to upload a document evidencing it.
+</p>
+<p>Membership of government schemes and panels are not considered accreditations.</p>
+<br>
+{{dds/multi-text
+  field=(mut form.accreditations)
+  apiError=form.apiErrors.accreditations
+  showError=(or showError (not-eq form.status 'todo'))
+  signal=form.signal
+}}
+<p>
+  <b> Upload a file</b>
+</p>
+<p class="gray">
+  The files should be no larger than 10MB and in PDF, PNG or JPEG format. You can upload a single document or separate documents by using the 'Add another file' button below.
+</p>
+{{dds/file-upload
+  name="accreditation_document"
+  field=(mut form.accreditation_document_ids)
+  apiError=form.apiErrors.accreditation_document_ids
+  showError=true
+  invalid=(v-get form 'accreditation_document_ids_valid' 'isInvalid')
+  errorMessage=(v-get form 'accreditation_document_ids_valid' 'message')
+  signal=form.signal
+  fileService=fileService
+  overlay=overlay
+  multiple=true
+}}
+<p>
+  {{dds/top-link}}
+</p>
+<hr class="light">
+<h3 id="licenses">
+  <b>Licenses and supporting documents</b>
+</h3>
+<p>
+  Here you can list relevant licenses awarded by a licensing authority. To add a license, please include the name of the licensing authority and title of the license. If you list a license, you will need to upload a document evidencing it. 
+</p>
+<br>
+{{dds/multi-text
+  field=(mut form.licenses)
+  apiError=form.apiErrors.licenses
+  showError=(or showError (not-eq form.status 'todo'))
+  signal=form.signal
+}}
+<p>
+  <b> Upload a file</b>
+</p>
+<p class="gray">
+  The files should be no larger than 10MB and in PDF, PNG or JPEG format. You can upload a single document or separate documents by using the 'Add another file' button below.
+</p>
+{{dds/file-upload
+  name="license_document"
+  field=(mut form.license_document_ids)
+  apiError=form.apiErrors.license_document_ids
+  showError=true
+  invalid=(v-get form 'license_document_ids_valid' 'isInvalid')
+  errorMessage=(v-get form 'license_document_ids_valid' 'message')
+  signal=form.signal
+  fileService=fileService
+  overlay=overlay
+  multiple=true
+}}
+<p>
+  {{dds/top-link}}
+</p>
+<hr class="light">

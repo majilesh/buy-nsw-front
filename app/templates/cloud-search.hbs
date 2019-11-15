@@ -1,0 +1,347 @@
+{{#dds/template-body auth=auth}}
+  {{ dds/bread-crumbs
+    links=(array
+      (hash name="buy.nsw" route="index")
+      (hash name=title)
+    )
+  }}
+  <br>
+  <div class="row">
+    <div class="col-sm-18 col-md-15 col-lg-12">
+      <h2 class="au-display-xl underline-light">
+        <b>{{title}}</b>
+      </h2>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-sm-18 col-md-15 col-lg-12">
+      <h2 class="au-display-lg">
+        <b>Apply filters</b>
+      </h2>
+      <p>
+        Select more than one filter in a box for a larger range of results.
+      </p>
+      <br>
+      {{#dds/accordion-container title="Products for" expanded=true}}
+        {{dds/checkbox-array
+          checkAll=true
+          field=(mut this.audience)
+          break=true
+          wide=true
+          items=(array
+            (hash
+              key="accounting-finance"
+              label="Accounting and finance"
+            )
+            (hash
+              key="audit-risk-compliance"
+              label="Audit, risk and compliance"
+            )
+            (hash
+              key="data-analytics"
+              label="Data and analytics"
+            )
+            (hash
+              key="developers"
+              label="Developers"
+            )
+            (hash
+              key="facilities"
+              label="Facilities"
+            )
+            (hash
+              key="human-resource-management"
+              label="Human resource management"
+            )
+            (hash
+              key="legal"
+              label="Legal"
+            )
+            (hash
+              key="operations-management"
+              label="Operations management"
+            )
+            (hash
+              key="projects-team-collaboration"
+              label="Projects and team collaboration"
+            )
+            (hash
+              key="sales-marketing"
+              label="Sales and marketing"
+            )
+            (hash
+              key="security-cyber"
+              label="Security and cyber"
+            )
+          )
+        }}
+      {{/dds/accordion-container}}
+      <br>
+      {{#dds/accordion-container title="Product characteristics" expanded=true}}
+        {{dds/checkbox-array
+          checkAll=true
+          field=(mut this.characteristic)
+          break=true
+          wide=true
+          items=(array
+            (hash
+              key="data_in_australia"
+              label="Data hosted only in Australia"
+            )
+            (hash
+              key="api"
+              label="Api available"
+            )
+            (hash
+              key="mobile_devices"
+              label="Works on mobile devices"
+            )
+            (hash
+              key="all_accessible"
+              label="WCAG 2.0 AA compliant"
+            )
+          )
+        }}
+      {{/dds/accordion-container}}
+      <br>
+      {{#dds/accordion-container title="Pricing" expanded=true}}
+        {{dds/checkbox-array
+          checkAll=true
+          field=(mut this.pricing)
+          break=true
+          wide=true
+          items=(array
+            (hash
+              key="free_version"
+              label="Free version available"
+            )
+            (hash
+              key="free_trial"
+              label="Free trial available"
+            )
+            (hash
+              key="education"
+              label="Pricing for education"
+            )
+            (hash
+              key="not_for_profit"
+              label="Pricing for not-for-profits"
+            )
+          )
+        }}
+      {{/dds/accordion-container}}
+      <br>
+      {{#dds/accordion-container title="Business identifiers" expanded=true}}
+        {{dds/checkbox-array
+          checkAll=true
+          field=(mut this.identifiers)
+          break=true
+          wide=true
+          items=(array
+            (hash
+              key="disability"
+              label="Australian disability enterprise"
+            )
+            (hash
+              key="indigenous"
+              label="Aboriginal or Torres Strait Islander business"
+            )
+            (hash
+              key="not_for_profit"
+              label="Not for profit/social enterprise"
+            )
+            (hash
+              key="regional"
+              label="Regional"
+            )
+            (hash
+              key="start_up"
+              label="Start-up"
+            )
+            (hash
+              key="sme"
+              label="SME"
+            )
+          )
+        }}
+      {{/dds/accordion-container}}
+      <!--
+      <br>
+      {{#dds/accordion-container title="Reseller type" expanded=true}}
+        {{dds/checkbox-array
+          field=(mut this.reseller)
+          break=true
+          wide=true
+          items=(array
+            (hash
+              key="reseller"
+              label="Reseller"
+            )
+            (hash
+              key="not_reseller"
+              label="Not a reseller"
+            )
+          )
+        }}
+      {{/dds/accordion-container}}
+      -->
+      <br>
+      {{#dds/accordion-container title="Security standards" expanded=true}}
+        {{dds/checkbox-array
+          checkAll=true
+          field=(mut this.security)
+          break=true
+          wide=true
+          items=(array
+            (hash
+              key="iso_27001"
+              label="ISO/IEC 27001"
+            )
+            (hash
+              key="iso_27017"
+              label="ISO/IEC 27017"
+            )
+            (hash
+              key="iso_27018"
+              label="ISO/IEC 27018"
+            )
+            (hash
+              key="csa_star"
+              label="CSA STAR"
+            )
+            (hash
+              key="pci_dss"
+              label="PCI DSS"
+            )
+            (hash
+              key="soc_2"
+              label="SOC II"
+            )
+            (hash
+              key="irap_assessed"
+              label="IRAP assessed"
+            )
+            (hash
+              key="asd_certified"
+              label="ASD certified"
+            )
+          )
+        }}
+      {{/dds/accordion-container}}
+      <br>
+      {{#dds/accordion-container title="Connections to government networks" expanded=true}}
+        {{dds/checkbox-array
+          checkAll=true
+          field=(mut this.government_network_type)
+          break=true
+          wide=true
+          items=(array
+            (hash
+              key="govdc"
+              label="GovDC"
+            )
+            (hash
+              key="govlink"
+              label="GovLink"
+            )
+            (hash
+              key="aarnet"
+              label="AARNet"
+            )
+            (hash
+              key="icon"
+              label="ICON"
+            )
+            (hash
+              key="other"
+              label="Other"
+            )
+          )
+        }}
+      {{/dds/accordion-container}}
+      <br>
+      <a class="au-btn" onclick={{action "search"}}>Update results</a>
+      <br>
+      <br>
+      <br>
+    </div>
+    <div class="col-sm-18 col-md-21 col-lg-24">
+      <h2 class="au-display-lg underline-dark">
+        <b>{{productsCount}} products</b>
+      </h2>
+      <br>
+      <br>
+      {{dds/text-input
+        wide=true
+        allRow=true
+        field=(mut this.term)
+        enter=(action "search")
+        placeHolder="Search by keyword"
+      }}
+      <br>
+      {{#if products}}
+        {{#each products as |product|}}
+          {{#link-to "public-product" product.id}}
+            <h2 class="au-display-lg">
+              {{product.name}}
+            </h2>
+          {{/link-to}}
+          <br>
+          {{#link-to "seller-profile" product.public_seller_id}}
+            <h2 class="au-display-md">
+              {{product.public_seller_name}}
+            </h2>
+          {{/link-to}}
+          <ul class="au-tags">
+            {{#each product.tags as |tag|}}
+              <li>
+                {{tag}}
+              </li>
+            {{/each}}
+          </ul>
+          <p class="five-lines">{{breaklines product.summary}}</p>
+          <hr>
+        {{/each}}
+      {{/if}}
+      <!--
+      <select
+        class="au-select au-select--block"
+        value={{mut sortBy}}
+      >
+        <option
+          disabled
+          selected={{if (eq sortBy null) "selected"}}
+        >
+          Sort by
+        </option>
+        <option value="by-product">
+          Sort by product name
+        </option>
+        <option value="by-seller">
+          Sort by supplier name
+        </option>
+        <option value="by-update">
+          Sort by most recent
+        </option>
+      </select>
+      -->
+      <br>
+      <br>
+      <div>
+        {{#if (gt pageNum 1)}}
+          <a class="float-left" href="#" onclick={{action "lastPage"}}>
+            ← Previous
+          </a>
+        {{/if}}
+
+        {{#if (lt pageNum totalPages)}}
+          <a class="float-right" href="#" onclick={{action "nextPage"}}>
+            Next →
+          </a>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+{{/dds/template-body}}

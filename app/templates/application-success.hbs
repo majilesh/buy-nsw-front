@@ -1,0 +1,74 @@
+{{#dds/template-body auth=auth signin=true}}
+  {{ dds/bread-crumbs
+    links=(array
+      (hash name="buy.nsw" route="index")
+      (hash name="Dashboard" route="seller-dashboard")
+      (hash name="Supplier application" route="supplier-application")
+    )
+  }}
+  <br>
+  <h2 class="au-display-xxl underline-light">
+    <b>Thank you</b>
+  </h2>
+  <h3 class="au-display-lg">
+    <b>Your {{if this.model.live "account changes" "application"}} has been received</b>
+  </h3>
+  <hr class="light">
+  <div class="col-sm-36 col-md-30 col-md-offset-3">
+  <div class="center max60">
+    <br>
+    <span class="green"> {{fa-icon "check-circle" size="6x"}} </span>
+    <br>
+    <br>
+    <h3 class="au-display-lg">
+      <b>What next?</b>
+    </h3>
+  </div>
+  <br>
+  <p>
+    We're reviewing your supplier application and will be in touch within 5 working days.
+  </p>
+  <p>
+    Once we have completed our review, you will receive an email with the outcome. Don't worry, if there are any issues with the information you have provided, we will let you know and you will be able to update your application.
+  </p>
+  <p>
+    In the meantime, if you have any questions or concerns, please {{link-to "contact us" "contact"}}.
+  </p>
+  <br>
+  <br>
+  <div class="max60">
+    <div class="col-sm-12 center">
+      <span class="gray"> {{fa-icon "edit" size="6x" prefix="fal"}} </span>
+      <p><b>Make changes to your supplier application</b></p>
+      <p>
+        Unsure about your submission? You can withdraw your application from the {{link-to "application page" "supplier-application"}}. If you can't withdraw your application, it means our reviewers are already looking at it. You will be able to make further changes to your information after the review is complete.
+      </p>
+      <br>
+      <br>
+    </div>
+    <div class="col-sm-12 center">
+      <span class="gray"> {{fa-icon "users" size="6x" prefix="fal"}} </span>
+      <p><b>Connect with buyers</b></p>
+      <p>
+        After your supplier application has been reviewed, your supplier profile will be live on <b>buy.nsw</b>. Buyers will be able to search the supplier list to find your business. You will also be able to add cloud products to your supplier profile, which will help buyers understand if your business is right for them.
+      </p>
+      <br>
+      <br>
+    </div>
+    <div class="col-sm-12 center">
+      <span class="gray"> {{fa-icon "lightbulb-on" size="6x" prefix="fal"}} </span>
+      <p><b>Useful links</b></p>
+      <p>
+        {{link-to "Supplier guide" "seller-guide"}}
+        <br>
+        {{link-to "About buy.nsw" "about-page"}}
+        <br>
+        {{link-to "Help" "help-page"}}
+        <br>
+        <a target="_blank" href="https://www.procurepoint.nsw.gov.au/">ProcurePoint</a>
+        <br>
+      </p>
+    </div>
+  </div>
+  </div>
+{{/dds/template-body}}

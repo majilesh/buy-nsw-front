@@ -1,0 +1,252 @@
+{{dds/skip-link}}
+
+{{user-pretender}}
+
+{{dds/browser-compatibility browser=(user-agent "browser")}}
+{{dds/template-header auth=auth}}
+{{dds/main-nav auth=auth}}
+
+<main id="content">
+  <div class="au-body">
+    {{#dds/template-body auth=auth}}
+      <br>
+      <div class="row">
+        <div class="col-sm-15">
+          <p class="home-title">
+            <big>
+              <b>buy.nsw</b>
+              is a place for buyers and suppliers of <b class="dark-blue">ICT products and services</b> to connect
+            </big>
+            <br>
+            <br>
+            {{link-to "Learn more" "about-page" class="au-cta-link no-decoration"}}
+            <!--
+            <a class="au-cta-link no-decoration" href="https://vimeo.com/272480667" target="_blank">Learn more</a>
+            -->
+          </p>
+        </div>
+        <div class="col-sm-3">
+        </div>
+        <div class="col-sm-18 home-top-links">
+          {{#if auth.user}}
+            {{#if auth.isSeller}}
+              {{#link-to "seller-dashboard"}}
+                <p class="au-callout au-callout--home-top light">
+                  <div class="right-arrow">
+                    {{fa-icon "chevron-right"}}
+                  </div>
+                  <b>Go to dashboard to continue with your supplier registration</b>
+                  <br>
+                  <br>
+                  {{link-to "Find more about becoming a supplier" "seller-guide"}}
+                </p>
+              {{/link-to}}
+            {{else}}
+              <a class="pointer" onClick={{action "logout"}}>
+                <p class="au-callout au-callout--home-top light">
+                  <div class="right-arrow">
+                    {{fa-icon "chevron-right"}}
+                  </div>
+                  <b>To become a supplier you should logout from your buyer account first</b>
+                  <br>
+                  <br>
+                  <a class="pointer" onClick={{action "logout"}}>Sign out</a>
+                </p>
+              </a>
+            {{/if}}
+          {{else}}
+            {{#link-to "signup" "seller"}}
+              <p class="au-callout au-callout--home-top light">
+                <div class="right-arrow">
+                  {{fa-icon "chevron-right"}}
+                </div>
+                <b>Register to supply cloud products and services to NSW government</b>
+                <br>
+                <br>
+                {{link-to "Learn about becoming a supplier" "seller-guide"}}
+              </p>
+            {{/link-to}}
+          {{/if}}
+          <br>
+          {{#if auth.user}}
+            {{#if auth.isBuyer}}
+              {{#link-to "buyer-dashboard"}}
+                <p class="au-callout au-callout--home-top">
+                  <div class="right-arrow">
+                    {{fa-icon "chevron-right"}}
+                  </div>
+                  <b>Go to dashboard to continue with your buyer registration</b>
+                  <br>
+                  <br>
+                  {{link-to "Learn about becoming a buyer" "buyer-guide"}}
+                </p>
+              {{/link-to}}
+            {{else}}
+              <a class="pointer" onClick={{action "logout"}}>
+                <p class="au-callout au-callout--home-top">
+                  <div class="right-arrow">
+                    {{fa-icon "chevron-right"}}
+                  </div>
+                  <b>To become a buyer you should logout from your supplier account first</b>
+                  <br>
+                  <br>
+                  <a class="pointer" onClick={{action "logout"}}>Sign out</a>
+                </p>
+              </a>
+            {{/if}}
+          {{else}}
+            {{#link-to "signup" "buyer"}}
+              <p class="au-callout au-callout--home-top">
+                <div class="right-arrow">
+                  {{fa-icon "chevron-right"}}
+                </div>
+                <b>Register to browse and buy cloud products and services</b>
+                <br>
+                <br>
+                {{link-to "Learn about becoming a buyer" "buyer-guide"}}
+              </p>
+            {{/link-to}}
+          {{/if}}
+        </div>
+      </div>
+    {{/dds/template-body}}
+  </div>
+  <div class="au-body au-body--alt">
+    {{#dds/template-body auth=auth}}
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="home-middle-box">
+            <h6 class="au-display-lg title"><b>Browse suppliers</b></h6>
+            <div class="clear-both"></div>
+            <hr class="light">
+            <div class="highlight">
+              {{#link-to "cloud-sellers"}}
+                <b>Supplier list</b>
+              {{/link-to}}
+            </div>
+            <p>
+              We’ll be adding more ICT categories as we grow.
+            </p>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="home-middle-box">
+            <h6 class="au-display-lg title"><b>Browse cloud products</b></h6>
+            <div class="clear-both"></div>
+            <hr class="light">
+            <div class="highlight">
+              {{#link-to "cloud-search" "applications-software"}}
+                <b>Cloud applications and software</b>
+              {{/link-to}}
+            </div>
+            <p>
+              Incl. accounting tools and customer management softwaere
+            </p>
+            <br>
+            <div class="highlight">
+              {{#link-to "cloud-search" "hosting-infrastructure"}}
+                <b>Cloud hosting and infrastructure</b>
+              {{/link-to}}
+              </div>
+            <p>
+              Incl. website hosting and load balancing services
+            </p>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="home-middle-box">
+            <h6 class="au-display-lg title"><b>Supply cloud products</b></h6>
+            <div class="clear-both"></div>
+            <hr class="light">
+            {{#unless auth.user}}
+              <div class="highlight">
+                {{#link-to "signup" "seller"}}
+                  <b>Register to supply cloud products and services to NSW Government</b>
+                {{/link-to}}
+              </div>
+              <p>
+                Incl. cloud applications and software, hosting and infrastructure, and support services
+              </p>
+            {{/unless}}
+            <br>
+            <div class="highlight">
+              {{#link-to "seller-guide"}}
+                <b>Read the supplier guide</b>
+              {{/link-to}}
+              </div>
+            <p>
+              Learn how to become a supplier on buy.nsw
+            </p>
+          </div>
+        </div>
+      </div>
+    {{/dds/template-body}}
+  </div>
+  <div class="au-body">
+    {{#dds/template-body auth=auth}}
+      &nbsp;
+      <h6 class="au-display-xl"><b>News</b></h6>
+      <br>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="home-news-box">
+            <a target="_blank" class="no-decoration" href="https://www.digital.nsw.gov.au/article/buynsw-takes-another-step-towards-seamless-procurement">
+              <img class="newsletter" style="padding-top: 1rem" src="https://www.digital.nsw.gov.au/sites/default/files/inline-images/Buy_nsw%20blog%20thumb.png" width="100%"/>
+              <div class="padding" style="padding-top: 0">
+                <h6 class="au-display-md">buy.nsw takes another step towards seamless procurement</h6>
+              </div>
+            </a>
+            <hr class="light no-margin">
+            <div class="padding">
+              <span class="date">29 Oct 2019</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="home-news-box">
+            <a target="_blank" class="no-decoration" href="https://www.digital.nsw.gov.au/article/buynsw-looking-back-looking-ahead">
+              <img class="newsletter" src="https://www.digital.nsw.gov.au/sites/default/files/styles/mt_video_gallery_thumbnail/public/2019-01/buy.nsw%20welcomes%202019.jpg.png?itok=zZ5d-rY9" width="100%"/>
+              <div class="padding">
+                <h6 class="au-display-md">buy.nsw looking back, looking ahead</h6>
+              </div>
+            </a>
+            <hr class="light no-margin">
+            <div class="padding">
+              <span class="date">22 Jan 2019</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="home-news-box">
+            <a target="_blank" class="no-decoration" href="https://www.digital.nsw.gov.au/article/blueprint-digital-delivery-nsw">
+              <img class="newsletter" src="https://www.digital.nsw.gov.au/sites/default/files/styles/mt_video_gallery_thumbnail/public/2018-12/CoreAgreements%20%281%29.png?itok=cJy9OmCZ" width="100%"/>
+              <div class="padding">
+                <h6 class="au-display-md">A blueprint for digital delivery in NSW</h6>
+              </div>
+            </a>
+            <hr class="light no-margin">
+            <div class="padding">
+              <span class="date">12 Nov 2018</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="col-sm-25">
+        </div>
+        <div class="col-sm-11">
+          <br>
+          <br>
+          <a target="_blank" href="https://www.digital.nsw.gov.au/blog?tag_id[96]=96" class="au-cta-link float-right no-decoration">
+            View all blogs
+          </a>
+        </div>
+        
+      </div>
+    {{/dds/template-body}}
+  </div>
+  {{dds/page-feedback user=auth.user feedbackService=feedbackService}}
+</main>
+{{dds/register-newsletter}}
+
+{{dds/template-footer auth=auth}}

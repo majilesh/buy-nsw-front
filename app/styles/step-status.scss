@@ -1,0 +1,105 @@
+.product-status {
+  font-family: MontserratBold;
+  color: gray;
+  &.live {
+    color: $AU-color-success;
+  }
+  &.deactivated {
+    color: $AU-color-warning;
+  }
+}
+.steps-list {
+  .accepted {
+    background: $AU-color-success;
+
+    &.not-active {
+      opacity: 0.4;
+    }
+  }
+
+  .please-review {
+    background: $AU-color-warning;
+  }
+
+  .completed {
+    background: $AU-color-info;
+  }
+
+  .updated {
+    background: $AU-color-info;
+  }
+
+  .not-started {
+    background: #A3A3A3;
+  }
+
+  .optional {
+    background: white;
+    color: #5D5C5C !important;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #5D5C5C;
+  }
+
+  .incomplete, .under-review {
+    background: #5D5C5C;
+  }
+
+  .accepted,.please-review,.completed,.updated,.not-started,.incomplete,.under-review,.optional {
+    display: inline-block;
+    float: right;
+    padding: 0.3em 0.4em;
+
+    color: #fff;
+
+    text-transform: uppercase;
+    font-size: 0.85em;
+    line-height: 1.4em;
+    font-family: MontserratBold;
+    width: 10em;
+    text-align: center;
+  }
+
+  hr {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+}
+.supplier-status {
+  padding: 0.5rem 0;
+  border-right: solid white 10px;
+  &.accepted {
+    border-right: solid $AU-color-success 10px;
+  }
+  &.declined {
+    border-right: solid $AU-color-warning 10px;
+  }
+  &.under_review {
+    border-right: solid #AAA 10px;
+  }
+}
+span.form-status {
+  font-family: MontserratBold;
+  font-size: 0.80em;
+  padding: 0.3rem 0.5rem;
+  &.accepted {
+    border: 1px solid $AU-color-success;
+    color: $AU-color-success;
+  }
+  &.declined {
+    background-color: $AU-color-warning;
+    color: white;
+  }
+  &.editted {
+    background-color: gray;
+    color: white;
+  }
+  &.pending {
+    border: 1px solid $AU-color-info;
+    color: $AU-color-info;
+  }
+  &.pending-locked {
+    border: 1px solid $AU-color-info;
+    color: $AU-color-info;
+  }
+}

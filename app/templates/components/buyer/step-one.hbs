@@ -1,0 +1,37 @@
+<div class="col-sm-30">
+  <h1 class="au-display-lg">Apply to become a buyer</h1>
+  <br>
+  <p>
+    <b>Full name</b>
+    {{dds/text-input
+      wide=true
+      allRow=true
+      field=(mut buyer.name)
+      invalid=(v-get this "buyer.name" "isInvalid")
+      errorMessage=(v-get this "buyer.name" "message")
+      float="right"
+    }}
+  </p>
+  <p>
+    <b>Organisation name</b><br>
+    <small>Please enter in full, for example Department of Premier and Cabinet, not DPC.</small>
+    {{dds/text-input
+      wide=true
+      allRow=true
+      field=(mut buyer.organisation)
+      invalid=(v-get this "buyer.organisation" "isInvalid")
+      errorMessage=(v-get this "buyer.organisation" "message")
+      float="right"
+    }}
+  </p>
+  <hr class="light">
+  <p>
+    <span class="float-right">
+      {{dds/primary-button
+        onClick=(action "next")
+        disabled=(v-get this "isInvalid")
+        label="Next"
+      }}
+    </span>
+  </p>
+</div>

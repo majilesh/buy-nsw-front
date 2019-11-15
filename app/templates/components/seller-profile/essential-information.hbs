@@ -1,0 +1,18 @@
+{{seller-profile/edit-save
+  theme="sapphire"
+  underEdit=(mut underEdit)
+  form=form
+  class="pull-right"
+}}
+{{#if underEdit}}
+  {{seller-profile/essential-information-edit form=form}}
+{{else}}
+  {{seller-profile/essential-information-view form=form buyerView=true}}
+{{/if}}
+{{seller-profile/edit-save
+  theme="sapphire"
+  underEdit=(mut underEdit)
+  form=form
+  class="pull-right"
+}}
+<div class="clear-both"></div>

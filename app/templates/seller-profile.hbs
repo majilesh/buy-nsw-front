@@ -1,0 +1,234 @@
+{{dds/skip-link}}
+
+{{user-pretender}}
+
+{{dds/browser-compatibility browser=(user-agent "browser")}}
+{{dds/template-header auth=auth}}
+{{dds/main-nav auth=auth noBorder=true}}
+
+{{#dds/banner title=this.model.seller.name
+  subline=(concat "Last update to supplier profile: " this.model.seller.updated_at)}}
+  <div class="row on-the-edge">
+    <div class="col-sm-18 col-sm-offset-18 col-md-15 col-md-offset-21 col-lg-12 col-lg-offset-24">
+      {{dds/jump-to
+        sections=(array
+          (hash name="Licenses, accreditations and awards" anchor="licenses-accreditations")
+          (hash name="Special capabilities and expertise" anchor="special-capabilities" hide=(not buyerView))
+          (hash name="References and case studies" anchor="references-and-case-studies" hide=(not buyerView))
+          (hash name="Government credentials" anchor="government-credentials" hide=(not buyerView))
+          (hash name="Team members" anchor="team-members" hide=(not buyerView))
+          (hash name="Promotional video" anchor="promotional-video")
+        )
+      }}
+    </div>
+  </div>
+{{/dds/banner}}
+<!--(hash name="Schemes and panels" anchor="schemes-and-panels" hide=(not buyerView))-->
+
+<main id="content">
+  <div class="au-body">
+    {{#dds/template-body auth=auth}}
+      <div class="row">
+        <div class="col-sm-17 col-md-14 col-lg-11">
+          {{#dds/simple-box theme="turquoise"}}
+            <h4 class="au-display-lg">
+              <center><b class="dark-sapphire">Company details</b></center>
+            </h4>
+            <br>
+            {{#if buyerView }}
+              <p>
+                <b>Contact</b><br>
+                {{this.model.seller.contact_first_name}}
+                {{this.model.seller.contact_last_name}}
+              </p>
+              <p>
+                <b>Phone no</b><br>
+                <a href="tel:{{this.model.seller.contact_phone}}">
+                  {{this.model.seller.contact_phone}}
+                </a>
+              </p>
+            {{/if}}
+            <p>
+              <b>ABN</b><br>
+              <a target="_blank" href="https://abr.business.gov.au/ABN/View/{{remove-spaces this.model.seller.abn}}">
+                {{fa-icon "external-link" prefix="far"}}
+                {{this.model.seller.abn}}
+              </a>
+            </p>
+            {{#if buyerView }}
+              <p>
+                <b>Address</b><br>
+                {{#with this.model.seller.addresses.[0] as |address|}}
+                  {{address.address}}
+                  {{address.address_2}}
+                  {{address.address_3}}
+                  {{address.suburb}}
+                  {{address.state}}
+                  {{address.country}}
+                  {{address.postcode}}
+                {{/with}}
+              </p>
+              <p>
+                <b>Email</b><br>
+                <a target="_blank" href="mailto:{{this.model.seller.contact_email}}">
+                  {{this.model.seller.contact_email}}
+                </a>
+              </p>
+            {{/if}}
+            <br>
+            {{seller-profile/contact-detail-view form=this.model.contact_detail buyerView=buyerView}}
+          {{/dds/simple-box}}
+          <br>
+          <br>
+        </div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-18 col-md-21 col-lg-24">
+          {{seller-profile/essential-information-view form=this.model.essential_information buyerView=buyerView}}
+
+          {{#if this.model.seller.level_2_services}}
+            <hr class="super-light">
+            <p><b>This supplier provides</b></p>
+            <p>
+              {{#each this.model.seller.level_2_services as |service index|}}
+                {{dds/tag theme="turquoise" label=(humanize service) class="inline"}}
+              {{/each}}
+            </p>
+          {{/if}}
+          {{#if (and this.model.seller.tags buyerView)}}
+            <hr class="super-light">
+            <p><b>Business identifiers</b></p>
+            <p>
+              {{#each this.model.seller.tags as |tag|}}
+                {{dds/tag theme="sapphire" label=tag class="inline"}}
+              {{/each}}
+            </p>
+          {{/if}}
+          {{#if (and this.model.seller.documents buyerView)}}
+            <br> <br>
+            {{#dds/simple-box theme="sapphire"}}
+              <b>This supplier has provided the following documentation:</b>
+              {{#if showDocumentDownloads}}
+                <ul>
+                  {{#each this.model.seller.documents as |document|}}
+                    <li>
+                      {{document.name}}
+                      {{dds/file-download
+                        field=document.ids
+                        fileService=fileService
+                        multiple=true
+                        dark=true
+                      }}
+                    </li>
+                  {{/each}}
+                </ul>
+              {{else}}
+                <ul>
+                  {{#each this.model.seller.documents as |document|}}
+                    <li>{{document.name}}</li>
+                  {{/each}}
+                </ul>
+                <p>
+                  {{dds/tertiary-button thin=true dark=true theme="sapphire" onClick=(action "getDocuments")
+                     label="Download these documents."}}
+               </p>
+              {{/if}}
+            {{/dds/simple-box}}
+            <br>
+          {{/if}}
+          {{#unless buyerView}}
+            <br> <br>
+            {{#dds/simple-box theme="sapphire"}}
+              <b>Further information on this supplier is available to registered buyers</b>
+              <p>
+                If you would like to see contact details, special capabilities and expertise, reference and case studies, government credentials and teams members, please register as a buyer.
+              </p>
+            {{/dds/simple-box}}
+            <br>
+          {{/unless}}
+        </div>
+      </div>
+      <div>
+        {{dds/top-link}}
+      </div>
+
+      <h5 class="au-display-lg" id="licenses-accreditations">
+        <b class="dark-sapphire">Licenses, Accreditations, industry engagements and awards</b>
+      </h5>
+      <br>
+      {{seller-profile/reputation-and-distinction-view form=this.model.reputation_and_distinction buyerView=buyerView}}
+      <hr class="light">
+
+      <div>
+        {{dds/top-link}}
+      </div>
+
+      {{#if buyerView}}
+        <h5 class="au-display-lg" id="special-capabilities">
+          <b class="dark-sapphire">Special capabilities and expertise</b>
+        </h5>
+        <br>
+        {{seller-profile/capability-and-experty-view form=this.model.capability_and_experty buyerView=buyerView}}
+        <hr class="light">
+
+        <div>
+          {{dds/top-link}}
+        </div>
+
+        <h5 class="au-display-lg" id="references-and-case-studies">
+          <b class="dark-sapphire">References and case studies</b>
+        </h5>
+
+        <br>
+        {{seller-profile/reference-and-case-study-view form=this.model.reference_and_case_study buyerView=buyerView}}
+        <hr class="light">
+
+        <div>
+          {{dds/top-link}}
+        </div>
+
+        <h5 class="au-display-lg" id="government-credentials">
+          <b class="dark-sapphire">Government credentials</b>
+        </h5>
+        {{seller-profile/government-credential-view form=this.model.government_credential buyerView=buyerView}}
+        <hr class="super-light">
+
+        <div>
+          {{dds/top-link}}
+        </div>
+
+<!--        <h5 class="au-display-lg" id="schemes-and-panels">
+          <b class="dark-sapphire">Schemes and panels</b>
+        </h5>
+        <br>
+        {{seller-profile/scheme-and-panel-view form=this.model.scheme_and_panel buyerView=buyerView}}
+
+        <div>
+          {{dds/top-link}}
+        </div>
+-->
+
+        <h5 class="au-display-lg" id="team-members">
+          <b class="dark-sapphire">Team members</b>
+        </h5>
+        {{seller-profile/team-member-view form=this.model.team_member buyerView=buyerView}}
+        <br> <br>
+        <hr class="super-light">
+        <div>
+          {{dds/top-link}}
+        </div>
+      {{/if}}
+
+      <h5 class="au-display-lg" id="promotional-video">
+        <b class="dark-sapphire">Promotional video</b>
+      </h5>
+      <br> <br>
+      {{seller-profile/promotional-video-view form=this.model.promotional_video buyerView=buyerView}}
+      <br>
+      <br>
+
+    {{/dds/template-body}}
+  </div>
+  {{dds/page-feedback user=auth.user feedbackService=feedbackService}}
+</main>
+
+{{dds/template-footer auth=auth}}

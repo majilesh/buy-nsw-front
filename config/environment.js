@@ -4,12 +4,13 @@ module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'buy-nsw-front',
     environment,
-    rootURL: '/',
-    locationType: 'auto',
+    rootURL: '/ict/',
+    locationType: 'router-scroll',
+    historySupportMiddleware: true,
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
-        // e.g. EMBER_NATIVE_DECORATOR_SUPPORT: true
+        // e.g. 'with-controller': true
       },
       EXTEND_PROTOTYPES: {
         // Prevent Ember Data from overriding Date.parse.
@@ -20,7 +21,24 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    }
+    },
+    metricsAdapters: [
+      {
+        name: 'GoogleAnalytics',
+        environments: ['production'],
+        config: {
+          id: 'UA-118929395-1',
+          // Use `analytics_debug.js` in development
+          debug: environment === 'development',
+          // Use verbose tracing of GA events
+          trace: environment === 'development',
+          // Ensure development env hits aren't sent to GA
+          sendHitTask: environment !== 'development',
+          // Specify Google Analytics plugins
+          require: ['ecommerce']
+        }
+      }
+    ]
   };
 
   if (environment === 'development') {
@@ -45,6 +63,10 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     // here you can enable a production-specific feature
+    ENV.airbrake = {
+      projectId:  '186737',
+      projectKey: '983b2689ca96b751452a0e541f865bfc'
+    };
   }
 
   return ENV;

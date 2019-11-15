@@ -1,0 +1,55 @@
+<p>
+  <b class="sapphire">Please note that all fields are mandatory unless otherwise indicated.</b>
+</p>
+<p>
+  You need an Australian Business Number (ABN) to do business in Australia.
+  <a target="_blank" href="https://abr.business.gov.au/">Look up your ABN</a>.
+</p>
+<br>
+<p>
+  <b class="sapphire">Business name</b>
+</p>
+<p>
+  Your business name must match your ABN listed business name.
+</p>
+<p>
+  {{dds/text-input
+    thin=true
+    noLabel=true
+    field=(mut form.name)
+    showError=true
+    invalid=(v-get form 'name' 'isInvalid')
+    errorMessage=(v-get form 'name' 'message')
+    apiError=form.apiErrors.name
+  }}
+</p>
+<br>
+<p>
+  <b class="sapphire">ABN</b>
+</p>
+<p>
+  {{dds/text-input
+    thin=true
+    noLabel=true
+    field=(mut form.abn)
+    showError=true
+    invalid=(v-get form 'abn' 'isInvalid')
+    errorMessage=(v-get form 'abn' 'message')
+    apiError=form.apiErrors.abn
+  }}
+</p>
+<br>
+<p>
+  <b class="sapphire">Date established</b>
+</p>
+<p>
+  {{dds/date-input
+    required=true
+    thin=true
+    field=(mut form.establishment_date)
+    showError=true
+    invalid=(v-get form 'establishment_date' 'isInvalid')
+    errorMessage=(v-get form 'establishment_date' 'message')
+    apiError=form.apiErrors.establishment_date
+  }}
+</p>

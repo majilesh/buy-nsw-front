@@ -1,0 +1,203 @@
+<h2 class="underline-light">
+  <b>Insurances</b>
+</h2>
+<br>
+<br>
+{{dds/inpage-nav
+  sections=(array
+    (hash name="Professional indemnity and public liability insurances" anchor="professional-indemnity")
+    (hash name="Product liability insurance" anchor="product-liability")
+    (hash name="Workers' compensation insurance" anchor="workers-compensation")
+    (hash name="Financial statements" anchor="financial-statements")
+  )
+}}
+<div class="cool-infobox">
+  {{fa-icon "exclamation-circle" size="2x" prefix="fal" pull="left"}}
+  <span>
+    This information will appear on your supplier profile and can be seen by registered buyers. You will receive a notification if a buyer accesses this information..
+  </span>
+  <div class="clear-both"></div>
+</div>
+<p>Providing insurance certificates and financial statements is optional. These documents will be used by buyers to assess your readiness to do business.</p>
+<hr class="light">
+<h3 id="professional-indemnity">
+  <b>Professional indemnity and public liability</b>
+</h3>
+<p>
+  Buyers require this information in order to do business with you. By uploading it to your profile, buyers can access this information as they need it instead of requesting it from you. Don’t have these documents? Your insurer can issue a certificate of currency.
+</p>
+<p>
+  <b> Upload a file</b>
+</p>
+<p class="gray">
+  The file should be no larger than 10MB and in PDF, PNG or JPEG format. You can upload a single document or separate documents by using the 'Add another file' button below.
+</p>
+{{dds/file-upload
+  name="professional_indemnity_certificate"
+  field=(mut form.professional_indemnity_certificate_ids)
+  apiError=form.apiErrors.professional_indemnity_certificate_ids
+  showError=(or showError (not-eq form.status 'todo'))
+  signal=form.signal
+  fileService=fileService
+  overlay=overlay
+  multiple=true
+}}
+<p>
+  <b>Expiry date</b>
+  <br>
+  We'll ask you to upload a new document when this one expires.
+</p>
+<p>
+  {{dds/date-input
+    required=true
+    field=(mut form.professional_indemnity_certificate_expiry)
+    showError=true
+    invalid=(v-get form 'professional_indemnity_certificate_expiry_valid' 'isInvalid')
+    errorMessage=(v-get form 'professional_indemnity_certificate_expiry_valid' 'message')
+  }}
+</p>
+<p>
+  {{dds/top-link}}
+</p>
+<hr class="light">
+<h3 id="product-liability">
+  <b>Product liability insurance</b>
+</h3>
+<p>
+  Buyers require this information in order to do business with you. By uploading it to your profile, buyers can access this information as they need it instead of requesting it from you. Don’t have these documents? Your insurer can issue a certificate of currency.
+</p>
+<p>
+  <b>Upload a file</b>
+</p>
+<p class="gray">
+  The file should be no larger than 10MB and in PDF, PNG or JPEG format. You can upload a single document or separate documents by using the 'Add another file' button below.
+</p>
+{{dds/file-upload
+  name="product_liability_certificate"
+  field=(mut form.product_liability_certificate_ids)
+  apiError=form.apiErrors.product_liability_certificate_ids
+  showError=(or showError (not-eq form.status 'todo'))
+  signal=form.signal
+  fileService=fileService
+  overlay=overlay
+  multiple=true
+}}
+<p>
+  <b>Expiry date</b>
+  <br>
+  We'll ask you to upload a new document when this one expires.
+</p>
+<p>
+  {{dds/date-input
+    required=true
+    field=(mut form.product_liability_certificate_expiry)
+    showError=true
+    invalid=(v-get form 'product_liability_certificate_expiry_valid' 'isInvalid')
+    errorMessage=(v-get form 'product_liability_certificate_expiry_valid' 'message')
+  }}
+</p>
+<p>
+  {{dds/top-link}}
+</p>
+<hr class="light">
+<h3 id="workers-compensation">
+  <b>Workers’ compensation insurance</b>
+</h3>
+<p>
+  Buyers require this information in order to do business with you. By uploading it to your profile, buyers can access this information as they need it instead of requesting it from you. Don’t have these documents? Your insurer can issue a certificate of currency. 
+</p>
+<p>
+  <b> Upload a file</b>
+</p>
+<p class="gray">
+  The file should be no larger than 10MB and in PDF, PNG or JPEG format. You can upload a single document or separate documents by using the 'Add another file' button below.
+</p>
+{{dds/file-upload
+  name="workers_compensation_certificate"
+  field=(mut form.workers_compensation_certificate_ids)
+  apiError=form.apiErrors.workers_compensation_certificate_ids
+  showError=(or showError (not-eq form.status 'todo'))
+  signal=form.signal
+  fileService=fileService
+  overlay=overlay
+  multiple=true
+}}
+<p>
+  <b>Expiry date</b>
+  <br>
+  We'll ask you to upload a new document when this one expires.
+</p>
+<p>
+  {{dds/date-input
+    required=true
+    field=(mut form.workers_compensation_certificate_expiry)
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'workers_compensation_certificate_expiry_valid' 'isInvalid')
+    errorMessage=(v-get form 'workers_compensation_certificate_expiry_valid' 'message')
+    hasChanged=true
+  }}
+</p>
+<p>
+  {{dds/top-link}}
+</p>
+<hr class="light">
+<h3 id="financial-statements">
+  <b>Financial statements</b>
+</h3>
+<p>
+  <b>What to provide</b>
+</p>
+<p>
+  Buyers require this information in order to do business with you. By uploading it to your profile, buyers can access this information as they need it instead of requesting it from you.
+</p>
+<p>
+  Financial statements provide detailed information about the financial performance and position of your organisation. Ideally your financial statement should include your:
+</p>
+<p>
+  <ul>
+    <li>profit or loss statement </li>
+    <li>balance sheet </li>
+    <li>statement of cash flows </li>
+    <li>statement of changes in equity </li>
+    <li>and notes to the financial statements. </li>
+  </ul>
+</p>
+<p>
+  Don't have these documents? If you are unable to share the documents listed above, you can also ask your external accountant for a letter confirming your business can meet its debts when they're due and doesn't have any issues that could impact your ability to deliver your products or services.
+</p>
+<p>
+  <b> Upload a file</b>
+</p>
+<p class="gray">
+  The file should be no larger than 10MB and in PDF, PNG or JPEG format. You can upload a single document or separate documents by using the 'Add another file' button below.
+</p>
+{{dds/file-upload
+  name="financial_statement"
+  field=(mut form.financial_statement_ids)
+  apiError=form.apiErrors.financial_statement_ids
+  showError=(or showError (not-eq form.status 'todo'))
+  signal=form.signal
+  fileService=fileService
+  overlay=overlay
+  multiple=true
+}}
+<p>
+  Please confirm the financial statements you have provided are for the most recently ended financial year or your organisation’s annual reporting period.
+</p>
+<p>
+  We'll ask you to upload a new document one year from now.
+</p>
+<p>
+  {{dds/checkbox-input
+    field=(mut form.financial_statement_confirmed)
+    label="I confirm that at the time of upload the financial documents I have provided are complete, correct and up-to-date."
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'financial_statement_confirmed_valid' 'isInvalid')
+    errorMessage=(v-get form 'financial_statement_confirmed_valid' 'message')
+    hasChanged=true
+  }}
+</p>
+<p>
+  {{dds/top-link}}
+</p>
+<hr>

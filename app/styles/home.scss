@@ -1,0 +1,107 @@
+p.home-title {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  @include AU-media( sm ) {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+  }
+  padding-left: 2rem;
+  padding-right: 2rem;
+  b.dark-blue {
+    color: $AU-colordark-background;
+  }
+}
+
+a.no-decoration {
+  text-decoration: none;
+}
+
+div.right-arrow {
+  color: $AU-colordark-background;
+  float: right;
+  min-width: 3rem;
+  padding-top: 0;
+  padding-left: 1.5rem;
+  vertical-align: center;
+  font-size: 3rem;
+}
+
+div.home-top-links {
+  a {
+    text-decoration: none;
+  }
+  p.au-callout--home-top {
+    border-left: 0.7rem solid $AU-colordark-background;
+    min-height: 3rem;
+    padding-left: 2rem;
+    a {
+      text-decoration: underline;
+      &:hover{
+        text-decoration: none;
+      }
+    }
+    &.light {
+      div.right-arrow {
+        color: $NSW-colordark-foreground-border;
+      }
+      border-left: 0.7rem solid $NSW-colordark-foreground-border;
+    }
+  }
+}
+
+div.home-middle-box {
+  .title {
+    margin: 1.5rem 0rem 2.0rem 0rem;
+  }
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  margin-top: 2rem;
+  padding: 1rem 3rem 2rem 3rem;
+  div.right-arrow {
+    color: $NSW-colordark-foreground-border;
+  }
+  h6 {
+    margin: 1.0rem 2rem;
+  }
+  hr {
+    margin: 1.5rem;
+  }
+  div.highlight {
+    border-left: 0.5rem solid $NSW-colordark-foreground-border;
+    padding: 1rem 0 1rem 1rem;
+  }
+  background-color: white;
+  i.date {
+    color: $AU-colorblack-background;
+  }
+}
+
+div.home-news-box {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  margin-top: 2rem;
+  padding: 0;
+  div.right-arrow {
+    color: $NSW-colordark-foreground-border;
+  }
+  h6 {
+    margin-top: 7px;
+  }
+  div.highlight {
+    border-left: 0.5rem solid $NSW-colordark-foreground-border;
+    padding: 1rem 0 0.5rem 1rem;
+  }
+  background-color: white;
+  span.date {
+    color: $AU-colorblack-background;
+  }
+  .padding {
+    padding: 0.5rem 2rem 1rem 2rem;
+  }
+  img.newsletter {
+    width: 100%;
+  }
+}
+a.au-btn.learn-how {
+  font-size: 0.8rem;
+  text-decoration: none;
+  margin: 0 0 0 2rem;
+}

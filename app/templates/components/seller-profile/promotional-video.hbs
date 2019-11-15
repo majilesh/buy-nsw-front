@@ -1,0 +1,35 @@
+{{#dds/accordion-container
+  title="Promotional video"
+  subtitle="𝗧𝗶𝗽: You can upload relevant video content here to provide buyers with case study/project or business information."
+  theme="sapphire"
+  expanded=expanded}}
+  {{#if underEdit}}
+    {{seller-profile/edit-save
+      theme="sapphire"
+      underEdit=(mut underEdit)
+      form=form
+    }}
+    {{seller-profile/promotional-video-edit form=form}}
+  {{else}}
+    <div class="row" id="promotional-video">
+      {{#dds/info-box class="col-xs-27"}}
+        {{fa-icon "check-circle" prefix="fas"}} Publicly viewable
+      {{/dds/info-box}}
+      {{seller-profile/edit-save
+        class="col-xs-9"
+        theme="sapphire"
+        underEdit=(mut underEdit)
+        form=form
+      }} 
+    </div>
+    <div class="cool-infobox sapphire">
+      In this section you can upload a video of a recent case study or other informative content about your business.
+    </div>
+    {{seller-profile/promotional-video-view form=form}}
+  {{/if}}
+  {{seller-profile/edit-save
+    theme="sapphire"
+    underEdit=(mut underEdit)
+    form=form
+  }}
+{{/dds/accordion-container}}

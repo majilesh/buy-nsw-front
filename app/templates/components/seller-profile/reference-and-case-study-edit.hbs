@@ -1,0 +1,164 @@
+<h5 class="au-display-md">
+  <br>
+  <b class="sapphire">References</b>
+  <br>
+</h5>
+<p><b>You can nominate your references by providing the details below. Buyers may contact them in order to gain more understanding about your work.</b></p>
+<br>
+{{#each form.references as |reference index|}}
+  {{#let (get form.apiErrors.references index) as |apiError|}}
+    <div class="row">
+      <div class="col-sm-24">
+        <div class="row">
+          <div class="col-sm-18">
+            {{dds/text-input
+              label-text="First name"
+              field=(mut reference.first_name)
+              signal=(mut form.signal)
+              thin=true
+              allRow=true
+              wide=true
+              apiError=apiError.first_name
+            }}
+          </div>
+          <div class="col-sm-18">
+            {{dds/text-input
+              label-text="Last name"
+              field=(mut reference.last_name)
+              signal=(mut form.signal)
+              thin=true
+              allRow=true
+              wide=true
+              apiError=apiError.last_name
+            }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-18">
+            {{dds/text-input
+              label-text="Email address"
+              field=(mut reference.email)
+              signal=(mut form.signal)
+              thin=true
+              allRow=true
+              wide=true
+              apiError=apiError.email
+            }}
+          </div>
+          <div class="col-sm-18">
+            {{dds/text-input
+              label-text="Phone number"
+              field=(mut reference.phone)
+              signal=(mut form.signal)
+              thin=true
+              allRow=true
+              wide=true
+              apiError=apiError.phone
+            }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-18">
+            {{dds/text-input
+              label-text="Role"
+              field=(mut reference.role)
+              signal=(mut form.signal)
+              thin=true
+              allRow=true
+              wide=true
+              apiError=apiError.role
+            }}
+          </div>
+          <div class="col-sm-18">
+            {{dds/text-input
+              label-text="Associated project(s)"
+              field=(mut reference.provided_services)
+              signal=(mut form.signal)
+              thin=true
+              allRow=true
+              wide=true
+              apiError=apiError.provided_services
+            }}
+          </div>
+        </div>
+        <p>
+          {{dds/text-area
+            field=(mut reference.project_description)
+            label-text="Briefly describe this project"
+            signal=(mut form.signal)
+            maxLength=500
+            thin=true
+            apiError=apiError.project_description
+          }}
+          {{dds/tertiary-button
+            thin=true
+            class="pull-right"
+            theme="sapphire"
+            onClick=(action "removeReference" index)
+            label="Remove this reference"
+          }}
+        </p>
+      </div>
+    </div>
+    <hr class="super-light">
+  {{/let}}
+{{/each}}
+<div class="row">
+  <div class="col-sm-24">
+    <p>
+      {{dds/tertiary-button icon="plus-circle" thin=true theme="sapphire" onClick=(action "addReference") label="Add a reference"}}
+    </p>
+  </div>
+</div>
+<br>
+<h5 class="au-display-md">
+  <br>
+  <b class="sapphire">Case studies</b>
+  <br>
+</h5>
+<br>
+{{#each form.case_studies as |case index|}}
+  {{#let (get form.apiErrors.case_studies index) as |apiError|}}
+    <div class="row">
+      <div class="col-sm-24">
+        <p><b>Upload a single PDF file smaller than 10MB and enter a description below</b></p>
+        {{dds/file-upload
+          name=(concat "case_study_" index)
+          field=(mut case.document_id)
+          signal=(mut form.signal)
+          fileService=fileService
+          overlay=overlay
+          fileTypes=(array "application/pdf")
+          multiple=false
+          theme="sapphire"
+          apiError=apiError.document_id
+        }}
+        <p>
+          {{dds/text-area
+            field=(mut case.description)
+            label-text="Briefly describe this case study"
+            signal=(mut form.signal)
+            maxLength=300
+            thin=true
+            apiError=apiError.description
+          }}
+          {{dds/tertiary-button
+            thin=true
+            class="pull-right"
+            theme="sapphire"
+            onClick=(action "removeCaseStudy" index)
+            label="Remove this case study"
+          }}
+        </p>
+      </div>
+    </div>
+    <hr class="super-light">
+  {{/let}}
+{{/each}}
+<div class="row">
+  <div class="col-sm-24">
+    <p>
+      {{dds/tertiary-button icon="plus-circle" thin=true theme="sapphire" onClick=(action "addCaseStudy") label="Add a case study"}}
+    </p>
+  </div>
+</div>

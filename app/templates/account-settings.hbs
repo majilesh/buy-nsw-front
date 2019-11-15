@@ -1,0 +1,55 @@
+{{#dds/template-body auth=auth signin=true}}
+  <div class="col-sm-12">
+    <h1 class="au-display-lg">User settings</h1>
+  </div>
+  <div class="col-sm-24">
+    <b>Your email address</b>
+    {{dds/text-input
+      wide=true
+      allRow=true
+      field=(mut this.model.email)
+      enter=(if (v-get this "isValid") (action "submit"))
+      focusOut=(action (mut showEmailError) true)
+      apiError=apiError.email
+      invalid=(v-get this "model.email" "isInvalid")
+      errorMessage=(v-get this "model.email" "message")
+      float="right"
+    }}
+    <hr class="light">
+    <p>
+      {{dds/new-password
+        wide=true
+        allRow=true
+        tip="Passwords must be at least 8 characters long. Tip: create a password with 3 or more words – it's secure and easy to remember."
+        field=(mut newPassword)
+        title="New password"
+        confirm=true
+        allowBlank=true
+        valid=(mut passwordValid)
+        enter=(if (v-get this "isValid") (action "submit"))
+      }}
+    </p>
+    <hr class="light">
+    <b>Enter your current password</b>
+    <p>We need this to confirm your changes</p>
+    {{dds/text-input
+      wide=true
+      allRow=true
+      password=true
+      noAutoComplete=true
+      field=(mut currentPassword)
+      enter=(if (v-get this "isValid") (action "submit"))
+      apiError=apiError.password
+      float="right"
+    }}
+    <p>
+      <span class="float-right">
+        {{dds/primary-button
+          onClick=(action "submit")
+          disabled=(v-get this "isInvalid")
+          label="Update account details"
+        }}
+      </span>
+    </p>
+  </div>
+{{/dds/template-body}}

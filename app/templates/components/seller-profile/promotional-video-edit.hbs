@@ -1,0 +1,18 @@
+<h5 class="au-display-md">
+  <b class="sapphire">Embed a video</b>
+</h5>
+<p>
+  Provide a youtube ID of your video
+</p>
+<p>
+  {{dds/text-input
+    field=(mut form.promotional_video)
+    invalid=(v-get form 'promotional_video' 'isInvalid')
+    errorMessage=(v-get form 'promotional_video' 'message')
+    theme="sapphire"
+    noLabel=true
+    thin=true
+    apiError=form.apiErrors.promotional_video
+  }}
+</p>
+<br>

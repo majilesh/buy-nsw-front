@@ -1,0 +1,247 @@
+<h2 class="underline-light">
+  <b>Products and services</b>
+</h2>
+<br>
+
+<h3 id="other-products">
+  <b>Please select the domain, products and services that best describes your business</b>
+</h3>
+
+<div class="cool-infobox">
+  {{fa-icon "exclamation-circle" size="2x" prefix="fal" pull="left"}}
+  <span>
+    This information will appear on your supplier profile and is publicly available.
+  </span>
+  <div class="clear-both"></div>
+</div>
+
+<p>As an eligible supplier, you can select ICT products or services you provide. The following fields are required and are used by buyers to find you.</p>
+
+<p><b>Tip:</b> Buyers are looking for businesses they can trust. Please select the products and services your business has a track record of delivering.</p>
+<br />
+
+{{dds/checkbox-tree
+  field=(mut form.services)
+  break=true
+  wide=true
+  bold=true
+  invalid=(v-get form 'services_present' 'isInvalid')
+  errorMessage=(v-get form 'services_present' 'message')
+  showError=true
+  apiError=form.apiErrors.services
+  signal=(mut form.signal)
+  items=(array
+    (hash
+      key="cloud-services"
+      label="Cloud services"
+      description="Cloud software, hosting and infrastructure. It includes support services for transitioning to cloud and for monitoring and managing cloud environments."
+      subItems=(array
+        (hash
+          key="cloud-applications-and-software"
+          label="Cloud applications and software"
+        )
+        (hash
+          key="cloud-hosting-and-infrastructure"
+          label="Cloud hosting and infrastructure"
+        )
+        (hash
+          key="cloud-support"
+          label="Cloud support"
+        )
+      )
+    )
+    (hash
+      key="software-development"
+      label="Software design and development"
+      description="Design and delivery of software and software modifications, including the implementation and configuration of vendor-owned software, as well as all disciplines that support the delivery of software, such as design, delivery, data analysis, coding, quality assurance, compliance, security and accessibility testing."
+      subItems=(array
+        (hash
+          key="digital-design"
+          label="Digital design"
+        )
+        (hash
+          key="software-development-integration-and-implementation"
+          label="Software development, integration and implementation"
+        )
+        (hash
+          key="mobile-applications-development"
+          label="Mobile applications development"
+        )
+        (hash
+          key="system-and-software-testing-uat-and-assurance"
+          label="System and software testing, UAT and assurance"
+        )
+        (hash
+          key="system-architecture"
+          label="System architecture"
+        )
+      )
+    )
+    (hash
+      key="software-licensing"
+      label="Software licensing and maintenance"
+      description="Software licensed on any basis other than as a cloud-hosted subscription service, including the maintenance and updates of these software licences."
+      subItems=(array
+        (hash
+          key="systems-and-operating-software"
+          label="Systems and operating software"
+        )
+        (hash
+          key="enterprise-and-platforms-software"
+          label="Enterprise and platforms software"
+        )
+        (hash
+          key="productivity-software"
+          label="Productivity software"
+        )
+        (hash
+          key="databases-and-middleware"
+          label="Databases and middleware"
+        )
+        (hash
+          key="mobile-applications"
+          label="Mobile applications"
+        )
+        (hash
+          key="specialised-software"
+          label="Specialised software"
+        )
+        (hash
+          key="network-and-security-software"
+          label="Network and security software"
+        )
+      )
+    )
+    (hash
+      key="end-user-computing"
+      label="End-user computing and peripherals"
+      description="Provision, installation, configuration or maintenance of devices that help end-users access and operate computer applications, including desktops, laptops and tablets, interactive whiteboards, as well as peripherals such as keyboards, screens and assistive technologies such as screen readers."
+      subItems=(array
+        (hash
+          key="desktops-workstations-and-thin-clients"
+          label="Desktops, workstations and thin clients"
+        )
+        (hash
+          key="laptops-tablets-and-hybrids"
+          label="Laptops, tablets and hybrids"
+        )
+        (hash
+          key="printers-screens-and-monitors"
+          label="Printers, screens and monitors"
+        )
+        (hash
+          key="peripherals-accessories-and-other-end-user-computing-products"
+          label="Peripherals, accessories and other end-user computing products"
+        )
+        (hash
+          key="end-user-computing-support"
+          label="End-user computing support"
+        )
+      )
+    )
+    (hash
+      key="infrastructure"
+      label="Infrastructure and networks"
+      description="Datacentre infrastructure including servers, UPS and generators. Hardware and software that enables computer systems to connect and communicate with each other, together with hardware and software that underpins the operations and management of networks, such as racking, cabling, routers and switches."
+      subItems=(array
+        (hash
+          key="modems-and-routers"
+          label="Modems and routers"
+        )
+        (hash
+          key="switches-servers-and-storage"
+          label="Switches, servers and storage"
+        )
+        (hash
+          key="racks-and-cables"
+          label="Racks, and cables"
+        )
+        (hash
+          key="other-networking-products"
+          label="Other networking products"
+        )
+        (hash
+          key="network-and-security-support"
+          label="Network and security support"
+        )
+      )
+    )
+    (hash
+      key="telecommunications"
+      label="Telecommunications"
+      description="Fixed and mobile telephony, internet and data, emergency comms and all services and equipment to support the exchange of information in voice, data or video form over distance by electronic means."
+      subItems=(array
+        (hash
+          key="fixed-data-and-internet"
+          label="Fixed data and internet"
+        )
+        (hash
+          key="fixed-voice"
+          label="Fixed voice"
+        )
+        (hash
+          key="mobiles"
+          label="Mobiles"
+        )
+        (hash
+          key="radio"
+          label="Radio"
+        )
+        (hash
+          key="professional-services"
+          label="Professional services"
+        )
+      )
+    )
+    (hash
+      key="managed-services"
+      label="Managed and outsourced services"
+      description="Using third parties to fulfil the responsibilities and functions that support day-to-day technology management. Examples include service desk and contact centres, network operations and security operations."
+      subItems=(array
+        (hash
+          key="service-desk"
+          label="Service desk and contact centre"
+        )
+        (hash
+          key="network-and-security-operations"
+          label="Network and security operations"
+        )
+        (hash
+          key="data-centre-operations"
+          label="Data centre operations"
+        )
+        (hash
+          key="security-operations"
+          label="Security operations"
+        )
+      )
+    )
+    (hash
+      key="advisory-consulting"
+      label="Advisory and consulting"
+      description="Specialist ICT expertise acting in an advisory capacity to government. Includes building business cases and strategic roadmaps, process and technology audits, security and risk assessment, continuity planning, developing enterprise architectures, policy analysis and digital transformation advice."
+      subItems=(array
+        (hash
+          key="strategy-planning-policy-and-risk"
+          label="Strategy, planning, policy and risk"
+        )
+        (hash
+          key="audits-compliance-and-assurance"
+          label="Audits, compliance and assurance"
+        )
+        (hash
+          key="project-and-change-management"
+          label="Project and change management"
+        )
+        (hash
+          key="training-and-development"
+          label="Training and development"
+        )
+      )
+    )
+  )
+}}
+<p>
+  {{dds/top-link}}
+</p>
+<hr class="light">

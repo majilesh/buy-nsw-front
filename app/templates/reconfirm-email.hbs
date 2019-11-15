@@ -1,0 +1,27 @@
+{{#dds/template-body auth=auth signout=true}}
+  <h1 class="au-display-xl">Resend instructions to confirm your account</h1>
+  <p>If you did not receive an email to confirm your account, or if the one-time link has expired, we can send a new link to your email address.</p>
+  <br>
+  <p>
+    <b>Email address</b>
+    {{dds/text-input
+      wide=true
+      allRow=true
+      field=(mut email)
+      enter=(if (v-get this "isValid") (action "submit"))
+      apiError=apiError.email
+      invalid=(v-get this "email" "isInvalid")
+      errorMessage=(v-get this "email" "message")
+      float="right"
+    }}
+  </p>
+  <p>
+    <span class="float-right">
+      {{dds/primary-button
+        onClick=(action "submit")
+        disabled=(v-get this "isInvalid")
+        label="Send instructions"
+      }}
+    </span>
+  </p>
+{{/dds/template-body}}

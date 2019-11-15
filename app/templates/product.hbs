@@ -1,0 +1,193 @@
+{{#dds/template-body auth=auth signin=true}}
+  <div class="col-sm-30">
+    {{ dds/bread-crumbs
+      links=(array
+        (hash name="Dashboard" route="seller-dashboard")
+        (hash name="Cloud products" route="products")
+        (hash name=(or this.model.name this.model.id))
+      )
+    }}
+
+    {{#unless this.model.underEdit}}
+      <br>
+      <br>
+      {{# if this.model.pending }}
+        {{#dds/page-alert alertType="info"}}
+          <h3>Product is locked for review</h3>
+          <p>You have submitted entries or changes. While these are under review, you won't be able to view or edit the details of your product.</p>
+          {{# if this.model.can_be_withdrawn }}
+            <p>
+              You can 
+              <a
+                class="au-btn au-btn--tertiary no-padding"
+                onclick={{action "withdrawSubmission"}}
+              >
+                withdraw your submission
+              </a>
+              to edit your product and submit again.
+            </p>
+          {{/ if }}
+        {{/dds/page-alert}}
+      {{ else if (eq this.model.status 'live') }}
+        {{#dds/page-alert alertType="success"}}
+          <h3>Your product is currently live</h3>
+          <p>
+            To amend your product you can
+            <a
+              class="au-btn au-btn--tertiary no-padding"
+              onclick={{action "amendProduct"}}
+            >
+              start an amendment
+            </a>
+            process.
+          </p>
+        {{/dds/page-alert}}
+      {{ else }}
+        {{#dds/page-alert alertType="warning"}}
+          {{#if this.model.changesRequested}}
+            <p>
+              Your submission was not approved by our operation officers. You can
+              <a
+                class="au-btn au-btn--tertiary no-padding"
+                onclick={{action "reviseProduct"}}
+              >
+                revise your product
+              </a>
+              and submit again.
+            </p>
+          {{/if}}
+        {{/dds/page-alert}}
+      {{/ if }}
+    {{/unless}}
+
+    <h3 class="au-display-lg">Add cloud products</h3>
+
+    <p class="au-callout">
+      <p>Each product must:</p>
+      <ul>
+        <li>have a unique name that's not your business name, eg. Nimbus by CloudTech.</li>
+        <li>be priced by the unit, instead of by an hourly or day rate of your employees</li>
+        <li>be described in detail as to how it is hosted and delivered to the end user</li>
+      </ul>
+      <br>
+    </p>
+    <br>
+    <ul class="steps-list">
+      <li>
+        <p>
+          <h1 class="au-display-lg">Your Product</h1>
+          <hr class="light">
+        </p>
+        {{product-step
+          product=this.model
+          step=this.model.steps.type
+        }}
+        {{product-step
+          product=this.model
+          step=this.model.steps.basics
+        }}
+        {{product-step
+          product=this.model
+          step=this.model.steps.commercials
+        }}
+        {{product-step
+          product=this.model
+          step=this.model.steps.terms
+        }}
+        <br>
+      </li>
+      <li>
+        <p>
+          <h1 class="au-display-lg">User Support</h1>
+          <hr class="light">
+        </p>
+        {{product-step
+          product=this.model
+          step=this.model.steps.onboarding_offboarding
+        }}
+        {{product-step
+          product=this.model
+          step=this.model.steps.availability_support
+        }}
+        {{product-step
+          product=this.model
+          step=this.model.steps.reporting_analytics
+        }}
+        <br>
+      </li>
+      <li>
+        <p>
+          <h1 class="au-display-lg">How data is managed</h1>
+          <hr class="light">
+        </p>
+        {{product-step
+          product=this.model
+          step=this.model.steps.identity_authentication
+        }}
+        {{product-step
+          product=this.model
+          step=this.model.steps.environment
+        }}
+        {{product-step
+          product=this.model
+          step=this.model.steps.locations
+        }}
+        {{product-step
+          product=this.model
+          step=this.model.steps.user_data
+        }}
+        {{product-step
+          product=this.model
+          step=this.model.steps.backup_recovery
+        }}
+        <br>
+      </li>
+      <li>
+        <p>
+          <h1 class="au-display-lg">Your security approach</h1>
+          <hr class="light">
+        </p>
+        {{product-step
+          product=this.model
+          step=this.model.steps.data_protection
+        }}
+        {{product-step
+          product=this.model
+          step=this.model.steps.security_standards
+        }}
+        {{product-step
+          product=this.model
+          step=this.model.steps.security_practices
+        }}
+        {{product-step
+          product=this.model
+          step=this.model.steps.user_separation
+        }}
+        {{product-step
+          product=this.model
+          step=this.model.steps.operational_security
+        }}
+      </li>
+    </ul>
+    <br>
+    <br>
+    <p class="left-space">
+      {{#if this.model.submitable}}
+        <button
+          class="au-btn"
+          onclick={{action "submitProduct"}}
+        >
+          Submit product
+        </button>
+      {{/if}}
+      {{#if (eq this.model.status 'amendment_draft')}}
+        <button
+          class="au-btn au-btn--tertiary"
+          onclick={{action "cancelProduct"}}
+        >
+          Cancel draft
+        </button>
+      {{/if}}
+    </p>
+  </div>
+{{/dds/template-body}}

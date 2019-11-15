@@ -1,0 +1,116 @@
+<h2 class="underline-light">
+  <b>Eligibility</b>
+</h2>
+<br>
+<br>
+{{dds/inpage-nav
+  sections=(array
+    (hash name="Do you provide cloud products, services or support?" anchor="ict-products")
+    (hash name="Are you a member of the ICT Services Scheme?" anchor="ict-member")
+    (hash name="Do you offer services in NSW Government Data Centres (GovDC)?" anchor="govdc")
+  )
+}}
+<hr class="light">
+<p>For now, buy.nsw is only open to suppliers who:</p>
+<ul>
+  <li>provide cloud products, services or support</li>
+  <li>are a member of the ICT Services Scheme</li>
+  <li>provide services in NSW Government Data Centres (GovDC)</li>
+</ul>
+
+<h3 id="ict-products">
+  <b>Do you provide cloud products, services or support?</b>
+</h3>
+<p>These include:</p>
+<ul>
+  <li>cloud software</li>
+  <li>hosting and infrastructure</li>
+  <li>support services for transitioning to cloud and for monitoring and managing cloud environments.</li>
+</ul>
+
+<p>
+  {{dds/radio-group
+    items=(array
+      (hash
+        key="true"
+        label="Yes"
+      )
+      (hash
+        key="false"
+        label="No"
+      )
+    )
+    field=(mut form.offers_cloud)
+    apiError=form.apiErrors.offers_cloud
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'offers_cloud' 'isInvalid')
+    errorMessage=(v-get form 'offers_cloud' 'message')
+  }}
+</p>
+
+<hr class="light">
+
+<h3 id="ict-member">
+  <b>Are you a member of the ICT Services Scheme?</b>
+</h3>
+<p>
+  This means you have pre-qualified as a supplier on the eTendering platform and have been accepted as a member of the <a href="https://tenders.nsw.gov.au/?event=public.scheme.show&RFTUUID=852B6035-ACFE-B0A3-D10121B360FF7371" target="_blank">ICT Services Scheme</a>. 
+</p>
+<p>
+  Not sure if you are a member? Use our <a href="https://tenders.nsw.gov.au/?event=public.schemeExplorer.selectScheme" target="_blank">scheme explorer</a> to find out, or contact <a href="mailto:ictservices@customerservice.nsw.gov.au">ictservices@customerservice.nsw.gov.au</a>
+</p>
+<p>
+  {{dds/radio-group
+    items=(array
+      (hash
+        key="true"
+        label="Yes"
+      )
+      (hash
+        key="false"
+        label="No"
+      )
+    )
+    field=(mut form.offers_ict)
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'offers_ict' 'isInvalid')
+    errorMessage=(v-get form 'offers_ict' 'message')
+  }}
+</p>
+
+<hr class="light">
+
+<h3 id="govdc">
+  <b>Do you offer services in NSW Government Data Centres (GovDC)?</b>
+</h3>
+<p>
+  This means you provide colocation services inside GovDC or you have a subscription to the GovDC Managed Services Backbone.
+</p>
+<p>
+  Not sure if you are a GovDC supplier? Contact the GovDC team at govdc@customerservice.nsw.gov.au.
+</p>
+<p>
+  {{dds/radio-group
+    items=(array
+      (hash
+        key="true"
+        label="Yes"
+      )
+      (hash
+        key="false"
+        label="No"
+      )
+    )
+    field=(mut form.govdc)
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'govdc' 'isInvalid')
+    errorMessage=(v-get form 'govdc' 'message')
+  }}
+</p>
+{{#if (and (or showError (not-eq form.status 'todo') (v-get form 'eligible' 'isInvalid')))}}
+  <p>
+    {{dds/validation-error type="error" message=(v-get form 'eligible' 'message') float="left"}}
+  </p>
+{{/if}}
+
+<hr class="light">

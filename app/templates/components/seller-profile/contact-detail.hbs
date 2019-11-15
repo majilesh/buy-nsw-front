@@ -1,0 +1,11 @@
+{{#if underEdit}}
+  {{seller-profile/contact-detail-edit form=form}}
+{{else}}
+  {{seller-profile/contact-detail-view form=form buyerView=true}}
+{{/if}}
+<br>
+{{seller-profile/edit-save
+  theme="turquoise"
+  underEdit=(mut underEdit)
+  form=form
+}}

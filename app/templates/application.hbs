@@ -1,5 +1,17 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-<WelcomePage />
-{{!-- Feel free to remove this! --}}
+{{dds/skip-link}}
 
-{{outlet}}
+{{user-pretender}}
+
+{{dds/browser-compatibility browser=(user-agent "browser")}}
+{{dds/template-header auth=auth}}
+{{dds/main-nav auth=auth}}
+
+<main id="content">
+  <div class="au-body">
+    {{outlet}}
+  </div>
+
+  {{dds/page-feedback user=auth.user feedbackService=feedbackService}}
+</main>
+
+{{dds/template-footer auth=auth}}

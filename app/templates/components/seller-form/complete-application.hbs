@@ -1,0 +1,46 @@
+<h2 class="underline-light">
+  <b>Complete application</b>
+</h2>
+<br>
+<br>
+<p>You've almost completed your supplier registration.</p>
+<p>As a registered supplier on buy.nsw you will be considered a member of the <a target="_blank" href="https://www.procurepoint.nsw.gov.au/scm0020">ICT Services Scheme</a>.</p>
+<p>To complete and submit your registration, your authorised representative must agree to the <a target="_blank" href="https://www.procurepoint.nsw.gov.au/before-you-buy/standard-procurement-contract-templates/procure-it-framework-version-32">ICT Services Scheme Rules</a>. If you are not the authorised representative, please request they log in to complete your registration.</p>
+<p>The scheme rules include the use of the following contracts:</p>
+<ul>
+  <li><a target="_blank" href="https://www.procurepoint.nsw.gov.au/before-you-buy/standard-contract-templates/short-form-contracts">Core&amp; Agreement</a> (for low risk work)</li>
+  <li><a target="_blank" href="https://www.procurepoint.nsw.gov.au/before-you-buy/standard-procurement-contract-templates/procure-it-framework-version-32">Procure IT 3.2</a></li>
+</ul>
+<p>This means buyers are required to use the Core&amp; Agreement or Procure IT 3.2 when engaging you. It’s important you review these terms by clicking the links above as buyers will expect you to by ready to sign up to these terms when engaging them. </p>
+{{#if form.agreed_at_date}}
+  <p>The ProcureIT Contracting Framework was agreed to on {{form.agreed_at_date}} by {{form.agreed_by_email}}.</p>
+{{else if (eq form.representative_user_status "ready_to_sign")}}
+  <p>
+      {{dds/checkbox-input
+        field=(mut form.agreed)
+        label="I agree that I am joining the ICT Services Scheme and will abide by its rules."
+        showError=(or showError (not-eq form.status 'todo'))
+        invalid=(v-get form 'agreed' 'isInvalid')
+        errorMessage=(v-get form 'agreed' 'message')
+      }}
+  </p>
+{{else}}
+  <p><b>You can't accept the ProcureIT Contracting Framework</b></p>
+  {{#if form.representative_email}}
+    <p>
+      Only your authorised representative <strong>{{form.representative_email}}</strong>
+      can accept the ProcureIT Contracting Framework on behalf of your organisation.
+    </p>
+    {{#if (eq form.representative_user_status "not_invited")}}
+        <p>You need to invite them to your seller account, and ask them to sign in and accept the terms.</p>
+    {{else if (eq form.representative_user_status "another_seller")}}
+        <p><u>They have joined another seller account, please contact us for more information.</u></p>
+    {{else if (eq form.representative_user_status "invited")}}
+        <p>They have already been invited to sign in and joined your seller account.</p>
+    {{/if}}
+  {{else}}
+    <p>Only your authorised representative can accept the terms on behalf of your organisation.</p>
+    <p>You need to nominate who they are in company details &gt; contact details section, If it's not you, they will need to sign in and accept the ProcureIT Contracting Framework.</p>
+  {{/if}}
+{{/if}}
+<hr class="light">

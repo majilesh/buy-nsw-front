@@ -21,8 +21,16 @@ You will need the following things properly installed on your computer.
 ## Running / Development
 
 * `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+* Visit your app at [http://localhost:4200/ict](http://localhost:4200/ict/).
 * Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
+
+### Running alongside Rails api
+
+* `ember serve`
+* `rails server` # Run this command inside buy-nsw directory
+* `cp nginx.conf /etc/nginx/`
+* `sudo service nginx restart`
+* Visit your app at [http://localhost/ict/](http://localhost/ict/)
 
 ### Code Generators
 
@@ -44,9 +52,26 @@ Make use of the many generators for code, try `ember help generate` for more det
 * `ember build` (development)
 * `ember build --environment production` (production)
 
-### Deploying
+### Serve the build on nginx
 
-Specify what it takes to deploy your app.
+* After building copy the content of dist directory to nginx root (/var/www/html/)
+* Create a soft link in nginx root as follow: `ln -s /var/www/html /var/www/html/ict` (you might need sudo for this step)
+* Configure nginx to serve index.html for all routes and serve other mimetypes:
+```
+  server {
+    root /var/www/html;
+    index index.html;
+    server_name buy-nsw-front;
+    location / {
+      include /etc/nginx/mime.types;
+      try_files $uri $uri/ /index.html;
+    }
+  }
+```
+
+### Deployment
+* Create three files for each env as in .env.sample, named like .env.deploy.env-name
+* `ember deploy env-name --verbose --activate=true`
 
 ## Further Reading / Useful Links
 

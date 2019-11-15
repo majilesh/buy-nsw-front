@@ -1,0 +1,35 @@
+{{#dds/accordion-container
+  title="References and case studies"
+  subtitle="𝗧𝗶𝗽: References (especially for other government projects) and case studies may help your credibility with buyers."
+  theme="sapphire"
+  expanded=expanded}}
+  {{#if underEdit}}
+    {{seller-profile/edit-save
+      theme="sapphire"
+      underEdit=(mut underEdit)
+      form=form
+    }} 
+    {{seller-profile/reference-and-case-study-edit form=form}}
+  {{else}}
+    <div class="row" id="reference-and-case-study">
+      {{#dds/info-box class="col-xs-27"}}
+        {{fa-icon "info-circle" prefix="fas"}} Only available to registered buyers
+      {{/dds/info-box}}
+      {{seller-profile/edit-save
+        class="col-xs-9"
+        theme="sapphire"
+        underEdit=(mut underEdit)
+        form=form
+      }} 
+    </div>
+    <div class="cool-infobox sapphire">
+      You can add and update your references and case studies at any time.
+    </div>
+    {{seller-profile/reference-and-case-study-view form=form buyerView=true}}
+  {{/if}}
+  {{seller-profile/edit-save
+    theme="sapphire"
+    underEdit=(mut underEdit)
+    form=form
+  }}
+{{/dds/accordion-container}}

@@ -1,0 +1,44 @@
+{{#if form.website_url}}
+  <p>
+    <b>Website</b><br>
+    <a target="_blank" href={{form.website_url}}>
+      {{fa-icon "external-link" prefix="far"}} {{form.website_url}}
+    </a>
+  </p>
+{{/if}}
+{{#if (or (or (or (or
+  form.linkedin_url
+  form.twitter_url)
+  form.facebook_url)
+  form.instagram_url)
+  form.youtube_url)
+}}
+  <p>
+    <b>Social media channels</b><br><br>
+    {{#if form.linkedin_url}}
+      <a target="_blank" class="icon" href={{form.linkedin_url}}>
+        {{fa-icon "linkedin" size="2x" prefix="fab"}}
+      </a>
+    {{/if}}
+    {{#if form.twitter_url}}
+      <a target="_blank" class="icon" href={{form.twitter_url}}>
+        {{fa-icon "twitter" size="2x" prefix="fab"}}
+      </a>
+    {{/if}}
+    {{#if form.facebook_url}}
+      <a target="_blank" class="icon" href={{form.facebook_url}}>
+        {{fa-icon "facebook" size="2x" prefix="fab"}}
+      </a>
+    {{/if}}
+    {{#if form.instagram_url}}
+      <a target="_blank" class="icon" href={{form.instagram_url}}>
+        {{fa-icon "instagram" size="2x" prefix="fab"}}
+      </a>
+    {{/if}}
+    {{#if form.youtube_url}}
+      <a target="_blank" class="icon" href={{form.youtube_url}}>
+        {{fa-icon "youtube" size="2x" prefix="fab"}}
+      </a>
+    {{/if}}
+  </p>
+{{/if}}

@@ -1,0 +1,41 @@
+{{#dds/template-body auth=auth signin=true}}
+  <div class="col-sm-30">
+    {{ dds/bread-crumbs
+      links=(array
+        (hash name="Dashboard" route="seller-dashboard")
+        (hash name="Cloud products" route="products")
+      )
+    }}
+    <h3 class="au-display-lg">Add cloud products</h3>
+    <p class="au-callout">
+      <p>Adding products is optional and will take around 45 minutes per product.</p>
+      <div class="warning">
+        <div class="inner">
+          <p>{{fa-icon "exclamation-triangle"}} Please don't create products for:</p>
+          <ul>
+            <li>professional services</li>
+            <li>services priced as an outcome, eg. a website</li>
+            <li>services priced by day or hourly rates</li>
+          </ul>
+
+          <p>This will delay the processing of your application.</p>
+        </div>
+      </div>
+    </p>
+    {{#if pageAlertMessage}}
+      <br>
+      {{#dds/page-alert alertType=pageAlertType}}
+        <b>{{pageAlertMessage}}</b>
+      {{/dds/page-alert}}
+    {{/if}}
+    <p>
+      <button class="au-btn au-btn--wide" onclick={{action "createProduct"}}>Add a product</button>
+    </p>
+    <hr>
+    {{#each this.model.products as |product|}}
+      {{#if product.validActions}}
+        {{product-row product=product setAlert=(action 'setAlert')}}
+      {{/if}}
+    {{/each}}
+  </div>
+{{/dds/template-body}}

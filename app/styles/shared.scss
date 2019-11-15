@@ -1,0 +1,135 @@
+.form-error {
+  padding-left: 0.8rem;
+  padding-top: 1.2rem;
+  font-size: 0.9rem;
+  color: $AU-color-error;
+}
+
+h1.au-heading--dark {
+  b {
+    color: white;
+  }
+}
+hr.simple-white {
+  color: white;
+  margin: 0;
+}
+h2.underline-light {
+  padding-bottom: 2rem;
+  border-bottom: 9px solid $NSW-colordark-foreground-muted;
+  display: inline-block;
+}
+h2.underline-dark {
+  padding-bottom: 1.8rem;
+  border-bottom: 9px solid $AU-color-foreground-action;
+  display: inline-block;
+}
+div.success-message {
+  padding: 2rem;
+  text-align: center;
+  background-color: #0a7cb9;
+  color: white;
+  margin-top: 4rem;
+  a {
+    color: white;
+  }
+}
+div.failure-message {
+  padding: 2rem;
+  text-align: center;
+  background-color: $AU-color-error;
+  color: white;
+  margin-top: 4rem;
+  a {
+    color: white;
+  }
+}
+div.sticky-nav {
+  margin-left: 10px;
+  @include AU-media( sm ) {
+    position: absolute;
+    height: calc(100% - 500px);
+    width: 33.33%;
+  }
+}
+div.max65p {
+  max-width: 65%;
+}
+div.max60 {
+  max-width: 60rem;
+}
+div.pretend {
+  text-align: center;
+  background-color: lightyellow;
+}
+ul.less-left-padding {
+  padding-left: 1rem;
+}
+p.checkbox-description {
+  padding: 0.0rem 0.7rem 2rem;
+  @include AU-media( sm ) {
+    padding: 0rem 2rem 1.5rem 2.7rem;
+    margin-top: 0.5rem;
+  }
+}
+p.five-lines {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+div.progress-menu {
+  padding: 2rem 0;
+  box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.05);
+}
+div.cool-callout {
+  border-radius: 5px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  border: solid 0.5px $NSW-colordark-foreground-border;
+  background-color: $NSW-colordark-foreground-muted;
+}
+div.margin-top {
+  margin-top: 1.5rem;
+}
+span.fixed-width {
+  width: 10rem;
+}
+div.shaded-box {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  span.fixed-width {
+    width: 8rem;
+  }
+}
+.on-the-edge {
+  position: relative;
+  @include AU-space( margin-top, -1.5unit);
+  @include AU-space( top, 2.7unit);
+}
+.au-banner__subline + .on-the-edge {
+  @include AU-space( top, 1.3unit);
+}
+@include AU-media( sm ) {
+  .on-the-edge {
+    @include AU-space( top, 4.3unit);
+  }
+  .au-banner__subline + .on-the-edge {
+    @include AU-space( top, 2.3unit);
+  }
+}
+.full-width {
+  width: 100%;
+}
+.fit-to-page {
+  iframe.EmberYoutube-player {
+    max-width: 100%;
+  }
+}
+.member-details {
+  padding: 2rem;
+  border-left: 1px solid #E0E0E0;
+}
+.right-align {
+  text-align: right;
+}

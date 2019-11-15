@@ -1,0 +1,105 @@
+<h5 class="au-display-md">
+  <b class="sapphire">Licenses</b>
+</h5>
+<p>
+  Add the name of a license that will be of relevance to a buyer.
+</p>
+<p>
+  {{dds/multi-text
+    field=(mut form.licenses)
+    signal=(mut form.signal)
+    theme="sapphire"
+    thin=true
+    apiError=form.apiErrors.licenses
+  }}
+</p>
+<p>
+  Provide supporting documents for the above licenses.
+</p>
+<p class="small gray">
+ Files should be smaller than 10MB and in PDF, PNG or JPEG format. You can upload a single document or separate documents by using the 'Add another file' button below.
+</p>
+<p>
+  {{dds/file-upload
+    name="license_document"
+    field=(mut form.license_document_ids)
+    fileService=fileService
+    overlay=overlay
+    signal=(mut form.signal)
+    multiple=true
+    theme="sapphire"
+    thin=true
+    invalid=(v-get form 'license_document_ids_valid' 'isInvalid')
+    errorMessage=(v-get form 'license_document_ids_valid' 'message')
+    showError=true
+  }}
+</p>
+<hr class="super-light">
+<h5 class="au-display-md">
+  <b class="sapphire">Accreditations</b>
+</h5>
+<p>
+  Add the name of an accrediting authority and an accreditation, that will be of value to a buyer. Membership of government schemes and panels are not considered accreditations. 
+</p>
+<p>
+  {{dds/multi-text
+    field=(mut form.accreditations)
+    signal=(mut form.signal)
+    theme="sapphire"
+    thin=true
+    apiError=form.apiErrors.accreditations
+  }}
+</p>
+<p>
+  Provide supporting documents for the above accreditations.
+</p>
+<p class="small gray">
+ Files should be smaller than 10MB and in PDF, PNG or JPEG format. You can upload a single document or separate documents by using the 'Add another file' button below.
+</p>
+<p>
+  {{dds/file-upload
+    name="accreditation_document"
+    field=(mut form.accreditation_document_ids)
+    fileService=fileService
+    overlay=overlay
+    signal=(mut form.signal)
+    multiple=true
+    theme="sapphire"
+    thin=true
+    invalid=(v-get form 'accreditation_document_ids_valid' 'isInvalid')
+    errorMessage=(v-get form 'accreditation_document_ids_valid' 'message')
+    showError=true
+  }}
+</p>
+<hr class="super-light">
+<h5 class="au-display-md">
+  <b class="sapphire">Industry engagements</b>
+</h5>
+<p>
+  Are you involved in any industry boards, committees or groups? 
+</p>
+<p>
+  {{dds/multi-text
+    field=(mut form.engagements)
+    signal=(mut form.signal)
+    theme="sapphire"
+    thin=true
+    apiError=form.apiErrors.engagements
+  }}
+</p>
+<hr class="super-light">
+<h5 class="au-display-md">
+  <b class="sapphire">Awards</b>
+</h5>
+<p>
+  Add the name of an award and sponsor that will be of relevance to a buyer. 
+</p>
+<p>
+  {{dds/multi-text
+    field=(mut form.awards)
+    signal=(mut form.signal)
+    theme="sapphire"
+    thin=true
+    apiError=form.apiErrors.awards
+  }}
+</p>

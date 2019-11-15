@@ -1,0 +1,176 @@
+<h2 class="underline-light">
+  <b>Company description and social links</b>
+</h2>
+<br>
+<br>
+{{dds/inpage-nav
+  sections=(array
+    (hash name="Company description and website" anchor="company-description")
+    (hash name="Social channels" anchor="social-channels")
+  )
+}}
+<hr class="light">
+<h3 id="company-description">
+  <b>Company description and website</b>
+</h3>
+<div class="cool-infobox">
+  {{fa-icon "exclamation-circle" size="2x" prefix="fal" pull="left"}}
+  <span>This information will appear on your supplier profile and is publicly available.</span>
+  <div class="clear-both"></div>
+</div>
+<p>Providing this information is optional but describing your business will make it easier for buyers to find you. Once your registration has been approved and your profile has been published, you will be able to log in at any time to update your company profile.</p>
+<p>
+  <b>Flagship product</b>
+</p>
+<p>
+  Describe a product or service that your company is well known for.
+</p>
+<p>
+  {{dds/text-input
+    field=(mut form.flagship_product)
+    maxLength=50
+    noLabel=true
+    wide=true
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'flagship_product' 'isInvalid')
+    errorMessage=(v-get form 'flagship_product' 'message')
+    apiError=form.apiErrors.flagship_product
+  }}
+</p>
+<br>
+<p>
+  <b>Short description</b>
+</p>
+<p>
+  Describe what your business is or does and the problems you aim to solve with your product or service.
+</p>
+<p>
+  {{dds/text-area
+    field=(mut form.summary)
+    maxLength=1000
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'summary' 'isInvalid')
+    errorMessage=(v-get form 'summary' 'message')
+    apiError=form.apiErrors.summary
+  }}
+</p>
+<br>
+<p>
+  <b>Website URL</b>
+</p>
+<p>
+  Provide a link to your website beginning with http://
+</p>
+<p>
+  {{dds/text-input
+    field=(mut form.website_url)
+    noLabel=true
+    wide=true
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'website_url' 'isInvalid')
+    errorMessage=(v-get form 'website_url' 'message')
+    apiError=form.apiErrors.website_url
+  }} 
+</p>
+<br>
+<p>
+  {{dds/top-link}}
+</p>
+<hr class="light">
+<h3 id="social-channels">
+  <b>Social channels (optional)</b>
+</h3>
+<br>
+<p>
+  <b>LinkedIn URL</b>
+</p>
+<p>
+  Provide a LinkedIn URL beginning with http:// or https://
+</p>
+<p>
+  {{dds/text-input
+    field=(mut form.linkedin_url)
+    noLabel=true
+    wide=true
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'linkedin_url' 'isInvalid')
+    errorMessage=(v-get form 'linkedin_url' 'message')
+    apiError=form.apiErrors.linkedin_url
+  }} 
+</p>
+<br>
+<p>
+  <b>Facebook URL</b>
+</p>
+<p>
+  Provide a Facebook URL beginning with http:// or https://
+</p>
+<p>
+  {{dds/text-input
+    field=(mut form.facebook_url)
+    noLabel=true
+    wide=true
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'facebook_url' 'isInvalid')
+    errorMessage=(v-get form 'facebook_url' 'message')
+    apiError=form.apiErrors.facebook_url
+  }} 
+</p>
+<br>
+<p>
+  <b>Youtube URL</b>
+</p>
+<p>
+  Provide a Youtube URL beginning with http:// or https://
+</p>
+<p>
+  {{dds/text-input
+    field=(mut form.youtube_url)
+    noLabel=true
+    wide=true
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'youtube_url' 'isInvalid')
+    errorMessage=(v-get form 'youtube_url' 'message')
+    apiError=form.apiErrors.youtube_url
+  }} 
+</p>
+<br>
+<p>
+  <b>Twitter URL</b>
+</p>
+<p>
+  Provide a Twitter URL beginning with http:// or https://
+</p>
+<p>
+  {{dds/text-input
+    field=(mut form.twitter_url)
+    noLabel=true
+    wide=true
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'twitter_url' 'isInvalid')
+    errorMessage=(v-get form 'twitter_url' 'message')
+    apiError=form.apiErrors.twitter_url
+  }} 
+</p>
+<br>
+<p>
+  <b>Instagram URL</b>
+</p>
+<p>
+  Provide a Instagram URL beginning with http:// or https://
+</p>
+<p>
+  {{dds/text-input
+    field=(mut form.instagram_url)
+    noLabel=true
+    wide=true
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'instagram_url' 'isInvalid')
+    errorMessage=(v-get form 'instagram_url' 'message')
+    apiError=form.apiErrors.instagram_url
+  }} 
+</p>
+<p>
+  {{dds/top-link}}
+</p>
+<hr class="light">

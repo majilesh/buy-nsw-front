@@ -1,0 +1,85 @@
+<div class="col-sm-30">
+  <h1 class="au-display-lg">About you and buy.nsw</h1>
+  <br>
+  <p>
+    <p><b>We’d like to know more about you and where you’re at in your buying journey.</b></p><br>
+    <b>In a few sentences, please tell us how you plan to use buy.nsw.</b>
+    {{dds/text-area
+      wide=true
+      allRow=true
+      field=(mut buyer.application_body)
+      invalid=(v-get this "buyer.application_body" "isInvalid")
+      errorMessage=(v-get this "buyer.application_body" "message")
+      float="right"
+    }}
+  </p>
+  <hr class="light">
+  <p>
+    <b>Are you considering the purchase of a digital product or service?</b>
+      {{dds/radio-group
+        items=(array
+          (hash
+            key="make-purchase"
+            label="Yes, we're currently looking to make a purchase."
+          )
+          (hash
+            key="plan-purchase"
+            label="Yes, we're planning a purchase in the next six months."
+          )
+          (hash
+            key="no-plan"
+            label="We're not currently planning to purchase a digital product or service."
+          )
+        )
+        field=(mut buyer.cloud_purchase)
+      }}
+  </p>
+  <hr class="light">
+  <p>
+    <b>Can we phone you to welcome you to buy.nsw and learn a little more about your needs?</b>
+      {{dds/radio-group
+        items=(array
+          (hash
+            key="phone-number"
+            label="Yes."
+          )
+          (hash
+            key="email"
+            label="I'd prefer email."
+          )
+          (hash
+            key="none"
+            label="No thanks."
+          )
+        )
+        field=(mut buyer.contactable)
+      }}
+  </p>
+  {{#if (eq buyer.contactable 'phone-number')}}
+    <p>
+      <b>Please enter your best contact number. We’ll only use it for this initial welcome call.</b>
+      {{dds/text-input
+        wide=true
+        allRow=true
+        field=(mut buyer.contact_number)
+        invalid=(v-get this "buyer.contact_number" "isInvalid")
+        errorMessage=(v-get this "buyer.contact_number" "message")
+        float="right"
+      }}
+    </p>
+  {{/if}}
+  <hr class="light">
+  <p>
+    <a
+      class="au-btn au-btn--tertiary"
+      onClick={{action "back"}}
+    >← Back</a>
+    <span class="float-right">
+      {{dds/primary-button
+        onClick=(action "next")
+        disabled=(v-get this "isInvalid")
+        label="Next"
+      }}
+    </span>
+  </p>
+</div>

@@ -1,0 +1,406 @@
+<h2 class="underline-light">
+  <b>Contact details and address</b>
+</h2>
+<br>
+<br>
+{{dds/inpage-nav
+  sections=(array
+    (hash name="Business contact" anchor="main-contact")
+    (hash name="Authorised representative" anchor="authorised-representative")
+    (hash name="Business address" anchor="business-address")
+  )
+}}
+<hr class="light">
+<div class="cool-infobox">
+  {{fa-icon "exclamation-circle" size="2x" prefix="fal" pull="left"}}
+  <span>
+    Some of this information will appear on your supplier profile and can only be seen by registered buyers.
+  </span>
+  <div class="clear-both"></div>
+</div>
+<p id="main-contact">
+  <b>Business contact</b>
+</p>
+<p>
+  This is the person you nominate to receive communications from buyers and buy.nsw. This contact will appear on your supplier profile and can only be seen by registered buyers.
+</p>
+<div class="row">
+  <div class="col-sm-36 col-md-24 col-lg-18 margin-top">
+    <p>
+      <b>First name</b>
+    </p>
+    <p>
+      {{dds/text-input
+        wide=true
+        allRow=true
+        noLabel=true
+        field=(mut form.contact_first_name)
+        showError=(or showError (not-eq form.status 'todo'))
+        invalid=(v-get form 'contact_first_name' 'isInvalid')
+        errorMessage=(v-get form 'contact_first_name' 'message')
+        apiError=form.apiErrors.contact_first_name
+      }}
+    </p>
+  </div>
+  <div class="col-sm-36 col-md-24 col-lg-18 margin-top">
+    <p>
+      <b>Last name</b>
+    </p>
+    <p>
+      {{dds/text-input
+        wide=true
+        allRow=true
+        noLabel=true
+        field=(mut form.contact_last_name)
+        showError=(or showError (not-eq form.status 'todo'))
+        invalid=(v-get form 'contact_last_name' 'isInvalid')
+        errorMessage=(v-get form 'contact_last_name' 'message')
+        apiError=form.apiErrors.contact_last_name
+      }}
+    </p>
+  </div>
+</div>
+<p>
+  <b>Email address</b>
+</p>
+<p>
+  {{dds/text-input
+    wide=true
+    noLabel=true
+    field=(mut form.contact_email)
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'contact_email' 'isInvalid')
+    errorMessage=(v-get form 'contact_email' 'message')
+    apiError=form.apiErrors.contact_email
+  }}
+</p>
+<p>
+  <b>Contact number</b>
+</p>
+<p>
+  {{dds/text-input
+    noLabel=true
+    field=(mut form.contact_phone)
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'contact_phone' 'isInvalid')
+    errorMessage=(v-get form 'contact_phone' 'message')
+    apiError=form.apiErrors.contact_phone
+  }}
+</p>
+<p>
+  {{dds/top-link}}
+</p>
+<hr class="light">
+<p id="authorised-representative">
+  <b>Authorised representative</b>
+</p>
+<p>
+  This is the person authorised to enter into contracts with the NSW government on behalf of your business. These contact details will not appear on your profile and are not available to buyers.
+</p>
+<p>
+  {{dds/checkbox-input
+    field=(mut form.same_as_above)
+    label="Same as above"
+    onChange=(action "sameClicked")
+  }}
+</p>
+<div class="row">
+  <div class="col-sm-36 col-md-24 col-lg-18 margin-top">
+    <p>
+      <b>First name</b>
+    </p>
+    <p>
+      {{dds/text-input
+        wide=true
+        allRow=true
+        noLabel=true
+        disabled=form.same_as_above
+        field=(mut form.representative_first_name)
+        showError=(or showError (not-eq form.status 'todo'))
+        invalid=(v-get form 'representative_first_name' 'isInvalid')
+        errorMessage=(v-get form 'representative_first_name' 'message')
+        apiError=form.apiErrors.representative_first_name
+      }}
+    </p>
+  </div>
+  <div class="col-sm-36 col-md-24 col-lg-18 margin-top">
+    <p>
+      <b>Last name</b>
+    </p>
+    <p>
+      {{dds/text-input
+        wide=true
+        allRow=true
+        noLabel=true
+        disabled=form.same_as_above
+        field=(mut form.representative_last_name)
+        showError=(or showError (not-eq form.status 'todo'))
+        invalid=(v-get form 'representative_last_name' 'isInvalid')
+        errorMessage=(v-get form 'representative_last_name' 'message')
+        apiError=form.apiErrors.representative_last_name
+      }}
+    </p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-36 margin-top">
+    <p>
+      <b>Email address</b>
+    </p>
+    <p>
+      {{dds/text-input
+        wide=true
+        noLabel=true
+        disabled=form.same_as_above
+        field=(mut form.representative_email)
+        showError=(or showError (not-eq form.status 'todo'))
+        invalid=(v-get form 'representative_email' 'isInvalid')
+        errorMessage=(v-get form 'representative_email' 'message')
+        apiError=form.apiErrors.representative_email
+      }}
+    </p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-36 margin-top">
+    <p>
+      <b>Contact number</b>
+    </p>
+    <p>
+      {{dds/text-input
+        noLabel=true
+        disabled=form.same_as_above
+        field=(mut form.representative_phone)
+        showError=(or showError (not-eq form.status 'todo'))
+        invalid=(v-get form 'representative_phone' 'isInvalid')
+        errorMessage=(v-get form 'representative_phone' 'message')
+        apiError=form.apiErrors.representative_phone
+      }}
+    </p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-36 margin-top">
+    <p>
+      <b>Position in organisation</b>
+    </p>
+    <p>
+      {{dds/text-input
+        noLabel=true
+        field=(mut form.representative_position)
+        showError=(or showError (not-eq form.status 'todo'))
+        invalid=(v-get form 'representative_position' 'isInvalid')
+        errorMessage=(v-get form 'representative_position' 'message')
+        apiError=form.apiErrors.representative_position
+      }}
+    </p>
+  </div>
+</div>
+<p>
+  {{dds/top-link}}
+</p>
+<hr class="light">
+<h3 id="business-address">
+  <b>Business address</b>
+</h3>
+<div class="cool-infobox">
+  {{fa-icon "exclamation-circle" size="2x" prefix="fal" pull="left"}}
+  <span>
+    This information will appear on your supplier profile and is publicly available.
+  </span>
+  <div class="clear-both"></div>
+</div>
+<p>
+  <b>Head office</b>
+</p>
+<p>
+  This is the business address of your head office.
+</p>
+{{#if (eq form.apiErrors.addresses "Changes requested upon your previous submission")}}
+  {{dds/validation-error type="warning" message=form.apiErrors.addresses float="left"}}
+{{/if}}
+{{#each form.addresses as |address index|}}
+  {{#let (get form.apiErrors.addresses index) as |apiError|}}
+    <div class="row">
+      <div class="col-sm-36 margin-top">
+        <p>
+          <b>Business address</b>
+        </p>
+        <p>
+          {{dds/text-input
+            wide=true
+            noLabel=true
+            field=(mut address.address)
+            required=true
+            showError=(or showError (not-eq form.status 'todo'))
+            apiError=apiError.address
+          }}
+        </p>
+        <p>
+          {{dds/text-input
+            wide=true
+            noLabel=true
+            field=(mut address.address_2)
+            apiError=apiError.address_2
+            showError=(or showError (not-eq form.status 'todo'))
+          }}
+        </p>
+        <p>
+          {{dds/text-input
+            wide=true
+            noLabel=true
+            field=(mut address.address_3)
+            apiError=apiError.address_3
+            showError=(or showError (not-eq form.status 'todo'))
+          }}
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-36 col-md-24 col-lg-21 margin-top">
+        <p>
+          <b>Suburb or city</b>
+        </p>
+        <p>
+          {{dds/text-input
+            wide=true
+            allRow=true
+            noLabel=true
+            field=(mut address.suburb)
+            required=true
+            showError=(or showError (not-eq form.status 'todo'))
+            apiError=apiError.suburb
+          }}
+        </p>
+      </div>
+      <div class="col-sm-36 col-md-24 col-lg-9 margin-top">
+        <p>
+          <b>Postcode or ZIP</b>
+        </p>
+        <p>
+          {{dds/text-input
+            wide=true
+            allRow=true
+            noLabel=true
+            field=(mut address.postcode)
+            required=true
+            showError=(or showError (not-eq form.status 'todo'))
+            signal=form.signal
+            apiError=apiError.postcode
+          }}
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-36 col-md-24 col-lg-12 margin-top">
+        <p>
+          <b>State or territory</b>
+        </p>
+        <p>
+          {{dds/select-box
+            field=(mut address.state)
+            items=(array
+              (hash value="nsw" label="New South Wales")
+              (hash value="act" label="Australian Capital Territory")
+              (hash value="nt" label="Northern Territory")
+              (hash value="qld" label="Queensland")
+              (hash value="sa" label="South Australia")
+              (hash value="tas" label="Tasmania")
+              (hash value="vic" label="Victoria")
+              (hash value="wa" label="Western Australia")
+              (hash value="outside_au" label="Outside Australia")
+            )
+            required=true
+            showError=(or showError (not-eq form.status 'todo'))
+            apiError=apiError.state
+          }}
+        </p>
+      </div>
+      <div class="col-sm-36 col-md-24 col-lg-18 margin-top">
+        <p>
+          <b>Country</b>
+        </p>
+        <p>
+          {{dds/select-box
+            field=(mut address.country)
+            items=countries
+            required=true
+            showError=(or showError (not-eq form.status 'todo'))
+            signal=form.signal
+            apiError=apiError.country
+          }}
+        </p>
+      </div>
+    </div>
+    {{#if (eq index 0)}}
+      <br>
+      {{#if form.headOfficeAustralia}}
+        <p>
+          <b>Corporate structure</b>
+        </p>
+        <p>
+          {{dds/radio-group
+            items=(array
+              (hash
+                key="standalone"
+                label="An Australian company that is not a subsidiary of another company"
+              )
+              (hash
+                key="subsidiary"
+                label="A locally-based company that is a subsidiary of a multinational corporation"
+              )
+            )
+            field=(mut form.corporate_structure)
+            showError=(or showError (not-eq form.status 'todo'))
+            invalid=(v-get form 'corporate_structure' 'isInvalid')
+            errorMessage=(v-get form 'corporate_structure' 'message')
+            apiError=form.apiErrors.corporate_structure
+          }}
+        </p>
+      {{/if}}
+      {{#if form.headOfficeRegional}}
+        <p>
+          {{dds/checkbox-input
+            field=(mut form.regional)
+            apiError=form.apiErrors.regional
+            showError=(or showError (not-eq form.status 'todo'))
+            label="Regional"
+            description=(if form.can_be_regional "It looks like your head office is located in regional NSW. Would you like to identify your business as a regional NSW supplier?" "To be classified as NSW Regional business your head office must be in regional NSW.")
+          }}
+        </p>
+      {{/if}}
+    {{/if}}
+    {{#if (gt index 0)}}
+      <br>
+      {{dds/tertiary-button
+        label="Discard this address"
+        onClick=(action "removeAddress" index)
+      }}
+    {{/if}}
+    <p>
+      {{dds/top-link}}
+    </p>
+    {{#if (or (eq index 0) (lt index (dec form.addresses.length)))}}
+      <hr class="light">
+    {{/if}}
+    {{#if (eq index 0)}}
+      <p>
+        <b>Additional locations</b>
+      </p>
+      <p>List any additional business locations in Australia.</p>
+    {{/if}}
+  {{/let}}
+{{/each}}
+{{#if (lt form.addresses.length 6)}}
+  <div class="col-sm-36">
+    <br>
+    {{dds/tertiary-button
+      label="Add an address"
+      onClick=(action "addAddress")
+    }}
+  </div>
+  <div class="clear-both"></div>
+  <br>
+{{/if}}
+<hr class="light">
+<br>

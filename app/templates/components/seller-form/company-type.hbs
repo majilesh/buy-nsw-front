@@ -1,0 +1,216 @@
+<h2 class="underline-light">
+  <b>Company type and business identifiers</b>
+</h2>
+<br>
+<br>
+{{dds/inpage-nav
+  sections=(array
+    (hash name="Company type and size" anchor="company-type")
+    (hash name="Business identifiers" anchor="business-identifiers")
+  )
+}}
+<hr class="light">
+<h3 id="company-type">
+  <b>Company type and size</b>
+</h3>
+<div class="cool-infobox">
+  {{fa-icon "exclamation-circle" size="2x" prefix="fal" pull="left"}}
+  <span>
+    This information will not appear on your supplier profile and will be used to help buyers find you.
+  </span>
+  <div class="clear-both"></div>
+</div>
+<p>
+  <b>Number of employees</b>
+</p>
+<p>
+  Calculate the number of full-time employees. For part-time employees, add their hours to estimate the number of full-time equivalent staff.
+</p>
+<div class="col-sm-36 col-md-24 col-lg-15">
+  <br>
+  <p>
+    {{dds/select-box
+      field=(mut form.number_of_employees)
+      items=companySizeOptions
+      showError=(or showError (not-eq form.status 'todo'))
+      invalid=(v-get form 'number_of_employees' 'isInvalid')
+      errorMessage=(v-get form 'number_of_employees' 'message')
+      apiError=form.apiErrors.number_of_employees
+    }}
+  </p>
+</div>
+<div class="clear-both"></div>
+<p class="gray">
+  * This number should match the workers compensation insurance documentation we ask you to supply in Insurances.
+</p>
+<br>
+<p>
+  <b>Number of employees in Australia</b>
+</p>
+<br>
+<div class="col-sm-36 col-md-24 col-lg-15">
+  <p>
+    {{dds/select-box
+      field=(mut form.australia_employees)
+      items=companySizeOptionsAu
+      showError=(or showError (not-eq form.status 'todo'))
+      invalid=(v-get form 'australia_employees' 'isInvalid')
+      errorMessage=(v-get form 'australia_employees' 'message')
+      apiError=form.apiErrors.australia_employees
+    }}
+  </p>
+</div>
+<div class="clear-both"></div>
+<br>
+<p>
+  <b>Number of employees in NSW</b>
+</p>
+<br>
+<div class="col-sm-36 col-md-24 col-lg-15">
+  <p>
+    {{dds/select-box
+      field=(mut form.nsw_employees)
+      items=companySizeOptionsNsw
+      showError=(or showError (not-eq form.status 'todo'))
+      invalid=(v-get form 'nsw_employees' 'isInvalid')
+      errorMessage=(v-get form 'nsw_employees' 'message')
+      apiError=form.apiErrors.nsw_employees
+    }}
+  </p>
+</div>
+<div class="clear-both"></div>
+<hr class="light">
+<p>
+  <b>Business structure</b>
+</p>
+<p>
+  {{dds/radio-group
+    items=(array
+      (hash
+        key="sole-trader"
+        label="Sole trader"
+      )
+      (hash
+        key="company"
+        label="Company"
+      )
+      (hash
+        key="partnership"
+        label="Partnership"
+      )
+      (hash
+        key="trust"
+        label="Trust"
+      )
+    )
+    field=(mut form.business_structure)
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'business_structure' 'isInvalid')
+    errorMessage=(v-get form 'business_structure' 'message')
+    apiError=form.apiErrors.business_structure
+  }}
+</p>
+<p>
+  <b>Annual turnover</b>
+</p>
+<p>
+  Your aggregated turnover including all ordinary income you earned in the ordinary course of running a business for last financial year.
+</p>
+<div class="col-sm-36 col-md-24 col-lg-15">
+  <br>
+  <p>
+    {{dds/select-box
+      field=(mut form.annual_turnover)
+      items=(array
+              (hash value="under-3m" label="Under $3m")
+              (hash value="3m-10m" label="$3-10m")
+              (hash value="10m-25m" label="$10-25m")
+              (hash value="25m-50m" label="$25-50m")
+              (hash value="50m-100m" label="$50-100m")
+              (hash value="over-100m" label="Over $100m")
+            )
+      showError=(or showError (not-eq form.status 'todo'))
+      invalid=(v-get form 'annual_turnover' 'isInvalid')
+      errorMessage=(v-get form 'annual_turnover' 'message')
+      apiError=form.apiErrors.annual_turnover
+    }}
+  </p>
+</div>
+<div class="clear-both"></div>
+<p>
+  {{dds/top-link}}
+</p>
+<hr class="light">
+<h3 id="business-identifiers">
+  <b>Business identifiers (optional)</b>
+</h3>
+<div class="cool-infobox">
+  {{fa-icon "exclamation-circle" size="2x" prefix="fal" pull="left"}}
+  <span>
+    This information will appear on your supplier profile and can only be seen by registered buyers.
+  </span>
+  <div class="clear-both"></div>
+</div>
+<p>The following fields are optional but will help buyers find you.</p>
+<br />
+{{dds/checkbox-input
+  field=(mut form.start_up)
+  showError=(or showError (not-eq form.status 'todo'))
+  apiError=form.apiErrors.start_up
+  label="Start-up"
+  description="To be classified as a start-up your business must be less than 5 years old and must not be listed on any stock exchange."
+  disabled=(not form.can_be_startup)
+}}
+{{dds/checkbox-input
+  field=(mut form.sme)
+  showError=(or showError (not-eq form.status 'todo'))
+  apiError=form.apiErrors.sme
+  label="Small or medium enterprise"
+  disabled=(or form.overseas (eq form.number_of_employees '200plus'))
+  description="To be classified as a small and medium enterprise (SME) your business must be Australian or New Zealand based with less than 200 full time employees."
+}}
+{{dds/checkbox-input
+  field=(mut form.not_for_profit)
+  showError=(or showError (not-eq form.status 'todo'))
+  apiError=form.apiErrors.not_for_profit
+  label="Not-for-profit or social enterprise"
+  description="To be classified as a not-for-profit or social enterprise business, the purpose of your business must be to improve human or environmental wellbeing and to reinvest profits to fulfil this mission."
+}}
+{{dds/checkbox-input
+  field=(mut form.australian_owned)
+  showError=(or showError (not-eq form.status 'todo'))
+  apiError=form.apiErrors.australian_owned
+  label="Australian owned"
+  description="To be classified as Australian owned your business must have been founded and have your headquarters in Australia, and be owned by Australian nationals."
+}}
+<hr class="light">
+<h3>
+  <b>Diversity and inclusion (optional)</b>
+</h3>
+<div class="cool-infobox">
+  {{fa-icon "exclamation-circle" size="2x" prefix="fal" pull="left"}}
+  <span>
+    This information will appear on your supplier profile and can only be seen by registered buyers.
+  </span>
+  <div class="clear-both"></div>
+</div>
+<p>The following fields are optional but will help buyers find you.</p>
+<br />
+{{dds/checkbox-input
+  field=(mut form.indigenous)
+  showError=(or showError (not-eq form.status 'todo'))
+  apiError=form.apiErrors.indigenous
+  label="Aboriginal or Torres Strait Islander"
+  description="To be classified as an Aboriginal or Torres Strait Islander business, your business must be recognised by an appropriate organisation such as NSW Indigenous Chamber of Commerce, Supply Nation or the First Australians Chamber of Commerce and Industry."
+}}
+{{dds/checkbox-input
+  field=(mut form.disability)
+  showError=(or showError (not-eq form.status 'todo'))
+  apiError=form.apiErrors.disability
+  label="Australian disability enterprise"
+  description="To be classified as an Australian disability enterprise your business must be listed on the Australian disability enterprise register."
+}}
+<p>
+  {{dds/top-link}}
+</p>
+<hr class="light">
