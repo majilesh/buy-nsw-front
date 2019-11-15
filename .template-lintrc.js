@@ -9,6 +9,7 @@ module.exports = {
     'linebreak-style': true,
     'link-rel-noopener': true,
     'no-attrs-in-components': true,
+    'no-bare-strings': false,
     'no-debugger': true,
     'no-duplicate-attributes': true,
     'no-html-comments': true,
