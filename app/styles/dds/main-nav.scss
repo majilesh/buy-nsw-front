@@ -49,7 +49,7 @@ $AU-main-nav-z-index: 200 !default;
 	}
 
 
-	.active a {
+	[aria-current=page] a {
 		color: $AU-color-foreground-text;
 
 		&:hover {
@@ -80,7 +80,7 @@ $AU-main-nav-z-index: 200 !default;
 			}
 		}
 
-		.active a {
+		[aria-current=page] a {
 			border-color: $AU-color-background-alt;
 
 			&:hover {
@@ -105,7 +105,7 @@ $AU-main-nav-z-index: 200 !default;
 			}
 		}
 
-		.active a {
+		[aria-current=page] a {
 			color: $AU-colordark-foreground-text;
 			border-color: $AU-colordark-background;
 
@@ -130,7 +130,7 @@ $AU-main-nav-z-index: 200 !default;
 			}
 		}
 
-		.active a {
+		[aria-current=page] a {
 			border-color: $AU-colordark-background-alt;
 
 			&:hover {
@@ -146,7 +146,7 @@ $AU-main-nav-z-index: 200 !default;
 			@include AU-space( padding, 1unit );
 		}
 
-		.active a {
+		[aria-current=page] a {
 			@include AU-space( border-bottom, 0.5unit solid $AU-color-background );
 			@include AU-space( margin-bottom, -0.5unit );
 			font-weight: normal;
@@ -156,6 +156,13 @@ $AU-main-nav-z-index: 200 !default;
   &.au-main-nav--no-border {
     border: none;
   }
+}
+
+// hide duplicate link from mobile screens (< 576px), so that main nav doesnt wrap to a 2nd line:
+@media (max-width: $AU-media-xs) {
+	.dashboard-link {
+		@include AU-sronly();
+	}
 }
 
 
