@@ -1,0 +1,35 @@
+{{#each field as |item index|}}
+  <p>
+    <div class={{concat "col-xs-2 col-sm-1 multi-text--label"
+      (if thin " multi-text--thin")
+    }}>
+      <b>{{inc index}}.</b>
+    </div>
+    <div class="col-xs-32 col-sm-33">
+      {{dds/text-input
+        signal=(mut signal)
+        field=(mut (get field index))
+        thin=thin
+        noLabel=true
+        wide=true
+        apiError=(get apiError index)
+        showError=showError
+      }}
+    </div>
+    <div class="clear-both"></div>
+  </p>
+{{/each}}
+<p>
+  <div class="plus-circle">
+    {{dds/tertiary-button
+      onClick=(action "addRow")
+      icon="plus-circle"
+      label="Add row"
+      theme=theme
+      thin=thin
+    }}
+    {{#if (and (not disabled) (and (or showError hasChanged) invalid))}}
+      {{dds/validation-error thin=thin type=(or errorType "error") message=errorMessage float=(or float "left")}}
+    {{/if}}
+  </div>
+</p>
