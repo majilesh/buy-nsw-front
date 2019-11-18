@@ -1,11 +1,16 @@
 {{#dds/template-body auth=auth signout=true}}
   <div class="col-sm-30 col-sm-offset-3">
-    <h3><b>Your invitation to join this supplier</b></h3>
-    <p>Before you join, set a password. You'll need this when you sign in again.</p>
+    <h3><b>Create a seller account</b></h3>
+    <p>
+    Once you've verified your details, you'll be able to start your seller application.
+    </p>
+    <p>
+      Already have an account? {{link-to "Sign in" "sign-in"}}.
+    </p>
+    <br>
     <p>
       {{dds/new-password
         wide=true
-        noLabel=true
         tip="Passwords must be at least 8 characters long. Tip: create a password with 3 or more words – it's secure and easy to remember."
         field=(mut password)
         confirm=true
@@ -16,17 +21,20 @@
     {{#if apiError.email}}
       {{dds/validation-error float="right" type="error" message=apiError.email}}
     {{/if}}
-    <p>
-      <div class="sm-col-36 col-md-24">
-        <br>
+    <div class="col-sm-36 col-md-24">
+      <br>
+      <p> By creating an account you confirm your acceptance of the
+        <a href="https://beta.buy.nsw.gov.au/terms-of-use" target="_blank" rel="noopener">terms of use</a>.
+      </p>
+      <p>
         <span class="float-right">
           {{dds/primary-button
             onClick=(action "submit")
             disabled=(v-get this "isInvalid")
-            label="Accept invitation"
+            label="Continue"
           }}
         </span>
-      </div>
-    </p>
+      </p>
+    </div>
   </div>
 {{/dds/template-body}}

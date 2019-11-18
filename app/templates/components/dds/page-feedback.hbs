@@ -17,6 +17,7 @@
           <p>
             {{#dds/text-input
               wide=true
+              thin=true
               field=(mut feedback.task)
             }}
               What were you doing?
@@ -26,6 +27,7 @@
           <p>
             {{#dds/text-input
               wide=true
+              thin=true
               field=(mut feedback.issue)
             }}
               What went wrong?
@@ -40,6 +42,7 @@
           <span class="float-right">
             {{dds/secondary-button
               wide=true
+              thin=true
               onClick=(action "sendFeedback")
               disabled=feedback.isInvalid
               label="Send feedback"

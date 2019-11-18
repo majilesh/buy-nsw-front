@@ -1,6 +1,7 @@
 {{#dds/template-body auth=auth signout=true}}
   <div class="col-sm-15">
-    <h1 class="au-display-lg">Create an account</h1>
+    <h1 class="au-display-lg"><b>Create an account</b></h1>
+    <br>
   </div>
   <div class="col-sm-21">
     <p>
@@ -11,13 +12,13 @@
       >another eligible organisation</a>.
     </p>
     <br>
-    {{link-to "Sign up as a buyer" "signup" "buyer" class="au-btn au-btn--secondary"}}
+    {{link-to "Sign up as a buyer" "signup" "buyer" class="au-btn au-btn--thin au-btn--wide au-btn--secondary"}}
     <hr>
     <p>
       You can sign up as a supplier if you're an organisation looking to sell cloud products and services to NSW government, or a member of the <a href="https://tenders.nsw.gov.au/?event=public.scheme.show&RFTUUID=852B6035-ACFE-B0A3-D10121B360FF7371" target="_blank">ICT Services Scheme</a>.
     </p>
     <br>
-    {{link-to "Sign up as a supplier" "signup" "seller" class="au-btn au-btn--secondary"}}
+    {{link-to "Sign up as a supplier" "signup" "seller" class="au-btn au-btn--thin au-btn--wide au-btn--secondary"}}
     <hr>
   </div>
   <div class="col-sm-15">
@@ -63,10 +64,10 @@
     </p>
     <p>
       <a
-        class="au-btn float-right"
+        class="au-btn au-btn--thin au-btn--wide float-right"
         onclick={{action "login"}}
       >
-        Sign in
+        <b class="white">Sign in</b>
       </a>
     </p>
   </div>
