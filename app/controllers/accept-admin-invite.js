@@ -18,7 +18,7 @@ const Validations = buildValidations({
 export default BaseController.extend(Validations, {
   bjax: inject(),
   auth: inject(),
-  resetPasswordToken: '',
+  invitationToken: '',
   password: '',
 
   actions: {
@@ -30,12 +30,12 @@ export default BaseController.extend(Validations, {
           "X-CSRF-Token": this.get('auth.csrfToken'),
         },
         data: {
-          token: this.get('resetPasswordToken'),
+          token: this.get('invitationToken'),
           password: this.get('password'),
         }
       }).then((response) => {
         controller.get('auth').reauthenticate();
-        controller.transitionToRoute('success', 'password_updated')
+        controller.transitionToRoute('success', 'invitation_accepted');
       }).catch((error) => {
         controller.set('apiError', error.payload.errors && error.payload.errors[0]);
       });

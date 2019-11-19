@@ -55,7 +55,7 @@ Router.map(function() {
   this.route('profile-builder', { path: '/supplier/profile-builder'});
   this.route('access-forbidden', { path: '/forbidden' });
   this.route('seller-account', { path: '/supplier/account/:step_name' });
-  this.route('accept-admin-invite', { path: '/confirm/invitation/:confirmation_token'});
+  this.route('accept-admin-invite', { path: '/confirm/invitation/:invitation_token'});
 });
 
 export default Router;
