@@ -1,27 +1,34 @@
 {{#dds/template-body auth=auth signout=true}}
-  <h1 class="au-display-xl">Resend instructions to confirm your account</h1>
-  <p>If you did not receive an email to confirm your account, or if the one-time link has expired, we can send a new link to your email address.</p>
-  <br>
-  <p>
-    <b>Email address</b>
-    {{dds/text-input
-      wide=true
-      allRow=true
-      field=(mut email)
-      enter=(if (v-get this "isValid") (action "submit"))
-      apiError=apiError.email
-      invalid=(v-get this "email" "isInvalid")
-      errorMessage=(v-get this "email" "message")
-      float="right"
-    }}
-  </p>
-  <p>
-    <span class="float-right">
-      {{dds/primary-button
-        onClick=(action "submit")
-        disabled=(v-get this "isInvalid")
-        label="Send instructions"
+  <div class="col-sm-30 col-sm-offset-3">
+    <h3><b>Resend instructions to confirm your account</b></h3>
+    <p>
+      <div class="sm-col-36 col-md-24">If you did not receive an email to confirm your account, or if the one-time link has expired, we can send a new link to your email address.</div>
+      <div class="clear-both"></div>
+      <br>
+      <b>Email address</b>
+      <br>
+      {{dds/text-input
+        wide=true
+        noLabel=true
+        field=(mut email)
+        enter=(if (v-get this "isValid") (action "submit"))
+        apiError=apiError.email
+        invalid=(v-get this "email" "isInvalid")
+        errorMessage=(v-get this "email" "message")
+        float="right"
       }}
-    </span>
-  </p>
+    </p>
+    <p>
+      <div class="sm-col-36 col-md-24">
+      <br>
+        <span class="float-right">
+          {{dds/primary-button
+            onClick=(action "submit")
+            disabled=(v-get this "isInvalid")
+            label="Send instructions"
+          }}
+        </span>
+      </div>
+    </p>
+  </div>
 {{/dds/template-body}}
