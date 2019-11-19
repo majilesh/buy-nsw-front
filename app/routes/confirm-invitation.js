@@ -4,7 +4,7 @@ import { inject } from '@ember/service';
 export default Route.extend({
   auth: inject(),
   activate: function() {
-    this.get('auth').setPageAccess('seller-only');
+    this.get('auth').setPageAccess('public');
   },
   model(params) {
     this.set('confirmationToken', params.confirmation_token);

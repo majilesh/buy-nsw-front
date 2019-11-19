@@ -1,0 +1,12 @@
+<div class={{if twoThird "max65p" "max60"}}>
+  <span
+    class={{concat
+         "field-error " type
+         (if (eq float "left") " pull-left" " pull-right")
+         (if thin " thin")
+         }}
+  >
+    {{message}}
+  </span>
+</div>
+<div class="clear-both"></div>
