@@ -8,6 +8,10 @@
             <li class={{if (eq auth.currentRouteName item.route) "active"}}>
               {{#if item.param}}
                 {{ link-to item.label item.route item.param }}
+              {{else if item.query}}
+                {{# link-to route=item.route query=item.query }}
+                  {{item.label}}
+                {{/ link-to }}
               {{else}}
                 {{ link-to item.label item.route }}
               {{/if}}

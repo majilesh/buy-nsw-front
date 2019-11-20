@@ -10,6 +10,9 @@ p.home-title {
   b.dark-blue {
     color: $AU-colordark-background;
   }
+  &.au-display-md {
+    line-height: 1.8rem;
+  }
 }
 
 a.no-decoration {
