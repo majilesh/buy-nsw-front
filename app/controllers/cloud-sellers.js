@@ -5,6 +5,8 @@ import { inject } from '@ember/service';
 export default BaseController.extend({
   bjax: inject(),
   auth: inject(),
+  queryParams: ['identifiers', 'services', 'govdc', 'pageNum', 'term'],
+  preserveScrollPosition: true,
   pageNum: 1,
   identifiers: [],
   services: [],
@@ -32,6 +34,13 @@ export default BaseController.extend({
       params['with_term'] = this.get('term');
     }
     return params;
+  },
+  resetFilters() {
+    this.set('pageNum', 1);
+    this.set('identifiers', []);
+    this.set('services', []);
+    this.set('govdc', []);
+    this.set('term', '');
   },
   updateCounts() {
     this.get('bjax').request('/api/sellers/public_sellers/count', {

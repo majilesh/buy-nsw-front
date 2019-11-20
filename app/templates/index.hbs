@@ -115,7 +115,13 @@
             <div class="clear-both"></div>
             <hr class="light">
             <div class="highlight">
-              {{#link-to "cloud-sellers"}}
+              {{#link-to route="cloud-sellers" query=(hash
+                  term=""
+                  pageNum=1
+                  services=(array "advisory-consulting")
+                  identifiers=(array)
+                  govdc=(array)
+                )}}
                 <b>Advisory and consulting</b>
               {{/link-to}}
             </div>
@@ -124,7 +130,13 @@
             </p>
             <br>
             <div class="highlight">
-              {{#link-to "cloud-search" "all"}}
+              {{#link-to route="cloud-sellers" query=(hash
+                  term=""
+                  pageNum=1
+                  services=(array "cloud-services")
+                  identifiers=(array)
+                  govdc=(array)
+                )}}
                 <b>Cloud products and services</b>
               {{/link-to}}
             </div>
@@ -133,7 +145,13 @@
             </p>
             <br>
             <div class="highlight">
-              {{#link-to "cloud-sellers"}}
+              {{#link-to route="cloud-sellers" query=(hash
+                  term=""
+                  pageNum=1
+                  services=(array "end-user-computing")
+                  identifiers=(array)
+                  govdc=(array)
+                )}}
                 <b>End-user computing and peripherals</b>
               {{/link-to}}
             </div>
@@ -148,7 +166,13 @@
             <div class="clear-both"></div>
             <hr class="light">
             <div class="highlight">
-              {{#link-to "cloud-sellers"}}
+              {{#link-to route="cloud-sellers" query=(hash
+                  term=""
+                  pageNum=1
+                  services=(array)
+                  identifiers=(array "regional")
+                  govdc=(array)
+                )}}
                 <b>Regional NSW</b>
               {{/link-to}}
             </div>
@@ -157,7 +181,13 @@
             </p>
             <br>
             <div class="highlight">
-              {{#link-to "cloud-sellers"}}
+              {{#link-to route="cloud-sellers" query=(hash
+                  term=""
+                  pageNum=1
+                  services=(array)
+                  identifiers=(array "indigenous")
+                  govdc=(array)
+                )}}
                 <b>Aboriginal or Torres Strait Islander</b>
               {{/link-to}}
               </div>
@@ -166,7 +196,13 @@
             </p>
             <br>
             <div class="highlight">
-              {{#link-to "cloud-sellers"}}
+              {{#link-to route="cloud-sellers" query=(hash
+                  term=""
+                  pageNum=1
+                  services=(array)
+                  identifiers=(array "sme")
+                  govdc=(array)
+                )}}
                 <b>Small to medium enterprise</b>
               {{/link-to}}
               </div>
