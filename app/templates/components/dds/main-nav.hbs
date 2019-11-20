@@ -5,7 +5,7 @@
       <ul class="au-link-list" id="mainmenu">
         {{#each items as |item|}}
           {{#unless item.hide}}
-            <li class={{if (eq auth.currentRouteName item.route) "active"}}>
+            <li aria-current={{if (eq auth.currentRouteName item.route) "page"}} class={{if (eq item.route (or "seller-dashboard" "buyer-dashboard")) "dashboard-link"}}>
               {{#if item.param}}
                 {{ link-to item.label item.route item.param }}
               {{else if item.query}}
