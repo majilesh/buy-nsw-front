@@ -15,6 +15,13 @@ export default Component.extend({
       {
         label: "Supplier list",
         route: "cloud-sellers",
+        query: {
+          term: '',
+          pageNum: 1,
+          services: [],
+          identifiers: [],
+          govdc: []
+        }
       },
       {
         label: "Cloud products",

@@ -1,47 +1,55 @@
 {{#dds/template-body auth=auth signout=true}}
-  <h1 class="au-display-xl">Sign up as a {{accountType}}</h1>
-  {{#if (eq accountType "seller")}}
-    <p>Once you've verified your details, you'll be able to start your supplier account registration.</p>
-  {{/if}}
-  <p>Already have a log-in? {{link-to "Sign in" "sign-in"}}</p>
-  <p>
-    <b>Email address</b>
-    <br>
+  <div class="col-sm-30 col-sm-offset-3">
+    <h3><b>Sign up as a {{accountType}}</b></h3>
     {{#if (eq accountType "seller")}}
-      Please use your work email address. We'll send an email to this address to verify it's yours.
-    {{else}}
-      If you have one, use your government email address. We'll send an email to this address to verify it's yours.
+      <p>Once you've verified your details, you'll be able to start your supplier account registration.</p>
     {{/if}}
-    {{dds/text-input
-      wide=true
-      allRow=true
-      field=(mut email)
-      enter=(if (v-get this "isValid") (action "submit"))
-      apiError=apiError.email
-      invalid=(v-get this "email" "isInvalid")
-      errorMessage=(v-get this "email" "message")
-      float="right"
-    }}
-  </p>
-  <p>
-    {{dds/new-password
-      wide=true
-      allRow=true
-      tip="Passwords must be at least 8 characters long. Tip: create a password with 3 or more words – it's secure and easy to remember."
-      field=(mut password)
-      confirm=true
-      valid=(mut passwordValid)
-      enter=(if (v-get this "isValid") (action "submit"))
-    }}
-  </p>
-  <p>By signing up you confirm your acceptance of the {{link-to "terms of use" "terms-of-use"}}.</p>
-  <p>
-    <span class="float-right">
-      {{dds/primary-button
-        onClick=(action "submit")
-        disabled=(v-get this "isInvalid")
-        label="Continue"
+    <p>Already have a log-in? {{link-to "Sign in" "sign-in"}}</p>
+    <p>
+      <b>Email address</b>
+      <br>
+      <div class="col-sm-36 col-md-24">
+        {{#if (eq accountType "seller")}}
+          Please use your work email address. We'll send an email to this address to verify it's yours.
+        {{else}}
+          If you have one, use your government email address. We'll send an email to this address to verify it's yours.
+        {{/if}}
+      </div>
+      {{dds/text-input
+        wide=true
+        noLabel=true
+        field=(mut email)
+        enter=(if (v-get this "isValid") (action "submit"))
+        apiError=apiError.email
+        invalid=(v-get this "email" "isInvalid")
+        errorMessage=(v-get this "email" "message")
+        float="right"
       }}
-    </span>
-  </p>
+    </p>
+    <p>
+      {{dds/new-password
+        wide=true
+        tip="Passwords must be at least 8 characters long. Tip: create a password with 3 or more words – it's secure and easy to remember."
+        field=(mut password)
+        confirm=true
+        valid=(mut passwordValid)
+        enter=(if (v-get this "isValid") (action "submit"))
+      }}
+    </p>
+    <p>By signing up you confirm your acceptance of the
+      <a href="https://beta.buy.nsw.gov.au/terms-of-use" target="_blank" rel="noopener">terms of use</a>.
+    </p>
+    <p>
+      <div class="col-sm-36 col-md-24">
+      <br>
+        <span class="float-right">
+          {{dds/primary-button
+            onClick=(action "submit")
+            disabled=(v-get this "isInvalid")
+            label="Continue"
+          }}
+        </span>
+      </div>
+    </p>
+  </div>
 {{/dds/template-body}}
