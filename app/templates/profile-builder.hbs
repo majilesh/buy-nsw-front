@@ -33,109 +33,114 @@
 <main id="content">
   <div class="au-body">
     {{#dds/template-body auth=auth}}
-      <div class="cool-infobox sapphire">
-        Use this page to build your company profile. Your company profile is visible to buyers. Here you can share useful information about your business that will make you more attractive to a buyer.
-      </div>
-      <div class="row">
-        <div class="col-sm-17 col-md-14 col-lg-11">
-          {{#dds/simple-box theme="turquoise"}}
-            <h4 class="au-display-lg">
-              <center><b class="dark-sapphire">Contact details</b></center>
-            </h4>
-            <br>
-            <p>
-              <b>Contact</b><br>
-              {{this.model.seller.contact_first_name}}
-              {{this.model.seller.contact_last_name}}
-            </p>
-            <p>
-              <b>Phone no</b><br>
-              <a href="tel:{{this.model.seller.contact_phone}}">
-                {{this.model.seller.contact_phone}}
-              </a>
-            </p>
-            <p>
-              <b>ABN</b><br>
-              <a target="_blank" href="https://abr.business.gov.au/ABN/View/{{this.model.seller.abn}}">
-                {{fa-icon "external-link" prefix="far"}}
-                {{this.model.seller.abn}}
-              </a>
-            </p>
-            <p>
-              <b>Address</b><br>
-              {{#with this.model.seller.addresses.[0] as |address|}}
-                {{address.address}}
-                {{address.address_2}}
-                {{address.address_3}}
-                {{address.suburb}}
-                {{address.state}}
-                {{address.country}}
-                {{address.postcode}}
-              {{/with}}
-            </p>
-            <p>
-              <b>Email</b><br>
-              <a target="_blank" href="mailto:{{this.model.seller.contact_email}}">
-                {{this.model.seller.contact_email}}
-              </a>
-            </p>
-            <p>
-              {{link-to "Edit company account details to make changes to fields above." "supplier-application" class="small bold"}}
-            </p>
-            <br>
-            {{seller-profile/contact-detail form=this.model.contact_detail}}
-
-          {{/dds/simple-box}}
-          <br>
-          <br>
+      {{#if this.model.seller.live}}
+        <div class="cool-infobox sapphire">
+          Use this page to build your company profile. Your company profile is visible to buyers. Here you can share useful information about your business that will make you more attractive to a buyer.
         </div>
-        <div class="col-sm-1"></div>
-        <div class="col-sm-18 col-md-21 col-lg-24">
-          {{seller-profile/essential-information form=this.model.essential_information}}
-
-          {{#if this.model.seller.level_2_services}}
-            <hr class="super-light">
-            <p><b>This supplier provides</b></p>
-            <p>
-              {{#each this.model.seller.level_2_services as |service index|}}
-                {{dds/tag theme="turquoise" label=(humanize service) class="inline"}}
-              {{/each}}
-            </p>
-          {{/if}}
-          {{#if this.model.seller.tags}}
-            <hr class="super-light">
-            <p><b>Business identifiers</b></p>
-            <p>
-              {{#each this.model.seller.tags as |tag|}}
-                {{dds/tag theme="sapphire" label=tag class="inline"}}
-              {{/each}}
-            </p>
-          {{/if}}
-          {{#if this.model.seller.documents}}
-            <hr class="super-light">
-            <p>
+        <div class="row">
+          <div class="col-sm-17 col-md-14 col-lg-11">
+            {{#dds/simple-box theme="turquoise"}}
+              <h4 class="au-display-lg">
+                <center><b class="dark-sapphire">Contact details</b></center>
+              </h4>
               <br>
-              <b>This supplier has provided the following documentation:</b><br>
-              <ul>
-                {{#each this.model.seller.documents as |document|}}
-                  <li>{{document.name}}</li>
-                {{/each}}
-              </ul>
-            </p>
-          {{/if}}
-          <p>
-            {{link-to "Edit company account details to update your services, business identifiers or documents." "supplier-application" class="small bold"}}
-          </p>
-        </div>
-      </div>
-      <br>
-      {{seller-profile/reputation-and-distinction form=this.model.reputation_and_distinction expanded=(eq expandedSection "reputation-and-distinction")}}
-      {{seller-profile/capability-and-experty form=this.model.capability_and_experty expanded=(eq expandedSection "capability-and-experty")}}
-      {{seller-profile/reference-and-case-study form=this.model.reference_and_case_study expanded=(eq expandedSection "reference-and-case-study")}}
-      {{seller-profile/government-credential form=this.model.government_credential expanded=(eq expandedSection "government-credential")}}
-      {{seller-profile/team-member form=this.model.team_member expanded=(eq expandedSection "team-member")}}
-      {{seller-profile/promotional-video form=this.model.promotional_video expanded=(eq expandedSection "promotional-video")}}
+              <p>
+                <b>Contact</b><br>
+                {{this.model.seller.contact_first_name}}
+                {{this.model.seller.contact_last_name}}
+              </p>
+              <p>
+                <b>Phone no</b><br>
+                <a href="tel:{{this.model.seller.contact_phone}}">
+                  {{this.model.seller.contact_phone}}
+                </a>
+              </p>
+              <p>
+                <b>ABN</b><br>
+                <a target="_blank" href="https://abr.business.gov.au/ABN/View/{{this.model.seller.abn}}">
+                  {{fa-icon "external-link" prefix="far"}}
+                  {{this.model.seller.abn}}
+                </a>
+              </p>
+              <p>
+                <b>Address</b><br>
+                {{#with this.model.seller.addresses.[0] as |address|}}
+                  {{address.address}}
+                  {{address.address_2}}
+                  {{address.address_3}}
+                  {{address.suburb}}
+                  {{address.state}}
+                  {{address.country}}
+                  {{address.postcode}}
+                {{/with}}
+              </p>
+              <p>
+                <b>Email</b><br>
+                <a target="_blank" href="mailto:{{this.model.seller.contact_email}}">
+                  {{this.model.seller.contact_email}}
+                </a>
+              </p>
+              <p>
+                {{link-to "Edit company account details to make changes to fields above." "supplier-application" class="small bold"}}
+              </p>
+              <br>
+              {{seller-profile/contact-detail form=this.model.contact_detail}}
 
+            {{/dds/simple-box}}
+            <br>
+            <br>
+          </div>
+          <div class="col-sm-1"></div>
+          <div class="col-sm-18 col-md-21 col-lg-24">
+            {{seller-profile/essential-information form=this.model.essential_information}}
+
+            {{#if this.model.seller.level_2_services}}
+              <hr class="super-light">
+              <p><b>This supplier provides</b></p>
+              <p>
+                {{#each this.model.seller.level_2_services as |service index|}}
+                  {{dds/tag theme="turquoise" label=(humanize service) class="inline"}}
+                {{/each}}
+              </p>
+            {{/if}}
+            {{#if this.model.seller.tags}}
+              <hr class="super-light">
+              <p><b>Business identifiers</b></p>
+              <p>
+                {{#each this.model.seller.tags as |tag|}}
+                  {{dds/tag theme="sapphire" label=tag class="inline"}}
+                {{/each}}
+              </p>
+            {{/if}}
+            {{#if this.model.seller.documents}}
+              <hr class="super-light">
+              <p>
+                <br>
+                <b>This supplier has provided the following documentation:</b><br>
+                <ul>
+                  {{#each this.model.seller.documents as |document|}}
+                    <li>{{document.name}}</li>
+                  {{/each}}
+                </ul>
+              </p>
+            {{/if}}
+            <p>
+              {{link-to "Edit company account details to update your services, business identifiers or documents." "supplier-application" class="small bold"}}
+            </p>
+          </div>
+        </div>
+        <br>
+        {{seller-profile/reputation-and-distinction form=this.model.reputation_and_distinction expanded=(eq expandedSection "reputation-and-distinction")}}
+        {{seller-profile/capability-and-experty form=this.model.capability_and_experty expanded=(eq expandedSection "capability-and-experty")}}
+        {{seller-profile/reference-and-case-study form=this.model.reference_and_case_study expanded=(eq expandedSection "reference-and-case-study")}}
+        {{seller-profile/government-credential form=this.model.government_credential expanded=(eq expandedSection "government-credential")}}
+        {{seller-profile/team-member form=this.model.team_member expanded=(eq expandedSection "team-member")}}
+        {{seller-profile/promotional-video form=this.model.promotional_video expanded=(eq expandedSection "promotional-video")}}
+      {{else}}
+        <div class="cool-infobox sapphire">
+          Once your {{link-to "supplier registration" "supplier-application"}} has been submitted and approved, you will be able to use this page to provide buyers with more information about you. Make sure you've submitted your {{link-to "supplier registration" "supplier-application"}} to the buy.nsw team for review.
+        </div>
+      {{/if}}
     {{/dds/template-body}}
   </div>
   {{#if expandedSection}}

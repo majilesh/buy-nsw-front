@@ -1,4 +1,4 @@
-{{# if auth.user }}
+{{# if (and auth.user auth.user.isSeller) }}
   <h4 class="pointer" onclick={{action "onToggle"}}>
     {{headingText}}
     {{#if isOpen}}
@@ -20,5 +20,9 @@
     </ul>
   {{/if}}
 {{ else }}
-  {{ link-to "Log in or sign up" "sign-in" }}
+  {{#if auth.user}}
+    <button class="au-btn au-btn--tertiary" onclick={{action "logout"}}>Sign out</button>
+  {{else}}
+    {{ link-to "Log in or sign up" "sign-in" }}
+  {{/if}}  
 {{/ if }}
