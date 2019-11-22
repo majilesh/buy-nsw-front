@@ -8,13 +8,12 @@
       >
     {{/link-to}}
     {{ dds/drop-down auth=auth
-      droplinks=(array
-        (hash name="Account settings" route="supplier-application")
+      droplinks=(array        
         (hash name="Profile builder" route="profile-builder")
         (hash name="Dashboard" route=(if auth.isSeller "seller-dashboard" "buyer-dashboard"))
       )
     }}
-    <!-- ### temp route above "seller-application"; NB - change to new page: "supplier-account" when supplier account page merged to release-21 ###-->
+    <!-- ### insert above: (hash name="Account settings" route="supplier-account") when supplier account page merged to release-21 ###-->
   </div>
   <div>
     {{#link-to "index" class="au-header__brand"}}

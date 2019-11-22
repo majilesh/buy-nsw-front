@@ -19,7 +19,7 @@
     font-weight: 400;
     margin: 0;
     > svg {
-      @include AU-space( margin-left, .3unit );
+      @include AU-space( margin-left, 1unit );
       vertical-align: middle;
     }
   }
