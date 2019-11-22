@@ -5,7 +5,6 @@ import { modelAction } from "ember-custom-actions";
 export default DS.Model.extend({
   name: DS.attr('string'),
   status: DS.attr('string'),
-  expired: DS.attr('boolean'),
   offersCloud: DS.attr('boolean'),
   offersTelco: DS.attr('boolean'),
   canBeWithdrawn: DS.attr('boolean'),

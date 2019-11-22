@@ -96,8 +96,12 @@ p.thin-lines {
   line-height: 0.5;
 }
 
-a.au-btn.no-padding, div.no-padding {
+a.au-btn.no-padding, div.no-padding, a.no-padding {
   padding: 0;
+}
+
+span.left-padding {
+  padding-left: 1rem;
 }
 
 div.little-padding {
