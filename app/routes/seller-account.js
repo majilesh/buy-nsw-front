@@ -17,6 +17,7 @@ export default Route.extend({
   model(params) {
     this.set('stepName', params.step_name);
     return RSVP.hash({
+      alertingDocuments: this.get('ajax').request('/api/sellers/sellers/alerting_documents'),
       form: (
         params.step_name == 'login-details' ? this.store.queryRecord("user", {current: true}) :
         this.store.queryRecord("seller-account/" + params.step_name, { current: true }) ),

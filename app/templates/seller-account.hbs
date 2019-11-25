@@ -36,6 +36,21 @@
         <p>Submitting changes to this information will require the review of the buy.nsw operations team and will take 2-3 working days.</p>
         <p><b>Not what you were looking for? Edit your {{ link-to "supplier profile" "profile-builder" }}.</b></p>
       </div>
+      {{#if this.model.alertingDocuments.professional_indemnity_certificate}}
+        {{#dds/info-box class="warning"}}
+          <b>NOTE:</b> Your Pofessional Indemnity Certificate will expire in {{this.model.alertingDocuments.professional_indemnity_certificate}}. Please update your documents in the insurance section.
+        {{/dds/info-box}}
+      {{/if}}
+      {{#if this.model.alertingDocuments.product_liability_certificate}}
+        {{#dds/info-box class="warning"}}
+          <b>NOTE:</b> Your Product Liability Certificate will expire in {{this.model.alertingDocuments.product_liability_certificate}}. Please update your documents in the insurance section.
+        {{/dds/info-box}}
+      {{/if}}
+      {{#if this.model.alertingDocuments.workers_compensation_certificate}}
+        {{#dds/info-box class="warning"}}
+          <b>NOTE:</b> Your Workers' Compensation Certificate will expire in {{this.model.alertingDocuments.workers_compensation_certificate}}. Please update your documents in the insurance section.
+        {{/dds/info-box}}
+      {{/if}}
       {{#if this.model.seller.pending}}
         {{#dds/page-alert alertType="info"}}
           <h3>
@@ -59,6 +74,7 @@
           {{/if}}
         {{/dds/page-alert}}
       {{/ if }}
+
       <br>
       <div class="row">
         <div class="col-sm-15 col-md-12 col-lg-10">
