@@ -38,17 +38,35 @@
       </div>
       {{#if this.model.alertingDocuments.professional_indemnity_certificate}}
         {{#dds/info-box class="warning"}}
-          <b>NOTE:</b> Your Professional Indemnity Certificate will expire in {{this.model.alertingDocuments.professional_indemnity_certificate}}. Please update your documents in the insurance section.
+          <b>NOTE:</b> Your Professional Indemnity Certificate
+          {{#if (eq this.model.alertingDocuments.professional_indemnity_certificate "Now expired")}}
+            has expired.
+          {{else}}
+            will expire in {{this.model.alertingDocuments.professional_indemnity_certificate}}.
+          {{/if}}
+          Please update your documents in the insurance section.
         {{/dds/info-box}}
       {{/if}}
       {{#if this.model.alertingDocuments.product_liability_certificate}}
         {{#dds/info-box class="warning"}}
-          <b>NOTE:</b> Your Product Liability Certificate will expire in {{this.model.alertingDocuments.product_liability_certificate}}. Please update your documents in the insurance section.
+          <b>NOTE:</b> Your Product Liability Certificate
+          {{#if (eq this.model.alertingDocuments.product_liability_certificate "Now expired")}}
+            has expired.
+          {{else}}
+            will expire in {{this.model.alertingDocuments.product_liability_certificate}}.
+          {{/if}}
+          Please update your documents in the insurance section.
         {{/dds/info-box}}
       {{/if}}
       {{#if this.model.alertingDocuments.workers_compensation_certificate}}
         {{#dds/info-box class="warning"}}
-          <b>NOTE:</b> Your Workers' Compensation Certificate will expire in {{this.model.alertingDocuments.workers_compensation_certificate}}. Please update your documents in the insurance section.
+          <b>NOTE:</b> Your Product Liability Certificate
+          {{#if (eq this.model.alertingDocuments.workers_compensation_certificate "Now expired")}}
+            has expired.
+          {{else}}
+            will expire in {{this.model.alertingDocuments.workers_compensation_certificate}}.
+          {{/if}}
+          Please update your documents in the insurance section.
         {{/dds/info-box}}
       {{/if}}
       {{#if this.model.seller.pending}}
