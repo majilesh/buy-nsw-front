@@ -68,21 +68,30 @@
                 )
               )
               (hash title="Company details" links=(array
-                  (hash label="Business name and ABN" step="business-name-and-abn" status="done")
-                  (hash label="Contact details" step="contact-detail" status="done")
-                  (hash label="Business address" step="business-address" status="done")
-                  (hash label="Company type and size" step="company-type-and-size" status="done")
-                  (hash label="Business categories" step="business-category" status="done")
+                  (hash label="Business name and ABN" step="business-name-and-abn"
+                   status=this.model.steps.business_name_and_abn.status)
+                  (hash label="Contact details" step="contact-detail"
+                   status=this.model.steps.contact_detail.status)
+                  (hash label="Business address" step="business-address"
+                   status=this.model.steps.business_address.status)
+                  (hash label="Company type and size" step="company-type-and-size"
+                   status=this.model.steps.company_type_and_size.status)
+                  (hash label="Business categories" step="business-category"
+                   status=this.model.steps.business_category.status)
                 )
               )
               (hash title="Disclosures" links=(array
-                  (hash label="Insurance documents" step="insurance-document" status="done")
-                  (hash label="Financial disclosures" step="financial-document" status="done")
-                  (hash label="Legal disclosures" step="legal-disclosure" status="done")
+                  (hash label="Insurance documents" step="insurance-document"
+                   status=this.model.steps.insurance_document.status)
+                  (hash label="Financial disclosures" step="financial-document"
+                   status=this.model.steps.financial_document.status)
+                  (hash label="Legal disclosures" step="legal-disclosure"
+                   status=this.model.steps.legal_disclosure.status)
                 )
               )
               (hash title="Government engagements" links=(array
-                  (hash label="Government schemes and panels" step="government-scheme-and-panel" status="done")
+                  (hash label="Government schemes and panels" step="government-scheme-and-panel"
+                   status=this.model.steps.government_scheme_and_panel.status)
                 )
               )
             )
