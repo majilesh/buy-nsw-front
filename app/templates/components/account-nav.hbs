@@ -1,0 +1,14 @@
+{{#each items as |item|}}
+  <h4><b>{{item.title}}</b></h4>
+  <ul class="au-progress-indicator">
+    {{#each item.links as |link|}}
+      <li>
+        {{#link-to "seller-account" link.step class=(concat "au-progress-indicator__link au-progress-indicator__link--" link.status)}}
+          <span>
+            {{link.label}}
+          </span>
+        {{/link-to}}
+      </li>
+    {{/each}}
+  </ul>
+{{/each}}
