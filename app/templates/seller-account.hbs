@@ -62,65 +62,40 @@
       <br>
       <div class="row">
         <div class="col-sm-15 col-md-12 col-lg-10">
-          <div class="progress-menu sapphire">
-            <h4><b>My Account</b></h4>
-            {{!dds/progress-indicator
-              stepName=stepName
-              items=(array
-                (hash route="seller-account" step="login"
-                status=this.model.steps.eligibility.status
-                title="Login details")
+          {{account-nav items=(array
+              (hash title="My Account" links=(array
+                  (hash label="Login details" step="login-details")
+                )
               )
-            }}
-            <h4><b>Company details</b></h4>
-            {{!dds/progress-indicator
-              stepName=stepName
-              items=(array
-                (hash route="seller-account" step="business-name-and-abn"
-                status=this.model.steps.business_name.status
-                title="Business name and ABN")
-                (hash route="seller-account" step="contact-detail"
-                status=this.model.steps.contact_detail.status
-                title="Contact details")
-                (hash route="seller-account" step="business-address"
-                status=this.model.steps.business_address.status
-                title="Business address")
-                (hash route="seller-account" step="company-type-and-size"
-                status=this.model.steps.company_type_and_size.status
-                title="Company type and size")
-                (hash route="seller-account" step="business-category"
-                status=this.model.steps.business_category.status
-                title="Business categories")
+              (hash title="Company details" links=(array
+                  (hash label="Business name and ABN" step="business-name-and-abn"
+                   status=this.model.steps.business_name_and_abn.status)
+                  (hash label="Contact details" step="contact-detail"
+                   status=this.model.steps.contact_detail.status)
+                  (hash label="Business address" step="business-address"
+                   status=this.model.steps.business_address.status)
+                  (hash label="Company type and size" step="company-type-and-size"
+                   status=this.model.steps.company_type_and_size.status)
+                  (hash label="Business categories" step="business-category"
+                   status=this.model.steps.business_category.status)
+                )
               )
-            }}
-            <h4><b>Disclosures</b></h4>
-            {{!dds/progress-indicator
-              stepName=stepName
-              items=(array
-                (hash route="seller-account" step="insurance-document"
-                optional=true
-                status=this.model.steps.insurance_document.status
-                title="Insurance documents")
-                (hash route="seller-account" step="financial-document"
-                optional=true
-                status=this.model.steps.financial_document.status
-                title="Financial disclosures")
-                (hash route="seller-account" step="legal-disclosure"
-                status=this.model.steps.legal_disclosure.status
-                title="Legal disclosures")
+              (hash title="Disclosures" links=(array
+                  (hash label="Insurance documents" step="insurance-document"
+                   status=this.model.steps.insurance_document.status)
+                  (hash label="Financial disclosures" step="financial-document"
+                   status=this.model.steps.financial_document.status)
+                  (hash label="Legal disclosures" step="legal-disclosure"
+                   status=this.model.steps.legal_disclosure.status)
+                )
               )
-            }}
-            <h4><b>Government engagements</b></h4>
-            {{!dds/progress-indicator
-              stepName=stepName
-              items=(array
-                (hash route="seller-account" step="government-schemes"
-                status=this.model.steps.government_schemes.status
-                optional=true
-                title="Government schemes and panels")
+              (hash title="Government engagements" links=(array
+                  (hash label="Government schemes and panels" step="government-scheme-and-panel"
+                   status=this.model.steps.government_scheme_and_panel.status)
+                )
               )
-            }}
-          </div>
+            )
+          }}
         </div>
         <div class="col-sm-20 col-md-23 col-lg-25 col-sm-offset-1">
           {{component (concat "seller-account/" stepName)
