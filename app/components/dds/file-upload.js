@@ -10,6 +10,10 @@ export default Component.extend({
   documents: null,
   fileTypes: ["image/jpeg", "image/png", "application/pdf"],
 
+  displayError: computed('showError', 'hasChanged', 'field', function() {
+    return this.get('showError') || this.get('hasChanged');
+  }),
+
   fieldAndDocumentsMatch: computed('multiple', 'field', 'documents', function() {
     if(this.get('documents') == null) {
       return false;
