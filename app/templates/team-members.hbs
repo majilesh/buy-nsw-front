@@ -7,23 +7,17 @@
   }}
   <div class="col-sm-30">
     <br>
-    {{#if auth.user.seller_id}}
-      <h1 class="au-display-lg">Your team members</h1>
-      <p>You can collaborate on this application with other people from your organisation.</p>
-      <p>
-      {{link-to "Invite a team member" "invite-team-member" class="au-btn"}}
-      </p>
-      <br>
-      <h2 class="au-display-md"><b>Current team members</b></h2>
+    <h1 class="au-display-lg">Your team members</h1>
+    <p>You can collaborate on this application with other people from your organisation.</p>
+    <p>
+    {{link-to "Invite a team member" "invite-team-member" class="au-btn"}}
+    </p>
+    <br>
+    <h2 class="au-display-md"><b>Current team members</b></h2>
+    <hr class="light">
+    {{#each this.model as |member|}}
+      {{member.email}}
       <hr class="light">
-      {{#each this.model as |member|}}
-        {{member.email}}
-        <hr class="light">
-      {{/each}}
-    {{else}}
-      <p>
-        To invite other users to help you, you have to initiate your supplier registration, by clicking <u>Start application</u> button on the buttom of {{link-to "Supplier Registration" "register-seller"}} page.
-      </p>
-    {{/if}}
+    {{/each}}
   </div>
 {{/dds/template-body}}

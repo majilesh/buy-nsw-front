@@ -8,44 +8,38 @@
   }}
   <div class="col-sm-30">
     <br>
-    {{#if auth.user.seller_id}}
-      <h1 class="au-display-lg">Invite a team member</h1>
-      <p>
-        You can invite other members of your team to your supplier account.
-      </p>
-      <p>
-        Team members get full access to view and edit your company's registration and profile.
-      </p>
-      <p>
-        We will send an invitation to them by email with further instructions.
-      </p>
-      <p>
-        {{#dds/text-input
-          wide=true
-          field=(mut this.model.email)
-          enter=(if (v-get this "isValid") (action "invite"))
-          apiError=apiError.email
-          invalid=(v-get this "model.email" "isInvalid")
-          errorMessage=(v-get this "model.email" "message")
-          float="right"
+    <h1 class="au-display-lg">Invite a team member</h1>
+    <p>
+      You can invite other members of your team to your supplier account.
+    </p>
+    <p>
+      Team members get full access to view and edit your company's registration and profile.
+    </p>
+    <p>
+      We will send an invitation to them by email with further instructions.
+    </p>
+    <p>
+      {{#dds/text-input
+        wide=true
+        field=(mut this.model.email)
+        enter=(if (v-get this "isValid") (action "invite"))
+        apiError=apiError.email
+        invalid=(v-get this "model.email" "isInvalid")
+        errorMessage=(v-get this "model.email" "message")
+        float="right"
+      }}
+      <b>Email address:</b>
+      {{/dds/text-input}}
+    </p>
+    <div class="clear-both"></div>
+    <p>
+      <span class="float-right">
+        {{dds/primary-button
+          onClick=(action "invite")
+          disabled=(v-get this "isInvalid")
+          label="Send invitation"
         }}
-        <b>Email address:</b>
-        {{/dds/text-input}}
-      </p>
-      <div class="clear-both"></div>
-      <p>
-        <span class="float-right">
-          {{dds/primary-button
-            onClick=(action "invite")
-            disabled=(v-get this "isInvalid")
-            label="Send invitation"
-          }}
-        </span>
-      </p>
-    {{else}}
-      <p>
-        To invite other users to help you, you have to initiate your supplier registration, by clicking <u>Start application</u> button on the buttom of {{link-to "Supplier Registration" "register-seller"}} page.
-      </p>
-    {{/if}}
-  </div>
+      </span>
+    </p>
+</div>
 {{/dds/template-body}}
