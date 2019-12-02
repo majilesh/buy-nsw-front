@@ -26,7 +26,7 @@ export default BaseController.extend({
           self.transitionToRoute('application-success');
         });
       }).catch((adapterError) => {
-        self.set('model.form.apiErrors', error.payload.errors && error.payload.errors[0]);
+        self.set('model.form.apiErrors', adapterError.errors && adapterError.errors[0]);
       }).finally(() => {
         self.get('overlay').hide();
       });
