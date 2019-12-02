@@ -19,7 +19,9 @@
       }}
     </p>
     {{#if apiError.email}}
-      {{dds/validation-error float="right" type="error" message=apiError.email}}
+      {{dds/validation-error float="left" type="error" message=apiError.email}}
+    {{else if apiError.password}}
+      {{dds/validation-error float="left" type="error" message=apiError.password}}
     {{/if}}
     <div class="col-sm-36 col-md-24">
       <br>

@@ -31,8 +31,8 @@
   {{/if}}
   <div class="clear-both"></div>
 {{/each}}
-{{#if (and (or showError hasChanged) invalid)}}
+{{#if (and displayError invalid)}}
   {{dds/validation-error type="error" message=errorMessage float="right"}}
-{{else if (and apiError (or showError hasChanged))}}
+{{else if (and apiError displayError)}}
   {{dds/validation-error type="warning" message=apiError float="right"}}
 {{/if}}

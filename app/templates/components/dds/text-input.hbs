@@ -30,14 +30,14 @@
         {{sub maxLength (if field (get field "length") 0)}} characters remaining
       </p>
     {{/if}}
-    {{#if (and (or showError hasChanged) (and required (is-empty field)))}}
+    {{#if (and displayError (and required (is-empty field)))}}
       {{dds/validation-error thin=thin type="error" message="This field is required" float=(or float "left")}}
-    {{else if (and (not disabled) (and (or showError hasChanged) invalid))}}
+    {{else if (and (not disabled) (and displayError invalid))}}
       {{#unless wide}}
         <br>
       {{/unless}}
       {{dds/validation-error thin=thin type=(or errorType "error") message=errorMessage float=(or float "left")}}
-    {{else if (and apiError (or showError hasChanged))}}
+    {{else if (and apiError displayError)}}
       {{dds/validation-error thin=thin type="warning" message=apiError float=(or float "left")}}
     {{/if}}
   </div>
