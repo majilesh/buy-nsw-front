@@ -1,31 +1,13 @@
-<div class="cool-infobox sapphire">
-  Some of this information will appear on your supplier profile and product pages, but only to logged in buyers.
+<div class="cool-infobox sapphire">{{fa-icon "eye" prefix="fas" size="2x"}} 
+  This information will appear on your supplier profile and is publicly visible to all users
 </div>
-<p>
-  You need an Australian Business Number (ABN) to do business in Australia.
-  <a target="_blank" href="https://abr.business.gov.au/">Look up your ABN</a>.
-</p>
-<br>
-<p>
-  <b class="sapphire">Business name</b>
-</p>
-<p>
-  Your business name must match your ABN listed business name.
-</p>
-<p>
-  {{form.name}}
-</p>
-<br>
-<p>
-  <b class="sapphire">ABN</b>
-</p>
-<p>
-  {{form.abn}}
-</p>
-<br>
-<p>
-  <b class="sapphire">Date established</b>
-</p>
-<p>
-  {{au-date form.establishment_date}}
-</p>
+<h4>Business name</h4>
+<p>Your business name must match your ABN listed business name.</p>
+<dl class="details alt">
+  <dt>Business name</dt>
+  <dd>{{form.name}}</dd>
+  <dt>ABN</dt>
+  <dd>{{form.abn}}</dd>
+  <dt>Date established</dt>
+  <dd>{{au-date form.establishment_date}}</dd>
+</dl>

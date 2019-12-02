@@ -1,0 +1,198 @@
+/*
+  styles confined to pages with the new design (side + main); initially used in supplier account pages
+*/
+
+.sapphire-main {
+  .au-body * + p {
+    @include AU-space( margin-top, 1unit );
+  }
+  article {
+    border-top: 1px solid $BUY-color-border-grey-alt;
+    border-bottom: 1px solid $BUY-color-border-grey-alt;
+    @include AU-space( margin-left, 1unit );
+    .cool-infobox {
+      -ms-flex-align: center;
+      align-items: center;
+      display: -ms-flexbox;
+      display: flex;
+      &.sapphire {
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        @include AU-space( padding, .7unit 2unit .7unit .7unit );
+      }
+      svg {
+        @include AU-space( margin, .5unit 1.5unit .5unit .5unit );
+      }
+    }
+    h3 {
+      @include AU-space( margin-bottom, 1unit ); // note: .5 at places in Axure
+    }
+  }
+  nav {
+    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.1);
+  }
+  // padding variations (override .au-grid settings):
+  .au-grid & {
+    article {
+      &.col-sm-23 {
+        @include AU-space( padding, 2unit 3unit 1.5unit 4.5unit );
+      }
+    }
+    nav {
+      &.col-sm-11 {
+        @include AU-space( padding, 2unit 1.5unit 1.5unit 3unit );
+      }
+    }
+  }
+  .au-btn {
+    font-size: .87rem;
+    @include AU-space( padding, .3unit 2unit );
+    &.au-btn--thin {
+      @include AU-space( padding, .3unit 2unit );
+    }
+    &:not(.au-btn--tertiary) {
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+  }
+  hr {
+    border-top: 1px solid #E0E0E0;
+    @include AU-space( margin, 1unit 0 1unit 0 );
+  }
+  .cool-infobox {
+    &.sapphire {
+      @include AU-space( padding, 1unit );
+    }
+  }
+  h4 {
+    color: $BUY-color-heading-blue;
+    font-weight: 600;
+  }
+  dt {
+    font-weight: 600;
+  }
+  dd {
+    @include AU-space( margin, .5unit 0 );
+  }
+  .alt {
+    > dt {
+      @include AU-space( margin-bottom, .75unit );
+      &:not(:first-of-type) {
+        border-top: 1px solid #E0E0E0;
+        @include AU-space( margin-top, 1unit );
+        @include AU-space( padding-top, .75unit );
+      }
+    }
+  }
+  // shorthand class names - single declarations
+  // display (any element)
+  .d-b {
+    display: block;
+  }
+  .d-ib {
+    display: inline-block;
+  }
+  // margin (any element)
+  .mt-5 {
+    @include AU-space( margin-top, .5unit );
+  }
+  .mt-10 {
+    @include AU-space( margin-top, 1unit );
+  }
+  .mb-5 {
+    @include AU-space( margin-bottom, .5unit );
+  }
+  .mb-10 {
+    @include AU-space( margin-bottom, 1unit );
+  }
+  // padding (any element)
+  .p-5 {
+    @include AU-space( padding, .5unit );
+  }
+  .p-10 {
+    @include AU-space( padding, 1unit );
+  }
+  .pt-5 {
+    @include AU-space( padding-top, .5unit );
+  }
+  .pt-10 {
+    @include AU-space( padding-top, 1unit );
+  }
+  .pb-5 {
+    @include AU-space( padding-bottom, .5unit );
+  }
+  .pb-10 {
+    @include AU-space( padding-bottom, 1unit );
+  }
+}
+
+.status__reporter {
+  @include AU-fontgrid( xs );
+  @include AU-space( margin-top, .25unit );
+}
+
+/**
+ * sapphire form layout
+  text inputs - label above input; label - margin-bottom; input - 1px border
+  checkbox - 
+ */
+.sapphire-form {
+  background: #fbfcfd;
+  [type=date], [type=password], [type=text] {
+    font-family: inherit;
+    @include AU-fontgrid( sm, nospace ); // using default to make sure we don’t crop descenders and ascenders
+    min-width: 250px;
+	  @include AU-space( padding, 0.25unit .5unit );
+    @include AU-space( margin-bottom, .5unit);
+  }  
+  label {
+    //color: $BUY-color-label-shade; // in Axure for login details, but all other labels are dark grey
+    display: block;
+    font-weight: 600;
+    @include AU-space( margin-bottom, .5unit );
+  }
+  .minor {
+    label {
+      @include AU-fontgrid( xs );
+    }
+  }
+  [type=checkbox] {
+    @include AU-sronly();
+    + label {
+      align-items: center;
+      display: flex;
+      min-height: 28px;
+      padding-left: 35px;
+      position: relative;
+      &:before {
+        background: #fff;
+        border: 1px solid $BUY-color-foreground-text;
+        content: '';
+        display: inline-block;
+        height: 24px;
+        left: 0;
+        position: absolute;
+        width: 24px;
+      }
+    }
+    &:checked {
+      + label:after {
+        background: AU-svguri('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z" class=""></path></svg>') 0 0/contain no-repeat transparent;
+        content: '';
+        height: 18px;
+        left: 5px;
+        position: absolute;
+        top: 5px;
+        width: 18px;
+      }
+    }
+    &:disabled + label:before {
+      border-color: $BUY-color-minimal-grey;
+    }
+  }
+  .error {
+    color: $BUY-color-warning-alt;
+  }
+  hr {
+    @include AU-space( margin-top, .5unit );
+  }
+}

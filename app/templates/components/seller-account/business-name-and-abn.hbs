@@ -4,15 +4,14 @@
   class="pull-right"
   form=form
 }}
-<h2><b>Business name and ABN</b></h2>
+<h3><b>Business name and ABN</b></h3>
 {{form-status status=form.status}}
-<br>
+<hr />
 {{#if underEdit}}
-  {{seller-account/business-name-and-abn-edit form=form}}
+  {{seller-account/business-name-and-abn-edit class="sapphire-form" form=form}}
 {{else}}
   {{seller-account/business-name-and-abn-view form=form buyerView=true}}
 {{/if}}
-<br>
 {{seller-profile/edit-save
   theme="sapphire"
   underEdit=(mut underEdit)

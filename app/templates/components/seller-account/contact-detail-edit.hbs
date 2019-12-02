@@ -1,1 +1,111 @@
-{{yield}}
+<div class="cool-infobox sapphire">
+  {{fa-icon "info-circle" size="2x" prefix="fas"}}
+  Please note that all fields are mandatory unless otherwise indicated.
+</div>
+<h4>Business contact name</h4>
+<p class="mb-10">This contact will display on your supplier profile and can only be seen by logged in buyers. It is the person you nominate to receive  communications from buyers and buy.nsw.</p>
+<div class="row">
+  {{dds/text-input
+    isSimple=true
+    label-text="First name"
+    class="col-lg-18"
+    field=(mut form.contact_first_name)
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'contact_first_name' 'isInvalid')
+    errorMessage=(v-get form 'contact_first_name' 'message')
+    apiError=form.apiErrors.contact_first_name
+  }}
+  
+  {{dds/text-input
+    isSimple=true
+    label-text="Last name"
+    class="col-lg-18"
+    field=(mut form.contact_last_name)
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'contact_last_name' 'isInvalid')
+    errorMessage=(v-get form 'contact_last_name' 'message')
+    apiError=form.apiErrors.contact_last_name
+  }}
+</div>
+
+{{dds/text-input
+  isSimple=true
+  label-text="Email address"
+  field=(mut form.contact_email)
+  showError=(or showError (not-eq form.status 'todo'))
+  invalid=(v-get form 'contact_email' 'isInvalid')
+  errorMessage=(v-get form 'contact_email' 'message')
+  apiError=form.apiErrors.contact_email
+}}
+
+{{dds/text-input
+  isSimple=true
+  label-text="Contact number"
+  field=(mut form.contact_phone)
+  showError=(or showError (not-eq form.status 'todo'))
+  invalid=(v-get form 'contact_phone' 'isInvalid')
+  errorMessage=(v-get form 'contact_phone' 'message')
+  apiError=form.apiErrors.contact_phone
+}}
+
+<hr class="clear-both" />
+<h4>Authorised representative</h4>
+<p class="mb-10">
+  This is the person authorised to enter into contracts with the NSW government on behalf of your business. These contact details will not appear on your profile and are not available to buyers.
+</p>
+
+{{dds/checkbox-input
+  isSimple=true
+  field=(mut form.same_as_above)
+  label="Same as above"
+  class="minor"
+  onChange=(action "sameClicked")
+}}
+
+<div class="row">
+  {{dds/text-input
+    isSimple=true
+    label-text="First name"
+    class="col-lg-18"
+    disabled=form.same_as_above
+    field=(mut form.representative_first_name)
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'representative_first_name' 'isInvalid')
+    errorMessage=(v-get form 'representative_first_name' 'message')
+    apiError=form.apiErrors.representative_first_name
+  }}
+
+  {{dds/text-input
+    isSimple=true
+    label-text="Last name"
+    class="col-lg-18"
+    disabled=form.same_as_above
+    field=(mut form.representative_last_name)
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'representative_last_name' 'isInvalid')
+    errorMessage=(v-get form 'representative_last_name' 'message')
+    apiError=form.apiErrors.representative_last_name
+  }}
+</div>
+
+{{dds/text-input
+  isSimple=true
+  label-text="Email address"
+  disabled=form.same_as_above
+  field=(mut form.representative_email)
+  showError=(or showError (not-eq form.status 'todo'))
+  invalid=(v-get form 'representative_email' 'isInvalid')
+  errorMessage=(v-get form 'representative_email' 'message')
+  apiError=form.apiErrors.representative_email
+}}
+
+{{dds/text-input
+  isSimple=true
+  label-text="Contact number"
+  disabled=form.same_as_above
+  field=(mut form.representative_phone)
+  showError=(or showError (not-eq form.status 'todo'))
+  invalid=(v-get form 'representative_phone' 'isInvalid')
+  errorMessage=(v-get form 'representative_phone' 'message')
+  apiError=form.apiErrors.representative_phone
+}}
