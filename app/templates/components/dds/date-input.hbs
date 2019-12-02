@@ -14,11 +14,11 @@
     focus-out=(action "focusOut")
     enter=enter
     placeholder="YYYY-MM-DD"
-    required=(and (or showError hasChanged) invalid)
+    rrequired=(and displayError invalid)
   }}
-  {{#if (and (or showError hasChanged) invalid)}}
+  {{#if (and displayError invalid)}}
     {{dds/validation-error type="error" message=errorMessage isSimple=true class="error"}}
-  {{else if (and apiError (or showError hasChanged))}}
+  {{else if (and apiError displayError)}}
     {{dds/validation-error type="warning" message=apiError isSimple=true class="error"}}
   {{/if}}
 {{else}}
@@ -40,14 +40,14 @@
       enter=enter
       placeholder="YYYY-MM-DD"
       title=""
-      required=(and (or showError hasChanged) invalid)
+      required=(and displayError invalid)
       min=min
       max=max
     }}
   </div>
   {{#if (and (or showError hasChanged) invalid)}}
     {{dds/validation-error type="error" thin=thin message=errorMessage float="left"}}
-  {{else if (and apiError (or showError hasChanged))}}
+  {{else if (and apiError displayError)}}
     {{dds/validation-error type="warning" thin=thin message=apiError float="left"}}
   {{/if}}
   <div class="clear-both"></div>

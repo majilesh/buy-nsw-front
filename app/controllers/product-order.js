@@ -40,8 +40,8 @@ export default BaseController.extend(Validations, {
       this.model.order.set('product_id', this.model.product.get('id'));
       this.model.order.save().then(function() {
         controller.transitionToRoute('success', 'product_order')
-      }).catch((response) => {
-        controller.set('apiError', response.payload.errors && response.payload.errors[0]);
+      }).catch((adapterError) => {
+        controller.set('apiError', adapterError.errors && adapterError.errors[0]);
       }).finally(() => this.get('overlay').hide());
     }
   }

@@ -28,7 +28,7 @@
       theme=theme
       thin=thin
     }}
-    {{#if (and (not disabled) (and (or showError hasChanged) invalid))}}
+    {{#if (and (not disabled) (and displayError invalid))}}
       {{dds/validation-error thin=thin type=(or errorType "error") message=errorMessage float=(or float "left")}}
     {{/if}}
   </div>

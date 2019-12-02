@@ -97,15 +97,19 @@ export default Service.extend({
         remember: remember,
       }
     }).then((response) => {
-      // this.handleSuccess(response);
-      // this.set('apiError', null);
+      this.handleSuccess(response);
+      this.set('apiError', null);
       // this.get('router').transitionTo("index");
       if(this.get('locationHref')) {
         let loc = this.get('locationHref');
         this.set('locationHref', null);
         window.location = loc;
       } else {
-        window.location = '/';
+        if(this.isSeller) {
+          window.location = '/ict/supplier/dashboard';
+        } else {
+          window.location = '/ict';
+        }
       }
     }).catch((response) => {
       this.handleError(response);

@@ -1,8 +1,12 @@
 import Component from '@ember/component';
 import layout from '../../templates/components/dds/text-area';
+import { computed } from '@ember/object';
 
 export default Component.extend({
   layout,
+  displayError: computed('showError', 'hasChanged', 'field', function() {
+    return this.get('showError') || this.get('hasChanged');
+  }),
   actions: {
     focusOut() {
       this.set('hasChanged', true);

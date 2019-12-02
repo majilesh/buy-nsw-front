@@ -1,9 +1,14 @@
 import Component from '@ember/component';
+import { computed } from '@ember/object';
 
 import layout from '../../templates/components/dds/avatar-upload';
 
 export default Component.extend({
   layout,
+
+  displayError: computed('showError', 'hasChanged', 'field', function() {
+    return this.get('showError') || this.get('hasChanged');
+  }),
 
   toBlob(canvas, then) {
     if(canvas.toBlob) {
