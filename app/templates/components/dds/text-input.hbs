@@ -4,6 +4,7 @@
     {{yield}}
   </label>
   {{input
+    class=(if inputClass inputClass)
     value=(mut field)
     id=(concat elementId '-input')
     type=(if password "password" "text")

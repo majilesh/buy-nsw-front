@@ -138,7 +138,7 @@
 }
 
 /* On screens that are 992px or less, shift the .editing background-image to prevent overlap with text */
-@media screen and (max-width: 992px) {
+@media screen and (max-width: $AU-media-md) {
   .au-banner {
     .container-fluid {
       @include AU-media( sm ) {

@@ -1,6 +1,7 @@
 {{#if isSimple}}
   <label for={{concat elementId '-date'}}>{{label-text}}</label>
   {{input
+    class=(if inputClass inputClass)
     value=field
     id=(concat elementId '-date')
     type=(if (or (or (or

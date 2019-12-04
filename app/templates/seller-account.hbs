@@ -61,7 +61,7 @@
       {{/ if }}
       <br>
       <div class="row">
-        {{account-nav class="col-sm-11" items=(array
+        {{account-nav class="col-sm-14 col-md-11" items=(array
             (hash title="My Account" links=(array
                 (hash label="Login details" step="login-details")
               )
@@ -95,7 +95,7 @@
             )
           )
         }}
-        <article class="sapphire-article col-sm-23">
+        <article class="sapphire-article col-sm-20 col-md-23">
           {{component (concat "seller-account/" stepName)
             form=(mut this.model.form)
             seller=this.model.seller

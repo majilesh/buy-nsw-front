@@ -9,6 +9,7 @@
 {{dds/text-input
   isSimple=true
   label-text="Business name"
+  inputClass="maxw-300"
   field=(mut form.name)
   showError=true
   invalid=(v-get form 'name' 'isInvalid')
@@ -19,6 +20,7 @@
 {{dds/text-input
   isSimple=true
   label-text="ABN"
+  inputClass="maxw-300"
   field=(mut form.abn)
   showError=true
   invalid=(v-get form 'abn' 'isInvalid')
@@ -30,6 +32,7 @@
   required=true
   isSimple=true
   label-text="Date established"
+  inputClass="maxw-200"
   field=(mut form.establishment_date)
   showError=true
   invalid=(v-get form 'establishment_date' 'isInvalid')

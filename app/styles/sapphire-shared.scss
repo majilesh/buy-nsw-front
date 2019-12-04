@@ -25,22 +25,27 @@
     }
     h3 {
       @include AU-space( margin-bottom, 1unit ); // note: .5 at places in Axure
+      &:first-of-type {
+        @include AU-space( margin-top, 0 );
+      }
     }
   }
   nav {
     box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.1);
   }
   // padding variations (override .au-grid settings):
-  .au-grid & {
-    article {
-      &.col-sm-23 {
-        @include AU-space( padding, 2unit 3unit 1.5unit 4.5unit );
-      }
+  /*.au-grid & {
+    .sapphire-article {
+      @include AU-space( padding, 2unit 3unit 1.5unit 4.5unit );
     }
-    nav {
-      &.col-sm-11 {
-        @include AU-space( padding, 2unit 1.5unit 1.5unit 3unit );
-      }
+    .sapphire-nav {
+      @include AU-space( padding, 2unit 1.5unit 1.5unit 3unit );
+    }
+  }*/
+  .au-grid & {
+    .sapphire-article, .sapphire-nav {
+      @include AU-space( padding-top, 2unit );
+      @include AU-space( padding-bottom, 1.5unit );
     }
   }
   .au-btn {
@@ -125,6 +130,31 @@
   }
 }
 
+// for medium and large screens only (> 992px)
+@media only screen and (min-width: $AU-media-md) {
+  // increase padding for sapphire-article and -nav
+  .au-grid .sapphire-main {
+    .sapphire-article {
+      @include AU-space( padding, 2unit 3unit 1.5unit 4.5unit );
+    }
+    .sapphire-nav {
+      @include AU-space( padding, 2unit 1.5unit 1.5unit 3unit );
+    }
+  }
+  // max-widths for any element (principally for text inputs) 
+  // in narrower viewports (< 992), text inputs will be 100% of their container
+  // NB - column width classes such as .col-md-11, are problematic since they include float and padding
+	.maxw-200 {
+		max-width: 200px;
+	}
+	.maxw-300 {
+		max-width: 300px;
+	}
+	.maxw-550 {
+		max-width: 550px;
+	}
+}
+
 .status__reporter {
   @include AU-fontgrid( xs );
   @include AU-space( margin-top, .25unit );
@@ -138,11 +168,12 @@
 .sapphire-form {
   background: #fbfcfd;
   [type=date], [type=password], [type=text] {
+    box-sizing: border-box;
     font-family: inherit;
     @include AU-fontgrid( sm, nospace ); // using default to make sure we don’t crop descenders and ascenders
-    min-width: 250px;
-	  @include AU-space( padding, 0.25unit .5unit );
     @include AU-space( margin-bottom, .5unit);
+	  @include AU-space( padding, 0.25unit .5unit );
+    width: 100%;
   }  
   label {
     //color: $BUY-color-label-shade; // in Axure for login details, but all other labels are dark grey
