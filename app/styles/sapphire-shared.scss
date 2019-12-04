@@ -138,11 +138,12 @@
 .sapphire-form {
   background: #fbfcfd;
   [type=date], [type=password], [type=text] {
+    box-sizing: border-box;
     font-family: inherit;
     @include AU-fontgrid( sm, nospace ); // using default to make sure we don’t crop descenders and ascenders
-    min-width: 250px;
-	  @include AU-space( padding, 0.25unit .5unit );
     @include AU-space( margin-bottom, .5unit);
+	  @include AU-space( padding, 0.25unit .5unit );
+    width: 100%;
   }  
   label {
     //color: $BUY-color-label-shade; // in Axure for login details, but all other labels are dark grey

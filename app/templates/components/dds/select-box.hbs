@@ -1,5 +1,8 @@
+{{#if label-text}}
+  <label>{{label-text}}</label>
+{{/if}}
 <select
-  class="au-select fixed-width au-select--block"
+  class="au-select au-select--block"
   onChange={{action "onChange" value="target.value"}}
 >
   <option
