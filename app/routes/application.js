@@ -43,7 +43,6 @@ export default Route.extend({
         this.transitionTo('access-forbidden');
       } else if ( error && error.status == 422 && error.payload.errors && error.payload.errors[0].alert) {
         this.get('overlay').showError(error.payload.errors[0].alert);
-        this.transitionTo('index');
       } else {
         let airbrake = this.get('airbrake');
         let airError = response.message || "Route transition failed";
@@ -60,7 +59,6 @@ export default Route.extend({
           context: context
         });
         console.error(airError);
-        this.transitionTo('index');
       }
       return false;
     }
