@@ -36,6 +36,19 @@
         <p>Submitting changes to this information will require the review of the buy.nsw operations team and will take 2-3 working days.</p>
         <p><b>Not what you were looking for? Edit your {{ link-to "supplier profile" "profile-builder" }}.</b></p>
       </div>
+      {{#if (not (is-empty this.model.alertingDocuments))}}
+        {{#dds/info-box class="warning"}}
+          {{#each this.model.alertingDocuments as |alertDoc|}}
+            <b>NOTE:</b> Your {{humanize alertDoc.name}}
+            {{#if (eq alertDoc.expiry "Now expired")}}
+              has expired.
+            {{else}}
+              will expire in {{alertDoc.expiry}}.
+            {{/if}}
+          {{/each}}
+          Please {{ link-to "update your documents in the insurance section" "seller-account" "insurance-document" }}.
+        {{/dds/info-box}}
+      {{/if}}
       {{#if this.model.seller.pending}}
         {{#dds/page-alert alertType="info"}}
           <h3>
@@ -59,6 +72,7 @@
           {{/if}}
         {{/dds/page-alert}}
       {{/ if }}
+
       <br>
       <div class="row">
         <div class="col-sm-15 col-md-12 col-lg-10">
