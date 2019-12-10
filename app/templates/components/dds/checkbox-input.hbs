@@ -1,38 +1,19 @@
-{{#if isSimple}}
-  <input
-    id={{concat elementId '-checkbox'}}
-    type="checkbox"
-    onChange={{action "toggle"}}
-    checked={{if field "checked" ""}}
-    disabled={{if disabled "disabled" ""}}
-  >
-  <label for={{concat elementId '-checkbox'}}>{{label}}</label>
-{{else}}
-  <p class="thin-lines">
-    <br>
-    <label class="au-control-input">
-      <input
-        class="au-control-input__input"
-        type="checkbox"
-        onChange={{action "toggle"}}
-        checked={{if field "checked" ""}}
-        disabled={{if disabled "disabled" ""}}
-      >
-      <span class="au-control-input__text">
-        <b>
-          {{label}}
-        </b>
-      </span>
-    </label>
-  </p>
-{{/if}}
+<input
+  id={{concat elementId '-checkbox'}}
+  class={{unless isSimple "au-control-input__input"}}
+  type="checkbox"
+  onChange={{action "toggle"}}
+  checked={{if field "checked" ""}}
+  disabled={{if disabled "disabled" ""}}
+>
+<label class={{unless isSimple "au-control-input__text"}} for={{concat elementId '-checkbox'}}>{{label}}</label>
 {{#if description}}
   <p class="checkbox-description">
     {{description}}
   </p>
 {{/if}}
 {{#if (and displayError invalid)}}
-  {{dds/validation-error type="error" message=errorMessage float="right"}}
+  {{dds/validation-error type="error" message=errorMessage isSimple=isSimple float="right"}}
 {{else if (and apiError displayError)}}
-  {{dds/validation-error type="warning" message=apiError float="right"}}
+  {{dds/validation-error type="warning" message=apiError isSimple=isSimple float="right"}}
 {{/if}}

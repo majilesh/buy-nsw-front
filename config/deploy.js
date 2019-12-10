@@ -18,5 +18,12 @@ module.exports = function(deployTarget) {
     revisionKey: 'latest',
   };
 
+  ENV['cloudfront'] = {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    objectPaths: ['/index.html', '/', '/ict', '/ict/*'],
+    distribution: process.env.CLOUDFRONT_DIST_ID,
+  };
+
   return ENV;
 };

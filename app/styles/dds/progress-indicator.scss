@@ -287,9 +287,9 @@ a.au-progress-indicator__sub-item {
 }
 
 
-// progress (indicator) menu - sapphire variant
+// progress (indicator) menu - sapphire-nav variant
 
-.progress-menu.sapphire {
+.sapphire-nav {
 	@include AU-space( padding-right, 1.5unit );
 	h4 {
 		@include AU-fontgrid( sm );
