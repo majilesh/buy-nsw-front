@@ -1,10 +1,20 @@
-{{#if isSimple}}
-  <label for={{concat elementId '-input'}}>
-    {{label-text}}
-    {{yield}}
-  </label>
+{{#unless noLabel}}
+  {{!-- {{TODO - remove the following div wrapper when "Sapphire" design  is applied to all pages; redundant div:}} --}}
+  <div class={{if isSimple "label-wrap" (concat (if allRow "col-sm-36" "col-sm-36 col-md-12") (unless thin " text-input-label"))}}>
+    <label for={{concat elementId '-input'}}>
+      {{label-text}}
+      {{yield}}
+    </label>
+  </div>
+{{/unless}}
+{{!-- {{TODO - remove the following div wrapper when "Sapphire" design  is applied to all pages; redundant div:}} --}}
+<div class={{if isSimple "input-wrap" (if allRow "col-sm-36" "col-sm-36 col-md-24")}}>
   {{input
-    class=(if inputClass inputClass)
+    class=(if isSimple inputClass (concat
+            "au-text-input "
+            (if wide "au-text-input--block ")
+            (if thin "au-text-input--thin ")
+            (if theme (concat "au-text-input--" theme))))
     value=(mut field)
     id=(concat elementId '-input')
     type=(if password "password" "text")
@@ -17,56 +27,19 @@
     autocomplete=(if noAutoComplete "new-password" "true")
     maxlength=maxLength
   }}
-  {{#if (and displayError (and required (is-empty field)))}}
-    {{dds/validation-error isSimple=true class="error" type="error" message="This field is required"}}
-  {{else if (and (not disabled) (and displayError invalid))}}
-    {{dds/validation-error isSimple=true class="error" type=(or errorType "error") message=errorMessage}}
-  {{else if (and apiError displayError)}}
-    {{dds/validation-error isSimple=true class="error" type="warning" message=apiError}}
+  {{#if maxLength}}
+    <p class="gray">
+      {{sub maxLength (if field (get field "length") 0)}} characters remaining
+    </p>
   {{/if}}
-{{else}}
-  <div class="row">
-    {{#unless noLabel}}
-      <div class={{concat (if allRow "col-sm-36" "col-sm-36 col-md-12") (unless thin " text-input-label")}}>
-        <label for="text-input">
-          {{label-text}}
-          {{yield}}
-        </label>
-      </div>
+  {{#if (and displayError (and required (is-empty field)))}}
+    {{dds/validation-error thin=thin type="error" message="This field is required" isSimple=isSimple float=(or float "left")}}
+  {{else if (and (not disabled) (and displayError invalid))}}
+    {{#unless (or isSimple wide)}}
+      <br>
     {{/unless}}
-    <div class={{if allRow "col-sm-36" "col-sm-36 col-md-24"}}>
-      {{input
-        class=(concat
-                "au-text-input "
-                (if wide "au-text-input--block ")
-                (if thin "au-text-input--thin ")
-                (if theme (concat "au-text-input--" theme)))
-        value=(mut field)
-        type=(if password "password" "text")
-        disabled=disabled
-        pattern=pattern
-        focus-out=(action "focusOut")
-        enter=enter
-        key-up=(action "keyUp")
-        placeholder=placeHolder
-        autocomplete=(if noAutoComplete "new-password" "true")
-        maxlength=maxLength
-      }}
-      {{#if maxLength}}
-        <p class="gray">
-          {{sub maxLength (if field (get field "length") 0)}} characters remaining
-        </p>
-      {{/if}}
-      {{#if (and displayError (and required (is-empty field)))}}
-        {{dds/validation-error thin=thin type="error" message="This field is required" float=(or float "left")}}
-      {{else if (and (not disabled) (and displayError invalid))}}
-        {{#unless wide}}
-          <br>
-        {{/unless}}
-        {{dds/validation-error thin=thin type=(or errorType "error") message=errorMessage float=(or float "left")}}
-      {{else if (and apiError displayError)}}
-        {{dds/validation-error thin=thin type="warning" message=apiError float=(or float "left")}}
-      {{/if}}
-    </div>
-  </div>
-{{/if}}
+    {{dds/validation-error thin=thin type=(or errorType "error") message=errorMessage isSimple=isSimple float=(or float "left")}}
+  {{else if (and apiError displayError)}}
+    {{dds/validation-error thin=thin type="warning" message=apiError isSimple=isSimple float=(or float "left")}}
+  {{/if}}
+</div>

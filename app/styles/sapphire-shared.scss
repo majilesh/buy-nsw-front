@@ -227,3 +227,8 @@
     @include AU-space( margin-top, .5unit );
   }
 }
+
+/* temp - for old forms; TODO - remove when Sapphire styling roll-out across the site is complete */
+.au-control-input__text {
+  font-family: MontserratBold;
+}

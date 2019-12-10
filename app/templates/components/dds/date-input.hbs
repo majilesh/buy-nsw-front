@@ -1,55 +1,33 @@
 {{#if isSimple}}
-  <label for={{concat elementId '-date'}}>{{label-text}}</label>
-  {{input
-    class=(if inputClass inputClass)
-    value=field
-    id=(concat elementId '-date')
-    type=(if (or (or (or
-          (user-agent "device.isMobile")
-          (user-agent "device.isTablet")
-          (user-agent "browser.isChrome")
-          (user-agent "browser.isFirefox")
-        ))) "date" "text")
-    disabled=disabled
-    pattern="\d{4}-\d{1,2}-\d{1,2}"
-    focus-out=(action "focusOut")
-    enter=enter
-    placeholder="YYYY-MM-DD"
-    rrequired=(and displayError invalid)
-  }}
-  {{#if (and displayError invalid)}}
-    {{dds/validation-error type="error" message=errorMessage isSimple=true class="error"}}
-  {{else if (and apiError displayError)}}
-    {{dds/validation-error type="warning" message=apiError isSimple=true class="error"}}
-  {{/if}}
-{{else}}
-  <div>
-    {{input
-      class=(concat "au-text-input"
-            (if thin " au-text-input--thin")
-            (if theme (concat " au-text-input--" theme)))
-      value=field
-      type=(if (or (or (or
-            (user-agent "device.isMobile")
-            (user-agent "device.isTablet")
-            (user-agent "browser.isChrome")
-            (user-agent "browser.isFirefox")
-          ))) "date" "text")
-      disabled=disabled
-      pattern="\d{4}-\d{1,2}-\d{1,2}"
-      focus-out=(action "focusOut")
-      enter=enter
-      placeholder="YYYY-MM-DD"
-      title=""
-      required=(and displayError invalid)
-      min=min
-      max=max
-    }}
-  </div>
-  {{#if (and (or showError hasChanged) invalid)}}
-    {{dds/validation-error type="error" thin=thin message=errorMessage float="left"}}
-  {{else if (and apiError displayError)}}
-    {{dds/validation-error type="warning" thin=thin message=apiError float="left"}}
-  {{/if}}
-  <div class="clear-both"></div>
+  <label for={{concat elementId '-date'}}>{{label-text}}</label> 
 {{/if}}
+{{input
+  class=(if isSimple inputClass (concat "au-text-input"
+        (if thin " au-text-input--thin")
+        (if theme (concat " au-text-input--" theme))))
+  value=field
+  id=(if isSimple (concat elementId '-date'))
+  type=(if (or (or (or
+        (user-agent "device.isMobile")
+        (user-agent "device.isTablet")
+        (user-agent "browser.isChrome")
+        (user-agent "browser.isFirefox")
+      ))) "date" "text")
+  disabled=disabled
+  pattern="\d{4}-\d{1,2}-\d{1,2}"
+  focus-out=(action "focusOut")
+  enter=enter
+  placeholder="YYYY-MM-DD"
+  title=""
+  required=(and displayError invalid)
+  min=min
+  max=max
+}}  
+{{#if (and (or showError hasChanged) invalid)}}
+  {{dds/validation-error type="error" message=errorMessage isSimple=isSimple thin=thin float="left"}}
+{{else if (and apiError displayError)}}
+  {{dds/validation-error type="warning" message=apiError isSimple=isSimple thin=thin float="left"}}
+{{/if}}
+{{#unless isSimple}}
+  <div class="clear-both"></div>
+{{/unless}}
