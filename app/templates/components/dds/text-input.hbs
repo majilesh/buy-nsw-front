@@ -1,11 +1,8 @@
 {{#unless noLabel}}
-  {{!-- {{TODO - remove the following div wrapper when "Sapphire" design  is applied to all pages; redundant div:}} --}}
-  <div class={{if isSimple "label-wrap" (concat (if allRow "col-sm-36" "col-sm-36 col-md-12") (unless thin " text-input-label"))}}>
-    <label for={{concat elementId '-input'}}>
-      {{label-text}}
-      {{yield}}
-    </label>
-  </div>
+  <label class={{unless isSimple (concat (if allRow "col-sm-36" "col-sm-36 col-md-12") (unless thin " text-input-label"))}} for={{concat elementId '-input'}}>
+    {{label-text}}
+    {{yield}}
+  </label>
 {{/unless}}
 {{!-- {{TODO - remove the following div wrapper when "Sapphire" design  is applied to all pages; redundant div:}} --}}
 <div class={{if isSimple "input-wrap" (if allRow "col-sm-36" "col-sm-36 col-md-24")}}>
