@@ -20,10 +20,10 @@ export default Component.extend({
   setValid() {
     let self = this;
     next(() => {
-      if (!this.isDestroyed) {
-        this.set('valid', 
-          (this.get('allowBlank') && this.get('length')==0 || this.get('strength') >= 3) &&
-          (!this.get('confirm') || this.get('field') == this.get('confirmation'))
+      if (!self.isDestroyed) {
+        self.set('valid',
+          (self.get('allowBlank') && self.get('length')==0 || self.get('strength') >= 2) &&
+          (!self.get('confirm') || self.get('field') == self.get('confirmation'))
         );
       }
     });

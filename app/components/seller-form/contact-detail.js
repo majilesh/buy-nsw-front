@@ -14,6 +14,11 @@ export default Component.extend({
       this.set('form.representative_last_name', this.get('form.contact_last_name'));
       this.set('form.representative_email', this.get('form.contact_email'));
       this.set('form.representative_phone', this.get('form.contact_phone'));
+
+      this.set('form.apiErrors.representative_first_name', null);
+      this.set('form.apiErrors.representative_last_name', null);
+      this.set('form.apiErrors.representative_email', null);
+      this.set('form.apiErrors.representative_phone', null);
     },
     addAddress() {
       this.form.addresses.pushObject({address: '', suburb: '', postcode: '', state: '', country: ''});
