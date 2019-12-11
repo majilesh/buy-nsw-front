@@ -22,19 +22,19 @@ export default BaseController.extend({
     },
     withdrawSubmission() {
       var controller = this;
-      this.model.withdraw().then(function(response) {
+      this.model.withdraw().then(function() {
         controller.model.reload();
       });
     },
     reviseProduct() {
       var controller = this;
-      this.model.revise().then(function(response) {
+      this.model.revise().then(function() {
         controller.model.reload();
       });
     },
     amendProduct() {
       var controller = this;
-      this.model.startAmendment().then(function(response) {
+      this.model.startAmendment().then(function() {
         controller.model.reload();
       });
     },

@@ -30,7 +30,7 @@ export default Service.extend({
     return roles && roles.includes('admin');
   }),
 
-  handleSuccess(response, goHome) {
+  handleSuccess(response) {
     this.set('config', response.config);
     this.set('csrfToken', response.csrf_token);
     this.set('user', response.user);

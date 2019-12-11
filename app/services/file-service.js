@@ -27,7 +27,7 @@ export default Service.extend({
     formData.append('Content-Type', contentType);
     yield this.get('bjax').request('/api/documents/avatars/', {
       method: 'POST',
-      headers: { "X-CSRF-Token": this.get('auth.csrfToken') },
+      headers: { "X-CSRF-Token": self.get('auth.csrfToken') },
       contentType: false,
       processData: false,
       data: formData,
@@ -39,7 +39,7 @@ export default Service.extend({
   uploadDocument: task(function * (file, success, lastly) {
     let self = this;
     yield file.upload('/api/documents/documents/', {
-      headers: { "X-CSRF-Token": this.get('auth.csrfToken') },
+      headers: { "X-CSRF-Token": self.get('auth.csrfToken') },
       data: { original_filename: file.get('name') }
     }).then((response) => {
       success(response.body);

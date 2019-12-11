@@ -28,9 +28,9 @@ jobs:
       - run:
           name: Lint JS
           command: npm run lint:js
-      - run:
-          name: Run Tests
-          command: npm test
+#      - run:
+#          name: Run Tests
+#          command: npm test
       - persist_to_workspace:
           root: .
           paths:

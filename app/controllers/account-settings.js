@@ -1,6 +1,5 @@
 import BaseController from './base-controller';
 import { buildValidations, validator } from 'ember-cp-validations';
-import { computed } from '@ember/object';
 import { inject } from '@ember/service';
 
 const Validations = buildValidations({
@@ -17,7 +16,7 @@ const Validations = buildValidations({
   passwordValid: {
     validators: [
       validator('inline', {
-        validate(value, options, model, attributes) {
+        validate(value, options, model, attributes) { // eslint-disable-line no-unused-vars
           return value == true || "password is not strong enough";
         }
       }),
@@ -50,7 +49,7 @@ export default BaseController.extend(Validations, {
           newPassword: this.get('newPassword'),
           currentPassword: this.get('currentPassword'),
         }
-      }).then((response) => {
+      }).then(() => {
         controller.get('auth').reauthenticate();
         controller.transitionToRoute('success', 'account_updated');
       }).catch((error) => {

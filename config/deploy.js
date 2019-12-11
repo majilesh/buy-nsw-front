@@ -1,4 +1,4 @@
-module.exports = function(deployTarget) {
+module.exports = function(deployTarget) { // eslint-disable-line no-unused-vars
   var ENV = {};
 
   ENV['s3'] = {
