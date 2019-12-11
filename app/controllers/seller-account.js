@@ -1,6 +1,5 @@
 import BaseController from './base-controller';
 import { inject } from '@ember/service';
-import { computed } from '@ember/object';
 
 export default BaseController.extend({
   fileService: inject(),
@@ -18,14 +17,14 @@ export default BaseController.extend({
     submitProfile() {
       this.get('overlay').show();
       var controller = this;
-      this.model.seller.submit().then(function() {
+      this.model.seller.submit().then(() => {
         controller.send('refresh');
       }).finally(() => controller.get('overlay').hide());
     },
     withdrawSubmission() {
       this.get('overlay').show();
       var controller = this;
-      this.model.seller.withdraw().then(function(response) {
+      this.model.seller.withdraw().then(() => {
         controller.send('refresh');
       }).finally(() => controller.get('overlay').hide());
     },

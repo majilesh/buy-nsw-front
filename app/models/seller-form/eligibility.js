@@ -22,7 +22,7 @@ const Validations = buildValidations({
     validators: [
       validator('inline', {
         message: 'To become an eligible supplier on buy.nsw you have to offer one of the above',
-        validate(value, options, model, attributes) {
+        validate(value, options, model, attributes) { // eslint-disable-line no-unused-vars
           return value == true || options.message;
         }
       }),

@@ -13,7 +13,7 @@ const Validations = buildValidations({
     validators: [
       validator('inline', {
         message: 'Please provide documents for your accreditations.',
-        validate(value, options, model, attributes) {
+        validate(value, options, model, attributes) { // eslint-disable-line no-unused-vars
           return value == true || options.message;
         }
       }),
@@ -23,7 +23,7 @@ const Validations = buildValidations({
     validators: [
       validator('inline', {
         message: 'Please provide copy of your licenses.',
-        validate(value, options, model, attributes) {
+        validate(value, options, model, attributes) { // eslint-disable-line no-unused-vars
           return value == true || options.message;
         }
       }),

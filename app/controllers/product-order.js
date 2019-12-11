@@ -1,7 +1,5 @@
 import BaseController from './base-controller';
 import { buildValidations, validator } from 'ember-cp-validations';
-import { computed } from '@ember/object';
-import { inject } from '@ember/service';
 
 const Validations = buildValidations({
   "model.order.estimatedContractValue": {

@@ -1,6 +1,6 @@
 import { helper } from '@ember/component/helper';
 
-export function formatCurrency([value, currency, other, unit, ...rest]) {
+export function formatCurrency([value, currency, other, unit, ...rest]) { // eslint-disable-line no-unused-vars
   let dollars = Math.floor(value);
   let cents = Math.floor(value * 100) % 100;
   if(currency == 'other'){

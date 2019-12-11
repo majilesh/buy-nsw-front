@@ -1,0 +1,89 @@
+# .circleci/config.yml
+defaults: &defaults
+  docker:
+    - image: circleci/node:12.12-browsers
+      environment:
+        JOBS: 2
+  working_directory: ~/buy-nsw-front
+
+version: 2
+jobs:
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
+            - v1-deps-{{ .Branch }}-
+            - v1-deps-
+      - run:
+          name: NPM Install
+          command: npm install
+      - save_cache:
+          key: v1-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          paths:
+            - ./node_modules
+      - run: echo 'export PATH=~/buy-nsw-front/node_modules/.bin:$PATH' >> $BASH_ENV
+      - run:
+          name: Lint JS
+          command: npm run lint:js
+#      - run:
+#          name: Run Tests
+#          command: npm test
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+
+  deploy_testing:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: .
+      - run: echo 'export PATH=~/buy-nsw-front/node_modules/.bin:$PATH' >> $BASH_ENV
+      - run:
+          name: Deploy
+          command: ember deploy testing --activate=true --verbose
+
+  deploy_staging:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: .
+      - run: echo 'export PATH=~/buy-nsw-front/node_modules/.bin:$PATH' >> $BASH_ENV
+      - run:
+          name: Deploy
+          command: ember deploy staging --activate=true --verbose
+
+workflows:
+  version: 2
+  test_and_deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - master
+                - staging
+                - testing
+                - /release-.*/
+                - /feature-.*/
+                - /hotfix-.*/
+                - /SO-.*/
+      - deploy_testing:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - /release-.*/
+                - testing
+      - deploy_staging:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master
+                - staging

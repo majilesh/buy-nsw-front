@@ -19,7 +19,7 @@ export default Route.extend({
       })
     });
   },
-  afterModel(model, transition) {
+  afterModel(model) {
     if (! model.seller.underEdit) {
       this.transitionTo('supplier-application');
     }

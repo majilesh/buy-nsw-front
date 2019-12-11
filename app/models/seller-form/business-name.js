@@ -28,7 +28,7 @@ const Validations = buildValidations({
       }),
       validator('inline', {
         message: 'Please enter a valid Australian Business Number',
-        validate(value, options, model, attributes) {
+        validate(value, options, model, attributes) { // eslint-disable-line no-unused-vars
           let weights = [10, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
           let sum = 0;
           let compact = value.replace(/ /g, '');
@@ -47,14 +47,14 @@ const Validations = buildValidations({
     validators: [
       validator('inline', {
         message: 'Please enter a valid establishment date',
-        validate(value, options, model, attributes) {
+        validate(value, options, model, attributes) { // eslint-disable-line no-unused-vars
           return dateValid(value) ||
                  options.message;
         }
       }),
       validator('inline', {
         message: 'Establishment date can not be later than today',
-        validate(value, options, model, attributes) {
+        validate(value, options, model, attributes) { // eslint-disable-line no-unused-vars
           return dateValid(value) && dateInRange(value) ||
                  options.message;
         }
