@@ -94,8 +94,7 @@ workflows:
             - install_dependencies
       - deploy_testing:
           requires:
-            - install_dependencies
-#            - lint_js
+            - lint_js
 #            - run_tests
           filters:
             branches:
@@ -104,8 +103,7 @@ workflows:
                 - testing
       - deploy_staging:
           requires:
-            - install_dependencies
-#            - lint_js
+            - lint_js
 #            - run_tests
           filters:
             branches:
