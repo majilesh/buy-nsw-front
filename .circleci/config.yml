@@ -61,6 +61,16 @@ workflows:
   test_and_deploy:
     jobs:
       - build
+          filters:
+            branches:
+              only:
+                - master
+                - staging
+                - testing
+                - /release-.*/
+                - /feature-.*/
+                - /hotfix-.*/
+                - /SO-.*/
       - deploy_testing:
           requires:
             - build
