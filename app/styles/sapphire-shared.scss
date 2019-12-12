@@ -212,8 +212,9 @@
       border-color: $BUY-color-minimal-grey;
     }
   }
-  .error {
+  .validation-error {
     color: $BUY-color-warning-alt;
+    @include AU-space( margin-bottom, .75unit );
   }
   hr {
     @include AU-space( margin-top, .5unit );
