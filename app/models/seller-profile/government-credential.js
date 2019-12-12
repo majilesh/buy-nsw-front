@@ -1,7 +1,6 @@
 import DS from 'ember-data';
 const { Model } = DS;
-import { buildValidations, validator } from 'ember-cp-validations';
-import { computed } from '@ember/object';
+import { buildValidations } from 'ember-cp-validations';
 
 const Validations = buildValidations({
 });

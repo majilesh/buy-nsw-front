@@ -6,8 +6,8 @@ const browsers = [
   'last 1 Safari versions'
 ];
 
-const isCI = !!process.env.CI;
-const isProduction = process.env.EMBER_ENV === 'production';
+const isCI = !!process.env.CI; // eslint-disable-line no-unused-vars
+const isProduction = process.env.EMBER_ENV === 'production'; // eslint-disable-line no-unused-vars
 
 // if (isCI || isProduction) {
   browsers.push('ie 11');

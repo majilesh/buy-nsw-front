@@ -32,7 +32,7 @@ export default BaseController.extend(Validations, {
         data: {
           email: this.get('email'),
         }
-      }).then((response) => {
+      }).then(() => {
         controller.transitionToRoute('success', 'password_reset_sent')
       }).catch((error) => {
         controller.set('apiError', error.payload.errors && error.payload.errors[0]);

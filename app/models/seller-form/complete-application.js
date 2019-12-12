@@ -6,7 +6,7 @@ const Validations = buildValidations({
     validators: [
       validator('inline', {
         message: 'The above agreement is required for submission',
-        validate(value, options, model, attributes) {
+        validate(value, options, model, attributes) { // eslint-disable-line no-unused-vars
           return value == true || options.message;
         }
       }),

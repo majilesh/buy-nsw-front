@@ -34,14 +34,6 @@
     box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.1);
   }
   // padding variations (override .au-grid settings):
-  /*.au-grid & {
-    .sapphire-article {
-      @include AU-space( padding, 2unit 3unit 1.5unit 4.5unit );
-    }
-    .sapphire-nav {
-      @include AU-space( padding, 2unit 1.5unit 1.5unit 3unit );
-    }
-  }*/
   .au-grid & {
     .sapphire-article, .sapphire-nav {
       @include AU-space( padding-top, 2unit );
@@ -256,8 +248,9 @@
       width: 12px;
     }
   }
-  .error {
+  .validation-error {
     color: $BUY-color-warning-alt;
+    @include AU-space( margin-bottom, .75unit );
   }
   hr {
     @include AU-space( margin-top, .5unit );

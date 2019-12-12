@@ -8,10 +8,10 @@ export default Route.extend({
     this.get('auth').setPageAccess('seller-only');
   },
 
-  model(params) {
+  model() {
     return  this.store.queryRecord('user', {current: true});
   },
-  afterModel(model, transition) {
+  afterModel(model) {
     if (model.seller_id != null) {
       this.transitionTo('supplier-application');
     }

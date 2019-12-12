@@ -33,7 +33,7 @@ const Validations = buildValidations({
     validators: [
       validator('presence', true),
       validator('format', {
-        regex: /^(\+)?[0-9 ()\-]{3,20}$/,
+        regex: /^(\+)?[0-9 ()-]{3,20}$/,
         message: "Please enter a valid phone number."
       })
     ],
@@ -69,7 +69,7 @@ const Validations = buildValidations({
     validators: [
       validator('presence', true),
       validator('format', {
-        regex: /^(\+)?[0-9 ()\-]{3,20}$/,
+        regex: /^(\+)?[0-9 ()-]{3,20}$/,
         message: "Please enter a valid phone number."
       })
     ],

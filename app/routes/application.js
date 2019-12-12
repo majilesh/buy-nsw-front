@@ -1,5 +1,4 @@
 import Route from '@ember/routing/route';
-import Ember from 'ember';
 import {inject as service} from '@ember/service';
 
 export default Route.extend({
@@ -10,7 +9,7 @@ export default Route.extend({
   airbrake: service(),
 
   actions: {
-    loading: function(transition, originRoute) {
+    loading: function(transition, originRoute) { // eslint-disable-line no-unused-vars
       let overlay = this.get('overlay');
       overlay.show();
       transition.promise.finally(() => {
@@ -58,7 +57,7 @@ export default Route.extend({
           message: airError,
           context: context
         });
-        console.error(airError);
+        console.error(airError); // eslint-disable-line no-console
       }
       return false;
     }

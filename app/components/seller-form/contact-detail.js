@@ -1,6 +1,5 @@
 import Component from '@ember/component';
 import Countries from 'ember-cli-countries/enums/countries';
-import { computed } from '@ember/object';
 
 export default Component.extend({
   countries: Countries.toKeyValueJson().map(country => { return { value: country.key, label: country.value }; }),

@@ -15,6 +15,8 @@ module.exports = {
     browser: true
   },
   rules: {
+    "ember/use-brace-expansion": "off",
+    "ember/avoid-leaking-state-in-ember-objects": "off",
   },
   overrides: [
     // node files

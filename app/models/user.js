@@ -16,7 +16,7 @@ const Validations = buildValidations({
   passwordValid: {
     validators: [
       validator('inline', {
-        validate(value, options, model, attributes) {
+        validate(value, options, model, attributes) { // eslint-disable-line no-unused-vars
           return value == true || "Password is not strong enough";
         }
       }),
