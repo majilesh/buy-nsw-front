@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import { alias } from '@ember/object/computed';
 import { buildValidations, validator } from 'ember-cp-validations';
 
 const Validations = buildValidations({
@@ -13,5 +14,5 @@ export default DS.Model.extend(Validations, {
   referer: DS.attr('string'),
   browser: DS.attr('string'),
 
-  isInvalid: Ember.computed.alias('validations.isInvalid'),
+  isInvalid: alias('validations.isInvalid'),
 });

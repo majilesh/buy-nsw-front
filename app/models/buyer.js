@@ -1,6 +1,5 @@
 import DS from 'ember-data';
 import { computed } from '@ember/object';
-import { modelAction } from "ember-custom-actions";
 
 export default DS.Model.extend({
   state: DS.attr('string'),

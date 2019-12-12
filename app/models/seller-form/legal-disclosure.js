@@ -12,7 +12,7 @@ const Validations = buildValidations({
       validator('inline', {
         dependentKeys: ['receivership', 'receivership_details'],
         message: 'Please provide details',
-        validate(value, options, model, attributes) {
+        validate(value, options, model, attributes) { // eslint-disable-line no-unused-vars
           return model.receivership == null || model.receivership.toString() == "false" ||
             (value != null && value != "") ||
             options.message;
@@ -30,7 +30,7 @@ const Validations = buildValidations({
       validator('inline', {
         dependentKeys: ['bankruptcy', 'bankruptcy_details'],
         message: 'Please provide details',
-        validate(value, options, model, attributes) {
+        validate(value, options, model, attributes) { // eslint-disable-line no-unused-vars
           return model.bankruptcy == null || model.bankruptcy.toString() == "false" ||
             (value != null && value != "") ||
             options.message;
@@ -48,7 +48,7 @@ const Validations = buildValidations({
       validator('inline', {
         dependentKeys: ['investigations', 'investigations_details'],
         message: 'Please provide details',
-        validate(value, options, model, attributes) {
+        validate(value, options, model, attributes) { // eslint-disable-line no-unused-vars
           return model.investigations == null || model.investigations.toString() == "false" ||
             (value != null && value != "") ||
             options.message;
@@ -66,7 +66,7 @@ const Validations = buildValidations({
       validator('inline', {
         dependentKeys: ['legal_proceedings', 'legal_proceedings_details'],
         message: 'Please provide details',
-        validate(value, options, model, attributes) {
+        validate(value, options, model, attributes) { // eslint-disable-line no-unused-vars
           return model.legal_proceedings == null || model.legal_proceedings.toString() == "false" ||
             (model.legal_proceedings_details != null && model.legal_proceedings_details != "") ||
             options.message;

@@ -22,35 +22,35 @@ export default BaseController.extend({
     submitProfile() {
       this.get('overlay').show();
       var controller = this;
-      this.model.seller.submit().then(function() {
+      this.model.seller.submit().then(() => {
         controller.send('refresh');
       }).finally(() => controller.get('overlay').hide());
     },
     cancelProfile() {
       this.get('overlay').show();
       var controller = this;
-      this.model.seller.cancel().then(function(response) {
+      this.model.seller.cancel().then(() => {
         controller.send('refresh');
       }).finally(() => controller.get('overlay').hide());
     },
     withdrawSubmission() {
       this.get('overlay').show();
       var controller = this;
-      this.model.seller.withdraw().then(function(response) {
+      this.model.seller.withdraw().then(() => {
         controller.send('refresh');
       }).finally(() => controller.get('overlay').hide());
     },
     reviseProfile() {
       this.get('overlay').show();
       var controller = this;
-      this.model.seller.revise().then(function(response) {
+      this.model.seller.revise().then(() => {
         controller.send('refresh');
       }).finally(() => controller.get('overlay').hide());
     },
     amendProfile() {
       this.get('overlay').show();
       var controller = this;
-      this.model.seller.startAmendment().then(function(response) {
+      this.model.seller.startAmendment().then(() => {
         controller.send('refresh');
       }).finally(() => controller.get('overlay').hide());
     },

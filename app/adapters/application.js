@@ -1,16 +1,12 @@
 import DS from 'ember-data';
-import Ember from 'ember';
 import { computed } from '@ember/object';
-import { underscore } from '@ember/string';
 import {inject as service} from '@ember/service';
-
-const { String: { pluralize } } = Ember;
 
 export default DS.RESTAdapter.extend({
   auth: service(),
   router: service(),
   overlay: service(),
-  handleResponse(status, headers, payload, requestData) {
+  handleResponse(status, headers, payload, requestData) { // eslint-disable-line no-unused-vars
     if (status == 401) {
       this.get('auth').transitToSignin();
     }

@@ -19,7 +19,7 @@ const Validations = buildValidations({
     validators: [
       validator('inline', {
         message: 'Please enter a valid expiry date',
-        validate(value, options, model, attributes) {
+        validate(value, options, model, attributes) { // eslint-disable-line no-unused-vars
           return value == true || options.message;
         }
       }),
@@ -29,7 +29,7 @@ const Validations = buildValidations({
     validators: [
       validator('inline', {
         message: 'Please enter a valid expiry date',
-        validate(value, options, model, attributes) {
+        validate(value, options, model, attributes) { // eslint-disable-line no-unused-vars
           return value == true || options.message;
         }
       }),
@@ -39,7 +39,7 @@ const Validations = buildValidations({
     validators: [
       validator('inline', {
         message: 'Please enter a valid expiry date',
-        validate(value, options, model, attributes) {
+        validate(value, options, model, attributes) { // eslint-disable-line no-unused-vars
           return value == true || options.message;
         }
       }),
@@ -49,7 +49,7 @@ const Validations = buildValidations({
     validators: [
       validator('inline', {
         message: 'Please confirm the validity of attached documents',
-        validate(value, options, model, attributes) {
+        validate(value, options, model, attributes) { // eslint-disable-line no-unused-vars
           return value == true || options.message;
         }
       }),

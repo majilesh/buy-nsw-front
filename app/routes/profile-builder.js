@@ -13,7 +13,7 @@ export default Route.extend({
       into: 'profile-builder'
     });
   },
-  model(params) {
+  model() {
     return RSVP.hash({
       essential_information: this.store.queryRecord("seller-profile/essential-information", {}),
       contact_detail: this.store.queryRecord("seller-profile/contact-detail", {}),

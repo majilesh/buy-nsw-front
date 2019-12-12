@@ -1,6 +1,5 @@
 import BaseController from './base-controller';
 import { buildValidations, validator } from 'ember-cp-validations';
-import { computed } from '@ember/object';
 import { inject } from '@ember/service';
 
 const Validations = buildValidations({
@@ -17,7 +16,7 @@ const Validations = buildValidations({
   passwordValid: {
     validators: [
       validator('inline', {
-        validate(value, options, model, attributes) {
+        validate(value, options, model, attributes) { // eslint-disable-line no-unused-vars
           return value == true || "Password is not strong enough";
         }
       }),
@@ -47,7 +46,7 @@ export default BaseController.extend(Validations, {
           email: this.get('email'),
           password: this.get('password'),
         }
-      }).then((response) => {
+      }).then(() => {
         controller.transitionToRoute('success', 'signup_confirmation_sent')
       }).catch((error) => {
         controller.set('apiError',error.payload.errors && error.payload.errors[0]);
