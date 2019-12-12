@@ -167,14 +167,14 @@
  */
 .sapphire-form {
   background: #fbfcfd;
-  [type=date], [type=password], [type=text] {
+  [type=date], [type=password], [type=text], select {
     box-sizing: border-box;
     font-family: inherit;
     @include AU-fontgrid( sm, nospace ); // using default to make sure we don’t crop descenders and ascenders
-    @include AU-space( margin-bottom, .5unit);
+    @include AU-space( margin-bottom, 1unit);
 	  @include AU-space( padding, 0.25unit .5unit );
     width: 100%;
-  }  
+  }
   label {
     //color: $BUY-color-label-shade; // in Axure for login details, but all other labels are dark grey
     display: block;
@@ -186,18 +186,36 @@
       @include AU-fontgrid( xs );
     }
   }
-  [type=checkbox] {
+  select {
+    // custom down arrow:
+    background: AU-svguri('<svg fill="#{ $AU-color-foreground-action }" width="1.5em" height="auto" viewBox="0 0 28 12" xmlns="http://www.w3.org/2000/svg">' +
+        '<path d="M1.9 1.1L8 7.2l6.1-6.1L16 2.9l-8 8-8-8 1.9-1.8z"/>' +
+        '<path fill="none" d="M2-5.8h24v24H2v-24z"/>' +
+      '</svg>') right center/1.5em auto no-repeat #fff;
+    // match default block-size of text input:
+    block-size: 30px;
+    // match default border colour of text input:
+    border: 1px solid rgb(218, 218, 218);
+    // remove default down arrow (note - also works in Firefox & Edge):
+    -webkit-appearance: none;
+    position: relative;
+  }
+  // remove default down arrow in a select, for IE:
+  ::-ms-expand {
+		display: none;
+	}
+  [type=checkbox], [type=radio] {
     @include AU-sronly();
     + label {
       align-items: center;
       display: flex;
       min-height: 28px;
-      padding-left: 35px;
+      padding-left: 45px;
       position: relative;
       &:before {
         background: #fff;
         border: 1px solid $BUY-color-foreground-text;
-        content: '';
+        content: '\00a0';
         display: inline-block;
         height: 24px;
         left: 0;
@@ -205,19 +223,37 @@
         width: 24px;
       }
     }
-    &:checked {
-      + label:after {
-        background: AU-svguri('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z" class=""></path></svg>') 0 0/contain no-repeat transparent;
-        content: '';
-        height: 18px;
-        left: 5px;
-        position: absolute;
-        top: 5px;
-        width: 18px;
-      }
+    &:checked + label:after {
+      content: '\00a0';
+      position: absolute;
     }
     &:disabled + label:before {
       border-color: $BUY-color-minimal-grey;
+    }
+  }
+  [type=checkbox] {
+    &:checked + label:after {
+      background: AU-svguri('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z" class=""></path></svg>') 0 0/contain no-repeat transparent;
+      left: 5px;
+      height: 18px;
+      top: 5px;
+      width: 18px;
+    }
+  }
+  [type=radio] {
+    + label {
+      font-weight: 300;
+      &:before {
+        border-radius: 50%;
+      }
+    }
+    &:checked + label:after {
+      background: grey;
+      border-radius: 50%;
+      left: 7px;
+      height: 12px;
+      top: 8px;
+      width: 12px;
     }
   }
   .error {
@@ -225,6 +261,9 @@
   }
   hr {
     @include AU-space( margin-top, .5unit );
+  }
+  :disabled {
+    cursor: not-allowed;
   }
 }
 

@@ -2,7 +2,7 @@
   <label>{{label-text}}</label>
 {{/if}}
 <select
-  class="au-select au-select--block"
+  class={{if isSimple selectClass "au-select au-select--block"}}
   onChange={{action "onChange" value="target.value"}}
 >
   <option
@@ -16,9 +16,9 @@
   {{/each}}
 </select>
 {{#if (and displayError (and required (is-empty field) ))}}
-  {{dds/validation-error type="error" message="This field is required" float="left"}}
+  {{dds/validation-error type="error" message="This field is required" isSimple=isSimple float="left"}}
 {{else if (and displayError invalid)}}
-  {{dds/validation-error type="error" message=errorMessage float="left"}}
+  {{dds/validation-error type="error" message=errorMessage isSimple=isSimple float="left"}}
 {{else if (and apiError displayError)}}
-  {{dds/validation-error type="warning" message=apiError float="left"}}
+  {{dds/validation-error type="warning" message=apiError isSimple=isSimple float="left"}}
 {{/if}}

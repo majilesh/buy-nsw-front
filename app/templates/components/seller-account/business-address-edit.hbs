@@ -3,7 +3,7 @@
   Please note that all fields are mandatory unless otherwise indicated.
 </div>
 <h4>Head office</h4>
-<p>This is the business address of your head office.</p>
+<p class="mb-10">This is the business address of your head office.</p>
 {{#if (eq form.apiErrors.addresses "Changes requested upon your previous submission")}}
   {{dds/validation-error type="warning" message=form.apiErrors.addresses isSimple=true class="error"}}
 {{/if}}
@@ -11,7 +11,8 @@
   {{#let (get form.apiErrors.addresses index) as |apiError|}}
     {{dds/text-input
       isSimple=true
-      label-text="Business address"
+      label-text="Business address line 1"
+      inputClass="maxw-550"
       field=(mut address.address)
       required=true
       showError=(or showError (not-eq form.status 'todo'))
@@ -20,7 +21,8 @@
     
     {{dds/text-input
       isSimple=true
-      noLabel=true
+      label-text="Business address line 2"
+      inputClass="maxw-550"
       field=(mut address.address_2)
       apiError=apiError.address_2
       showError=(or showError (not-eq form.status 'todo'))
@@ -28,17 +30,18 @@
     
     {{dds/text-input
       isSimple=true
-      noLabel=true
+      label-text="Business address line 3"
+      inputClass="maxw-550"
       field=(mut address.address_3)
       apiError=apiError.address_3
       showError=(or showError (not-eq form.status 'todo'))
     }}
-          
+    
     <div class="row">
       {{dds/text-input
         isSimple=true
         label-text="Suburb or town"
-        class="col-sm-27"
+        class="col-sm-21"
         field=(mut address.suburb)
         required=true
         showError=(or showError (not-eq form.status 'todo'))
@@ -62,6 +65,8 @@
         field=(mut address.state)
         label-text="State or territory"
         class="col-sm-18"
+        selectClass="maxw-300"
+        isSimple=true
         items=(array
           (hash value="nsw" label="New South Wales")
           (hash value="act" label="Australian Capital Territory")
@@ -82,6 +87,8 @@
         field=(mut address.country)
         label-text="Country"
         class="col-sm-18"
+        selectClass="maxw-300"
+        isSimple=true
         items=countries
         required=true
         showError=(or showError (not-eq form.status 'todo'))
@@ -95,7 +102,6 @@
         <h4>Corporate structure</h4>
         {{dds/radio-group
           isSimple=true
-          class="sapphire-radios"
           items=(array
             (hash
               key="standalone"
