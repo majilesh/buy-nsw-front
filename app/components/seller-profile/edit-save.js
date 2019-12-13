@@ -26,6 +26,7 @@ export default Component.extend({
         component.set('underEdit', false);
       }).catch((adapterError) => {
         let errors = adapterError.errors[0];
+        form.set('showError', true);
         form.set('apiErrors', errors);
       }).finally(() => {
         component.get('overlay').hide();
