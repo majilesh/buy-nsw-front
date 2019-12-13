@@ -23,7 +23,9 @@
 /package.json.ember-try
 
 # env files
-.env.deploy.*
+.env.deploy.testing
+.env.deploy.staging
+.env.deploy.production
 
 # vim backup files
 **/.*.swp
