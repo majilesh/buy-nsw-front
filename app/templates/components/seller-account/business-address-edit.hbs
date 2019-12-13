@@ -3,7 +3,7 @@
   Please note that all fields are mandatory unless otherwise indicated.
 </div>
 <h4>Head office</h4>
-<p class="mb-10">This is the business address of your head office.</p>
+<p>This is the business address of your head office.</p>
 {{#if (eq form.apiErrors.addresses "Changes requested upon your previous submission")}}
   {{dds/validation-error type="warning" message=form.apiErrors.addresses isSimple=true class="error"}}
 {{/if}}
@@ -96,40 +96,6 @@
         apiError=apiError.country
       }}
     </div>
-    {{#if (eq index 0)}}
-      <br>
-      {{#if form.headOfficeAustralia}}
-        <h4>Corporate structure</h4>
-        {{dds/radio-group
-          isSimple=true
-          items=(array
-            (hash
-              key="standalone"
-              label="An Australian company that is not a subsidiary of another company"
-            )
-            (hash
-              key="subsidiary"
-              label="A locally-based company that is a subsidiary of a multinational corporation"
-            )
-          )
-          field=(mut form.corporate_structure)
-          showError=(or showError (not-eq form.status 'todo'))
-          invalid=(v-get form 'corporate_structure' 'isInvalid')
-          errorMessage=(v-get form 'corporate_structure' 'message')
-          apiError=form.apiErrors.corporate_structure
-        }}
-      {{/if}}
-      {{#if form.headOfficeRegional}}
-        {{dds/checkbox-input
-          isSimple=true
-          field=(mut form.regional)
-          apiError=form.apiErrors.regional
-          showError=(or showError (not-eq form.status 'todo'))
-          label="Regional"
-          description=(if form.can_be_regional "It looks like your head office is located in regional NSW. Would you like to identify your business as a regional NSW supplier?" "To be classified as NSW Regional business your head office must be in regional NSW.")
-        }}
-      {{/if}}
-    {{/if}}
     {{#if (gt index 0)}}
       {{dds/tertiary-button
         label="Discard this address"
@@ -140,15 +106,69 @@
     {{#if (or (eq index 0) (lt index (dec form.addresses.length)))}}
       <hr />
     {{/if}}
-    {{#if (eq index 0)}}
-      <h4>Additional locations</h4>
-      <p>List any additional business locations in Australia.</p>
-    {{/if}}
   {{/let}}
 {{/each}}
+
 {{#if (lt form.addresses.length 6)}}
+  <h5>Additional locations</h5>
+  <p>List any additional business locations in Australia.</p>
   {{dds/tertiary-button
     label="Add an address"
+    icon="plus-circle"
+    iconSize="2x"
+    class="mb-15"
+    isSimple=true
     onClick=(action "addAddress")
   }}
+  <hr />
+{{/if}}
+
+{{#if (gt form.addresses.length 0)}}
+  {{#if form.headOfficeRegional}}
+    <h5>It looks like your head office is located in regional NSW. Would you like to identify your business as a regional NSW supplier?</h5>
+    <p class="optional"></p>
+    {{dds/radio-group
+      class="mb-15"
+      isSimple=true
+      isOptional=true
+      items=(array
+        (hash
+          key="true"
+          label="Yes"
+        )
+        (hash
+          key="false"
+          label="No"
+        )
+      )
+      field=(mut form.regional)
+      showError=(or showError (not-eq form.status 'todo'))
+      invalid=(v-get form 'regional' 'isInvalid')
+      errorMessage=(v-get form 'regional' 'message')
+      apiError=form.apiErrors.regional
+    }}
+    <hr />
+  {{/if}}
+  {{#if form.headOfficeAustralia}}
+    <h5>It looks like your head office is located in Australia or New Zealand. Which best describes your business?</h5>
+    {{dds/radio-group
+      isSimple=true
+      isOptional=true
+      items=(array
+        (hash
+          key="standalone"
+          label="Australian or New Zealand company"
+        )
+        (hash
+          key="subsidiary"
+          label="Multinational (local subsidiary)"
+        )
+      )
+      field=(mut form.corporate_structure)
+      showError=(or showError (not-eq form.status 'todo'))
+      invalid=(v-get form 'corporate_structure' 'isInvalid')
+      errorMessage=(v-get form 'corporate_structure' 'message')
+      apiError=form.apiErrors.corporate_structure
+    }}
+  {{/if}}
 {{/if}}

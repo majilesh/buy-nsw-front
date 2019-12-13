@@ -1,3 +1,6 @@
+{{#if isOptional}}
+  <p class="optional">This field is optional</p>
+{{/if}}
 {{#each items as |item|}}
   {{dds/radio-button
     isSimple=isSimple

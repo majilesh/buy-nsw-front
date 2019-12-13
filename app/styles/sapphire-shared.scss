@@ -24,7 +24,6 @@
       }
     }
     h3 {
-      @include AU-space( margin-bottom, 1unit ); // note: .5 at places in Axure
       &:first-of-type {
         @include AU-space( margin-top, 0 );
       }
@@ -60,9 +59,15 @@
       @include AU-space( padding, 1unit );
     }
   }
+  h2, h3, h4, h5, p {
+    @include AU-space( margin-bottom, 1unit );
+  }
   h4 {
     color: $BUY-color-heading-blue;
     font-weight: 600;
+  }
+  h5 {
+    font-family: MontserratBold;
   }
   dt {
     font-weight: 600;
@@ -100,6 +105,9 @@
   }
   .mb-10 {
     @include AU-space( margin-bottom, 1unit );
+  }
+  .mb-15 {
+    @include AU-space( margin-bottom, 1.5unit );
   }
   // padding (any element)
   .p-5 {
@@ -257,6 +265,27 @@
   }
   :disabled {
     cursor: not-allowed;
+  }
+  // add link (plus icon)
+  .add-fieldset > a {
+    align-items: center;
+    color: $BUY-color-action-primary;
+    cursor: pointer;
+    display: flex;
+    font-weight: 600;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+    > .svg-inline--fa.fa-w-16 {
+      @include AU-space( height, 1.5unit);
+      @include AU-space( margin-right, 1unit);
+      @include AU-space( width, 1.5unit);
+      vertical-align: middle;
+    }
+  }
+  .optional {
+    color: $BUY-color-success-shade;
   }
 }
 
