@@ -44,7 +44,7 @@ jobs:
       - run: echo 'export PATH=~/buy-nsw-front/node_modules/.bin:$PATH' >> $BASH_ENV
       - run:
           name: Deploy
-          command: ember deploy testing --activate=true --verbose
+          command: ember deploy testing-ci --activate=true --verbose
 
   deploy_staging:
     <<: *defaults
@@ -54,7 +54,7 @@ jobs:
       - run: echo 'export PATH=~/buy-nsw-front/node_modules/.bin:$PATH' >> $BASH_ENV
       - run:
           name: Deploy
-          command: ember deploy staging --activate=true --verbose
+          command: ember deploy staging-ci --activate=true --verbose
 
 workflows:
   version: 2
