@@ -19,6 +19,7 @@
               allRow=true
               wide=true
               apiError=apiError.first_name
+              showError=form.showError
             }}
           </div>
           <div class="col-sm-18">
@@ -30,6 +31,7 @@
               allRow=true
               wide=true
               apiError=apiError.last_name
+              showError=form.showError
             }}
           </div>
         </div>
@@ -43,6 +45,7 @@
               allRow=true
               wide=true
               apiError=apiError.email
+              showError=form.showError
             }}
           </div>
           <div class="col-sm-18">
@@ -54,6 +57,7 @@
               allRow=true
               wide=true
               apiError=apiError.phone
+              showError=form.showError
             }}
           </div>
         </div>
@@ -67,6 +71,7 @@
               allRow=true
               wide=true
               apiError=apiError.role
+              showError=form.showError
             }}
           </div>
           <div class="col-sm-18">
@@ -78,6 +83,7 @@
               allRow=true
               wide=true
               apiError=apiError.provided_services
+              showError=form.showError
             }}
           </div>
         </div>
@@ -89,6 +95,7 @@
             maxLength=500
             thin=true
             apiError=apiError.project_description
+            showError=form.showError
           }}
           {{dds/tertiary-button
             thin=true
@@ -132,6 +139,7 @@
           multiple=false
           theme="sapphire"
           apiError=apiError.document_id
+          showError=form.showError
         }}
         <p>
           {{dds/text-area
@@ -141,6 +149,7 @@
             maxLength=300
             thin=true
             apiError=apiError.description
+            showError=form.showError
           }}
           {{dds/tertiary-button
             thin=true

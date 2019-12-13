@@ -1,7 +1,7 @@
 span.field-error {
   padding-top: 1rem;
   border-bottom: 4px solid white;
-  margin-bottom: 1rem;
+  margin-bottom: 1rem !important;
   float: left;
   @include AU-media( sm ) {
     &:not(.pull-left) {
@@ -27,6 +27,6 @@ span.field-error {
   &.thin {
     font-size: 80%;
     padding-top: 0.5rem;
-    border-bottom: 2px solid $AU-color-error;
+    border-bottom: 2px solid;
   }
 }
