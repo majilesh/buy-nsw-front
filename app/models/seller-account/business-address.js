@@ -9,7 +9,7 @@ const Validations = buildValidations({
       validator('inline', {
         message: 'Please select your corporate structure',
         dependentKeys: ['corporate_structure', 'headOfficeAustralia'],
-        validate(value, options, model, attributes) {
+        validate(value, options, model, attributes) { // eslint-disable-line no-unused-vars
           return !model.headOfficeAustralia ||
             value == 'subsidiary' || value == 'standalone' || options.message;
         }
