@@ -9,6 +9,18 @@
 {{/if}}
 {{#each form.addresses as |address index|}}
   {{#let (get form.apiErrors.addresses index) as |apiError|}}
+    {{dds/radio-button
+      isSimple=true
+      name="showAddress"
+      value=(concat 'address-' index)
+      label="Show this address on my profile"
+      class="mb-15"
+      labelClass="b"
+      field=(mut address.show_address)
+      disabled=disabled
+      description="Only one address can be displayed on supplier profiles at a time."
+    }}
+
     {{dds/text-input
       isSimple=true
       label-text="Business address line 1"
@@ -126,7 +138,6 @@
 {{#if (gt form.addresses.length 0)}}
   {{#if form.headOfficeRegional}}
     <h5>It looks like your head office is located in regional NSW. Would you like to identify your business as a regional NSW supplier?</h5>
-    <p class="optional"></p>
     {{dds/radio-group
       class="mb-15"
       isSimple=true

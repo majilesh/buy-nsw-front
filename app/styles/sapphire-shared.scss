@@ -85,15 +85,19 @@
       }
     }
   }
-  // shorthand class names - single declarations
-  // display (any element)
+  // shorthand class names - single declarations for any element
+  // display
   .d-b {
     display: block;
   }
   .d-ib {
     display: inline-block;
   }
-  // margin (any element)
+  // font-weight
+  .b {
+    font-weight: 600;
+  }
+  // margin
   .mt-5 {
     @include AU-space( margin-top, .5unit );
   }
@@ -109,7 +113,7 @@
   .mb-15 {
     @include AU-space( margin-bottom, 1.5unit );
   }
-  // padding (any element)
+  // padding
   .p-5 {
     @include AU-space( padding, .5unit );
   }
@@ -242,7 +246,9 @@
   }
   [type=radio] {
     + label {
-      font-weight: 300;
+      &:not(.b) {
+        font-weight: 300;
+      }
       &:before {
         border-radius: 50%;
       }
@@ -286,6 +292,16 @@
   }
   .optional {
     color: $BUY-color-success-shade;
+  }
+  .input-description {
+    color: $BUY-color-minor-text;
+    @include AU-space( font-size, .85unit);
+    // TODO - remove following 5 lines when Sapphire styling roll-out across the site is complete
+    padding: 0;
+    @include AU-media( sm ) {
+      padding: 0;
+      margin-top: 0;
+    }
   }
 }
 

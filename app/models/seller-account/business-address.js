@@ -23,7 +23,7 @@ export default DS.Model.extend(Validations, {
   apiErrors: DS.attr('json'),
 
   addresses: DS.attr('json'),
-  regional: DS.attr('boolean'),
+  regional: DS.attr('string'),
   headOfficeAustralia: computed(
     'addresses',
     'addresses.[]',
@@ -53,12 +53,7 @@ export default DS.Model.extend(Validations, {
   }),
 
   corporate_structure: DS.attr('string'),
-  same_as_above: DS.attr('boolean'),
-  signal: DS.attr('number', { defaultValue: 0 }),
+  //same_as_above: DS.attr('boolean'),
+  show_address: DS.attr('checked', { defaultValue: 'checked' })
+  //signal: DS.attr('number', { defaultValue: 0 }),
 });
-
-/*const { Model } = DS;
-
-export default Model.extend({
-
-});*/

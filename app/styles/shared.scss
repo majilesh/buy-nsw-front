@@ -65,7 +65,7 @@ div.pretend {
 ul.less-left-padding {
   padding-left: 1rem;
 }
-p.checkbox-description {
+.input-description {
   padding: 0.0rem 0.7rem 2rem;
   @include AU-media( sm ) {
     padding: 0rem 2rem 1.5rem 2.7rem;

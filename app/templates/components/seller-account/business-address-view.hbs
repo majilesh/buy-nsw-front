@@ -6,16 +6,24 @@
 
 <dl class="details">
   <dt>Address</dt>
-  {{#with this.model.seller.addresses.[0] as |address|}}
+  {{#with form.addresses.[0] as |address|}}
     <dd>{{address.address}}</dd>
     <dd>{{address.address_2}}</dd>
     <dd>{{address.address_3}}</dd>
     <dd>{{address.suburb}}
-    {{address.state}}
+    {{uppercase address.state}}
     {{address.postcode}}</dd>
     <dd>{{address.country}}</dd>
   {{/with}}
   <dt>Identifiers</dt>
-  <dd>Australian or New Zealand company</dd>
-  <dd>Regional NSW supplier</dd>
+  <dd>
+    {{#if (eq form.corporate_structure "standalone")}}
+      Australian or New Zealand company
+    {{else}}
+      Multinational (local subsidiary)
+    {{/if}}
+  </dd>  
+  {{#if (eq form.regional "true")}}
+    <dd>Regional NSW supplier</dd>
+  {{/if}}  
 </dl>
