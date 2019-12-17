@@ -75,6 +75,7 @@
   dd {
     @include AU-space( margin, .5unit 0 );
   }
+  // variation with border below each dd:
   .alt {
     > dt {
       @include AU-space( margin-bottom, .75unit );
@@ -83,6 +84,15 @@
         @include AU-space( margin-top, 1unit );
         @include AU-space( padding-top, .75unit );
       }
+    }
+  }
+  // variation with no margin between each dd
+  .alt-2 {
+    > dt {
+      @include AU-space( margin-bottom, .25unit );
+    }
+    > dd {
+      margin: 0;
     }
   }
   // shorthand class names - single declarations for any element
@@ -103,6 +113,9 @@
   }
   .mt-10 {
     @include AU-space( margin-top, 1unit );
+  }
+  .mt-15 {
+    @include AU-space( margin-top, 1.5unit );
   }
   .mb-5 {
     @include AU-space( margin-bottom, .5unit );
