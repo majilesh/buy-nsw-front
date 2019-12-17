@@ -27,3 +27,11 @@
     <dd>Regional NSW supplier</dd>
   {{/if}}  
 </dl>
+<hr />
+<p>
+  {{#if (gt form.addresses.length 0)}}
+    You have at least one other office location listed.
+  {{else}}
+    There are currently no other office locations listed.
+  {{/if}}
+</p>
