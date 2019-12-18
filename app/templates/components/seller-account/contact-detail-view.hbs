@@ -1,1 +1,23 @@
-{{yield}}
+<div class="cool-infobox sapphire">{{fa-icon "eye" prefix="fas" size="2x"}} This information will appear on your supplier profile, but only to registered buyers.</div>
+<h4>Business contact name</h4>
+<p>This contact will display on your supplier profile and can only be seen by logged in buyers. It is the person you nominate to receive  communications from buyers and buy.nsw.</p>
+<dl class="details">
+  <dt>Name</dt>
+  <dd>{{form.contact_first_name}} {{form.contact_last_name}}</dd>
+  <dt>Email address</dt>
+  <dd>{{form.contact_email}}</dd>
+  <dt>Contact number</dt>
+  <dd>{{form.contact_phone}}</dd>
+</dl>
+<hr />
+<div class="cool-infobox sapphire">{{fa-icon "eye" prefix="fas" size="2x"}} This information will not appear on your supplier profile and is not available to buyers.</div>
+<h4>Authorised representative</h4>
+<p>This contact will display on your supplier profile and can only be seen by logged in buyers. It is the person you nominate to receive  communications from buyers and buy.nsw.</p>
+<dl class="details">
+  <dt>Name</dt>
+  <dd>{{form.representative_first_name}} {{form.representative_last_name}}</dd>
+  <dt>Email address</dt>
+  <dd>{{form.representative_email}}</dd>
+  <dt>Contact number</dt>
+  <dd>{{form.representative_phone}}</dd>
+</dl>

@@ -1,1 +1,20 @@
-{{yield}}
+{{seller-profile/edit-save
+  theme="sapphire"
+  class="pull-right"
+  underEdit=(mut underEdit)
+  form=form
+}}
+<h3><b>Contact details</b></h3>
+{{form-status status=form.status}}
+<hr />
+{{#if underEdit}}
+  {{seller-account/contact-detail-edit class="sapphire-form" form=form}}
+{{else}}
+  {{seller-account/contact-detail-view form=form buyerView=true}}
+{{/if}}
+{{seller-profile/edit-save
+  theme="sapphire"
+  class="pull-right clear-both"
+  underEdit=(mut underEdit)
+  form=form
+}}

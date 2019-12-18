@@ -1,12 +1,16 @@
-<div class={{if wide "max60" "max65p"}}>
-  <span
-    class={{concat
-         "field-error " type
-         (if (eq float "left") " pull-left" " pull-right")
-         (if thin " thin")
-         }}
-  >
-    {{message}}
-  </span>
-</div>
-<div class="clear-both"></div>
+{{#if isSimple}}
+  {{message}}
+{{else}}
+  <div class={{if wide "max60" "max65p"}}>
+    <span
+      class={{concat
+          "field-error " type
+          (if (eq float "left") " pull-left" " pull-right")
+          (if thin " thin")
+          }}
+    >
+      {{message}}
+    </span>
+  </div>
+  <div class="clear-both"></div>
+{{/if}}

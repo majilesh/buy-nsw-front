@@ -28,7 +28,7 @@
   {{dds/primary-btn}}
 {{/dds/banner}}
 
-<main id="content">
+<main id="content" class="sapphire-main">
   <div class="au-body">
     {{#dds/template-body auth=auth}}
       <div class="cool-infobox sapphire">
@@ -75,48 +75,46 @@
 
       <br>
       <div class="row">
-        <div class="col-sm-15 col-md-12 col-lg-10">
-          {{account-nav items=(array
-              (hash title="My Account" links=(array
-                  (hash label="Login details" step="login-details")
-                )
-              )
-              (hash title="Company details" links=(array
-                  (hash label="Business name and ABN" step="business-name-and-abn"
-                   status=this.model.steps.business_name_and_abn.status)
-                  (hash label="Contact details" step="contact-detail"
-                   status=this.model.steps.contact_detail.status)
-                  (hash label="Business address" step="business-address"
-                   status=this.model.steps.business_address.status)
-                  (hash label="Company type and size" step="company-type-and-size"
-                   status=this.model.steps.company_type_and_size.status)
-                  (hash label="Business categories" step="business-category"
-                   status=this.model.steps.business_category.status)
-                )
-              )
-              (hash title="Disclosures" links=(array
-                  (hash label="Insurance documents" step="insurance-document"
-                   status=this.model.steps.insurance_document.status)
-                  (hash label="Financial disclosures" step="financial-document"
-                   status=this.model.steps.financial_document.status)
-                  (hash label="Legal disclosures" step="legal-disclosure"
-                   status=this.model.steps.legal_disclosure.status)
-                )
-              )
-              (hash title="Government engagements" links=(array
-                  (hash label="Government schemes and panels" step="government-scheme-and-panel"
-                   status=this.model.steps.government_scheme_and_panel.status)
-                )
+        {{account-nav class="col-sm-14 col-md-11" items=(array
+            (hash title="My Account" links=(array
+                (hash label="Login details" step="login-details")
               )
             )
-          }}
-        </div>
-        <div class="col-sm-20 col-md-23 col-lg-25 col-sm-offset-1">
+            (hash title="Company details" links=(array
+                (hash label="Business name and ABN" step="business-name-and-abn"
+                  status=this.model.steps.business_name_and_abn.status)
+                (hash label="Contact details" step="contact-detail"
+                  status=this.model.steps.contact_detail.status)
+                (hash label="Business address" step="business-address"
+                  status=this.model.steps.business_address.status)
+                (hash label="Company type and size" step="company-type-and-size"
+                  status=this.model.steps.company_type_and_size.status)
+                (hash label="Business categories" step="business-category"
+                  status=this.model.steps.business_category.status)
+              )
+            )
+            (hash title="Disclosures" links=(array
+                (hash label="Insurance documents" step="insurance-document"
+                  status=this.model.steps.insurance_document.status)
+                (hash label="Financial disclosures" step="financial-document"
+                  status=this.model.steps.financial_document.status)
+                (hash label="Legal disclosures" step="legal-disclosure"
+                  status=this.model.steps.legal_disclosure.status)
+              )
+            )
+            (hash title="Government engagements" links=(array
+                (hash label="Government schemes and panels" step="government-scheme-and-panel"
+                  status=this.model.steps.government_scheme_and_panel.status)
+              )
+            )
+          )
+        }}
+        <article class="sapphire-article col-sm-20 col-md-23">
           {{component (concat "seller-account/" stepName)
             form=(mut this.model.form)
             seller=this.model.seller
           }}
-        </div>
+        </article>
       </div><!--/.row -->
     {{/dds/template-body}}
   </div>

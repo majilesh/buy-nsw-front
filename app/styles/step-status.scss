@@ -78,13 +78,18 @@
     border-right: solid #AAA 10px;
   }
 }
-span.form-status {
-  font-family: MontserratBold;
-  font-size: 0.80em;
-  padding: 0.3rem 0.5rem;
+.form-status {
+  background-color: transparent;
+  display: inline-block;
+  @include AU-space( padding, .4unit 2.25unit );
+  text-transform: uppercase;
+  .au-body & {
+    font-size: .87rem;
+    font-weight: 600;
+  }
   &.accepted {
-    border: 1px solid $AU-color-success;
-    color: $AU-color-success;
+    border: 1px $BUY-color-meta-tag solid;
+    color: $BUY-color-meta-tag;
   }
   &.declined {
     background-color: $AU-color-warning;
