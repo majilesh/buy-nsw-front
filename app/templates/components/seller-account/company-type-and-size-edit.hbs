@@ -1,1 +1,94 @@
-{{yield}}
+<div class="cool-infobox sapphire">
+  {{fa-icon "info-circle" size="2x" prefix="fas"}}
+  Please note that all fields are mandatory unless otherwise indicated.
+</div>
+<h4>Number of employees</h4>
+<p class="b">Calculate the number of full-time employees. For part-time employees, add their hours to estimate the number of full-time equivalent staff.</p>
+<p>This number should match the workers compensation insurance documentation we ask you to supply in Insurances.</p>
+
+{{dds/select-box
+  field=(mut form.number_of_employees)
+  selectClass="maxw-300"
+  isSimple=true
+  items=form.companySizeOptions
+  showError=(or showError (not-eq form.status 'todo'))
+  invalid=(v-get form 'number_of_employees' 'isInvalid')
+  errorMessage=(v-get form 'number_of_employees' 'message')
+  apiError=form.apiErrors.number_of_employees
+}}
+<hr />
+
+<h4>Number employed in Australia</h4>
+{{dds/select-box
+  field=(mut form.australia_employees)
+  selectClass="maxw-300"
+  isSimple=true
+  items=form.companySizeOptionsAu
+  showError=(or showError (not-eq form.status 'todo'))
+  invalid=(v-get form 'australia_employees' 'isInvalid')
+  errorMessage=(v-get form 'australia_employees' 'message')
+  apiError=form.apiErrors.australia_employees
+}}
+<hr />
+
+<h4>Number of employees in NSW</h4>
+{{dds/select-box
+  field=(mut form.nsw_employees)
+  selectClass="maxw-300"
+  isSimple=true
+  items=form.companySizeOptionsNsw
+  showError=(or showError (not-eq form.status 'todo'))
+  invalid=(v-get form 'nsw_employees' 'isInvalid')
+  errorMessage=(v-get form 'nsw_employees' 'message')
+  apiError=form.apiErrors.nsw_employees
+}}
+<hr />
+
+<h4>Business structure</h4>
+{{dds/radio-group
+  class="mb-10"
+  isSimple=true
+  items=(array
+    (hash
+      key="sole-trader"
+      label="Sole trader"
+    )
+    (hash
+      key="company"
+      label="Company"
+    )
+    (hash
+      key="partnership"
+      label="Partnership"
+    )
+    (hash
+      key="trust"
+      label="Trust"
+    )
+  )
+  field=(mut form.business_structure)
+  showError=(or showError (not-eq form.status 'todo'))
+  invalid=(v-get form 'business_structure' 'isInvalid')
+  errorMessage=(v-get form 'business_structure' 'message')
+  apiError=form.apiErrors.business_structure
+}}
+<hr />
+
+<h4>Annual turnover</h4>
+{{dds/select-box
+  field=(mut form.annual_turnover)
+  selectClass="maxw-300"
+  isSimple=true
+  items=(array
+          (hash value="under-3m" label="Under $3m")
+          (hash value="3m-10m" label="$3-10m")
+          (hash value="10m-25m" label="$10-25m")
+          (hash value="25m-50m" label="$25-50m")
+          (hash value="50m-100m" label="$50-100m")
+          (hash value="over-100m" label="Over $100m")
+        )
+  showError=(or showError (not-eq form.status 'todo'))
+  invalid=(v-get form 'annual_turnover' 'isInvalid')
+  errorMessage=(v-get form 'annual_turnover' 'message')
+  apiError=form.apiErrors.annual_turnover
+}}
