@@ -98,5 +98,8 @@ export default DS.Model.extend(Validations, {
   representative_last_name: DS.attr('string'),
   representative_email: DS.attr('string'),
   representative_phone: DS.attr('string'),
-  representative_position: DS.attr('string')
+  representative_position: DS.attr('string'),
+  
+  same_as_above: DS.attr('boolean'),
+  signal: DS.attr('number', { defaultValue: 0 })
 });
