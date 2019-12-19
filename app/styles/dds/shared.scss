@@ -51,8 +51,8 @@ span.float-left, a.float-left, b.float-left {
   color: $AU-color-success;
 }
 
-.gray {
-  color: #888;
+.gray, label + .tip {
+  color: $BUY-color-minor-text;
 }
 
 .small {

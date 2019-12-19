@@ -6,6 +6,7 @@ import { next } from '@ember/runloop';
 
 export default Component.extend({
   layout,
+  classNameBindings: ['isSimple:password-pair:row'],
   passwordStrength: inject(),
   hidePassword: true,
   confirmation: '',

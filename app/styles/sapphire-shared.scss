@@ -24,6 +24,7 @@
       }
     }
     h3 {
+      font-family: MontserratBold;
       &:first-of-type {
         @include AU-space( margin-top, 0 );
       }
@@ -31,6 +32,13 @@
   }
   nav {
     box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.1);
+    @include AU-space( padding-right, 1.5unit );
+    h4 {
+      color: $BUY-color-foreground-text;
+      @include AU-fontgrid( sm );
+      margin-bottom: 0;
+      @include AU-space( padding-left, .75unit );
+    }
   }
   // padding variations (override .au-grid settings):
   .au-grid & {
@@ -40,7 +48,7 @@
     }
   }
   .au-btn {
-    font-size: .87rem;
+    @include AU-space( font-size, .87unit );
     @include AU-space( padding, .3unit 2unit );
     &.au-btn--thin {
       @include AU-space( padding, .3unit 2unit );
@@ -96,6 +104,10 @@
     }
   }
   // shorthand class names - single declarations for any element
+  // cursor
+  .cr-p {
+    cursor: pointer;
+  }
   // display
   .d-b {
     display: block;
@@ -117,6 +129,15 @@
   .mt-15 {
     @include AU-space( margin-top, 1.5unit );
   }
+  .mr-5 {
+    @include AU-space( margin-right, .5unit );
+  }
+  .mr-10 {
+    @include AU-space( margin-right, 1unit );
+  }
+  .mr-15 {
+    @include AU-space( margin-right, 1.5unit );
+  }
   .mb-5 {
     @include AU-space( margin-bottom, .5unit );
   }
@@ -125,6 +146,15 @@
   }
   .mb-15 {
     @include AU-space( margin-bottom, 1.5unit );
+  }
+  .ml-5 {
+    @include AU-space( margin-left, .5unit );
+  }
+  .ml-10 {
+    @include AU-space( margin-left, 1unit );
+  }
+  .ml-15 {
+    @include AU-space( margin-left, 1.5unit );
   }
   // padding
   .p-5 {
@@ -275,8 +305,22 @@
       width: 12px;
     }
   }
-  .validation-error {
-    color: $BUY-color-warning-alt;
+  [autocomplete=new-password] + .show-hide {
+    @include AU-space( font-size, .87unit );
+  }
+  .validation {
+    &.error {
+      color: $BUY-color-warning-alt; //$AU-color-error
+    }
+    &.green {
+      color: $BUY-color-success-shade; //$AU-color-success
+    }
+    &.grey {
+      color: $BUY-color-minor-text;
+    }
+    &.warning {
+      color: $BUY-color-warning-shade; //$AU-color-warning
+    }
     @include AU-space( margin-bottom, .75unit );
   }
   hr {
@@ -286,7 +330,7 @@
     cursor: not-allowed;
   }
   // add link (plus icon)
-  .add-fieldset > a {
+  .add-fieldset {
     align-items: center;
     color: $BUY-color-action-primary;
     cursor: pointer;
