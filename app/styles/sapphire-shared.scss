@@ -351,7 +351,6 @@
     color: $BUY-color-success-shade;
   }
   .input-description {
-    color: $BUY-color-minor-text;
     @include AU-space( font-size, .85unit);
     // TODO - remove following 5 lines when Sapphire styling roll-out across the site is complete
     padding: 0;
@@ -359,6 +358,12 @@
       padding: 0;
       margin-top: 0;
     }
+  }
+  [type=radio] ~ .input-description {
+    color: $BUY-color-minor-text;
+  }
+  [type=checkbox] ~ .input-description {
+    @include AU-space( margin, -.5unit 45px 1unit 45px);
   }
 }
 

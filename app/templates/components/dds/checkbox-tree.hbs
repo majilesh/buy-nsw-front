@@ -1,5 +1,4 @@
 {{#each items as |item|}}
-  <div>
     {{dds/checkbox-item
       name=item.key
       label=item.label
@@ -9,13 +8,11 @@
       onChange=(action "onChange")
       description=item.description
     }}
-  </div>
   {{#if (and item.subItems (array-contains field item.key))}}
-    <div class="col-sm-2"></div>
-    <div class="col-sm-34">
+    <div class="col-sm-34 col-sm-offset-2">
       {{#each item.subItems as |subItem|}}
-        <div class="col-sm-36 col-lg-18">
           {{dds/checkbox-item
+            class="col-lg-18"
             name=subItem.key
             label=subItem.label
             field=(mut field)
@@ -23,13 +20,11 @@
             disabled=disabled
             onChange=(action "onChange")
           }}
-        </div>
       {{/each}}
     </div>
     <div class="clear-both"></div>
     <br>
   {{/if}}
-  <div class="clear-both"></div>
 {{/each}}
 {{#if (and displayError invalid)}}
   {{dds/validation-error type="error" message=errorMessage float="right"}}
