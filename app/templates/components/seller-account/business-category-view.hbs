@@ -2,10 +2,34 @@
 <div class="cool-infobox sapphire">{{fa-icon "eye" prefix="fas" size="2x"}} 
   <div>This information will appear on your supplier profile, but only to <b>registered buyers</b>.</div>
 </div>
-<p>{{form.not_for_profit}}</p>
+<ul class="tags">
+  {{#if form.not_for_profit}}
+    <li>not for profit</li>
+  {{/if}}
+  {{#if form.start_up}}
+    <li>start up</li>
+  {{/if}}
+  {{#if form.australian_owned}}
+    <li>australian owned</li>
+  {{/if}}
+  {{#if form.sme}}
+    <li>Small or medium enterprise</li>
+  {{/if}}
+  {{#if form.indigenous}}
+    <li>Aboriginal or Torres Strait Islander</li>
+  {{/if}}
+  {{#if form.disability}}
+    <li>Australian disability enterprise</li>
+  {{/if}}
+</ul>
 <hr />
+
 <h4>Products, services or support in these ICT categories</h4>
 <div class="cool-infobox sapphire">{{fa-icon "eye" prefix="fas" size="2x"}} 
-  This information will appear on your supplier profileand is publicly visible to all users.
+  This information will appear on your supplier profile and is publicly visible to all users.
 </div>
-<p>{{cform.indigenous}}</p>
+<ul class="tags">
+  {{#each form.services as |service index|}}
+    <li>{{humanize service}}</li>
+  {{/each}}
+</ul>

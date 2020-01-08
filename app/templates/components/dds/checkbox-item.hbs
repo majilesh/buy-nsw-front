@@ -8,11 +8,7 @@
   disabled={{if disabled "disabled" ""}}
 >
 <label class={{unless isSimple "au-control-input__text"}} for={{concat elementId '-checkbox'}}>
-  {{#if bold}}
-    <b>{{label}}</b>
-  {{else}}
-    {{label}}
-  {{/if}}
+  {{label}}
 </label>
 {{#if description}}
   <p class="input-description">

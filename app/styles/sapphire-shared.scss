@@ -267,6 +267,7 @@
         height: 24px;
         left: 0;
         position: absolute;
+        top: 0;
         width: 24px;
       }
     }
@@ -281,9 +282,9 @@
   [type=checkbox] {
     &:checked + label:after {
       background: AU-svguri('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z" class=""></path></svg>') 0 0/contain no-repeat transparent;
-      left: 5px;
+      left: 4px;
       height: 18px;
-      top: 5px;
+      top: 4px;
       width: 18px;
     }
   }
@@ -301,12 +302,20 @@
       border-radius: 50%;
       left: 7px;
       height: 12px;
-      top: 8px;
+      top: 7px;
       width: 12px;
     }
   }
   [autocomplete=new-password] + .show-hide {
     @include AU-space( font-size, .87unit );
+  }
+  // checkbox-tree
+  .checkbox-group {
+    @include AU-space( margin, 0 0 1.5unit 2.75unit);
+    label {
+      font-weight: 300;
+      @include AU-space( margin-bottom, 1unit);
+    }
   }
   .validation {
     &.error {
@@ -364,6 +373,20 @@
   }
   [type=checkbox] ~ .input-description {
     @include AU-space( margin, -.5unit 45px 1unit 45px);
+  }
+}
+
+.tags {
+  list-style-type: none;
+  padding-left: 0;
+  > li {
+    background-color: $BUY-color-meta-tag;
+    border-radius: 2px;
+    color: white;
+    display: inline-block;
+    @include AU-space( font-size, .9unit);
+    @include AU-space ( margin, 0 .5unit .8unit 0 );
+    @include AU-space ( padding, .2unit .5unit );
   }
 }
 
