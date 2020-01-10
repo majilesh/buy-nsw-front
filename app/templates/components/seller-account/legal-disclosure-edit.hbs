@@ -1,1 +1,130 @@
-{{yield}}
+<p>You must update this information if there is change in your business that affects your answers. We will also ask you annually to update your responses to this section.</p>
+<p>If you answer ‘yes’ to any question, you will not be disqualified, however our team may contact you to request more information.</p>
+<hr />
+<p>Is your organisation in receivership, administration or unable to meet its debts as they fall due?</p>
+{{dds/radio-group
+  isSimple=true
+  items=(array
+    (hash
+      key="true"
+      label="Yes"
+    )
+    (hash
+      key="false"
+      label="No"
+    )
+  )
+  field=(mut form.receivership)
+  showError=(or showError (not-eq form.status 'todo'))
+  invalid=(v-get form 'receivership' 'isInvalid')
+  errorMessage=(v-get form 'receivership' 'message')
+  apiError=form.apiErrors.receivership
+}}
+{{#if (eq form.receivership 'true')}}
+  {{dds/text-area
+    isSimple=true
+    label-text="Please provide details including specific dates, details of the event and what counter measures you have implemented."
+    field=(mut form.receivership_details)
+    maxLength=500
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'receivership_details' 'isInvalid')
+    errorMessage=(v-get form 'receivership_details' 'message')
+    apiError=form.apiErrors.receivership_details
+  }}
+{{/if}}
+<hr />
+<p>Are any of your organisation’s directors or principals currently considered a discharged bankrupt?</p>
+{{dds/radio-group
+  isSimple=true
+  items=(array
+    (hash
+      key="true"
+      label="Yes"
+    )
+    (hash
+      key="false"
+      label="No"
+    )
+  )
+  field=(mut form.bankruptcy)
+  showError=(or showError (not-eq form.status 'todo'))
+  invalid=(v-get form 'bankruptcy' 'isInvalid')
+  errorMessage=(v-get form 'bankruptcy' 'message')
+  apiError=form.apiErrors.bankruptcy
+}}
+{{#if (eq form.bankruptcy 'true')}}
+  {{dds/text-area
+    isSimple=true
+    label-text="Please provide details including specific dates, details of the legal action or procedure, and the outcomes."
+    field=(mut form.bankruptcy_details)
+    maxLength=500
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'bankruptcy_details' 'isInvalid')
+    errorMessage=(v-get form 'bankruptcy_details' 'message')
+    apiError=form.apiErrors.bankruptcy_details
+  }}
+{{/if}}
+<hr />
+<p>Has your organisation — or any of its directors or principals — been referred to or investigated by any agency, authority or regulator in connection with improper business practices in the last 5 years?</p>
+{{dds/radio-group
+  isSimple=true
+  items=(array
+    (hash
+      key="true"
+      label="Yes"
+    )
+    (hash
+      key="false"
+      label="No"
+    )
+  )
+  field=(mut form.investigations)
+  showError=(or showError (not-eq form.status 'todo'))
+  invalid=(v-get form 'investigations' 'isInvalid')
+  errorMessage=(v-get form 'investigations' 'message')
+  apiError=form.apiErrors.investigations
+}}
+{{#if (eq form.investigations 'true')}}
+  {{dds/text-area
+    isSimple=true
+    label-text="Please provide details including specific dates, details of the event and what counter measures you have implemented."
+    field=(mut form.investigations_details)
+    maxLength=500
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'investigations_details' 'isInvalid')
+    errorMessage=(v-get form 'investigations_details' 'message')
+    apiError=form.apiErrors.investigations_details
+  }}
+{{/if}}
+<hr />
+<p>Has your organisation been involved in any action or procedure in a court of law in the last 5 years?</p>
+{{dds/radio-group
+  isSimple=true
+  items=(array
+    (hash
+      key="true"
+      label="Yes"
+    )
+    (hash
+      key="false"
+      label="No"
+    )
+  )
+  field=(mut form.legal_proceedings)
+  showError=(or showError (not-eq form.status 'todo'))
+  invalid=(v-get form 'legal_proceedings' 'isInvalid')
+  errorMessage=(v-get form 'legal_proceedings' 'message')
+  apiError=form.apiErrors.legal_proceedings
+}}
+{{#if (eq form.legal_proceedings 'true')}}
+  {{dds/text-area
+    isSimple=true
+    label-text="Please provide details including specific dates, details of the legal action or procedure, and the outcome, as well as what counter measures have been implemented."
+    field=(mut form.legal_proceedings_details)
+    maxLength=500
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'legal_proceedings_details' 'isInvalid')
+    errorMessage=(v-get form 'legal_proceedings_details' 'message')
+    apiError=form.apiErrors.legal_proceedings_details
+  }}
+{{/if}}

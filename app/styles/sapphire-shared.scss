@@ -317,6 +317,21 @@
       @include AU-space( margin-bottom, 1unit);
     }
   }
+  textarea {
+    box-sizing: border-box;
+    font-family: inherit;
+    max-width: 600px;
+    @include AU-space( min-height, 7unit);
+    @include AU-space( padding, .5unit 1unit);
+    width: 100%;
+  }
+  .textarea-pair label {
+    font-weight: 300;
+  }
+  .count {
+    @include AU-space( font-size, .8unit);
+    font-weight: 600;
+  }
   .validation {
     &.error {
       color: $BUY-color-warning-alt; //$AU-color-error

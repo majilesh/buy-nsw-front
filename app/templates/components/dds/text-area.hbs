@@ -1,20 +1,23 @@
-<label for="textarea">{{label-text}}</label>
+{{#if label-text}}
+  <label for={{concat elementId '-textarea'}}>{{label-text}}</label>
+{{/if}}
 {{textarea
-  class=(concat "au-text-input au-text-input--block "
+  class=(unless isSimple (concat "au-text-input au-text-input--block "
       (if thin "au-text-input--thin")
-      (if theme (concat "au-text-input--" theme)))
+      (if theme (concat "au-text-input--" theme))))
+  id=(concat elementId '-textarea')
   focus-out=(action "focusOut")
   key-up = (action "keyUp")
   value=(mut field)
   maxlength=maxLength
 }}
 {{#if maxLength}}
-  <p class="gray">
+  <p class={{if isSimple "count" "gray"}}>
     {{sub maxLength (if field (get field "length") 0)}} characters remaining
   </p>
 {{/if}}
 {{#if (and (not disabled) (and displayError invalid))}}
-  {{dds/validation-error thin=thin type=(or errorType "error") message=errorMessage float=(or float "left")}}
+  {{dds/validation-error thin=thin type=(or errorType "error") message=errorMessage isSimple=isSimple float=(or float "left")}}
 {{else if (and apiError displayError)}}
-  {{dds/validation-error thin=thin type="warning" message=apiError float=(or float "left")}}
+  {{dds/validation-error thin=thin type="warning" message=apiError isSimple=isSimple float=(or float "left")}}
 {{/if}}
