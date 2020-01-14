@@ -53,7 +53,6 @@ export default DS.Model.extend(Validations, {
   }),
 
   corporate_structure: DS.attr('string'),
-  //same_as_above: DS.attr('boolean'),
-  show_address: DS.attr('checked', { defaultValue: 'checked' })
-  //signal: DS.attr('number', { defaultValue: 0 }),
+  show_address: DS.attr('checked', { defaultValue: 'checked' }),
+  signal: DS.attr('number', { defaultValue: 0 }),
 });
