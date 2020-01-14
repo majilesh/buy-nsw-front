@@ -1,16 +1,18 @@
+{{#if isOptional}}
+  <p class="optional">This field is optional</p>
+{{/if}}
 {{#each items as |item|}}
-  <div class="little-padding">
-    {{dds/radio-button
-      value=item.key
-      label=item.label
-      field=(mut field)
-      disabled=disabled
-      onChange=(action "onChange")
-    }}
-  </div>
+  {{dds/radio-button
+    isSimple=isSimple
+    value=item.key
+    label=item.label
+    field=(mut field)
+    disabled=disabled
+    onChange=(action "onChange")
+  }}
 {{/each}}
 {{#if (and displayError invalid)}}
-  {{dds/validation-error type="error" message=errorMessage float="left"}}
+  {{dds/validation-error type="error" message=errorMessage isSimple=isSimple float="left"}}
 {{else if (and apiError displayError)}}
-  {{dds/validation-error type="warning" message=apiError float="left"}}
+  {{dds/validation-error type="warning" message=apiError isSimple=isSimple float="left"}}
 {{/if}}

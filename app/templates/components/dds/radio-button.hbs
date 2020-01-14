@@ -1,11 +1,14 @@
-<label class="au-control-input">
-  <input
-    class="au-control-input__input"
-    type="radio"
-    checked={{if (eq field value) "checked" "" }}
-    onClick={{action "selectRadio" value=value}}
-  >
-  <span class="au-control-input__text">
-    {{label}}
-  </span>
-</label>
+<input
+  id={{concat elementId '-radio'}}
+  class={{unless isSimple "au-control-input__input"}}
+  type="radio"
+  name={{name}}
+  checked={{if (eq field value) "checked" "" }}
+  onClick={{action "selectRadio" value=value}}
+>
+<label class={{if isSimple labelClass "au-control-input__text"}} for={{concat elementId '-radio'}}>{{label}}</label>
+{{#if description}}
+  <p class="input-description">
+    {{description}}
+  </p>
+{{/if}}

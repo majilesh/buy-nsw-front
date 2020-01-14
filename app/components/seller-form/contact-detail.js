@@ -20,7 +20,7 @@ export default Component.extend({
       this.set('form.apiErrors.representative_phone', null);
     },
     addAddress() {
-      this.form.addresses.pushObject({address: '', suburb: '', postcode: '', state: '', country: ''});
+      this.form.addresses.pushObject({address: '', address_2: '', address_3: '', suburb: '', postcode: '', state: '', country: ''});
     },
     removeAddress(index) {
       this.form.addresses.removeAt(index);

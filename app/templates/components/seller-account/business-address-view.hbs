@@ -1,1 +1,41 @@
-{{yield}}
+<div class="cool-infobox sapphire">{{fa-icon "eye" prefix="fas" size="2x"}} 
+  This information will appear on your supplier profile, but only to registered buyers.
+</div>
+<h4>Head office</h4>
+<p>This is the business address of your head office.</p>
+
+<dl class="details alt-2">
+  <dt>Address</dt>
+  {{#with form.addresses.[0] as |address|}}
+    <dd>{{address.address}}</dd>
+    <dd>{{address.address_2}}</dd>
+    <dd>{{address.address_3}}</dd>
+    <dd>{{address.suburb}}
+    {{uppercase address.state}}
+    {{address.postcode}}</dd>
+    <dd>{{address.country}}</dd>
+  {{/with}}
+  <dt class="mt-15">Identifiers</dt>
+  {{#if form.headOfficeAustralia}}
+    <dd>
+      {{#if (eq form.corporate_structure "standalone")}}
+        Australian or New Zealand company
+      {{else if (eq form.corporate_structure "overseas")}}
+        International company (not based in Australia or New Zealand)
+      {{else}}
+        Multinational (local subsidiary)
+      {{/if}}
+    </dd>
+  {{/if}}
+  {{#if (eq form.regional "true")}}
+    <dd>Regional NSW supplier</dd>
+  {{/if}}  
+</dl>
+<hr />
+<p>
+  {{#if (gt form.addresses.length 0)}}
+    You have at least one other office location listed.
+  {{else}}
+    There are currently no other office locations listed.
+  {{/if}}
+</p>

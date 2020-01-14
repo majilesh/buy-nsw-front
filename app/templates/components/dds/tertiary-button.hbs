@@ -8,16 +8,16 @@
   }}
 {{else}}
   <a
-    class={{concat "au-btn au-btn--tertiary "
+    class={{if isSimple linkClass (concat "au-btn au-btn--tertiary "
       (if wide "au-btn--wide ")
       (if thin "au-btn--thin ")
       (if dark "au-btn--dark ")
-      (if theme (concat "au-btn--tertiary--" theme))}}
+      (if theme (concat "au-btn--tertiary--" theme)))}}
     onclick={{unless disabled onClick}}
     disabled={{disabled}}
   >
     {{#if icon}}
-      {{fa-icon icon prefix="fas"}}
+      {{fa-icon icon size=iconSize prefix="fas"}}
     {{/if}}
     {{label}}
   </a>

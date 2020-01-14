@@ -3,4 +3,5 @@ import layout from '../../templates/components/dds/tertiary-button';
 
 export default Component.extend({
   layout,
+  classNames: ['add-fieldset']
 });

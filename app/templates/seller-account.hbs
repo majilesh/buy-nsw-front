@@ -38,8 +38,9 @@
       </div>
       {{#if (not (is-empty this.model.alertingDocuments))}}
         {{#dds/info-box class="warning"}}
+          <b>NOTE:</b> 
           {{#each this.model.alertingDocuments as |alertDoc|}}
-            <b>NOTE:</b> Your {{humanize alertDoc.name}}
+            Your {{humanize alertDoc.name}}
             {{#if (eq alertDoc.expiry "Now expired")}}
               has expired.
             {{else}}
