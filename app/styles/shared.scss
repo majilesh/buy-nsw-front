@@ -133,3 +133,8 @@ div.shaded-box {
 .right-align {
   text-align: right;
 }
+// wrapper for radio inputs
+div.au-control-input {
+  display: block;
+  @include AU-space( margin-bottom, .5unit);
+}
