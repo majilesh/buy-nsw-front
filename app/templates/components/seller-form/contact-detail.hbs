@@ -231,6 +231,7 @@
             wide=true
             noLabel=true
             field=(mut address.address)
+            signal=form.signal
             required=true
             showError=(or showError (not-eq form.status 'todo'))
             apiError=apiError.address
@@ -241,6 +242,7 @@
             wide=true
             noLabel=true
             field=(mut address.address_2)
+            signal=form.signal
             apiError=apiError.address_2
             showError=(or showError (not-eq form.status 'todo'))
           }}
@@ -250,6 +252,7 @@
             wide=true
             noLabel=true
             field=(mut address.address_3)
+            signal=form.signal
             apiError=apiError.address_3
             showError=(or showError (not-eq form.status 'todo'))
           }}
@@ -267,6 +270,7 @@
             allRow=true
             noLabel=true
             field=(mut address.suburb)
+            signal=form.signal
             required=true
             showError=(or showError (not-eq form.status 'todo'))
             apiError=apiError.suburb
@@ -283,9 +287,9 @@
             allRow=true
             noLabel=true
             field=(mut address.postcode)
+            signal=form.signal
             required=true
             showError=(or showError (not-eq form.status 'todo'))
-            signal=form.signal
             apiError=apiError.postcode
           }}
         </p>
@@ -299,6 +303,7 @@
         <p>
           {{dds/select-box
             field=(mut address.state)
+            signal=form.signal
             items=(array
               (hash value="nsw" label="New South Wales")
               (hash value="act" label="Australian Capital Territory")
@@ -323,10 +328,10 @@
         <p>
           {{dds/select-box
             field=(mut address.country)
+            signal=form.signal
             items=countries
             required=true
             showError=(or showError (not-eq form.status 'todo'))
-            signal=form.signal
             apiError=apiError.country
           }}
         </p>

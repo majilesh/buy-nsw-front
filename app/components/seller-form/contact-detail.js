@@ -21,9 +21,15 @@ export default Component.extend({
     },
     addAddress() {
       this.form.addresses.pushObject({address: '', address_2: '', address_3: '', suburb: '', postcode: '', state: '', country: ''});
+      if(this.get('form.signal') != undefined) {
+        this.incrementProperty('form.signal');
+      }
     },
     removeAddress(index) {
       this.form.addresses.removeAt(index);
+      if(this.get('form.signal') != undefined) {
+        this.incrementProperty('form.signal');
+      }
     }
   }
 });
