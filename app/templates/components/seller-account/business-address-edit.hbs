@@ -160,7 +160,13 @@
     }}
     <hr />
   {{/if}}
-  <h5>It looks like your head office is located in Australia or New Zealand. Which best describes your business?</h5>
+  <h5>
+    {{#if form.headOfficeAustralia}}
+      It looks like your head office is located in Australia or New Zealand. Which best describes your business?
+    {{else}}
+      It looks like your head office is <u>not</u> located in Australia or New Zealand. Which best describes your business?
+    {{/if}}
+  </h5>
   {{dds/radio-group
     isSimple=true
     isOptional=true
