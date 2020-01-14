@@ -20,6 +20,8 @@
     <dd>
       {{#if (eq form.corporate_structure "standalone")}}
         Australian or New Zealand company
+      {{else if (eq form.corporate_structure "overseas")}}
+        International company (not based in Australia or New Zealand)
       {{else}}
         Multinational (local subsidiary)
       {{/if}}

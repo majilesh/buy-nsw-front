@@ -63,7 +63,7 @@
             </p>
             <p>
               <b>Address</b><br>
-              {{#with this.model.seller.addresses.[0] as |address|}}
+              {{#each this.model.seller.addresses key=this.model.seller.profile_address_index as |address|}}
                 {{address.address}}
                 {{address.address_2}}
                 {{address.address_3}}
@@ -71,7 +71,7 @@
                 {{address.state}}
                 {{address.country}}
                 {{address.postcode}}
-              {{/with}}
+              {{/each}}
             </p>
             <p>
               <b>Email</b><br>

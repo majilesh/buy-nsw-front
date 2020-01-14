@@ -12,11 +12,11 @@
     {{dds/radio-button
       isSimple=true
       name="showAddress"
-      value=(concat 'address-' index)
+      value=index
       label="Show this address on my profile"
       class="mb-15"
       labelClass="b"
-      field=(mut address.show_address)
+      field=(mut form.profile_address_index)
       disabled=disabled
       description="Only one address can be displayed on supplier profiles at a time."
     }}
