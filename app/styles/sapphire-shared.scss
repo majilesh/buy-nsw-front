@@ -250,7 +250,10 @@
   // remove default down arrow in a select, for IE:
   ::-ms-expand {
 		display: none;
-	}
+  }
+  [type=date] {
+    max-width: 200px;
+  }
   [type=checkbox], [type=radio] {
     @include AU-sronly();
     + label {

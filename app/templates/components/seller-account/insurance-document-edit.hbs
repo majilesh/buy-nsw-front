@@ -1,1 +1,81 @@
-{{yield}}
+<h5 class="optional">This section is optional, but we encourage you to keep it up to date.</h5>
+<p>When a buyer requests your documentation, we will verify with you the records we hold are complete, accurate and up-to-date.</p>
+<hr />
+
+<h4 id="professional-indemnity">Professional indemnity and public liability insurances</h4>
+<p>These documents help buyers interested in your business to understand it better, without having to ask you for more information. So make sure they're up to date. Your insurer can issue a certificate of currency.</p>
+<h5>Upload a file</h5>
+<p>You can upload a single document or separate documents by using the 'Add another file' button below. The file should be no larger than 5MB and in PDF, PNG or JPEG format.</p>
+{{dds/file-upload
+  isSimple=true
+  name="professional_indemnity_certificate"
+  field=(mut form.professional_indemnity_certificate_ids)
+  apiError=form.apiErrors.professional_indemnity_certificate_ids
+  showError=(or showError (not-eq form.status 'todo'))
+  signal=form.signal
+  fileService=fileService
+  overlay=overlay
+  multiple=true
+}}
+<p class="b">Expiry date</p>
+{{dds/date-input
+  isSimple=true
+  required=true
+  field=(mut form.professional_indemnity_certificate_expiry)
+  showError=true
+  invalid=(v-get form 'professional_indemnity_certificate_expiry_valid' 'isInvalid')
+  errorMessage=(v-get form 'professional_indemnity_certificate_expiry_valid' 'message')
+}}
+<hr />
+
+<h4 id="product-liability">Product liability insurance</h4>
+<p>Buyers require this information in order to do business with you. By uploading it to your profile, buyers can access this information as they need it instead of requesting it from you. Don’t have these documents? Your insurer can issue a certificate of currency.</p>
+<h5>Upload a file</h5>
+<p>The file should be no larger than 10MB and in PDF, PNG or JPEG format. You can upload a single document or separate documents by using the 'Add another file' button below.</p>
+{{dds/file-upload
+  name="product_liability_certificate"
+  field=(mut form.product_liability_certificate_ids)
+  apiError=form.apiErrors.product_liability_certificate_ids
+  showError=(or showError (not-eq form.status 'todo'))
+  signal=form.signal
+  fileService=fileService
+  overlay=overlay
+  multiple=true
+}}
+<p class="b">Expiry date</p>
+<p>We'll ask you to upload a new document when this one expires.</p>
+{{dds/date-input
+  isSimple=true
+  required=true
+  field=(mut form.product_liability_certificate_expiry)
+  showError=true
+  invalid=(v-get form 'product_liability_certificate_expiry_valid' 'isInvalid')
+  errorMessage=(v-get form 'product_liability_certificate_expiry_valid' 'message')
+}}
+<hr />
+
+<h4 id="workers-compensation">Workers’ compensation insurance</h4>
+<p>Buyers require this information in order to do business with you. By uploading it to your profile, buyers can access this information as they need it instead of requesting it from you. Don’t have these documents? Your insurer can issue a certificate of currency.</p>
+<h5> Upload a file</h5>
+<p>The file should be no larger than 10MB and in PDF, PNG or JPEG format. You can upload a single document or separate documents by using the 'Add another file' button below.</p>
+{{dds/file-upload
+  name="workers_compensation_certificate"
+  field=(mut form.workers_compensation_certificate_ids)
+  apiError=form.apiErrors.workers_compensation_certificate_ids
+  showError=(or showError (not-eq form.status 'todo'))
+  signal=form.signal
+  fileService=fileService
+  overlay=overlay
+  multiple=true
+}}
+<p class="b">Expiry date</p>
+<p>We'll ask you to upload a new document when this one expires.</p>
+{{dds/date-input
+  isSimple=true
+  required=true
+  field=(mut form.workers_compensation_certificate_expiry)
+  showError=(or showError (not-eq form.status 'todo'))
+  invalid=(v-get form 'workers_compensation_certificate_expiry_valid' 'isInvalid')
+  errorMessage=(v-get form 'workers_compensation_certificate_expiry_valid' 'message')
+  hasChanged=true
+}}
