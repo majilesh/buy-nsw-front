@@ -103,6 +103,7 @@
   },
   "dependencies": {
     "acorn": "^6.3.0",
-    "cldr-core": "^29.0.0"
+    "cldr-core": "^29.0.0",
+    "ember-cli-string-helpers": "^4.0.5"
   }
 }
