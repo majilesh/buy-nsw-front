@@ -4,6 +4,7 @@ import { computed } from '@ember/object';
 
 export default Component.extend({
   layout,
+  classNameBindings: ['isSimple:checkbox-tree'],
   displayError: computed('showError', 'hasChanged', 'field', function() {
     return this.get('showError') || this.get('hasChanged');
   }),

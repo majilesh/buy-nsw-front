@@ -1,6 +1,6 @@
 {{#each items as |item|}}
-  <div>
     {{dds/checkbox-item
+      isSimple=isSimple
       name=item.key
       label=item.label
       field=(mut field)
@@ -9,13 +9,12 @@
       onChange=(action "onChange")
       description=item.description
     }}
-  </div>
   {{#if (and item.subItems (array-contains field item.key))}}
-    <div class="col-sm-2"></div>
-    <div class="col-sm-34">
+    <div class={{if isSimple "checkbox-group" "col-sm-34 col-sm-offset-2" }}>
       {{#each item.subItems as |subItem|}}
-        <div class="col-sm-36 col-lg-18">
           {{dds/checkbox-item
+            isSimple=isSimple
+            class=(unless isSimple "col-lg-18")
             name=subItem.key
             label=subItem.label
             field=(mut field)
@@ -23,16 +22,16 @@
             disabled=disabled
             onChange=(action "onChange")
           }}
-        </div>
       {{/each}}
     </div>
-    <div class="clear-both"></div>
-    <br>
+    {{#unless isSimple}}
+      <div class="clear-both"></div>
+      <br>
+    {{/unless}}
   {{/if}}
-  <div class="clear-both"></div>
 {{/each}}
 {{#if (and displayError invalid)}}
-  {{dds/validation-error type="error" message=errorMessage float="right"}}
+  {{dds/validation-error type="error" message=errorMessage isSimple=isSimple float="right"}}
 {{else if (and apiError displayError)}}
-  {{dds/validation-error type="warning" message=apiError float="right"}}
+  {{dds/validation-error type="warning" message=apiError isSimple=isSimple float="right"}}
 {{/if}}

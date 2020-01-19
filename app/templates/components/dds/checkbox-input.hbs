@@ -6,7 +6,9 @@
   checked={{if field "checked" ""}}
   disabled={{if disabled "disabled" ""}}
 >
-<label class={{unless isSimple "au-control-input__text"}} for={{concat elementId '-checkbox'}}>{{label}}</label>
+<label class={{unless isSimple "au-control-input__text"}} for={{concat elementId '-checkbox'}}>
+  {{label}}
+</label>
 {{#if description}}
   <p class="input-description">
     {{description}}

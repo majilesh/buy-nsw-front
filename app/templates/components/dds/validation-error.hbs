@@ -1,5 +1,7 @@
 {{#if isSimple}}
-  {{message}}
+  <div class={{concat "validation " type}}>
+    {{message}}
+  </div>
 {{else}}
   <div class={{if wide "max60" "max65p"}}>
     <span

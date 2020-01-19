@@ -3,6 +3,6 @@ import layout from '../../templates/components/dds/validation-error';
 
 export default Component.extend({
   wide: true,
-  classNameBindings: ['isSimple:validation-error'],
+  tagName: '',
   layout
 });

@@ -1,1 +1,20 @@
-{{yield}}
+{{seller-profile/edit-save
+  theme="sapphire"
+  underEdit=(mut underEdit)
+  class="pull-right"
+  form=form
+}}
+<h3>Business categories and identifiers</h3>
+{{form-status status=form.status}}
+<hr />
+{{#if underEdit}}
+  {{seller-account/business-category-edit class="sapphire-form" form=form}}
+{{else}}
+  {{seller-account/business-category-view form=form buyerView=true}}
+{{/if}}
+{{seller-profile/edit-save
+  theme="sapphire"
+  underEdit=(mut underEdit)
+  class="pull-right"
+  form=form
+}}

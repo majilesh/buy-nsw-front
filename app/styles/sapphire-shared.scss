@@ -24,6 +24,7 @@
       }
     }
     h3 {
+      font-family: MontserratBold;
       &:first-of-type {
         @include AU-space( margin-top, 0 );
       }
@@ -31,6 +32,13 @@
   }
   nav {
     box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.1);
+    @include AU-space( padding-right, 1.5unit );
+    h4 {
+      color: $BUY-color-foreground-text;
+      @include AU-fontgrid( sm );
+      margin-bottom: 0;
+      @include AU-space( padding-left, .75unit );
+    }
   }
   // padding variations (override .au-grid settings):
   .au-grid & {
@@ -40,7 +48,7 @@
     }
   }
   .au-btn {
-    font-size: .87rem;
+    @include AU-space( font-size, .87unit );
     @include AU-space( padding, .3unit 2unit );
     &.au-btn--thin {
       @include AU-space( padding, .3unit 2unit );
@@ -96,6 +104,10 @@
     }
   }
   // shorthand class names - single declarations for any element
+  // cursor
+  .cr-p {
+    cursor: pointer;
+  }
   // display
   .d-b {
     display: block;
@@ -117,6 +129,15 @@
   .mt-15 {
     @include AU-space( margin-top, 1.5unit );
   }
+  .mr-5 {
+    @include AU-space( margin-right, .5unit );
+  }
+  .mr-10 {
+    @include AU-space( margin-right, 1unit );
+  }
+  .mr-15 {
+    @include AU-space( margin-right, 1.5unit );
+  }
   .mb-5 {
     @include AU-space( margin-bottom, .5unit );
   }
@@ -125,6 +146,15 @@
   }
   .mb-15 {
     @include AU-space( margin-bottom, 1.5unit );
+  }
+  .ml-5 {
+    @include AU-space( margin-left, .5unit );
+  }
+  .ml-10 {
+    @include AU-space( margin-left, 1unit );
+  }
+  .ml-15 {
+    @include AU-space( margin-left, 1.5unit );
   }
   // padding
   .p-5 {
@@ -237,6 +267,7 @@
         height: 24px;
         left: 0;
         position: absolute;
+        top: 0;
         width: 24px;
       }
     }
@@ -251,9 +282,9 @@
   [type=checkbox] {
     &:checked + label:after {
       background: AU-svguri('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z" class=""></path></svg>') 0 0/contain no-repeat transparent;
-      left: 5px;
+      left: 4px;
       height: 18px;
-      top: 5px;
+      top: 4px;
       width: 18px;
     }
   }
@@ -271,12 +302,34 @@
       border-radius: 50%;
       left: 7px;
       height: 12px;
-      top: 8px;
+      top: 7px;
       width: 12px;
     }
   }
-  .validation-error {
-    color: $BUY-color-warning-alt;
+  [autocomplete=new-password] + .show-hide {
+    @include AU-space( font-size, .87unit );
+  }
+  // checkbox-tree
+  .checkbox-group {
+    @include AU-space( margin, 0 0 1.5unit 2.75unit);
+    label {
+      font-weight: 300;
+      @include AU-space( margin-bottom, 1unit);
+    }
+  }
+  .validation {
+    &.error {
+      color: $BUY-color-warning-alt; //$AU-color-error
+    }
+    &.green {
+      color: $BUY-color-success-shade; //$AU-color-success
+    }
+    &.grey {
+      color: $BUY-color-minor-text;
+    }
+    &.warning {
+      color: $BUY-color-warning-shade; //$AU-color-warning
+    }
     @include AU-space( margin-bottom, .75unit );
   }
   hr {
@@ -286,7 +339,7 @@
     cursor: not-allowed;
   }
   // add link (plus icon)
-  .add-fieldset > a {
+  .add-fieldset {
     align-items: center;
     color: $BUY-color-action-primary;
     cursor: pointer;
@@ -307,7 +360,6 @@
     color: $BUY-color-success-shade;
   }
   .input-description {
-    color: $BUY-color-minor-text;
     @include AU-space( font-size, .85unit);
     // TODO - remove following 5 lines when Sapphire styling roll-out across the site is complete
     padding: 0;
@@ -315,6 +367,26 @@
       padding: 0;
       margin-top: 0;
     }
+  }
+  [type=radio] ~ .input-description {
+    color: $BUY-color-minor-text;
+  }
+  [type=checkbox] ~ .input-description {
+    @include AU-space( margin, -.5unit 45px 1unit 45px);
+  }
+}
+
+.tags {
+  list-style-type: none;
+  padding-left: 0;
+  > li {
+    background-color: $BUY-color-meta-tag;
+    border-radius: 2px;
+    color: white;
+    display: inline-block;
+    @include AU-space( font-size, .9unit);
+    @include AU-space ( margin, 0 .5unit .8unit 0 );
+    @include AU-space ( padding, .2unit .5unit );
   }
 }
 

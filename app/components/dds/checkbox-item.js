@@ -3,6 +3,7 @@ import layout from '../../templates/components/dds/checkbox-item';
 
 export default Component.extend({
   layout,
+  classNameBindings: ['isSimple:checkbox-pair:au-control-input'],
   checked: false,
   init() {
     this._super(...arguments);
