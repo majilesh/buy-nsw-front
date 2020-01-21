@@ -122,12 +122,12 @@
     {{dds/select-box
       field=(mut form.annual_turnover)
       items=(array
-              (hash value="under-3m" label="Under $3m")
-              (hash value="3m-10m" label="$3-10m")
-              (hash value="10m-25m" label="$10-25m")
-              (hash value="25m-50m" label="$25-50m")
-              (hash value="50m-100m" label="$50-100m")
-              (hash value="over-100m" label="Over $100m")
+              (hash value="under-3m" label="Under $3M")
+              (hash value="3m-10m" label="$3M - $10M")
+              (hash value="10m-25m" label="$10M - $25M")
+              (hash value="25m-50m" label="$25M - $50M")
+              (hash value="50m-100m" label="$50M -$100M")
+              (hash value="over-100m" label="Over $100M")
             )
       showError=(or showError (not-eq form.status 'todo'))
       invalid=(v-get form 'annual_turnover' 'isInvalid')

@@ -72,6 +72,9 @@ ul.less-left-padding {
     margin-top: 0.5rem;
   }
 }
+.au-control-input > .input-description {
+  margin-top: .3rem;
+}
 p.five-lines {
   display: -webkit-box;
   -webkit-line-clamp: 5;
@@ -132,4 +135,9 @@ div.shaded-box {
 }
 .right-align {
   text-align: right;
+}
+// wrapper for radio inputs
+div.au-control-input {
+  display: block;
+  @include AU-space( margin-bottom, .5unit);
 }

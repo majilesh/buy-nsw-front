@@ -12,11 +12,11 @@
     {{dds/radio-button
       isSimple=true
       name="showAddress"
-      value=(concat 'address-' index)
+      value=index
       label="Show this address on my profile"
       class="mb-15"
       labelClass="b"
-      field=(mut address.show_address)
+      field=(mut form.profile_address_index)
       disabled=disabled
       description="Only one address can be displayed on supplier profiles at a time."
     }}
@@ -26,6 +26,7 @@
       label-text="Business address line 1"
       inputClass="maxw-550"
       field=(mut address.address)
+      signal=form.signal
       required=true
       showError=(or showError (not-eq form.status 'todo'))
       apiError=apiError.address
@@ -36,6 +37,7 @@
       label-text="Business address line 2"
       inputClass="maxw-550"
       field=(mut address.address_2)
+      signal=form.signal
       apiError=apiError.address_2
       showError=(or showError (not-eq form.status 'todo'))
     }}
@@ -45,6 +47,7 @@
       label-text="Business address line 3"
       inputClass="maxw-550"
       field=(mut address.address_3)
+      signal=form.signal
       apiError=apiError.address_3
       showError=(or showError (not-eq form.status 'todo'))
     }}
@@ -55,6 +58,7 @@
         label-text="Suburb or town"
         class="col-sm-21"
         field=(mut address.suburb)
+        signal=form.signal
         required=true
         showError=(or showError (not-eq form.status 'todo'))
         apiError=apiError.suburb
@@ -65,6 +69,7 @@
         label-text="Postcode or ZIP"
         class="col-sm-9"
         field=(mut address.postcode)
+        signal=form.signal
         required=true
         showError=(or showError (not-eq form.status 'todo'))
         signal=form.signal
@@ -75,6 +80,7 @@
     <div class="row">
       {{dds/select-box
         field=(mut address.state)
+        signal=form.signal
         label-text="State or territory"
         class="col-sm-18"
         selectClass="maxw-300"
@@ -97,6 +103,7 @@
       
       {{dds/select-box
         field=(mut address.country)
+        signal=form.signal
         label-text="Country"
         class="col-sm-18"
         selectClass="maxw-300"
@@ -104,7 +111,6 @@
         items=countries
         required=true
         showError=(or showError (not-eq form.status 'todo'))
-        signal=form.signal
         apiError=apiError.country
       }}
     </div>
@@ -160,12 +166,18 @@
     }}
     <hr />
   {{/if}}
-  {{#if form.headOfficeAustralia}}
-    <h5>It looks like your head office is located in Australia or New Zealand. Which best describes your business?</h5>
-    {{dds/radio-group
-      isSimple=true
-      isOptional=true
-      items=(array
+  <h5>
+    {{#if form.headOfficeAustralia}}
+      It looks like your head office is located in Australia or New Zealand. Which best describes your business?
+    {{else}}
+      It looks like your head office is <u>not</u> located in Australia or New Zealand. Which best describes your business?
+    {{/if}}
+  </h5>
+  {{dds/radio-group
+    isSimple=true
+    isOptional=true
+    items=(if form.headOfficeAustralia
+      (array
         (hash
           key="standalone"
           label="Australian or New Zealand company"
@@ -175,11 +187,21 @@
           label="Multinational (local subsidiary)"
         )
       )
-      field=(mut form.corporate_structure)
-      showError=(or showError (not-eq form.status 'todo'))
-      invalid=(v-get form 'corporate_structure' 'isInvalid')
-      errorMessage=(v-get form 'corporate_structure' 'message')
-      apiError=form.apiErrors.corporate_structure
-    }}
-  {{/if}}
+      (array
+        (hash
+          key="overseas"
+          label="International company not based in Australia or New Zealand"
+        )
+        (hash
+          key="subsidiary"
+          label="Multinational (local subsidiary)"
+        )
+      )
+    )
+    field=(mut form.corporate_structure)
+    showError=(or showError (not-eq form.status 'todo'))
+    invalid=(v-get form 'corporate_structure' 'isInvalid')
+    errorMessage=(v-get form 'corporate_structure' 'message')
+    apiError=form.apiErrors.corporate_structure
+  }}
 {{/if}}

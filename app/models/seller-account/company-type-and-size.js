@@ -89,6 +89,14 @@ export default DS.Model.extend(Validations, {
       }
     });
   }),
+  turnoverOptions: [
+    { value: 'under-3m', label: 'Under $3M'},
+    { value: '3m-10m', label: '$3M - $10M'},
+    { value: '10m-25m', label: '$10M - $25M'},
+    { value: '25m-50m', label: '$25M - $50M'},
+    { value: '50m-100m', label: '$50M - $100M'},
+    { value: 'over-100m', label: 'Over $100M'},
+  ],
   number_of_employees_label: computed(
     'number_of_employees',
     function() {
@@ -103,5 +111,10 @@ export default DS.Model.extend(Validations, {
     'nsw_employees',
     function() {
       return this.get('companySizeOptionsWithZero').find((e) => e.value == this.get('nsw_employees')).label;
+  }),
+  annual_turnover_label: computed(
+    'annual_turnover',
+    function() {
+      return this.get('turnoverOptions').find((e) => e.value == this.get('annual_turnover')).label;
   })
 });

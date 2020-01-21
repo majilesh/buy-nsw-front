@@ -231,6 +231,7 @@
             wide=true
             noLabel=true
             field=(mut address.address)
+            signal=form.signal
             required=true
             showError=(or showError (not-eq form.status 'todo'))
             apiError=apiError.address
@@ -241,6 +242,7 @@
             wide=true
             noLabel=true
             field=(mut address.address_2)
+            signal=form.signal
             apiError=apiError.address_2
             showError=(or showError (not-eq form.status 'todo'))
           }}
@@ -250,6 +252,7 @@
             wide=true
             noLabel=true
             field=(mut address.address_3)
+            signal=form.signal
             apiError=apiError.address_3
             showError=(or showError (not-eq form.status 'todo'))
           }}
@@ -267,6 +270,7 @@
             allRow=true
             noLabel=true
             field=(mut address.suburb)
+            signal=form.signal
             required=true
             showError=(or showError (not-eq form.status 'todo'))
             apiError=apiError.suburb
@@ -283,9 +287,9 @@
             allRow=true
             noLabel=true
             field=(mut address.postcode)
+            signal=form.signal
             required=true
             showError=(or showError (not-eq form.status 'todo'))
-            signal=form.signal
             apiError=apiError.postcode
           }}
         </p>
@@ -299,6 +303,7 @@
         <p>
           {{dds/select-box
             field=(mut address.state)
+            signal=form.signal
             items=(array
               (hash value="nsw" label="New South Wales")
               (hash value="act" label="Australian Capital Territory")
@@ -323,10 +328,10 @@
         <p>
           {{dds/select-box
             field=(mut address.country)
+            signal=form.signal
             items=countries
             required=true
             showError=(or showError (not-eq form.status 'todo'))
-            signal=form.signal
             apiError=apiError.country
           }}
         </p>
@@ -334,13 +339,13 @@
     </div>
     {{#if (eq index 0)}}
       <br>
-      {{#if form.headOfficeAustralia}}
-        <p>
-          <b>Corporate structure</b>
-        </p>
-        <p>
-          {{dds/radio-group
-            items=(array
+      <p>
+        <b>Corporate structure</b>
+      </p>
+      <p>
+        {{dds/radio-group
+          items=(if form.headOfficeAustralia
+            (array
               (hash
                 key="standalone"
                 label="An Australian company that is not a subsidiary of another company"
@@ -349,15 +354,24 @@
                 key="subsidiary"
                 label="A locally-based company that is a subsidiary of a multinational corporation"
               )
+            ) (array
+                (hash
+                  key="overseas"
+                  label="An International company that is not based in Australia or New Zealand"
+                )
+                (hash
+                  key="subsidiary"
+                  label="A locally-based company that is a subsidiary of a multinational corporation"
+                )
             )
-            field=(mut form.corporate_structure)
-            showError=(or showError (not-eq form.status 'todo'))
-            invalid=(v-get form 'corporate_structure' 'isInvalid')
-            errorMessage=(v-get form 'corporate_structure' 'message')
-            apiError=form.apiErrors.corporate_structure
-          }}
-        </p>
-      {{/if}}
+          )
+          field=(mut form.corporate_structure)
+          showError=(or showError (not-eq form.status 'todo'))
+          invalid=(v-get form 'corporate_structure' 'isInvalid')
+          errorMessage=(v-get form 'corporate_structure' 'message')
+          apiError=form.apiErrors.corporate_structure
+        }}
+      </p>
       {{#if form.headOfficeRegional}}
         <p>
           {{dds/checkbox-input
