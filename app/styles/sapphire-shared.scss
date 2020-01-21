@@ -74,7 +74,7 @@
     color: $BUY-color-heading-blue;
     font-weight: 600;
   }
-  h5 {
+  h5, h6 {
     font-family: MontserratBold;
   }
   dt {
@@ -391,6 +391,13 @@
   }
   [type=checkbox] ~ .input-description {
     @include AU-space( margin, -.5unit 45px 1unit 45px);
+  }
+  .files {
+    > li {
+      > a {
+        @include AU-space( margin-left, 1unit);
+      }
+    }
   }
 }
 

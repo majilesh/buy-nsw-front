@@ -8,9 +8,9 @@
 {{form-status status=form.status}}
 <hr />
 {{#if underEdit}}
-  {{seller-account/insurance-document-edit class="sapphire-form" form=form}}
+  {{seller-account/insurance-document-edit class="sapphire-form" form=form alertingDocuments=alertingDocuments}}
 {{else}}
-  {{seller-account/insurance-document-view form=form buyerView=true}}
+  {{seller-account/insurance-document-view form=form buyerView=true alertingDocuments=alertingDocuments}}
 {{/if}}
 {{seller-profile/edit-save
   theme="sapphire"

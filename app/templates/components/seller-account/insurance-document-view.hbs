@@ -1,3 +1,13 @@
+{{#if (not (is-empty alertingDocuments))}}
+  {{#dds/info-box class="warning alt mb-15"}}
+    The following documents have expired or are expiring soon:
+    {{#each alertingDocuments as |alertDoc index|}}
+      {{humanize alertDoc.name}}
+      {{#if (eq alertDoc.expiry "Now expired")}}(expired){{else}}({{alertDoc.expiry}}){{/if}}{{#if (lt (sum index 1) alertingDocuments.length)}},{{else}}.{{/if}}
+    {{/each}}
+    Please update your document{{#if (gt alertingDocuments.length 1)}}s{{/if}}.
+  {{/dds/info-box}}
+{{/if}}
 <div class="cool-infobox sapphire">{{fa-icon "eye-slash" prefix="fas" size="2x"}} 
   This information will not appear on your supplier profile and will only be made available to interested buyers upon request. When a buyer requests your documentation, we will verify with you the records we hold are complete, accurate and up-to-date.
 </div>
@@ -11,7 +21,7 @@
       <li>Professional liability insurance (expires {{form.product_liability_certificate_expiry}})</li>
     {{/if}}
     {{#if form.workers_compensation_certificate_ids}}
-      <li>Workers’ compensation insurance (expires {{form.workers_compensation_certificate_expiry}})</li>
+      <li>Workers' compensation insurance (expires {{form.workers_compensation_certificate_expiry}})</li>
     {{/if}}
   </ul>
 {{else}}

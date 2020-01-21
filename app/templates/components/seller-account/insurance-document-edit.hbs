@@ -33,6 +33,7 @@
 <h5>Upload a file</h5>
 <p>The file should be no larger than 10MB and in PDF, PNG or JPEG format. You can upload a single document or separate documents by using the 'Add another file' button below.</p>
 {{dds/file-upload
+  isSimple=true
   name="product_liability_certificate"
   field=(mut form.product_liability_certificate_ids)
   apiError=form.apiErrors.product_liability_certificate_ids
@@ -59,6 +60,7 @@
 <h5> Upload a file</h5>
 <p>The file should be no larger than 10MB and in PDF, PNG or JPEG format. You can upload a single document or separate documents by using the 'Add another file' button below.</p>
 {{dds/file-upload
+  isSimple=true
   name="workers_compensation_certificate"
   field=(mut form.workers_compensation_certificate_ids)
   apiError=form.apiErrors.workers_compensation_certificate_ids
