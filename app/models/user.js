@@ -32,6 +32,7 @@ export default DS.Model.extend(Validations, {
   roles: DS.attr(),
   seller_id: DS.attr('number'),
   seller: DS.belongsTo('seller'),
+  apiErrors: DS.attr('json'),
   hasSeller: computed('seller', function() {
     return this.seller != null;
   })

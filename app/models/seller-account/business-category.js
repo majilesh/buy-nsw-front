@@ -34,4 +34,5 @@ export default DS.Model.extend(Validations, {
   disability: DS.attr('boolean'),
   overseas: DS.attr('boolean'),
   can_be_startup: DS.attr('boolean'),
+  number_of_employees: DS.attr('string'),
 });

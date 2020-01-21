@@ -20,7 +20,7 @@ export default DS.Model.extend({
   representative_phone: DS.attr('string'),
   representative_email: DS.attr('string'),
   abn: DS.attr('string'),
-  addresses: DS.attr(),
+  public_address: DS.attr(),
   receivership: DS.attr('boolean'),
   receivership_details: DS.attr('string'),
   investigations: DS.attr('boolean'),

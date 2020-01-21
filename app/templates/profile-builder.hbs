@@ -63,7 +63,7 @@
             </p>
             <p>
               <b>Address</b><br>
-              {{#with this.model.seller.addresses.[0] as |address|}}
+              {{#with this.model.seller.public_address as |address|}}
                 {{address.address}}
                 {{address.address_2}}
                 {{address.address_3}}

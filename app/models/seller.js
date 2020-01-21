@@ -10,17 +10,18 @@ export default DS.Model.extend({
   offersTelco: DS.attr('boolean'),
   canBeWithdrawn: DS.attr('boolean'),
   lastProfileUpdate: DS.attr('string'),
+  lastAccountUpdate: DS.attr('string'),
   steps: computed('live', function() {
     if(this.get('live')) {
       return [
-        'eligibility',
-        'business-name',
+        'business-name-and-abn',
         'contact-detail',
-        'company-type',
-        'product-category',
+        'business-address',
+        'company-type-and-size',
+        'business-category',
         'legal-disclosure',
-        'insurance-and-financial-document',
-        'complete-application',
+        'insurance-document',
+        'financial_document',
       ];
     } else {
       return [
