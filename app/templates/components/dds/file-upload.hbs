@@ -7,7 +7,11 @@
       <li class="{{theme}}">
         {{document.original_filename}}{{#unless isSimple}} ( {{document.extension}} , {{number-to-human-size document.size}} ){{/unless}}
         {{#unless disabled}}
-          <a class="pointer right" onclick={{action "removeDocument" index}}>x</a>
+          {{#if isSimple}}
+            <button onclick={{action "removeDocument" index}}>Remove file</button>
+          {{else}}
+            <a class="pointer right" onclick={{action "removeDocument" index}}>x</a>
+          {{/if}}
         {{/unless}}
       </li>
     {{/each}}
@@ -18,15 +22,13 @@
   {{#file-upload name=name
                   accept=fileTypes
                   onfileadd=(action "uploadDocument")  as |queue|}}
-    <span class="au-btn au-btn--tertiary pointer {{if theme (concat "au-btn--tertiary--" theme)}}">
-      {{#if (and documents.length multiple)}}
-        {{fa-icon "file-upload" prefix="fas"}} Add another file
-      {{else if (and documents.length (not multiple))}}
-        {{fa-icon "file-upload" prefix="fas"}} Choose another file
-      {{else}}
-        {{fa-icon "file-upload" prefix="fas"}} Choose a file
-      {{/if}}
-    </span>
+    {{#if (and documents.length multiple)}}
+      {{fa-icon (if isSimple "plus-circle" "file-upload") prefix="fas"}} Add another file
+    {{else if (and documents.length (not multiple))}}
+      {{fa-icon (if isSimple "plus-circle" "file-upload") prefix="fas"}} Choose another file
+    {{else}}
+      {{fa-icon (if isSimple "plus-circle" "file-upload") prefix="fas"}} Choose a file
+    {{/if}}
   {{/file-upload}}
 {{/unless}}
 

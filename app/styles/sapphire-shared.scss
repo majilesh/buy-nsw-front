@@ -227,6 +227,18 @@
     display: block;
     font-weight: 600;
     @include AU-space( margin-bottom, .5unit );
+    &.file-upload {
+      cursor: pointer;
+      display: inline-block;
+      @include AU-space( font-size, .95unit );
+      > svg {
+        color:  $BUY-color-action-alt-shade;
+        @include AU-space( height, 1.5unit );
+        @include AU-space( margin-right, .5unit );
+        vertical-align: middle;
+        @include AU-space( width, 1.5unit );
+      }
+    }
   }
   .minor {
     label {
@@ -394,8 +406,14 @@
   }
   .files {
     > li {
-      > a {
+      > button {
+        background: $BUY-color-action-alt-shade;
+        border: none;
+        border-radius: 10px;
+        color: #fff;
         @include AU-space( margin-left, 1unit);
+        @include AU-space( padding, .2unit 1unit);
+        vertical-align: middle;
       }
     }
   }
@@ -418,4 +436,15 @@
 /* temp - for old forms; TODO - remove when Sapphire styling roll-out across the site is complete */
 .au-control-input__text {
   font-family: MontserratBold;
+}
+.profile-upload-group {
+  label {
+    color: #002664;
+    cursor: pointer;
+    @include AU-space ( padding, .5unit 1.5unit );
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
