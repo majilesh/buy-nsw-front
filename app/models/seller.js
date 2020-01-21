@@ -13,14 +13,14 @@ export default DS.Model.extend({
   steps: computed('live', function() {
     if(this.get('live')) {
       return [
-        'eligibility',
-        'business-name',
+        'business-name-and-abn',
         'contact-detail',
-        'company-type',
-        'product-category',
+        'business-address',
+        'company-type-and-size',
+        'business-category',
         'legal-disclosure',
-        'insurance-and-financial-document',
-        'complete-application',
+        'insurance-document',
+        'financial_document',
       ];
     } else {
       return [

@@ -50,6 +50,7 @@
           Please {{ link-to "update your documents in the insurance section" "seller-account" "insurance-document" }}.
         {{/dds/info-box}}
       {{/if}}
+      <br>
       {{#if this.model.seller.pending}}
         {{#dds/page-alert alertType="info"}}
           <h3>
@@ -72,7 +73,24 @@
             </p>
           {{/if}}
         {{/dds/page-alert}}
-      {{/ if }}
+      {{else if this.model.seller.declined}}
+        {{#dds/page-alert alertType="warning"}}
+          <p>
+            Your last submission was not accepted.
+            You can revise your account and submit again.
+          </p>
+        {{/dds/page-alert}}
+      {{else if submitable}}
+        {{#dds/page-alert alertType="info"}}
+          <p>
+            You have unsubmitted changes, you can submit your changes
+            {{dds/tertiary-button
+              onClick=(action "submitProfile")
+              label="Submit"
+            }}
+          </p>
+        {{/dds/page-alert}}
+      {{/if}}
 
       <br>
       <div class="row">
