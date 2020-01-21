@@ -5,6 +5,7 @@ import { computed } from '@ember/object';
 export default BaseController.extend({
   fileService: inject(),
   bjax: inject(),
+  preserveScrollPosition: true,
 
   submitable: computed('model.steps', 'model.form', function() {
     return this.get('model.seller.steps').some( (key) => {
