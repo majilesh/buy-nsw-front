@@ -103,78 +103,6 @@
       margin: 0;
     }
   }
-  // shorthand class names - single declarations for any element
-  // cursor
-  .cr-p {
-    cursor: pointer;
-  }
-  // display
-  .d-b {
-    display: block;
-  }
-  .d-ib {
-    display: inline-block;
-  }
-  // font-weight
-  .b {
-    font-weight: 600;
-  }
-  // margin
-  .mt-5 {
-    @include AU-space( margin-top, .5unit );
-  }
-  .mt-10 {
-    @include AU-space( margin-top, 1unit );
-  }
-  .mt-15 {
-    @include AU-space( margin-top, 1.5unit );
-  }
-  .mr-5 {
-    @include AU-space( margin-right, .5unit );
-  }
-  .mr-10 {
-    @include AU-space( margin-right, 1unit );
-  }
-  .mr-15 {
-    @include AU-space( margin-right, 1.5unit );
-  }
-  .mb-5 {
-    @include AU-space( margin-bottom, .5unit );
-  }
-  .mb-10 {
-    @include AU-space( margin-bottom, 1unit );
-  }
-  .mb-15 {
-    @include AU-space( margin-bottom, 1.5unit );
-  }
-  .ml-5 {
-    @include AU-space( margin-left, .5unit );
-  }
-  .ml-10 {
-    @include AU-space( margin-left, 1unit );
-  }
-  .ml-15 {
-    @include AU-space( margin-left, 1.5unit );
-  }
-  // padding
-  .p-5 {
-    @include AU-space( padding, .5unit );
-  }
-  .p-10 {
-    @include AU-space( padding, 1unit );
-  }
-  .pt-5 {
-    @include AU-space( padding-top, .5unit );
-  }
-  .pt-10 {
-    @include AU-space( padding-top, 1unit );
-  }
-  .pb-5 {
-    @include AU-space( padding-bottom, .5unit );
-  }
-  .pb-10 {
-    @include AU-space( padding-bottom, 1unit );
-  }
 }
 
 // for medium and large screens only (> 992px)
@@ -227,18 +155,6 @@
     display: block;
     font-weight: 600;
     @include AU-space( margin-bottom, .5unit );
-    &.file-upload {
-      cursor: pointer;
-      display: inline-block;
-      @include AU-space( font-size, .95unit );
-      > svg {
-        color:  $BUY-color-action-alt-shade;
-        @include AU-space( height, 1.5unit );
-        @include AU-space( margin-right, .5unit );
-        vertical-align: middle;
-        @include AU-space( width, 1.5unit );
-      }
-    }
   }
   .minor {
     label {
@@ -419,6 +335,9 @@
   }
 }
 
+/*
+  styles for all pages - new and old design
+*/
 .tags {
   list-style-type: none;
   padding-left: 0;
@@ -433,7 +352,97 @@
   }
 }
 
-/* temp - for old forms; TODO - remove when Sapphire styling roll-out across the site is complete */
+
+/*
+  shorthand class names - single declarations for any element
+*/ 
+// cursor
+.cr-p {
+  cursor: pointer;
+}
+// display
+.d-b {
+  display: block;
+}
+.d-ib {
+  display: inline-block;
+}
+// float
+.f-l {
+  float: left;
+}
+.f-r {
+  float: right;
+}
+// font-weight
+.b {
+  font-weight: 600;
+}
+// margin
+.mt-5 {
+  @include AU-space( margin-top, .5unit );
+}
+.mt-10 {
+  @include AU-space( margin-top, 1unit );
+}
+.mt-15 {
+  @include AU-space( margin-top, 1.5unit );
+}
+.mr-5 {
+  @include AU-space( margin-right, .5unit );
+}
+.mr-10 {
+  @include AU-space( margin-right, 1unit );
+}
+.mr-15 {
+  @include AU-space( margin-right, 1.5unit );
+}
+.mb-5 {
+  @include AU-space( margin-bottom, .5unit );
+}
+.mb-10 {
+  @include AU-space( margin-bottom, 1unit );
+}
+.mb-15 {
+  @include AU-space( margin-bottom, 1.5unit );
+}
+.ml-5 {
+  @include AU-space( margin-left, .5unit );
+}
+.ml-10 {
+  @include AU-space( margin-left, 1unit );
+}
+.ml-15 {
+  @include AU-space( margin-left, 1.5unit );
+}
+// padding
+.p-5 {
+  @include AU-space( padding, .5unit );
+}
+.p-10 {
+  @include AU-space( padding, 1unit );
+}
+.pt-5 {
+  @include AU-space( padding-top, .5unit );
+}
+.pt-10 {
+  @include AU-space( padding-top, 1unit );
+}
+.pb-5 {
+  @include AU-space( padding-bottom, .5unit );
+}
+.pb-10 {
+  @include AU-space( padding-bottom, 1unit );
+}
+// text-align
+.a-r {
+  text-align: right;
+}
+
+
+/*
+  temp - for old forms; TODO - remove when Sapphire styling roll-out across the site is complete
+*/
 .au-control-input__text {
   font-family: MontserratBold;
 }

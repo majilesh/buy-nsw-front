@@ -19,9 +19,7 @@
 {{/if}}
 {{#unless isSimple}}<br>{{/unless}}
 {{#unless disabled}}
-  {{#file-upload name=name
-                  accept=fileTypes
-                  onfileadd=(action "uploadDocument")  as |queue|}}
+  {{#file-upload name=name class=labelClass accept=fileTypes onfileadd=(action "uploadDocument")  as |queue|}}
     {{#if (and documents.length multiple)}}
       {{fa-icon (if isSimple "plus-circle" "file-upload") prefix="fas"}} Add another file
     {{else if (and documents.length (not multiple))}}
