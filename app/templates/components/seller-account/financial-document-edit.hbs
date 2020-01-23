@@ -1,1 +1,40 @@
-{{yield}}
+
+<p class="b">At the time a buyer requests your financial statements, we will verify with you the records we hold are complete, accurate and up-to-date.</p>
+<h4>What to provide</h4>
+<p>Up-to-date financial statements help buyers to determine the financial stability of your organisation so that they can make an informed decision. These documents are required before a buyer is able to engage your business.</p>
+<p>Financial statements provide detailed information about the financial performance and position of your organisation. Ideally your financial statement should include your:</p>
+<ul>
+  <li>profit or loss statement </li>
+  <li>balance sheet </li>
+  <li>statement of cash flows </li>
+  <li>statement of changes in equity </li>
+  <li>and notes to the financial statements. </li>
+</ul>
+<p>If you are unable to share the documents listed above, you can also ask your external accountant for a letter confirming your business can meet it's debts when they are due and doesn't have any issues that could impact your ability to deliver your products or services.</p>
+<hr />
+<h5> Upload a file</h5>
+<p>The file should be no larger than 5MB and in PDF, PNG or JPEG format. You can upload a single document or separate documents by using the 'Add another file' button below.</p>
+{{dds/file-upload
+  isSimple=true
+  labelClass="add-fieldset"
+  name="financial_statement"
+  field=(mut form.financial_statement_ids)
+  apiError=form.apiErrors.financial_statement_ids
+  showError=(or showError (not-eq form.status 'todo'))
+  signal=form.signal
+  fileService=fileService
+  overlay=overlay
+  multiple=true
+}}
+<hr />
+<p>Please confirm the financial statements you have provided are for the most recently ended financial year or your organisation’s annual reporting period.</p>
+<p>We'll ask you to upload a new document one year from  the date you uploaded or replaced your file(s).</p>
+{{dds/checkbox-input
+  isSimple=true
+  field=(mut form.financial_statement_confirmed)
+  label="I confirm that at the time of upload the financial documents I have provided are complete, correct and up-to-date."
+  showError=(or showError (not-eq form.status 'todo'))
+  invalid=(v-get form 'financial_statement_confirmed_valid' 'isInvalid')
+  errorMessage=(v-get form 'financial_statement_confirmed_valid' 'message')
+  hasChanged=true
+}}
