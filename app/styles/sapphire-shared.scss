@@ -135,10 +135,11 @@
   @include AU-space( margin-top, .25unit );
 }
 
-/**
- * sapphire form layout
-  text inputs - label above input; label - margin-bottom; input - 1px border
-  checkbox - 
+/*
+  sapphire form layout
+    text inputs - label above input; label - margin-bottom; input - 1px border
+    checkbox, radio, select, textarea, validation etc
+    tied to isSimple boolean
  */
 .sapphire-form {
   background: #fbfcfd;

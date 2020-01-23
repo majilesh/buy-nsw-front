@@ -45,16 +45,6 @@ const Validations = buildValidations({
       }),
     ]
   },
-  financial_statement_confirmed_valid: {
-    validators: [
-      validator('inline', {
-        message: 'Please confirm the validity of attached documents',
-        validate(value, options, model, attributes) { // eslint-disable-line no-unused-vars
-          return value == true || options.message;
-        }
-      }),
-    ]
-  },
 });
 
 export default DS.Model.extend(Validations, {
