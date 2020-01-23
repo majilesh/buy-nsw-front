@@ -9,6 +9,11 @@ export default Route.extend({
   activate: function() {
     this.get('auth').setPageAccess('buyer-only');
   },
+  renderTemplate: function() {
+    this.render('buyer-dashboard', {
+      into: 'buyer-dashboard'
+    });
+  },
   model() {
     return RSVP.hash({
       buyer: this.store.queryRecord('buyer', { current: true }),
