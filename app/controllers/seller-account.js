@@ -7,11 +7,18 @@ export default BaseController.extend({
   bjax: inject(),
   preserveScrollPosition: true,
 
-  submitable: computed('model.steps', 'model.form', function() {
+  editted: computed('model.steps', 'model.seller.steps', function() {
     return this.get('model.seller.steps').some( (key) => {
       let step = this.get('model.steps.'+key.replace(/-/g, '_'));
       return step.status == 'editted';
-    }) && this.get('model.form');
+    });
+  }),
+
+  submitable: computed('model.steps', 'model.seller.steps', 'model.form', 'editted', function() {
+    return this.get('model.form') && this.get('editted') && this.get('model.seller.steps').every( (key) => {
+      let step = this.get('model.steps.'+key.replace(/-/g, '_'));
+      return step.status != 'declined';
+    });
   }),
 
   actions: {

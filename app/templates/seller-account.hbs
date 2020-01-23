@@ -32,8 +32,55 @@
   <div class="au-body">
     {{#dds/template-body auth=auth}}
       <div class="cool-infobox sapphire">
-        <p>You will find information that we have stored relating to your business operations here.</p>
-        <p>Submitting changes to this information will require the review of the buy.nsw operations team and will take 2-3 working days.</p>
+        {{#if this.model.seller.pending}}
+            <p>
+              <b>Account is locked for review</b>
+            </p>
+            <p>
+              You have submitted entries or changes. This will require the review of the buy.nsw operations team and will take 2-3 working days.
+              {{#if this.model.seller.canBeWithdrawn}}
+                You can
+                <a
+                  class="au-btn au-btn--tertiary no-padding"
+                  onclick={{action "withdrawSubmission"}}
+                >
+                  <b>withdraw your submission</b>
+                </a>
+                to edit your account further and submit again.
+              {{else}}
+                While these are under review, you won't be able to view or edit the details of your account.
+              {{/if}}
+            </p>
+        {{else if this.model.seller.declined}}
+            <p>
+              <b>Your last submission was not accepted</b>
+            </p>
+            <p>
+              You can revise your account and submit again.
+            </p>
+        {{else if editted}}
+          <p>
+            <b>You have unsubmitted changes</b>
+          </p>
+          <p>
+            Submitting changes will require the review of the buy.nsw operations team and will take 2-3 working days.
+            {{#if submitable}}
+              You can
+              <a
+                class="au-btn au-btn--tertiary no-padding"
+                onclick={{action "submitProfile"}}
+              >
+                <b>submit</b>
+              </a>
+              your changes, if you have finished editting your account.
+            {{else}}
+              You will be able to submit after updating changes requested by admin.
+            {{/if}}
+          </p>
+        {{else}}
+          <p>You will find information that we have stored relating to your business operations here.</p>
+          <p>Submitting changes to this information will require the review of the buy.nsw operations team and will take 2-3 working days.</p>
+        {{/if}}
         <p><b>Not what you were looking for? Edit your {{ link-to "supplier profile" "profile-builder" }}.</b></p>
       </div>
       {{#if (not (is-empty this.model.alertingDocuments))}}
@@ -47,51 +94,9 @@
               will expire in {{alertDoc.expiry}}.
             {{/if}}
           {{/each}}
-          Please {{ link-to "update your documents in the insurance section" "seller-account" "insurance-document" }}.
+          Please update your documents in the {{ link-to "insurance section" "seller-account" "insurance-document" }}.
         {{/dds/info-box}}
       {{/if}}
-      <br>
-      {{#if this.model.seller.pending}}
-        {{#dds/page-alert alertType="info"}}
-          <h3>
-            Account is locked for review
-          </h3>
-          <p>
-            You have submitted entries or changes.
-            While these are under review, you won't be able to view or edit the details of your account.
-          </p>
-          {{#if this.model.seller.canBeWithdrawn}}
-            <p>
-              You can
-              <a
-                class="au-btn au-btn--tertiary no-padding"
-                onclick={{action "withdrawSubmission"}}
-              >
-                withdraw your submission
-              </a>
-              to edit your account and submit again.
-            </p>
-          {{/if}}
-        {{/dds/page-alert}}
-      {{else if this.model.seller.declined}}
-        {{#dds/page-alert alertType="warning"}}
-          <p>
-            Your last submission was not accepted.
-            You can revise your account and submit again.
-          </p>
-        {{/dds/page-alert}}
-      {{else if submitable}}
-        {{#dds/page-alert alertType="info"}}
-          <p>
-            You have unsubmitted changes, you can submit your changes
-            {{dds/tertiary-button
-              onClick=(action "submitProfile")
-              label="Submit"
-            }}
-          </p>
-        {{/dds/page-alert}}
-      {{/if}}
-
       <br>
       <div class="row">
         {{account-nav class="col-sm-14 col-md-11" items=(array
