@@ -1,4 +1,6 @@
 {{#if status}}
   <span class="form-status {{status}}">{{caption}}</span>
+{{/if}}
+{{#if (not-eq status "editted")}}
   <div class="status__reporter">by buy.nsw operations</div>
 {{/if}}
