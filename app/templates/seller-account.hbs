@@ -72,7 +72,7 @@
               >
                 <b>submit</b>
               </a>
-              your changes, if you have finished editting your account.
+              your changes, if you are done editting your account.
             {{else}}
               You will be able to submit after updating changes requested by admin.
             {{/if}}
@@ -139,14 +139,14 @@
           }}
           {{#if submitable}}
             <p>
-              <small>If you finished with your changes please submit.</small>
+              <small>Please remeber to submit your changes for review when you are done.</small>
             </p>
             <p>
               {{dds/primary-button
                 theme="sapphire"
                 class="float-right"
                 action=(action "submitProfile")
-                label="Submit changes for review"
+                label="Submit for review"
                }}
             </p>
           {{/if}}

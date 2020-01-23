@@ -16,6 +16,8 @@
               wide=true
               thin=true
               field=(mut feedback.task)
+              invalid=(v-get feedback 'task' 'isInvalid')
+              errorMessage=(v-get feedback 'task' 'message')
             }}
               What were you doing?
             {{/dds/text-input}}
@@ -26,6 +28,8 @@
               wide=true
               thin=true
               field=(mut feedback.issue)
+              invalid=(v-get feedback 'issue' 'isInvalid')
+              errorMessage=(v-get feedback 'issue' 'message')
             }}
               What went wrong?
             {{/dds/text-input}}
@@ -33,6 +37,18 @@
 
           {{#if user}}
             <p>Your email ({{user.email}}) will be included in the report.</p>
+          {{else}}
+            <p>
+              {{#dds/text-input
+                wide=true
+                thin=true
+                field=(mut feedback.email)
+                invalid=(v-get feedback 'email' 'isInvalid')
+                errorMessage=(v-get feedback 'email' 'message')
+              }}
+                Your email address (optional)
+              {{/dds/text-input}}
+            </p>
           {{/if}}
 
           <br>
