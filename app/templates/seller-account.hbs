@@ -85,49 +85,72 @@
       </div>
       {{#if (not (is-empty this.model.alertingDocuments))}}
         {{#dds/info-box class="warning"}}
-          <b>NOTE:</b> 
-          {{#each this.model.alertingDocuments as |alertDoc|}}
-            Your {{humanize alertDoc.name}}
-            {{#if (eq alertDoc.expiry "Now expired")}}
-              has expired.
-            {{else}}
-              will expire in {{alertDoc.expiry}}.
-            {{/if}}
-          {{/each}}
-          Please update your documents in the {{ link-to "insurance section" "seller-account" "insurance-document" }}.
+          <b>NOTE:</b> The following docuemnts are or about to expire:
+          Please update your documents in
+          {{ link-to "financial disclosures" "seller-account" "financial-document" }}
+          and
+          {{ link-to "insurance documents" "seller-account" "insurance-document" }}
+          sections.
+          <ul>
+            {{#each this.model.alertingDocuments as |alertDoc|}}
+              <li>
+                {{humanize alertDoc.name}}
+                {{#if (eq alertDoc.expiry "Now expired")}}
+                  has expired.
+                {{else}}
+                  will expire in {{alertDoc.expiry}}.
+                {{/if}}
+              </li>
+            {{/each}}
+          </ul>
         {{/dds/info-box}}
       {{/if}}
       <br>
       <div class="row">
-        {{account-nav class="col-sm-14 col-md-11" items=(array
-            (hash title="My Account" links=(array
-                (hash label="Login details" step="login-details")
+        <div class="col-sm-14 col-md-11">
+          {{account-nav items=(array
+              (hash title="My Account" links=(array
+                  (hash label="Login details" step="login-details")
+                )
+              )
+              (hash title="Company details" links=(array
+                  (hash label="Business name and ABN" step="business-name-and-abn"
+                    status=this.model.steps.business_name_and_abn.status)
+                  (hash label="Contact details" step="contact-detail"
+                    status=this.model.steps.contact_detail.status)
+                  (hash label="Business address" step="business-address"
+                    status=this.model.steps.business_address.status)
+                  (hash label="Company type and size" step="company-type-and-size"
+                    status=this.model.steps.company_type_and_size.status)
+                  (hash label="Business categories" step="business-category"
+                    status=this.model.steps.business_category.status)
+                )
+              )
+              (hash title="Disclosures" links=(array
+                  (hash label="Insurance documents" step="insurance-document"
+                    status=this.model.steps.insurance_document.status)
+                  (hash label="Financial disclosures" step="financial-document"
+                    status=this.model.steps.financial_document.status)
+                  (hash label="Legal disclosures" step="legal-disclosure"
+                    status=this.model.steps.legal_disclosure.status)
+                )
               )
             )
-            (hash title="Company details" links=(array
-                (hash label="Business name and ABN" step="business-name-and-abn"
-                  status=this.model.steps.business_name_and_abn.status)
-                (hash label="Contact details" step="contact-detail"
-                  status=this.model.steps.contact_detail.status)
-                (hash label="Business address" step="business-address"
-                  status=this.model.steps.business_address.status)
-                (hash label="Company type and size" step="company-type-and-size"
-                  status=this.model.steps.company_type_and_size.status)
-                (hash label="Business categories" step="business-category"
-                  status=this.model.steps.business_category.status)
-              )
-            )
-            (hash title="Disclosures" links=(array
-                (hash label="Insurance documents" step="insurance-document"
-                  status=this.model.steps.insurance_document.status)
-                (hash label="Financial disclosures" step="financial-document"
-                  status=this.model.steps.financial_document.status)
-                (hash label="Legal disclosures" step="legal-disclosure"
-                  status=this.model.steps.legal_disclosure.status)
-              )
-            )
-          )
-        }}
+          }}
+          {{#if submitable}}
+            <p>
+              <small>If you finished with your changes please submit.</small>
+            </p>
+            <p>
+              {{dds/primary-button
+                theme="sapphire"
+                class="float-right"
+                action=(action "submitProfile")
+                label="Submit changes for review"
+               }}
+            </p>
+          {{/if}}
+        </div>
         <article class="sapphire-article col-sm-20 col-md-23">
           {{component (concat "seller-account/" stepName)
             form=(mut this.model.form)
