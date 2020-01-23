@@ -85,13 +85,13 @@
       </div>
       {{#if (not (is-empty this.model.alertingDocuments))}}
         {{#dds/info-box class="warning"}}
-          <b>NOTE:</b> The following docuemnts are or about to expire:
-          Please update your documents in
+          <b>NOTE:</b> Some of docuemnts are or about to expire.
+          Please update them in
           {{ link-to "financial disclosures" "seller-account" "financial-document" }}
           and
           {{ link-to "insurance documents" "seller-account" "insurance-document" }}
           sections.
-          <ul>
+          <ul class="less-margin-top">
             {{#each this.model.alertingDocuments as |alertDoc|}}
               <li>
                 {{humanize alertDoc.name}}
