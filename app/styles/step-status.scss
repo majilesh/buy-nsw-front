@@ -91,7 +91,7 @@
     border: 1px $BUY-color-meta-tag solid;
     color: $BUY-color-meta-tag;
   }
-  &.declined {
+  &.declined, &.invalid {
     background-color: $AU-color-warning;
     color: white;
   }

@@ -137,18 +137,66 @@
               )
             )
           }}
-          {{#if submitable}}
+          {{#if this.model.seller.pending}}
             <p>
-              <small>Please remeber to submit your changes for review when you are done.</small>
+              <small>
+                You have submitted entries or changes.
+                {{#unless this.model.seller.canBeWithdrawn}}
+                  While these are under review, you won't be able to view or edit the details of your account.
+                {{/unless}}
+              </small>
             </p>
+            <p>
+              {{dds/primary-button
+                theme="sapphire"
+                class="float-right"
+                onClick=(action "withdrawSubmission")
+                label="Withdraw your submission"
+                disabled=(not this.model.seller.canBeWithdrawn)
+              }}
+            </p>
+          {{else if this.model.seller.declined}}
+            <p>
+              <small>Please revise your account and submit again</small>
+            </p>
+            <p>
+              {{dds/primary-button
+                theme="sapphire"
+                class="float-right"
+                label="Submit for review"
+                disabled=true
+               }}
+            </p>
+          {{else if editted}}
+            {{#if submitable}}
+              <p>
+                <small>Please remeber to submit your changes for review when you are done.</small>
+              </p>
+            {{else}}
+              You will be able to submit after updating changes requested by admin.
+            {{/if}}
             <p>
               {{dds/primary-button
                 theme="sapphire"
                 class="float-right"
                 onClick=(action "submitProfile")
                 label="Submit for review"
+                disabled=(not submitable)
                }}
             </p>
+          {{else}}
+            <p>
+              <small>You don't have any changes to submit yet.</small>
+            </p>
+            <p>
+              {{dds/primary-button
+                theme="sapphire"
+                class="float-right"
+                label="Submit for review"
+                disabled=true
+               }}
+            </p>
+
           {{/if}}
         </div>
         <article class="sapphire-article col-sm-20 col-md-23">

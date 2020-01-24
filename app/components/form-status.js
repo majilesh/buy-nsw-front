@@ -7,6 +7,7 @@ export default Component.extend({
     return {
       "accepted": "ACCEPTED",
       "declined": "PLEASE REVIEW",
+      "invalid": "PLEASE REVIEW",
       "editted": "UNSUBMITTED CHANGES",
       "pending": "PENDING REVIEW",
       "pending_locked": "PENDING REVIEW"
