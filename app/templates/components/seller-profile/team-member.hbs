@@ -6,6 +6,7 @@
 }}
   {{#if underEdit}}
     {{seller-profile/edit-save
+      class="a-r"
       theme="sapphire"
       underEdit=(mut underEdit)
       form=form
@@ -29,6 +30,7 @@
     {{seller-profile/team-member-view form=form buyerView=true}}
   {{/if}}
   {{seller-profile/edit-save
+    class="a-r"
     theme="sapphire"
     underEdit=(mut underEdit)
     form=form

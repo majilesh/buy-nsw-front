@@ -4,6 +4,7 @@ import { computed } from '@ember/object';
 
 export default Component.extend({
   layout,
+  classNames: ['date-pair'],
   min: '1800-01-01',
   max: '2100-01-01',
   displayError: computed('showError', 'hasChanged', 'field', function() {

@@ -19,16 +19,16 @@
   }
 }
 
-ul.au-tags.files {
+.au-tags.files {
   padding-right: 1rem;
-  li.files {
+  > li {
     width: 100%;
-    a.file {
-      text-decoration: none;
-    }
-    a.right {
-      float: right;
-      text-decoration: none;
+    > a {
+			text-decoration: none;
+			&.right {
+				float: right;
+				text-decoration: none;
+			}
     }
     &.sapphire {
       border-color: $BUY-color-action-alt-shade;

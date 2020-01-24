@@ -1,1 +1,20 @@
-{{yield}}
+{{seller-profile/edit-save
+  theme="sapphire"
+  underEdit=(mut underEdit)
+  class="f-r"
+  form=form
+}}
+<h3>Insurance documents</h3>
+{{form-status status=form.status}}
+<hr />
+{{#if underEdit}}
+  {{seller-account/insurance-document-edit class="sapphire-form" form=form alertingDocuments=alertingDocuments}}
+{{else}}
+  {{seller-account/insurance-document-view form=form buyerView=true alertingDocuments=alertingDocuments}}
+{{/if}}
+{{seller-profile/edit-save
+  theme="sapphire"
+  underEdit=(mut underEdit)
+  class="a-r"
+  form=form
+}}
