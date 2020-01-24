@@ -3,7 +3,7 @@
     The following documents have expired or are expiring soon:
     {{#each alertingDocuments as |alertDoc index|}}
       {{humanize alertDoc.name}}
-      {{#if (eq alertDoc.expiry "Now expired")}}(expired){{else}}({{alertDoc.expiry}}){{/if}}{{#if (lt (sum index 1) alertingDocuments.length)}},{{else}}.{{/if}}
+      {{#if (eq alertDoc.expiry "Now expired")}}(expired){{else}}({{alertDoc.expiry}}){{/if}}{{#if (lt (add index 1) alertingDocuments.length)}},{{else}}.{{/if}}
     {{/each}}
     Please update your document{{#if (gt alertingDocuments.length 1)}}s{{/if}}.
   {{/dds/info-box}}
