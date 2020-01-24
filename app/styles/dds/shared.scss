@@ -14,13 +14,12 @@ hr.no-margin, div.no-margin, nav.no-margin {
 div.feedback {
   padding-bottom: 1.5rem;
 }
-
-.pull-left {
+div.pull-left, span.pull-left {
   margin: 0 0.5rem;
   float: left;
 }
 
-.pull-right {
+a.pull-right, span.pull-right, div.pull-right {
   margin-right: 1rem;
   float: right;
   &.mr-0 {
