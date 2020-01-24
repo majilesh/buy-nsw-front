@@ -33,7 +33,7 @@ export default BaseController.extend({
         method: 'GET',
       }).then(response => controller.set('model.alertingDocuments', response));
     },
-    submitProfile() {
+    submitAccount() {
       this.get('overlay').show();
       var controller = this;
       this.model.seller.submit().then(() => {

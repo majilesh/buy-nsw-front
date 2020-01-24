@@ -39,17 +39,20 @@
             <p>
               You have submitted entries or changes. This will require the review of the buy.nsw operations team and will take 2-3 working days.
               {{#if this.model.seller.canBeWithdrawn}}
-                You can
-                <a
-                  class="au-btn au-btn--tertiary no-padding"
-                  onclick={{action "withdrawSubmission"}}
-                >
-                  <b>withdraw your submission</b>
-                </a>
+                You can withdraw your submission
                 to edit your account further and submit again.
               {{else}}
                 While these are under review, you won't be able to view or edit the details of your account.
               {{/if}}
+            </p>
+            <p>
+              {{dds/primary-button
+                theme="sapphire"
+                thin=true
+                onClick=(action "withdrawSubmission")
+                label="Withdraw your submission"
+                disabled=(not this.model.seller.canBeWithdrawn)
+              }}
             </p>
         {{else if this.model.seller.declined}}
             <p>
@@ -65,17 +68,19 @@
           <p>
             Submitting changes will require the review of the buy.nsw operations team and will take 2-3 working days.
             {{#if submitable}}
-              You can
-              <a
-                class="au-btn au-btn--tertiary no-padding"
-                onclick={{action "submitProfile"}}
-              >
-                <b>submit</b>
-              </a>
-              your changes, if you are done editting your account.
+                Please remember to submit your changes, when you are done editting your account.
             {{else}}
               You will be able to submit after updating changes requested by admin.
             {{/if}}
+          </p>
+          <p>
+            {{dds/primary-button
+              theme="sapphire"
+              thin=true
+              onClick=(action "submitAccount")
+              label="Submit for review"
+              disabled=(or (not submitable) this.model.form.underEdit)
+            }}
           </p>
         {{else}}
           <p>You will find information that we have stored relating to your business operations here.</p>
@@ -170,7 +175,7 @@
           {{else if editted}}
             {{#if submitable}}
               <p>
-                <small>Please remeber to submit your changes for review when you are done.</small>
+                <small>Please submit your changes for review when you are done.</small>
               </p>
             {{else}}
               You will be able to submit after updating changes requested by admin.
@@ -179,9 +184,9 @@
               {{dds/primary-button
                 theme="sapphire"
                 class="float-right"
-                onClick=(action "submitProfile")
+                onClick=(action "submitAccount")
                 label="Submit for review"
-                disabled=(not submitable)
+                disabled=(or (not submitable) this.model.form.underEdit)
                }}
             </p>
           {{else}}
@@ -204,6 +209,7 @@
             form=(mut this.model.form)
             seller=this.model.seller
             alertingDocuments=this.model.alertingDocuments
+            underEdit=(mut this.model.form.underEdit)
             afterSave=(action "refresh")
           }}
         </article>
