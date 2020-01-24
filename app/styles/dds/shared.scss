@@ -14,7 +14,6 @@ hr.no-margin, div.no-margin, nav.no-margin {
 div.feedback {
   padding-bottom: 1.5rem;
 }
-
 div.pull-left, span.pull-left {
   margin: 0 0.5rem;
   float: left;
@@ -23,7 +22,7 @@ div.pull-left, span.pull-left {
 a.pull-right, span.pull-right, div.pull-right {
   margin-right: 1rem;
   float: right;
-  &.no-margin-right {
+  &.mr-0 {
     margin-right: 0;
   }
 }

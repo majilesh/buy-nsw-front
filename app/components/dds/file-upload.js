@@ -5,6 +5,7 @@ import layout from '../../templates/components/dds/file-upload';
 
 export default Component.extend({
   layout,
+  classNameBindings: ['isSimple:upload-group:profile-upload-group'],
   store: inject(),
   auth: inject(),
   documents: null,

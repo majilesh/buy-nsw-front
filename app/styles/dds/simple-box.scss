@@ -159,10 +159,16 @@
     }
   }
   &.warning {
-    color: $BUY-color-warning-shade;
-		a, b {
-			color: $BUY-color-warning-shade;
-		}
+    &:not(.alt) {
+      color: $BUY-color-warning-shade;
+      a, b {
+        color: $BUY-color-warning-shade;
+      }
+    }
+    &.alt {
+      border: 1px solid $BUY-color-warning-alt;
+      @include AU-space( padding, .7unit 1unit);
+    }
   }
 }
 
