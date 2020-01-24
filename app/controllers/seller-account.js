@@ -29,6 +29,9 @@ export default BaseController.extend({
       this.get('bjax').request('/api/sellers/sellers/steps?account=true', {
         method: 'GET',
       }).then(response => controller.set('model.steps', response));
+      this.get('bjax').request('/api/sellers/sellers/alerting_documents', {
+        method: 'GET',
+      }).then(response => controller.set('model.alertingDocuments', response));
     },
     submitProfile() {
       this.get('overlay').show();

@@ -24,6 +24,9 @@ export default Component.extend({
       let form = this.get('form');
       form.save().then(() => {
         component.set('underEdit', false);
+        if(this.get('afterSave')){
+          this.afterSave();
+        }
       }).catch((adapterError) => {
         let errors = adapterError.errors[0];
         form.set('showError', true);
