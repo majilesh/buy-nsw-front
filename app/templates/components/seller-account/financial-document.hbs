@@ -1,1 +1,20 @@
-{{yield}}
+{{seller-profile/edit-save
+  theme="sapphire"
+  underEdit=(mut underEdit)
+  class="f-r"
+  form=form
+}}
+<h3>Financial disclosures</h3>
+{{form-status status=form.status}}
+<hr />
+{{#if underEdit}}
+  {{seller-account/financial-document-edit class="sapphire-form" form=form}}
+{{else}}
+  {{seller-account/financial-document-view form=form buyerView=true}}
+{{/if}}
+{{seller-profile/edit-save
+  theme="sapphire"
+  underEdit=(mut underEdit)
+  class="a-r"
+  form=form
+}}
