@@ -1,14 +1,25 @@
 {{#if (or (eq form.status 'pending') (eq form.status 'pending_locked'))}}
 {{else}}
   {{#if underEdit}}
-    {{dds/primary-button
-      theme=theme
-      class="f-r"
-      thin=true
-      label="Save"
-      onClick=(action "saveClicked")
-      disabled=(or (v-get form 'isInvalid') (not form.hasDirtyAttributes))
-    }}
+    {{#if secondary}}
+      {{dds/secondary-button
+        theme=theme
+        class="f-r"
+        thin=true
+        label="Save"
+        onClick=(action "saveClicked")
+        disabled=(or (v-get form 'isInvalid') (not form.hasDirtyAttributes))
+      }}
+    {{else}}
+      {{dds/primary-button
+        theme=theme
+        class="f-r"
+        thin=true
+        label="Save"
+        onClick=(action "saveClicked")
+        disabled=(or (v-get form 'isInvalid') (not form.hasDirtyAttributes))
+      }}
+    {{/if}}
     {{dds/tertiary-button
       class="pull-right"
       thin=true
@@ -16,13 +27,23 @@
       label="Cancel"
      }}
   {{else}}
-    {{dds/primary-button
-      theme=theme
-      class="f-r"
-      thin=true
-      label="Edit"
-      onClick=(action "editClicked")
-    }}
+    {{#if secondary}}
+      {{dds/secondary-button
+        theme=theme
+        class="f-r"
+        thin=true
+        label="Edit"
+        onClick=(action "editClicked")
+      }}
+    {{else}}
+      {{dds/primary-button
+        theme=theme
+        class="f-r"
+        thin=true
+        label="Edit"
+        onClick=(action "editClicked")
+      }}
+    {{/if}}
   {{/if}}
   <div class="clear-both"></div>
 {{/if}}
