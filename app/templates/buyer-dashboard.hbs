@@ -24,122 +24,92 @@
       <br>
     </div>
 
-
     <div class="col-sm-18 col-sm-offset-18 col-md-11 col-md-offset-13 col-lg-9 col-lg-offset-15">
-        {{#if (and this.model.buyer this.model.buyer.approved)}}
-          Your buyer account is active {{link-to "Edit My Account" "register-buyer" class="au-btn au-btn--sapphire banner-button"}}
-        {{else if (and this.model.buyer this.model.buyer.pendingApproval)}}
-          <span class="au-btn au-btn--sapphire banner-button">Buyer application pending manager approval.</span>
-        {{else if (and this.model.buyer this.model.buyer.underReview)}}
-          <span class="au-btn au-btn--sapphire banner-button">Buyer application under review.</span>
-        {{else if (and this.model.buyer this.model.buyer.draft)}}
-          {{link-to "Continue with your buyer application" "register-buyer" class="au-btn au-btn--sapphire banner-button"}}
-        {{else if (not this.model.buyer)}}
-          {{link-to "Register as an ICT buyer" "register-buyer" class="au-btn au-btn--sapphire banner-button"}}
-        {{else}}
-          <span class="au-btn au-btn--sapphire banner-button">Your buyer application is rejected or inactive</span>
-        {{/if}}
-      <br>
+      {{#if (and this.model.buyer this.model.buyer.approved)}}
+        Your buyer account is active {{link-to "Edit My Account" "register-buyer" class="au-btn au-btn--sapphire banner-button"}}
+      {{else if (and this.model.buyer this.model.buyer.pendingApproval)}}
+        <span class="au-btn au-btn--sapphire banner-button">Buyer application pending manager approval.</span>
+      {{else if (and this.model.buyer this.model.buyer.underReview)}}
+        <span class="au-btn au-btn--sapphire banner-button">Buyer application under review.</span>
+      {{else if (and this.model.buyer this.model.buyer.draft)}}
+        {{link-to "Continue with your buyer application" "register-buyer" class="au-btn au-btn--sapphire banner-button"}}
+      {{else if (not this.model.buyer)}}
+        {{link-to "Register as an ICT buyer" "register-buyer" class="au-btn au-btn--sapphire banner-button"}}
+      {{else}}
+        <span class="au-btn au-btn--sapphire banner-button">Your buyer application is rejected or inactive</span>
+      {{/if}}
     </div>
   </div>
 {{/dds/banner}}
 
-<main id="content">
-  <div class="au-body">
-    {{#dds/template-body auth=auth}}
-      <div class="row dashboard-notes">
-        <div class="col-md-12">on the <b>buy.nsw</b> platform</div>
-        <div class="col-md-15 col-lg-offset-3">
-          {{#if this.model.seller.lastProfileUpdate}}
-            <strong>Last updated:</strong> {{this.model.seller.lastProfileUpdate}}
-          {{/if}}
-        </div>
-      </div>
-
-      {{# if this.model.seller }}
-        {{#dds/call-out}}
-          <h5 class="au-display-sm"><b>Your company {{this.model.seller.statusMessage}}.</b></h5>
-        {{/dds/call-out}}
-      {{/if}}
-
-      <h4 class="au-display-xl center"><b>Welcome to buy.nsw</b></h4>
-      <p class="center"><b class="sapphire">What would you like to do today?</b></p>
-      
-      
-  <div class="row">
-    <div class="col-sm-24">
-      <h2>Dashboard</h2>
-      <br>
-      <p>
-        {{#if (and this.model.buyer this.model.buyer.approved)}}
-          <b>Your buyer account is active.</b>
-          <br>
-          <p>
-            To get started, browse:<br>
-            <ul>
-              <li>{{link-to "Applications and software" "cloud-search" "applications-software"}}</li>
-              <li>{{link-to "Hosting and infrastructure" "cloud-search" "hosting-infrastructure"}}</li>
-            </ul><br>
-            Or {{link-to "return to the buy.nsw homepage" "index"}} for more options.
-          </p>
-        {{else if (and this.model.buyer this.model.buyer.pendingApproval)}}
-          <b>Your buyer application is pending your manager approval.</b><br>
-          <p>
-            In the meantime, browse:<br>
-            <ul>
-              <li>{{link-to "Applications and software" "cloud-search" "applications-software"}}</li>
-              <li>{{link-to "Hosting and infrastructure" "cloud-search" "hosting-infrastructure"}}</li>
-            </ul><br>
-            Or {{link-to "return to the buy.nsw homepage" "index"}} for more options.
-          </p>
-        {{else if (and this.model.buyer this.model.buyer.underReview)}}
-          <b>Your buyer application is under review.</b><br>
-          <p>
-            In the meantime, browse:<br>
-            <ul>
-              <li>{{link-to "Applications and software" "cloud-search" "applications-software"}}</li>
-              <li>{{link-to "Hosting and infrastructure" "cloud-search" "hosting-infrastructure"}}</li>
-            </ul><br>
-            Or {{link-to "return to the buy.nsw homepage" "index"}} for more options.
-          </p>
-        {{else if (and this.model.buyer this.model.buyer.draft)}}
-          {{link-to "Continue with your buyer application" "register-buyer"}}
-        {{else if (not this.model.buyer)}}
-          {{link-to "Register as an ICT buyer who can buy" "register-buyer"}}
-        {{else}}
-          <b>Your buyer application is rejected or not active any more.</b><br>
+<main id="content" class="au-body sapphire-main">
+  {{#dds/template-body auth=auth}}
+    <div class="row dashboard-notes mt-15">
+      <div class="col-md-12">on the <b>buy.nsw</b> platform</div>
+      <div class="col-md-15 col-lg-offset-3">
+        {{#if this.model.seller.lastProfileUpdate}}
+          <strong>Last updated:</strong> {{this.model.seller.lastProfileUpdate}}
         {{/if}}
-      </p>
-      <br>
-      <br>
+      </div>
+    </div>
+
+    {{# if this.model.seller }}
       {{#dds/call-out}}
-        <h5 class="au-display-lg">
-          <b>Our suppliers so far</b>
-        </h5><br>
+        <h5 class="au-display-sm"><b>Your company {{this.model.seller.statusMessage}}.</b></h5>
+      {{/dds/call-out}}
+    {{/if}}
+
+    <h4 class="au-display-xl center"><b>Welcome to buy.nsw</b></h4>
+    <p class="center"><b class="sapphire">What would you like to do today?</b></p>      
+      
+    <div>
+      {{#if (and this.model.buyer this.model.buyer.approved)}}
+        <p><b>Your buyer account is active.</b></p>
+        <p>To get started, browse:</p>
+        <ul>
+          <li>{{link-to "Applications and software" "cloud-search" "applications-software"}}</li>
+          <li>{{link-to "Hosting and infrastructure" "cloud-search" "hosting-infrastructure"}}</li>
+        </ul>
+        <p>Or {{link-to "return to the buy.nsw homepage" "index"}} for more options.</p>
+      {{else if (and this.model.buyer this.model.buyer.pendingApproval)}}
+        <p><b>Your buyer application is pending your manager approval.</b></p>
+        <p>In the meantime, browse:</p>
+        <ul>
+          <li>{{link-to "Applications and software" "cloud-search" "applications-software"}}</li>
+          <li>{{link-to "Hosting and infrastructure" "cloud-search" "hosting-infrastructure"}}</li>
+        </ul>
+        <p>Or {{link-to "return to the buy.nsw homepage" "index"}} for more options.</p>
+      {{else if (and this.model.buyer this.model.buyer.underReview)}}
+        <p><b>Your buyer application is under review.</b></p>
+        <p>In the meantime, browse:</p>
+        <ul>
+          <li>{{link-to "Applications and software" "cloud-search" "applications-software"}}</li>
+          <li>{{link-to "Hosting and infrastructure" "cloud-search" "hosting-infrastructure"}}</li>
+        </ul>
+        <p>Or {{link-to "return to the buy.nsw homepage" "index"}} for more options.</p>
+      {{else if (and this.model.buyer this.model.buyer.draft)}}
+        {{link-to "Continue with your buyer application" "register-buyer"}}
+      {{else if (not this.model.buyer)}}
+        {{link-to "Register as an ICT buyer who can buy" "register-buyer"}}
+      {{else}}
+        <p><b>Your buyer application is rejected or not active any more.</b></p>
+      {{/if}}
+      {{#dds/call-out}}
+        <h5>Our suppliers so far</h5>
         <div class="row">
-          <div class="col-sm-3">
-          </div>
-          <div class="col-sm-9">
-            <h4 class="au-display-xxxl">
-              <b>{{this.model.sellerStats.pending}}</b>
-            </h4>
+          <div class="col-sm-9 col-offset-sm-3">
+            <h4>{{this.model.sellerStats.pending}}</h4>
             <b>in review</b>
           </div>
           <div class="col-sm-9">
-            <h4 class="au-display-xxxl">
-              <b>{{this.model.sellerStats.approved}}</b>
-            </h4>
+            <h4>{{this.model.sellerStats.approved}}</h4>
             <b>approved</b>
           </div>
         </div>
       {{/dds/call-out}}
-      <p>
-        If you can't see what you need check back soon, or tell us what you'd like to see more of by emailing
-        <a href="mailto:buy.nsw@customerservice.nsw.gov.au">buy.nsw@customerservice.nsw.gov.au</a>.
-      </p>
-      <p>
-        We're always happy to hear from our buyers and suppliers.
-      </p>
+      <p>If you can't see what you need check back soon, or tell us what you'd like to see more of by emailing
+        <a href="mailto:buy.nsw@customerservice.nsw.gov.au">buy.nsw@customerservice.nsw.gov.au</a>.</p>
+      <p>We're always happy to hear from our buyers and suppliers.</p>
       <p>
         {{link-to
           "Change your email address or password"
@@ -154,11 +124,8 @@
         }}
       </p>
     </div>
-  </div>
+  {{/dds/template-body}}
 
-{{/dds/template-body}}
-
-  </div>
   {{dds/page-feedback user=auth.user feedbackService=feedbackService}}
 </main>
 
