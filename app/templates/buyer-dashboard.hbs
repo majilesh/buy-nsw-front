@@ -13,7 +13,7 @@
       (hash name="buy.nsw" route="index")
       (hash name="Dashboard" route="buyer-dashboard")
     )
-  background="editing"
+  background="buyer-dashboard"
   light=true}}
   <div class="row on-the-edge">
     <div class="col-md-12">
@@ -24,8 +24,21 @@
       <br>
     </div>
 
+
     <div class="col-sm-18 col-sm-offset-18 col-md-11 col-md-offset-13 col-lg-9 col-lg-offset-15">
-      {{link-to "Edit My Account" "register-buyer" class="au-btn au-btn--sapphire banner-button"}}
+        {{#if (and this.model.buyer this.model.buyer.approved)}}
+          Your buyer account is active {{link-to "Edit My Account" "register-buyer" class="au-btn au-btn--sapphire banner-button"}}
+        {{else if (and this.model.buyer this.model.buyer.pendingApproval)}}
+          <span class="au-btn au-btn--sapphire banner-button">Buyer application pending manager approval.</span>
+        {{else if (and this.model.buyer this.model.buyer.underReview)}}
+          <span class="au-btn au-btn--sapphire banner-button">Buyer application under review.</span>
+        {{else if (and this.model.buyer this.model.buyer.draft)}}
+          {{link-to "Continue with your buyer application" "register-buyer" class="au-btn au-btn--sapphire banner-button"}}
+        {{else if (not this.model.buyer)}}
+          {{link-to "Register as an ICT buyer" "register-buyer" class="au-btn au-btn--sapphire banner-button"}}
+        {{else}}
+          <span class="au-btn au-btn--sapphire banner-button">Your buyer application is rejected or inactive</span>
+        {{/if}}
       <br>
     </div>
   </div>
