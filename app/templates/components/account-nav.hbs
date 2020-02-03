@@ -3,7 +3,7 @@
   <ul class="au-progress-indicator">
     {{#each item.links as |link|}}
       <li>
-        {{#link-to "seller-account" link.step class=(concat "au-progress-indicator__link au-progress-indicator__link--" link.status)}}
+        {{#link-to 'seller-account' link.step disabled=underEdit invokeAction=(action "linkClicked" link.step) class=(concat "au-progress-indicator__link au-progress-indicator__link--" link.status)}}
           <span>
             {{link.label}}
           </span>
