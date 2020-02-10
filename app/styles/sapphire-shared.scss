@@ -626,6 +626,7 @@ main.wayfinder {
         @include AU-space( margin-left, 1unit);
         @include AU-space( padding, .2unit 1unit);
         vertical-align: middle;
+        cursor: pointer;
       }
     }
   }
