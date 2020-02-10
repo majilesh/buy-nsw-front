@@ -113,7 +113,9 @@
       <br>
       <div class="row">
         <div class="col-sm-14 col-md-11">
-          {{account-nav items=(array
+          {{account-nav
+            underEdit=this.model.form.underEdit
+            items=(array
               (hash title="My Account" links=(array
                   (hash label="Login details" step="login-details")
                 )

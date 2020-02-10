@@ -73,6 +73,7 @@
     "ember-fetch": "^6.7.0",
     "ember-file-upload": "github:armansa/ember-file-upload",
     "ember-intl": "^3.5.2",
+    "ember-link-action": "^1.0.0",
     "ember-load-initializers": "^2.1.0",
     "ember-math-helpers": "^2.12.0",
     "ember-maybe-import-regenerator": "^0.1.6",
