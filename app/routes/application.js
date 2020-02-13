@@ -7,6 +7,7 @@ export default Route.extend({
   metrics: service(),
   router: service(),
   airbrake: service(),
+  analytics: service(),
 
   actions: {
     loading: function(transition, originRoute) { // eslint-disable-line no-unused-vars
@@ -25,6 +26,7 @@ export default Route.extend({
 
       this.get('overlay').hide();
       this.get('auth').authenticate();
+      this.get('analytics').report();
     },
     error: function(response, transition) {
       let error = response;
