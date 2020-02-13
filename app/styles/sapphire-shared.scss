@@ -399,7 +399,6 @@ main.wayfinder {
 .breadcrumbs {
   > ul {
     list-style-type: none;
-    @include AU-space( margin, 6unit 0 0 0 );
     padding: 0;
     > li {
       display: inline-block;
@@ -428,6 +427,12 @@ main.wayfinder {
   }
 }
 
+@include AU-media( sm ) {
+  .breadcrumbs > ul {
+    @include AU-space( margin, 6unit 0 0 0 );
+  }
+}
+
 /*
   flex children
 */
@@ -449,15 +454,17 @@ main.wayfinder {
 */
 
 // static info pages:
-main.wayfinder.standard {
-  h1 {
-    @include page-header;
-  }
-  h2 {
-    @include AU-space( margin-bottom, 2unit);
-  }
-  > div > section {
-    @include AU-space( margin, 3unit 0);
+@include AU-media( sm ) {
+  main.wayfinder.standard {
+    h1 {
+      @include page-header;
+    }
+    h2 {
+      @include AU-space( margin-bottom, 2unit);
+    }
+    > div > section {
+      @include AU-space( margin, 3unit 0);
+    }
   }
 }
 
