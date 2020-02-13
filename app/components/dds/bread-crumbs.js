@@ -4,7 +4,7 @@ import layout from '../../templates/components/dds/bread-crumbs';
 export default Component.extend({
   layout,
   tagName: 'nav',
-  classNames: ['au-breadcrumbs'],
+  classNameBindings: ['isWayfinder:breadcrumbs:au-breadcrumbs'],
   attributeBindings: ['customLabel:aria-label'],
   customLabel: 'breadcrumb'
 });
