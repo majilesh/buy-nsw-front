@@ -1,6 +1,5 @@
 import Service from '@ember/service';
 import { inject } from '@ember/service';
-import { task } from 'ember-concurrency';
 
 export default Service.extend({
   ajax: inject(),
