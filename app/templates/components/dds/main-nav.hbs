@@ -1,22 +1,21 @@
-<div class="container-fluid">
-  <ul class="au-link-list" id="top">
-    {{#each items as |item|}}
-      {{#unless item.hide}}
-        <li class={{if (eq auth.currentRouteName item.route) "active"}}>
-          {{#if item.param}}
-            {{ link-to item.label item.route item.param }}
-          {{else if item.query}}
-            {{# link-to route=item.route query=item.query }}
-              {{item.label}}
-            {{/ link-to }}
-          {{else}}
-            {{ link-to item.label item.route }}
-          {{/if}}
-        </li>
-      {{/unless}}
-    {{/each}}
-    {{# if auth.isAdmin }}
-      <li><a href="/ops">Admin</a></li>
-    {{/ if }}
-  </ul>
-</div>
+<h4 tabindex={{if isWayfinder "0"}}>Main Menu</h4>
+<ul id="top">
+  {{#each items as |item|}}
+    {{#unless item.hide}}
+      <li class={{if (eq auth.currentRouteName item.route) "active"}}>
+        {{#if item.param}}
+          {{ link-to item.label item.route item.param }}
+        {{else if item.query}}
+          {{# link-to route=item.route query=item.query }}
+            {{item.label}}
+          {{/ link-to }}
+        {{else}}
+          {{ link-to item.label item.route }}
+        {{/if}}
+      </li>
+    {{/unless}}
+  {{/each}}
+  {{# if auth.isAdmin }}
+    <li><a href="/ops">Admin</a></li>
+  {{/ if }}
+</ul>
