@@ -1,0 +1,65 @@
+/*
+  custom properties
+*/
+
+/*
+// css var not supported in IE:
+:root {
+  --seaweed: #2f9c5c;
+  --sea: #2e9c93;
+}
+// usage:
+var(--seaweed)
+var(--sea)
+*/
+$hospital-green: #a5d6a5;
+$seaweed: #2f9c5c;
+$sea: #2e9c93;
+$marine-blue: #002664;
+$ugly-blue: #2f6f9c;
+$lipstick: #d7263d; //$BUY-color-warning-alt
+$pale-grey: #f2f6f8;
+$mid-grey: #c0c0c0;
+
+/*
+  mixins
+*/
+
+@mixin clearfix {
+	&:after {
+		clear: both;
+		content: " ";
+		display: table;
+	}
+}
+
+// screen-hidden/visible mix-ins (used more than once); removal from screen is ignored by screen readers - content will be announced;
+// remove from screen:
+@mixin screen-hidden {
+	border: 0;
+	height: 1px;
+	left: -10000px;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	top: auto;
+	width: 1px;
+}
+// return to screen:
+@mixin screen-visible {
+	height: auto;
+	left: auto;
+	overflow: auto;
+	position: relative;
+	width: auto;
+}
+
+// page header (h1) style - thick green border
+@mixin page-header {
+	@include AU-space( border-width, 0 0 .75unit 0);
+	border-style: solid;
+	border-image: linear-gradient( to right, $seaweed, transparent) 100% 1;
+	@include AU-space( margin-bottom, 3unit);
+	@include AU-space( padding-bottom, 1.25unit);
+}
