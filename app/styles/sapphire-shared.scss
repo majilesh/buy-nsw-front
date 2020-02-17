@@ -2,7 +2,300 @@
   styles confined to pages with the new design (side + main); initially used in supplier account pages
 */
 
+body {
+  font-family: MontserratRegular, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 1rem;
+  line-height: 1.5;
+  overflow-x: hidden;
+	text-size-adjust: 100%;
+}
+
+// override default settings within wayfinder components:
+.wayfinder {
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  // new max-widths for containers inside any sectioning element (header, nav, main), with wayfinder class:
+  .container-fluid {
+    @include AU-space( max-width, 62.66unit ); // 940px + 2rem + 2rem
+  }
+}
+
+// override default settings within the wayfinder main content:
+main.wayfinder {
+  h2 {
+    @include AU-space( font-size, 2unit); //32px
+  }
+  h3 {
+    @include AU-space( font-size, 1.5unit); //24px
+    font-family: MontserratBold;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+// feature boxes; currently 2 styles - .landing (welcome - large & white) and .G (rego - green)
+@include AU-media( sm ) {
+  .feature {
+    @include AU-space( margin-bottom, 2.75unit ); //44px
+    @include AU-space( padding, 1.5unit 2.5unit); //24px 40px
+    > :first-child {
+      margin-top: 0;
+    }
+    > :last-child {
+      margin-bottom: 0;
+    }
+    &.landing {
+      background: #fff;
+      box-shadow: 0 2px 10px 0 rgba(0,0,0,.45); //#979797
+      @include AU-space( padding, 2.25unit 5unit); //36px 80px
+      z-index: 1;
+      > h2 {
+        @include AU-space( border-width, 0 0 .75unit 0);
+        border-style: solid;
+        border-image: linear-gradient( to right, $seaweed, transparent) 100% 1;
+        @include AU-space( font-size, 3unit); //48px
+        font-weight: 300;
+        line-height: 1;
+        @include AU-space( margin-bottom, 1.5unit);
+        @include AU-space( padding-bottom, 1.25unit);
+      }
+      > p {
+        @include AU-space( font-size, 1.2unit);
+      }
+      > .btn {
+        width: 210px;
+      }
+    }
+    &.G {
+      background: linear-gradient( to right, $seaweed, $sea);
+      border-left: 5px solid $hospital-green;
+      color: #fff;
+    }
+  }
+
+  .flex-sm {
+    display: flex;
+    > .btn {
+      @include AU-space( margin-left, 1.5unit);
+      max-width: 200px;
+    }
+  }
+}
+
+@include AU-media( md ) {
+  main.landing {
+    background: $pale-grey;;
+    position: relative;
+    &:after {
+      background: AU-svguri('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1744 330"><path d="M1744 23.9c-332.5-110.5-517.9 196.2-955.1 227.5-384.4 27.5-560-33.6-660.9-69.2 0 0-17.9-8.9-50-16.6-12.1-3.4-23-5.7-33.2-6.4-13.5-2-28.6-3.5-44.9-4.1v560h1744V23.9z" fill="#002664"></path></svg>') bottom right/120% no-repeat transparent; 
+      content: "";
+      height: 450px;
+      left: 0;
+      position: absolute;
+      top: -1px;
+      // flip curve img used in footer:
+      transform: scaleY(-1);
+      // prevent slight gap opening up on right side (add .1%):
+      width: 100.1%;
+    }
+  }
+
+  .feature.landing {
+    padding-right: 60%;
+    position: relative;
+    &:after {
+      background: url(/ict/images/landing-people.svg) no-repeat 0 0;
+      content: "";
+      height: 284px;
+      left: 250px;
+      position: absolute;
+      top: 84px;
+      width: 940px;
+    }
+  }
+}
+
+// callout boxes
+.callout, .callouts section {
+  @include AU-space( margin-bottom, 1.5unit );
+  @include AU-space( padding, 0 0 2.5unit 0);
+  > :first-child {
+    margin-top: 0;
+  }
+  > :last-child {
+    margin-bottom: 0;
+  }
+  // green headings; dark grey border-bottom:
+  &.G {
+    border-bottom: 2px solid $BUY-color-foreground-text;
+    h3 {
+      color: $seaweed;
+    }
+  }
+  // white background and green border-left:
+  &.WG {
+    background: #fff;
+    border-left: 5px solid $seaweed;
+    @include AU-space( padding, 1.5unit 2.5unit); //24px 40px
+    position: relative;
+    &:after {
+      position: absolute;
+      @include AU-space( top, 1.5unit);
+      @include AU-space( right, 1.5unit);
+    }
+    h3 {
+      color: $BUY-color-foreground-text;
+      @include AU-space( margin-right, 1unit);
+    }
+  }
+  // dark blue headings; grey border-bottom
+  &.DB {
+    border-bottom: 2px solid $mid-grey;
+    h3 {
+      color: $marine-blue;
+    }
+  }
+  &:after {
+    font-family: MontserratRegular;
+    @include AU-space( font-size, 2.25unit );
+    line-height: .8;
+    content: "\2192"; // →
+    float: right;
+  }
+}
+
+.callouts, .callout {
+  a p, &:after, section:after {
+    color: $BUY-color-foreground-text;
+  }
+}
+
+.callouts.flex-sm > div:first-of-type {
+  @include AU-space( margin-right, 6unit );
+}
+
+// buttons
+.btn {
+  font-family: MontserratBold;
+  @include AU-space( font-size, 1.25unit );
+  background: #0065f9;
+  @include AU-space( border-radius, .25unit );
+  box-sizing: border-box;
+  color: #fff;
+  display: inline-block;
+  @include AU-space( padding, .75unit 1.25unit .75unit);
+  text-align: center;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  vertical-align: middle;
+  &:hover {
+    text-decoration: underline;
+  }
+  &.arr {
+    &:after {
+      font-family: MontserratRegular;
+      @include AU-space( font-size, 1.5unit );
+      line-height: .8;
+      vertical-align: middle;
+    }
+    &.R:after {
+      content: "\2794"; //→
+      @include AU-space( margin-left, 1unit );
+    }
+  }
+  &.bc-db {
+    border: 2px solid #fff;
+  }
+}
+
+// tabbed navigation and tabbed sections
+@mixin active-tab {
+  background: $marine-blue;
+  color: #fff;
+  position: relative;
+  &:after {
+    content: "\00a0";
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: transparent;
+    background: transparent;
+    border-top-color: $marine-blue;
+    border-width: 10px 8px;
+    left: 50%;
+    bottom: -20px;
+    margin-left: -4px;
+  }
+}
+
+.tabs {
+  @include AU-space( margin-bottom, 3unit );
+  > h4 {
+    @include screen-hidden;
+  }
+  > ul {
+    border-bottom: 2px solid $ugly-blue;
+    font-family: MontserratBold;
+    @include AU-space( font-size, 1.25unit );
+    -webkit-font-smoothing: antialiased;
+    list-style-type: none;
+    padding: 0;
+    @include clearfix;
+    > li {
+      box-shadow: 2px 0 17px 0 rgba(0,0,0,.45); // #979797
+      float: left;
+      > a {
+        background: #fff;
+        border-radius: 4px 4px 0 0;
+        color: #000;
+        display: inline-block;
+        @include AU-space( padding, 1unit 2.25unit);
+        // TODO - set focus on page load via JavaScript; then uncomment following rule:
+        /*&:focus {
+          @include active-tab;
+        }*/
+      }
+      // TODO - set focus to first tab on page load via JavaScript; then remove following rule:
+      &:first-child {
+        > a {
+          @include active-tab;
+        }
+      }
+    }
+  }
+}
+
+
+.tab {
+  background: $pale-grey;
+  @include screen-hidden;
+  // TODO - set focus on page load via JavaScript; then uncomment following rule:
+  /*&:target {
+    @include screen-visible;
+  }*/
+}
+
+// TODO - set focus to first tab on page load via JavaScript; then remove following rule:
+.tabs + .tab {
+  @include screen-visible;
+}
+
+
+
+// ### TODO - consider replacing .sapphire-main, .sapphire-article, .sapphire-nav, .sapphire-form with either:
+//   body.wayfinder, then: .wayfinder main, .wayfinder article, .wayfinder nav, .wayfinder form   OR
+//   main.wayfinder, article.wayfinder, nav.wayfinder, form.wayfinder
+//   depending on need for alternate styles within body.wayfinder; 
+//   implement when .wayfinder styles applied across site
+
 .sapphire-main {
+  // ### TODO - remove rule when .wayfinder styles applied across site
   .au-body * + p {
     @include AU-space( margin-top, 1unit );
   }
@@ -24,7 +317,6 @@
       }
     }
     h3 {
-      font-family: MontserratBold;
       &:first-of-type {
         @include AU-space( margin-top, 0 );
       }
@@ -40,13 +332,15 @@
       @include AU-space( padding-left, .75unit );
     }
   }
-  // padding variations (override .au-grid settings):
+  // ### TODO - remove '.au-grid' when .wayfinder styles applied across site
+  //  padding variations (override .au-grid settings):
   .au-grid & {
     .sapphire-article, .sapphire-nav {
       @include AU-space( padding-top, 2unit );
       @include AU-space( padding-bottom, 1.5unit );
     }
   }
+  // ### TODO - replace selectors with .btn(.thin .tertiary) when .wayfinder styles applied across site
   .au-btn {
     @include AU-space( font-size, .87unit );
     @include AU-space( padding, .3unit 2unit );
@@ -74,7 +368,7 @@
     color: $BUY-color-heading-blue;
     font-weight: 600;
   }
-  h5, h6 {
+  h3, h5, h6 {
     font-family: MontserratBold;
   }
   dt {
@@ -108,6 +402,7 @@
 // for medium and large screens only (> 992px)
 @media only screen and (min-width: $AU-media-md) {
   // increase padding for sapphire-article and -nav
+  // ### TODO - remove '.au-grid .sapphire-main' when .wayfinder styles applied across site
   .au-grid .sapphire-main {
     .sapphire-article {
       @include AU-space( padding, 2unit 3unit 1.5unit 4.5unit );
@@ -357,7 +652,25 @@
 
 /*
   shorthand class names - single declarations for any element
-*/ 
+*/
+// align-items
+.ai-c {
+  align-items: center;
+}
+// background-color
+.bc-db {
+  background-color: $marine-blue; // navy blue
+}
+.bc-g {
+  background-color: $sea;
+}
+// color
+.c-db {
+  color: $marine-blue;
+}
+.c-g {
+  color: $seaweed;
+}
 // cursor
 .cr-p {
   cursor: pointer;
@@ -369,12 +682,27 @@
 .d-ib {
   display: inline-block;
 }
+.flex {
+  display: flex;
+}
 // float
 .f-l {
   float: left;
 }
 .f-r {
   float: right;
+}
+// font-family
+.st {
+  font-family: MontserratBold;
+}
+// font-size
+.fs-24 {
+  @include AU-space( font-size, 1.5unit );
+}
+// font-style
+.n {
+  font-style: normal;
 }
 // font-weight
 .b {
@@ -439,6 +767,10 @@
 // text-align
 .a-r {
   text-align: right;
+}
+// visibility
+.v-sh {
+  @include screen-hidden;
 }
 
 

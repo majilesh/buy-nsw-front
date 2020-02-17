@@ -4,7 +4,8 @@ import layout from '../../templates/components/dds/template-header';
 export default Component.extend({
   layout,
   tagName: 'header',
-  classNames: ['au-header au-header--dark'],
+  classNameBindings: ['isWayfinder:wayfinder:DDS'],
+  isWayfinder: false,
   attributeBindings: ['role'],
   role: 'banner',
   actions: {

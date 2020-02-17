@@ -1,0 +1,129 @@
+{{dds/skip-link}}
+
+{{user-pretender}}
+
+{{dds/browser-compatibility browser=(user-agent "browser")}}
+{{dds/template-header auth=auth isWayfinder=true}}
+
+<main id="content" class="wayfinder landing">
+  <div class="container-fluid">
+    <section class="feature landing">
+      <h2>Welcome to <b>buy.nsw</b></h2>
+      <p>Welcome to the <b>buy.nsw</b> <i class="c-g n st">supplier hub</i>, a place for buyers and suppliers of digital products and services to connect</p>
+      {{ link-to "Sign up" "sign-in" class="btn bc-g arr R" }}
+    </section>
+    <nav class="tabs">
+      <h4>section menu</h4>
+      <ul>
+        <li><a href="#buyer">I'm a buyer</a></li>
+        <li><a href="#supplier">I'm a supplier</a></li>
+      </ul>
+    </nav>
+    <section id="buyer" class="tab">
+      <h2 class="v-sh">Buyer</h2>
+      <section class="feature G flex-sm ai-c">
+        <div>
+          <h3>Start registration</h3>
+          <p>Sic gloria transit mundi. Ad astra per aspera. Acta deos numquam mortalia fallunt.</p>
+        </div>
+        {{ link-to "Register" "sign-in" class="btn bc-db arr R" }}
+      </section>
+      <div class="flex-sm callouts">
+        <div>
+          {{#link-to "signup" "seller"}}
+            <section class="G">
+              <h3>1. Register to sell</h3>
+              <p>Sic gloria transit mundi. Ad astra per aspera. Acta deos numquam mortalia fallunt.</p>
+            </section>
+          {{/link-to}}
+          <section class="G">
+            <h3>2. Search for eligible suppliers</h3>
+            <p>Sic gloria transit mundi. Ad astra per aspera. Acta deos numquam mortalia fallunt.</p>
+          </section>
+          <section class="G">
+            <h3>3. Create a shortlist</h3>
+            <p>Sic gloria transit mundi. Ad astra per aspera. Acta deos numquam mortalia fallunt.</p>
+          </section>
+        </div>
+        <div>
+          {{#link-to route="cloud-sellers" query=(hash
+            term=""
+            pageNum=1
+            services=(array)
+            identifiers=(array "indigenous")
+            govdc=(array)
+          )}}
+            <section class="WG">
+              <h3>Browse Aboriginal or Torres Strait Islander suppliers</h3>
+              <p>Find a supplier recognised as Aboriginal or Torres Strait Islander.</p>
+            </section>
+          {{/link-to}}
+          {{#link-to route="cloud-sellers" query=(hash
+              term=""
+              pageNum=1
+              services=(array)
+              identifiers=(array "sme")
+              govdc=(array)
+            )}}
+            <section class="WG">
+              <h3>Browse small to medium enterprise</h3>
+              <p>Find a supplier based in Australia or New Zealand with less than 200 employees.</p>
+            </section>
+          {{/link-to}}
+          {{#link-to route="cloud-sellers" query=(hash
+              term=""
+              pageNum=1
+              services=(array)
+              identifiers=(array "regional")
+              govdc=(array)
+            )}}
+            <section class="WG">
+              <h3>Browse regional suppliers</h3>
+              <p>Find a supplier headquartered in regional NSW.</p>
+            </section>
+          {{/link-to}}
+        </div>
+      </div>
+    </section>
+    <section id="other-services">
+      <h2 class="c-db">Find other buy.nsw services</h2>
+      <div class="flex-sm callouts">
+        <div>
+          <a href="https://beta.buy.nsw.gov.au" target="_blank">
+            <section class="DB">
+              <h3>buy.nsw</h3>
+              <p>Learn more about the buy.nsw program on our home page</p>
+            </section>
+          </a>
+          <a href="https://tenders.nsw.gov.au/" target="_blank">
+            <section class="DB">
+              <h3>eTendering</h3>
+              <p>Search for current NSW Government open tender opportunities and pre-qualification schemes</p>
+            </section>
+          </a>
+        </div>
+        <div>
+          <a href="https://beta.buy.nsw.gov.au/policy-library" target="_blank">
+            <section class="DB">
+              <h3>Policy library</h3>
+              <p>A library of procurement policies that apply to NSW Government agencies, non-agency buyers and suppliers</p>
+            </section>
+          </a>
+          <a href="https://www.digital.nsw.gov.au/blog?tag_id[96]=96" target="_blank">
+            <section class="DB">
+              <h3>News and updates</h3>
+              <p>about buy.nsw and digital delivery in NSW</p>
+            </section>
+          </a>
+        </div>
+      </div>
+    </section>
+    <section id="supplier" class="tab">
+      All about suppliers
+    </section>
+    {{dds/page-feedback user=auth.user feedbackService=feedbackService}}
+  </div>
+</main>
+{{dds/register-newsletter}}
+
+{{dds/template-footer auth=auth}}

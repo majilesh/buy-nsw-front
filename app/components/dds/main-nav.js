@@ -5,9 +5,8 @@ import { computed } from '@ember/object';
 export default Component.extend({
   layout,
   tagName: 'nav',
-  classNames: ['au-main-nav au-main-nav--dark'],
-  classNameBindings: ['noBorder:au-main-nav--no-border'],
-  noBorder: false,
+  classNames: ['main-nav'],
+  classNameBindings: ['isWayfinder:wayfinder:DDS'],
   attributeBindings: ['customLabel:aria-label'],
   customLabel: 'main navigation',
   items: computed('auth.isSeller', 'auth.isBuyer', 'auth.isAdmin', function(){

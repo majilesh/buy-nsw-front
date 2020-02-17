@@ -56,6 +56,11 @@ Router.map(function() {
   this.route('access-forbidden', { path: '/forbidden' });
   this.route('seller-account', { path: '/supplier/account/:step_name' });
   this.route('accept-admin-invite', { path: '/confirm/invitation/:invitation_token'});
+
+  // styleguide
+  this.route('styleguide');
+  this.route('styleguide-dashboard');
+  this.route('styleguide-content');
 });
 
 export default Router;
