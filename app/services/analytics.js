@@ -1,9 +1,11 @@
 import Service from '@ember/service';
 import { inject } from '@ember/service';
+import { task } from 'ember-concurrency';
 
 export default Service.extend({
   ajax: inject(),
-  report() {
+  report: task(function * () {
+    yield setTimeout(0);
     this.get('ajax').request('/api/analytics/report/', {
       method: 'POST',
       data: {
@@ -13,5 +15,5 @@ export default Service.extend({
         action: 'page-view',
       }
     })
-  }
+  }).maxConcurrency(4).enqueue(),
 });

@@ -26,7 +26,7 @@ export default Route.extend({
 
       this.get('overlay').hide();
       this.get('auth').authenticate();
-      this.get('analytics').report();
+      this.get('analytics').get('report').perform();
     },
     error: function(response, transition) {
       let error = response;
