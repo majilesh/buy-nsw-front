@@ -32,6 +32,8 @@ You will need the following things properly installed on your computer.
 * `sudo service nginx restart`
 * Visit your app at [http://localhost/ict/](http://localhost/ict/)
 
+For Mac nginx config file needs modifications. Nginx log files need more open permission.
+
 ### Code Generators
 
 Make use of the many generators for code, try `ember help generate` for more details
