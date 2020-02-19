@@ -6,7 +6,7 @@ defaults: &defaults
         JOBS: 2
   working_directory: ~/buy-nsw-front
 
-version: 2
+version: 2.1
 jobs:
   build:
     <<: *defaults
@@ -65,7 +65,7 @@ jobs:
           command: ember deploy staging-ci --activate=true --verbose
 
 workflows:
-  version: 2
+  version: 2.1
   build_and_deploy:
     jobs:
       - build:
