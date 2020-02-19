@@ -35,6 +35,14 @@ jobs:
           root: .
           paths:
             - .
+      - run:
+          name: tag successful build
+          command: |
+            git config --global user.name "CircleCI tagging robot"
+            export TAG=make-$CIRCLE_BUILD_NUM
+            git tag -a $TAG -m 'adding build tag'
+            git push origin $TAG
+
 
   deploy_testing:
     <<: *defaults
